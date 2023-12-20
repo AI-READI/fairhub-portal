@@ -1,0 +1,13 @@
+node_modules
+.yarn
+*.log*
+.nuxt
+.nitro
+.cache
+.output
+dist
+.DS_Store
+
+.env
+.env.prod
+assets/json/dev/
