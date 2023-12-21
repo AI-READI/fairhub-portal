@@ -20,11 +20,6 @@ jobs:
           submodules: true
           lfs: false
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v1
-        with:
-          node-version: "18.x"
-
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
