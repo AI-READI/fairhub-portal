@@ -31,16 +31,7 @@ const loggedIn = computed(() => user.value);
             <ul
               class="mt-4 flex flex-col font-medium lg:mt-0 lg:flex-row lg:space-x-8"
             >
-              <NuxtLink to="/">
-                <a
-                  href="#"
-                  class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
-                >
-                  Studies
-                </a>
-              </NuxtLink>
-
-              <NuxtLink to="/">
+              <NuxtLink to="/datasets">
                 <a
                   href="#"
                   class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
