@@ -1,19 +1,20 @@
 <script setup lang="ts">
-const supabase = useSupabaseClient();
+const user = useSupabaseUser();
+const push = usePush();
 
 const devMode = process.env.NODE_ENV === "development";
 
-const user = useSupabaseUser();
-
 const loggedIn = computed(() => user.value);
 
-console.log("User", user.value);
+const searchQuery = ref("");
 
-const logout = async () => {
-  const { error } = await supabase.auth.signOut();
-  if (error) console.log(error);
-
-  navigateTo("/");
+const navigateToSearch = () => {
+  if (searchQuery.value) {
+    push.warning({
+      title: "Not implemented",
+      message: "This feature is not implemented yet",
+    });
+  }
 };
 </script>
 
@@ -24,34 +25,75 @@ const logout = async () => {
   >
     <header>
       <nav class="border-b border-gray-200 bg-white px-4 py-2.5 lg:px-6">
-        <div
-          class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between"
-        >
-          <NuxtLink
-            to="/"
-            class="flex flex-row items-center justify-start space-x-2"
-          >
-            <img src="/logo/logo.svg" alt="Logo" class="mr-2 w-10" />
+        <div class="mx-auto grid w-full max-w-screen-xl grid-cols-2">
+          <div class="flex justify-start">
+            <NuxtLink
+              to="/"
+              class="flex flex-row items-center justify-start space-x-2"
+            >
+              <span
+                class="bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-xl font-bold text-transparent"
+              >
+                data.fairhub
+              </span>
+            </NuxtLink>
+          </div>
 
-            <span class="text-xl font-bold"> data.fairhub </span>
-          </NuxtLink>
+          <div class="flex hidden w-full items-center justify-center lg:w-auto">
+            <ul
+              class="mt-4 flex flex-col font-medium lg:mt-0 lg:flex-row lg:space-x-8"
+            >
+              <NuxtLink to="/datasets">
+                <a
+                  href="#"
+                  class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
+                >
+                  Datasets
+                </a>
+              </NuxtLink>
 
-          <div class="flex items-center space-x-3 lg:order-2">
-            <nuxt-link v-if="!loggedIn" to="/auth/login">
-              <n-button size="large">
-                <span> Log in </span>
+              <NuxtLink to="/">
+                <a
+                  href="#"
+                  class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
+                >
+                  Contact
+                </a>
+              </NuxtLink>
+            </ul>
+          </div>
+
+          <div class="flex items-center justify-end space-x-3">
+            <n-input-group>
+              <n-input
+                v-model:value="searchQuery"
+                placeholder="Search all datasets"
+                size="large"
+                @keyup.enter="navigateToSearch"
+              >
+                <template #prefix>
+                  <Icon name="mdi:magnify" />
+                </template>
+              </n-input>
+
+              <n-button
+                type="info"
+                secondary
+                size="large"
+                :disabled="!searchQuery"
+              >
+                <template #icon>
+                  <Icon name="mdi:database-search" />
+                </template>
+                Search
               </n-button>
-            </nuxt-link>
+            </n-input-group>
 
             <nuxt-link v-if="!loggedIn" to="/auth/register">
               <n-button color="black" size="large"> Get started </n-button>
             </nuxt-link>
 
-            <nuxt-link v-if="loggedIn" to="/dashboard">
-              <n-button color="black" size="large"> Dashboard </n-button>
-            </nuxt-link>
-
-            <n-button @click="logout"> Logout </n-button>
+            <UiProfileDropdown />
 
             <button
               data-collapse-toggle="mobile-menu-2"
@@ -88,60 +130,6 @@ const logout = async () => {
                 ></path>
               </svg>
             </button>
-          </div>
-
-          <div
-            id="mobile-menu-2"
-            class="hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto"
-          >
-            <ul
-              class="mt-4 flex flex-col font-medium lg:mt-0 lg:flex-row lg:space-x-8"
-            >
-              <li>
-                <a
-                  href="#"
-                  class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
-                >
-                  Company
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
-                >
-                  Marketplace
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
-                >
-                  Features
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
-                >
-                  Team
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
           </div>
         </div>
       </nav>
