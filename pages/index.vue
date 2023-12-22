@@ -69,12 +69,14 @@ definePageMeta({
             <n-divider> or </n-divider>
 
             <n-space>
-              <n-button type="info" size="large" secondary>
-                <template #icon>
-                  <Icon name="solar:pin-list-bold-duotone" size="25" />
-                </template>
-                View all datasets
-              </n-button>
+              <NuxtLink to="/datasets">
+                <n-button type="info" size="large" secondary>
+                  <template #icon>
+                    <Icon name="solar:pin-list-bold-duotone" size="25" />
+                  </template>
+                  View all datasets
+                </n-button>
+              </NuxtLink>
 
               <n-button color="#FF4500" size="large" secondary>
                 <template #icon>

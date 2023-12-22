@@ -18,7 +18,7 @@
 import "md-editor-v3/lib/style.css";
 
 import { pastelTheme } from "notivue";
-import { ThemeConfig } from "@bg-dev/nuxt-naiveui";
+import type { ThemeConfig } from "@bg-dev/nuxt-naiveui";
 
 const themeConfig: ThemeConfig = {
   dark: {}, // Theme options applied on dark mode
