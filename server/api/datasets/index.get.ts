@@ -9,6 +9,7 @@ export default defineEventHandler(async (_event) => {
     console.log("No datasets found");
     return [];
   }
+
   const datasets: DatasetArray = [];
 
   for (const dataset of dbDatasets) {

@@ -207,6 +207,7 @@ model dataset_rights {
   identifier_scheme String  @db.VarChar
   created_at        BigInt
   dataset_id        String  @db.Char(36)
+  license_text      String  @db.VarChar
   dataset           dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 

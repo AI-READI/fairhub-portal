@@ -1,21 +1,5 @@
 <script setup lang="ts">
-const user = useSupabaseUser();
-const push = usePush();
-
 const devMode = process.env.NODE_ENV === "development";
-
-const loggedIn = computed(() => user.value);
-
-const searchQuery = ref("");
-
-const navigateToSearch = () => {
-  if (searchQuery.value) {
-    push.warning({
-      title: "Not implemented",
-      message: "This feature is not implemented yet",
-    });
-  }
-};
 </script>
 
 <template>

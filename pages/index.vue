@@ -5,7 +5,7 @@
 
 const push = usePush();
 const { data: datasets, error } = await useFetch(`/api/datasets`, {
-  headers: useRequestHeaders(["cookie"]),
+  // headers: useRequestHeaders(["cookie"]),
 });
 
 if (error.value) {
