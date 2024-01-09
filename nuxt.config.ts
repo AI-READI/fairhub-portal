@@ -63,4 +63,11 @@ export default defineNuxtConfig({
   notivue: {
     // Options
   },
+
+  serverMiddleware: [
+    {
+      handler: "~/server/api/index.ts",
+      path: "/api",
+    },
+  ],
 });
