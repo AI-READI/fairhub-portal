@@ -45,7 +45,7 @@ if (error.value) {
       <div
         class="mx-auto grid max-w-screen-xl px-4 lg:grid-cols-12 lg:gap-8 xl:gap-0"
       >
-        <div class="mr-auto place-self-center lg:col-span-7">
+        <div class="mr-auto place-self-center lg:col-span-8">
           <h1
             class="mb-2 max-w-2xl bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-3xl font-extrabold leading-none tracking-tight text-transparent md:text-4xl xl:text-5xl"
           >
@@ -60,34 +60,6 @@ if (error.value) {
           </p>
 
           <div class="flex w-full flex-col">
-            <div class="flex w-full items-center space-x-5">
-              <n-input
-                size="large"
-                placeholder="Diabetes Salutogenesis"
-                class="!w-[70%]"
-              >
-                <template #prefix>
-                  <Icon
-                    name="lets-icons:chat-search-fill"
-                    size="25"
-                    class="opacity-90"
-                  />
-                </template>
-              </n-input>
-
-              <n-button
-                type="primary"
-                secondary
-                size="large"
-                icon-placement="right"
-              >
-                <template #icon>
-                  <Icon name="mingcute:arrow-right-fill" size="25" />
-                </template>
-                Search
-              </n-button>
-            </div>
-
             <div class="flex hidden w-max flex-col">
               <n-divider> or </n-divider>
 
@@ -112,7 +84,7 @@ if (error.value) {
           </div>
         </div>
 
-        <div class="hidden lg:col-span-5 lg:mt-0 lg:flex">
+        <div class="hidden lg:col-span-4 lg:mt-0 lg:flex">
           <img src="/images/hero/research.webp" alt="mockup" />
         </div>
       </div>
@@ -123,10 +95,38 @@ if (error.value) {
         <div
           class="mx-auto flex w-full max-w-screen-xl items-center justify-between px-2"
         >
-          <n-space vertical>
+          <n-space vertical class="mt-8 w-full">
             <h1>Datasets</h1>
 
             <p>Explore FAIR, AI-ready datasets.</p>
+
+            <div class="flex w-full items-center space-x-5 pt-4">
+              <n-input
+                size="large"
+                placeholder="Diabetes Salutogenesis"
+                class=""
+              >
+                <template #prefix>
+                  <Icon
+                    name="lets-icons:chat-search-fill"
+                    size="25"
+                    class="opacity-90"
+                  />
+                </template>
+              </n-input>
+
+              <n-button
+                type="primary"
+                secondary
+                size="large"
+                icon-placement="right"
+              >
+                <template #icon>
+                  <Icon name="mingcute:arrow-right-fill" size="25" />
+                </template>
+                Search
+              </n-button>
+            </div>
           </n-space>
         </div>
       </div>

@@ -142,7 +142,7 @@ const demoVersions = [
 
               <!-- eslint-disable vue/no-v-html -->
               <div
-                class="prose mt-10 min-h-[300px] max-w-none"
+                class="prose mt-10 min-h-[300px] max-w-none bg-white text-black"
                 v-html="markdownToHtml"
               />
               <!-- eslint-enable vue/no-v-html -->
