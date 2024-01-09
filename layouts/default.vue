@@ -39,7 +39,7 @@ const navigateToSearch = () => {
             </NuxtLink>
           </div>
 
-          <div class="flex w-full items-center justify-center lg:w-auto">
+          <div class="flex w-full items-center justify-end lg:w-auto">
             <ul
               class="mt-4 flex flex-col font-medium lg:mt-0 lg:flex-row lg:space-x-8"
             >
