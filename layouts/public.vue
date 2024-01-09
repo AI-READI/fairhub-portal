@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const user = useSupabaseUser();
+// const user = useSupabaseUser();
 
 const devMode = process.env.NODE_ENV === "development";
 
-const loggedIn = computed(() => user.value);
+// const loggedIn = computed(() => user.value);
 </script>
 
 <template>
@@ -13,7 +13,7 @@ const loggedIn = computed(() => user.value);
   >
     <header>
       <nav class="border-b border-gray-200 bg-white px-4 py-2.5 lg:px-6">
-        <div class="mx-auto grid w-full max-w-screen-xl grid-cols-3">
+        <div class="mx-auto grid w-full max-w-screen-xl grid-cols-2">
           <div class="flex justify-start">
             <NuxtLink
               to="/"
@@ -40,7 +40,25 @@ const loggedIn = computed(() => user.value);
                 </a>
               </NuxtLink>
 
-              <NuxtLink to="/">
+              <NuxtLink to="/studies">
+                <a
+                  href="#"
+                  class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
+                >
+                  Studies
+                </a>
+              </NuxtLink>
+
+              <NuxtLink to="/docs">
+                <a
+                  href="#"
+                  class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
+                >
+                  Documentation
+                </a>
+              </NuxtLink>
+
+              <NuxtLink to="/contact">
                 <a
                   href="#"
                   class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
@@ -51,7 +69,7 @@ const loggedIn = computed(() => user.value);
             </ul>
           </div>
 
-          <div class="flex items-center justify-end space-x-3">
+          <!-- <div class="flex items-center justify-end space-x-3">
             <nuxt-link v-if="!loggedIn" to="/auth/login">
               <n-button size="large">
                 <span> Log in </span>
@@ -99,7 +117,7 @@ const loggedIn = computed(() => user.value);
                 ></path>
               </svg>
             </button>
-          </div>
+          </div> -->
         </div>
       </nav>
     </header>

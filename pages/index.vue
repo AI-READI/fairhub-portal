@@ -1,7 +1,21 @@
 <script setup lang="ts">
-definePageMeta({
-  layout: "public",
+// definePageMeta({
+//   layout: "public",
+// });
+
+const push = usePush();
+const { data: datasets, error } = await useFetch(`/api/datasets`, {
+  headers: useRequestHeaders(["cookie"]),
 });
+
+if (error.value) {
+  console.error(error.value);
+
+  push.error({
+    title: "Something went wrong",
+    message: "Failed to fetch datasets",
+  });
+}
 </script>
 
 <template>
@@ -29,27 +43,35 @@ definePageMeta({
 
     <section class="bg-white">
       <div
-        class="mx-auto grid max-w-screen-xl px-4 py-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0"
+        class="mx-auto grid max-w-screen-xl px-4 lg:grid-cols-12 lg:gap-8 xl:gap-0"
       >
         <div class="mr-auto place-self-center lg:col-span-7">
           <h1
-            class="mb-4 max-w-2xl bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text py-2 text-4xl font-extrabold leading-none tracking-tight text-transparent md:text-5xl xl:text-6xl"
+            class="mb-2 max-w-2xl bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-3xl font-extrabold leading-none tracking-tight text-transparent md:text-4xl xl:text-5xl"
           >
-            Your new home for AI ready data
+            Make breakthrough discoveries with AI-ready datasets
           </h1>
 
-          <p class="mb-6 max-w-2xl text-gray-500 md:text-lg lg:mb-8 lg:text-xl">
-            Fairhub is a platform for sharing and discovering datasets and
-            studies. It is designed to be a central hub for AI-ready data.
+          <p class="mb-6 max-w-2xl text-lg text-gray-500 lg:mb-5">
+            Find and reuse FAIR, AI-ready datasets shared through the FAIRhub
+            data management and curation platform.
             <br />
-            We are currently in beta and are looking for feedback.
+            Home of the AI-READI dataset.
           </p>
 
-          <div class="flex w-max flex-col">
-            <n-space>
-              <n-input size="large" placeholder="Diabetes Salutogenesis">
+          <div class="flex w-full flex-col">
+            <div class="flex w-full items-center space-x-5">
+              <n-input
+                size="large"
+                placeholder="Diabetes Salutogenesis"
+                class="!w-[70%]"
+              >
                 <template #prefix>
-                  <Icon name="lets-icons:chat-search-fill" size="25" />
+                  <Icon
+                    name="lets-icons:chat-search-fill"
+                    size="25"
+                    class="opacity-90"
+                  />
                 </template>
               </n-input>
 
@@ -64,32 +86,88 @@ definePageMeta({
                 </template>
                 Search
               </n-button>
-            </n-space>
+            </div>
 
-            <n-divider> or </n-divider>
+            <div class="flex hidden w-max flex-col">
+              <n-divider> or </n-divider>
 
-            <n-space>
-              <NuxtLink to="/datasets">
-                <n-button type="info" size="large" secondary>
+              <n-space>
+                <NuxtLink to="/datasets">
+                  <n-button type="info" size="large" secondary>
+                    <template #icon>
+                      <Icon name="solar:pin-list-bold-duotone" size="25" />
+                    </template>
+                    View all datasets
+                  </n-button>
+                </NuxtLink>
+
+                <n-button color="#FF4500" size="large" secondary>
                   <template #icon>
-                    <Icon name="solar:pin-list-bold-duotone" size="25" />
+                    <Icon name="fluent-mdl2:contact-list" size="25" />
                   </template>
-                  View all datasets
+                  View all studies
                 </n-button>
-              </NuxtLink>
-
-              <n-button color="#FF4500" size="large" secondary>
-                <template #icon>
-                  <Icon name="fluent-mdl2:contact-list" size="25" />
-                </template>
-                View all studies
-              </n-button>
-            </n-space>
+              </n-space>
+            </div>
           </div>
         </div>
 
         <div class="hidden lg:col-span-5 lg:mt-0 lg:flex">
           <img src="/images/hero/research.webp" alt="mockup" />
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gradient-to-t from-slate-50 to-purple-50">
+      <div class="flex h-36 items-center">
+        <div
+          class="mx-auto flex w-full max-w-screen-xl items-center justify-between px-2"
+        >
+          <n-space vertical>
+            <h1>Datasets</h1>
+
+            <p>Explore FAIR, AI-ready datasets.</p>
+          </n-space>
+        </div>
+      </div>
+
+      <n-divider />
+
+      <div class="mx-auto flex w-full max-w-screen-xl flex-col px-3 py-5">
+        <div class="flex flex-col space-y-3">
+          <NuxtLink
+            v-for="dataset in datasets"
+            :key="dataset.id"
+            :to="`/datasets/${dataset.id}`"
+            class="rounded-lg border border-purple-300 bg-white px-5 py-3 shadow-sm transition-all hover:bg-fuchsia-50 hover:shadow-md"
+          >
+            <n-space size="large">
+              <n-image
+                :src="`https://api.dicebear.com/7.x/shapes/svg?seed=${dataset.id}`"
+                :alt="dataset.title"
+                class="size-32 h-32 w-32 rounded-lg"
+              />
+
+              <div
+                class="flex h-full flex-col items-start justify-between space-y-2 pb-2"
+              >
+                <n-space vertical>
+                  <h3>{{ dataset.title }}</h3>
+
+                  <p>
+                    {{ dataset.description }}
+                  </p>
+                </n-space>
+
+                <n-space vertical>
+                  <p>
+                    <span class="font-bold">Created on:</span>
+                    {{ $dayjs(dataset.createdAt).format("MMMM DD, YYYY") }}
+                  </p>
+                </n-space>
+              </div>
+            </n-space>
+          </NuxtLink>
         </div>
       </div>
     </section>

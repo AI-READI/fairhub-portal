@@ -39,11 +39,11 @@ const navigateToSearch = () => {
             </NuxtLink>
           </div>
 
-          <div class="flex hidden w-full items-center justify-center lg:w-auto">
+          <div class="flex w-full items-center justify-center lg:w-auto">
             <ul
               class="mt-4 flex flex-col font-medium lg:mt-0 lg:flex-row lg:space-x-8"
             >
-              <NuxtLink to="/datasets">
+              <NuxtLink to="/">
                 <a
                   href="#"
                   class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
@@ -52,7 +52,25 @@ const navigateToSearch = () => {
                 </a>
               </NuxtLink>
 
-              <NuxtLink to="/">
+              <NuxtLink to="/studies">
+                <a
+                  href="#"
+                  class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
+                >
+                  Studies
+                </a>
+              </NuxtLink>
+
+              <NuxtLink to="/docs">
+                <a
+                  href="#"
+                  class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
+                >
+                  Documentation
+                </a>
+              </NuxtLink>
+
+              <NuxtLink to="/contact">
                 <a
                   href="#"
                   class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
@@ -63,7 +81,7 @@ const navigateToSearch = () => {
             </ul>
           </div>
 
-          <div class="flex items-center justify-end space-x-3">
+          <!-- <div class="flex items-center justify-end space-x-3">
             <n-input-group>
               <n-input
                 v-model:value="searchQuery"
@@ -130,7 +148,7 @@ const navigateToSearch = () => {
                 ></path>
               </svg>
             </button>
-          </div>
+          </div> -->
         </div>
       </nav>
     </header>
