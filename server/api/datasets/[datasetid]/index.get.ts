@@ -28,6 +28,9 @@ export default defineEventHandler(async (event) => {
     createdAt: dbDataset.created_at,
     creators: [],
     description: dbDataset.description,
+    metadata: {
+      readme: dbDataset.metadata.readme,
+    },
     updatedOn: dbDataset.updated_on,
   };
 });
