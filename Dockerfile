@@ -15,7 +15,7 @@ RUN npx prisma generate
 # copy all other project files to working directory
 COPY . ./
 # build the nuxt project to generate the artifacts in .output directory
-RUN yarn docker:build
+RUN yarn build
 
 # we are using multi stage build process to keep the image size as small as possible
 FROM node:18-alpine3.17
@@ -26,7 +26,7 @@ RUN apk update && apk upgrade && apk add dumb-init && adduser -D nuxtuser
 USER nuxtuser
 
 # set work dir as app
-WORKDIR /app
+WORKDIR /portal
 # copy the output directory to the /app directory from 
 # build stage with proper permissions for user nuxt user
 COPY --chown=nuxtuser:nuxtuser --from=build /app/.output ./
