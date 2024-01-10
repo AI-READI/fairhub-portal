@@ -1,42 +1,34 @@
-FROM node:18-alpine3.17 as build
+# syntax = docker/dockerfile:1
 
-# update and install the latest dependencies for the alpine version
-RUN apk update && apk upgrade
+ARG NODE_VERSION=18.14.2
 
-# set work dir as app
-WORKDIR /portal
-# copy the nuxt project package json and package json lock if available 
-COPY package* yarn.lock ./
-# install all the project npm dependencies
-RUN  yarn install
-# generate the prism schema
-RUN npx prisma generate
+FROM node:${NODE_VERSION}-slim as base
 
-# copy all other project files to working directory
-COPY . ./
-# build the nuxt project to generate the artifacts in .output directory
+ARG PORT=3000
+
+ENV NODE_ENV=production
+
+WORKDIR /src
+
+# Build
+FROM base as build
+
+COPY --link package.json yarn.lock ./
+RUN yarn install --prefer-offline --pure-lockfile --non-interactive --production=false
+
+COPY --link . .
+
 RUN yarn build
 
-# we are using multi stage build process to keep the image size as small as possible
-FROM node:18-alpine3.17
-# update and install latest dependencies, add dumb-init package
-# add a non root user
-RUN apk update && apk upgrade && apk add dumb-init && adduser -D nuxtuser 
-# set non root user
-USER nuxtuser
+RUN npx prisma generate
 
-# set work dir as app
-WORKDIR /portal
-# copy the output directory to the /app directory from 
-# build stage with proper permissions for user nuxt user
-COPY --chown=nuxtuser:nuxtuser --from=build /portal/.output ./
-# expose 8080 on container
-EXPOSE 8080
+# Run
+FROM base
 
-# set app host and port . In nuxt 3 this is based on nitro and you can read
-#more on this https://nitro.unjs.io/deploy/node#environment-variables
-ENV HOST=0.0.0.0 PORT=8080 NODE_ENV=production
+ENV PORT=$PORT
 
-# start the app with dumb init to spawn the Node.js runtime process
-# with signal support
-CMD ["dumb-init","node","/app/server/index.mjs"]
+COPY --from=build /src/.output /src/.output
+# Optional, only needed if you rely on unbundled dependencies
+# COPY --from=build /src/node_modules /src/node_modules
+
+CMD [ "node", ".output/server/index.mjs" ]
