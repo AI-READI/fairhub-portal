@@ -9,10 +9,13 @@ WORKDIR /app
 COPY package* yarn.lock ./
 # install all the project npm dependencies
 RUN  yarn install
+# generate the prism schema
+RUN npx prisma generate
+
 # copy all other project files to working directory
 COPY . ./
 # build the nuxt project to generate the artifacts in .output directory
-RUN yarn build
+RUN yarn docker:build
 
 # we are using multi stage build process to keep the image size as small as possible
 FROM node:18-alpine3.17

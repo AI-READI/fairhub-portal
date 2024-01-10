@@ -25,7 +25,7 @@ jobs:
       AZURE_REGISTRY_LOGIN_SERVER: ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}
       AZURE_REGISTRY_USERNAME: ${{ secrets.AZURE_REGISTRY_USERNAME }}
       AZURE_REGISTRY_PASSWORD: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
-
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -41,6 +41,9 @@ jobs:
         id: git_sha
         run: echo ::set-output name=sha::$(git rev-parse --short ${{ github.sha }})
 
+      - name: create .env file
+        run: echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
@@ -48,5 +51,3 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/fairhub-portal:staging,${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/fairhub-portal:${{ steps.git_sha.outputs.sha }}
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}

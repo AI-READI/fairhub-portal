@@ -2,6 +2,7 @@
   "name": "nuxt-app",
   "private": true,
   "scripts": {
+    "docker:build": "nuxt build",
     "build": "yarn prisma:generate && nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
