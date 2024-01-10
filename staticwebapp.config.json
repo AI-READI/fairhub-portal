@@ -1,4 +1,7 @@
 {
+  "platform": {
+    "apiRuntime": "node:18"
+  },
   "routes": [
     {
       "route": "/index.html",
@@ -9,9 +12,6 @@
       "rewrite": "/api/server"
     }
   ],
-  "platform": {
-    "apiRuntime": "node:18"
-  },
   "navigationFallback": {
     "rewrite": "/api/server"
   }
