@@ -58,11 +58,11 @@ export default defineNuxtConfig({
     themeConfig: {},
   },
 
-  nitro: {},
+  nitro: {
+    preset: "azure",
+  },
 
   notivue: {
     // Options
   },
-
-  serverMiddleware: ["~/api/index.js"],
 });
