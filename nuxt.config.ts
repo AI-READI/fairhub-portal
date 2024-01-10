@@ -64,10 +64,5 @@ export default defineNuxtConfig({
     // Options
   },
 
-  serverMiddleware: [
-    {
-      handler: "~/server/api/index.ts",
-      path: "/api",
-    },
-  ],
+  serverMiddleware: ["~/api/index.js"],
 });
