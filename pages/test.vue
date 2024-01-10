@@ -3,7 +3,7 @@ const push = usePush();
 const { data: datasets, error } = await useFetch(`/api/datasets`, {});
 
 if (error.value) {
-  console.error(error);
+  console.error(error.value);
 
   push.error({
     title: "Something went wrong",
