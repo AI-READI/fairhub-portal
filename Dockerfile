@@ -4,7 +4,7 @@ FROM node:18-alpine3.17 as build
 RUN apk update && apk upgrade
 
 # set work dir as app
-WORKDIR /app
+WORKDIR /portal
 # copy the nuxt project package json and package json lock if available 
 COPY package* yarn.lock ./
 # install all the project npm dependencies
