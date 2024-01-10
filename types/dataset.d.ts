@@ -1,5 +1,5 @@
 interface Dataset {
-  id: string;
+  id: number;
   updatedOn: number;
   createdAt: number;
   title: string;
@@ -8,7 +8,7 @@ interface Dataset {
 }
 
 interface DatasetArrayItem {
-  id: string;
+  id: number;
   updatedOn: number;
   createdAt: number;
   title: string;

@@ -1,9 +1,15 @@
+import mongodbClientPromise from "~/server/utils/mongodb";
+
 export default defineEventHandler(async (_event) => {
-  const dbDatasets = await prisma.dataset.findMany({
-    orderBy: {
-      created_at: "desc",
-    },
-  });
+  const mongodbClient = await mongodbClientPromise;
+
+  const db = mongodbClient.db(process.env.MONGODB_DB);
+
+  const dbDatasets = await db
+    .collection("dataset")
+    .find({})
+    .sort({ createdAt: -1 })
+    .toArray();
 
   if (!dbDatasets) {
     console.log("No datasets found");
@@ -13,37 +19,12 @@ export default defineEventHandler(async (_event) => {
   const datasets: DatasetArray = [];
 
   for (const dataset of dbDatasets) {
-    const { id } = dataset;
-
-    console.log("dataset", dataset);
-
-    const createdAt = Number(dataset.created_at);
-    const updatedOn = Number(dataset.updated_on);
-
-    const dbTitle = await prisma.dataset_title.findFirst({
-      where: {
-        dataset_id: id,
-        type: "MainTitle",
-      },
-    });
-
-    const title = dbTitle?.title ?? "";
-
-    const dbDescription = await prisma.dataset_description.findFirst({
-      where: {
-        dataset_id: id,
-        type: "Abstract",
-      },
-    });
-
-    const description = dbDescription?.description ?? "";
-
     const item = {
-      id: dataset.id,
-      title,
-      createdAt,
-      description,
-      updatedOn,
+      id: dataset.identifier,
+      title: dataset.title,
+      createdAt: dataset.created_at,
+      description: dataset.description,
+      updatedOn: dataset.updated_on,
     };
 
     datasets.push(item);

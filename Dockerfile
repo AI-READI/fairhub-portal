@@ -20,7 +20,6 @@ COPY --link . .
 
 RUN yarn build
 
-RUN npx prisma generate
 
 # Run
 FROM base
