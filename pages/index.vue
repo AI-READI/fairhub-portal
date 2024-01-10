@@ -1,13 +1,6 @@
 <script setup lang="ts">
 const push = usePush();
-const {
-  data: datasets,
-  error,
-  pending,
-} = await useFetch(`/api/datasets`, {
-  lazy: true,
-  server: false,
-});
+const { data: datasets, error } = await useFetch(`/api/datasets`);
 
 if (error.value) {
   console.error(error);
@@ -137,49 +130,41 @@ if (error.value) {
       <div
         class="mx-auto flex h-full w-full max-w-screen-xl flex-col px-3 py-5"
       >
-        <TransitionFade>
-          <div v-if="pending">
-            <n-skeleton text :repeat="2" />
+        <div class="flex flex-col space-y-3">
+          <NuxtLink
+            v-for="dataset in datasets"
+            :key="dataset.id"
+            :to="`/datasets/${dataset.id}`"
+            class="rounded-lg border border-purple-300 bg-white px-5 py-3 shadow-sm transition-all hover:bg-fuchsia-50 hover:shadow-md"
+          >
+            <n-space size="large">
+              <n-image
+                :src="`https://api.dicebear.com/7.x/shapes/svg?seed=${dataset.id}`"
+                :alt="dataset.title"
+                class="size-32 h-32 w-32 rounded-lg"
+              />
 
-            <n-skeleton text style="width: 60%" />
-          </div>
+              <div
+                class="flex h-full flex-col items-start justify-between space-y-2 pb-2"
+              >
+                <n-space vertical>
+                  <h3>{{ dataset.title }}</h3>
 
-          <div v-else class="flex flex-col space-y-3">
-            <NuxtLink
-              v-for="dataset in datasets"
-              :key="dataset.id"
-              :to="`/datasets/${dataset.id}`"
-              class="rounded-lg border border-purple-300 bg-white px-5 py-3 shadow-sm transition-all hover:bg-fuchsia-50 hover:shadow-md"
-            >
-              <n-space size="large">
-                <n-image
-                  :src="`https://api.dicebear.com/7.x/shapes/svg?seed=${dataset.id}`"
-                  :alt="dataset.title"
-                  class="size-32 h-32 w-32 rounded-lg"
-                />
+                  <p>
+                    {{ dataset.description }}
+                  </p>
+                </n-space>
 
-                <div
-                  class="flex h-full flex-col items-start justify-between space-y-2 pb-2"
-                >
-                  <n-space vertical>
-                    <h3>{{ dataset.title }}</h3>
-
-                    <p>
-                      {{ dataset.description }}
-                    </p>
-                  </n-space>
-
-                  <n-space vertical>
-                    <p>
-                      <span class="font-bold">Created on:</span>
-                      {{ $dayjs(dataset.createdAt).format("MMMM DD, YYYY") }}
-                    </p>
-                  </n-space>
-                </div>
-              </n-space>
-            </NuxtLink>
-          </div>
-        </TransitionFade>
+                <n-space vertical>
+                  <p>
+                    <span class="font-bold">Created on:</span>
+                    {{ $dayjs(dataset.createdAt).format("MMMM DD, YYYY") }}
+                  </p>
+                </n-space>
+              </div>
+            </n-space>
+          </NuxtLink>
+        </div>
       </div>
     </section>
   </main>
