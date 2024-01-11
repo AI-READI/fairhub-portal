@@ -8,6 +8,7 @@ interface Dataset {
   metadata: {
     readme: string;
     studyDescription: [key: string]: any ;
+    datasetDescription: [key: string]: any ;
   };
 }
 

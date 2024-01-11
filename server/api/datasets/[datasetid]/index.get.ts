@@ -29,6 +29,7 @@ export default defineEventHandler(async (event) => {
     creators: [],
     description: dbDataset.description,
     metadata: {
+      datasetDescription: dbDataset.metadata.dataset_description,
       readme: dbDataset.metadata.readme,
       studyDescription: dbDataset.metadata.study_description,
     },

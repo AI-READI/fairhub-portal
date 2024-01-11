@@ -1145,7 +1145,22 @@ const demoVersions = [
         </n-tab-pane>
 
         <n-tab-pane name="Dataset Metadata" tab="Dataset Metadata">
-          Dataset Metadata
+          <n-divider />
+
+          <n-collapse>
+            <n-collapse-item
+              title="View the full dataset_description.json file"
+              name="1"
+              size="large"
+            >
+              <VueJsonPretty
+                :data="dataset?.metadata.datasetDescription || {}"
+                show-line
+                show-icon
+                :deep="1"
+              />
+            </n-collapse-item>
+          </n-collapse>
         </n-tab-pane>
 
         <n-tab-pane name="Datatype Metadata" tab="Datatype Metadata">
