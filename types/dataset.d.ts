@@ -65,6 +65,7 @@ interface Dataset {
   description: string;
   creators: string[];
   metadata: {
+    dataSheet: string;
     readme: string;
     studyDescription: StudyDescription;
     datasetDescription: DatasetDescription;
