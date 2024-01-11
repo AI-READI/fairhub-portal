@@ -31,6 +31,9 @@ export default defineEventHandler(async (event) => {
       readme: dbDataset.metadata.readme,
       studyDescription: dbDataset.metadata.study_description,
     },
+    study: {
+      title: dbDataset.study.title,
+    },
     updatedOn: dbDataset.updated_on,
   };
 

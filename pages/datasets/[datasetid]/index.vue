@@ -1127,6 +1127,11 @@ const demoVersions = [
         </n-tab-pane>
 
         <n-tab-pane name="Study Metadata" tab="Study Metadata">
+          <MetadataStudyDescription
+            :metadata="(dataset?.metadata.studyDescription as StudyDescription)"
+            :study="(dataset?.study as Study)"
+          />
+
           <n-divider />
 
           <n-collapse>
