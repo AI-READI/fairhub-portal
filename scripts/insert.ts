@@ -7,8 +7,7 @@ const func = async () => {
 
   const db = mongodbClient.db(process.env.MONGODB_DB);
 
-  const metadata = {
-    readme: `## Overview of the study
+  const readme = `## Overview of the study
   The AI-READI project seeks to create and share a flagship ethically-sourced dataset of type 2 diabetes. The data will be optimized for future artificial intelligence/machine learning (AI/ML) analysis that could provide critical insights and especially shine a light on the salutogenic pathways from diabetes to return to health. Six cross-disciplinary project modules involving teams located across eight institutions are working together to develop this flagship dataset. The project will aim to collect data from 4,000 participants across three sites: the University of Alabama at Birmingham (UAB), the University of California San Diego (UCSD), and the University of Washington (UW). To ensure the data is population-representative, the 4,000 participants will be balanced for three factors: disease severity, ethnicity, and sex. More information about the study can be found on the study website at [aireadi.org](https://aireadi.org). 
   
   ## Description of the dataset
@@ -52,17 +51,196 @@ const func = async () => {
   For any questions, suggestions, or feedback related to this dataset, please email contact@aireadi.org. We refer to the [study_description.json](study_description.json) and [dataset_description.json](dataset_description.json) metadata files for additional information about contact person/entity, authors, and contributors of the dataset.
   
   ## Acknowledgement
-  This project is supported by the NIH-funded Bridge2AI program ([1OT2OD032644](https://reporter.nih.gov/search/1ADgncihCk6fdMRJdCnBjg/project-details/10471118)). The content is solely the responsibility of the authors and does not necessarily represent the official views of the NIH.`,
+  This project is supported by the NIH-funded Bridge2AI program ([1OT2OD032644](https://reporter.nih.gov/search/1ADgncihCk6fdMRJdCnBjg/project-details/10471118)). The content is solely the responsibility of the authors and does not necessarily represent the official views of the NIH.`;
+
+  const studyDescription = {
+    ArmsInterventionsModule: {
+      ArmGroupList: [
+        {
+          ArmGroupDescription: "This is the description of the arm metadata",
+          ArmGroupLabel: "Label for Arm",
+        },
+        {
+          ArmGroupDescription:
+            "Add another description here for the arm metadata",
+          ArmGroupLabel: "Arm Number 2",
+        },
+      ],
+      InterventionList: [
+        {
+          InterventionArmGroupLabelList: ["0_0"],
+          InterventionName: "O_0",
+          InterventionOtherNameList: ["Other Names 0_0"],
+          InterventionType: "Procedure/Surgery",
+        },
+      ],
+    },
+    ConditionsModule: {
+      ConditionList: ["Diabetes", "Enlarged Kidney"],
+      KeywordList: ["Dataset"],
+    },
+    ContactsLocationsModule: {
+      CentralContactList: [
+        {
+          CentralContactAffiliation: "Scoutting Regime",
+          CentralContactEMail: "sashagotanemail@fairhub.io",
+          CentralContactName: "Sasha Braus",
+          CentralContactPhone: "1-800-566-3823",
+          CentralContactPhoneExt: "212",
+        },
+        {
+          CentralContactAffiliation: "Affiliated by Philz Coffee",
+          CentralContactEMail: "philz@fairhub.io",
+          CentralContactName: "Number 2 Contact",
+          CentralContactPhone: "909-33333-3333",
+          CentralContactPhoneExt: "909",
+        },
+      ],
+      LocationList: [
+        {
+          LocationCity: "sdfsdf",
+          LocationCountry: "American Samoa",
+          LocationFacility: "asdas",
+          LocationState: "sdfs",
+          LocationStatus: "Active, not recruiting",
+          LocationZip: "sdf",
+        },
+      ],
+      OverallOfficialList: [
+        {
+          OverallOfficialAffiliation: "asdasd",
+          OverallOfficialName: "rasda",
+          OverallOfficialRole: "Study Director",
+        },
+        {
+          OverallOfficialAffiliation: "asda",
+          OverallOfficialName: "asdas",
+          OverallOfficialRole: "Study Principal Investigator",
+        },
+      ],
+    },
+    DescriptionModule: {
+      BriefSummary: "Brief Summary",
+    },
+    DesignModule: {
+      BioSpec: {
+        BioSpecRetention: "Samples With DNA",
+      },
+      DesignInfo: {
+        DesignObservationalModelList: ["Case-Control"],
+        DesignTimePerspectiveList: ["Cross-sectional"],
+      },
+      EnrollmentInfo: {
+        EnrollmentCount: "123",
+        EnrollmentType: "Anticipated",
+      },
+      NumberGroupsCohorts: "123",
+      StudyType: "Observational",
+      TargetDuration: "5",
+    },
+    EligibilityModule: {
+      EligibilityCriteria:
+        "Inclusion Criteria\n* Intervention\n\nExclusion Criteria\n* Exlusion Criteria\n",
+      Gender: "All",
+      GenderBased: "Yes",
+      GenderDescription: "",
+      MaximumAge: "4 Days",
+      MinimumAge: "1 Years",
+      SamplingMethod: "Probability Sample",
+      StudyPopulation: "Observed Population",
+    },
+    IdentificationModule: {
+      OrgStudyIdInfo: {
+        OrgStudyId: "sad",
+        OrgStudyIdType: "NIH Grant Number",
+      },
+      SecondaryIdInfoList: [
+        {
+          SecondaryId: "test",
+          SecondaryIdDomain: "dfasdf",
+          SecondaryIdLink: "test",
+          SecondaryIdType: "Other Grant/Funding Number",
+        },
+        {
+          SecondaryId: "asda",
+          SecondaryIdType: "EudraCT Number",
+        },
+      ],
+    },
+    IPDSharingStatementModule: {
+      IPDSharing: "No",
+    },
+    OversightModule: {
+      OversightHasDMC: "Yes",
+    },
+    ReferencesModule: {
+      AvailIPDList: [
+        {
+          AvailIPDId: "asdsa",
+          AvailIPDType: "Study Protocol",
+          AvailIPDURL: "asd",
+        },
+      ],
+      ReferenceList: [
+        {
+          ReferenceCitation: "Reference Number ONE",
+          ReferenceType: "No",
+        },
+        {
+          ReferenceCitation: "tesdfasdf",
+        },
+      ],
+      SeeAlsoLinkList: [
+        {
+          SeeAlsoLinkLabel: "Reddit",
+          SeeAlsoLinkURL: "reddit.com",
+        },
+        {
+          SeeAlsoLinkURL: "home.google.com",
+        },
+      ],
+    },
+    SponsorCollaboratorsModule: {
+      CollaboratorList: [
+        {
+          CollaboratorName: "Full Name Goes hErE",
+        },
+        {
+          CollaboratorName: "Testing ONe Omre here",
+        },
+      ],
+      LeadSponsor: {
+        LeadSponsorName: "Testing Dtoria",
+      },
+      ResponsibleParty: {
+        ResponsiblePartyInvestigatorAffiliation: "Investigator Affiliation",
+        ResponsiblePartyInvestigatorFullName: "Testing Name",
+        ResponsiblePartyInvestigatorTitle: "Investigator Title",
+        ResponsiblePartyType: "Principal Investigator",
+      },
+    },
+    StatusModule: {
+      CompletionDateStruct: {
+        CompletionDate: "December 15, 2023",
+        CompletionDateType: "Anticipated",
+      },
+      OverallStatus: "Not yet recruiting",
+      StartDateStruct: {
+        StartDate: "November 16, 2023",
+        StartDateType: "Anticipated",
+      },
+      WhyStopped: "dsfdsf",
+    },
   };
 
-  // Add the metadata field to the dataset document
-  await db.collection("dataset").updateOne(
+  // Add the study_description to the metadata field of the dataset
+  return await db.collection("dataset").updateOne(
     {
-      identifier: 2,
+      identifier: 1,
     },
     {
       $set: {
-        metadata,
+        "metadata.readme": readme,
       },
     }
   );
