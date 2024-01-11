@@ -11,8 +11,6 @@ export default defineEventHandler(async (event) => {
     identifier: Number(datasetid),
   });
 
-  console.log("dbDataset", dbDataset);
-
   if (!dbDataset) {
     console.log(`Dataset ${datasetid} not found`);
 

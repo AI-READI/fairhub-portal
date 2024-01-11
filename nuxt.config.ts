@@ -22,6 +22,7 @@ export default defineNuxtConfig({
     "notivue/notifications.css",
     "notivue/animations.css",
     "vue-json-pretty/lib/styles.css",
+    "vue-json-viewer/style.css",
   ],
 
   devtools: {

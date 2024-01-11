@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import VueJsonPretty from "vue-json-pretty";
+// import JsonViewer from "vue-json-viewer/ssr";
 
 const push = usePush();
 const route = useRoute();
@@ -1134,12 +1135,7 @@ const demoVersions = [
               name="1"
               size="large"
             >
-              <VueJsonPretty
-                :data="dataset?.metadata.studyDescription || {}"
-                show-line
-                show-icon
-                :deep="1"
-              />
+              <json-viewer :value="dataset?.metadata.studyDescription || {}" />
             </n-collapse-item>
           </n-collapse>
         </n-tab-pane>
@@ -1153,11 +1149,22 @@ const demoVersions = [
               name="1"
               size="large"
             >
+              <json-viewer
+                :value="dataset?.metadata.datasetDescription || {}"
+                copyable
+                :show-array-index="false"
+              />
+
+              <n-divider />
+
               <VueJsonPretty
                 :data="dataset?.metadata.datasetDescription || {}"
                 show-line
                 show-icon
                 :deep="1"
+                highlight-selected-node
+                collapsed-on-click-brackets
+                :show-double-quotes="false"
               />
             </n-collapse-item>
           </n-collapse>

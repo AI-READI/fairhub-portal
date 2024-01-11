@@ -3470,6 +3470,15 @@ cli-boxes@^3.0.0:
   resolved "https://registry.yarnpkg.com/cli-boxes/-/cli-boxes-3.0.0.tgz#71a10c716feeba005e4504f36329ef0b17cf3145"
   integrity sha512-/lzGpEWL/8PfI0BmBOPRwp0c/wFNX1RdUML3jK/RcSBA9T8mZDdQpqYBKtCFTOfQbwPqWEOpjqW+Fnayc0969g==
 
+clipboard@^2.0.4:
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/clipboard/-/clipboard-2.0.11.tgz#62180360b97dd668b6b3a84ec226975762a70be5"
+  integrity sha512-C+0bbOqkezLIsmWSvlsXS0Q0bmkugu7jcfMIACB+RDEntIzQIkdr148we28AfSloQLRdZlYL/QYyrq05j/3Faw==
+  dependencies:
+    good-listener "^1.2.2"
+    select "^1.1.2"
+    tiny-emitter "^2.0.0"
+
 clipboardy@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/clipboardy/-/clipboardy-3.0.0.tgz#f3876247404d334c9ed01b6f269c11d09a5e3092"
@@ -3988,6 +3997,11 @@ delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
   integrity sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==
+
+delegate@^3.1.2:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/delegate/-/delegate-3.2.0.tgz#b66b71c3158522e8ab5744f720d8ca0c2af59166"
+  integrity sha512-IofjkYBZaZivn0V8nnsMJGBr4jVLxHDheKSW88PyxS5QC4Vo9ZbZVvhzlSxY87fVq3STR6r+4cGepyHkcWOQSw==
 
 delegates@^1.0.0:
   version "1.0.0"
@@ -5188,6 +5202,13 @@ globby@^14.0.0:
     path-type "^5.0.0"
     slash "^5.1.0"
     unicorn-magic "^0.1.0"
+
+good-listener@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/good-listener/-/good-listener-1.2.2.tgz#d53b30cdf9313dffb7dc9a0d477096aa6d145c50"
+  integrity sha512-goW1b+d9q/HIwbVYZzZ6SsTr4IgE+WA44A0GmPIQstuOrgsFcT7VEJ48nmr9GaRtNu0XTKacFLGnBPAM6Afouw==
+  dependencies:
+    delegate "^3.1.2"
 
 google-fonts-helper@^3.4.1:
   version "3.4.1"
@@ -8402,6 +8423,11 @@ seemly@^0.3.6, seemly@^0.3.8:
   resolved "https://registry.yarnpkg.com/seemly/-/seemly-0.3.8.tgz#42879d8375d73126a04dc16b1bf92a773d2e5974"
   integrity sha512-MW8Qs6vbzo0pHmDpFSYPna+lwpZ6Zk1ancbajw/7E8TKtHdV+1DfZZD+kKJEhG/cAoB/i+LiT+5msZOqj0DwRA==
 
+select@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/select/-/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
+  integrity sha512-OwpTSOfy6xSs1+pwcNrv0RBMOzI39Lp3qQKUTPVVPRjCdNa5JH/oPRiqsesIskK8TVgmRiHwO4KXlV2Li9dANA==
+
 "semver@2 || 3 || 4 || 5", semver@^5.5.0:
   version "5.7.2"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.2.tgz#48d55db737c3287cd4835e17fa13feace1c41ef8"
@@ -9047,6 +9073,11 @@ through@^2.3.8:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
   integrity sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==
+
+tiny-emitter@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.1.0.tgz#1d1a56edfc51c43e863cbb5382a72330e3555423"
+  integrity sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==
 
 tiny-invariant@^1.1.0:
   version "1.3.1"
@@ -9761,6 +9792,13 @@ vue-json-pretty@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/vue-json-pretty/-/vue-json-pretty-2.3.0.tgz#ad85a161575d7fcd7b3e6baad559b2af0df663fa"
   integrity sha512-iBul6Xg7vZfMV2MQC/gGtzbyg8FLk6cJ8KG91f37UEkQyXqHg91VQJ24bDBXNVuOSP04BUKxWagD3V2N/WEy0g==
+
+vue-json-viewer@3:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/vue-json-viewer/-/vue-json-viewer-3.0.4.tgz#c1d65515e57d4036defbbc18fa942d7fd5fb9a8b"
+  integrity sha512-pnC080rTub6YjccthVSNQod2z9Sl5IUUq46srXtn6rxwhW8QM4rlYn+CTSLFKXWfw+N3xv77Cioxw7B4XUKIbQ==
+  dependencies:
+    clipboard "^2.0.4"
 
 vue-router@^4.2.5:
   version "4.2.5"

@@ -65,6 +65,7 @@
     "sanitize-html": "^2.10.0",
     "validator": "^13.9.0",
     "vue-json-pretty": "^2.3.0",
+    "vue-json-viewer": "3",
     "vue3-lottie": "^3.0.0",
     "vue3-marquee": "^4.0.0",
     "zod": "^3.22.3"

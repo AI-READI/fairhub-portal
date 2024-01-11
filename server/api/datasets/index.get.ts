@@ -30,16 +30,5 @@ export default defineEventHandler(async (_event) => {
     datasets.push(item);
   }
 
-  // reorder dataset with id '5748d180-86ea-4538-8ad4-55e211035e34' to the top
-
-  const index = datasets.findIndex(
-    (dataset) => dataset.id === "5748d180-86ea-4538-8ad4-55e211035e34"
-  );
-
-  if (index > -1) {
-    const dataset = datasets.splice(index, 1)[0];
-    datasets.unshift(dataset);
-  }
-
   return datasets;
 });
