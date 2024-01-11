@@ -6,11 +6,12 @@ interface Dataset {
   description: string;
   creators: string[];
   metadata: {
+    dataSheet: string;
     readme: string;
     studyDescription: [key: string]: any ;
     datasetDescription: [key: string]: any ;
   };
-}
+};
 
 interface DatasetArrayItem {
   id: number;
