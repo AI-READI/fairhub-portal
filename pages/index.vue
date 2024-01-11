@@ -14,7 +14,7 @@ if (error.value) {
 
 <template>
   <main
-    class="h-screen overflow-auto bg-gradient-to-b from-slate-50 to-purple-50 px-4"
+    class="h-screen overflow-auto bg-gradient-to-b from-white to-purple-50 px-4"
   >
     <div
       class="mb-4 flex items-center justify-center rounded-lg border bg-yellow-50 p-4 text-lg text-yellow-600"
@@ -86,8 +86,10 @@ if (error.value) {
       </div>
     </section>
 
+    <n-divider />
+
     <section>
-      <div class="flex h-36 items-center">
+      <div class="mb-16 flex h-36 items-center">
         <div
           class="mx-auto flex w-full max-w-screen-xl items-center justify-between px-2"
         >
@@ -126,8 +128,6 @@ if (error.value) {
           </n-space>
         </div>
       </div>
-
-      <n-divider />
 
       <div
         class="mx-auto flex h-full w-full max-w-screen-xl flex-col px-3 py-5"
