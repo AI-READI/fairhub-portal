@@ -5,6 +5,10 @@ interface Dataset {
   title: string;
   description: string;
   creators: string[];
+  metadata: {
+    readme: string;
+    studyDescription: [key: string]: any ;
+  };
 }
 
 interface DatasetArrayItem {

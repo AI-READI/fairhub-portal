@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  return {
+  const dataset: Dataset = {
     id: dbDataset.identifier,
     title: dbDataset.title,
     createdAt: dbDataset.created_at,
@@ -30,7 +30,10 @@ export default defineEventHandler(async (event) => {
     description: dbDataset.description,
     metadata: {
       readme: dbDataset.metadata.readme,
+      studyDescription: dbDataset.metadata.study_description,
     },
     updatedOn: dbDataset.updated_on,
   };
+
+  return dataset;
 });

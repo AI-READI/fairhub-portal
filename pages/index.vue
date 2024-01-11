@@ -13,7 +13,9 @@ if (error.value) {
 </script>
 
 <template>
-  <main>
+  <main
+    class="h-screen overflow-auto bg-gradient-to-b from-slate-50 to-purple-50 px-4"
+  >
     <div
       class="mb-4 flex items-center justify-center rounded-lg border bg-yellow-50 p-4 text-lg text-yellow-600"
       role="alert"
@@ -35,7 +37,7 @@ if (error.value) {
       <div><span class="font-medium">Warning!</span> Work in progress</div>
     </div>
 
-    <section class="bg-white">
+    <section class="">
       <div
         class="mx-auto grid max-w-screen-xl px-4 lg:grid-cols-12 lg:gap-8 xl:gap-0"
       >
@@ -84,7 +86,7 @@ if (error.value) {
       </div>
     </section>
 
-    <section class="bg-gradient-to-t from-slate-50 to-purple-50">
+    <section>
       <div class="flex h-36 items-center">
         <div
           class="mx-auto flex w-full max-w-screen-xl items-center justify-between px-2"
