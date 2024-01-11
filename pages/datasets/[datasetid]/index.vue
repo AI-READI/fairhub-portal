@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import VueJsonPretty from "vue-json-pretty";
+
 const push = usePush();
 const route = useRoute();
 
@@ -19,6 +21,10 @@ if (error.value) {
   });
 
   throw new Error("Failed to fetch dataset");
+}
+
+if (dataset.value) {
+  console.log(dataset.value);
 }
 
 const demoVersions = [
@@ -62,7 +68,7 @@ const demoVersions = [
 
 <template>
   <main
-    class="h-max min-h-full bg-gradient-to-b from-slate-50 to-purple-50 px-4"
+    class="h-screen overflow-auto bg-gradient-to-b from-slate-50 to-purple-50 px-4"
   >
     <div class="mt-10 flex h-36 items-center">
       <div
@@ -90,7 +96,7 @@ const demoVersions = [
     </div>
 
     <div class="mx-auto flex w-full max-w-screen-xl flex-col px-3 py-5">
-      <n-tabs type="line" animated size="large">
+      <n-tabs type="line" animated size="large" default-value="Study Metadata">
         <n-tab-pane name="About" tab="About">
           <div class="grid grid-cols-7 gap-10">
             <n-space vertical class="col-span-5 mt-3">
@@ -1120,11 +1126,41 @@ const demoVersions = [
         </n-tab-pane>
 
         <n-tab-pane name="Study Metadata" tab="Study Metadata">
-          Study Metadata
+          <n-divider />
+
+          <n-collapse>
+            <n-collapse-item
+              title="View the full study_description.json file"
+              name="1"
+              size="large"
+            >
+              <VueJsonPretty
+                :data="dataset?.metadata.studyDescription || {}"
+                show-line
+                show-icon
+                :deep="1"
+              />
+            </n-collapse-item>
+          </n-collapse>
         </n-tab-pane>
 
         <n-tab-pane name="Dataset Metadata" tab="Dataset Metadata">
-          Dataset Metadata
+          <n-divider />
+
+          <n-collapse>
+            <n-collapse-item
+              title="View the full dataset_description.json file"
+              name="1"
+              size="large"
+            >
+              <VueJsonPretty
+                :data="dataset?.metadata.datasetDescription || {}"
+                show-line
+                show-icon
+                :deep="1"
+              />
+            </n-collapse-item>
+          </n-collapse>
         </n-tab-pane>
 
         <n-tab-pane name="Datatype Metadata" tab="Datatype Metadata">

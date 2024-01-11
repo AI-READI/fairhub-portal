@@ -22,15 +22,19 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  return {
+  const dataset: Dataset = {
     id: dbDataset.identifier,
     title: dbDataset.title,
     createdAt: dbDataset.created_at,
     creators: [],
     description: dbDataset.description,
     metadata: {
+      datasetDescription: dbDataset.metadata.dataset_description,
       readme: dbDataset.metadata.readme,
+      studyDescription: dbDataset.metadata.study_description,
     },
     updatedOn: dbDataset.updated_on,
   };
+
+  return dataset;
 });
