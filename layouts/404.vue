@@ -1,8 +1,4 @@
-<script setup lang="ts">
-const user = useSupabaseUser();
-
-const loggedIn = computed(() => user.value);
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div>
@@ -22,20 +18,6 @@ const loggedIn = computed(() => user.value);
 
           <div class="lg:order-2">
             <n-space align="center">
-              <nuxt-link v-if="!loggedIn" to="/auth/login">
-                <n-button size="large">
-                  <span> Log in </span>
-                </n-button>
-              </nuxt-link>
-
-              <nuxt-link v-if="!loggedIn" to="/auth/register">
-                <n-button color="black" size="large"> Get started </n-button>
-              </nuxt-link>
-
-              <nuxt-link v-if="loggedIn" to="/dashboard" class="mr-4">
-                <n-button color="black" size="large"> Dashboard </n-button>
-              </nuxt-link>
-
               <UiProfileDropdown />
 
               <button
