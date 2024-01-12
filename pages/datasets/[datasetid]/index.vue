@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import sanitizeHtml from "sanitize-html";
 import { parse } from "marked";
-import VueJsonPretty from "vue-json-pretty";
 // import JsonViewer from "vue-json-viewer/ssr";
 
 const push = usePush();
@@ -114,7 +113,7 @@ const demoVersions = [
     </div>
 
     <div class="mx-auto flex w-full max-w-screen-xl flex-col px-3 py-5">
-      <n-tabs type="line" animated size="large" default-value="Study Metadata">
+      <n-tabs type="line" animated size="large" default-value="About">
         <n-tab-pane name="About" tab="About">
           <div class="grid grid-cols-7 gap-10">
             <n-space vertical class="col-span-5 mt-3">
@@ -159,6 +158,52 @@ const demoVersions = [
 
                     <n-tag type="info" size="small">Eye Imaging</n-tag>
                   </n-space>
+                </n-space>
+              </n-space>
+
+              <n-space
+                vertical
+                class="rounded-xl border border-purple-200 bg-slate-50 px-4 pb-5 pt-3"
+              >
+                <n-space vertical size="large">
+                  <h3>Citation</h3>
+
+                  <p class="text-sm">
+                    <span class="font-medium">
+                      When using this resource, please cite:
+                    </span>
+
+                    <br />
+                    Fushiguro, M., Geto, S., & Nanami, K. (2024). Flagship
+                    Dataset of Type 2 Diabetes from the AI-READI Project (v2).
+                    Fairhub.
+                    <NuxtLink
+                      to="#"
+                      class="underline transition-all hover:text-slate-600"
+                    >
+                      https://doi.org/10.fairhub/13942 </NuxtLink
+                    >.
+                  </p>
+
+                  <p class="text-sm">
+                    <span class="font-medium">
+                      Additionally, please cite the original publication:
+                    </span>
+
+                    <br />
+
+                    <NuxtLink
+                      to="#"
+                      class="underline transition-all hover:text-slate-600"
+                    >
+                      Johnson, A. E. W., Pollard, T. J., Shen, L., Lehman, L.
+                      H., Feng, M., Ghassemi, M., Moody, B., Szolovits, P.,
+                      Celi, L. A., & Mark, R. G. (2016). MIMIC-III, a freely
+                      accessible critical care database. Scientific Data, 3,
+                      160035.
+                    </NuxtLink>
+                    .
+                  </p>
                 </n-space>
               </n-space>
 
@@ -216,7 +261,7 @@ const demoVersions = [
           <!-- eslint-enable vue/no-v-html -->
         </n-tab-pane>
 
-        <n-tab-pane name="Study Metadata" tab="Study Metadata">
+        <!-- <n-tab-pane name="Study Metadata" tab="Study Metadata">
           <n-divider />
 
           <n-collapse>
@@ -228,9 +273,9 @@ const demoVersions = [
               <json-viewer :value="dataset?.metadata.studyDescription || {}" />
             </n-collapse-item>
           </n-collapse>
-        </n-tab-pane>
+        </n-tab-pane> -->
 
-        <n-tab-pane name="Dataset Metadata" tab="Dataset Metadata">
+        <!-- <n-tab-pane name="Dataset Metadata" tab="Dataset Metadata">
           <n-divider />
 
           <n-collapse>
@@ -258,13 +303,13 @@ const demoVersions = [
               />
             </n-collapse-item>
           </n-collapse>
-        </n-tab-pane>
+        </n-tab-pane> -->
 
         <n-tab-pane name="Datatype Metadata" tab="Datatype Metadata">
           Datatype Metadata
         </n-tab-pane>
 
-        <n-tab-pane name="Files" tab="Files"> File Viewer </n-tab-pane>
+        <!-- <n-tab-pane name="Files" tab="Files"> File Viewer </n-tab-pane> -->
 
         <n-tab-pane name="Dashboard" tab="Dashboard"> Dashboard </n-tab-pane>
 
