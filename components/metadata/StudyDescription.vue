@@ -9,6 +9,8 @@ const props = defineProps({
     type: Object as PropType<Study>,
   },
 });
+
+console.log(props.metadata);
 </script>
 
 <template>

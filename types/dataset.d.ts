@@ -15,10 +15,6 @@ interface StudyDescription {
     ConditionList: string[];
     KeywordList: string[];
   };
-  DescriptionModule: {
-    BriefSummary: string;
-    DetailedDescription: string;
-  };
   ContactsLocationsModule: {
     CentralContactList?: {
       CentralContactAffiliation: string;
@@ -47,6 +43,109 @@ interface StudyDescription {
       OverallOfficialAffiliation: string;
       OverallOfficialRole: string;
     }[];
+  };
+  DescriptionModule: {
+    BriefSummary: string;
+    DetailedDescription: string;
+  };
+  DesignModule: {
+    BioSpec?: {
+      BioSpecRetention: string;
+      BioSpecDescription?: string;
+    };
+    DesignInfo: {
+      DesignAllocation?: string;
+      DesignInterventionModel?: string;
+      DesignIterventionModelDescription?: string;
+      DesignMaskingInfo?: {
+        DesignMasking: string;
+        DesignMaskingDescription?: string;
+        DesignWhoMaskedList: string[];
+      };
+      DesignObservationModel?: string;
+      DesignPrimaryPurpose?: string;
+      DesignTimePerspectiveList?: string[];
+    };
+    EnrollmentInfo: {
+      EnrollmentCount: string;
+      EnrollmentType: string;
+    };
+    NumberArms: string;
+    PhaseList?: string[];
+    StudyType: string;
+    TargetDuration: string;
+    NumberGroupsCohorts: int;
+  };
+  EligibilityModule: {
+    Gender: string;
+    GenderBased: {};
+    GenderDescription: string;
+    MinimumAge: string;
+    MaximumAge: string;
+    HealthyVolunteers?: string;
+    EligibilityCriteria: string;
+    StudyPopulation?: string;
+    SamplingMethod?: string;
+  };
+  IdentificationModule: {
+    OrgStudyId: string;
+    OrgStudyIdType: string;
+    OrgStudyIdDomain?: string;
+    OrgStudyIdLink?: string;
+  };
+  IPDSharingStatementModule: {
+    IPDSharing: string;
+    IPDSharingDescription?: string;
+    IPDSharingInfoTypeList?: string[];
+    IPDSharingTimeFrame?: string;
+    IPDSharingAccessCriteria?: string;
+    IPDSharingURL?: string;
+  };
+  OversightModule: {
+    OverSightHasDMC?: string;
+  };
+  ReferencesModule: {
+    ReferenceList?: {
+      ReferenceID?: string;
+      ReferenceType?: string;
+      ReferenceCitation: string;
+    }[];
+    SeeAlsoLinkList?: {
+      SeeAlsoLinkLabel?: string;
+      SeeAlsoLinkURL: string;
+    }[];
+    AvailIPDList?: {
+      AvailIPDId: string;
+      AvailIPDType: string;
+      AvailIPDURL: string;
+      AvailIPDComment?: string;
+    }[];
+  };
+  SponsorCollaboratorsModule: {
+    ResponsibleParty: {
+      ResponsiblePartyType: string;
+      ResponsiblePartyInvestigatorFullName?: string;
+      ResponsiblePartyInvestigatorTitle?: string;
+      ResponsiblePartyInvestigatorAffiliation?: string;
+    };
+    LeadSponsorName: {
+      LeadSponsorName: string;
+    };
+    CollaboratorList?: {
+      CollaboratorName: string;
+    }[];
+  };
+  StatusModule: {
+    OverallStatus: string;
+    WhyStopped?: string;
+    StartDateStruct: {
+      StartDate: string;
+      StartDateType: string;
+    };
+    CompletionDateStruct?: {
+      CompletionDate: string;
+      CompletionDateType: string;
+    };
   };
 }
 
