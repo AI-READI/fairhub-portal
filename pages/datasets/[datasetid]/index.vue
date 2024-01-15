@@ -2,8 +2,14 @@
 import sanitizeHtml from "sanitize-html";
 import { parse } from "marked";
 import VueJsonPretty from "vue-json-pretty";
-// import JsonViewer from "vue-json-viewer/ssr";
-
+import {
+  Folder,
+  FileTrayFullOutline,
+  FolderOpenOutline,
+} from "@vicons/ionicons5";
+import type { TreeOption } from "naive-ui";
+import { NIcon } from "naive-ui";
+import type { Files } from "~/types/dataset";
 const push = usePush();
 const route = useRoute();
 
@@ -44,6 +50,57 @@ if (dataset.value) {
     );
   }
 }
+if (dataset.value) {
+  console.log(dataset.value);
+}
+
+function convertFile(file: Files): TreeOption {
+  return {
+    children: file.children ? file.children.map(convertFile) : undefined,
+    key: file.label,
+    label: file.label,
+    prefix: () =>
+      h(NIcon, null, {
+        default: () =>
+          file.children?.length ? h(Folder) : h(FileTrayFullOutline),
+      }),
+  };
+}
+
+const updatePrefixWithExpaned = (
+  _keys: Array<string | number>,
+  _option: Array<TreeOption | null>,
+  meta: {
+    action: "expand" | "collapse" | "filter";
+    node: TreeOption | null;
+  }
+) => {
+  if (!meta.node) return;
+  switch (meta.action) {
+    case "expand":
+      meta.node.prefix = () =>
+        h(NIcon, null, {
+          default: () => h(FolderOpenOutline),
+        });
+      break;
+    case "collapse":
+      meta.node.prefix = () =>
+        h(NIcon, null, {
+          default: () => h(Folder),
+        });
+      break;
+  }
+};
+
+const nodeProps = ({ option }: { option: TreeOption }) => {
+  return {
+    onClick() {
+      if (!option.children && !option.disabled) {
+        /* empty */
+      }
+    },
+  };
+};
 
 const demoVersions = [
   {
@@ -248,7 +305,7 @@ const demoVersions = [
               <n-divider />
 
               <VueJsonPretty
-                :data="dataset?.metadata.datasetDescription || {}"
+                :data="dataset?.files"
                 show-line
                 show-icon
                 :deep="1"
@@ -264,13 +321,20 @@ const demoVersions = [
           Datatype Metadata
         </n-tab-pane>
 
-        <n-tab-pane name="Files" tab="Files"> File Viewer </n-tab-pane>
+        <n-tab-pane name="Files" tab="Files">
+          <n-tree
+            block-line
+            expand-on-click
+            :data="dataset?.files.map(convertFile)"
+            :on-update:expanded-keys="updatePrefixWithExpaned"
+            :node-props="nodeProps"
+          />
+        </n-tab-pane>
 
         <n-tab-pane name="Dashboard" tab="Dashboard"> Dashboard </n-tab-pane>
 
         <n-tab-pane name="Access Data" tab="Access Data">
           Please complete the requirements below to access the dataset
-
           <n-divider />
 
           <n-collapse>
