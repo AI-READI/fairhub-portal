@@ -1,19 +1,16 @@
-interface Dataset {
+
+export interface Dataset {
   id: number;
   updatedOn: number;
+  files: Files[];
   createdAt: number;
   title: string;
   description: string;
   creators: string[];
-  metadata: {
-    dataSheet: string;
-    readme: string;
-    studyDescription: [key: string]: any ;
-    datasetDescription: [key: string]: any ;
-  };
-};
+  metadata: Metadata;
+}
 
-interface DatasetArrayItem {
+export interface DatasetArrayItem {
   id: number;
   updatedOn: number;
   createdAt: number;
@@ -21,4 +18,16 @@ interface DatasetArrayItem {
   description: string;
 }
 
-interface DatasetArray extends Array<DatasetArrayItem> {}
+export interface DatasetArray extends Array<DatasetArrayItem> {}
+
+export interface Files {
+  children?: Files[];
+  label: string;
+}
+
+export interface Metadata{
+    dataSheet: string;
+    readme: string;
+    studyDescription: string | any;
+    datasetDescription: string | any;
+}
