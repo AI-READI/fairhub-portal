@@ -221,6 +221,52 @@ const demoVersions = [
 
               <n-space
                 vertical
+                class="rounded-xl border border-purple-200 bg-slate-50 px-4 pb-5 pt-3"
+              >
+                <n-space vertical size="large">
+                  <h3>Citation</h3>
+
+                  <p class="text-sm">
+                    <span class="font-medium">
+                      When using this resource, please cite:
+                    </span>
+
+                    <br />
+                    Fushiguro, M., Geto, S., & Nanami, K. (2024). Flagship
+                    Dataset of Type 2 Diabetes from the AI-READI Project (v2).
+                    Fairhub.
+                    <NuxtLink
+                      to="#"
+                      class="underline transition-all hover:text-slate-600"
+                    >
+                      https://doi.org/10.fairhub/13942 </NuxtLink
+                    >.
+                  </p>
+
+                  <p class="text-sm">
+                    <span class="font-medium">
+                      Additionally, please cite the original publication:
+                    </span>
+
+                    <br />
+
+                    <NuxtLink
+                      to="#"
+                      class="underline transition-all hover:text-slate-600"
+                    >
+                      Johnson, A. E. W., Pollard, T. J., Shen, L., Lehman, L.
+                      H., Feng, M., Ghassemi, M., Moody, B., Szolovits, P.,
+                      Celi, L. A., & Mark, R. G. (2016). MIMIC-III, a freely
+                      accessible critical care database. Scientific Data, 3,
+                      160035.
+                    </NuxtLink>
+                    .
+                  </p>
+                </n-space>
+              </n-space>
+
+              <n-space
+                vertical
                 class="rounded-xl border border-purple-200 bg-slate-50 pb-5 pt-3"
               >
                 <n-space vertical :size="[0, 0]">
@@ -273,7 +319,7 @@ const demoVersions = [
           <!-- eslint-enable vue/no-v-html -->
         </n-tab-pane>
 
-        <n-tab-pane name="Study Metadata" tab="Study Metadata">
+        <!-- <n-tab-pane name="Study Metadata" tab="Study Metadata">
           <n-divider />
 
           <n-collapse>
@@ -285,9 +331,9 @@ const demoVersions = [
               <json-viewer :value="dataset?.metadata.studyDescription || {}" />
             </n-collapse-item>
           </n-collapse>
-        </n-tab-pane>
+        </n-tab-pane> -->
 
-        <n-tab-pane name="Dataset Metadata" tab="Dataset Metadata">
+        <!-- <n-tab-pane name="Dataset Metadata" tab="Dataset Metadata">
           <n-divider />
 
           <n-collapse>
@@ -305,7 +351,7 @@ const demoVersions = [
               <n-divider />
 
               <VueJsonPretty
-                :data="dataset?.files"
+                :data="dataset?.metadata.datasetDescription || {}"
                 show-line
                 show-icon
                 :deep="1"
@@ -315,7 +361,7 @@ const demoVersions = [
               />
             </n-collapse-item>
           </n-collapse>
-        </n-tab-pane>
+        </n-tab-pane> -->
 
         <n-tab-pane name="Datatype Metadata" tab="Datatype Metadata">
           Datatype Metadata
