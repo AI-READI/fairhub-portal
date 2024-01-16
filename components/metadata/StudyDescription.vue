@@ -163,6 +163,30 @@ console.log(props.metadata);
           {{ metadata.IdentificationModule.OrgStudyIdInfo.OrgStudyId }}
         </p>
 
+        <p class="mb-1 w-full border-b font-medium">Organization Study Type</p>
+
+        <p>
+          {{ metadata.IdentificationModule.OrgStudyIdInfo.OrgStudyIdType }}
+        </p>
+
+        <div
+          v-if="metadata.IdentificationModule.SecondaryIdInfoList"
+          class="mb-1 w-full"
+        >
+          <p class="mb-1 w-full border-b font-medium">Secondary ID</p>
+
+          <n-space vertical>
+            <!-- TODO: Iterate through secondary info array -->
+            <p
+              v-for="secondaryId in metadata.IdentificationModule
+                .SecondaryIdInfoList"
+              :key="secondaryId"
+            >
+              {{ secondaryId.SecondaryId }}
+            </p>
+          </n-space>
+        </div>
+
         <pre>
         {{ metadata.IdentificationModule }}
         </pre>
