@@ -7,11 +7,13 @@ export default defineEventHandler(async (event) => {
 
   const db = mongodbClient.db(process.env.MONGODB_DB);
 
-  const dataset = await db.collection("dataset").findOne({
-    identifier: Number(datasetid),
-  });
+  const dbDataset: DatabaseDatasetRecord = await db
+    .collection("dataset")
+    .findOne({
+      identifier: Number(datasetid),
+    });
 
-  if (!dataset) {
+  if (!dbDataset) {
     console.log(`Dataset ${datasetid} not found`);
 
     throw createError({
@@ -20,14 +22,14 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const { fairhubDatasetId } = dataset;
+  const fairhubDatasetId = dbDataset.fairhub.dataset.id;
 
   // get all datasets with the same fairhubDatasetId
   // This is the same as all versions of the same dataset in fairhub
   const relatedDatasets = await db
     .collection("dataset")
     .find({
-      fairhubDatasetId,
+      "fairhub.dataset.id": fairhubDatasetId,
     })
     .toArray();
 
@@ -35,7 +37,7 @@ export default defineEventHandler(async (event) => {
     (relatedDataset: DatabaseDatasetRecord) => {
       return {
         id: relatedDataset.identifier,
-        title: relatedDataset.version.title,
+        title: relatedDataset.fairhub.version.title,
         createdAt: relatedDataset.createdAt,
         doi: relatedDataset.doi,
       };
