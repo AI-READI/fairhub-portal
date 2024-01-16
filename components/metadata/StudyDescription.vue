@@ -70,5 +70,89 @@ console.log(props.metadata);
         >
       </n-space>
     </n-card>
+
+    <n-card title="Design" class="shadow-md">
+      <n-space vertical>
+        <p class="mb-1 w-full border-b font-medium">Design Information</p>
+
+        <pre>
+        {{ metadata.DesignModule }}
+        </pre>
+      </n-space>
+    </n-card>
+
+    <n-card title="Eligibility" class="shadow-md">
+      <n-space vertical>
+        <p class="mb-1 w-full border-b font-medium">Eligibility Criteria</p>
+
+        <pre>
+        {{ metadata.EligibilityModule }}
+        </pre>
+      </n-space>
+    </n-card>
+
+    <n-card title="Identification" class="shadow-md">
+      <n-space vertical>
+        <p class="mb-1 w-full border-b font-medium">
+          Identification Information
+        </p>
+
+        <pre>
+        {{ metadata.IdentificationModule }}
+        </pre>
+      </n-space>
+    </n-card>
+
+    <n-card title="IPD Sharing" class="shadow-md">
+      <n-space vertical>
+        <p class="mb-1 w-full border-b font-medium">IPD Sharing</p>
+
+        <pre>
+        {{ metadata.IPDSharingStatementModule.IPDSharing }}
+        </pre>
+      </n-space>
+    </n-card>
+
+    <n-card title="Oversight" class="shadow-md">
+      <n-space vertical>
+        <p class="mb-1 w-full border-b font-medium">Oversight Information</p>
+
+        <pre>
+        {{ metadata.OversightModule }}
+        </pre>
+      </n-space>
+    </n-card>
+
+    <n-card title="References" class="shadow-md">
+      <n-space vertical>
+        <p class="mb-1 w-full border-b font-medium">References</p>
+
+        <pre>
+        {{ metadata.ReferencesModule }}
+        </pre>
+      </n-space>
+    </n-card>
+
+    <n-card title="Sponsors and Collaborators" class="shadow-md">
+      <n-space vertical>
+        <p class="mb-1 w-full border-b font-medium">
+          Sponsors and Collaborators
+        </p>
+
+        <pre>
+        {{ metadata.SponsorCollaboratorsModule }}
+        </pre>
+      </n-space>
+    </n-card>
+
+    <n-card title="Status" class="shadow-md">
+      <n-space vertical>
+        <p class="mb-1 w-full border-b font-medium">Status Information</p>
+
+        <pre>
+        {{ metadata.StatusModule }}
+        </pre>
+      </n-space>
+    </n-card>
   </n-space>
 </template>
