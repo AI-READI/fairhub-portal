@@ -43,44 +43,6 @@ if (dataset.value) {
     );
   }
 }
-
-const demoVersions = [
-  {
-    id: 1,
-    title: "Version v5.4.2",
-    date: "2021-05-01",
-    doi: "10.5281/fairhub.1234567",
-    selected: true,
-  },
-  {
-    id: 2,
-    title: "Version v5.4.1",
-    date: "2021-04-01",
-    doi: "10.5281/fairhub.1234567",
-    selected: false,
-  },
-  {
-    id: 3,
-    title: "Version v5.4.0",
-    date: "2021-03-01",
-    doi: "10.5281/fairhub.1234567",
-    selected: false,
-  },
-  {
-    id: 4,
-    title: "Version v5.3.0",
-    date: "2021-02-01",
-    doi: "10.5281/fairhub.1234567",
-    selected: false,
-  },
-  {
-    id: 5,
-    title: "Version v5.2.0",
-    date: "2021-01-01",
-    doi: "10.5281/fairhub.1234567",
-    selected: false,
-  },
-];
 </script>
 
 <template>
@@ -207,47 +169,7 @@ const demoVersions = [
                 </n-space>
               </n-space>
 
-              <n-space
-                vertical
-                class="rounded-xl border border-purple-200 bg-slate-50 pb-5 pt-3"
-              >
-                <n-space vertical :size="[0, 0]">
-                  <h3 class="mb-3 px-4">Versions</h3>
-
-                  <n-space
-                    v-for="version in demoVersions"
-                    :key="version.id"
-                    justify="space-between"
-                    align="start"
-                    class="p-2 transition-all hover:bg-purple-50"
-                    :class="{
-                      '!bg-purple-200': version.selected,
-                    }"
-                  >
-                    <div class="flex flex-col space-y-1">
-                      <NuxtLink
-                        to="#"
-                        target="_blank"
-                        class="text-sm font-medium transition-all hover:text-slate-600 hover:underline"
-                      >
-                        {{ version.title }}
-                      </NuxtLink>
-
-                      <NuxtLink
-                        to="#"
-                        target="_blank"
-                        class="text-sm transition-all hover:text-slate-600 hover:underline"
-                      >
-                        {{ version.doi }}
-                      </NuxtLink>
-                    </div>
-
-                    <p class="text-right text-xs text-gray-500">
-                      {{ version.date }}
-                    </p>
-                  </n-space>
-                </n-space>
-              </n-space>
+              <VersionSelector :id="(dataset?.id as number)" />
             </n-space>
           </div>
         </n-tab-pane>

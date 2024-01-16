@@ -164,8 +164,9 @@ interface DatasetDescription {
 
 interface Dataset {
   id: number;
+
   updatedOn: number;
-  createdAt: number;
+  createdAt: number; // unix timestamp - the date the dataset was published
   title: string;
   description: string;
   creators: string[];
@@ -177,12 +178,34 @@ interface Dataset {
   };
 }
 
+interface DatabaseDatasetRecord extends Dataset {
+  _id: string;
+  identifier: number;
+  fairhubDatasetId: string;
+  doi: string;
+  version: Version;
+}
+
 interface DatasetArrayItem {
   id: number;
   updatedOn: number;
-  createdAt: number;
+  createdAt: number; // unix timestamp - the date the dataset was published
   title: string;
   description: string;
 }
 
 interface DatasetArray extends Array<DatasetArrayItem> {}
+
+interface Version {
+  fairhubVersionId: string;
+  title: string;
+}
+
+interface VersionArrayItem {
+  id: number;
+  createdAt: number;
+  title: string;
+  doi: string;
+}
+
+interface VersionArray extends Array<VersionArrayItem> {}
