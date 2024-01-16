@@ -379,7 +379,12 @@ console.log(props.metadata);
       </n-space>
     </n-card>
 
-    <n-card title="Status Information" class="shadow-md">
+    <n-card
+      id="status-information"
+      title="Status Information"
+      class="shadow-md"
+      data-section-title="Status Information"
+    >
       <n-space vertical>
         <p class="mb-1 w-full border-b font-medium">Overall Status</p>
 

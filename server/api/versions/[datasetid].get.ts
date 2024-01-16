@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
     (relatedDataset: DatabaseDatasetRecord) => {
       return {
         id: relatedDataset.identifier,
-        title: relatedDataset.version.title,
+        title: "relatedDataset.version.title",
         createdAt: relatedDataset.createdAt,
         doi: relatedDataset.doi,
       };
