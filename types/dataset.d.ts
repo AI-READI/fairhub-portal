@@ -240,7 +240,7 @@ interface StudyDescription {
   EligibilityModule: {
     Gender: string;
     GenderBased: string;
-    GenderDescription: string;
+    GenderDescription?: string;
     MinimumAge: string;
     MaximumAge: string;
     HealthyVolunteers?: string;
@@ -295,7 +295,7 @@ interface StudyDescription {
       ResponsiblePartyInvestigatorTitle?: string;
       ResponsiblePartyInvestigatorAffiliation?: string;
     };
-    LeadSponsorName: {
+    LeadSponsor: {
       LeadSponsorName: string;
     };
     CollaboratorList?: {
