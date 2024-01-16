@@ -239,7 +239,7 @@ interface StudyDescription {
   };
   EligibilityModule: {
     Gender: string;
-    GenderBased: {};
+    GenderBased: string;
     GenderDescription: string;
     MinimumAge: string;
     MaximumAge: string;
@@ -249,10 +249,16 @@ interface StudyDescription {
     SamplingMethod?: string;
   };
   IdentificationModule: {
-    OrgStudyId: string;
-    OrgStudyIdType: string;
-    OrgStudyIdDomain?: string;
-    OrgStudyIdLink?: string;
+    OrgStudyIdInfo: {
+      OrgStudyId: string;
+      OrgStudyIdType: string;
+    };
+    SecondaryIdInfoList?: {
+      SecondaryId: string;
+      SecondaryIdType: string;
+      SecondaryIdLink?: string;
+      SecondaryIdDomain?: string;
+    }[];
   };
   IPDSharingStatementModule: {
     IPDSharing: string;
