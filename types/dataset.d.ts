@@ -171,6 +171,11 @@ interface DatasetCreator {
   familyName: string;
 }
 
+interface Study {
+  title: string;
+  id: string;
+}
+
 interface DatasetCreators extends Array<DatasetCreator> {}
 
 interface StudyDescription {
@@ -343,6 +348,7 @@ interface Dataset {
     studyDescription: StudyDescription;
     datasetDescription: DatasetDescription;
   };
+  studyTitle: string;
 }
 
 interface DatasetArrayItem {
@@ -378,10 +384,7 @@ interface DatabaseDatasetRecord extends Dataset {
     dataset: {
       id: string;
     };
-    study: {
-      id: string;
-      title: string;
-    };
+    study: Study;
     version: Version;
   };
 }

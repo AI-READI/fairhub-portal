@@ -4,9 +4,9 @@ const props = defineProps({
     required: true,
     type: Object as PropType<StudyDescription>,
   },
-  study: {
+  studyTitle: {
     required: true,
-    type: Object as PropType<Study>,
+    type: String,
   },
 });
 
@@ -35,7 +35,7 @@ console.log(props.metadata);
           <p class="mb-1 mt-4 w-full border-b font-medium">Official Title</p>
 
           <p>
-            {{ study.title }}
+            {{ studyTitle }}
           </p>
 
           <p class="mb-2 mt-4 w-full border-b font-medium">Conditions</p>

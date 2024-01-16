@@ -33,6 +33,7 @@ export default defineEventHandler(async (event) => {
       readme: dbDataset.metadata.readme,
       studyDescription: dbDataset.metadata.study_description,
     },
+    studyTitle: dbDataset.fairhub.study.title,
     updatedOn: dbDataset.updatedOn,
   };
 
