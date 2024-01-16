@@ -32,20 +32,22 @@ const {
         </div>
 
         <div v-else>
-          <p class="text-sm">
-            <span class="font-medium">
+          <div class="">
+            <p class="pb-1 text-sm font-medium">
               When using this resource, please cite:
-            </span>
+            </p>
 
-            <br />
-            {{ citation?.split }}
-            <NuxtLink
-              :to="citation?.doi"
-              class="underline transition-all hover:text-slate-600"
-            >
-              {{ citation?.doi }}</NuxtLink
-            >.
-          </p>
+            <p class="text-sm">
+              {{ citation?.split }}
+
+              <NuxtLink
+                :to="citation?.doi"
+                class="underline transition-all hover:text-slate-600"
+              >
+                {{ citation?.doi }}</NuxtLink
+              >.
+            </p>
+          </div>
         </div>
       </TransitionFade>
     </n-space>
