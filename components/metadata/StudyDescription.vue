@@ -60,7 +60,7 @@ console.log(props.metadata);
       </div>
     </n-card>
 
-    <n-card title="Contact and Locations" class="shadow-md">
+    <!-- <n-card title="Contact and Locations" class="shadow-md">
       <n-space vertical>
         <p class="mb-1 w-full border-b font-medium">Brief Summary</p>
 
@@ -69,7 +69,7 @@ console.log(props.metadata);
        </pre
         >
       </n-space>
-    </n-card>
+    </n-card> -->
 
     <n-card title="Design" class="shadow-md">
       <n-space vertical>
@@ -101,11 +101,13 @@ console.log(props.metadata);
           {{ metadata.EligibilityModule.GenderBased }}
         </p>
 
-        <p class="mb-1 w-full border-b font-medium">Gender Description</p>
+        <div v-if="metadata.EligibilityModule.GenderDescription">
+          <p class="mb-1 w-full border-b font-medium">Gender Description</p>
 
-        <p>
-          {{ metadata.EligibilityModule.GenderDescription }}
-        </p>
+          <p>
+            {{ metadata.EligibilityModule.GenderDescription }}
+          </p>
+        </div>
 
         <p class="mb-1 w-full border-b font-medium">Minimum Age</p>
 
@@ -176,20 +178,33 @@ console.log(props.metadata);
           <p class="mb-1 w-full border-b font-medium">Secondary ID</p>
 
           <n-space vertical>
-            <!-- TODO: Iterate through secondary info array -->
-            <p
+            <div
               v-for="secondaryId in metadata.IdentificationModule
                 .SecondaryIdInfoList"
               :key="secondaryId"
             >
-              {{ secondaryId.SecondaryId }}
-            </p>
+              <p v-if="secondaryId.SecondaryId">
+                ID: {{ secondaryId.SecondaryId }}
+              </p>
+
+              <p v-if="secondaryId.SecondaryIdType">
+                Type: {{ secondaryId.SecondaryIdType }}
+              </p>
+
+              <p v-if="secondaryId.SecondaryIdLink">
+                Link: {{ secondaryId.SecondaryIdLink }}
+              </p>
+
+              <p v-if="secondaryId.SecondaryIdDomain">
+                Domain: {{ secondaryId.SecondaryIdDomain }}
+              </p>
+            </div>
           </n-space>
         </div>
 
-        <pre>
+        <!-- <pre>
         {{ metadata.IdentificationModule }}
-        </pre>
+        </pre> -->
       </n-space>
     </n-card>
 
@@ -217,23 +232,150 @@ console.log(props.metadata);
 
     <n-card title="References" class="shadow-md">
       <n-space vertical>
-        <p class="mb-1 w-full border-b font-medium">References</p>
+        <div v-if="metadata.ReferencesModule.ReferenceList">
+          <p class="mb-1 w-full border-b font-medium">References</p>
 
-        <pre>
+          <n-space vertical>
+            <div
+              v-for="reference in metadata.ReferencesModule.ReferenceList"
+              :key="reference"
+            >
+              <p v-if="reference.ReferenceID">
+                ID: {{ reference.ReferenceID }}
+              </p>
+
+              <p v-if="reference.ReferenceType">
+                Reference Type: {{ reference.ReferenceType }}
+              </p>
+
+              <p>Reference Citation: {{ reference.ReferenceCitation }}</p>
+            </div>
+          </n-space>
+        </div>
+
+        <div v-if="metadata.ReferencesModule.SeeAlsoLinkList">
+          <p class="mb-1 w-full border-b font-medium">See Also</p>
+
+          <n-space vertical>
+            <div
+              v-for="seeAlso in metadata.ReferencesModule.SeeAlsoLinkList"
+              :key="seeAlso"
+            >
+              <p v-if="seeAlso.SeeAlsoLinkLabel">
+                Label: {{ seeAlso.SeeAlsoLinkLabel }}
+              </p>
+
+              <p v-if="seeAlso.SeeAlsoLinkURL">
+                URL: {{ seeAlso.SeeAlsoLinkURL }}
+              </p>
+            </div>
+          </n-space>
+        </div>
+
+        <!-- <n-space v-if=""> </n-space> -->
+
+        <div v-if="metadata.ReferencesModule.AvailIPDList">
+          <p class="mb-1 w-full border-b font-medium">Available IPDs</p>
+
+          <n-space vertical>
+            <div
+              v-for="availIPD in metadata.ReferencesModule.AvailIPDList"
+              :key="availIPD"
+            >
+              <p>ID: {{ availIPD.AvailIPDId }}</p>
+
+              <p>Type: {{ availIPD.AvailIPDType }}</p>
+
+              <p>URL: {{ availIPD.AvailIPDURL }}</p>
+
+              <p v-if="availIPD.AvailIPDComment">
+                Comments: {{ availIPD.AvailIPDComment }}
+              </p>
+            </div>
+          </n-space>
+        </div>
+
+        <!-- <pre>
         {{ metadata.ReferencesModule }}
-        </pre>
+        </pre> -->
       </n-space>
     </n-card>
 
     <n-card title="Sponsors and Collaborators" class="shadow-md">
       <n-space vertical>
-        <p class="mb-1 w-full border-b font-medium">
-          Sponsors and Collaborators
+        <p class="mb-1 w-full border-b font-medium">Sponsor</p>
+
+        <p>
+          {{ metadata.SponsorCollaboratorsModule.LeadSponsor.LeadSponsorName }}
         </p>
 
-        <pre>
+        <div>
+          <p class="mb-1 w-full border-b font-medium">Collaborators</p>
+
+          <n-space vertical>
+            <n-ul
+              v-for="collaborator in metadata.SponsorCollaboratorsModule
+                .CollaboratorList"
+              :key="collaborator"
+              class="list-disc"
+            >
+              <n-li class="">{{ collaborator.CollaboratorName }}</n-li>
+            </n-ul>
+          </n-space>
+        </div>
+
+        <p class="mb-1 w-full border-b font-medium">Responsible Party</p>
+
+        <p>
+          Party Type:
+          {{
+            metadata.SponsorCollaboratorsModule.ResponsibleParty
+              .ResponsiblePartyType
+          }}
+        </p>
+
+        <p
+          v-if="
+            metadata.SponsorCollaboratorsModule.ResponsibleParty
+              .ResponsiblePartyInvestigatorAffiliation
+          "
+        >
+          Affiliation:
+          {{
+            metadata.SponsorCollaboratorsModule.ResponsibleParty
+              .ResponsiblePartyInvestigatorAffiliation
+          }}
+        </p>
+
+        <p
+          v-if="
+            metadata.SponsorCollaboratorsModule.ResponsibleParty
+              .ResponsiblePartyInvestigatorFullName
+          "
+        >
+          Name:
+          {{
+            metadata.SponsorCollaboratorsModule.ResponsibleParty
+              .ResponsiblePartyInvestigatorFullName
+          }}
+        </p>
+
+        <p
+          v-if="
+            metadata.SponsorCollaboratorsModule.ResponsibleParty
+              .ResponsiblePartyInvestigatorTitle
+          "
+        >
+          Title:
+          {{
+            metadata.SponsorCollaboratorsModule.ResponsibleParty
+              .ResponsiblePartyInvestigatorTitle
+          }}
+        </p>
+
+        <!-- <pre>
         {{ metadata.SponsorCollaboratorsModule }}
-        </pre>
+        </pre> -->
       </n-space>
     </n-card>
 
