@@ -23,19 +23,17 @@ export default defineEventHandler(async (event) => {
   const dataset: Dataset = {
     id: dbDataset.identifier,
     title: dbDataset.title,
-    createdAt: dbDataset.created_at,
-    creators: [],
+    createdAt: dbDataset.createdAt,
+    creators: dbDataset.creators,
     description: dbDataset.description,
+    keywords: dbDataset.keywords,
     metadata: {
       datasetDescription: dbDataset.metadata.dataset_description,
       dataSheet: dbDataset.metadata.data_sheet,
       readme: dbDataset.metadata.readme,
       studyDescription: dbDataset.metadata.study_description,
     },
-    study: {
-      title: dbDataset.study.title,
-    },
-    updatedOn: dbDataset.updated_on,
+    updatedOn: dbDataset.updatedOn,
   };
 
   return dataset;

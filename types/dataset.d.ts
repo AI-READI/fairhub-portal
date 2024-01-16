@@ -159,6 +159,20 @@ interface DatasetDescription {
   }[];
 }
 
+interface DatasetCreator {
+  givenName: string;
+  familyName: string;
+}
+
+interface DatasetCreators extends Array<DatasetCreator> {}
+
+interface DatasetCreator {
+  givenName: string;
+  familyName: string;
+}
+
+interface DatasetCreators extends Array<DatasetCreator> {}
+
 interface StudyDescription {
   ArmsInterventionsModule: {
     ArmGroupList: {
@@ -315,18 +329,14 @@ interface StudyDescription {
     };
   };
 }
-
-interface Study {
-  title: string;
-}
 interface Dataset {
   id: number;
-
+  keywords: string[];
   updatedOn: number;
   createdAt: number; // unix timestamp - the date the dataset was published
   title: string;
   description: string;
-  creators: string[];
+  creators: DatasetCreators;
   metadata: {
     dataSheet: string;
     readme: string;
@@ -363,7 +373,6 @@ interface DatabaseDatasetRecord extends Dataset {
   _id: string;
   identifier: number;
   doi: string;
-  version: Version;
   fairhub: {
     // contains the original ids from fairhub study management portal
     dataset: {

@@ -37,7 +37,7 @@ const {
             :key="version.id"
             justify="space-between"
             align="start"
-            class="p-2 transition-all hover:bg-purple-50"
+            class="px-4 py-2 transition-all hover:bg-purple-50"
             :class="{
               '!bg-purple-200': version.id === id,
             }"
