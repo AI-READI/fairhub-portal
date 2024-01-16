@@ -147,13 +147,44 @@ console.log(props.metadata);
       </n-space>
     </n-card>
 
-    <n-card title="Status" class="shadow-md">
+    <n-card title="Status Information" class="shadow-md">
       <n-space vertical>
-        <p class="mb-1 w-full border-b font-medium">Status Information</p>
+        <p class="mb-1 w-full border-b font-medium">Overall Status</p>
 
-        <pre>
+        <p class="mb-1">
+          {{ metadata.StatusModule.OverallStatus }}
+        </p>
+
+        <p class="mb-1 w-full border-b font-medium">
+          {{ metadata.StatusModule.StartDateStruct.StartDateType }} Start Date
+        </p>
+
+        <p class="mb-1">
+          {{ metadata.StatusModule.StartDateStruct.StartDate }}
+        </p>
+
+        <!-- create two p tags if completiondatestruct exists -->
+        <div v-if="metadata.StatusModule.CompletionDateStruct" class="mb-1">
+          <p class="mb-1 w-full border-b font-medium">
+            {{ metadata.StatusModule.CompletionDateStruct.CompletionDateType }}
+            Completion Date
+          </p>
+
+          <p>
+            {{ metadata.StatusModule.CompletionDateStruct.CompletionDate }}
+          </p>
+        </div>
+
+        <div v-if="metadata.StatusModule.WhyStopped" class="mb-1">
+          <p class="mb-1 w-full border-b font-medium">Why Stopped</p>
+
+          <p>
+            {{ metadata.StatusModule.WhyStopped }}
+          </p>
+        </div>
+        <!-- <pre>
         {{ metadata.StatusModule }}
-        </pre>
+        </pre> -->
       </n-space>
     </n-card>
   </n-space>
