@@ -335,14 +335,6 @@ interface Dataset {
   };
 }
 
-interface DatabaseDatasetRecord extends Dataset {
-  _id: string;
-  identifier: number;
-  fairhubDatasetId: string;
-  doi: string;
-  version: Version;
-}
-
 interface DatasetArrayItem {
   id: number;
   updatedOn: number;
@@ -354,7 +346,7 @@ interface DatasetArrayItem {
 interface DatasetArray extends Array<DatasetArrayItem> {}
 
 interface Version {
-  fairhubVersionId: string;
+  id: string;
   title: string;
 }
 
@@ -366,3 +358,21 @@ interface VersionArrayItem {
 }
 
 interface VersionArray extends Array<VersionArrayItem> {}
+
+interface DatabaseDatasetRecord extends Dataset {
+  _id: string;
+  identifier: number;
+  doi: string;
+  version: Version;
+  fairhub: {
+    // contains the original ids from fairhub study management portal
+    dataset: {
+      id: string;
+    };
+    study: {
+      id: string;
+      title: string;
+    };
+    version: Version;
+  };
+}

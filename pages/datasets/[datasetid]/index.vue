@@ -201,9 +201,8 @@ if (dataset.value) {
             </n-collapse-item>
           </n-collapse>
         </n-tab-pane>
-        -->
 
-        <!-- <n-tab-pane name="Dataset Metadata" tab="Dataset Metadata">
+        <n-tab-pane name="Dataset Metadata" tab="Dataset Metadata">
           <n-divider />
 
           <n-collapse>
@@ -231,7 +230,7 @@ if (dataset.value) {
               />
             </n-collapse-item>
           </n-collapse>
-        </n-tab-pane> -->
+        </n-tab-pane>
 
         <n-tab-pane name="Datatype Metadata" tab="Datatype Metadata">
           Datatype Metadata
