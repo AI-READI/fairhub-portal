@@ -263,7 +263,7 @@ interface StudyDescription {
     IPDSharingURL?: string;
   };
   OversightModule: {
-    OverSightHasDMC?: string;
+    OversightHasDMC?: string;
   };
   ReferencesModule: {
     ReferenceList?: {
