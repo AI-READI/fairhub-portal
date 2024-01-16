@@ -85,16 +85,82 @@ console.log(props.metadata);
       <n-space vertical>
         <p class="mb-1 w-full border-b font-medium">Eligibility Criteria</p>
 
-        <pre>
+        <p>
+          {{ metadata.EligibilityModule.EligibilityCriteria }}
+        </p>
+
+        <p class="mb-1 w-full border-b font-medium">Gender</p>
+
+        <p>
+          {{ metadata.EligibilityModule.Gender }}
+        </p>
+
+        <p class="mb-1 w-full border-b font-medium">Gender Based</p>
+
+        <p>
+          {{ metadata.EligibilityModule.GenderBased }}
+        </p>
+
+        <p class="mb-1 w-full border-b font-medium">Gender Description</p>
+
+        <p>
+          {{ metadata.EligibilityModule.GenderDescription }}
+        </p>
+
+        <p class="mb-1 w-full border-b font-medium">Minimum Age</p>
+
+        <p>
+          {{ metadata.EligibilityModule.MinimumAge }}
+        </p>
+
+        <p class="mb-1 w-full border-b font-medium">Maximum Age</p>
+
+        <p>
+          {{ metadata.EligibilityModule.MaximumAge }}
+        </p>
+
+        <div v-if="metadata.EligibilityModule.HealthyVolunteers">
+          <p class="mb-1 w-full border-b font-medium">Healthy Volunteers</p>
+
+          <p>
+            {{ metadata.EligibilityModule.HealthyVolunteers }}
+          </p>
+        </div>
+
+        <p class="mb-1 w-full border-b font-medium">Eligibility Criteria</p>
+
+        <p>
+          {{ metadata.EligibilityModule.EligibilityCriteria }}
+        </p>
+
+        <div v-if="metadata.EligibilityModule.StudyPopulation">
+          <p class="mb-1 w-full border-b font-medium">Study Population</p>
+
+          <p>
+            {{ metadata.EligibilityModule.StudyPopulation }}
+          </p>
+        </div>
+
+        <div v-if="metadata.EligibilityModule.SamplingMethod">
+          <p class="mb-1 w-full border-b font-medium">Sampling Method</p>
+
+          <p>
+            {{ metadata.EligibilityModule.SamplingMethod }}
+          </p>
+        </div>
+
+        <!-- <pre>
         {{ metadata.EligibilityModule }}
-        </pre>
+        </pre> -->
       </n-space>
     </n-card>
 
-    <n-card title="Identification" class="shadow-md">
+    <n-card title="Identification Information" class="shadow-md">
       <n-space vertical>
-        <p class="mb-1 w-full border-b font-medium">
-          Identification Information
+        <p class="mb-1 w-full border-b font-medium">Organization Study ID</p>
+
+        <p>
+          {{ metadata.IdentificationModule.OrgStudyIdInfo.OrgStudyId }}
         </p>
 
         <pre>
