@@ -105,21 +105,23 @@ console.log(props.metadata);
 
     <n-card title="IPD Sharing" class="shadow-md">
       <n-space vertical>
-        <p class="mb-1 w-full border-b font-medium">IPD Sharing</p>
+        <p>
+          {{ metadata.IPDSharingStatementModule.IPDSharing }}
+        </p>
 
-        <pre>
-        {{ metadata.IPDSharingStatementModule.IPDSharing }}
-        </pre>
+        <p v-if="metadata.IPDSharingStatementModule.IPDSharing === 'Yes'">
+          {{ metadata.IPDSharingStatementModule.IPDSharingDescription }}
+        </p>
       </n-space>
     </n-card>
 
     <n-card title="Oversight" class="shadow-md">
       <n-space vertical>
-        <p class="mb-1 w-full border-b font-medium">Oversight Information</p>
+        <p class="mb-1 w-full border-b font-medium">Oversight Has DMC?</p>
 
-        <pre>
-        {{ metadata.OversightModule }}
-        </pre>
+        <p>
+          {{ metadata.OversightModule.OversightHasDMC }}
+        </p>
       </n-space>
     </n-card>
 
