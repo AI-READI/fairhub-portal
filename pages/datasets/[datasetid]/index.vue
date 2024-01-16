@@ -43,6 +43,35 @@ if (dataset.value) {
     );
   }
 }
+
+const shortenedDatasetCreators = computed(() => {
+  if (!dataset.value?.creators) {
+    return "";
+  }
+
+  const creatorsLength = dataset.value.creators.length;
+
+  if (creatorsLength === 1) {
+    return `${dataset.value.creators[0].familyName}, ${dataset.value.creators[0].givenName[0]}`;
+  }
+
+  if (creatorsLength === 2) {
+    return `${dataset.value.creators[0].familyName}, ${dataset.value.creators[0].givenName[0]} and ${dataset.value.creators[1].familyName}, ${dataset.value.creators[1].givenName[0]}.`;
+  }
+
+  if (creatorsLength === 3) {
+    return `${dataset.value.creators[0].familyName}, ${dataset.value.creators[0].givenName[0]}., ${dataset.value.creators[1].familyName}, ${dataset.value.creators[1].givenName[0]}., & ${dataset.value.creators[2].familyName}, ${dataset.value.creators[2].givenName[0]}.`;
+  }
+
+  if (creatorsLength > 3) {
+    return `${dataset.value.creators[0].familyName}, ${
+      dataset.value.creators[0].givenName[0]
+    }, ${dataset.value.creators[1].familyName}, ${
+      dataset.value.creators[1].givenName[0]
+    } and ${creatorsLength - 2} more.`;
+  }
+  return "";
+});
 </script>
 
 <template>
@@ -108,66 +137,19 @@ if (dataset.value) {
                   <h3>Keywords</h3>
 
                   <n-space>
-                    <n-tag type="info" size="small">Diabetes</n-tag>
-
-                    <n-tag type="info" size="small"
-                      >Artificial Intelligence</n-tag
+                    <n-tag
+                      v-for="(keyword, index) in dataset?.keywords"
+                      :key="index"
+                      type="info"
+                      size="small"
                     >
-
-                    <n-tag type="info" size="small">Machine Learning</n-tag>
-
-                    <n-tag type="info" size="small">Bridge2AI</n-tag>
-
-                    <n-tag type="info" size="small">Eye Imaging</n-tag>
+                      {{ keyword }}
+                    </n-tag>
                   </n-space>
                 </n-space>
               </n-space>
 
-              <n-space
-                vertical
-                class="rounded-xl border border-purple-200 bg-slate-50 px-4 pb-5 pt-3"
-              >
-                <n-space vertical size="large">
-                  <h3>Citation</h3>
-
-                  <p class="text-sm">
-                    <span class="font-medium">
-                      When using this resource, please cite:
-                    </span>
-
-                    <br />
-                    Fushiguro, M., Geto, S., & Nanami, K. (2024). Flagship
-                    Dataset of Type 2 Diabetes from the AI-READI Project (v2).
-                    Fairhub.
-                    <NuxtLink
-                      to="#"
-                      class="underline transition-all hover:text-slate-600"
-                    >
-                      https://doi.org/10.fairhub/13942 </NuxtLink
-                    >.
-                  </p>
-
-                  <p class="text-sm">
-                    <span class="font-medium">
-                      Additionally, please cite the original publication:
-                    </span>
-
-                    <br />
-
-                    <NuxtLink
-                      to="#"
-                      class="underline transition-all hover:text-slate-600"
-                    >
-                      Johnson, A. E. W., Pollard, T. J., Shen, L., Lehman, L.
-                      H., Feng, M., Ghassemi, M., Moody, B., Szolovits, P.,
-                      Celi, L. A., & Mark, R. G. (2016). MIMIC-III, a freely
-                      accessible critical care database. Scientific Data, 3,
-                      160035.
-                    </NuxtLink>
-                    .
-                  </p>
-                </n-space>
-              </n-space>
+              <CitationViewer :id="(dataset?.id as number)" />
 
               <VersionSelector :id="(dataset?.id as number)" />
             </n-space>
