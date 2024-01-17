@@ -15,16 +15,21 @@ console.log(props.metadata);
 
 <template>
   <n-space vertical size="large">
-    <n-card title="Study Overview" class="shadow-md">
+    <card-collapsible-card
+      title="Study Overview"
+      class="shadow-md"
+      bordered
+      collapse
+    >
       <div class="grid grid-cols-12 gap-8">
         <n-space vertical class="col-span-9 mr-2">
-          <p class="mb-1 w-full border-b font-medium">Brief Summary</p>
+          <p class="mb-1 w-full border-b font-semibold">Brief Summary</p>
 
           <p>
             {{ metadata.DescriptionModule.BriefSummary }}
           </p>
 
-          <p class="mb-1 mt-4 w-full border-b font-medium">
+          <p class="mb-1 mt-4 w-full border-b font-semibold">
             Detailed Description
           </p>
 
@@ -32,13 +37,13 @@ console.log(props.metadata);
             {{ metadata.DescriptionModule.DetailedDescription }}
           </p>
 
-          <p class="mb-1 mt-4 w-full border-b font-medium">Official Title</p>
+          <p class="mb-1 mt-4 w-full border-b font-semibold">Official Title</p>
 
           <p>
             {{ studyTitle }}
           </p>
 
-          <p class="mb-2 mt-4 w-full border-b font-medium">Conditions</p>
+          <p class="mb-2 mt-4 w-full border-b font-semibold">Conditions</p>
 
           <n-space>
             <n-tag
@@ -53,12 +58,16 @@ console.log(props.metadata);
         </n-space>
 
         <n-space vertical class="col-span-3 ml-2">
-          <p class="mb-1 w-full border-b font-medium">Study Start (Actual)</p>
+          <p class="mb-1 w-full border-b font-semibold">
+            Study Start ({{
+              metadata.StatusModule.StartDateStruct.StartDateType
+            }})
+          </p>
 
-          <p>2023-07-19</p>
+          <p>{{ metadata.StatusModule.StartDateStruct.StartDate }}</p>
         </n-space>
       </div>
-    </n-card>
+    </card-collapsible-card>
 
     <!-- <n-card title="Contact and Locations" class="shadow-md">
       <n-space vertical>
@@ -71,101 +80,156 @@ console.log(props.metadata);
       </n-space>
     </n-card> -->
 
-    <n-card title="Design" class="shadow-md">
+    <card-collapsible-card title="Design" class="shadow-md" bordered collapse>
       <n-space vertical>
-        <p class="mb-1 w-full border-b font-medium">Design Information</p>
+        <p class="mb-1 w-full border-b font-semibold">Study Type</p>
+
+        <p>
+          {{ metadata.DesignModule.StudyType }}
+        </p>
+
+        <div
+          v-if="metadata.DesignModule.StudyType === 'Interventional'"
+          class="mt-2"
+        ></div>
+
+        <div
+          v-if="metadata.DesignModule.StudyType === 'Observational'"
+          class="mt-2"
+        >
+          <!-- <p class="mb-1 w-full border-b font-semibold">Observational Model</p> -->
+
+          <div v-if="metadata.DesignModule.DesignInfo.DesignAllocation">
+            <p class="mb-1 w-full border-b font-semibold">Design Allocation</p>
+
+            <p>
+              {{ metadata.DesignModule.DesignInfo.DesignAllocation }}
+            </p>
+          </div>
+
+          <div v-if="metadata.DesignModule.DesignInfo.DesignObservationModel">
+            <p class="mb-1 w-full border-b font-semibold">
+              Design Obsevation Model
+            </p>
+
+            <p>
+              {{ metadata.DesignModule.DesignInfo.DesignObservationModel }}
+            </p>
+          </div>
+
+          <div
+            v-if="metadata.DesignModule.DesignInfo.DesignObservationalModelList"
+          >
+            <p class="mb-2 w-full border-b font-semibold">
+              Design Observation Model
+            </p>
+
+            <n-ul
+              v-for="model in metadata.DesignModule.DesignInfo
+                .DesignObservationalModelList"
+              :key="model"
+              class="list-disc text-base"
+            >
+              <n-li>
+                {{ model }}
+              </n-li>
+            </n-ul>
+          </div>
+        </div>
 
         <pre>
         {{ metadata.DesignModule }}
         </pre>
       </n-space>
-    </n-card>
+    </card-collapsible-card>
 
-    <n-card title="Eligibility" class="shadow-md">
+    <card-collapsible-card
+      title="Eligibility"
+      class="shadow-md"
+      bordered
+      collapse
+    >
       <n-space vertical>
-        <p class="mb-1 w-full border-b font-medium">Eligibility Criteria</p>
+        <p class="mb-1 w-full border-b font-semibold">Eligibility Criteria</p>
 
-        <p>
+        <p class="">
           {{ metadata.EligibilityModule.EligibilityCriteria }}
         </p>
 
-        <p class="mb-1 w-full border-b font-medium">Gender</p>
+        <p class="mb-1 mt-2 w-full border-b font-semibold">Gender</p>
 
-        <p>
+        <p class="">
           {{ metadata.EligibilityModule.Gender }}
         </p>
 
-        <p class="mb-1 w-full border-b font-medium">Gender Based</p>
+        <p class="mb-1 mt-2 w-full border-b font-semibold">Gender Based</p>
 
         <p>
           {{ metadata.EligibilityModule.GenderBased }}
         </p>
 
-        <div v-if="metadata.EligibilityModule.GenderDescription">
-          <p class="mb-1 w-full border-b font-medium">Gender Description</p>
+        <div v-if="metadata.EligibilityModule.GenderDescription" class="mt-2">
+          <p class="mb-3 w-full border-b font-semibold">Gender Description</p>
 
           <p>
             {{ metadata.EligibilityModule.GenderDescription }}
           </p>
         </div>
 
-        <p class="mb-1 w-full border-b font-medium">Minimum Age</p>
+        <p class="mb-1 mt-2 w-full border-b font-semibold">Minimum Age</p>
 
         <p>
           {{ metadata.EligibilityModule.MinimumAge }}
         </p>
 
-        <p class="mb-1 w-full border-b font-medium">Maximum Age</p>
+        <p class="mb-1 mt-2 w-full border-b font-semibold">Maximum Age</p>
 
         <p>
           {{ metadata.EligibilityModule.MaximumAge }}
         </p>
 
-        <div v-if="metadata.EligibilityModule.HealthyVolunteers">
-          <p class="mb-1 w-full border-b font-medium">Healthy Volunteers</p>
+        <div v-if="metadata.EligibilityModule.HealthyVolunteers" class="mt-2">
+          <p class="mb-2 w-full border-b font-semibold">Healthy Volunteers</p>
 
           <p>
             {{ metadata.EligibilityModule.HealthyVolunteers }}
           </p>
         </div>
 
-        <p class="mb-1 w-full border-b font-medium">Eligibility Criteria</p>
-
-        <p>
-          {{ metadata.EligibilityModule.EligibilityCriteria }}
-        </p>
-
-        <div v-if="metadata.EligibilityModule.StudyPopulation">
-          <p class="mb-1 w-full border-b font-medium">Study Population</p>
+        <div v-if="metadata.EligibilityModule.StudyPopulation" class="mt-2">
+          <p class="mb-3 w-full border-b font-semibold">Study Population</p>
 
           <p>
             {{ metadata.EligibilityModule.StudyPopulation }}
           </p>
         </div>
 
-        <div v-if="metadata.EligibilityModule.SamplingMethod">
-          <p class="mb-1 w-full border-b font-medium">Sampling Method</p>
+        <div v-if="metadata.EligibilityModule.SamplingMethod" class="mt-2">
+          <p class="mb-3 w-full border-b font-semibold">Sampling Method</p>
 
           <p>
             {{ metadata.EligibilityModule.SamplingMethod }}
           </p>
         </div>
-
-        <!-- <pre>
-        {{ metadata.EligibilityModule }}
-        </pre> -->
       </n-space>
-    </n-card>
+    </card-collapsible-card>
 
-    <n-card title="Identification Information" class="shadow-md">
+    <card-collapsible-card
+      title="Identification Information"
+      class="shadow-md"
+      bordered
+      collapse
+    >
       <n-space vertical>
-        <p class="mb-1 w-full border-b font-medium">Organization Study ID</p>
+        <p class="mb-1 w-full border-b font-semibold">Organization Study ID</p>
 
         <p>
           {{ metadata.IdentificationModule.OrgStudyIdInfo.OrgStudyId }}
         </p>
 
-        <p class="mb-1 w-full border-b font-medium">Organization Study Type</p>
+        <p class="mb-1 mt-2 w-full border-b font-semibold">
+          Organization Study Type
+        </p>
 
         <p>
           {{ metadata.IdentificationModule.OrgStudyIdInfo.OrgStudyIdType }}
@@ -173,42 +237,49 @@ console.log(props.metadata);
 
         <div
           v-if="metadata.IdentificationModule.SecondaryIdInfoList"
-          class="mb-1 w-full"
+          class="mb-1 mt-2 w-full"
         >
-          <p class="mb-1 w-full border-b font-medium">Secondary ID</p>
+          <p class="mb-1 w-full border-b font-semibold">Secondary ID</p>
 
-          <n-space vertical>
-            <div
-              v-for="secondaryId in metadata.IdentificationModule
-                .SecondaryIdInfoList"
-              :key="secondaryId"
-            >
-              <p v-if="secondaryId.SecondaryId">
-                ID: {{ secondaryId.SecondaryId }}
-              </p>
+          <n-table :bordered="false" :single-line="false">
+            <thead>
+              <tr>
+                <th>ID</th>
 
-              <p v-if="secondaryId.SecondaryIdType">
-                Type: {{ secondaryId.SecondaryIdType }}
-              </p>
+                <th>Type</th>
 
-              <p v-if="secondaryId.SecondaryIdLink">
-                Link: {{ secondaryId.SecondaryIdLink }}
-              </p>
+                <th>Link</th>
 
-              <p v-if="secondaryId.SecondaryIdDomain">
-                Domain: {{ secondaryId.SecondaryIdDomain }}
-              </p>
-            </div>
-          </n-space>
+                <th>Domain</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr
+                v-for="secondaryId in metadata.IdentificationModule
+                  .SecondaryIdInfoList"
+                :key="secondaryId"
+              >
+                <td>{{ secondaryId.SecondaryId }}</td>
+
+                <td>{{ secondaryId.SecondaryIdType }}</td>
+
+                <td>{{ secondaryId.SecondaryIdLink || "N/A" }}</td>
+
+                <td>{{ secondaryId.SecondaryIdDomain || "N/A" }}</td>
+              </tr>
+            </tbody>
+          </n-table>
         </div>
-
-        <!-- <pre>
-        {{ metadata.IdentificationModule }}
-        </pre> -->
       </n-space>
-    </n-card>
+    </card-collapsible-card>
 
-    <n-card title="IPD Sharing" class="shadow-md">
+    <card-collapsible-card
+      title="IPD Sharing"
+      class="shadow-md"
+      bordered
+      collapse
+    >
       <n-space vertical>
         <p>
           {{ metadata.IPDSharingStatementModule.IPDSharing }}
@@ -218,181 +289,221 @@ console.log(props.metadata);
           {{ metadata.IPDSharingStatementModule.IPDSharingDescription }}
         </p>
       </n-space>
-    </n-card>
+    </card-collapsible-card>
 
-    <n-card title="Oversight" class="shadow-md">
+    <card-collapsible-card
+      title="Oversight"
+      class="shadow-md"
+      bordered
+      collapse
+    >
       <n-space vertical>
-        <p class="mb-1 w-full border-b font-medium">Oversight Has DMC?</p>
+        <p class="mb-1 w-full border-b font-semibold">Oversight Has DMC?</p>
 
         <p>
           {{ metadata.OversightModule.OversightHasDMC }}
         </p>
       </n-space>
-    </n-card>
+    </card-collapsible-card>
 
-    <n-card title="References" class="shadow-md">
+    <card-collapsible-card
+      title="References"
+      class="shadow-md"
+      bordered
+      collapse
+    >
       <n-space vertical>
         <div v-if="metadata.ReferencesModule.ReferenceList">
-          <p class="mb-1 w-full border-b font-medium">References</p>
+          <p class="mb-1 w-full border-b font-semibold">References</p>
 
-          <n-space vertical>
-            <div
-              v-for="reference in metadata.ReferencesModule.ReferenceList"
-              :key="reference"
-            >
-              <p v-if="reference.ReferenceID">
-                ID: {{ reference.ReferenceID }}
-              </p>
+          <n-table :bordered="false" :single-line="false">
+            <thead>
+              <tr>
+                <th>Reference Citation</th>
 
-              <p v-if="reference.ReferenceType">
-                Reference Type: {{ reference.ReferenceType }}
-              </p>
+                <th>Reference Type</th>
 
-              <p>Reference Citation: {{ reference.ReferenceCitation }}</p>
-            </div>
-          </n-space>
+                <th>Reference ID</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr
+                v-for="reference in metadata.ReferencesModule.ReferenceList"
+                :key="reference"
+              >
+                <td>{{ reference.ReferenceCitation }}</td>
+
+                <td>{{ reference.ReferenceType || "N/A" }}</td>
+
+                <td>{{ reference.ReferenceID || "N/A" }}</td>
+              </tr>
+            </tbody>
+          </n-table>
         </div>
 
-        <div v-if="metadata.ReferencesModule.SeeAlsoLinkList">
-          <p class="mb-1 w-full border-b font-medium">See Also</p>
+        <div v-if="metadata.ReferencesModule.SeeAlsoLinkList" class="mt-2">
+          <p class="mb-1 w-full border-b font-semibold">See Also</p>
 
-          <n-space vertical>
-            <div
-              v-for="seeAlso in metadata.ReferencesModule.SeeAlsoLinkList"
-              :key="seeAlso"
-            >
-              <p v-if="seeAlso.SeeAlsoLinkLabel">
-                Label: {{ seeAlso.SeeAlsoLinkLabel }}
-              </p>
+          <n-table :bordered="false" :single-line="false">
+            <thead>
+              <tr>
+                <th>URL</th>
 
-              <p v-if="seeAlso.SeeAlsoLinkURL">
-                URL: {{ seeAlso.SeeAlsoLinkURL }}
-              </p>
-            </div>
-          </n-space>
+                <th>Label</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr
+                v-for="seeAlso in metadata.ReferencesModule.SeeAlsoLinkList"
+                :key="seeAlso"
+              >
+                <td>
+                  <n-a href="seeAlso.SeeAlsoLinkURL" target="_blank">{{
+                    seeAlso.SeeAlsoLinkURL
+                  }}</n-a>
+                </td>
+
+                <td>{{ seeAlso.SeeAlsoLinkLabel || "N/A" }}</td>
+              </tr>
+            </tbody>
+          </n-table>
         </div>
 
-        <!-- <n-space v-if=""> </n-space> -->
+        <div v-if="metadata.ReferencesModule.AvailIPDList" class="mt-2">
+          <p class="mb-1 w-full border-b font-semibold">Available IPDs</p>
 
-        <div v-if="metadata.ReferencesModule.AvailIPDList">
-          <p class="mb-1 w-full border-b font-medium">Available IPDs</p>
+          <n-table :bordered="false" :single-line="false">
+            <thead>
+              <tr>
+                <th>ID</th>
 
-          <n-space vertical>
-            <div
-              v-for="availIPD in metadata.ReferencesModule.AvailIPDList"
-              :key="availIPD"
-            >
-              <p>ID: {{ availIPD.AvailIPDId }}</p>
+                <th>Type</th>
 
-              <p>Type: {{ availIPD.AvailIPDType }}</p>
+                <th>URL</th>
 
-              <p>URL: {{ availIPD.AvailIPDURL }}</p>
+                <th>Comments</th>
+              </tr>
+            </thead>
 
-              <p v-if="availIPD.AvailIPDComment">
-                Comments: {{ availIPD.AvailIPDComment }}
-              </p>
-            </div>
-          </n-space>
+            <tbody>
+              <tr
+                v-for="availIPD in metadata.ReferencesModule.AvailIPDList"
+                :key="availIPD"
+              >
+                <td>{{ availIPD.AvailIPDId }}</td>
+
+                <td>{{ availIPD.AvailIPDType }}</td>
+
+                <td>
+                  <n-a href="availIPD.AvailIPDURL" target="_blank">
+                    {{ availIPD.AvailIPDURL }}
+                  </n-a>
+                </td>
+
+                <td>{{ availIPD.AvailIPDComment || "N/A" }}</td>
+              </tr>
+            </tbody>
+          </n-table>
         </div>
-
-        <!-- <pre>
-        {{ metadata.ReferencesModule }}
-        </pre> -->
       </n-space>
-    </n-card>
+    </card-collapsible-card>
 
-    <n-card title="Sponsors and Collaborators" class="shadow-md">
+    <card-collapsible-card
+      title="Sponsors and Collaborators"
+      class="shadow-md"
+      bordered
+      collapse
+    >
       <n-space vertical>
-        <p class="mb-1 w-full border-b font-medium">Sponsor</p>
+        <p class="mb-1 w-full border-b font-semibold">Sponsor</p>
 
         <p>
           {{ metadata.SponsorCollaboratorsModule.LeadSponsor.LeadSponsorName }}
         </p>
 
-        <div>
-          <p class="mb-1 w-full border-b font-medium">Collaborators</p>
+        <div class="mt-2">
+          <p class="mb-1 w-full border-b font-semibold">Collaborators</p>
 
           <n-space vertical>
             <n-ul
               v-for="collaborator in metadata.SponsorCollaboratorsModule
                 .CollaboratorList"
               :key="collaborator"
-              class="list-disc"
+              class="font-base list-disc"
             >
-              <n-li class="">{{ collaborator.CollaboratorName }}</n-li>
+              <n-li>{{ collaborator.CollaboratorName }}</n-li>
             </n-ul>
           </n-space>
         </div>
 
-        <p class="mb-1 w-full border-b font-medium">Responsible Party</p>
+        <p class="mb-1 mt-2 w-full border-b font-semibold">Responsible Party</p>
 
-        <p>
-          Party Type:
-          {{
-            metadata.SponsorCollaboratorsModule.ResponsibleParty
-              .ResponsiblePartyType
-          }}
-        </p>
+        <n-table :bordered="false" :single-line="false">
+          <thead>
+            <tr>
+              <th>Title</th>
 
-        <p
-          v-if="
-            metadata.SponsorCollaboratorsModule.ResponsibleParty
-              .ResponsiblePartyInvestigatorAffiliation
-          "
-        >
-          Affiliation:
-          {{
-            metadata.SponsorCollaboratorsModule.ResponsibleParty
-              .ResponsiblePartyInvestigatorAffiliation
-          }}
-        </p>
+              <th>Name</th>
 
-        <p
-          v-if="
-            metadata.SponsorCollaboratorsModule.ResponsibleParty
-              .ResponsiblePartyInvestigatorFullName
-          "
-        >
-          Name:
-          {{
-            metadata.SponsorCollaboratorsModule.ResponsibleParty
-              .ResponsiblePartyInvestigatorFullName
-          }}
-        </p>
+              <th>Affiliation</th>
 
-        <p
-          v-if="
-            metadata.SponsorCollaboratorsModule.ResponsibleParty
-              .ResponsiblePartyInvestigatorTitle
-          "
-        >
-          Title:
-          {{
-            metadata.SponsorCollaboratorsModule.ResponsibleParty
-              .ResponsiblePartyInvestigatorTitle
-          }}
-        </p>
+              <th>Party Type</th>
+            </tr>
+          </thead>
 
-        <!-- <pre>
-        {{ metadata.SponsorCollaboratorsModule }}
-        </pre> -->
+          <tbody>
+            <tr>
+              <td>
+                {{
+                  metadata.SponsorCollaboratorsModule.ResponsibleParty
+                    .ResponsiblePartyInvestigatorTitle || "N/A"
+                }}
+              </td>
+
+              <td>
+                {{
+                  metadata.SponsorCollaboratorsModule.ResponsibleParty
+                    .ResponsiblePartyInvestigatorFullName || "N/A"
+                }}
+              </td>
+
+              <td>
+                {{
+                  metadata.SponsorCollaboratorsModule.ResponsibleParty
+                    .ResponsiblePartyType
+                }}
+              </td>
+
+              <td>
+                {{
+                  metadata.SponsorCollaboratorsModule.ResponsibleParty
+                    .ResponsiblePartyInvestigatorAffiliation || "N/A"
+                }}
+              </td>
+            </tr>
+          </tbody>
+        </n-table>
       </n-space>
-    </n-card>
+    </card-collapsible-card>
 
-    <n-card
+    <card-collapsible-card
       id="status-information"
       title="Status Information"
       class="shadow-md"
       data-section-title="Status Information"
+      bordered
+      collapse
     >
       <n-space vertical>
-        <p class="mb-1 w-full border-b font-medium">Overall Status</p>
+        <p class="mb-1 w-full border-b font-semibold">Overall Status</p>
 
         <p class="mb-1">
           {{ metadata.StatusModule.OverallStatus }}
         </p>
 
-        <p class="mb-1 w-full border-b font-medium">
+        <p class="mb-1 mt-2 w-full border-b font-semibold">
           {{ metadata.StatusModule.StartDateStruct.StartDateType }} Start Date
         </p>
 
@@ -401,8 +512,8 @@ console.log(props.metadata);
         </p>
 
         <!-- create two p tags if completiondatestruct exists -->
-        <div v-if="metadata.StatusModule.CompletionDateStruct" class="mb-1">
-          <p class="mb-1 w-full border-b font-medium">
+        <div v-if="metadata.StatusModule.CompletionDateStruct" class="mt-2">
+          <p class="mb-1 w-full border-b font-semibold">
             {{ metadata.StatusModule.CompletionDateStruct.CompletionDateType }}
             Completion Date
           </p>
@@ -412,17 +523,14 @@ console.log(props.metadata);
           </p>
         </div>
 
-        <div v-if="metadata.StatusModule.WhyStopped" class="mb-1">
-          <p class="mb-1 w-full border-b font-medium">Why Stopped</p>
+        <div v-if="metadata.StatusModule.WhyStopped" class="mt-2">
+          <p class="mb-1 w-full border-b font-semibold">Why Stopped</p>
 
           <p>
             {{ metadata.StatusModule.WhyStopped }}
           </p>
         </div>
-        <!-- <pre>
-        {{ metadata.StatusModule }}
-        </pre> -->
       </n-space>
-    </n-card>
+    </card-collapsible-card>
   </n-space>
 </template>

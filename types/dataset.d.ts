@@ -237,6 +237,7 @@ interface StudyDescription {
       DesignAllocation?: string;
       DesignInterventionModel?: string;
       DesignIterventionModelDescription?: string;
+      DesignObservationalModelList?: string[];
       DesignMaskingInfo?: {
         DesignMasking: string;
         DesignMaskingDescription?: string;
