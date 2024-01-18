@@ -358,16 +358,16 @@ interface DatasetArrayItem {
 
 interface DatasetArray extends Array<DatasetArrayItem> {}
 
-export interface Files {
+interface Files {
   children?: Files[];
   label: string;
 }
 
-export interface Metadata{
-    dataSheet: string;
-    readme: string;
-    studyDescription: string | any;
-    datasetDescription: string | any;
+interface Metadata {
+  dataSheet: string;
+  readme: string;
+  studyDescription: string | any;
+  datasetDescription: string | any;
 }
 interface Version {
   id: string;

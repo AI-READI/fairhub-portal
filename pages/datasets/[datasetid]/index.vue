@@ -46,44 +46,6 @@ if (dataset.value) {
   console.log(dataset.value);
 }
 
-// function convertFile(file: Files): TreeOption {
-//   return {
-//     children: file.children ? file.children.map(convertFile) : undefined,
-//     key: file.label,
-//     label: file.label,
-//     prefix: () =>
-//       h(NIcon, null, {
-//         default: () =>
-//           file.children?.length ? h(Folder) : h(FileTrayFullOutline),
-//       }),
-//   };
-// }
-//
-// const updatePrefixWithExpaned = (
-//   _keys: Array<string | number>,
-//   _option: Array<TreeOption | null>,
-//   meta: {
-//     action: "expand" | "collapse" | "filter";
-//     node: TreeOption | null;
-//   }
-// ) => {
-//   if (!meta.node) return;
-//   switch (meta.action) {
-//     case "expand":
-//       meta.node.prefix = () =>
-//         h(NIcon, null, {
-//           default: () => h(FolderOpenOutline),
-//         });
-//       break;
-//     case "collapse":
-//       meta.node.prefix = () =>
-//         h(NIcon, null, {
-//           default: () => h(Folder),
-//         });
-//       break;
-//   }
-// };
-
 const shortenedDatasetCreators = computed(() => {
   if (!dataset.value?.creators) {
     return "";
@@ -144,7 +106,12 @@ const shortenedDatasetCreators = computed(() => {
     </div>
 
     <div class="mx-auto flex w-full max-w-screen-xl flex-col px-3 py-5">
-      <n-tabs type="line" animated size="large" default-value="Study Metadata">
+      <n-tabs
+        type="line"
+        animated
+        size="large"
+        default-value="Dataset Metadata"
+      >
         <n-tab-pane name="About" tab="About">
           <div class="grid grid-cols-7 gap-10">
             <n-space vertical class="col-span-5 mt-3">
@@ -259,7 +226,7 @@ const shortenedDatasetCreators = computed(() => {
         </n-tab-pane>
 
         <n-tab-pane name="Files" tab="Files">
-          <FilesGeneralStructure :dataset="dataset" />
+          <FilesFolderViewer :dataset="dataset" />
         </n-tab-pane>
 
         <n-tab-pane name="Dashboard" tab="Dashboard"> Dashboard </n-tab-pane>

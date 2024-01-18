@@ -1,14 +1,8 @@
 <script setup lang="ts">
-import { NIcon } from "naive-ui";
-import {
-  Folder,
-  FileTrayFullOutline,
-  FolderOpenOutline,
-} from "@vicons/ionicons5";
 import type { TreeOption } from "naive-ui";
-import type { Files } from "~/types/dataset";
+import { Icon } from "#components";
 
-const props = defineProps({
+defineProps({
   dataset: {
     required: true,
     type: Object,
@@ -21,9 +15,10 @@ function convertFile(file: Files): TreeOption {
     key: file.label,
     label: file.label,
     prefix: () =>
-      h(NIcon, null, {
-        default: () =>
-          file.children?.length ? h(Folder) : h(FileTrayFullOutline),
+      h(Icon, {
+        name: file.children?.length
+          ? "ic:baseline-folder"
+          : "pepicons-pencil:file",
       }),
   };
 }
@@ -40,15 +35,11 @@ const updatePrefixWithExpaned = (
   switch (meta.action) {
     case "expand":
       meta.node.prefix = () =>
-        h(NIcon, null, {
-          default: () => h(FolderOpenOutline),
-        });
+        h(Icon, { name: "material-symbols-light:folder-open" });
+
       break;
     case "collapse":
-      meta.node.prefix = () =>
-        h(NIcon, null, {
-          default: () => h(Folder),
-        });
+      meta.node.prefix = () => h(Icon, { name: "ic:baseline-folder" });
       break;
   }
 };
