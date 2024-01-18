@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import sanitizeHtml from "sanitize-html";
 import { parse } from "marked";
-// import JsonViewer from "vue-json-viewer/ssr";
 
 const push = usePush();
 const route = useRoute();
@@ -42,6 +41,9 @@ if (dataset.value) {
       parse(dataset.value.metadata.dataSheet)
     );
   }
+}
+if (dataset.value) {
+  console.log(dataset.value);
 }
 
 const shortenedDatasetCreators = computed(() => {
@@ -104,7 +106,12 @@ const shortenedDatasetCreators = computed(() => {
     </div>
 
     <div class="mx-auto flex w-full max-w-screen-xl flex-col px-3 py-5">
-      <n-tabs type="line" animated size="large" default-value="About">
+      <n-tabs
+        type="line"
+        animated
+        size="large"
+        default-value="Dataset Metadata"
+      >
         <n-tab-pane name="About" tab="About">
           <div class="grid grid-cols-7 gap-10">
             <n-space vertical class="col-span-5 mt-3">
@@ -218,13 +225,14 @@ const shortenedDatasetCreators = computed(() => {
           Datatype Metadata
         </n-tab-pane>
 
-        <!-- <n-tab-pane name="Files" tab="Files"> File Viewer </n-tab-pane> -->
+        <n-tab-pane name="Files" tab="Files">
+          <FilesFolderViewer :dataset="dataset" />
+        </n-tab-pane>
 
         <n-tab-pane name="Dashboard" tab="Dashboard"> Dashboard </n-tab-pane>
 
         <n-tab-pane name="Access Data" tab="Access Data">
           Please complete the requirements below to access the dataset
-
           <n-divider />
 
           <n-collapse>
