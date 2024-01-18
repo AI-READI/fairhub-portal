@@ -324,19 +324,20 @@ console.log(props.metadata);
               </p>
             </div>
 
-            <p class="mb-1 mt-2 w-full border-b font-semibold">
-              Biospecimens Description
-            </p>
+            <div
+              v-if="metadata.DesignModule.BioSpec.BioSpecDescription"
+              class="mt-2"
+            >
+              <p class="mb-1 w-full border-b font-semibold">
+                Biospecimens Description
+              </p>
 
-            <p>
-              {{ metadata.DesignModule.BioSpec.BioSpecDescription }}
-            </p>
+              <p>
+                {{ metadata.DesignModule.BioSpec.BioSpecDescription }}
+              </p>
+            </div>
           </div>
         </div>
-
-        <pre>
-        {{ metadata.DesignModule }}
-        </pre>
       </n-space>
     </card-collapsible-card>
 
