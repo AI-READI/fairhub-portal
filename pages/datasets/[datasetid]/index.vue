@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import sanitizeHtml from "sanitize-html";
 import { parse } from "marked";
-// import JsonViewer from "vue-json-viewer/ssr";
 
 const push = usePush();
 const route = useRoute();
 
 const { datasetid } = route.params as { datasetid: string };
 const sanitize = (html: string) => sanitizeHtml(html);
-// const { readme } = route.params as { readme: string };
 
 const url = ref<string>("sftp://user@1.1.1.1//home/user/a.txt");
 
@@ -31,8 +29,6 @@ const markdownToHtml = ref<string>("");
 const datasetSheetMarkdownToHtml = ref<string>("");
 
 if (dataset.value) {
-  console.log(dataset.value.metadata);
-  // console.log("dataset.value.readme", dataset.value.metadata.readme);
   if (dataset.value?.metadata.readme) {
     markdownToHtml.value = sanitize(parse(dataset.value.metadata.readme));
   }
@@ -43,35 +39,6 @@ if (dataset.value) {
     );
   }
 }
-
-const shortenedDatasetCreators = computed(() => {
-  if (!dataset.value?.creators) {
-    return "";
-  }
-
-  const creatorsLength = dataset.value.creators.length;
-
-  if (creatorsLength === 1) {
-    return `${dataset.value.creators[0].familyName}, ${dataset.value.creators[0].givenName[0]}`;
-  }
-
-  if (creatorsLength === 2) {
-    return `${dataset.value.creators[0].familyName}, ${dataset.value.creators[0].givenName[0]} and ${dataset.value.creators[1].familyName}, ${dataset.value.creators[1].givenName[0]}.`;
-  }
-
-  if (creatorsLength === 3) {
-    return `${dataset.value.creators[0].familyName}, ${dataset.value.creators[0].givenName[0]}., ${dataset.value.creators[1].familyName}, ${dataset.value.creators[1].givenName[0]}., & ${dataset.value.creators[2].familyName}, ${dataset.value.creators[2].givenName[0]}.`;
-  }
-
-  if (creatorsLength > 3) {
-    return `${dataset.value.creators[0].familyName}, ${
-      dataset.value.creators[0].givenName[0]
-    }, ${dataset.value.creators[1].familyName}, ${
-      dataset.value.creators[1].givenName[0]
-    } and ${creatorsLength - 2} more.`;
-  }
-  return "";
-});
 </script>
 
 <template>

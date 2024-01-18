@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   metadata: {
     required: true,
     type: Object as PropType<StudyDescription>,
@@ -10,7 +10,7 @@ const props = defineProps({
   },
 });
 
-console.log(props.metadata);
+\
 </script>
 
 <template>
