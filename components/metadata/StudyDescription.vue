@@ -152,7 +152,92 @@ console.log(props.metadata);
         <div
           v-if="metadata.DesignModule.StudyType === 'Interventional'"
           class="mt-2"
-        ></div>
+        >
+          <div v-if="metadata.DesignModule.PhaseList">
+            <p class="mb-1 w-full border-b font-semibold">Phase List</p>
+
+            <n-ul
+              v-for="(phase, index) in metadata.DesignModule.PhaseList"
+              :key="index"
+              class="list-disc text-base"
+            >
+              <n-li>
+                {{ phase }}
+              </n-li>
+            </n-ul>
+          </div>
+
+          <div v-if="metadata.DesignModule.DesignInfo">
+            <p class="mb-1 mt-2 w-full border-b font-semibold">
+              Design Allocation
+            </p>
+
+            <p>
+              {{ metadata.DesignModule.DesignInfo.DesignAllocation }}
+            </p>
+
+            <p class="mb-1 mt-2 w-full border-b font-semibold">
+              Design Intervention Module
+            </p>
+
+            <p>
+              {{ metadata.DesignModule.DesignInfo.DesignInterventionModel }}
+            </p>
+
+            <p class="mb-1 mt-2 w-full border-b font-semibold">
+              Design Primary Purpose
+            </p>
+
+            <p>
+              {{ metadata.DesignModule.DesignInfo.DesignPrimaryPurpose }}
+            </p>
+
+            <p class="mb-1 mt-2 w-full border-b font-semibold">
+              Design Masking
+            </p>
+
+            <p>
+              {{
+                metadata.DesignModule.DesignInfo.DesignMaskingInfo
+                  ?.DesignMasking
+              }}
+            </p>
+
+            <p class="mb-1 mt-2 w-full border-b font-semibold">
+              Who Masked List
+            </p>
+
+            <n-ul
+              v-for="(masked, index) in metadata.DesignModule.DesignInfo
+                .DesignMaskingInfo?.DesignWhoMaskedList"
+              :key="index"
+              class="list-disc text-base"
+            >
+              <n-li>
+                {{ masked }}
+              </n-li>
+            </n-ul>
+
+            <div
+              v-if="
+                metadata.DesignModule.DesignInfo.DesignMaskingInfo
+                  ?.DesignMaskingDescription
+              "
+              class="mt-2"
+            >
+              <p class="mb-1 w-full border-b font-semibold">
+                Masking Description
+              </p>
+
+              <p>
+                {{
+                  metadata.DesignModule.DesignInfo.DesignMaskingInfo
+                    .DesignMaskingDescription
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
 
         <div
           v-if="metadata.DesignModule.StudyType === 'Observational'"
@@ -227,9 +312,17 @@ console.log(props.metadata);
             </p>
 
             <div
-              v-if="metadata.DesignModuleBioSpec.BioSpecDescription"
+              v-if="metadata.DesignModule.BioSpec.BioSpecDescription"
               class="mt-2"
-            ></div>
+            >
+              <p class="mb-1 w-full border-b font-semibold">
+                Biospecimen Description
+              </p>
+
+              <p>
+                {{ metadata.DesignModule.BioSpec.BioSpecDescription }}
+              </p>
+            </div>
 
             <p class="mb-1 mt-2 w-full border-b font-semibold">
               Biospecimens Description
@@ -395,9 +488,55 @@ console.log(props.metadata);
           {{ metadata.IPDSharingStatementModule.IPDSharing }}
         </p>
 
-        <p v-if="metadata.IPDSharingStatementModule.IPDSharing === 'Yes'">
-          {{ metadata.IPDSharingStatementModule.IPDSharingDescription }}
-        </p>
+        <div
+          v-if="metadata.IPDSharingStatementModule.IPDSharing === 'Yes'"
+          class="mt-2"
+        >
+          <p class="mb-1 w-full border-b font-semibold">
+            IPD Sharing Description
+          </p>
+
+          <p>
+            {{ metadata.IPDSharingStatementModule.IPDSharingDescription }}
+          </p>
+
+          <p class="mb-1 mt-2 w-full border-b font-semibold">
+            IPD Sharing Info Types
+          </p>
+
+          <n-ul
+            v-for="(type, index) in metadata.IPDSharingStatementModule
+              .IPDSharingInfoTypeList"
+            :key="index"
+            class="list-disc text-base"
+          >
+            <n-li>
+              {{ type }}
+            </n-li>
+          </n-ul>
+
+          <p class="mb-1 mt-2 w-full border-b font-semibold">
+            IPD Sharing Time Frame
+          </p>
+
+          <p>
+            {{ metadata.IPDSharingStatementModule.IPDSharingTimeFrame }}
+          </p>
+
+          <p class="mb-1 mt-2 w-full border-b font-semibold">
+            IPD Sharing Access Criteria
+          </p>
+
+          <p>
+            {{ metadata.IPDSharingStatementModule.IPDSharingAccessCriteria }}
+          </p>
+
+          <p class="mb-1 mt-2 w-full border-b font-semibold">IPD Sharing URL</p>
+
+          <p>
+            {{ metadata.IPDSharingStatementModule.IPDSharingURL }}
+          </p>
+        </div>
       </n-space>
     </card-collapsible-card>
 
