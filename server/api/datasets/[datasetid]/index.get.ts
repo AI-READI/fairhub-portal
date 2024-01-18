@@ -1,5 +1,4 @@
 import mongodbClientPromise from "~/server/utils/mongodb";
-import { Dataset } from "~/types/dataset";
 
 export default defineEventHandler(async (event) => {
   const { datasetid } = event.context.params as { datasetid: string };
@@ -24,8 +23,8 @@ export default defineEventHandler(async (event) => {
   const dataset: Dataset = {
     id: dbDataset.identifier,
     title: dbDataset.title,
-    createdAt: dbDataset.created_at,
-    creators: [],
+    createdAt: dbDataset.createdAt,
+    creators: dbDataset.creators,
     description: dbDataset.description,
     files: dbDataset?.files,
     metadata: {
