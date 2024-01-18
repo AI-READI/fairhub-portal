@@ -22,9 +22,9 @@ export default defineEventHandler(async (_event) => {
     const item = {
       id: dataset.identifier,
       title: dataset.title,
-      createdAt: dataset.created_at,
+      createdAt: dataset.createdAt,
       description: dataset.description,
-      updatedOn: dataset.updated_on,
+      updatedOn: dataset.updatedOn,
     };
 
     datasets.push(item);

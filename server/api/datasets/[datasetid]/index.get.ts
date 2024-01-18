@@ -27,13 +27,15 @@ export default defineEventHandler(async (event) => {
     creators: dbDataset.creators,
     description: dbDataset.description,
     files: dbDataset?.files,
+    keywords: dbDataset.keywords,
     metadata: {
       datasetDescription: dbDataset.metadata.dataset_description,
       dataSheet: dbDataset.metadata.data_sheet,
       readme: dbDataset.metadata.readme,
       studyDescription: dbDataset.metadata.study_description,
     },
-    updatedOn: dbDataset.updated_on,
+    studyTitle: dbDataset.fairhub.study.title,
+    updatedOn: dbDataset.updatedOn,
   };
 
   return dataset;

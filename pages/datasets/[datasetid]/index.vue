@@ -84,43 +84,34 @@ if (dataset.value) {
 //   }
 // };
 
-const demoVersions = [
-  {
-    id: 1,
-    title: "Version v5.4.2",
-    date: "2021-05-01",
-    doi: "10.5281/fairhub.1234567",
-    selected: true,
-  },
-  {
-    id: 2,
-    title: "Version v5.4.1",
-    date: "2021-04-01",
-    doi: "10.5281/fairhub.1234567",
-    selected: false,
-  },
-  {
-    id: 3,
-    title: "Version v5.4.0",
-    date: "2021-03-01",
-    doi: "10.5281/fairhub.1234567",
-    selected: false,
-  },
-  {
-    id: 4,
-    title: "Version v5.3.0",
-    date: "2021-02-01",
-    doi: "10.5281/fairhub.1234567",
-    selected: false,
-  },
-  {
-    id: 5,
-    title: "Version v5.2.0",
-    date: "2021-01-01",
-    doi: "10.5281/fairhub.1234567",
-    selected: false,
-  },
-];
+const shortenedDatasetCreators = computed(() => {
+  if (!dataset.value?.creators) {
+    return "";
+  }
+
+  const creatorsLength = dataset.value.creators.length;
+
+  if (creatorsLength === 1) {
+    return `${dataset.value.creators[0].familyName}, ${dataset.value.creators[0].givenName[0]}`;
+  }
+
+  if (creatorsLength === 2) {
+    return `${dataset.value.creators[0].familyName}, ${dataset.value.creators[0].givenName[0]} and ${dataset.value.creators[1].familyName}, ${dataset.value.creators[1].givenName[0]}.`;
+  }
+
+  if (creatorsLength === 3) {
+    return `${dataset.value.creators[0].familyName}, ${dataset.value.creators[0].givenName[0]}., ${dataset.value.creators[1].familyName}, ${dataset.value.creators[1].givenName[0]}., & ${dataset.value.creators[2].familyName}, ${dataset.value.creators[2].givenName[0]}.`;
+  }
+
+  if (creatorsLength > 3) {
+    return `${dataset.value.creators[0].familyName}, ${
+      dataset.value.creators[0].givenName[0]
+    }, ${dataset.value.creators[1].familyName}, ${
+      dataset.value.creators[1].givenName[0]
+    } and ${creatorsLength - 2} more.`;
+  }
+  return "";
+});
 </script>
 
 <template>
@@ -186,108 +177,21 @@ const demoVersions = [
                   <h3>Keywords</h3>
 
                   <n-space>
-                    <n-tag type="info" size="small">Diabetes</n-tag>
-
-                    <n-tag type="info" size="small"
-                      >Artificial Intelligence</n-tag
+                    <n-tag
+                      v-for="(keyword, index) in dataset?.keywords"
+                      :key="index"
+                      type="info"
+                      size="small"
                     >
-
-                    <n-tag type="info" size="small">Machine Learning</n-tag>
-
-                    <n-tag type="info" size="small">Bridge2AI</n-tag>
-
-                    <n-tag type="info" size="small">Eye Imaging</n-tag>
+                      {{ keyword }}
+                    </n-tag>
                   </n-space>
                 </n-space>
               </n-space>
 
-              <n-space
-                vertical
-                class="rounded-xl border border-purple-200 bg-slate-50 px-4 pb-5 pt-3"
-              >
-                <n-space vertical size="large">
-                  <h3>Citation</h3>
+              <CitationViewer :id="(dataset?.id as number)" />
 
-                  <p class="text-sm">
-                    <span class="font-medium">
-                      When using this resource, please cite:
-                    </span>
-
-                    <br />
-                    Fushiguro, M., Geto, S., & Nanami, K. (2024). Flagship
-                    Dataset of Type 2 Diabetes from the AI-READI Project (v2).
-                    Fairhub.
-                    <NuxtLink
-                      to="#"
-                      class="underline transition-all hover:text-slate-600"
-                    >
-                      https://doi.org/10.fairhub/13942 </NuxtLink
-                    >.
-                  </p>
-
-                  <p class="text-sm">
-                    <span class="font-medium">
-                      Additionally, please cite the original publication:
-                    </span>
-
-                    <br />
-
-                    <NuxtLink
-                      to="#"
-                      class="underline transition-all hover:text-slate-600"
-                    >
-                      Johnson, A. E. W., Pollard, T. J., Shen, L., Lehman, L.
-                      H., Feng, M., Ghassemi, M., Moody, B., Szolovits, P.,
-                      Celi, L. A., & Mark, R. G. (2016). MIMIC-III, a freely
-                      accessible critical care database. Scientific Data, 3,
-                      160035.
-                    </NuxtLink>
-                    .
-                  </p>
-                </n-space>
-              </n-space>
-
-              <n-space
-                vertical
-                class="rounded-xl border border-purple-200 bg-slate-50 pb-5 pt-3"
-              >
-                <n-space vertical :size="[0, 0]">
-                  <h3 class="mb-3 px-4">Versions</h3>
-
-                  <n-space
-                    v-for="version in demoVersions"
-                    :key="version.id"
-                    justify="space-between"
-                    align="start"
-                    class="p-2 transition-all hover:bg-purple-50"
-                    :class="{
-                      '!bg-purple-200': version.selected,
-                    }"
-                  >
-                    <div class="flex flex-col space-y-1">
-                      <NuxtLink
-                        to="#"
-                        target="_blank"
-                        class="text-sm font-medium transition-all hover:text-slate-600 hover:underline"
-                      >
-                        {{ version.title }}
-                      </NuxtLink>
-
-                      <NuxtLink
-                        to="#"
-                        target="_blank"
-                        class="text-sm transition-all hover:text-slate-600 hover:underline"
-                      >
-                        {{ version.doi }}
-                      </NuxtLink>
-                    </div>
-
-                    <p class="text-right text-xs text-gray-500">
-                      {{ version.date }}
-                    </p>
-                  </n-space>
-                </n-space>
-              </n-space>
+              <VersionSelector :id="(dataset?.id as number)" />
             </n-space>
           </div>
         </n-tab-pane>
@@ -301,7 +205,12 @@ const demoVersions = [
           <!-- eslint-enable vue/no-v-html -->
         </n-tab-pane>
 
-        <!-- <n-tab-pane name="Study Metadata" tab="Study Metadata">
+        <n-tab-pane name="Study Metadata" tab="Study Metadata">
+          <MetadataStudyDescription
+            :metadata="(dataset?.metadata.studyDescription as StudyDescription)"
+            :study-title="(dataset?.studyTitle as string)"
+          />
+
           <n-divider />
 
           <n-collapse>
@@ -313,9 +222,9 @@ const demoVersions = [
               <json-viewer :value="dataset?.metadata.studyDescription || {}" />
             </n-collapse-item>
           </n-collapse>
-        </n-tab-pane> -->
+        </n-tab-pane>
 
-        <!-- <n-tab-pane name="Dataset Metadata" tab="Dataset Metadata">
+        <n-tab-pane name="Dataset Metadata" tab="Dataset Metadata">
           <n-divider />
 
           <n-collapse>
@@ -343,7 +252,7 @@ const demoVersions = [
               />
             </n-collapse-item>
           </n-collapse>
-        </n-tab-pane> -->
+        </n-tab-pane>
 
         <n-tab-pane name="Datatype Metadata" tab="Datatype Metadata">
           Datatype Metadata

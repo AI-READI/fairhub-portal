@@ -160,7 +160,8 @@ if (error.value) {
                 <n-space vertical>
                   <p>
                     <span class="font-bold">Created on:</span>
-                    {{ $dayjs(dataset.createdAt).format("MMMM DD, YYYY") }}
+
+                    {{ $dayjs.unix(dataset.createdAt).format("MMMM DD, YYYY") }}
                   </p>
                 </n-space>
               </div>
