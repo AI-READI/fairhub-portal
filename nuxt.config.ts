@@ -73,4 +73,13 @@ export default defineNuxtConfig({
   notivue: {
     // Options
   },
+
+  routeRules: {
+    "/": {
+      prerender: true,
+    },
+    "/dataset/**": {
+      swr: 3600,
+    },
+  },
 });
