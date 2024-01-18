@@ -190,9 +190,11 @@ if (dataset.value) {
           Datatype Metadata
         </n-tab-pane>
 
-        <n-tab-pane name="Files" tab="Files">
-          <FilesFolderViewer :dataset="dataset" />
-        </n-tab-pane>
+        <!-- <n-tab-pane name="Files" tab="Files">
+          <FilesFolderViewer
+            :folder-structure="(dataset?.files as FolderStructure[])"
+          />
+        </n-tab-pane> -->
 
         <n-tab-pane name="Dashboard" tab="Dashboard"> Dashboard </n-tab-pane>
 

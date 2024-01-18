@@ -339,7 +339,7 @@ interface Dataset {
   id: number;
   keywords: string[];
   updatedOn: number;
-  files: Files[];
+  files: FolderStructure[];
   createdAt: number; // unix timestamp - the date the dataset was published
   title: string;
   description: string;
@@ -358,16 +358,16 @@ interface DatasetArrayItem {
 
 interface DatasetArray extends Array<DatasetArrayItem> {}
 
-interface Files {
-  children?: Files[];
+interface FolderStructure {
+  children?: FolderStructure[];
   label: string;
 }
 
 interface Metadata {
   dataSheet: string;
   readme: string;
-  studyDescription: string | any;
-  datasetDescription: string | any;
+  studyDescription: StudyDescription;
+  datasetDescription: DatasetDescription;
 }
 interface Version {
   id: string;

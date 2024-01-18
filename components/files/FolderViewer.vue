@@ -3,13 +3,13 @@ import type { TreeOption } from "naive-ui";
 import { Icon } from "#components";
 
 defineProps({
-  dataset: {
+  folderStructure: {
     required: true,
-    type: Object,
+    type: Array as PropType<Array<FolderStructure>>,
   },
 });
 
-function convertFile(file: Files): TreeOption {
+function convertFile(file: FolderStructure): TreeOption {
   return {
     children: file.children ? file.children.map(convertFile) : undefined,
     key: file.label,
@@ -50,7 +50,7 @@ const updatePrefixWithExpaned = (
     <n-tree
       block-line
       expand-on-click
-      :data="dataset?.files.map(convertFile)"
+      :data="folderStructure.map(convertFile)"
       :on-update:expanded-keys="updatePrefixWithExpaned"
     />
   </n-tab-pane>
