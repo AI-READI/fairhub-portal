@@ -1,15 +1,7 @@
 <script setup lang="ts">
 import sanitizeHtml from "sanitize-html";
 import { parse } from "marked";
-import VueJsonPretty from "vue-json-pretty";
-import {
-  Folder,
-  FileTrayFullOutline,
-  FolderOpenOutline,
-} from "@vicons/ionicons5";
-import type { TreeOption } from "naive-ui";
-import { NIcon } from "naive-ui";
-import type { Files } from "~/types/dataset";
+
 const push = usePush();
 const route = useRoute();
 
@@ -54,53 +46,43 @@ if (dataset.value) {
   console.log(dataset.value);
 }
 
-function convertFile(file: Files): TreeOption {
-  return {
-    children: file.children ? file.children.map(convertFile) : undefined,
-    key: file.label,
-    label: file.label,
-    prefix: () =>
-      h(NIcon, null, {
-        default: () =>
-          file.children?.length ? h(Folder) : h(FileTrayFullOutline),
-      }),
-  };
-}
-
-const updatePrefixWithExpaned = (
-  _keys: Array<string | number>,
-  _option: Array<TreeOption | null>,
-  meta: {
-    action: "expand" | "collapse" | "filter";
-    node: TreeOption | null;
-  }
-) => {
-  if (!meta.node) return;
-  switch (meta.action) {
-    case "expand":
-      meta.node.prefix = () =>
-        h(NIcon, null, {
-          default: () => h(FolderOpenOutline),
-        });
-      break;
-    case "collapse":
-      meta.node.prefix = () =>
-        h(NIcon, null, {
-          default: () => h(Folder),
-        });
-      break;
-  }
-};
-
-const nodeProps = ({ option }: { option: TreeOption }) => {
-  return {
-    onClick() {
-      if (!option.children && !option.disabled) {
-        /* empty */
-      }
-    },
-  };
-};
+// function convertFile(file: Files): TreeOption {
+//   return {
+//     children: file.children ? file.children.map(convertFile) : undefined,
+//     key: file.label,
+//     label: file.label,
+//     prefix: () =>
+//       h(NIcon, null, {
+//         default: () =>
+//           file.children?.length ? h(Folder) : h(FileTrayFullOutline),
+//       }),
+//   };
+// }
+//
+// const updatePrefixWithExpaned = (
+//   _keys: Array<string | number>,
+//   _option: Array<TreeOption | null>,
+//   meta: {
+//     action: "expand" | "collapse" | "filter";
+//     node: TreeOption | null;
+//   }
+// ) => {
+//   if (!meta.node) return;
+//   switch (meta.action) {
+//     case "expand":
+//       meta.node.prefix = () =>
+//         h(NIcon, null, {
+//           default: () => h(FolderOpenOutline),
+//         });
+//       break;
+//     case "collapse":
+//       meta.node.prefix = () =>
+//         h(NIcon, null, {
+//           default: () => h(Folder),
+//         });
+//       break;
+//   }
+// };
 
 const demoVersions = [
   {
@@ -368,13 +350,7 @@ const demoVersions = [
         </n-tab-pane>
 
         <n-tab-pane name="Files" tab="Files">
-          <n-tree
-            block-line
-            expand-on-click
-            :data="dataset?.files.map(convertFile)"
-            :on-update:expanded-keys="updatePrefixWithExpaned"
-            :node-props="nodeProps"
-          />
+          <FilesGeneralStructure :dataset="dataset" />
         </n-tab-pane>
 
         <n-tab-pane name="Dashboard" tab="Dashboard"> Dashboard </n-tab-pane>
