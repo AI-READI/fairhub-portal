@@ -22,8 +22,6 @@ onBeforeMount(() => {
     props.metadata.EligibilityModule.EligibilityCriteria
   );
 });
-
-console.log(props.metadata);
 </script>
 
 <template>
@@ -364,11 +362,12 @@ console.log(props.metadata);
     >
       <n-space vertical>
         <p class="mb-1 w-full border-b font-semibold">Eligibility Criteria</p>
-
+        <!-- eslint-disable vue/no-v-html -->
         <div
           class="prose mt-2 max-w-none text-black"
           v-html="eligibilityMarkdown"
         ></div>
+        <!-- eslint-enable vue/no-v-html -->
 
         <p class="mb-1 mt-2 w-full border-b font-semibold">Gender</p>
 

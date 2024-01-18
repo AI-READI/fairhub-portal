@@ -185,6 +185,10 @@ const shortenedDatasetCreators = computed(() => {
         </n-tab-pane>
 
         <n-tab-pane name="Dataset Metadata" tab="Dataset Metadata">
+          <MetadataDatasetDescription
+            :metadata="(dataset?.metadata.datasetDescription as DatasetDescription)"
+          />
+
           <n-divider />
 
           <n-collapse>
