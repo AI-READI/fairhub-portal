@@ -73,10 +73,4 @@ export default defineNuxtConfig({
   notivue: {
     // Options
   },
-
-  routeRules: {
-    "/": {
-      prerender: true,
-    },
-  },
 });
