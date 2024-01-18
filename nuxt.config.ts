@@ -78,8 +78,5 @@ export default defineNuxtConfig({
     "/": {
       prerender: true,
     },
-    "/dataset/**": {
-      swr: 3600,
-    },
   },
 });
