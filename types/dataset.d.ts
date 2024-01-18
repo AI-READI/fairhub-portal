@@ -251,7 +251,7 @@ interface StudyDescription {
       EnrollmentCount: string;
       EnrollmentType: string;
     };
-    NumberArms: string;
+    NumberArms?: string;
     PhaseList?: string[];
     StudyType: string;
     TargetDuration: string;

@@ -16,8 +16,10 @@ console.log(props.metadata);
 <template>
   <n-space vertical size="large">
     <card-collapsible-card
+      id="DescriptionModule"
+      data-section-title="Study Overview"
       title="Study Overview"
-      class="shadow-md"
+      class="mb-4 shadow-md"
       bordered
       collapse
     >
@@ -65,11 +67,37 @@ console.log(props.metadata);
           </p>
 
           <p>{{ metadata.StatusModule.StartDateStruct.StartDate }}</p>
+
+          <div v-if="metadata.StatusModule.CompletionDateStruct" class="mt-4">
+            <p class="mb-1 w-full border-b font-semibold">
+              Study Completion ({{
+                metadata.StatusModule.CompletionDateStruct.CompletionDateType
+              }})
+            </p>
+
+            <p>
+              {{ metadata.StatusModule.CompletionDateStruct.CompletionDate }}
+            </p>
+          </div>
+
+          <div v-if="metadata.StatusModule.WhyStopped" class="mt-4">
+            <p class="mb-1 w-full border-b font-semibold">Why Stopped</p>
+
+            <p>
+              {{ metadata.StatusModule.WhyStopped }}
+            </p>
+          </div>
+
+          <p class="mb-1 mt-4 w-full border-b font-semibold">Overall Status</p>
+
+          <p>
+            {{ metadata.StatusModule.OverallStatus }}
+          </p>
         </n-space>
       </div>
     </card-collapsible-card>
 
-    <!-- <n-card title="Contact and Locations" class="shadow-md">
+    <!-- <n-card title="Contact and Locations" id="cContactsLocationsModule" data-section-title="Contact and Locations" class="shadow-md">
       <n-space vertical>
         <p class="mb-1 w-full border-b font-medium">Brief Summary</p>
 
@@ -80,12 +108,45 @@ console.log(props.metadata);
       </n-space>
     </n-card> -->
 
-    <card-collapsible-card title="Design" class="shadow-md" bordered collapse>
+    <card-collapsible-card
+      id="DesignModule"
+      data-section-title="Design"
+      title="Design"
+      class="mb-4 shadow-md"
+      bordered
+      collapse
+    >
       <n-space vertical>
         <p class="mb-1 w-full border-b font-semibold">Study Type</p>
 
         <p>
           {{ metadata.DesignModule.StudyType }}
+        </p>
+
+        <p class="mb-1 mt-2 w-full border-b font-semibold">
+          Enrollment Count ({{
+            metadata.DesignModule.EnrollmentInfo.EnrollmentType
+          }})
+        </p>
+
+        <div>
+          <p>
+            {{ metadata.DesignModule.EnrollmentInfo.EnrollmentCount }}
+          </p>
+        </div>
+
+        <p class="mb-1 mt-2 w-full border-b font-semibold">Target Duration</p>
+
+        <p>
+          {{ metadata.DesignModule.TargetDuration }}
+        </p>
+
+        <p class="mb-1 mt-2 w-full border-b font-semibold">
+          Number of Cohort Groups
+        </p>
+
+        <p>
+          {{ metadata.DesignModule.NumberGroupsCohorts }}
         </p>
 
         <div
@@ -97,8 +158,6 @@ console.log(props.metadata);
           v-if="metadata.DesignModule.StudyType === 'Observational'"
           class="mt-2"
         >
-          <!-- <p class="mb-1 w-full border-b font-semibold">Observational Model</p> -->
-
           <div v-if="metadata.DesignModule.DesignInfo.DesignAllocation">
             <p class="mb-1 w-full border-b font-semibold">Design Allocation</p>
 
@@ -107,9 +166,12 @@ console.log(props.metadata);
             </p>
           </div>
 
-          <div v-if="metadata.DesignModule.DesignInfo.DesignObservationModel">
+          <div
+            v-if="metadata.DesignModule.DesignInfo.DesignObservationModel"
+            class="mt-4"
+          >
             <p class="mb-1 w-full border-b font-semibold">
-              Design Obsevation Model
+              Design Observation Model
             </p>
 
             <p>
@@ -119,6 +181,7 @@ console.log(props.metadata);
 
           <div
             v-if="metadata.DesignModule.DesignInfo.DesignObservationalModelList"
+            class="mt-3"
           >
             <p class="mb-2 w-full border-b font-semibold">
               Design Observation Model
@@ -135,6 +198,47 @@ console.log(props.metadata);
               </n-li>
             </n-ul>
           </div>
+
+          <div
+            v-if="metadata.DesignModule.DesignInfo.DesignTimePerspectiveList"
+            class="mt-5"
+          >
+            <p class="mb-2 w-full border-b font-semibold">
+              Design Time Perspective
+            </p>
+
+            <n-ul
+              v-for="perspective in metadata.DesignModule.DesignInfo
+                .DesignTimePerspectiveList"
+              :key="perspective"
+              class="list-disc text-base"
+            >
+              <n-li>
+                {{ perspective }}
+              </n-li>
+            </n-ul>
+          </div>
+
+          <div v-if="metadata.DesignModule.BioSpec" class="mt-4">
+            <p class="mb-1 w-full border-b font-semibold">Biospecimens</p>
+
+            <p>
+              {{ metadata.DesignModule.BioSpec.BioSpecRetention }}
+            </p>
+
+            <div
+              v-if="metadata.DesignModuleBioSpec.BioSpecDescription"
+              class="mt-2"
+            ></div>
+
+            <p class="mb-1 mt-2 w-full border-b font-semibold">
+              Biospecimens Description
+            </p>
+
+            <p>
+              {{ metadata.DesignModule.BioSpec.BioSpecDescription }}
+            </p>
+          </div>
         </div>
 
         <pre>
@@ -144,8 +248,10 @@ console.log(props.metadata);
     </card-collapsible-card>
 
     <card-collapsible-card
+      id="EligibilityModule"
+      data-section-title="Eligibility"
       title="Eligibility"
-      class="shadow-md"
+      class="mb-4 shadow-md"
       bordered
       collapse
     >
@@ -215,8 +321,10 @@ console.log(props.metadata);
     </card-collapsible-card>
 
     <card-collapsible-card
+      id="IdentificationModule"
       title="Identification Information"
-      class="shadow-md"
+      data-section-title="Identification Information"
+      class="mb-4 shadow-md"
       bordered
       collapse
     >
@@ -227,7 +335,7 @@ console.log(props.metadata);
           {{ metadata.IdentificationModule.OrgStudyIdInfo.OrgStudyId }}
         </p>
 
-        <p class="mb-1 mt-2 w-full border-b font-semibold">
+        <p class="mb-1 mt-3 w-full border-b font-semibold">
           Organization Study Type
         </p>
 
@@ -237,7 +345,7 @@ console.log(props.metadata);
 
         <div
           v-if="metadata.IdentificationModule.SecondaryIdInfoList"
-          class="mb-1 mt-2 w-full"
+          class="mb-1 mt-4 w-full"
         >
           <p class="mb-1 w-full border-b font-semibold">Secondary ID</p>
 
@@ -256,9 +364,9 @@ console.log(props.metadata);
 
             <tbody>
               <tr
-                v-for="secondaryId in metadata.IdentificationModule
+                v-for="(secondaryId, index) in metadata.IdentificationModule
                   .SecondaryIdInfoList"
-                :key="secondaryId"
+                :key="index"
               >
                 <td>{{ secondaryId.SecondaryId }}</td>
 
@@ -275,8 +383,10 @@ console.log(props.metadata);
     </card-collapsible-card>
 
     <card-collapsible-card
+      id="IPDSharingStatementModule"
       title="IPD Sharing"
-      class="shadow-md"
+      data-section-title="IPD Sharing"
+      class="mb-4 shadow-md"
       bordered
       collapse
     >
@@ -292,8 +402,10 @@ console.log(props.metadata);
     </card-collapsible-card>
 
     <card-collapsible-card
+      id="OversightModule"
+      data-section-title="Oversight"
       title="Oversight"
-      class="shadow-md"
+      class="mb-4 shadow-md"
       bordered
       collapse
     >
@@ -307,8 +419,10 @@ console.log(props.metadata);
     </card-collapsible-card>
 
     <card-collapsible-card
+      id="ReferencesModule"
+      data-section-title="References"
       title="References"
-      class="shadow-md"
+      class="mb-4 shadow-md"
       bordered
       collapse
     >
@@ -329,8 +443,9 @@ console.log(props.metadata);
 
             <tbody>
               <tr
-                v-for="reference in metadata.ReferencesModule.ReferenceList"
-                :key="reference"
+                v-for="(reference, index) in metadata.ReferencesModule
+                  .ReferenceList"
+                :key="index"
               >
                 <td>{{ reference.ReferenceCitation }}</td>
 
@@ -342,7 +457,7 @@ console.log(props.metadata);
           </n-table>
         </div>
 
-        <div v-if="metadata.ReferencesModule.SeeAlsoLinkList" class="mt-2">
+        <div v-if="metadata.ReferencesModule.SeeAlsoLinkList" class="mt-4">
           <p class="mb-1 w-full border-b font-semibold">See Also</p>
 
           <n-table :bordered="false" :single-line="false">
@@ -356,13 +471,17 @@ console.log(props.metadata);
 
             <tbody>
               <tr
-                v-for="seeAlso in metadata.ReferencesModule.SeeAlsoLinkList"
-                :key="seeAlso"
+                v-for="(seeAlso, index) in metadata.ReferencesModule
+                  .SeeAlsoLinkList"
+                :key="index"
               >
                 <td>
-                  <n-a href="seeAlso.SeeAlsoLinkURL" target="_blank">{{
-                    seeAlso.SeeAlsoLinkURL
-                  }}</n-a>
+                  <n-a
+                    class="color-blue-600"
+                    :href="seeAlso.SeeAlsoLinkURL"
+                    target="_blank"
+                    >{{ seeAlso.SeeAlsoLinkURL }}
+                  </n-a>
                 </td>
 
                 <td>{{ seeAlso.SeeAlsoLinkLabel || "N/A" }}</td>
@@ -371,7 +490,7 @@ console.log(props.metadata);
           </n-table>
         </div>
 
-        <div v-if="metadata.ReferencesModule.AvailIPDList" class="mt-2">
+        <div v-if="metadata.ReferencesModule.AvailIPDList" class="mt-4">
           <p class="mb-1 w-full border-b font-semibold">Available IPDs</p>
 
           <n-table :bordered="false" :single-line="false">
@@ -389,15 +508,16 @@ console.log(props.metadata);
 
             <tbody>
               <tr
-                v-for="availIPD in metadata.ReferencesModule.AvailIPDList"
-                :key="availIPD"
+                v-for="(availIPD, index) in metadata.ReferencesModule
+                  .AvailIPDList"
+                :key="index"
               >
                 <td>{{ availIPD.AvailIPDId }}</td>
 
                 <td>{{ availIPD.AvailIPDType }}</td>
 
                 <td>
-                  <n-a href="availIPD.AvailIPDURL" target="_blank">
+                  <n-a :href="availIPD.AvailIPDURL" target="_blank">
                     {{ availIPD.AvailIPDURL }}
                   </n-a>
                 </td>
@@ -411,8 +531,10 @@ console.log(props.metadata);
     </card-collapsible-card>
 
     <card-collapsible-card
+      id="SponsorCollaboratorsModule"
+      data-section-title="Sponsors and Collaborators"
       title="Sponsors and Collaborators"
-      class="shadow-md"
+      class="mb-4 shadow-md"
       bordered
       collapse
     >
@@ -428,9 +550,9 @@ console.log(props.metadata);
 
           <n-space vertical>
             <n-ul
-              v-for="collaborator in metadata.SponsorCollaboratorsModule
-                .CollaboratorList"
-              :key="collaborator"
+              v-for="(collaborator, index) in metadata
+                .SponsorCollaboratorsModule.CollaboratorList"
+              :key="index"
               class="font-base list-disc"
             >
               <n-li>{{ collaborator.CollaboratorName }}</n-li>
@@ -488,7 +610,7 @@ console.log(props.metadata);
       </n-space>
     </card-collapsible-card>
 
-    <card-collapsible-card
+    <!-- <card-collapsible-card
       id="status-information"
       title="Status Information"
       class="shadow-md"
@@ -511,7 +633,6 @@ console.log(props.metadata);
           {{ metadata.StatusModule.StartDateStruct.StartDate }}
         </p>
 
-        <!-- create two p tags if completiondatestruct exists -->
         <div v-if="metadata.StatusModule.CompletionDateStruct" class="mt-2">
           <p class="mb-1 w-full border-b font-semibold">
             {{ metadata.StatusModule.CompletionDateStruct.CompletionDateType }}
@@ -531,6 +652,6 @@ console.log(props.metadata);
           </p>
         </div>
       </n-space>
-    </card-collapsible-card>
+    </card-collapsible-card> -->
   </n-space>
 </template>
