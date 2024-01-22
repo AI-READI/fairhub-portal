@@ -38,6 +38,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "notivue/nuxt",
     "@nuxtjs/sitemap",
+    "nuxt-simple-robots",
     "nuxt-headlessui",
     "dayjs-nuxt",
     "nuxt-lodash",
@@ -74,6 +75,8 @@ export default defineNuxtConfig({
   notivue: {
     // Options
   },
+
+  site: { indexable: false },
 
   sitemap: {
     sources: ["/api/__sitemap__/urls"],

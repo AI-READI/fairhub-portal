@@ -40,6 +40,7 @@
     "nuxt": "^3.9.3",
     "nuxt-headlessui": "^1.1.4",
     "nuxt-icon": "^0.4.1",
+    "nuxt-simple-robots": "^4.0.0-rc.13",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0",
     "tailwindcss-debug-screens": "^2.2.1",

@@ -52,28 +52,6 @@ if (error.value) {
             Find and reuse FAIR, AI-ready datasets shared through the FAIRhub
             data management and curation platform.
           </p>
-
-          <div class="flex w-full flex-col">
-            <div class="flex w-max flex-col">
-              <n-space>
-                <NuxtLink to="#datasets">
-                  <n-button type="info" size="large" secondary>
-                    <template #icon>
-                      <Icon name="solar:pin-list-bold-duotone" size="25" />
-                    </template>
-                    View all datasets
-                  </n-button>
-                </NuxtLink>
-
-                <n-button color="#FF4500" size="large" secondary>
-                  <template #icon>
-                    <Icon name="fluent-mdl2:contact-list" size="25" />
-                  </template>
-                  View all studies
-                </n-button>
-              </n-space>
-            </div>
-          </div>
         </div>
 
         <div class="hidden lg:col-span-4 lg:mt-0 lg:flex">
@@ -133,27 +111,33 @@ if (error.value) {
             v-for="dataset in datasets"
             :key="dataset.id"
             :to="`/datasets/${dataset.id}`"
-            class="rounded-lg border border-purple-300 bg-white px-5 py-3 shadow-sm transition-all hover:bg-fuchsia-50 hover:shadow-md"
+            class="h-full rounded-lg border border-purple-300 bg-white px-5 py-3 shadow-sm transition-all hover:bg-fuchsia-50 hover:shadow-md"
           >
-            <n-space size="large">
+            <div class="flex h-full w-full items-start space-x-5">
               <n-image
                 :src="`https://api.dicebear.com/7.x/shapes/svg?seed=${dataset.id}`"
                 :alt="dataset.title"
-                class="size-32 h-32 w-32 rounded-lg"
+                class="size-32 h-32 w-32 self-center rounded-xl"
               />
 
               <div
-                class="flex h-full flex-col items-start justify-between space-y-2 pb-2"
+                class="flex h-full w-full flex-grow flex-col items-stretch justify-between space-y-2"
               >
                 <n-space vertical>
-                  <h3>{{ dataset.title }}</h3>
+                  <div class="flex items-start justify-between">
+                    <h3>{{ dataset.title }}</h3>
+
+                    <n-tag type="info" :bordered="false">
+                      Version {{ dataset.version }}
+                    </n-tag>
+                  </div>
 
                   <p>
                     {{ dataset.description }}
                   </p>
                 </n-space>
 
-                <n-space vertical>
+                <n-space>
                   <p>
                     <span class="font-bold">Created on:</span>
 
@@ -161,7 +145,7 @@ if (error.value) {
                   </p>
                 </n-space>
               </div>
-            </n-space>
+            </div>
           </NuxtLink>
         </div>
       </div>
