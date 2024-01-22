@@ -16,9 +16,9 @@ const devMode = process.env.NODE_ENV === "development";
               class="flex flex-row items-center justify-start space-x-2"
             >
               <span
-                class="bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-xl font-bold text-transparent"
+                class="bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-xl font-extrabold text-transparent"
               >
-                data.fairhub
+                fairhub
               </span>
             </NuxtLink>
           </div>

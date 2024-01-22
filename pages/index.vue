@@ -48,19 +48,15 @@ if (error.value) {
             Make breakthrough discoveries with AI-ready datasets
           </h1>
 
-          <p class="mb-6 max-w-2xl text-lg text-gray-500 lg:mb-5">
+          <p class="mb-2 max-w-2xl text-xl font-normal text-gray-800">
             Find and reuse FAIR, AI-ready datasets shared through the FAIRhub
             data management and curation platform.
-            <br />
-            Home of the AI-READI dataset.
           </p>
 
           <div class="flex w-full flex-col">
-            <div class="flex hidden w-max flex-col">
-              <n-divider> or </n-divider>
-
+            <div class="flex w-max flex-col">
               <n-space>
-                <NuxtLink to="/datasets">
+                <NuxtLink to="#datasets">
                   <n-button type="info" size="large" secondary>
                     <template #icon>
                       <Icon name="solar:pin-list-bold-duotone" size="25" />
@@ -94,7 +90,7 @@ if (error.value) {
           class="mx-auto flex w-full max-w-screen-xl items-center justify-between px-2"
         >
           <n-space vertical class="mt-8 w-full">
-            <h1>Datasets</h1>
+            <h1 id="datasets">Datasets</h1>
 
             <p>Explore FAIR, AI-ready datasets.</p>
 

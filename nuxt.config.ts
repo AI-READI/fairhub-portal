@@ -37,6 +37,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@pinia/nuxt",
     "notivue/nuxt",
+    "@nuxtjs/sitemap",
     "nuxt-headlessui",
     "dayjs-nuxt",
     "nuxt-lodash",
@@ -72,5 +73,9 @@ export default defineNuxtConfig({
 
   notivue: {
     // Options
+  },
+
+  sitemap: {
+    sources: ["/api/__sitemap__/urls"],
   },
 });
