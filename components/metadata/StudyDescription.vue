@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 import sanitizeHtml from "sanitize-html";
 import { parse } from "marked";
 
@@ -7,6 +8,7 @@ const sanitize = (html: string) => sanitizeHtml(html);
 const eligibilityMarkdown = ref<string>("");
 
 const props = defineProps({
+
   metadata: {
     required: true,
     type: Object as PropType<StudyDescription>,
@@ -22,6 +24,7 @@ onBeforeMount(() => {
     props.metadata.EligibilityModule.EligibilityCriteria
   );
 });
+
 </script>
 
 <template>

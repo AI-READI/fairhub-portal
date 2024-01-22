@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import sanitizeHtml from "sanitize-html";
 import { parse } from "marked";
-// import JsonViewer from "vue-json-viewer/ssr";
 
 const push = usePush();
 const route = useRoute();
 
 const { datasetid } = route.params as { datasetid: string };
 const sanitize = (html: string) => sanitizeHtml(html);
-// const { readme } = route.params as { readme: string };
 
 const url = ref<string>("sftp://user@1.1.1.1//home/user/a.txt");
 
@@ -31,8 +29,6 @@ const markdownToHtml = ref<string>("");
 const datasetSheetMarkdownToHtml = ref<string>("");
 
 if (dataset.value) {
-  console.log(dataset.value.metadata);
-  // console.log("dataset.value.readme", dataset.value.metadata.readme);
   if (dataset.value?.metadata.readme) {
     markdownToHtml.value = sanitize(parse(dataset.value.metadata.readme));
   }
@@ -43,35 +39,6 @@ if (dataset.value) {
     );
   }
 }
-
-const shortenedDatasetCreators = computed(() => {
-  if (!dataset.value?.creators) {
-    return "";
-  }
-
-  const creatorsLength = dataset.value.creators.length;
-
-  if (creatorsLength === 1) {
-    return `${dataset.value.creators[0].familyName}, ${dataset.value.creators[0].givenName[0]}`;
-  }
-
-  if (creatorsLength === 2) {
-    return `${dataset.value.creators[0].familyName}, ${dataset.value.creators[0].givenName[0]} and ${dataset.value.creators[1].familyName}, ${dataset.value.creators[1].givenName[0]}.`;
-  }
-
-  if (creatorsLength === 3) {
-    return `${dataset.value.creators[0].familyName}, ${dataset.value.creators[0].givenName[0]}., ${dataset.value.creators[1].familyName}, ${dataset.value.creators[1].givenName[0]}., & ${dataset.value.creators[2].familyName}, ${dataset.value.creators[2].givenName[0]}.`;
-  }
-
-  if (creatorsLength > 3) {
-    return `${dataset.value.creators[0].familyName}, ${
-      dataset.value.creators[0].givenName[0]
-    }, ${dataset.value.creators[1].familyName}, ${
-      dataset.value.creators[1].givenName[0]
-    } and ${creatorsLength - 2} more.`;
-  }
-  return "";
-});
 </script>
 
 <template>
@@ -104,7 +71,12 @@ const shortenedDatasetCreators = computed(() => {
     </div>
 
     <div class="mx-auto flex w-full max-w-screen-xl flex-col px-3 py-5">
-      <n-tabs type="line" animated size="large" default-value="About">
+      <n-tabs
+        type="line"
+        animated
+        size="large"
+        default-value="Dataset Metadata"
+      >
         <n-tab-pane name="About" tab="About">
           <div class="grid grid-cols-7 gap-10">
             <n-space vertical class="col-span-5 mt-3">
@@ -222,13 +194,16 @@ const shortenedDatasetCreators = computed(() => {
           Datatype Metadata
         </n-tab-pane>
 
-        <!-- <n-tab-pane name="Files" tab="Files"> File Viewer </n-tab-pane> -->
+        <!-- <n-tab-pane name="Files" tab="Files">
+          <FilesFolderViewer
+            :folder-structure="(dataset?.files as FolderStructure[])"
+          />
+        </n-tab-pane> -->
 
         <n-tab-pane name="Dashboard" tab="Dashboard"> Dashboard </n-tab-pane>
 
         <n-tab-pane name="Access Data" tab="Access Data">
           Please complete the requirements below to access the dataset
-
           <n-divider />
 
           <n-collapse>
