@@ -25,7 +25,9 @@ console.log(props.metadata);
 
               <th>Name Type</th>
 
-              <th>Identifier</th>
+              <th>Identifier Scheme</th>
+
+              <th>Identifier Value</th>
 
               <th>Affiliation Name</th>
 
@@ -34,24 +36,45 @@ console.log(props.metadata);
           </thead>
 
           <tbody>
-            <tr v-for="creator in metadata.Creator" :key="creator.id">
+            <tr v-for="(creator, index) in metadata.Creator" :key="index">
               <td>{{ creator.creatorName }}</td>
 
               <td>{{ creator.nameType }}</td>
 
-              <td>{{ creator.nameIdentifier }}</td>
+              <td
+                v-for="(indentifier, innerIndex) in creator.nameIdentifier"
+                :key="innerIndex"
+              >
+                {{ indentifier.nameIdentifierScheme || "N/A" }}
+              </td>
 
-              <td>{{ creator.affiliation }}</td>
+              <td
+                v-for="(indentifier, innerIndex) in creator.nameIdentifier"
+                :key="innerIndex"
+              >
+                {{ indentifier.nameIdentifierValue || "N/A" }}
+              </td>
 
-              <td>{{ creator.affiliation }}</td>
+              <td
+                v-for="(affiliation, innerIndex) in creator.affiliation"
+                :key="innerIndex"
+              >
+                {{ affiliation.affiliationValue || "N/A" }}
+              </td>
+
+              <td
+                v-for="(identifier, innerIndex) in creator.affiliation"
+                :key="innerIndex"
+              >
+                {{ identifier.affiliationIdentifier || "N/A" }}
+              </td>
             </tr>
           </tbody>
         </n-table>
       </n-space>
-
-      <pre>
+      <!-- <pre>
         {{ metadata.Creator }}
-      </pre>
+      </pre> -->
     </card-collapsible-card>
 
     <card-collapsible-card
@@ -60,10 +83,54 @@ console.log(props.metadata);
       data-section-title="Contributors"
       class="mb-4 shadow-md"
     >
-      <pre>
+      <n-space vertical>
+        <n-table :bordered="false" :single-line="false">
+          <thead>
+            <tr>
+              <th>Name</th>
+
+              <th>Name Type</th>
+
+              <th>Contributor Type</th>
+
+              <th>Identifier Scheme</th>
+
+              <th>Identifier Value</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr
+              v-for="(contributor, index) in metadata.Contributor"
+              :key="index"
+            >
+              <td>{{ contributor.contributorName }}</td>
+
+              <td>{{ contributor.nameType }}</td>
+
+              <td>{{ contributor.contributorType }}</td>
+
+              <td
+                v-for="(indentifier, innerIndex) in contributor.nameIdentifier"
+                :key="innerIndex"
+              >
+                {{ indentifier.nameIdentifierScheme || "N/A" }}
+              </td>
+
+              <td
+                v-for="(indentifier, innerIndex) in contributor.nameIdentifier"
+                :key="innerIndex"
+              >
+                {{ indentifier.nameIdentifierValue || "N/A" }}
+              </td>
+            </tr>
+          </tbody>
+        </n-table>
+      </n-space>
+      <!-- <pre>
       {{ metadata.Contributor }}
     </pre
-      >
+      > -->
     </card-collapsible-card>
 
     <card-collapsible-card
@@ -88,16 +155,18 @@ console.log(props.metadata);
         </thead>
 
         <tbody>
-          <tr v-for="funder in metadata.FundingReference" :key="funder.id">
+          <tr v-for="(funder, index) in metadata.FundingReference" :key="index">
             <td>{{ funder.funderName }}</td>
 
-            <td>{{ funder.funderIdentifier.funderIdentifierValue }}</td>
+            <td>
+              {{ funder.funderIdentifier?.funderIdentifierValue || "N/A" }}
+            </td>
 
-            <td>{{ funder.awardNumber.awardNumberValue }}</td>
+            <td>{{ funder.awardNumber?.awardNumberValue || "N/A" }}</td>
 
             <td>{{ funder.awardTitle || "N/A" }}</td>
 
-            <td>{{ funder.awardNumber.awardURI || "N/A" }}</td>
+            <td>{{ funder.awardNumber?.awardURI || "N/A" }}</td>
           </tr>
         </tbody>
       </n-table>
@@ -140,20 +209,17 @@ console.log(props.metadata);
       <p class="mb-1 mt-2 w-full border-b font-semibold">Non Arr</p>
 
       <p>
-        {{ metadata.DatasetDeIdentLevel.deIdentNonArr }}
+        {{ metadata.DatasetDeIdentLevel.deIdentNonarr }}
       </p>
 
-      <div v-if="metadata.DatasetDeIdentLevel.deIdentKanon" class="mt-2">
-        <p class="mb-1 w-full border-b font-semibold">Kanon</p>
+      <p class="mb-1 mt-2 w-full border-b font-semibold">Kanon</p>
 
-        <p>
-          {{ metadata.DatasetDeIdentLevel.deIdentKanon }}
-        </p>
-      </div>
-
-      <pre>
+      <p>
+        {{ metadata.DatasetDeIdentLevel.deIdentKAnon }}
+      </p>
+      <!-- <pre>
         {{ metadata.DatasetDeIdentLevel }}
-      </pre>
+      </pre> -->
     </card-collapsible-card>
 
     <card-collapsible-card
@@ -197,10 +263,9 @@ console.log(props.metadata);
       <p>
         {{ metadata.DatasetConsent.consentNoMethods }}
       </p>
-
-      <pre>
+      <!-- <pre>
         {{ metadata.DatasetConsent }}
-      </pre>
+      </pre> -->
     </card-collapsible-card>
   </n-space>
 </template>
