@@ -59,7 +59,7 @@ interface DatasetDescription {
     deIdentHIPAA: boolean;
     deIdentDates: boolean;
     deIdentNonarr: boolean;
-    deIdentKanon: boolean;
+    deIdentKAnon: boolean;
     deIdentDetails?: string;
   };
   DatasetConsent: {
