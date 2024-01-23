@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 import sanitizeHtml from "sanitize-html";
 import { parse } from "marked";
 
@@ -8,7 +7,6 @@ const sanitize = (html: string) => sanitizeHtml(html);
 const eligibilityMarkdown = ref<string>("");
 
 const props = defineProps({
-
   metadata: {
     required: true,
     type: Object as PropType<StudyDescription>,
@@ -24,7 +22,6 @@ onBeforeMount(() => {
     props.metadata.EligibilityModule.EligibilityCriteria
   );
 });
-
 </script>
 
 <template>
@@ -34,8 +31,6 @@ onBeforeMount(() => {
       data-section-title="Study Overview"
       title="Study Overview"
       class="mb-4 shadow-md"
-      bordered
-      collapse
     >
       <div class="grid grid-cols-12 gap-8">
         <n-space vertical class="col-span-9 mr-2">
@@ -127,8 +122,6 @@ onBeforeMount(() => {
       data-section-title="Design"
       title="Design"
       class="mb-4 shadow-md"
-      bordered
-      collapse
     >
       <n-space vertical>
         <p class="mb-1 w-full border-b font-semibold">Study Type</p>
@@ -360,8 +353,6 @@ onBeforeMount(() => {
       data-section-title="Eligibility"
       title="Eligibility"
       class="mb-4 shadow-md"
-      bordered
-      collapse
     >
       <n-space vertical>
         <p class="mb-1 w-full border-b font-semibold">Eligibility Criteria</p>
@@ -435,8 +426,6 @@ onBeforeMount(() => {
       title="Identification Information"
       data-section-title="Identification Information"
       class="mb-4 shadow-md"
-      bordered
-      collapse
     >
       <n-space vertical>
         <p class="mb-1 w-full border-b font-semibold">Organization Study ID</p>
@@ -497,8 +486,6 @@ onBeforeMount(() => {
       title="IPD Sharing"
       data-section-title="IPD Sharing"
       class="mb-4 shadow-md"
-      bordered
-      collapse
     >
       <n-space vertical>
         <p>
@@ -562,8 +549,6 @@ onBeforeMount(() => {
       data-section-title="Oversight"
       title="Oversight"
       class="mb-4 shadow-md"
-      bordered
-      collapse
     >
       <n-space vertical>
         <p class="mb-1 w-full border-b font-semibold">Oversight Has DMC?</p>
@@ -579,8 +564,6 @@ onBeforeMount(() => {
       data-section-title="References"
       title="References"
       class="mb-4 shadow-md"
-      bordered
-      collapse
     >
       <n-space vertical>
         <div v-if="metadata.ReferencesModule.ReferenceList">
@@ -691,8 +674,6 @@ onBeforeMount(() => {
       data-section-title="Sponsors and Collaborators"
       title="Sponsors and Collaborators"
       class="mb-4 shadow-md"
-      bordered
-      collapse
     >
       <n-space vertical>
         <p class="mb-1 w-full border-b font-semibold">Sponsor</p>

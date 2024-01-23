@@ -4,10 +4,6 @@ const props = defineProps({
     default: "Card Title",
     type: String,
   },
-  bordered: {
-    default: true,
-    type: Boolean,
-  },
   collapse: {
     default: false,
     type: Boolean,
@@ -30,8 +26,8 @@ const toggleCollapse = () => {
     <div
       class="x flex items-center justify-between rounded-lg px-6 py-3 transition-all"
       :class="{
-        'bg-white': !collapseContent,
-        'bg-slate-50/50': collapseContent,
+        'bg-white': collapseContent,
+        'bg-slate-50/50': !collapseContent,
       }"
     >
       <div class="text-xl font-bold">{{ title }}</div>
@@ -46,7 +42,7 @@ const toggleCollapse = () => {
           @click="toggleCollapse"
         >
           <Icon
-            v-if="collapseContent"
+            v-if="!collapseContent"
             name="fluent:arrow-minimize-vertical-24-filled"
           />
 
@@ -55,10 +51,10 @@ const toggleCollapse = () => {
       </div>
     </div>
 
-    <n-collapse-transition :show="collapseContent">
+    <n-collapse-transition :show="!collapseContent">
       <!-- <n-divider class="!mb-0" /> -->
 
-      <div class="border-t-2 px-6 py-7" :bordered="bordered">
+      <div class="border-t-2 px-6 py-7">
         <slot></slot>
       </div>
     </n-collapse-transition>

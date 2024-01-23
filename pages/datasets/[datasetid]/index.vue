@@ -54,7 +54,7 @@ if (dataset.value) {
 
           <p>{{ dataset?.description }}</p>
 
-          <n-button size="large" type="info" secondary class="my-3">
+          <n-button size="large" type="info" secondary class="my-3 hidden">
             <template #icon>
               <Icon name="line-md:download-loop" />
             </template>
@@ -71,12 +71,7 @@ if (dataset.value) {
     </div>
 
     <div class="mx-auto flex w-full max-w-screen-xl flex-col px-3 py-5">
-      <n-tabs
-        type="line"
-        animated
-        size="large"
-        default-value="Dataset Metadata"
-      >
+      <n-tabs type="line" animated size="large" default-value="About">
         <n-tab-pane name="About" tab="About">
           <div class="grid grid-cols-7 gap-10">
             <n-space vertical class="col-span-5 mt-3">
