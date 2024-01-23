@@ -10,14 +10,14 @@ const props = defineProps({
   },
 });
 
-const collapseContent = ref(false);
+const contentCollapsed = ref(false);
 
 onBeforeMount(() => {
-  collapseContent.value = props.collapse;
+  contentCollapsed.value = props.collapse;
 });
 
 const toggleCollapse = () => {
-  collapseContent.value = !collapseContent.value;
+  contentCollapsed.value = !contentCollapsed.value;
 };
 </script>
 
@@ -26,8 +26,8 @@ const toggleCollapse = () => {
     <div
       class="x flex items-center justify-between rounded-lg px-6 py-3 transition-all"
       :class="{
-        'bg-white': collapseContent,
-        'bg-slate-50/50': !collapseContent,
+        'bg-white': contentCollapsed,
+        'bg-slate-50/50': !contentCollapsed,
       }"
     >
       <div class="text-xl font-bold">{{ title }}</div>
@@ -42,16 +42,16 @@ const toggleCollapse = () => {
           @click="toggleCollapse"
         >
           <Icon
-            v-if="!collapseContent"
-            name="fluent:arrow-minimize-vertical-24-filled"
+            v-if="contentCollapsed"
+            name="fluent:arrow-maximize-vertical-24-filled"
           />
 
-          <Icon v-else name="fluent:arrow-maximize-vertical-24-filled" />
+          <Icon v-else name="fluent:arrow-minimize-vertical-24-filled" />
         </n-button>
       </div>
     </div>
 
-    <n-collapse-transition :show="!collapseContent">
+    <n-collapse-transition :show="!contentCollapsed">
       <!-- <n-divider class="!mb-0" /> -->
 
       <div class="border-t-2 px-6 py-7">
