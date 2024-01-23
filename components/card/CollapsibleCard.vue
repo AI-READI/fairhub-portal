@@ -45,7 +45,12 @@ const toggleCollapse = () => {
           type="info"
           @click="toggleCollapse"
         >
-          <Icon name="fluent:arrow-minimize-vertical-24-filled" />
+          <Icon
+            v-if="collapseContent"
+            name="fluent:arrow-minimize-vertical-24-filled"
+          />
+
+          <Icon v-else name="fluent:arrow-maximize-vertical-24-filled" />
         </n-button>
       </div>
     </div>
