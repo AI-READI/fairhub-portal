@@ -14,8 +14,6 @@ const props = defineProps({
   },
 });
 
-const slots = useSlots();
-
 const collapseContent = ref(false);
 
 onBeforeMount(() => {

@@ -16,7 +16,7 @@ const devMode = process.env.NODE_ENV === "development";
               class="flex flex-row items-center justify-start space-x-2"
             >
               <span
-                class="bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-xl font-extrabold text-transparent"
+                class="bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-2xl font-extrabold text-transparent"
               >
                 fairhub
               </span>
@@ -36,14 +36,14 @@ const devMode = process.env.NODE_ENV === "development";
                 </a>
               </NuxtLink>
 
-              <!-- <NuxtLink to="/studies">
+              <NuxtLink to="/submit">
                 <a
                   href="#"
                   class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
                 >
-                  Studies
+                  Submit
                 </a>
-              </NuxtLink> -->
+              </NuxtLink>
 
               <NuxtLink to="/docs">
                 <a
