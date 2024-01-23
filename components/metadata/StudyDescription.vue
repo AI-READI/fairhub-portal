@@ -1,5 +1,14 @@
 <script setup lang="ts">
-defineProps({
+
+import sanitizeHtml from "sanitize-html";
+import { parse } from "marked";
+
+const sanitize = (html: string) => sanitizeHtml(html);
+
+const eligibilityMarkdown = ref<string>("");
+
+const props = defineProps({
+
   metadata: {
     required: true,
     type: Object as PropType<StudyDescription>,
@@ -9,6 +18,13 @@ defineProps({
     type: String,
   },
 });
+
+onBeforeMount(() => {
+  eligibilityMarkdown.value = parse(
+    props.metadata.EligibilityModule.EligibilityCriteria
+  );
+});
+
 </script>
 
 <template>
@@ -349,10 +365,12 @@ defineProps({
     >
       <n-space vertical>
         <p class="mb-1 w-full border-b font-semibold">Eligibility Criteria</p>
-
-        <p class="">
-          {{ metadata.EligibilityModule.EligibilityCriteria }}
-        </p>
+        <!-- eslint-disable vue/no-v-html -->
+        <div
+          class="prose mt-2 max-w-none text-black"
+          v-html="eligibilityMarkdown"
+        ></div>
+        <!-- eslint-enable vue/no-v-html -->
 
         <p class="mb-1 mt-2 w-full border-b font-semibold">Gender</p>
 
