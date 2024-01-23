@@ -14,8 +14,6 @@ const props = defineProps({
   },
 });
 
-const slots = useSlots();
-
 const collapseContent = ref(false);
 
 onBeforeMount(() => {
@@ -28,20 +26,31 @@ const toggleCollapse = () => {
 </script>
 
 <template>
-  <div class="border border-slate-100 bg-white px-6 pb-1 pt-6 shadow-md">
-    <div class="mb-6 flex justify-between">
-      <div class="text-xl font-semibold leading-9">{{ title }}</div>
+  <div class="rounded-lg border border-slate-300 bg-white shadow-lg">
+    <div
+      class="x flex items-center justify-between rounded-lg px-6 py-3 transition-all"
+      :class="{
+        'bg-white': !collapseContent,
+        'bg-slate-50/50': collapseContent,
+      }"
+    >
+      <div class="text-xl font-bold">{{ title }}</div>
 
       <div class="flex items-center">
         <slot name="header-extra"></slot>
 
         <n-button
           text
-          class="pl-5 text-3xl"
+          class="rounded-full p-2 text-3xl transition-all hover:!bg-cyan-100"
           type="info"
           @click="toggleCollapse"
         >
-          <Icon name="fluent:arrow-minimize-vertical-24-filled" />
+          <Icon
+            v-if="collapseContent"
+            name="fluent:arrow-minimize-vertical-24-filled"
+          />
+
+          <Icon v-else name="fluent:arrow-maximize-vertical-24-filled" />
         </n-button>
       </div>
     </div>
@@ -49,7 +58,7 @@ const toggleCollapse = () => {
     <n-collapse-transition :show="collapseContent">
       <!-- <n-divider class="!mb-0" /> -->
 
-      <div class="border-t-2 py-7" :bordered="bordered">
+      <div class="border-t-2 px-6 py-7" :bordered="bordered">
         <slot></slot>
       </div>
     </n-collapse-transition>

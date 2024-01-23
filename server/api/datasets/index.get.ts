@@ -25,6 +25,7 @@ export default defineEventHandler(async (_event) => {
       createdAt: dataset.createdAt,
       description: dataset.description,
       updatedOn: dataset.updatedOn,
+      version: dataset.fairhub.version.title,
     };
 
     datasets.push(item);

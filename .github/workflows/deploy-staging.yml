@@ -36,6 +36,7 @@ jobs:
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
           MONGODB_DB: ${{ secrets.MONGODB_DB }}
+          NUXT_SITE_ENV: "staging"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
