@@ -2536,6 +2536,13 @@
     "@unhead/schema" "1.8.10"
     "@unhead/shared" "1.8.10"
 
+"@unhead/schema-org@^1.8.9":
+  version "1.8.10"
+  resolved "https://registry.yarnpkg.com/@unhead/schema-org/-/schema-org-1.8.10.tgz#44ff75efd73e286214c74d60ee9b8df9741d563c"
+  integrity sha512-u2g1FCVRpMy6FSm5i2F36bKw6SbMM2B0p6Y36ztBRJ4fd0SGCTZNC4WM6A2eCFZ3aI6E5Zbs+Bo4oUMjfLWDhA==
+  dependencies:
+    ufo "^1.3.2"
+
 "@unhead/schema@1.8.10":
   version "1.8.10"
   resolved "https://registry.yarnpkg.com/@unhead/schema/-/schema-1.8.10.tgz#40e2578a006ae212b5afe7a44bd556846c32ea2e"
@@ -5139,6 +5146,14 @@ flatted@^3.2.9:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.9.tgz#7eb4c67ca1ba34232ca9d2d93e9886e611ad7daf"
   integrity sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ==
 
+floating-vue@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/floating-vue/-/floating-vue-5.1.0.tgz#30a114fed70a95eb0db2cbbfb72f9aa14d8f4c4f"
+  integrity sha512-tk2Y9pbsmfaMc15JhA3JYPRDT+DSOJ2fm7kYIRks0HRga8HtOYDfU4nPh95SRqFOk+OQWHdaE41FYq/wYKztuA==
+  dependencies:
+    "@floating-ui/dom" "~1.1.1"
+    vue-resize "^2.0.0-alpha.1"
+
 floating-vue@5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/floating-vue/-/floating-vue-5.2.0.tgz#8f5ffa40f7eb15c31d7ca7f19d753f6155d387ec"
@@ -7506,6 +7521,22 @@ nuxt-lodash@^2.5.0:
     "@types/lodash-es" "^4.17.10"
     lodash-es "^4.17.21"
 
+nuxt-schema-org@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/nuxt-schema-org/-/nuxt-schema-org-3.3.3.tgz#ea4c2c33efe0fbf5280451ad708e9684195ccc17"
+  integrity sha512-JaUI8nyqwbPgzjgjtMlpeQqhfDRDaM8MOj1tTRICxKX81KRyeGUisfSVPw0BusUOtN+UREdnk0ffmUJb22RgNA==
+  dependencies:
+    "@nuxt/devtools-kit" "^1.0.8"
+    "@nuxt/devtools-ui-kit" "^1.0.8"
+    "@nuxt/kit" "^3.9.1"
+    "@unhead/schema-org" "^1.8.9"
+    floating-vue "5.1.0"
+    nuxt-site-config "^2.2.5"
+    nuxt-site-config-kit "^2.2.5"
+    pathe "^1.1.2"
+    shiki-es "^0.14.0"
+    sirv "^2.0.4"
+
 nuxt-simple-robots@^4.0.0-rc.13:
   version "4.0.0-rc.13"
   resolved "https://registry.yarnpkg.com/nuxt-simple-robots/-/nuxt-simple-robots-4.0.0-rc.13.tgz#865df4898693c71070fa3706d60d267a320f5b1d"
@@ -8940,6 +8971,11 @@ shell-quote@^1.6.1, shell-quote@^1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/shell-quote/-/shell-quote-1.8.1.tgz#6dbf4db75515ad5bac63b4f1894c3a154c766680"
   integrity sha512-6j1W9l1iAs/4xYBI1SYOVZyFcCis9b4KCLQ8fgAGG07QvzaRLVVRQvAy85yNmmZSjYjg4MWh4gNvlPujU/5LpA==
+
+shiki-es@^0.14.0:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/shiki-es/-/shiki-es-0.14.0.tgz#64f7902ad47eda244840836f70f68f9d24aac6e6"
+  integrity sha512-e+/aueHx0YeIEut6RXC6K8gSf0PykwZiHD7q7AHtpTW8Kd8TpFUIWqTwhAnrGjOyOMyrwv+syr5WPagMpDpVYQ==
 
 shikiji-core@0.10.0:
   version "0.10.0"
