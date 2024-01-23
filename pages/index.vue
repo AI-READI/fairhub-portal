@@ -14,7 +14,7 @@ if (error.value) {
 
 <template>
   <main
-    class="h-screen overflow-auto bg-gradient-to-b from-white to-purple-50 px-4"
+    class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50 px-4"
   >
     <div
       class="mb-4 flex items-center justify-center rounded-lg border bg-yellow-50 p-4 text-lg text-yellow-600"
@@ -37,9 +37,17 @@ if (error.value) {
       <div><span class="font-medium">Warning!</span> Work in progress</div>
     </div>
 
-    <section class="">
+    <section class="relative">
+      <img
+        src="/images/background/ooorganize-orange-grid.svg"
+        class="absolute left-0 top-0 h-full w-full object-cover"
+        style="
+          mask-image: linear-gradient(to bottom, white 1%, transparent 70%);
+        "
+      />
+
       <div
-        class="mx-auto grid max-w-screen-xl px-4 lg:grid-cols-12 lg:gap-8 xl:gap-0"
+        class="relative mx-auto grid max-w-screen-xl px-4 lg:grid-cols-12 lg:gap-8 xl:gap-0"
       >
         <div class="mr-auto place-self-center lg:col-span-8">
           <h1
@@ -106,18 +114,18 @@ if (error.value) {
       <div
         class="mx-auto flex h-full w-full max-w-screen-xl flex-col px-3 py-5"
       >
-        <div class="flex flex-col space-y-3">
+        <div class="flex flex-col space-y-6">
           <NuxtLink
             v-for="dataset in datasets"
             :key="dataset.id"
             :to="`/datasets/${dataset.id}`"
-            class="h-full rounded-lg border border-purple-300 bg-white px-5 py-3 shadow-sm transition-all hover:bg-fuchsia-50 hover:shadow-md"
+            class="h-full rounded-lg border border-blue-300 bg-white px-5 py-3 shadow-sm transition-all hover:border-blue-600 hover:bg-sky-50/50 hover:shadow-lg"
           >
             <div class="flex h-full w-full items-start space-x-5">
               <n-image
-                :src="`https://api.dicebear.com/7.x/shapes/svg?seed=${dataset.id}`"
+                src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
                 :alt="dataset.title"
-                class="size-32 h-32 w-32 self-center rounded-xl"
+                class="h-auto w-32 self-center rounded-xl"
               />
 
               <div
