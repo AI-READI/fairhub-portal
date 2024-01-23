@@ -1,12 +1,10 @@
 <script setup lang="ts">
-const props = defineProps({
+const _props = defineProps({
   metadata: {
     required: true,
     type: Object as PropType<DatasetDescription>,
   },
 });
-
-console.log(props.metadata);
 </script>
 
 <template>
@@ -191,31 +189,41 @@ console.log(props.metadata);
       <p class="mb-1 mt-2 w-full border-b font-semibold">Direct Identifiers</p>
 
       <p>
-        {{ metadata.DatasetDeIdentLevel.deIdentDirect }}
+        <switch-boolean-switch
+          :active="metadata.DatasetDeIdentLevel.deIdentDirect"
+        />
       </p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">HIPAA Identifier</p>
 
       <p>
-        {{ metadata.DatasetDeIdentLevel.deIdentHIPAA }}
+        <switch-boolean-switch
+          :active="metadata.DatasetDeIdentLevel.deIdentHIPAA"
+        />
       </p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">Dates</p>
 
       <p>
-        {{ metadata.DatasetDeIdentLevel.deIdentDates }}
+        <switch-boolean-switch
+          :active="metadata.DatasetDeIdentLevel.deIdentDates"
+        />
       </p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">Non Arr</p>
 
       <p>
-        {{ metadata.DatasetDeIdentLevel.deIdentNonarr }}
+        <switch-boolean-switch
+          :active="metadata.DatasetDeIdentLevel.deIdentNonarr"
+        />
       </p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">Kanon</p>
 
       <p>
-        {{ metadata.DatasetDeIdentLevel.deIdentKAnon }}
+        <switch-boolean-switch
+          :active="metadata.DatasetDeIdentLevel.deIdentKAnon"
+        />
       </p>
       <!-- <pre>
         {{ metadata.DatasetDeIdentLevel }}
@@ -235,7 +243,9 @@ console.log(props.metadata);
       <p class="mb-1 mt-2 w-full border-b font-semibold">Non Commercial</p>
 
       <p>
-        {{ metadata.DatasetConsent.consentNoncommercial }}
+        <switch-boolean-switch
+          :active="metadata.DatasetConsent.consentNoncommercial"
+        />
       </p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">
@@ -243,25 +253,34 @@ console.log(props.metadata);
       </p>
 
       <p>
-        {{ metadata.DatasetConsent.consentGeogRestrict }}
+        <switch-boolean-switch
+          :active="metadata.DatasetConsent.consentGeogRestrict"
+        />
       </p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">Research Type</p>
 
       <p>
-        {{ metadata.DatasetConsent.consentResearchType }}
+        <switch-boolean-switch
+          :active="metadata.DatasetConsent.consentResearchType"
+        />
       </p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">Genetic Only</p>
 
       <p>
-        {{ metadata.DatasetConsent.consentGeneticOnly }}
+        <switch-boolean-switch
+          :active="metadata.DatasetConsent.consentGeneticOnly"
+        />
       </p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">No Methods</p>
 
       <p>
-        {{ metadata.DatasetConsent.consentNoMethods }}
+        {{ console.log(metadata.DatasetConsent.consentNoMethods) }}
+        <switch-boolean-switch
+          :active="metadata.DatasetConsent.consentNoMethods"
+        />
       </p>
       <!-- <pre>
         {{ metadata.DatasetConsent }}
