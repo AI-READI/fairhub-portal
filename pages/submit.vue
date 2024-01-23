@@ -1,6 +1,4 @@
-<script setup lang="ts">
-const push = usePush();
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <main class="h-screen overflow-auto px-4">
