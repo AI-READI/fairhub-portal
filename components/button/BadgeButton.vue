@@ -27,7 +27,6 @@ function getIconName(identifier: object) {
 }
 
 function getIconColor(identifier: object) {
-  // Function implementation
   // Return the appropriate icon color based on the identifier
   console.log(identifier);
   if (

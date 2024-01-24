@@ -75,20 +75,6 @@ function boolOtherSchemes() {
                         </n-li>
                       </n-ul>
                     </span>
-                    <!-- 
-                    <span
-                      v-if="creator.nameType != 'Organizational'"
-                      class="mt-3"
-                    >
-                      Affiliation Value:
-                      <n-ul
-                        v-for="(affiliation, innerIndex) in creator.affiliation"
-                        :key="innerIndex"
-                        class="list-disc"
-                      >
-                        <n-li>{{ affiliation.affiliationValue || "N/A" }}</n-li>
-                      </n-ul>
-                    </span> -->
 
                     <span
                       v-if="creator.nameType != 'Organizational'"
@@ -118,10 +104,6 @@ function boolOtherSchemes() {
                   </n-space>
                 </td>
               </div>
-
-              <!-- <td v-for="(creator, index) in metadata.Creator" :key="index">
-                {{ creator.nameType }}
-              </td> -->
             </tr>
           </tbody>
         </n-table>
