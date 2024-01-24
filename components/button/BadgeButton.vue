@@ -8,11 +8,20 @@ const _props = defineProps({
 
 function getIconName(identifier: object) {
   // Return the appropriate icon name based on the identifier
-  if (identifier.nameIdentifierScheme === "ORCID") {
+  if (
+    identifier.nameIdentifierScheme === "ORCID" ||
+    identifier?.affiliationIdentifierScheme === "ORCID"
+  ) {
     return "simple-icons:orcid";
-  } else if (identifier.nameIdentifierScheme === "ROR") {
+  } else if (
+    identifier.nameIdentifierScheme === "ROR" ||
+    identifier?.affiliationIdentifierScheme === "ROR"
+  ) {
     return "academicons:ror";
-  } else if (identifier.nameIdentifierScheme === "GRID") {
+  } else if (
+    identifier.nameIdentifierScheme === "GRID" ||
+    identifier?.affiliationIdentifierScheme === "GRID"
+  ) {
     return "grid-icon";
   }
 }
@@ -20,21 +29,41 @@ function getIconName(identifier: object) {
 function getIconColor(identifier: object) {
   // Function implementation
   // Return the appropriate icon color based on the identifier
-  if (identifier.nameIdentifierScheme === "ORCID") {
+  console.log(identifier);
+  if (
+    identifier?.nameIdentifierScheme === "ORCID" ||
+    identifier?.affiliationIdentifierScheme === "ORCID"
+  ) {
     return "#a6ce39";
-  } else if (identifier.nameIdentifierScheme === "ROR") {
+  } else if (
+    identifier?.nameIdentifierScheme === "ROR" ||
+    identifier?.affiliationIdentifierScheme === "ROR"
+  ) {
     return "#53baa1";
-  } else if (identifier.nameIdentifierScheme === "GRID") {
+  } else if (
+    identifier.nameIdentifierScheme === "GRID" ||
+    identifier?.affiliationIdentifierScheme === "GRID"
+  ) {
     return "red";
   }
 }
 
 function directToIdentifierPage(identifier: object) {
-  const url = identifier.nameIdentifierValue.includes("http")
-    ? identifier.nameIdentifierValue
-    : `${identifier.schemeURI}/${identifier.nameIdentifierValue}`;
+  let url = "";
 
-  window.open(url, "_blank");
+  if (identifier.nameIdentifierValue) {
+    url = identifier.nameIdentifierValue.includes("http")
+      ? identifier.nameIdentifierValue
+      : `${identifier.schemeURI}/${identifier.nameIdentifierValue}`;
+  } else if (identifier.affiliationIdentifier) {
+    url = identifier.affiliationIdentifier.includes("http")
+      ? identifier.affiliationIdentifier
+      : `${identifier.schemeURI}/${identifier.affiliationIdentifier}`;
+  }
+
+  if (url) {
+    window.open(url, "_blank");
+  }
 }
 </script>
 
