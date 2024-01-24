@@ -21,7 +21,7 @@ const {
 <template>
   <n-space
     vertical
-    class="rounded-xl border border-purple-200 bg-slate-50 pb-5 pt-3"
+    class="rounded-xl border border-blue-200 bg-slate-50 pb-5 pt-3"
   >
     <n-space vertical :size="[0, 0]">
       <h3 class="mb-3 px-4">Versions</h3>
@@ -37,9 +37,9 @@ const {
             :key="version.id"
             justify="space-between"
             align="start"
-            class="px-4 py-2 transition-all hover:bg-purple-50"
+            class="px-4 py-2 transition-all hover:bg-blue-50"
             :class="{
-              '!bg-purple-200': version.id === id,
+              '!bg-sky-100': version.id === id,
             }"
           >
             <div class="flex flex-col space-y-1">

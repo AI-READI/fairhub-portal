@@ -1,8 +1,10 @@
 <script setup lang="ts"></script>
 
 <template>
-  <main class="h-screen overflow-auto px-4">
-    <section class="bg-white">
+  <main
+    class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50 px-4"
+  >
+    <section>
       <div class="relative overflow-hidden">
         <div class="mx-auto max-w-[85rem] px-4 pb-10 pt-24 sm:px-6 lg:px-8">
           <div class="mx-auto mt-5 max-w-2xl text-center">
