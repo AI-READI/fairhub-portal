@@ -103,11 +103,14 @@ function boolOtherSchemes() {
                         <n-li>
                           <div class="flex flex-row items-center">
                             <span class="mr-2">
-                              {{ affiliation.affiliationValue || "N/A" }}:
-                              {{ affiliation.affiliationIdentifier || "N/A" }}
+                              {{ affiliation.affiliationValue || "N/A" }}
                             </span>
 
                             <button-badge-button :type="creator.affiliation" />
+
+                            <n-li v-if="boolOtherSchemes()">
+                              {{ affiliation.affiliationIdentifier || "N/A" }}
+                            </n-li>
                           </div>
                         </n-li>
                       </n-ul>
