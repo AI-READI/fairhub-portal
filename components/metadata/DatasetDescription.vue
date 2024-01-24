@@ -38,7 +38,7 @@ function boolOtherSchemes() {
         <n-table
           :bordered="false"
           :single-line="true"
-          :single-column="true"
+          :single-column="false"
           striped
         >
           <thead>
@@ -49,52 +49,62 @@ function boolOtherSchemes() {
             <tr v-for="(creator, index) in metadata.Creator" :key="index">
               <div class="flex flex-col">
                 <td>
-                  <div class="flex flex-row items-center">
-                    <span class="mr-2 inline-block align-middle">
-                      {{ creator.creatorName }}
+                  <n-space class="w-full" vertical>
+                    <div class="flex flex-row items-center">
+                      <span class="mr-2 inline-block align-middle">
+                        {{ creator.creatorName }}
+                      </span>
+
+                      <button-badge-button :type="creator.nameIdentifier" />
+                    </div>
+
+                    <span v-if="boolOtherSchemes()" class="mt-3">
+                      Identifier(s):
+                      <n-ul
+                        v-for="(
+                          identifier, innerIndex
+                        ) in creator.nameIdentifier"
+                        :key="innerIndex"
+                        class="list-disc"
+                      >
+                        <n-li>
+                          Identifier Scheme:
+                          {{ identifier.nameIdentifierScheme || "N/A" }}
+                          Identifier Value: {{ identifier.nameIdentifierValue }}
+                        </n-li>
+                      </n-ul>
                     </span>
 
-                    <button-badge-button :type="creator.nameIdentifier" />
-                  </div>
-                </td>
+                    <span
+                      v-if="creator.nameType != 'Organizational'"
+                      class="mt-3"
+                    >
+                      Affiliation Value:
+                      <n-ul
+                        v-for="(affiliation, innerIndex) in creator.affiliation"
+                        :key="innerIndex"
+                        class="list-disc"
+                      >
+                        <n-li>{{ affiliation.affiliationValue || "N/A" }}</n-li>
+                      </n-ul>
+                    </span>
 
-                <td v-if="boolOtherSchemes()">
-                  Identifier(s):
-                  <n-ul
-                    v-for="(identifier, innerIndex) in creator.nameIdentifier"
-                    :key="innerIndex"
-                    class="list-disc"
-                  >
-                    <n-li>
-                      Identifier Scheme:
-                      {{ identifier.nameIdentifierScheme || "N/A" }} Identifier
-                      Value: {{ identifier.nameIdentifierValue }}
-                    </n-li>
-                  </n-ul>
-                </td>
-
-                <td v-if="creator.nameType != 'Organizational'">
-                  Affiliation Value:
-                  <n-ul
-                    v-for="(affiliation, innerIndex) in creator.affiliation"
-                    :key="innerIndex"
-                    class="list-disc"
-                  >
-                    <n-li>{{ affiliation.affiliationValue || "N/A" }}</n-li>
-                  </n-ul>
-                </td>
-
-                <td v-if="creator.nameType != 'Organizational'">
-                  Affiliation Identifier:
-                  <n-ul
-                    v-for="(identifier, innerIndex) in creator.affiliation"
-                    :key="innerIndex"
-                    class="list-disc"
-                  >
-                    <n-li>
-                      {{ identifier.affiliationIdentifier || "N/A" }}
-                    </n-li>
-                  </n-ul>
+                    <span
+                      v-if="creator.nameType != 'Organizational'"
+                      class="mt-3"
+                    >
+                      Affiliation Identifier:
+                      <n-ul
+                        v-for="(identifier, innerIndex) in creator.affiliation"
+                        :key="innerIndex"
+                        class="list-disc"
+                      >
+                        <n-li>
+                          {{ identifier.affiliationIdentifier || "N/A" }}
+                        </n-li>
+                      </n-ul>
+                    </span>
+                  </n-space>
                 </td>
               </div>
 
