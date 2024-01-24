@@ -195,3 +195,13 @@ body {
     opacity: 0;
   }
 }
+
+.override-table-striped tr:nth-child(even) {
+  @apply bg-gray-100;
+  --n-td-color: bg-gray-200;
+}
+
+.override-table-striped tr:nth-child(odd) {
+  @apply bg-gray-200;
+  --n-td-color: bg-gray-300;
+}

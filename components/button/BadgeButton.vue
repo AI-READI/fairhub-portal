@@ -6,7 +6,7 @@ const _props = defineProps({
   },
 });
 
-function getIconName(identifier) {
+function getIconName(identifier: object) {
   // Return the appropriate icon name based on the identifier
   if (identifier.nameIdentifierScheme === "ORCID") {
     return "simple-icons:orcid";
@@ -17,7 +17,8 @@ function getIconName(identifier) {
   }
 }
 
-function getIconColor(identifier) {
+function getIconColor(identifier: object) {
+  // Function implementation
   // Return the appropriate icon color based on the identifier
   if (identifier.nameIdentifierScheme === "ORCID") {
     return "#a6ce39";
@@ -28,27 +29,13 @@ function getIconColor(identifier) {
   }
 }
 
-const hoverColors = {
-  GRID: "#0000ff",
-  ORCID: "#ff0000",
-  ROR: "#00ff00",
-};
+function directToIdentifierPage(identifier: object) {
+  const url = identifier.nameIdentifierValue.includes("http")
+    ? identifier.nameIdentifierValue
+    : `${identifier.schemeURI}/${identifier.nameIdentifierValue}`;
 
-const isHovered = ref(false);
-
-function handleIconHover(isHovered) {
-  isHovered.value = !isHovered;
+  window.open(url, "_blank");
 }
-
-function getHoverColor(item) {
-  if (isHovered.value) {
-    return hoverColors[item.nameIdentifierScheme];
-  } else {
-    return getIconColor(item);
-  }
-}
-
-// console.log(_props.type);
 </script>
 
 <template>
@@ -61,9 +48,9 @@ function getHoverColor(item) {
       text
       class="rounded-full p-1 transition-all hover:!bg-cyan-100"
       type="info"
-      @click="directToIdentifierPage"
+      @click="directToIdentifierPage(item)"
     >
-      <Icon :name="getIconName(item)" :color="getHoverColor(item)" :size="20" />
+      <Icon :name="getIconName(item)" :color="getIconColor(item)" :size="20" />
     </n-button>
   </div>
 </template>

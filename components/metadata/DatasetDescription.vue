@@ -13,9 +13,9 @@ function boolOtherSchemes() {
       if (creator.nameIdentifier) {
         for (const identifier of creator.nameIdentifier) {
           if (
-            identifier.nameIdentifierScheme != "ROR" &&
-            identifier.nameIdentifierScheme != "ORCID" &&
-            identifier.nameIdentifierScheme != "GRID"
+            identifier.nameIdentifierScheme !== "ROR" &&
+            identifier.nameIdentifierScheme !== "ORCID" &&
+            identifier.nameIdentifierScheme !== "GRID"
           ) {
             return true;
           }
@@ -39,7 +39,7 @@ function boolOtherSchemes() {
           :bordered="false"
           :single-line="true"
           :single-column="false"
-          striped
+          class="override-table-striped"
         >
           <thead>
             <tr></tr>
@@ -52,7 +52,8 @@ function boolOtherSchemes() {
                   <n-space class="w-full" vertical>
                     <div class="flex flex-row items-center">
                       <span class="mr-2 inline-block align-middle">
-                        {{ creator.creatorName }}
+                        Name:
+                        <b>{{ creator.creatorName }}</b>
                       </span>
 
                       <button-badge-button :type="creator.nameIdentifier" />
@@ -74,7 +75,7 @@ function boolOtherSchemes() {
                         </n-li>
                       </n-ul>
                     </span>
-
+                    <!-- 
                     <span
                       v-if="creator.nameType != 'Organizational'"
                       class="mt-3"
@@ -87,7 +88,7 @@ function boolOtherSchemes() {
                       >
                         <n-li>{{ affiliation.affiliationValue || "N/A" }}</n-li>
                       </n-ul>
-                    </span>
+                    </span> -->
 
                     <span
                       v-if="creator.nameType != 'Organizational'"
@@ -95,12 +96,13 @@ function boolOtherSchemes() {
                     >
                       Affiliation Identifier:
                       <n-ul
-                        v-for="(identifier, innerIndex) in creator.affiliation"
+                        v-for="(affiliation, innerIndex) in creator.affiliation"
                         :key="innerIndex"
                         class="list-disc"
                       >
                         <n-li>
-                          {{ identifier.affiliationIdentifier || "N/A" }}
+                          {{ affiliation.affiliationIdentifier || "N/A" }}:
+                          {{ affiliation.affiliationValue || "N/A" }}
                         </n-li>
                       </n-ul>
                     </span>
@@ -115,10 +117,9 @@ function boolOtherSchemes() {
           </tbody>
         </n-table>
       </n-space>
-
-      <pre>
+      <!-- <pre>
         {{ metadata.Creator }}
-      </pre>
+      </pre> -->
     </card-collapsible-card>
 
     <card-collapsible-card
@@ -132,7 +133,7 @@ function boolOtherSchemes() {
           :bordered="false"
           :single-line="true"
           :single-column="true"
-          striped
+          class="override-table-striped"
         >
           <thead></thead>
 
@@ -146,14 +147,17 @@ function boolOtherSchemes() {
                   <div class="flex flex-row justify-between">
                     <div class="flex flex-row items-center">
                       <span class="mr-2 inline-block align-middle">
-                        {{ contributor.contributorName }}
+                        Name:
+                        <b>{{ contributor.contributorName }}</b>
                       </span>
 
                       <button-badge-button :type="contributor.nameIdentifier" />
                     </div>
 
                     <span>
-                      Contributor Type: {{ contributor.contributorType }}
+                      <n-tag :bordered="false" type="info">
+                        {{ contributor.contributorType }}
+                      </n-tag>
                     </span>
                   </div>
                 </td>
@@ -175,25 +179,15 @@ function boolOtherSchemes() {
                 </td>
 
                 <td v-if="contributor.nameType != 'Organizational'">
-                  Affiliation Value:
+                  Affiliation Identifier:
                   <n-ul
                     v-for="(affiliation, innerIndex) in contributor.affiliation"
                     :key="innerIndex"
                     class="list-disc"
                   >
-                    <n-li>{{ affiliation.affiliationValue || "N/A" }}</n-li>
-                  </n-ul>
-                </td>
-
-                <td v-if="contributor.nameType != 'Organizational'">
-                  Affiliation Identifier:
-                  <n-ul
-                    v-for="(identifier, innerIndex) in contributor.affiliation"
-                    :key="innerIndex"
-                    class="list-disc"
-                  >
                     <n-li>
-                      {{ identifier.affiliationIdentifier || "N/A" }}
+                      {{ affiliation.affiliationIdentifier || "N/A" }}:
+                      {{ affiliation.affiliationValue || "N/A" }}
                     </n-li>
                   </n-ul>
                 </td>
