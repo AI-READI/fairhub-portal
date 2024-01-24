@@ -197,11 +197,11 @@ body {
 }
 
 .override-table-striped tr:nth-child(even) {
-  @apply bg-gray-100;
-  --n-td-color: bg-gray-200;
+  @apply bg-sky-50;
+  --n-td-color: bg-sky-50;
 }
 
 .override-table-striped tr:nth-child(odd) {
-  @apply bg-gray-200;
-  --n-td-color: bg-gray-300;
+  @apply bg-orange-50/50;
+  --n-td-color: bg-orange-50 / 50;
 }

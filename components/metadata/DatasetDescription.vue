@@ -94,7 +94,7 @@ function boolOtherSchemes() {
                       v-if="creator.nameType != 'Organizational'"
                       class="mt-3"
                     >
-                      Affiliation Identifier:
+                      Affiliation:
                       <n-ul
                         v-for="(affiliation, innerIndex) in creator.affiliation"
                         :key="innerIndex"
@@ -179,7 +179,7 @@ function boolOtherSchemes() {
                 </td>
 
                 <td v-if="contributor.nameType != 'Organizational'">
-                  Affiliation Identifier:
+                  Affiliation:
                   <n-ul
                     v-for="(affiliation, innerIndex) in contributor.affiliation"
                     :key="innerIndex"
@@ -211,7 +211,7 @@ function boolOtherSchemes() {
     >
       <n-space vertical>
         <n-table
-          :bordered="true"
+          :bordered="false"
           :single-line="true"
           :single-column="true"
           striped
