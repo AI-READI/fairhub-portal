@@ -41,6 +41,15 @@ useSchemaOrg([
   },
 ]);
 
+useSeoMeta({
+  title: dataset.value?.title || "Fairhub",
+  description: dataset.value?.description || "Fairhub",
+  ogDescription: dataset.value?.description,
+  ogImage: `https://kalai.fairdataihub.org/api/generate?app=fairhub&title=${dataset.value?.title}&org=ai-readi&description=${dataset.value?.description}`,
+  ogTitle: dataset.value?.title,
+  twitterCard: "summary_large_image",
+});
+
 if (dataset.value) {
   if (dataset.value?.metadata.readme) {
     markdownToHtml.value = sanitize(parse(dataset.value.metadata.readme));
@@ -126,12 +135,7 @@ if (dataset.value) {
 
                   <n-space vertical align="center" size="small">
                     <p class="text-xl font-medium">
-                      <n-number-animation
-                        :from="0"
-                        :to="1033"
-                        show-separator
-                        class="text-lg font-medium"
-                      />
+                      <n-number-animation :from="0" :to="1033" show-separator />
                     </p>
 
                     <n-space size="small" align="center">

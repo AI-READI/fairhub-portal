@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "Scholar Stack",
+      title: "Fairhub Portal",
       meta: [
         {
           name: "viewport",
@@ -40,6 +40,7 @@ export default defineNuxtConfig({
     "@nuxtjs/sitemap",
     "nuxt-simple-robots",
     "nuxt-schema-org",
+    "nuxt-link-checker",
     "nuxt-headlessui",
     "dayjs-nuxt",
     "nuxt-lodash",

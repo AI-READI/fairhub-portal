@@ -78,4 +78,16 @@ useHead({
     },
   ],
 });
+
+useSeoMeta({
+  title: "FAIRhub",
+  description:
+    "FAIRhub is a repository for your AI ready data. It is a place to store, share and discover datasets, models and workflows",
+  ogDescription:
+    "FAIRhub is a repository for your AI ready data. It is a place to store, share and discover datasets, models and workflows",
+  ogImage:
+    "https://kalai.fairdataihub.org/api/generate?app=fairhub&title=Make%20breakthrough%20discoveries%20with%20AI-ready%20datasets&org=ai-readi&description=FAIRhub%20is%20a%20repository%20for%20your%20AI%20ready%20data.%20It%20is%20a%20place%20to%20store%2C%20share%20and%20discover%20datasets%2C%20models%20and%20workflows",
+  ogTitle: "FAIRhub",
+  twitterCard: "summary_large_image",
+});
 </script>
