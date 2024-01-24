@@ -167,6 +167,8 @@ if (dataset.value) {
           </div>
         </n-tab-pane>
 
+        <n-tab-pane name="Dashboard" tab="Dashboard"> Dashboard </n-tab-pane>
+
         <n-tab-pane name="Datasheet" tab="Datasheet">
           <!-- eslint-disable vue/no-v-html -->
           <div
@@ -238,8 +240,6 @@ if (dataset.value) {
             :folder-structure="(dataset?.files as FolderStructure[])"
           />
         </n-tab-pane> -->
-
-        <n-tab-pane name="Dashboard" tab="Dashboard"> Dashboard </n-tab-pane>
       </n-tabs>
     </div>
   </main>
