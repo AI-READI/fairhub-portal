@@ -51,7 +51,7 @@ if (error.value) {
       >
         <div class="mr-auto place-self-center lg:col-span-8">
           <h1
-            class="mb-2 max-w-2xl bg-gradient-to-r from-blue-500 to-amber-500 bg-clip-text text-3xl font-extrabold leading-none tracking-tight text-transparent md:text-4xl xl:text-5xl"
+            class="mb-2 max-w-2xl bg-gradient-to-r from-sky-400 to-yellow-300 bg-clip-text text-3xl font-extrabold leading-none tracking-tight text-transparent md:text-4xl xl:text-5xl"
           >
             Make breakthrough discoveries with AI-ready datasets
           </h1>
@@ -63,14 +63,17 @@ if (error.value) {
 
           <n-divider />
 
-          <div class="mb-2 max-w-2xl text-xl font-normal text-gray-800">
+          <div class="max-w-2xl text-lg font-normal text-gray-800">
             Manage and share your own clinical research data with FAIRhub.
-            <div class="mt-8 flex gap-3">
-              <NuxtLink to="https://staging.fairhub.io/submit" target="__blank">
-                <n-a class="text-blue-500 hover:text-amber-500">
-                  Submit dataset
-                  <Icon name="fluent:arrow-right-24-filled" />
-                </n-a>
+            <div class="mt-1 flex gap-3">
+              <NuxtLink
+                to="https://staging.fairhub.io/submit"
+                class="text-blue-500 hover:text-amber-500"
+                target="__blank"
+                icon-placement="right"
+              >
+                Submit a dataset
+                <Icon name="fluent:arrow-right-24-filled" />
               </NuxtLink>
             </div>
           </div>
