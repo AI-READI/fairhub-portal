@@ -63,12 +63,12 @@ if (error.value) {
 
           <n-divider />
 
-          <div class="max-w-2xl text-lg font-normal text-gray-800">
+          <div class="max-w-2xl font-normal text-gray-800">
             Manage and share your own clinical research data with FAIRhub.
-            <div class="mt-1 flex gap-3">
+            <div class="mt-1 flex gap-3 duration-0">
               <NuxtLink
                 to="https://staging.fairhub.io/submit"
-                class="text-blue-500 hover:text-amber-500"
+                class="timing text-blue-500 transition-all hover:text-amber-500"
                 target="__blank"
                 icon-placement="right"
               >
