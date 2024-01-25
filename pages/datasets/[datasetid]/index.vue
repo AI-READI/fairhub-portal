@@ -8,8 +8,6 @@ const route = useRoute();
 const { datasetid } = route.params as { datasetid: string };
 const sanitize = (html: string) => sanitizeHtml(html);
 
-const url = ref<string>("sftp://user@1.1.1.1//home/user/a.txt");
-
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
 });
@@ -43,7 +41,7 @@ if (dataset.value) {
 
 <template>
   <main
-    class="h-screen overflow-auto bg-gradient-to-b from-slate-50 to-purple-50 px-4"
+    class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50 px-4"
   >
     <div class="mt-10 flex h-36 items-center">
       <div
@@ -54,16 +52,18 @@ if (dataset.value) {
 
           <p>{{ dataset?.description }}</p>
 
-          <n-button size="large" type="info" secondary class="my-3 hidden">
-            <template #icon>
-              <Icon name="line-md:download-loop" />
-            </template>
-            Download this dataset
-          </n-button>
+          <NuxtLink to="https://download.fairhub.io/1" target="__blank">
+            <n-button size="large" type="info" secondary class="my-3">
+              <template #icon>
+                <Icon name="line-md:download-loop" />
+              </template>
+              Access this dataset
+            </n-button>
+          </NuxtLink>
         </n-space>
 
         <n-image
-          :src="`https://api.dicebear.com/7.x/shapes/svg?seed=${dataset?.id}`"
+          src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
           :alt="dataset?.title"
           class="size-32 h-32 w-32 rounded-lg"
         />
@@ -86,7 +86,51 @@ if (dataset.value) {
             <n-space vertical class="col-span-2">
               <n-space
                 vertical
-                class="rounded-xl border border-purple-200 bg-slate-50 px-4 pb-5 pt-3"
+                class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
+              >
+                <n-space justify="center" class="p-6" align="center">
+                  <n-space vertical align="center" size="small">
+                    <p class="text-xl font-medium">
+                      <n-number-animation
+                        :from="0"
+                        :to="104540"
+                        show-separator
+                      />
+                    </p>
+
+                    <n-space size="small" align="center">
+                      <Icon name="lets-icons:view-duotone" size="23" />
+
+                      <span class="font-normal">Views</span>
+                    </n-space>
+                  </n-space>
+
+                  <div>
+                    <n-divider vertical />
+                  </div>
+
+                  <n-space vertical align="center" size="small">
+                    <p class="text-xl font-medium">
+                      <n-number-animation
+                        :from="0"
+                        :to="1033"
+                        show-separator
+                        class="text-lg font-medium"
+                      />
+                    </p>
+
+                    <n-space size="small" align="center">
+                      <Icon name="ic:round-download" size="18" />
+
+                      <span class="font-normal">Downloads</span>
+                    </n-space>
+                  </n-space>
+                </n-space>
+              </n-space>
+
+              <n-space
+                vertical
+                class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
               >
                 <n-space vertical>
                   <h3>License</h3>
@@ -122,6 +166,8 @@ if (dataset.value) {
             </n-space>
           </div>
         </n-tab-pane>
+
+        <n-tab-pane name="Dashboard" tab="Dashboard"> Dashboard </n-tab-pane>
 
         <n-tab-pane name="Datasheet" tab="Datasheet">
           <!-- eslint-disable vue/no-v-html -->
@@ -194,75 +240,6 @@ if (dataset.value) {
             :folder-structure="(dataset?.files as FolderStructure[])"
           />
         </n-tab-pane> -->
-
-        <n-tab-pane name="Dashboard" tab="Dashboard"> Dashboard </n-tab-pane>
-
-        <n-tab-pane name="Access Data" tab="Access Data">
-          Please complete the requirements below to access the dataset
-          <n-divider />
-
-          <n-collapse>
-            <n-collapse-item title="Step 1: Login to the portal" name="1">
-              <n-space vertical>
-                <p>
-                  Please login to the portal using your login.gov account to
-                  access the dataset.
-                </p>
-
-                <n-button type="info" secondary class="my-3">
-                  <template #icon>
-                    <Icon name="line-md:login" />
-                  </template>
-                  Login through login.gov
-                </n-button>
-              </n-space>
-            </n-collapse-item>
-
-            <n-collapse-item title="Step 2: Sign attestation" name="2">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-                quod laboriosam vero, possimus molestiae delectus! Autem sunt
-                voluptatibus delectus quisquam ut inventore, reprehenderit
-                perferendis amet. Veritatis, voluptatibus. Neque, iste
-                temporibus?
-              </p>
-
-              <n-space>
-                <n-input placeholder="Enter your name" class="mt-3" />
-
-                <n-button type="info" secondary class="my-3">
-                  <template #icon>
-                    <Icon name="mdi:abjad-arabic" />
-                  </template>
-                  Sign
-                </n-button>
-              </n-space>
-            </n-collapse-item>
-
-            <n-collapse-item title="Step3: Select data types" name="3">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Exercitationem dicta laudantium eum consequatur perferendis
-                omnis, id, possimus quisquam asperiores dolorum at?
-                Necessitatibus facilis fuga maiores. Non, quod temporibus!
-                Animi, esse!
-              </p>
-            </n-collapse-item>
-
-            <n-collapse-item title="Step 4: Get access link" name="4">
-              <n-input-group>
-                <n-input v-model:value="url" />
-
-                <n-button type="info" secondary>
-                  <template #icon>
-                    <Icon name="mdi:content-copy" />
-                  </template>
-                  Copy to clipboard
-                </n-button>
-              </n-input-group>
-            </n-collapse-item>
-          </n-collapse>
-        </n-tab-pane>
       </n-tabs>
     </div>
   </main>
