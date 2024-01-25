@@ -26,6 +26,30 @@ if (error.value) {
 const markdownToHtml = ref<string>("");
 const datasetSheetMarkdownToHtml = ref<string>("");
 
+useSchemaOrg([
+  {
+    name: dataset.value?.title,
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    // creator: {
+    //   name: dataset.value?.creator,
+    //   "@type": "Person",
+    // },
+    description: dataset.value?.description,
+    // license: dataset.value?.license,
+    url: `https://fairhub.io/datasets/${dataset.value?.id}`,
+  },
+]);
+
+useSeoMeta({
+  title: dataset.value?.title || "Fairhub",
+  description: dataset.value?.description || "Fairhub",
+  ogDescription: dataset.value?.description,
+  ogImage: `https://kalai.fairdataihub.org/api/generate?app=fairhub&title=${dataset.value?.title}&org=ai-readi&description=${dataset.value?.description}`,
+  ogTitle: dataset.value?.title,
+  twitterCard: "summary_large_image",
+});
+
 if (dataset.value) {
   if (dataset.value?.metadata.readme) {
     markdownToHtml.value = sanitize(parse(dataset.value.metadata.readme));
@@ -88,7 +112,7 @@ if (dataset.value) {
                 vertical
                 class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
               >
-                <n-space justify="center" class="p-6" align="center">
+                <n-space justify="center" class="px-6 py-3" align="center">
                   <n-space vertical align="center" size="small">
                     <p class="text-xl font-medium">
                       <n-number-animation
@@ -111,12 +135,7 @@ if (dataset.value) {
 
                   <n-space vertical align="center" size="small">
                     <p class="text-xl font-medium">
-                      <n-number-animation
-                        :from="0"
-                        :to="1033"
-                        show-separator
-                        class="text-lg font-medium"
-                      />
+                      <n-number-animation :from="0" :to="1033" show-separator />
                     </p>
 
                     <n-space size="small" align="center">
