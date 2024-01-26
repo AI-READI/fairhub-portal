@@ -72,7 +72,7 @@ function boolOtherSchemes(identifier: Identifier) {
                       />
                     </div>
 
-                    <span
+                    <div
                       v-if="boolOtherSchemes(creator.nameIdentifier[0])"
                       class=""
                     >
@@ -88,9 +88,9 @@ function boolOtherSchemes(identifier: Identifier) {
                           {{ identifier.nameIdentifierValue }}
                         </n-li>
                       </n-ul>
-                    </span>
+                    </div>
 
-                    <span v-if="creator.nameType != 'Organizational'" class="">
+                    <div v-if="creator.nameType != 'Organizational'" class="">
                       <n-ul
                         v-for="(affiliation, innerIndex) in creator.affiliation"
                         :key="innerIndex"
@@ -113,7 +113,7 @@ function boolOtherSchemes(identifier: Identifier) {
                           </n-ul>
                         </n-li>
                       </n-ul>
-                    </span>
+                    </div>
                   </n-space>
                 </td>
               </div>
