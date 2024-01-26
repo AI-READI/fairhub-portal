@@ -234,41 +234,36 @@ function boolOtherSchemes(identifier: Identifier) {
       data-section-title="Funders"
       class="mb-4 shadow-md"
     >
-      <n-space vertical>
-        <n-table
-          :bordered="false"
-          :single-line="true"
-          :single-column="true"
-          striped
-        >
-          <thead>
-            <tr></tr>
-          </thead>
+      <n-table
+        :bordered="false"
+        :single-line="true"
+        :single-column="true"
+        striped
+      >
+        <thead>
+          <tr></tr>
+        </thead>
 
-          <tbody>
-            <tr
-              v-for="(funder, index) in metadata.FundingReference"
-              :key="index"
-            >
-              <td>{{ funder.funderName }}</td>
+        <tbody>
+          <tr v-for="(funder, index) in metadata.FundingReference" :key="index">
+            <td>{{ funder.funderName }}</td>
 
-              <td>
-                {{ funder.funderIdentifier?.funderIdentifierValue || "N/A" }}
-              </td>
+            <td>
+              {{ funder.funderIdentifier?.funderIdentifierValue || "N/A" }}
+            </td>
 
-              <td>{{ funder.awardNumber?.awardNumberValue || "N/A" }}</td>
+            <td>{{ funder.awardNumber?.awardNumberValue || "N/A" }}</td>
 
-              <td>{{ funder.awardTitle || "N/A" }}</td>
+            <td>{{ funder.awardTitle || "N/A" }}</td>
 
-              <td>{{ funder.awardNumber?.awardURI || "N/A" }}</td>
-            </tr>
-          </tbody>
-        </n-table>
+            <td>{{ funder.awardNumber?.awardURI || "N/A" }}</td>
+          </tr>
+        </tbody>
+      </n-table>
 
-        <!-- <pre>
+      <!-- <pre>
       {{ metadata.FundingReference }}
       </pre -->
-      </n-space>
     </card-collapsible-card>
 
     <card-collapsible-card
