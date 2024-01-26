@@ -27,40 +27,38 @@ const devMode = process.env.NODE_ENV === "development";
             <ul
               class="mt-4 flex flex-col font-medium lg:mt-0 lg:flex-row lg:space-x-8"
             >
-              <NuxtLink to="/">
-                <a
-                  href="#"
-                  class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
-                >
-                  Datasets
-                </a>
+              <NuxtLink
+                to="/"
+                class="block border-b border-gray-100 px-3 py-2 text-gray-700 transition-all hover:bg-gray-50 hover:text-cyan-500 lg:border-0 lg:p-0 lg:hover:bg-transparent"
+                exact-active-class="text-sky-500"
+              >
+                <p>Datasets</p>
               </NuxtLink>
 
-              <NuxtLink to="/submit">
-                <a
-                  href="#"
-                  class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
-                >
-                  Submit a dataset
-                </a>
+              <NuxtLink
+                to="/submit"
+                class="block border-b border-gray-100 px-3 py-2 text-gray-700 transition-all hover:bg-gray-50 hover:text-cyan-500 lg:border-0 lg:p-0 lg:hover:bg-transparent"
+                exact-active-class="text-sky-500"
+              >
+                <p>Submit a dataset</p>
               </NuxtLink>
 
-              <NuxtLink to="/docs">
-                <a
-                  href="#"
-                  class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
-                >
-                  Documentation
-                </a>
+              <NuxtLink
+                to="/docs"
+                class="flex items-center justify-center border-b border-gray-100 px-3 py-2 text-gray-700 transition-all hover:bg-gray-50 hover:text-cyan-500 lg:border-0 lg:p-0 lg:hover:bg-transparent"
+                exact-active-class="text-sky-500"
+              >
+                <p>Documentation</p>
+
+                <Icon name="mdi:open-in-new" class="ml-1" />
               </NuxtLink>
 
-              <NuxtLink to="/contact">
-                <a
-                  href="#"
-                  class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700"
-                >
-                  Contact
-                </a>
+              <NuxtLink
+                to="/contact"
+                class="block border-b border-gray-100 px-3 py-2 text-gray-700 transition-all hover:bg-gray-50 hover:text-cyan-500 lg:border-0 lg:p-0 lg:hover:bg-transparent"
+                exact-active-class="text-sky-500"
+              >
+                <p>Contact</p>
               </NuxtLink>
             </ul>
           </div>

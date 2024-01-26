@@ -78,6 +78,25 @@ export default defineNuxtConfig({
     // Options
   },
 
+  runtimeConfig: {
+    public: {
+      // Only values that are not sensitive should be set here
+      // These values are accessible from both server and client side
+      BASE_URL:
+        process.env.NUXT_SITE_ENV === "dev"
+          ? "http://localhost:6000"
+          : process.env.NUXT_SITE_ENV === "staging"
+          ? "https://staging.fairhub.io"
+          : "https://fairhub.io",
+      FAIRHUB_API_URL:
+        process.env.NUXT_SITE_ENV === "dev"
+          ? "http://localhost:5000"
+          : process.env.NUXT_SITE_ENV === "staging"
+          ? "https://staging.api.fairhub.io"
+          : "https://api.fairhub.io",
+    },
+  },
+
   schemaOrg: {
     identity: {
       name: "Fairhub",
