@@ -1,63 +1,72 @@
 <script setup lang="ts">
+interface Identifier {
+  affiliationIdentifier?: string;
+  affiliationIdentifierScheme?: string;
+  affiliationValue?: string;
+  nameIdentifierScheme?: string;
+  nameIdentifierValue?: string;
+  schemeURI?: string;
+}
+
 const _props = defineProps({
   type: {
     required: true,
-    type: Array,
+    type: Object as PropType<Identifier>,
   },
 });
 
-function getIconName(identifier: object) {
-  // Return the appropriate icon name based on the identifier
-  if (
-    identifier.nameIdentifierScheme === "ORCID" ||
-    identifier?.affiliationIdentifierScheme === "ORCID"
-  ) {
-    return "simple-icons:orcid";
-  } else if (
-    identifier.nameIdentifierScheme === "ROR" ||
-    identifier?.affiliationIdentifierScheme === "ROR"
-  ) {
-    return "academicons:ror";
-  } else if (
-    identifier.nameIdentifierScheme === "GRID" ||
-    identifier?.affiliationIdentifierScheme === "GRID"
-  ) {
-    return "grid-icon";
-  }
-}
-
-function getIconColor(identifier: object) {
-  // Return the appropriate icon color based on the identifier
-  console.log(identifier);
-  if (
-    identifier?.nameIdentifierScheme === "ORCID" ||
-    identifier?.affiliationIdentifierScheme === "ORCID"
-  ) {
-    return "#a6ce39";
-  } else if (
-    identifier?.nameIdentifierScheme === "ROR" ||
-    identifier?.affiliationIdentifierScheme === "ROR"
-  ) {
-    return "#53baa1";
-  } else if (
-    identifier.nameIdentifierScheme === "GRID" ||
-    identifier?.affiliationIdentifierScheme === "GRID"
-  ) {
-    return "red";
-  }
-}
-
-function directToIdentifierPage(identifier: object) {
+function directToIdentifierPage(identifier: Identifier) {
   let url = "";
+  let urlCheck = "";
+  const rorUrl = "https://ror.org";
+  const gridUrl = "https://grid.ac";
+  const orcidUrl = "https://orcid.org";
 
-  if (identifier.nameIdentifierValue) {
-    url = identifier.nameIdentifierValue.includes("http")
-      ? identifier.nameIdentifierValue
-      : `${identifier.schemeURI}/${identifier.nameIdentifierValue}`;
-  } else if (identifier.affiliationIdentifier) {
-    url = identifier.affiliationIdentifier.includes("http")
-      ? identifier.affiliationIdentifier
-      : `${identifier.schemeURI}/${identifier.affiliationIdentifier}`;
+  // Return the appropriate url based on the identifier
+  if (identifier?.nameIdentifierValue) {
+    if (identifier?.nameIdentifierScheme === "ORCID") {
+      urlCheck = `${orcidUrl}/${identifier?.nameIdentifierValue}`;
+      if (urlCheck === identifier?.schemeURI) {
+        url = identifier?.schemeURI;
+      }
+      url = urlCheck;
+    }
+    if (identifier?.nameIdentifierScheme === "ROR") {
+      urlCheck = `${rorUrl}/${identifier?.nameIdentifierValue}`;
+      if (urlCheck === identifier?.schemeURI) {
+        url = identifier?.schemeURI;
+      }
+      url = urlCheck;
+    }
+    if (identifier?.nameIdentifierScheme === "INSI") {
+      urlCheck = `${gridUrl}/${identifier?.nameIdentifierValue}`;
+      if (urlCheck === identifier?.schemeURI) {
+        url = identifier?.schemeURI;
+      }
+      url = urlCheck;
+    }
+  } else if (identifier?.affiliationValue) {
+    if (identifier?.affiliationIdentifierScheme === "ORCID") {
+      urlCheck = `${orcidUrl}/${identifier?.affiliationIdentifier}`;
+      if (urlCheck === identifier.schemeURI) {
+        url = identifier?.schemeURI;
+      }
+      url = urlCheck;
+    }
+    if (identifier?.affiliationIdentifierScheme === "ROR") {
+      urlCheck = `${rorUrl}/${identifier?.affiliationIdentifier}`;
+      if (urlCheck === identifier.schemeURI) {
+        url = identifier?.schemeURI;
+      }
+      url = urlCheck;
+    }
+    if (identifier?.affiliationIdentifierScheme === "INSI") {
+      urlCheck = `${gridUrl}/${identifier?.affiliationIdentifier}`;
+    }
+    if (urlCheck === identifier.schemeURI) {
+      url = identifier?.schemeURI;
+    }
+    url = urlCheck;
   }
 
   if (url) {
@@ -67,18 +76,44 @@ function directToIdentifierPage(identifier: object) {
 </script>
 
 <template>
-  <div
-    v-for="(item, index) in _props.type"
-    :key="index"
-    class="flex w-auto flex-row"
-  >
+  <div class="flex w-auto flex-row">
     <n-button
+      v-if="
+        _props.type?.nameIdentifierScheme === 'ORCID' ||
+        _props.type?.affiliationIdentifierScheme === 'ORCID'
+      "
       text
       class="rounded-full p-1 transition-all hover:!bg-cyan-100"
       type="info"
-      @click="directToIdentifierPage(item)"
+      @click="directToIdentifierPage(_props.type)"
     >
-      <Icon :name="getIconName(item)" :color="getIconColor(item)" :size="20" />
+      <Icon name="simple-icons:orcid" color="#a6ce39" size="20" />
+    </n-button>
+
+    <n-button
+      v-else-if="
+        _props.type?.nameIdentifierScheme === 'ROR' ||
+        _props.type?.affiliationIdentifierScheme === 'ROR'
+      "
+      text
+      class="rounded-full p-1 transition-all hover:!bg-cyan-100"
+      type="info"
+      @click="directToIdentifierPage(_props.type)"
+    >
+      <Icon name="academicons:ror" color="#53baa1" size="20" />
+    </n-button>
+
+    <n-button
+      v-else-if="
+        _props.type?.nameIdentifierScheme === 'INSI' ||
+        _props.type?.affiliationIdentifierScheme === 'INSI'
+      "
+      text
+      class="rounded-full p-1 transition-all hover:!bg-cyan-100"
+      type="info"
+      @click="directToIdentifierPage(_props.type)"
+    >
+      <Icon name="academicons:isni" color="#312783" size="20" />
     </n-button>
   </div>
 </template>
