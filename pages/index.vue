@@ -69,7 +69,6 @@ if (error.value) {
               <NuxtLink
                 to="https://staging.fairhub.io/submit"
                 class="timing text-blue-500 transition-all hover:text-amber-500"
-                target="__blank"
                 icon-placement="right"
               >
                 Submit a dataset
