@@ -73,7 +73,7 @@ function boolOtherSchemes(identifier: Identifier) {
 
                   <div
                     v-if="boolOtherSchemes(creator.nameIdentifier[0])"
-                    class=""
+                    class="pt-2"
                   >
                     <n-ul
                       v-for="(identifier, innerIndex) in creator.nameIdentifier"
@@ -88,6 +88,8 @@ function boolOtherSchemes(identifier: Identifier) {
                   </div>
 
                   <div v-if="creator.nameType != 'Organizational'" class="">
+                    <p class="mt-2">Affiliation:</p>
+
                     <n-ul
                       v-for="(affiliation, innerIndex) in creator.affiliation"
                       :key="innerIndex"
@@ -95,7 +97,7 @@ function boolOtherSchemes(identifier: Identifier) {
                     >
                       <n-li>
                         <div class="flex flex-row items-center">
-                          <span class="mr-2">
+                          <span class="mr-2 mt-2">
                             {{ affiliation.affiliationValue || "N/A" }}
                           </span>
 
@@ -103,7 +105,10 @@ function boolOtherSchemes(identifier: Identifier) {
                         </div>
 
                         <n-ul class="list-disc">
-                          <n-li v-if="boolOtherSchemes(affiliation)">
+                          <n-li
+                            v-if="boolOtherSchemes(affiliation)"
+                            class="!mt-2"
+                          >
                             {{ affiliation.affiliationIdentifierScheme }}:
                             {{ affiliation.affiliationIdentifier || "N/A" }}
                           </n-li>
@@ -118,9 +123,9 @@ function boolOtherSchemes(identifier: Identifier) {
         </n-table>
       </n-space>
 
-      <pre>
+      <!-- <pre>
         {{ metadata.Creator }}
-      </pre>
+      </pre> -->
     </card-collapsible-card>
 
     <card-collapsible-card
@@ -186,6 +191,8 @@ function boolOtherSchemes(identifier: Identifier) {
                     v-if="contributor.nameType != 'Organizational'"
                     class="mt-3"
                   >
+                    <p class="mt-2">Affiliation:</p>
+
                     <n-ul
                       v-for="(
                         affiliation, innerIndex
@@ -203,7 +210,10 @@ function boolOtherSchemes(identifier: Identifier) {
                         </div>
 
                         <n-ul class="list-disc">
-                          <n-li v-if="boolOtherSchemes(affiliation)">
+                          <n-li
+                            v-if="boolOtherSchemes(affiliation)"
+                            class="!mt-2"
+                          >
                             {{ affiliation.affiliationIdentifierScheme }}:
                             {{ affiliation.affiliationIdentifier || "N/A" }}
                           </n-li>
@@ -218,10 +228,10 @@ function boolOtherSchemes(identifier: Identifier) {
         </n-table>
       </n-space>
 
-      <pre>
+      <!-- <pre>
       {{ metadata.Contributor }}
     </pre
-      >
+      > -->
     </card-collapsible-card>
 
     <card-collapsible-card
