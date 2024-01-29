@@ -50,7 +50,7 @@ function boolOtherSchemes(identifier: Identifier) {
           :bordered="false"
           :single-line="true"
           :single-column="false"
-          class="override-table-striped"
+          class="override-table-striped remove-border"
         >
           <thead>
             <tr></tr>
@@ -93,7 +93,7 @@ function boolOtherSchemes(identifier: Identifier) {
                     <n-ul
                       v-for="(affiliation, innerIndex) in creator.affiliation"
                       :key="innerIndex"
-                      class="list-disc"
+                      class="list-disc text-base"
                     >
                       <n-li>
                         <div class="flex flex-row items-center">
@@ -138,7 +138,7 @@ function boolOtherSchemes(identifier: Identifier) {
           :bordered="false"
           :single-line="true"
           :single-column="true"
-          class="override-table-striped"
+          class="override-table-striped remove-border"
         >
           <thead></thead>
 
@@ -197,7 +197,7 @@ function boolOtherSchemes(identifier: Identifier) {
                         affiliation, innerIndex
                       ) in contributor.affiliation"
                       :key="innerIndex"
-                      class="mb-2 list-disc"
+                      class="mb-2 list-disc text-base"
                     >
                       <n-li>
                         <div class="flex flex-row items-center">
@@ -243,6 +243,7 @@ function boolOtherSchemes(identifier: Identifier) {
         :bordered="false"
         :single-line="true"
         :single-column="true"
+        class="remove-border"
         striped
       >
         <thead>
