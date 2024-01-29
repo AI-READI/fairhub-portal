@@ -70,50 +70,63 @@ function directToIdentifierPage(identifier: Identifier) {
   }
 
   if (url) {
-    window.open(url, "_blank");
+    return url;
   }
 }
 </script>
 
 <template>
   <div class="flex w-auto flex-row">
-    <n-button
+    <NuxtLink
       v-if="
         _props.type?.nameIdentifierScheme === 'ORCID' ||
         _props.type?.affiliationIdentifierScheme === 'ORCID'
       "
-      text
-      class="rounded-full p-1 transition-all hover:!bg-cyan-100"
-      type="info"
-      @click="directToIdentifierPage(_props.type)"
+      :to="directToIdentifierPage(_props.type)"
+      target="_blank"
     >
-      <Icon name="simple-icons:orcid" color="#a6ce39" size="20" />
-    </n-button>
+      <n-button
+        text
+        class="rounded-full p-1 transition-all hover:!bg-cyan-100"
+        type="info"
+      >
+        <Icon name="simple-icons:orcid" color="#a6ce39" size="20" />
+      </n-button>
+    </NuxtLink>
 
-    <n-button
+    <NuxtLink
       v-else-if="
         _props.type?.nameIdentifierScheme === 'ROR' ||
         _props.type?.affiliationIdentifierScheme === 'ROR'
       "
-      text
-      class="rounded-full p-1 transition-all hover:!bg-cyan-100"
-      type="info"
-      @click="directToIdentifierPage(_props.type)"
+      :to="directToIdentifierPage(_props.type)"
+      target="_blank"
     >
-      <Icon name="academicons:ror" color="#53baa1" size="20" />
-    </n-button>
+      <n-button
+        text
+        class="rounded-full p-1 transition-all hover:!bg-cyan-100"
+        type="info"
+      >
+        <Icon name="academicons:ror" color="#53baa1" size="20" />
+      </n-button>
+    </NuxtLink>
 
-    <n-button
+    <NuxtLink
       v-else-if="
         _props.type?.nameIdentifierScheme === 'INSI' ||
         _props.type?.affiliationIdentifierScheme === 'INSI'
       "
-      text
-      class="rounded-full p-1 transition-all hover:!bg-cyan-100"
-      type="info"
-      @click="directToIdentifierPage(_props.type)"
+      :to="directToIdentifierPage(_props.type)"
+      target="_blank"
     >
-      <Icon name="academicons:isni" color="#312783" size="20" />
-    </n-button>
+      <n-button
+        text
+        class="rounded-full p-1 transition-all hover:!bg-cyan-100"
+        type="info"
+        @click="directToIdentifierPage(_props.type)"
+      >
+        <Icon name="academicons:isni" color="#312783" size="20" />
+      </n-button>
+    </NuxtLink>
   </div>
 </template>
