@@ -67,7 +67,6 @@ function directToIdentifierPage(identifier: Identifier) {
       url = identifier?.schemeURI;
     }
     url = urlCheck;
-
   }
 
   if (url) {
@@ -115,7 +114,6 @@ function directToIdentifierPage(identifier: Identifier) {
       @click="directToIdentifierPage(_props.type)"
     >
       <Icon name="academicons:isni" color="#312783" size="20" />
-
     </n-button>
   </div>
 </template>
