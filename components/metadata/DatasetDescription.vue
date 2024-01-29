@@ -33,6 +33,7 @@ function boolOtherSchemes(identifier: Identifier) {
     }
     console.log("returning false");
     return true;
+
   }
 }
 </script>
@@ -116,13 +117,13 @@ function boolOtherSchemes(identifier: Identifier) {
                       </n-li>
                     </n-ul>
                   </div>
+
                 </td>
               </div>
             </tr>
           </tbody>
         </n-table>
       </n-space>
-
       <!-- <pre>
         {{ metadata.Creator }}
       </pre> -->
@@ -160,6 +161,7 @@ function boolOtherSchemes(identifier: Identifier) {
                         v-if="contributor?.nameIdentifier"
                         :type="contributor?.nameIdentifier[0]"
                       />
+
                     </div>
 
                     <span>
@@ -168,7 +170,6 @@ function boolOtherSchemes(identifier: Identifier) {
                       </n-tag>
                     </span>
                   </div>
-
                   <span
                     v-if="boolOtherSchemes(contributor?.nameIdentifier[0])"
                     class="mt-3"
@@ -221,6 +222,7 @@ function boolOtherSchemes(identifier: Identifier) {
                       </n-li>
                     </n-ul>
                   </span>
+
                 </td>
               </div>
             </tr>
@@ -250,26 +252,31 @@ function boolOtherSchemes(identifier: Identifier) {
           <tr></tr>
         </thead>
 
-        <tbody>
-          <tr v-for="(funder, index) in metadata.FundingReference" :key="index">
-            <td>{{ funder.funderName }}</td>
 
-            <td>
-              {{ funder.funderIdentifier?.funderIdentifierValue || "N/A" }}
-            </td>
+          <tbody>
+            <tr
+              v-for="(funder, index) in metadata.FundingReference"
+              :key="index"
+            >
+              <td>{{ funder.funderName }}</td>
 
-            <td>{{ funder.awardNumber?.awardNumberValue || "N/A" }}</td>
+              <td>
+                {{ funder.funderIdentifier?.funderIdentifierValue || "N/A" }}
+              </td>
 
-            <td>{{ funder.awardTitle || "N/A" }}</td>
+              <td>{{ funder.awardNumber?.awardNumberValue || "N/A" }}</td>
 
-            <td>{{ funder.awardNumber?.awardURI || "N/A" }}</td>
-          </tr>
-        </tbody>
-      </n-table>
+              <td>{{ funder.awardTitle || "N/A" }}</td>
 
-      <!-- <pre>
+              <td>{{ funder.awardNumber?.awardURI || "N/A" }}</td>
+            </tr>
+          </tbody>
+        </n-table>
+
+        <!-- <pre>
       {{ metadata.FundingReference }}
       </pre -->
+      </n-space>
     </card-collapsible-card>
 
     <card-collapsible-card

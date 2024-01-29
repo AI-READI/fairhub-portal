@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "Scholar Stack",
+      title: "Fairhub Portal",
       meta: [
         {
           name: "viewport",
@@ -39,6 +39,8 @@ export default defineNuxtConfig({
     "notivue/nuxt",
     "@nuxtjs/sitemap",
     "nuxt-simple-robots",
+    "nuxt-schema-org",
+    "nuxt-link-checker",
     "nuxt-headlessui",
     "dayjs-nuxt",
     "nuxt-lodash",
@@ -76,7 +78,39 @@ export default defineNuxtConfig({
     // Options
   },
 
-  site: { indexable: false },
+  runtimeConfig: {
+    public: {
+      // Only values that are not sensitive should be set here
+      // These values are accessible from both server and client side
+      BASE_URL:
+        process.env.NUXT_SITE_ENV === "dev"
+          ? "http://localhost:6000"
+          : process.env.NUXT_SITE_ENV === "staging"
+          ? "https://staging.fairhub.io"
+          : "https://fairhub.io",
+      FAIRHUB_API_URL:
+        process.env.NUXT_SITE_ENV === "dev"
+          ? "http://localhost:5000"
+          : process.env.NUXT_SITE_ENV === "staging"
+          ? "https://staging.api.fairhub.io"
+          : "https://api.fairhub.io",
+    },
+  },
+
+  schemaOrg: {
+    identity: {
+      name: "Fairhub",
+      logo: "https://staging.fairhub.io/logo.png",
+      type: "Organization",
+      url: "https://staging.fairhub.io",
+    },
+  },
+
+  site: {
+    name: "Fairhub Portal",
+    indexable: false,
+    url: "https://staging.fairhub.io",
+  },
 
   sitemap: {
     sources: ["/api/__sitemap__/urls"],
