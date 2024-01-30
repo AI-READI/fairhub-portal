@@ -75,6 +75,8 @@ function boolOtherSchemes(identifier: Identifier) {
                     v-if="boolOtherSchemes(creator?.nameIdentifier[0] ?? false)"
                     class="pt-2"
                   >
+                    <p class="text-[.91rem]">Identifier:</p>
+
                     <n-ul
                       v-for="(identifier, innerIndex) in creator.nameIdentifier"
                       :key="innerIndex"
@@ -88,7 +90,7 @@ function boolOtherSchemes(identifier: Identifier) {
                   </div>
 
                   <div v-if="creator.nameType != 'Organizational'" class="">
-                    <p class="mt-2 text-base">Affiliation:</p>
+                    <p class="mt-2 text-[.91rem]">Affiliation:</p>
 
                     <n-ul
                       v-for="(affiliation, innerIndex) in creator.affiliation"
@@ -172,6 +174,8 @@ function boolOtherSchemes(identifier: Identifier) {
                     v-if="boolOtherSchemes(contributor?.nameIdentifier[0])"
                     class="mt-3"
                   >
+                    <p class="text-[.91rem]">Identifier:</p>
+
                     <n-ul
                       v-for="(
                         indentifier, innerIndex
@@ -190,7 +194,7 @@ function boolOtherSchemes(identifier: Identifier) {
                     v-if="contributor.nameType != 'Organizational'"
                     class="mt-3"
                   >
-                    <p class="mt-2">Affiliation:</p>
+                    <p class="mt-2 text-[.91rem]">Affiliation:</p>
 
                     <n-ul
                       v-for="(

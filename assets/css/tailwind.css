@@ -200,7 +200,7 @@ body {
   --n-border-color: inherit !important;
 }
 .override-table-striped tr:nth-child(even) {
-  @apply bg-sky-50;
+  background-color: rgba(240, 249, 255, 0.5);
   --n-td-color: bg-sky-50;
 }
 
