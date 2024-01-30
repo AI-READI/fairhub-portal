@@ -99,7 +99,7 @@ function boolOtherSchemes(identifier: Identifier) {
                     >
                       <n-li>
                         <div class="flex flex-row items-center">
-                          <span class="mr-2 mt-2">
+                          <span class="mr-2">
                             {{ affiliation.affiliationValue || "N/A" }}
                           </span>
 
