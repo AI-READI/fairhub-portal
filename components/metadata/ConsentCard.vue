@@ -77,8 +77,8 @@ const formattedConsentType = getConsentType(
       </p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">
-        The consent of this dataset allows only use of the data for research
-        that does not involve the development of methods or algorithms
+        Does this dataset allow only the use of the data for research that does
+        not involve the development of methods or algorithms?
       </p>
 
       <p>
