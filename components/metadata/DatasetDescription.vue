@@ -61,7 +61,7 @@ function boolOtherSchemes(identifier: Identifier) {
               <div class="flex flex-col">
                 <td>
                   <div class="flex flex-row items-center">
-                    <span class="mr-2 inline-block align-middle">
+                    <span class="mr-2 inline-block align-middle text-base">
                       <b>{{ creator.creatorName }}</b>
                     </span>
 
@@ -78,7 +78,7 @@ function boolOtherSchemes(identifier: Identifier) {
                     <n-ul
                       v-for="(identifier, innerIndex) in creator.nameIdentifier"
                       :key="innerIndex"
-                      class="mb-2 list-disc"
+                      class="mb-2 list-disc text-base"
                     >
                       <n-li>
                         {{ identifier.nameIdentifierScheme || "N/A" }}:
@@ -88,7 +88,7 @@ function boolOtherSchemes(identifier: Identifier) {
                   </div>
 
                   <div v-if="creator.nameType != 'Organizational'" class="">
-                    <p class="mt-2">Affiliation:</p>
+                    <p class="mt-2 text-base">Affiliation:</p>
 
                     <n-ul
                       v-for="(affiliation, innerIndex) in creator.affiliation"
@@ -104,10 +104,10 @@ function boolOtherSchemes(identifier: Identifier) {
                           <button-badge-button :type="affiliation" />
                         </div>
 
-                        <n-ul class="list-disc">
+                        <n-ul class="disc-hollow">
                           <n-li
                             v-if="boolOtherSchemes(affiliation)"
-                            class="!mt-2"
+                            class="!mt-2 text-base"
                           >
                             {{ affiliation.affiliationIdentifierScheme }}:
                             {{ affiliation.affiliationIdentifier || "N/A" }}
@@ -151,7 +151,7 @@ function boolOtherSchemes(identifier: Identifier) {
                 <td>
                   <div class="flex flex-row justify-between">
                     <div class="flex flex-row items-center">
-                      <span class="mr-2 inline-block align-middle">
+                      <span class="mr-2 inline-block align-middle text-base">
                         <b>{{ contributor.contributorName }}</b>
                       </span>
 
@@ -208,10 +208,10 @@ function boolOtherSchemes(identifier: Identifier) {
                           <button-badge-button :type="affiliation" />
                         </div>
 
-                        <n-ul class="list-disc">
+                        <n-ul class="disc-hollow">
                           <n-li
                             v-if="boolOtherSchemes(affiliation)"
-                            class="!mt-2"
+                            class="!mt-2 text-base"
                           >
                             {{ affiliation.affiliationIdentifierScheme }}:
                             {{ affiliation.affiliationIdentifier || "N/A" }}
@@ -247,7 +247,17 @@ function boolOtherSchemes(identifier: Identifier) {
         striped
       >
         <thead>
-          <tr></tr>
+          <tr>
+            <th>Funder Name</th>
+
+            <th>Funder Identifier</th>
+
+            <th>Award Number</th>
+
+            <th>Award Title</th>
+
+            <th>Award URI</th>
+          </tr>
         </thead>
 
         <tbody>
@@ -279,14 +289,16 @@ function boolOtherSchemes(identifier: Identifier) {
       class="mb-4 shadow-md"
     >
       <n-space vertical>
-        <p class="mb-1 w-full border-b font-semibold">Type</p>
+        <p class="mb-1 w-full border-b font-semibold">
+          Indication of the level of deidentification of the dataset
+        </p>
 
         <p>
           {{ metadata.DatasetDeIdentLevel.deIdentType }}
         </p>
 
         <p class="mb-1 mt-2 w-full border-b font-semibold">
-          Direct Identifiers
+          If direct Identifiers were removed from the data set
         </p>
 
         <p>
@@ -295,7 +307,9 @@ function boolOtherSchemes(identifier: Identifier) {
           />
         </p>
 
-        <p class="mb-1 mt-2 w-full border-b font-semibold">HIPAA Identifier</p>
+        <p class="mb-1 mt-2 w-full border-b font-semibold">
+          If the US HIPAA de-identification rules have been applied
+        </p>
 
         <p>
           <switch-boolean-switch
@@ -303,7 +317,9 @@ function boolOtherSchemes(identifier: Identifier) {
           />
         </p>
 
-        <p class="mb-1 mt-2 w-full border-b font-semibold">Dates</p>
+        <p class="mb-1 mt-2 w-full border-b font-semibold">
+          If dates have been rebased and/or replaced by integers
+        </p>
 
         <p>
           <switch-boolean-switch
@@ -311,7 +327,9 @@ function boolOtherSchemes(identifier: Identifier) {
           />
         </p>
 
-        <p class="mb-1 mt-2 w-full border-b font-semibold">Non Arr</p>
+        <p class="mb-1 mt-2 w-full border-b font-semibold">
+          If narrative text fields have been removed
+        </p>
 
         <p>
           <switch-boolean-switch
@@ -319,7 +337,9 @@ function boolOtherSchemes(identifier: Identifier) {
           />
         </p>
 
-        <p class="mb-1 mt-2 w-full border-b font-semibold">Kanon</p>
+        <p class="mb-1 mt-2 w-full border-b font-semibold">
+          If k-anonymisation (k>=2) has been achieved
+        </p>
 
         <p>
           <switch-boolean-switch
@@ -343,7 +363,9 @@ function boolOtherSchemes(identifier: Identifier) {
 
         <p>{{ metadata.DatasetConsent.consentType }}</p>
 
-        <p class="mb-1 mt-2 w-full border-b font-semibold">Non Commercial</p>
+        <p class="mb-1 mt-2 w-full border-b font-semibold">
+          If the consent allows only non-commercial use of the data
+        </p>
 
         <p>
           <switch-boolean-switch
@@ -352,7 +374,8 @@ function boolOtherSchemes(identifier: Identifier) {
         </p>
 
         <p class="mb-1 mt-2 w-full border-b font-semibold">
-          Geographic Restriction
+          If the consent allows only use of the data in a specific geographic
+          location
         </p>
 
         <p>
@@ -361,7 +384,10 @@ function boolOtherSchemes(identifier: Identifier) {
           />
         </p>
 
-        <p class="mb-1 mt-2 w-full border-b font-semibold">Research Type</p>
+        <p class="mb-1 mt-2 w-full border-b font-semibold">
+          If the consent allows only use of the data for a specific type of
+          research
+        </p>
 
         <p>
           <switch-boolean-switch
@@ -369,7 +395,9 @@ function boolOtherSchemes(identifier: Identifier) {
           />
         </p>
 
-        <p class="mb-1 mt-2 w-full border-b font-semibold">Genetic Only</p>
+        <p class="mb-1 mt-2 w-full border-b font-semibold">
+          If the consent allows only use of the data for genetic research
+        </p>
 
         <p>
           <switch-boolean-switch
@@ -377,7 +405,10 @@ function boolOtherSchemes(identifier: Identifier) {
           />
         </p>
 
-        <p class="mb-1 mt-2 w-full border-b font-semibold">No Methods</p>
+        <p class="mb-1 mt-2 w-full border-b font-semibold">
+          If the consent allows only use of the data for research that does not
+          involve the development of methods or algorithms
+        </p>
 
         <p>
           <switch-boolean-switch
