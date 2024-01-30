@@ -124,9 +124,6 @@ function boolOtherSchemes(identifier: Identifier) {
           </tbody>
         </n-table>
       </n-space>
-      <!-- <pre>
-        {{ metadata.Creator }}
-      </pre> -->
     </card-collapsible-card>
 
     <card-collapsible-card
@@ -237,11 +234,6 @@ function boolOtherSchemes(identifier: Identifier) {
           </tbody>
         </n-table>
       </n-space>
-
-      <!-- <pre>
-      {{ metadata.Contributor }}
-    </pre
-      > -->
     </card-collapsible-card>
 
     <card-collapsible-card
