@@ -24,14 +24,11 @@ function boolOtherSchemes(identifier: Identifier) {
     return true;
   }
   if (identifier?.affiliationIdentifierScheme) {
-    console.log(identifier?.affiliationIdentifierScheme);
     if (
       ["ROR", "ORCID", "INSI"].includes(identifier?.affiliationIdentifierScheme)
     ) {
-      console.log("returning true");
       return false;
     }
-    console.log("returning false");
     return true;
   }
 }
@@ -72,8 +69,11 @@ function boolOtherSchemes(identifier: Identifier) {
                   </div>
 
                   <div
-                    v-if="boolOtherSchemes(creator?.nameIdentifier[0] ?? false)"
-                    class="pt-2"
+                    v-if="
+                      creator?.nameIdentifier &&
+                      boolOtherSchemes(creator?.nameIdentifier[0] ?? false)
+                    "
+                    class="ml-4 pt-2"
                   >
                     <p class="text-[.91rem]">Identifier:</p>
 
@@ -89,7 +89,7 @@ function boolOtherSchemes(identifier: Identifier) {
                     </n-ul>
                   </div>
 
-                  <div v-if="creator.nameType != 'Organizational'" class="">
+                  <div v-if="creator.nameType != 'Organizational'" class="ml-4">
                     <p class="mt-2 text-[.91rem]">Affiliation:</p>
 
                     <n-ul
@@ -164,66 +164,73 @@ function boolOtherSchemes(identifier: Identifier) {
                     </div>
 
                     <span>
-                      <n-tag :bordered="false" type="info">
-                        {{ contributor.contributorType }}
-                      </n-tag>
+                      <tag-contributor-tag
+                        :contributor-type="contributor.contributorType"
+                      />
                     </span>
                   </div>
 
-                  <span
-                    v-if="boolOtherSchemes(contributor?.nameIdentifier[0])"
-                    class="mt-3"
+                  <div
+                    v-if="
+                      contributor?.nameIdentifier &&
+                      boolOtherSchemes(contributor?.nameIdentifier[0])
+                    "
+                    class="ml-4 mt-3"
                   >
-                    <p class="text-[.91rem]">Identifier:</p>
+                    <span>
+                      <p class="text-[.91rem]">Identifier:</p>
 
-                    <n-ul
-                      v-for="(
-                        indentifier, innerIndex
-                      ) in contributor.nameIdentifier"
-                      :key="innerIndex"
-                      class="mb-2 list-disc"
-                    >
-                      <n-li>
-                        {{ indentifier.nameIdentifierScheme || "N/A" }}:
-                        {{ indentifier.nameIdentifierValue }}
-                      </n-li>
-                    </n-ul>
-                  </span>
+                      <n-ul
+                        v-for="(
+                          indentifier, innerIndex
+                        ) in contributor.nameIdentifier"
+                        :key="innerIndex"
+                        class="mb-2 list-disc"
+                      >
+                        <n-li>
+                          {{ indentifier.nameIdentifierScheme || "N/A" }}:
+                          {{ indentifier.nameIdentifierValue }}
+                        </n-li>
+                      </n-ul>
+                    </span>
+                  </div>
 
-                  <span
+                  <div
                     v-if="contributor.nameType != 'Organizational'"
-                    class="mt-3"
+                    class="ml-4"
                   >
-                    <p class="mt-2 text-[.91rem]">Affiliation:</p>
+                    <span>
+                      <p class="mt-2 text-[.91rem]">Affiliation:</p>
 
-                    <n-ul
-                      v-for="(
-                        affiliation, innerIndex
-                      ) in contributor.affiliation"
-                      :key="innerIndex"
-                      class="mb-2 list-disc text-base"
-                    >
-                      <n-li>
-                        <div class="flex flex-row items-center">
-                          <span class="mr-2 align-middle">
-                            {{ affiliation.affiliationValue || "N/A" }}
-                          </span>
+                      <n-ul
+                        v-for="(
+                          affiliation, innerIndex
+                        ) in contributor.affiliation"
+                        :key="innerIndex"
+                        class="mb-2 list-disc text-base"
+                      >
+                        <n-li>
+                          <div class="flex flex-row items-center">
+                            <span class="mr-2 align-middle">
+                              {{ affiliation.affiliationValue || "N/A" }}
+                            </span>
 
-                          <button-badge-button :type="affiliation" />
-                        </div>
+                            <button-badge-button :type="affiliation" />
+                          </div>
 
-                        <n-ul class="disc-hollow">
-                          <n-li
-                            v-if="boolOtherSchemes(affiliation)"
-                            class="!mt-2 text-base"
-                          >
-                            {{ affiliation.affiliationIdentifierScheme }}:
-                            {{ affiliation.affiliationIdentifier || "N/A" }}
-                          </n-li>
-                        </n-ul>
-                      </n-li>
-                    </n-ul>
-                  </span>
+                          <n-ul class="disc-hollow">
+                            <n-li
+                              v-if="boolOtherSchemes(affiliation)"
+                              class="!mt-2 text-base"
+                            >
+                              {{ affiliation.affiliationIdentifierScheme }}:
+                              {{ affiliation.affiliationIdentifier || "N/A" }}
+                            </n-li>
+                          </n-ul>
+                        </n-li>
+                      </n-ul>
+                    </span>
+                  </div>
                 </td>
               </div>
             </tr>
@@ -252,15 +259,15 @@ function boolOtherSchemes(identifier: Identifier) {
       >
         <thead>
           <tr>
-            <th>Funder Name</th>
+            <th><strong>Funder Name</strong></th>
 
-            <th>Funder Identifier</th>
+            <th><strong>Funder Identifier</strong></th>
 
-            <th>Award Number</th>
+            <th><strong>Award Number</strong></th>
 
-            <th>Award Title</th>
+            <th><strong>Award Title</strong></th>
 
-            <th>Award URI</th>
+            <th><strong>Award URI</strong></th>
           </tr>
         </thead>
 
@@ -280,149 +287,10 @@ function boolOtherSchemes(identifier: Identifier) {
           </tr>
         </tbody>
       </n-table>
-
-      <!-- <pre>
-      {{ metadata.FundingReference }}
-      </pre -->
     </card-collapsible-card>
 
-    <card-collapsible-card
-      id="de-identified-levels"
-      title="De-Identified Levels"
-      data-section-title="De-Identified Levels"
-      class="mb-4 shadow-md"
-    >
-      <n-space vertical>
-        <p class="mb-1 w-full border-b font-semibold">
-          Indication of the level of deidentification of the dataset
-        </p>
+    <metadata-de-identify-card :metadata="metadata" />
 
-        <p>
-          {{ metadata.DatasetDeIdentLevel.deIdentType }}
-        </p>
-
-        <p class="mb-1 mt-2 w-full border-b font-semibold">
-          If direct Identifiers were removed from the data set
-        </p>
-
-        <p>
-          <switch-boolean-switch
-            :active="metadata.DatasetDeIdentLevel.deIdentDirect"
-          />
-        </p>
-
-        <p class="mb-1 mt-2 w-full border-b font-semibold">
-          If the US HIPAA de-identification rules have been applied
-        </p>
-
-        <p>
-          <switch-boolean-switch
-            :active="metadata.DatasetDeIdentLevel.deIdentHIPAA"
-          />
-        </p>
-
-        <p class="mb-1 mt-2 w-full border-b font-semibold">
-          If dates have been rebased and/or replaced by integers
-        </p>
-
-        <p>
-          <switch-boolean-switch
-            :active="metadata.DatasetDeIdentLevel.deIdentDates"
-          />
-        </p>
-
-        <p class="mb-1 mt-2 w-full border-b font-semibold">
-          If narrative text fields have been removed
-        </p>
-
-        <p>
-          <switch-boolean-switch
-            :active="metadata.DatasetDeIdentLevel.deIdentNonarr"
-          />
-        </p>
-
-        <p class="mb-1 mt-2 w-full border-b font-semibold">
-          If k-anonymisation (k>=2) has been achieved
-        </p>
-
-        <p>
-          <switch-boolean-switch
-            :active="metadata.DatasetDeIdentLevel.deIdentKAnon"
-          />
-        </p>
-      </n-space>
-      <!-- <pre>
-        {{ metadata.DatasetDeIdentLevel }}
-      </pre> -->
-    </card-collapsible-card>
-
-    <card-collapsible-card
-      id="consent"
-      title="Consent"
-      data-section-title="Consent"
-      class="mb-4 shadow-md"
-    >
-      <n-space vertical>
-        <p class="mb-1 w-full border-b font-semibold">Consent Type</p>
-
-        <p>{{ metadata.DatasetConsent.consentType }}</p>
-
-        <p class="mb-1 mt-2 w-full border-b font-semibold">
-          If the consent allows only non-commercial use of the data
-        </p>
-
-        <p>
-          <switch-boolean-switch
-            :active="metadata.DatasetConsent.consentNoncommercial"
-          />
-        </p>
-
-        <p class="mb-1 mt-2 w-full border-b font-semibold">
-          If the consent allows only use of the data in a specific geographic
-          location
-        </p>
-
-        <p>
-          <switch-boolean-switch
-            :active="metadata.DatasetConsent.consentGeogRestrict"
-          />
-        </p>
-
-        <p class="mb-1 mt-2 w-full border-b font-semibold">
-          If the consent allows only use of the data for a specific type of
-          research
-        </p>
-
-        <p>
-          <switch-boolean-switch
-            :active="metadata.DatasetConsent.consentResearchType"
-          />
-        </p>
-
-        <p class="mb-1 mt-2 w-full border-b font-semibold">
-          If the consent allows only use of the data for genetic research
-        </p>
-
-        <p>
-          <switch-boolean-switch
-            :active="metadata.DatasetConsent.consentGeneticOnly"
-          />
-        </p>
-
-        <p class="mb-1 mt-2 w-full border-b font-semibold">
-          If the consent allows only use of the data for research that does not
-          involve the development of methods or algorithms
-        </p>
-
-        <p>
-          <switch-boolean-switch
-            :active="metadata.DatasetConsent.consentNoMethods"
-          />
-        </p>
-      </n-space>
-      <!-- <pre>
-        {{ metadata.DatasetConsent }}
-      </pre> -->
-    </card-collapsible-card>
+    <metadata-consent-card :metadata="metadata" />
   </n-space>
 </template>
