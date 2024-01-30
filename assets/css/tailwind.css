@@ -208,3 +208,7 @@ body {
   @apply bg-white;
   --n-td-color: #ffff;
 }
+
+.disc-hollow {
+  list-style-type: circle;
+}
