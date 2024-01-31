@@ -88,11 +88,20 @@ const statistics = ref([
         <h2 class="text-4xl font-bold">About</h2>
 
         <div class="mb-10 mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
-          <img class="rounded-lg" src="../assets/lottie/01.jpg" />
+          <img
+            class="rounded-lg"
+            src="../public/images/publish-dataset/research01.jpg"
+          />
 
-          <img class="rounded-lg" src="../assets/lottie/02.jpg" />
+          <img
+            class="rounded-lg"
+            src="../public/images/publish-dataset/research02.jpg"
+          />
 
-          <img class="rounded-lg" src="../assets/lottie/4.jpg" />
+          <img
+            class="rounded-lg"
+            src="../public/images/publish-dataset/research03.jpg"
+          />
         </div>
 
         <p class="text-center text-xl font-medium text-slate-500">
@@ -163,7 +172,7 @@ const statistics = ref([
           class="flex flex-col justify-start rounded-xl border-2 border-slate-200 bg-gray-50 px-6 py-4"
         >
           <div>
-            <h3 class="pb-4 pt-3 text-4xl font-bold text-sky-600">
+            <h3 class="pt-3 text-4xl font-bold text-sky-600">
               {{ step.number }}
             </h3>
 
