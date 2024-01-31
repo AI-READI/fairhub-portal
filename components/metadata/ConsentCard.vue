@@ -34,7 +34,7 @@ const formattedConsentType = getConsentType(
       <p>{{ formattedConsentType }}</p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">
-        Does this dataset allows only non-commercial use of the data?
+        Does this dataset allow only the non-commercial use of the data?
       </p>
 
       <p>
@@ -44,8 +44,8 @@ const formattedConsentType = getConsentType(
       </p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">
-        The consent of this dataset allows only use of the data in a specific
-        geographic location
+        Does this dataset allow only the use of the data in a specific
+        geographic location?
       </p>
 
       <p>
@@ -55,8 +55,8 @@ const formattedConsentType = getConsentType(
       </p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">
-        The consent of this dataset allows only use of the data for a specific
-        type of research
+        Does this dataset allow only the use of the data for a specific type of
+        research?
       </p>
 
       <p>
@@ -66,8 +66,7 @@ const formattedConsentType = getConsentType(
       </p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">
-        The consent of this dataset allows only use of the data for genetic
-        research
+        Does this dataset allow only the use of the data for genetic research?
       </p>
 
       <p>

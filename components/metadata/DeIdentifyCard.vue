@@ -38,7 +38,7 @@ const formattedDeIdentType = getDeIdentType(
       </p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">
-        Direct identifiers were removed from this dataset?
+        Does this dataset remove direct identifiers?
       </p>
 
       <p>
@@ -48,7 +48,7 @@ const formattedDeIdentType = getDeIdentType(
       </p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">
-        HIPAA de-identification rules were apply from this dataset?
+        Does this dataset apply the HIPAA de-identification rules?
       </p>
 
       <p>
@@ -58,7 +58,7 @@ const formattedDeIdentType = getDeIdentType(
       </p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">
-        Dates have been rebased and/or replaced by integers from this dataset?
+        Does this dataset rebase and/or replace dates by integers?
       </p>
 
       <p>
@@ -68,7 +68,7 @@ const formattedDeIdentType = getDeIdentType(
       </p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">
-        Narrative text fields were removed from this dataset?
+        Does this dataset remove narrative text fields?
       </p>
 
       <p>
@@ -78,7 +78,7 @@ const formattedDeIdentType = getDeIdentType(
       </p>
 
       <p class="mb-1 mt-2 w-full border-b font-semibold">
-        K-anonymisation (k>=2) was achieved from this dataset?
+        Does this dataset achieve K-anonymisation (k>=2)?
       </p>
 
       <p>
