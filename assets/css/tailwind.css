@@ -196,12 +196,19 @@ body {
   }
 }
 
+.remove-border {
+  --n-border-color: inherit !important;
+}
 .override-table-striped tr:nth-child(even) {
-  @apply bg-sky-50;
+  background-color: rgba(240, 249, 255, 0.5);
   --n-td-color: bg-sky-50;
 }
 
 .override-table-striped tr:nth-child(odd) {
-  @apply bg-orange-50/50;
-  --n-td-color: bg-orange-50 / 50;
+  @apply bg-white;
+  --n-td-color: #ffff;
+}
+
+.disc-hollow {
+  list-style-type: circle;
 }
