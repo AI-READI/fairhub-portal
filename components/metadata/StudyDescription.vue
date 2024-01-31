@@ -690,7 +690,7 @@ onBeforeMount(() => {
               v-for="(collaborator, index) in metadata
                 .SponsorCollaboratorsModule.CollaboratorList"
               :key="index"
-              class="font-base list-disc"
+              class="list-disc text-base"
             >
               <n-li>{{ collaborator.CollaboratorName }}</n-li>
             </n-ul>
