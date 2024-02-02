@@ -74,6 +74,39 @@ if (dataset.value) {
         <n-space vertical>
           <h1>{{ dataset?.title }}</h1>
 
+          <p>
+            <n-space horizontal class="items-center align-middle">
+              <div
+                v-for="(creator, index) in dataset?.metadata.datasetDescription
+                  .Creator"
+                :key="index"
+                class="flex flex-row flex-wrap items-center align-middle text-black"
+              >
+                <!-- if on the last index create a different span -->
+                <span class="mr-1 text-sm font-light">{{
+                  creator.creatorName
+                }}</span>
+
+                <button-badge-button
+                  v-if="creator?.nameIdentifier"
+                  class="pt-1"
+                  :type="creator.nameIdentifier[0]"
+                />
+
+                <span
+                  v-if="
+                    dataset?.metadata.datasetDescription.Creator &&
+                    index !=
+                      dataset?.metadata.datasetDescription.Creator.length - 1
+                  "
+                  class="text-sm"
+                >
+                  ,
+                </span>
+              </div>
+            </n-space>
+          </p>
+
           <p>{{ dataset?.description }}</p>
 
           <NuxtLink to="https://download.fairhub.io/1" target="__blank">
@@ -179,7 +212,10 @@ if (dataset.value) {
                 </n-space>
               </n-space>
 
-              <CitationViewer :id="(dataset?.id as number)" />
+              <CitationViewer
+                :id="(dataset?.id as number)"
+                :creators="(dataset?.metadata.datasetDescription.Creator as object)"
+              />
 
               <VersionSelector :id="(dataset?.id as number)" />
             </n-space>

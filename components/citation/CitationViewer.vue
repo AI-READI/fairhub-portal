@@ -4,6 +4,10 @@ const props = defineProps({
     required: true,
     type: Number,
   },
+  creators: {
+    required: true,
+    type: Array as PropType<DatasetDescription["Creator"][]>,
+  },
 });
 
 const {
@@ -38,7 +42,21 @@ const {
             </p>
 
             <p class="text-sm">
-              {{ citation?.split }}
+              {{ console.log(creators) }}
+              <span v-for="(creator, index) in creators" :key="index">
+                {{ creator?.creatorName.trim()
+                }}<template v-if="index !== creators.length - 1"
+                  ><span class="mr-2">,</span></template
+                >
+
+                <template v-else><span class="mr-2">.</span></template>
+              </span>
+
+              <span>({{ citation?.split.split("(")[1] }}</span>
+
+              <span>({{ citation?.split.split("(")[2] }}</span>
+
+              <br />
 
               <NuxtLink
                 :to="citation?.doi"
