@@ -83,7 +83,7 @@ if (dataset.value) {
                 class="flex flex-row flex-wrap items-center align-middle text-black"
               >
                 <!-- if on the last index create a different span -->
-                <span class="mr-1 text-sm font-thin">{{
+                <span class="mr-1 text-sm font-light">{{
                   creator.creatorName
                 }}</span>
 
@@ -212,7 +212,10 @@ if (dataset.value) {
                 </n-space>
               </n-space>
 
-              <CitationViewer :id="(dataset?.id as number)" />
+              <CitationViewer
+                :id="(dataset?.id as number)"
+                :creators="(dataset?.metadata.datasetDescription.Creator as object)"
+              />
 
               <VersionSelector :id="(dataset?.id as number)" />
             </n-space>
