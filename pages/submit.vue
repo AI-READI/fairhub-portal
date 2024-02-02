@@ -1,26 +1,28 @@
 <script setup lang="ts">
-import { NProgress, useThemeVars } from "naive-ui";
-
-const themeVars = useThemeVars();
-
 const steps = ref([
   {
+    name: "carbon:intent-request-create",
     description:
       "Sign up to create an account on FAIRhub. Create a new study and provide basic information about it to get started.",
     heading: "Create study",
     number: "Step 1",
+    percentage: 35,
   },
   {
+    name: "et-upload",
     description:
       "Upload data on the go as it is being collected. Follow instructions to include metadata with the data so FAIRhub can process it automatically. Track data collection through available dashboards.",
     heading: "Upload data",
     number: "Step 2",
+    percentage: 65,
   },
   {
+    name: "arcticons:efa-publish",
     description:
       "Follow our simple data sharing workflow to select select data to be shared, select a data use license, review data and metadata structure, create public/protected versions, reserve a DOI, and publish your dataset.",
     heading: "Publish dataset",
     number: "Step 3",
+    percentage: 100,
   },
 ]);
 
@@ -87,7 +89,7 @@ const statistics = ref([
       </div>
     </section>
 
-    <section class="bg-orange-50 p-16">
+    <section class="bg-blue-50 p-16">
       <div class="mx-auto mb-5 flex max-w-screen-xl flex-col items-center">
         <h2 class="text-4xl font-bold">About</h2>
 
@@ -186,19 +188,19 @@ const statistics = ref([
 
             <Icon
               v-if="index === 0"
-              name="carbon:intent-request-create"
+              :name="step.name"
               class="h-16 w-12 text-blue-600"
             />
 
             <Icon
               v-if="index === 1"
-              name="et-upload"
+              :name="step.name"
               class="h-16 w-12 text-blue-600"
             />
 
             <Icon
               v-if="index === 2"
-              name="arcticons:efa-publish"
+              :name="step.name"
               class="h-16 w-12 text-blue-600"
             />
           </div>
@@ -209,7 +211,7 @@ const statistics = ref([
             type="line"
             :show-indicator="false"
             status="info"
-            :percentage="35"
+            :percentage="step.percentage"
           />
 
           <n-progress
@@ -218,7 +220,7 @@ const statistics = ref([
             type="line"
             :show-indicator="false"
             status="info"
-            :percentage="65"
+            :percentage="step.percentage"
           />
 
           <n-progress
@@ -227,10 +229,10 @@ const statistics = ref([
             type="line"
             :show-indicator="false"
             status="info"
-            :percentage="100"
+            :percentage="step.percentage"
           />
 
-          <h4 class="pr-3 text-4xl font-semibold text-amber-400">
+          <h4 class="pr-3 text-4xl font-semibold text-orange-400">
             {{ step.heading }}
           </h4>
 
@@ -280,17 +282,19 @@ const statistics = ref([
 
     <section class="py-16">
       <div
-        class="flex h-20 w-full flex-col items-stretch rounded-t-[50%] bg-gradient-to-b from-orange-50 via-orange-50 to-orange-50 text-center"
+        class="mx-auto h-20 rounded-t-[50%] bg-gradient-to-b from-blue-50 via-blue-50 to-blue-50 text-center"
       ></div>
 
-      <div
-        class="mx-auto flex max-w-screen-xl flex-col items-center bg-orange-50"
-      >
+      <div class="mx-auto flex flex-col items-center bg-blue-50">
         <h2 class="mb-16 pb-3 pt-3 text-4xl font-bold">
           The layers of FAIRhub platform
         </h2>
 
-        <div class="m-16 flex flex-row gap-32">
+        <h3>Subheader1</h3>
+
+        <div
+          class="m-16 flex flex-row gap-32 max-xl:flex-wrap max-xl:justify-center"
+        >
           <p class="min-w-md max-w-md text-xl font-medium" style="flex-grow: 2">
             FAIRhub combines intuitive user interfaces with automation tools and
             integration with existing data management tools such as REDCap to
@@ -305,7 +309,11 @@ const statistics = ref([
           />
         </div>
 
-        <div class="m-16 flex flex-row-reverse gap-32">
+        <h3>Subheader2</h3>
+
+        <div
+          class="m-16 flex flex-row-reverse gap-32 max-xl:flex-wrap max-xl:justify-center"
+        >
           <p class="min-w-md max-w-md text-xl font-medium">
             Making data FAIR and AI-ready requires several steps (converting
             files to files to files to standard format, including metadata in a
@@ -322,7 +330,11 @@ const statistics = ref([
           />
         </div>
 
-        <div class="m-16 flex flex-row gap-32">
+        <h3>Subheader3</h3>
+
+        <div
+          class="m-16 flex flex-row gap-32 max-xl:flex-wrap max-xl:justify-center"
+        >
           <p class="min-w-md max-w-md text-xl font-medium">
             AI-READI (Artificial Intelligence Ready and Equitable Atlas for
             Diabetes Insights) is one of the data generation projects of the
@@ -339,7 +351,7 @@ const statistics = ref([
       </div>
 
       <div
-        class="mb-8 flex h-20 w-full flex-col items-stretch rounded-b-[50%] bg-gradient-to-t from-orange-50 via-orange-50 to-orange-50 pt-16 text-center"
+        class="mx-auto h-20 rounded-b-[50%] bg-gradient-to-t from-blue-50 via-blue-50 to-blue-50 text-center"
       ></div>
     </section>
   </main>
