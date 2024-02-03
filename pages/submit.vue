@@ -177,7 +177,7 @@ const statistics = ref([
         class="mx-auto flex max-w-screen-xl gap-10 px-4 py-10 max-2xl:px-10 max-lg:max-w-screen-md max-lg:flex-wrap"
       >
         <div
-          v-for="(step, index) in steps"
+          v-for="step in steps"
           :key="step.heading"
           class="flex max-w-md flex-1 flex-col justify-start rounded-xl border-2 border-orange-100 bg-orange-50 px-6 py-4"
         >
@@ -186,45 +186,10 @@ const statistics = ref([
               {{ step.number }}
             </h3>
 
-            <Icon
-              v-if="index === 0"
-              :name="step.name"
-              class="h-16 w-12 text-blue-600"
-            />
-
-            <Icon
-              v-if="index === 1"
-              :name="step.name"
-              class="h-16 w-12 text-blue-600"
-            />
-
-            <Icon
-              v-if="index === 2"
-              :name="step.name"
-              class="h-16 w-12 text-blue-600"
-            />
+            <Icon :name="step.name" class="h-16 w-12 text-blue-600" />
           </div>
 
           <n-progress
-            v-if="index === 0"
-            class="mb-10 mt-4"
-            type="line"
-            :show-indicator="false"
-            status="info"
-            :percentage="step.percentage"
-          />
-
-          <n-progress
-            v-if="index === 1"
-            class="mb-10 mt-4"
-            type="line"
-            :show-indicator="false"
-            status="info"
-            :percentage="step.percentage"
-          />
-
-          <n-progress
-            v-if="index === 2"
             class="mb-10 mt-4"
             type="line"
             :show-indicator="false"
