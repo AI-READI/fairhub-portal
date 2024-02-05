@@ -195,7 +195,12 @@ if (dataset.value) {
                     Health Data License
                   </NuxtLink>
                 </n-space>
+              </n-space>
 
+              <n-space
+                vertical
+                class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
+              >
                 <n-space vertical class="mt-3">
                   <h3>Keywords</h3>
 
@@ -224,7 +229,7 @@ if (dataset.value) {
 
         <n-tab-pane name="Dashboard" tab="Dashboard"> Dashboard </n-tab-pane>
 
-        <n-tab-pane name="Datasheet" tab="Datasheet">
+        <n-tab-pane name="Healthsheet" tab="Healthsheet">
           <!-- eslint-disable vue/no-v-html -->
           <div
             class="prose mt-0 min-h-[300px] max-w-none text-black"
@@ -233,7 +238,7 @@ if (dataset.value) {
           <!-- eslint-enable vue/no-v-html -->
         </n-tab-pane>
 
-        <n-tab-pane name="Study Metadata" tab="Study Metadata">
+        <n-tab-pane name="Study Description" tab="Study Description">
           <MetadataStudyDescription
             :metadata="(dataset?.metadata.studyDescription as StudyDescription)"
             :study-title="(dataset?.studyTitle as string)"
@@ -252,7 +257,7 @@ if (dataset.value) {
           </n-collapse>
         </n-tab-pane>
 
-        <n-tab-pane name="Dataset Metadata" tab="Dataset Metadata">
+        <n-tab-pane name="Dataset Description" tab="Dataset Description">
           <MetadataDatasetDescription
             :metadata="(dataset?.metadata.datasetDescription as DatasetDescription)"
           />
