@@ -64,71 +64,69 @@ if (dataset.value) {
 </script>
 
 <template>
-  <main
-    class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50 px-4"
-  >
-    <div class="mt-10 flex h-36 items-center">
-      <div
-        class="mx-auto flex w-full max-w-screen-xl items-center justify-between px-2"
-      >
-        <n-space vertical>
-          <h1>{{ dataset?.title }}</h1>
+  <main class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50">
+    <div
+      class="mx-auto mt-10 flex w-full max-w-screen-xl items-center justify-between px-3"
+    >
+      <n-space vertical>
+        <h1>{{ dataset?.title }}</h1>
 
-          <p>
-            <n-space horizontal class="items-center align-middle">
-              <div
-                v-for="(creator, index) in dataset?.metadata.datasetDescription
-                  .Creator"
-                :key="index"
-                class="flex flex-row flex-wrap items-center align-middle text-black"
+        <p>
+          <n-space horizontal class="items-center align-middle">
+            <div
+              v-for="(creator, index) in dataset?.metadata.datasetDescription
+                .Creator"
+              :key="index"
+              class="flex flex-row flex-wrap items-center align-middle text-black"
+            >
+              <!-- if on the last index create a different span -->
+              <span class="mr-1 text-sm font-light">{{
+                creator.creatorName
+              }}</span>
+
+              <button-badge-button
+                v-if="creator?.nameIdentifier"
+                class="pt-1"
+                :type="creator.nameIdentifier[0]"
+              />
+
+              <span
+                v-if="
+                  dataset?.metadata.datasetDescription.Creator &&
+                  index !=
+                    dataset?.metadata.datasetDescription.Creator.length - 1
+                "
+                class="text-sm"
               >
-                <!-- if on the last index create a different span -->
-                <span class="mr-1 text-sm font-light">{{
-                  creator.creatorName
-                }}</span>
+                ,
+              </span>
+            </div>
+          </n-space>
+        </p>
 
-                <button-badge-button
-                  v-if="creator?.nameIdentifier"
-                  class="pt-1"
-                  :type="creator.nameIdentifier[0]"
-                />
+        <p>{{ dataset?.description }}</p>
 
-                <span
-                  v-if="
-                    dataset?.metadata.datasetDescription.Creator &&
-                    index !=
-                      dataset?.metadata.datasetDescription.Creator.length - 1
-                  "
-                  class="text-sm"
-                >
-                  ,
-                </span>
-              </div>
-            </n-space>
-          </p>
+        <NuxtLink to="https://download.fairhub.io/1" target="__blank">
+          <n-button size="large" type="info" secondary class="my-3">
+            <template #icon>
+              <Icon name="line-md:download-loop" />
+            </template>
+            Access this dataset
+          </n-button>
+        </NuxtLink>
+      </n-space>
 
-          <p>{{ dataset?.description }}</p>
-
-          <NuxtLink to="https://download.fairhub.io/1" target="__blank">
-            <n-button size="large" type="info" secondary class="my-3">
-              <template #icon>
-                <Icon name="line-md:download-loop" />
-              </template>
-              Access this dataset
-            </n-button>
-          </NuxtLink>
-        </n-space>
-
-        <n-image
-          src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
-          :alt="dataset?.title"
-          class="size-32 h-32 w-32 rounded-lg"
-        />
-      </div>
+      <n-image
+        src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
+        :alt="dataset?.title"
+        class="size-32 h-32 w-32 rounded-lg"
+      />
     </div>
 
+    <n-divider />
+
     <div
-      class="mx-auto w-full max-w-screen-xl px-3 py-5 lg:grid lg:grid-cols-12 lg:gap-10"
+      class="mx-auto w-full max-w-screen-xl px-5 py-5 lg:grid lg:grid-cols-12 lg:gap-10"
     >
       <n-tabs
         type="line"
