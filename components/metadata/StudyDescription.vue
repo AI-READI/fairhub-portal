@@ -446,7 +446,7 @@ onBeforeMount(() => {
           v-if="metadata.IdentificationModule.SecondaryIdInfoList"
           class="mb-1 mt-4 w-full"
         >
-          <p class="mb-1 w-full border-b font-semibold">Secondary ID</p>
+          <p class="mb-4 w-full border-b font-semibold">Secondary ID</p>
 
           <n-table :bordered="false" :single-line="false">
             <thead>
@@ -567,7 +567,7 @@ onBeforeMount(() => {
     >
       <n-space vertical>
         <div v-if="metadata.ReferencesModule.ReferenceList">
-          <p class="mb-1 w-full border-b font-semibold">References</p>
+          <p class="mb-4 w-full border-b font-semibold">References</p>
 
           <n-table :bordered="false" :single-line="false">
             <thead>
@@ -597,7 +597,7 @@ onBeforeMount(() => {
         </div>
 
         <div v-if="metadata.ReferencesModule.SeeAlsoLinkList" class="mt-4">
-          <p class="mb-1 w-full border-b font-semibold">See Also</p>
+          <p class="mb-4 w-full border-b font-semibold">See Also</p>
 
           <n-table :bordered="false" :single-line="false">
             <thead>
@@ -630,7 +630,7 @@ onBeforeMount(() => {
         </div>
 
         <div v-if="metadata.ReferencesModule.AvailIPDList" class="mt-4">
-          <p class="mb-1 w-full border-b font-semibold">Available IPDs</p>
+          <p class="mb-4 w-full border-b font-semibold">Available IPDs</p>
 
           <n-table :bordered="false" :single-line="false">
             <thead>
@@ -690,7 +690,7 @@ onBeforeMount(() => {
               v-for="(collaborator, index) in metadata
                 .SponsorCollaboratorsModule.CollaboratorList"
               :key="index"
-              class="font-base list-disc"
+              class="list-disc text-base"
             >
               <n-li>{{ collaborator.CollaboratorName }}</n-li>
             </n-ul>

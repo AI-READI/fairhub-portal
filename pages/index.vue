@@ -49,7 +49,7 @@ if (error.value) {
       >
         <div class="place-self-center lg:col-span-8 lg:mr-auto">
           <h1
-            class="mb-2 max-w-2xl bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-center text-3xl font-extrabold leading-none tracking-tight text-transparent md:text-4xl lg:text-left xl:text-5xl"
+            class="mb-2 max-w-2xl bg-gradient-to-r from-sky-400 to-yellow-300 bg-clip-text text-center text-3xl font-extrabold leading-none tracking-tight text-transparent md:text-4xl lg:text-left xl:text-5xl"
           >
             Make breakthrough discoveries with AI-ready datasets
           </h1>
@@ -60,6 +60,22 @@ if (error.value) {
             Find and reuse FAIR, AI-ready datasets shared through the FAIRhub
             data management and curation platform.
           </p>
+
+          <n-divider />
+
+          <div class="max-w-2xl font-normal text-gray-800">
+            Manage and share your own clinical research data with FAIRhub.
+            <div class="mt-1 flex gap-3 duration-0">
+              <NuxtLink
+                to="https://staging.fairhub.io/submit"
+                class="timing text-blue-500 transition-all hover:text-amber-500"
+                icon-placement="right"
+              >
+                Submit a dataset
+                <Icon name="fluent:arrow-right-24-filled" />
+              </NuxtLink>
+            </div>
+          </div>
         </div>
 
         <div class="flex justify-center lg:col-span-4 lg:mt-0 lg:flex">
