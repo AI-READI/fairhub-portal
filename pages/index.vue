@@ -13,11 +13,9 @@ if (error.value) {
 </script>
 
 <template>
-  <main
-    class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50 px-4"
-  >
+  <main class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50">
     <div
-      class="mb-4 flex items-center justify-center rounded-lg border bg-yellow-50 p-4 text-lg text-yellow-600"
+      class="mb-4 flex items-center justify-center border bg-yellow-50 p-4 text-lg text-yellow-600"
       role="alert"
     >
       <svg
@@ -47,16 +45,18 @@ if (error.value) {
       />
 
       <div
-        class="relative mx-auto grid max-w-screen-xl px-4 lg:grid-cols-12 lg:gap-8 xl:gap-0"
+        class="relative mx-auto flex max-w-screen-xl flex-col px-4 lg:grid lg:grid-cols-12 lg:gap-8 xl:gap-0"
       >
-        <div class="mr-auto place-self-center lg:col-span-8">
+        <div class="place-self-center lg:col-span-8 lg:mr-auto">
           <h1
-            class="mb-2 max-w-2xl bg-gradient-to-r from-sky-400 to-yellow-300 bg-clip-text text-3xl font-extrabold leading-none tracking-tight text-transparent md:text-4xl xl:text-5xl"
+            class="mb-2 max-w-2xl bg-gradient-to-r from-sky-400 to-yellow-300 bg-clip-text text-center text-3xl font-extrabold leading-none tracking-tight text-transparent md:text-4xl lg:text-left xl:text-5xl"
           >
             Make breakthrough discoveries with AI-ready datasets
           </h1>
 
-          <p class="mb-2 max-w-2xl text-xl font-normal text-gray-800">
+          <p
+            class="mb-2 max-w-2xl text-center text-xl font-normal text-gray-800 lg:text-left"
+          >
             Find and reuse FAIR, AI-ready datasets shared through the FAIRhub
             data management and curation platform.
           </p>
@@ -78,7 +78,7 @@ if (error.value) {
           </div>
         </div>
 
-        <div class="hidden lg:col-span-4 lg:mt-0 lg:flex">
+        <div class="flex justify-center lg:col-span-4 lg:mt-0 lg:flex">
           <img src="/images/hero/research.webp" alt="mockup" />
         </div>
       </div>
@@ -96,7 +96,9 @@ if (error.value) {
 
             <p>Explore FAIR, AI-ready datasets.</p>
 
-            <div class="flex w-full items-center space-x-5 pt-4">
+            <div
+              class="flex w-full flex-col items-center space-y-2 pt-4 sm:flex-row sm:space-x-5 sm:space-y-0"
+            >
               <n-input
                 size="large"
                 placeholder="Diabetes Salutogenesis"
@@ -116,6 +118,7 @@ if (error.value) {
                 secondary
                 size="large"
                 icon-placement="right"
+                class="w-3/5 sm:w-auto"
               >
                 <template #icon>
                   <Icon name="mingcute:arrow-right-fill" size="25" />
@@ -148,7 +151,9 @@ if (error.value) {
                 class="flex h-full w-full flex-grow flex-col items-stretch justify-between space-y-2"
               >
                 <n-space vertical>
-                  <div class="flex items-start justify-between">
+                  <div
+                    class="flex flex-wrap items-start justify-between md:flex-nowrap"
+                  >
                     <h3>{{ dataset.title }}</h3>
 
                     <n-tag type="info" :bordered="false">

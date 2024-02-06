@@ -1,5 +1,30 @@
 <script setup lang="ts">
 const devMode = process.env.NODE_ENV === "development";
+
+const navCollapsed = ref(false);
+
+const links = [
+  {
+    title: "Datasets",
+
+    href: "/",
+  },
+  {
+    title: "Submit a dataset",
+
+    href: "/submit",
+  },
+  {
+    title: "Documentation",
+
+    href: "https://docs.fairhub.io",
+  },
+  {
+    title: "Contact",
+
+    href: "/contact",
+  },
+];
 </script>
 
 <template>
@@ -9,7 +34,7 @@ const devMode = process.env.NODE_ENV === "development";
   >
     <header>
       <nav class="border-b border-gray-200 bg-white px-4 py-2.5 lg:px-6">
-        <div class="mx-auto grid w-full max-w-screen-xl grid-cols-2">
+        <div class="mx-auto flex w-full max-w-screen-xl justify-between">
           <div class="flex justify-start">
             <NuxtLink
               to="/"
@@ -23,46 +48,101 @@ const devMode = process.env.NODE_ENV === "development";
             </NuxtLink>
           </div>
 
-          <div class="flex w-full items-center justify-end lg:w-auto">
+          <button
+            data-collapse-toggle="navbar-default"
+            type="button"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 lg:hidden dark:text-gray-400"
+            aria-controls="navbar-default"
+            aria-expanded="false"
+            @click="navCollapsed = !navCollapsed"
+          >
+            <span class="sr-only">Open main menu</span>
+
+            <svg
+              class="h-5 w-5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 17 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M1 1h15M1 7h15M1 13h15"
+              />
+            </svg>
+          </button>
+
+          <div class="hidden w-full items-center justify-end lg:flex lg:w-auto">
             <ul
               class="mt-4 flex flex-col font-medium lg:mt-0 lg:flex-row lg:space-x-8"
             >
               <NuxtLink
-                to="/"
-                class="block border-b border-gray-100 px-3 py-2 text-gray-700 transition-all hover:bg-gray-50 hover:text-cyan-500 lg:border-0 lg:p-0 lg:hover:bg-transparent"
-                exact-active-class="text-sky-500"
-              >
-                <p>Datasets</p>
-              </NuxtLink>
-
-              <NuxtLink
-                to="/submit"
-                class="block border-b border-gray-100 px-3 py-2 text-gray-700 transition-all hover:bg-gray-50 hover:text-cyan-500 lg:border-0 lg:p-0 lg:hover:bg-transparent"
-                exact-active-class="text-sky-500"
-              >
-                <p>Submit a dataset</p>
-              </NuxtLink>
-
-              <NuxtLink
-                to="https://docs.fairhub.io"
-                target="__blank"
+                v-for="link in links"
+                :key="link.href"
+                :to="link.href"
                 class="flex items-center justify-center border-b border-gray-100 px-3 py-2 text-gray-700 transition-all hover:bg-gray-50 hover:text-cyan-500 lg:border-0 lg:p-0 lg:hover:bg-transparent"
                 exact-active-class="text-sky-500"
+                :target="link.href.startsWith('http') ? '_blank' : '_self'"
               >
-                <p>Documentation</p>
+                <p>{{ link.title }}</p>
 
-                <Icon name="mdi:open-in-new" class="ml-1" />
-              </NuxtLink>
-
-              <NuxtLink
-                to="/contact"
-                class="block border-b border-gray-100 px-3 py-2 text-gray-700 transition-all hover:bg-gray-50 hover:text-cyan-500 lg:border-0 lg:p-0 lg:hover:bg-transparent"
-                exact-active-class="text-sky-500"
-              >
-                <p>Contact</p>
+                <Icon
+                  v-if="link.href.startsWith('http')"
+                  name="mdi:open-in-new"
+                  class="ml-1"
+                />
               </NuxtLink>
             </ul>
           </div>
+
+          <n-drawer
+            v-model:show="navCollapsed"
+            :height="250"
+            placement="top"
+            class="block lg:hidden"
+          >
+            <n-drawer-content
+              closable
+              :body-content-style="{
+                padding: '0px',
+              }"
+            >
+              <template #header>
+                <NuxtLink
+                  to="/"
+                  class="flex flex-row items-center justify-start space-x-2"
+                >
+                  <span
+                    class="bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-2xl font-extrabold text-transparent"
+                  >
+                    fairhub
+                  </span>
+                </NuxtLink>
+              </template>
+
+              <n-space vertical :size="[0, 0]">
+                <NuxtLink
+                  v-for="link in links"
+                  :key="link.href"
+                  :to="link.href"
+                  class="flex items-center justify-center border-t border-gray-100 px-3 py-2 text-lg text-gray-700 transition-all hover:bg-gray-50 hover:text-cyan-500"
+                  exact-active-class="text-sky-500"
+                  :target="link.href.startsWith('http') ? '_blank' : '_self'"
+                >
+                  <p class="text-lg">{{ link.title }}</p>
+
+                  <Icon
+                    v-if="link.href.startsWith('http')"
+                    name="mdi:open-in-new"
+                    class="ml-1"
+                  />
+                </NuxtLink>
+              </n-space>
+            </n-drawer-content>
+          </n-drawer>
 
           <!-- <div class="flex items-center justify-end space-x-3">
             <n-input-group>
