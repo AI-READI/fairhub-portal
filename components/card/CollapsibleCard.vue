@@ -5,7 +5,7 @@ const props = defineProps({
     type: String,
   },
   collapse: {
-    default: false,
+    default: true,
     type: Boolean,
   },
 });
