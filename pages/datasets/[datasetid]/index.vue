@@ -128,7 +128,7 @@ if (dataset.value) {
     </div>
 
     <div
-      class="mx-auto grid w-full max-w-screen-xl grid-cols-12 gap-10 px-3 py-5"
+      class="mx-auto w-full max-w-screen-xl px-3 py-5 lg:grid lg:grid-cols-12 lg:gap-10"
     >
       <n-tabs
         type="line"
