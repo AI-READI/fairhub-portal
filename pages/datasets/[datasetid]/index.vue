@@ -127,99 +127,23 @@ if (dataset.value) {
       </div>
     </div>
 
-    <div class="mx-auto flex w-full max-w-screen-xl flex-col px-3 py-5">
-      <n-tabs type="line" animated size="large" default-value="About">
+    <div
+      class="mx-auto grid w-full max-w-screen-xl grid-cols-12 gap-10 px-3 py-5"
+    >
+      <n-tabs
+        type="line"
+        animated
+        size="large"
+        default-value="About"
+        class="col-span-8"
+      >
         <n-tab-pane name="About" tab="About">
-          <div class="grid grid-cols-7 gap-10">
-            <n-space vertical class="col-span-5 mt-3">
-              <!-- eslint-disable vue/no-v-html -->
-              <div
-                class="prose mt-0 min-h-[300px] max-w-none text-black"
-                v-html="markdownToHtml"
-              />
-              <!-- eslint-enable vue/no-v-html -->
-            </n-space>
-
-            <n-space vertical class="col-span-2">
-              <n-space
-                vertical
-                class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
-              >
-                <n-space justify="center" class="px-6 py-3" align="center">
-                  <n-space vertical align="center" size="small">
-                    <p class="text-xl font-medium">
-                      <n-number-animation
-                        :from="0"
-                        :to="104540"
-                        show-separator
-                      />
-                    </p>
-
-                    <n-space size="small" align="center">
-                      <Icon name="lets-icons:view-duotone" size="23" />
-
-                      <span class="font-normal">Views</span>
-                    </n-space>
-                  </n-space>
-
-                  <div>
-                    <n-divider vertical />
-                  </div>
-
-                  <n-space vertical align="center" size="small">
-                    <p class="text-xl font-medium">
-                      <n-number-animation :from="0" :to="1033" show-separator />
-                    </p>
-
-                    <n-space size="small" align="center">
-                      <Icon name="ic:round-download" size="18" />
-
-                      <span class="font-normal">Downloads</span>
-                    </n-space>
-                  </n-space>
-                </n-space>
-              </n-space>
-
-              <n-space
-                vertical
-                class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
-              >
-                <n-space vertical>
-                  <h3>License</h3>
-
-                  <NuxtLink
-                    to="https://spdx.org/licenses/MIT.html"
-                    target="_blank"
-                    class="underline transition-all hover:text-slate-600"
-                  >
-                    Health Data License
-                  </NuxtLink>
-                </n-space>
-
-                <n-space vertical class="mt-3">
-                  <h3>Keywords</h3>
-
-                  <n-space>
-                    <n-tag
-                      v-for="(keyword, index) in dataset?.keywords"
-                      :key="index"
-                      type="info"
-                      size="small"
-                    >
-                      {{ keyword }}
-                    </n-tag>
-                  </n-space>
-                </n-space>
-              </n-space>
-
-              <CitationViewer
-                :id="(dataset?.id as number)"
-                :creators="(dataset?.metadata.datasetDescription.Creator as object)"
-              />
-
-              <VersionSelector :id="(dataset?.id as number)" />
-            </n-space>
-          </div>
+          <!-- eslint-disable vue/no-v-html -->
+          <div
+            class="prose mt-0 min-h-[300px] max-w-none text-black"
+            v-html="markdownToHtml"
+          />
+          <!-- eslint-enable vue/no-v-html -->
         </n-tab-pane>
 
         <n-tab-pane name="Dashboard" tab="Dashboard"> Dashboard </n-tab-pane>
@@ -296,6 +220,84 @@ if (dataset.value) {
           />
         </n-tab-pane> -->
       </n-tabs>
+
+      <div class="col-span-4 mt-14">
+        <n-space vertical class="col-span-2">
+          <n-space
+            vertical
+            class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
+          >
+            <n-space justify="center" class="px-6 py-3" align="center">
+              <n-space vertical align="center" size="small">
+                <p class="text-xl font-medium">
+                  <n-number-animation :from="0" :to="104540" show-separator />
+                </p>
+
+                <n-space size="small" align="center">
+                  <Icon name="lets-icons:view-duotone" size="23" />
+
+                  <span class="font-normal">Views</span>
+                </n-space>
+              </n-space>
+
+              <div>
+                <n-divider vertical />
+              </div>
+
+              <n-space vertical align="center" size="small">
+                <p class="text-xl font-medium">
+                  <n-number-animation :from="0" :to="1033" show-separator />
+                </p>
+
+                <n-space size="small" align="center">
+                  <Icon name="ic:round-download" size="18" />
+
+                  <span class="font-normal">Downloads</span>
+                </n-space>
+              </n-space>
+            </n-space>
+          </n-space>
+
+          <n-space
+            vertical
+            class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
+          >
+            <n-space vertical>
+              <h3>License</h3>
+
+              <NuxtLink
+                to="https://spdx.org/licenses/MIT.html"
+                target="_blank"
+                class="underline transition-all hover:text-slate-600"
+              >
+                Health Data License
+              </NuxtLink>
+            </n-space>
+
+            <n-space vertical class="mt-3">
+              <h3>Keywords</h3>
+
+              <n-space>
+                <n-tag
+                  v-for="(keyword, index) in dataset?.keywords"
+                  :key="index"
+                  type="info"
+                  size="small"
+                >
+                  {{ keyword }}
+                </n-tag>
+              </n-space>
+            </n-space>
+          </n-space>
+
+          <CitationViewer
+            :id="(dataset?.id as number)"
+            :creators="(dataset?.metadata.datasetDescription.Creator as object)"
+          />
+
+          <VersionSelector :id="(dataset?.id as number)" />
+        </n-space>
+      </div>
     </div>
   </main>
 </template>
