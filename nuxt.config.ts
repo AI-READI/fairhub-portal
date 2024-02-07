@@ -41,6 +41,7 @@ export default defineNuxtConfig({
     "nuxt-simple-robots",
     "nuxt-schema-org",
     "nuxt-link-checker",
+    "@nuxtjs/device",
     "nuxt-headlessui",
     "dayjs-nuxt",
     "nuxt-lodash",
