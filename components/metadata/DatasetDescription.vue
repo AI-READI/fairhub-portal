@@ -41,6 +41,7 @@ function boolOtherSchemes(identifier: Identifier) {
       title="Creators"
       data-section-title="Creators"
       class="mb-4 shadow-md"
+      :collapse="false"
     >
       <n-space vertical>
         <n-table
