@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import sanitizeHtml from "sanitize-html";
-import { parse } from "marked";
+import { type TokensList, lexer, parse } from "marked";
 
 const push = usePush();
 const route = useRoute();
@@ -25,7 +25,7 @@ if (error.value) {
 
 const markdownToHtml = ref<string>("");
 const datasetSheetMarkdownToHtml = ref<string>("");
-const lexerArray = ref<string[]>([]);
+const lexerArray = ref<TokensList | []>([]);
 
 useSchemaOrg([
   {
@@ -60,6 +60,8 @@ if (dataset.value) {
     datasetSheetMarkdownToHtml.value = sanitize(
       parse(dataset.value.metadata.dataSheet)
     );
+    lexerArray.value = lexer(dataset.value.metadata.dataSheet);
+    console.log(lexerArray.value);
   }
 }
 </script>
@@ -148,6 +150,7 @@ if (dataset.value) {
         <n-tab-pane name="Dashboard" tab="Dashboard"> Dashboard </n-tab-pane>
 
         <n-tab-pane name="Healthsheet" tab="Healthsheet">
+          <metadata-health-sheet :healthsheet="dataset?.metadata.dataSheet" />
           <!-- eslint-disable vue/no-v-html -->
           <div
             class="prose mt-0 min-h-[300px] max-w-none text-black"
