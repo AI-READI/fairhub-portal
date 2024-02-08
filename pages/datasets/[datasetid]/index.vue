@@ -152,10 +152,10 @@ if (dataset.value) {
         <n-tab-pane name="Healthsheet" tab="Healthsheet">
           <metadata-health-sheet :healthsheet="dataset?.metadata.dataSheet" />
           <!-- eslint-disable vue/no-v-html -->
-          <div
+          <!-- <div
             class="prose mt-0 min-h-[300px] max-w-none text-black"
             v-html="datasetSheetMarkdownToHtml"
-          />
+          /> -->
           <!-- eslint-enable vue/no-v-html -->
         </n-tab-pane>
 
