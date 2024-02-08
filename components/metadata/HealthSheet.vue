@@ -70,7 +70,7 @@ function parseItem(item: string) {
       :title="token"
       :data-section-title="token"
       class="mb-4 shadow-md"
-      :collapse="false"
+      :collapse="index !== 0"
     >
       <n-space v-if="token === 'Motivation'" vertical>
         <div v-for="(item, innerIndex) in motivationList" :key="innerIndex">
