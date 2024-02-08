@@ -42,7 +42,6 @@ const {
             </p>
 
             <p class="text-sm">
-              {{ console.log(creators) }}
               <span v-for="(creator, index) in creators" :key="index">
                 {{ creator?.creatorName.trim()
                 }}<template v-if="index !== creators.length - 1"

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import sanitizeHtml from "sanitize-html";
-import { type TokensList, lexer, parse } from "marked";
+import { parse } from "marked";
 
 const push = usePush();
 const route = useRoute();
@@ -24,8 +24,6 @@ if (error.value) {
 }
 
 const markdownToHtml = ref<string>("");
-const datasetSheetMarkdownToHtml = ref<string>("");
-const lexerArray = ref<TokensList | []>([]);
 
 useSchemaOrg([
   {
@@ -54,14 +52,6 @@ useSeoMeta({
 if (dataset.value) {
   if (dataset.value?.metadata.readme) {
     markdownToHtml.value = sanitize(parse(dataset.value.metadata.readme));
-  }
-
-  if (dataset.value?.metadata.dataSheet) {
-    datasetSheetMarkdownToHtml.value = sanitize(
-      parse(dataset.value.metadata.dataSheet)
-    );
-    lexerArray.value = lexer(dataset.value.metadata.dataSheet);
-    console.log(lexerArray.value);
   }
 }
 </script>
@@ -151,12 +141,6 @@ if (dataset.value) {
 
         <n-tab-pane name="Healthsheet" tab="Healthsheet">
           <metadata-health-sheet :healthsheet="dataset?.metadata.dataSheet" />
-          <!-- eslint-disable vue/no-v-html -->
-          <!-- <div
-            class="prose mt-0 min-h-[300px] max-w-none text-black"
-            v-html="datasetSheetMarkdownToHtml"
-          /> -->
-          <!-- eslint-enable vue/no-v-html -->
         </n-tab-pane>
 
         <n-tab-pane name="Study Description" tab="Study Description">

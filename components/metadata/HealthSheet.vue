@@ -25,11 +25,6 @@ const listTokens: any = lexerArray.value.filter(
   (token) => token.type === "list"
 );
 
-console.log(lexerArray);
-
-console.log(sectionTokens);
-console.log(listTokens);
-
 const cleanedSections = sectionTokens.map((section: Token) => {
   return section?.type === "heading" ? section.text : "";
 });
@@ -50,9 +45,6 @@ for (let i = 0; i < listTokens.length; i++) {
   }
 }
 
-console.log(cleanedSections);
-
-console.log(cleanedLists);
 const motivationList = cleanedLists.slice(0, 8);
 const compositionList = cleanedLists.slice(8, 42);
 const collectionList = cleanedLists.slice(42, 68);
@@ -89,8 +81,9 @@ function parseItem(item: string) {
               item.substring(item.indexOf("**") + 2, item.lastIndexOf("**"))
             }}</b
           >
-
+          <!-- eslint-disable vue/no-v-html -->
           <p v-else class="mb-3" v-html="parseItem(item)"></p>
+          <!-- eslint-enable vue/no-v-html -->
         </div>
       </n-space>
 
@@ -103,8 +96,9 @@ function parseItem(item: string) {
               item.substring(item.indexOf("**") + 2, item.lastIndexOf("**"))
             }}</b
           >
-
+          <!-- eslint-disable vue/no-v-html -->
           <p v-else class="mb-3" v-html="parseItem(item)"></p>
+          <!-- eslint-enable vue/no-v-html -->
         </div>
       </n-space>
 
@@ -117,8 +111,9 @@ function parseItem(item: string) {
               item.substring(item.indexOf("**") + 2, item.lastIndexOf("**"))
             }}</b
           >
-
+          <!-- eslint-disable vue/no-v-html -->
           <p v-else class="mb-3" v-html="parseItem(item)"></p>
+          <!-- eslint-enable vue/no-v-html -->
         </div>
       </n-space>
 
@@ -132,7 +127,9 @@ function parseItem(item: string) {
             }}</b
           >
 
+          <!-- eslint-disable vue/no-v-html -->
           <p v-else class="mb-3" v-html="parseItem(item)"></p>
+          <!-- eslint-enable vue/no-v-html -->
         </div>
       </n-space>
 
@@ -146,7 +143,9 @@ function parseItem(item: string) {
             }}</b
           >
 
+          <!-- eslint-disable vue/no-v-html -->
           <p v-else class="mb-3" v-html="parseItem(item)"></p>
+          <!-- eslint-enable vue/no-v-html -->
         </div>
       </n-space>
 
@@ -160,7 +159,9 @@ function parseItem(item: string) {
             }}</b
           >
 
+          <!-- eslint-disable vue/no-v-html -->
           <p v-else class="mb-3" v-html="parseItem(item)"></p>
+          <!-- eslint-enable vue/no-v-html -->
         </div>
       </n-space>
 
@@ -174,7 +175,9 @@ function parseItem(item: string) {
             }}</b
           >
 
+          <!-- eslint-disable vue/no-v-html -->
           <p v-else class="mb-3" v-html="parseItem(item)"></p>
+          <!-- eslint-enable vue/no-v-html -->
         </div>
       </n-space>
     </card-collapsible-card>
@@ -182,7 +185,7 @@ function parseItem(item: string) {
 </template>
 
 <style scoped>
-* >>> a {
+*:deep() a {
   color: inherit;
   text-decoration: underline;
   font-weight: 500;
