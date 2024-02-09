@@ -18,8 +18,8 @@ const props = defineProps({
 });
 
 onBeforeMount(() => {
-  eligibilityMarkdown.value = parse(
-    props.metadata.EligibilityModule.EligibilityCriteria
+  eligibilityMarkdown.value = sanitize(
+    parse(props.metadata.EligibilityModule.EligibilityCriteria)
   );
 });
 </script>
