@@ -8,6 +8,42 @@ const route = useRoute();
 const { datasetid } = route.params as { datasetid: string };
 const sanitize = (html: string) => sanitizeHtml(html);
 
+const items = [
+  {
+    href: `/datasets/${datasetid}`,
+    label: "About",
+  },
+  {
+    href: `/datasets/${datasetid}/dashboard`,
+    label: "Dashboard",
+  },
+  {
+    href: `/datasets/${datasetid}/datasheet`,
+    label: "Datasheet",
+  },
+  {
+    href: `/datasets/${datasetid}/study-metadata`,
+    label: "Study Metadata",
+  },
+  {
+    href: `/datasets/${datasetid}/dataset-metadata`,
+    label: "Dataset Metadata",
+  },
+  {
+    href: `/datasets/${datasetid}/datatype-metadata`,
+    label: "Datatype Metadata",
+  },
+];
+
+const tabsShown = reactive({
+  About: true,
+  Dashboard: false,
+  "Dataset Metadata": false,
+  Datasheet: false,
+  "Datatype Metadata": false,
+  "Study Metadata": false,
+});
+
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
 });
@@ -61,6 +97,17 @@ if (dataset.value) {
     );
   }
 }
+
+const navigate = (target: string) => {
+  // the callback is fired once the animation is completed
+  // to allow smooth transition
+
+  for (const key in tabsShown) {
+    tabsShown[key as keyof typeof tabsShown] = false;
+  }
+
+  tabsShown[target as keyof typeof tabsShown] = true;
+};
 </script>
 
 <template>
@@ -125,176 +172,225 @@ if (dataset.value) {
 
     <n-divider />
 
-    <div
-      class="mx-auto w-full max-w-screen-xl px-5 py-5 lg:grid lg:grid-cols-12 lg:gap-10"
-    >
-      <n-tabs
-        type="line"
-        animated
-        size="large"
-        default-value="About"
-        class="col-span-8"
+    <div class="mx-auto w-full max-w-screen-xl">
+      <NavGroup
+        v-slot="{ ready, size, position, duration }"
+        fluid
+        :duration="350"
+        as="nav"
+        class="relative border-b px-4"
       >
-        <n-tab-pane name="About" tab="About">
-          <!-- eslint-disable vue/no-v-html -->
+        <div class="relative py-1">
           <div
-            class="prose mt-0 min-h-[300px] max-w-none text-black"
-            v-html="markdownToHtml"
-          />
-          <!-- eslint-enable vue/no-v-html -->
-        </n-tab-pane>
-
-        <n-tab-pane name="Dashboard" tab="Dashboard"> Dashboard </n-tab-pane>
-
-        <n-tab-pane name="Datasheet" tab="Datasheet">
-          <!-- eslint-disable vue/no-v-html -->
-          <div
-            class="prose mt-0 min-h-[300px] max-w-none text-black"
-            v-html="datasetSheetMarkdownToHtml"
-          />
-          <!-- eslint-enable vue/no-v-html -->
-        </n-tab-pane>
-
-        <n-tab-pane name="Study Metadata" tab="Study Metadata">
-          <MetadataStudyDescription
-            :metadata="(dataset?.metadata.studyDescription as StudyDescription)"
-            :study-title="(dataset?.studyTitle as string)"
+            v-if="ready"
+            :style="{
+              '--size': size,
+              '--position': position,
+              '--duration': duration,
+            }"
+            class="absolute bottom-0 left-0 h-1 w-[--size] translate-x-[--position] bg-orange-400 transition-[width,transform] duration-[--duration]"
           />
 
-          <n-divider />
-
-          <n-collapse>
-            <n-collapse-item
-              title="View the full study_description.json file"
-              name="1"
-              size="large"
+          <NavList as="ul" class="relative flex items-stretch gap-3">
+            <NavItem
+              v-for="(item, index) in items"
+              :key="index"
+              v-slot="{ setActive, isActive }"
+              as="li"
+              @click="navigate(item.label)"
             >
-              <json-viewer :value="dataset?.metadata.studyDescription || {}" />
-            </n-collapse-item>
-          </n-collapse>
-        </n-tab-pane>
+              <a
+                href="#"
+                :class="[
+                  isActive
+                    ? 'text-sky-600'
+                    : 'text-sky-900/70 hover:text-sky-500',
+                ]"
+                class="inline-block p-4 font-medium transition-all"
+                @click.prevent="setActive"
+              >
+                {{ item.label }}
+              </a>
+            </NavItem>
+          </NavList>
+        </div>
+      </NavGroup>
 
-        <n-tab-pane name="Dataset Metadata" tab="Dataset Metadata">
-          <MetadataDatasetDescription
-            :metadata="(dataset?.metadata.datasetDescription as DatasetDescription)"
-          />
+      <div class="px-5 py-5 lg:grid lg:grid-cols-12 lg:gap-10">
+        <div class="col-span-8">
+          <TransitionFade>
+            <div v-if="tabsShown.About" name="About" tab="About">
+              <!-- eslint-disable vue/no-v-html -->
+              <div
+                class="prose mt-0 min-h-[300px] max-w-none text-black"
+                v-html="markdownToHtml"
+              />
+              <!-- eslint-enable vue/no-v-html -->
+            </div>
 
-          <n-divider />
+            <div v-if="tabsShown.Dashboard" name="Dashboard" tab="Dashboard">
+              Dashboard
+            </div>
 
-          <n-collapse>
-            <n-collapse-item
-              title="View the full dataset_description.json file"
-              name="1"
-              size="large"
+            <div v-if="tabsShown.Datasheet" name="Datasheet" tab="Datasheet">
+              <!-- eslint-disable vue/no-v-html -->
+              <div
+                class="prose mt-0 min-h-[300px] max-w-none text-black"
+                v-html="datasetSheetMarkdownToHtml"
+              />
+              <!-- eslint-enable vue/no-v-html -->
+            </div>
+
+            <div
+              v-if="tabsShown['Study Metadata']"
+              name="Study Metadata"
+              tab="Study Metadata"
             >
-              <json-viewer
-                :value="dataset?.metadata.datasetDescription || {}"
-                copyable
-                :show-array-index="false"
+              <MetadataStudyDescription
+                :metadata="(dataset?.metadata.studyDescription as StudyDescription)"
+                :study-title="(dataset?.studyTitle as string)"
               />
 
               <n-divider />
 
-              <VueJsonPretty
-                :data="dataset?.metadata.datasetDescription || {}"
-                show-line
-                show-icon
-                :deep="1"
-                highlight-selected-node
-                collapsed-on-click-brackets
-                :show-double-quotes="false"
-              />
-            </n-collapse-item>
-          </n-collapse>
-        </n-tab-pane>
-
-        <n-tab-pane name="Datatype Metadata" tab="Datatype Metadata">
-          Datatype Metadata
-        </n-tab-pane>
-
-        <!-- <n-tab-pane name="Files" tab="Files">
-          <FilesFolderViewer
-            :folder-structure="(dataset?.files as FolderStructure[])"
-          />
-        </n-tab-pane> -->
-      </n-tabs>
-
-      <div class="col-span-4 mt-14">
-        <n-space vertical class="col-span-2">
-          <n-space
-            vertical
-            class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
-          >
-            <n-space justify="center" class="px-6 py-3" align="center">
-              <n-space vertical align="center" size="small">
-                <p class="text-xl font-medium">
-                  <n-number-animation :from="0" :to="104540" show-separator />
-                </p>
-
-                <n-space size="small" align="center">
-                  <Icon name="lets-icons:view-duotone" size="23" />
-
-                  <span class="font-normal">Views</span>
-                </n-space>
-              </n-space>
-
-              <div>
-                <n-divider vertical />
-              </div>
-
-              <n-space vertical align="center" size="small">
-                <p class="text-xl font-medium">
-                  <n-number-animation :from="0" :to="1033" show-separator />
-                </p>
-
-                <n-space size="small" align="center">
-                  <Icon name="ic:round-download" size="18" />
-
-                  <span class="font-normal">Downloads</span>
-                </n-space>
-              </n-space>
-            </n-space>
-          </n-space>
-
-          <n-space
-            vertical
-            class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
-          >
-            <n-space vertical>
-              <h3>License</h3>
-
-              <NuxtLink
-                to="https://spdx.org/licenses/MIT.html"
-                target="_blank"
-                class="underline transition-all hover:text-slate-600"
-              >
-                Health Data License
-              </NuxtLink>
-            </n-space>
-
-            <n-space vertical class="mt-3">
-              <h3>Keywords</h3>
-
-              <n-space>
-                <n-tag
-                  v-for="(keyword, index) in dataset?.keywords"
-                  :key="index"
-                  type="info"
-                  size="small"
+              <n-collapse>
+                <n-collapse-item
+                  title="View the full study_description.json file"
+                  name="1"
+                  size="large"
                 >
-                  {{ keyword }}
-                </n-tag>
+                  <json-viewer
+                    :value="dataset?.metadata.studyDescription || {}"
+                  />
+                </n-collapse-item>
+              </n-collapse>
+            </div>
+
+            <div
+              v-if="tabsShown['Dataset Metadata']"
+              name="Dataset Metadata"
+              tab="Dataset Metadata"
+            >
+              <MetadataDatasetDescription
+                :metadata="(dataset?.metadata.datasetDescription as DatasetDescription)"
+              />
+
+              <n-divider />
+
+              <n-collapse>
+                <n-collapse-item
+                  title="View the full dataset_description.json file"
+                  name="1"
+                  size="large"
+                >
+                  <json-viewer
+                    :value="dataset?.metadata.datasetDescription || {}"
+                    copyable
+                    :show-array-index="false"
+                  />
+
+                  <n-divider />
+
+                  <VueJsonPretty
+                    :data="dataset?.metadata.datasetDescription || {}"
+                    show-line
+                    show-icon
+                    :deep="1"
+                    highlight-selected-node
+                    collapsed-on-click-brackets
+                    :show-double-quotes="false"
+                  />
+                </n-collapse-item>
+              </n-collapse>
+            </div>
+
+            <div
+              v-if="tabsShown['Datatype Metadata']"
+              name="Datatype Metadata"
+              tab="Datatype Metadata"
+            >
+              Datatype Metadata
+            </div>
+          </TransitionFade>
+        </div>
+
+        <div class="col-span-4">
+          <n-space vertical class="col-span-2">
+            <n-space
+              vertical
+              class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
+            >
+              <n-space justify="center" class="px-6 py-3" align="center">
+                <n-space vertical align="center" size="small">
+                  <p class="text-xl font-medium">
+                    <n-number-animation :from="0" :to="104540" show-separator />
+                  </p>
+
+                  <n-space size="small" align="center">
+                    <Icon name="lets-icons:view-duotone" size="23" />
+
+                    <span class="font-normal">Views</span>
+                  </n-space>
+                </n-space>
+
+                <div>
+                  <n-divider vertical />
+                </div>
+
+                <n-space vertical align="center" size="small">
+                  <p class="text-xl font-medium">
+                    <n-number-animation :from="0" :to="1033" show-separator />
+                  </p>
+
+                  <n-space size="small" align="center">
+                    <Icon name="ic:round-download" size="18" />
+
+                    <span class="font-normal">Downloads</span>
+                  </n-space>
+                </n-space>
               </n-space>
             </n-space>
+
+            <n-space
+              vertical
+              class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
+            >
+              <n-space vertical>
+                <h3>License</h3>
+
+                <NuxtLink
+                  to="https://spdx.org/licenses/MIT.html"
+                  target="_blank"
+                  class="underline transition-all hover:text-slate-600"
+                >
+                  Health Data License
+                </NuxtLink>
+              </n-space>
+
+              <n-space vertical class="mt-3">
+                <h3>Keywords</h3>
+
+                <n-space>
+                  <n-tag
+                    v-for="(keyword, index) in dataset?.keywords"
+                    :key="index"
+                    type="info"
+                    size="small"
+                  >
+                    {{ keyword }}
+                  </n-tag>
+                </n-space>
+              </n-space>
+            </n-space>
+
+            <CitationViewer
+              :id="(dataset?.id as number)"
+              :creators="(dataset?.metadata.datasetDescription.Creator as object)"
+            />
+
+            <VersionSelector :id="(dataset?.id as number)" />
           </n-space>
-
-          <CitationViewer
-            :id="(dataset?.id as number)"
-            :creators="(dataset?.metadata.datasetDescription.Creator as object)"
-          />
-
-          <VersionSelector :id="(dataset?.id as number)" />
-        </n-space>
+        </div>
       </div>
     </div>
   </main>
