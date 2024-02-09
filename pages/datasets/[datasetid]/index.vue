@@ -285,7 +285,7 @@ if (dataset.value) {
 
           <CitationViewer
             :id="(dataset?.id as number)"
-            :creators="(dataset?.metadata.datasetDescription.Creator as object)"
+            :creators="(dataset?.metadata.datasetDescription.Creator as DatasetDescription['Creator'])"
           />
 
           <VersionSelector :id="(dataset?.id as number)" />
