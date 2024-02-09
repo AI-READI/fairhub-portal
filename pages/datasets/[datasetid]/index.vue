@@ -60,7 +60,6 @@ if (error.value) {
 }
 
 const markdownToHtml = ref<string>("");
-const datasetSheetMarkdownToHtml = ref<string>("");
 
 useSchemaOrg([
   {
@@ -89,12 +88,6 @@ useSeoMeta({
 if (dataset.value) {
   if (dataset.value?.metadata.readme) {
     markdownToHtml.value = sanitize(parse(dataset.value.metadata.readme));
-  }
-
-  if (dataset.value?.metadata.dataSheet) {
-    datasetSheetMarkdownToHtml.value = sanitize(
-      parse(dataset.value.metadata.dataSheet)
-    );
   }
 }
 
@@ -232,13 +225,14 @@ const navigate = (target: string) => {
               Dashboard
             </div>
 
-            <div v-if="tabsShown.Datasheet" name="Datasheet" tab="Datasheet">
-              <!-- eslint-disable vue/no-v-html -->
-              <div
-                class="prose mt-0 min-h-[300px] max-w-none text-black"
-                v-html="datasetSheetMarkdownToHtml"
+            <div
+              v-if="tabsShown['Datasheet']"
+              name="Healthsheet"
+              tab="Healthsheet"
+            >
+              <metadata-health-sheet
+                :healthsheet="dataset?.metadata.dataSheet || ''"
               />
-              <!-- eslint-enable vue/no-v-html -->
             </div>
 
             <div
@@ -268,8 +262,8 @@ const navigate = (target: string) => {
 
             <div
               v-if="tabsShown['Dataset Metadata']"
-              name="Dataset Metadata"
-              tab="Dataset Metadata"
+              name="Dataset Description"
+              tab="Dataset Description"
             >
               <MetadataDatasetDescription
                 :metadata="(dataset?.metadata.datasetDescription as DatasetDescription)"
@@ -306,8 +300,8 @@ const navigate = (target: string) => {
 
             <div
               v-if="tabsShown['Datatype Metadata']"
-              name="Datatype Metadata"
-              tab="Datatype Metadata"
+              name="Datatype Description"
+              tab="Datatype Description"
             >
               Datatype Metadata
             </div>
@@ -366,7 +360,12 @@ const navigate = (target: string) => {
                   Health Data License
                 </NuxtLink>
               </n-space>
+            </n-space>
 
+            <n-space
+              vertical
+              class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
+            >
               <n-space vertical class="mt-3">
                 <h3>Keywords</h3>
 
@@ -385,7 +384,7 @@ const navigate = (target: string) => {
 
             <CitationViewer
               :id="(dataset?.id as number)"
-              :creators="(dataset?.metadata.datasetDescription.Creator as object)"
+              :creators="(dataset?.metadata.datasetDescription.Creator as DatasetDescription['Creator'])"
             />
 
             <VersionSelector :id="(dataset?.id as number)" />

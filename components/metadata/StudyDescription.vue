@@ -18,8 +18,8 @@ const props = defineProps({
 });
 
 onBeforeMount(() => {
-  eligibilityMarkdown.value = parse(
-    props.metadata.EligibilityModule.EligibilityCriteria
+  eligibilityMarkdown.value = sanitize(
+    parse(props.metadata.EligibilityModule.EligibilityCriteria)
   );
 });
 </script>
@@ -31,6 +31,7 @@ onBeforeMount(() => {
       data-section-title="Study Overview"
       title="Study Overview"
       class="mb-4 shadow-md"
+      :collapse="false"
     >
       <div class="grid grid-cols-12 gap-8">
         <n-space vertical class="col-span-9 mr-2">

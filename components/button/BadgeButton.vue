@@ -25,25 +25,37 @@ function directToIdentifierPage(identifier: Identifier) {
   // Return the appropriate url based on the identifier
   if (identifier?.nameIdentifierValue) {
     if (identifier?.nameIdentifierScheme === "ORCID") {
-      urlCheck = `${orcidUrl}/${identifier?.nameIdentifierValue}`;
-      if (urlCheck === identifier?.schemeURI) {
-        url = identifier?.schemeURI;
+      if (identifier?.nameIdentifierValue.includes("https")) {
+        url = identifier?.nameIdentifierValue;
+      } else {
+        urlCheck = `${orcidUrl}/${identifier?.nameIdentifierValue}`;
+        if (urlCheck === identifier?.schemeURI) {
+          url = identifier?.schemeURI;
+        }
+        url = urlCheck;
       }
-      url = urlCheck;
     }
     if (identifier?.nameIdentifierScheme === "ROR") {
-      urlCheck = `${rorUrl}/${identifier?.nameIdentifierValue}`;
-      if (urlCheck === identifier?.schemeURI) {
-        url = identifier?.schemeURI;
+      if (identifier?.nameIdentifierValue.includes("https")) {
+        url = identifier?.nameIdentifierValue;
+      } else {
+        urlCheck = `${rorUrl}/${identifier?.nameIdentifierValue}`;
+        if (urlCheck === identifier?.schemeURI) {
+          url = identifier?.schemeURI;
+        }
+        url = urlCheck;
       }
-      url = urlCheck;
     }
     if (identifier?.nameIdentifierScheme === "INSI") {
-      urlCheck = `${gridUrl}/${identifier?.nameIdentifierValue}`;
-      if (urlCheck === identifier?.schemeURI) {
-        url = identifier?.schemeURI;
+      if (identifier?.nameIdentifierValue.includes("https")) {
+        url = identifier?.nameIdentifierValue;
+      } else {
+        urlCheck = `${gridUrl}/${identifier?.nameIdentifierValue}`;
+        if (urlCheck === identifier?.schemeURI) {
+          url = identifier?.schemeURI;
+        }
+        url = urlCheck;
       }
-      url = urlCheck;
     }
   } else if (identifier?.affiliationValue) {
     if (identifier?.affiliationIdentifierScheme === "ORCID") {
