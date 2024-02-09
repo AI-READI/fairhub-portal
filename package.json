@@ -55,7 +55,7 @@
     "@codemirror/view": "6.22.0",
     "@headlessui/vue": "^1.7.16",
     "@pinia/nuxt": "^0.4.11",
-    "@vueuse/core": "^10.4.1",
+    "@vueuse/core": "^10.7.2",
     "dayjs": "^1.11.7",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
