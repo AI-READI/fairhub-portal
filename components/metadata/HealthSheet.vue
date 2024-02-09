@@ -74,7 +74,9 @@ function parseItem(item: string) {
     >
       <n-space v-if="token === 'Motivation'" vertical>
         <div v-for="(item, innerIndex) in motivationList" :key="innerIndex">
-          <b v-if="innerIndex % 2 === 0"> {{ innerIndex / 2 + 1 }}: </b>
+          <b v-if="innerIndex % 2 === 0">
+            {{ String.fromCharCode(97 + innerIndex / 2) }}:
+          </b>
 
           <b v-if="innerIndex % 2 === 0">
             {{
@@ -82,14 +84,16 @@ function parseItem(item: string) {
             }}</b
           >
           <!-- eslint-disable vue/no-v-html -->
-          <p v-else class="mb-3" v-html="parseItem(item)"></p>
+          <p v-else class="mb-3 ml-4" v-html="parseItem(item)"></p>
           <!-- eslint-enable vue/no-v-html -->
         </div>
       </n-space>
 
       <n-space v-if="token === 'Composition'" vertical>
         <div v-for="(item, innerIndex) in compositionList" :key="innerIndex">
-          <b v-if="innerIndex % 2 === 0"> {{ innerIndex / 2 + 1 }}: </b>
+          <b v-if="innerIndex % 2 === 0">
+            {{ String.fromCharCode(97 + innerIndex / 2) }}:
+          </b>
 
           <b v-if="innerIndex % 2 === 0">
             {{
@@ -97,14 +101,16 @@ function parseItem(item: string) {
             }}</b
           >
           <!-- eslint-disable vue/no-v-html -->
-          <p v-else class="mb-3" v-html="parseItem(item)"></p>
+          <p v-else class="mb-3 ml-4" v-html="parseItem(item)"></p>
           <!-- eslint-enable vue/no-v-html -->
         </div>
       </n-space>
 
       <n-space v-if="token === 'Collection'" vertical>
         <div v-for="(item, innerIndex) in collectionList" :key="innerIndex">
-          <b v-if="innerIndex % 2 === 0"> {{ innerIndex / 2 + 1 }}: </b>
+          <b v-if="innerIndex % 2 === 0">
+            {{ String.fromCharCode(97 + innerIndex / 2) }}:
+          </b>
 
           <b v-if="innerIndex % 2 === 0">
             {{
@@ -112,71 +118,75 @@ function parseItem(item: string) {
             }}</b
           >
           <!-- eslint-disable vue/no-v-html -->
-          <p v-else class="mb-3" v-html="parseItem(item)"></p>
+          <p v-else class="mb-3 ml-4" v-html="parseItem(item)"></p>
           <!-- eslint-enable vue/no-v-html -->
         </div>
       </n-space>
 
       <n-space v-if="token === 'Preprocessing / Cleaning / Labeling'" vertical>
         <div v-for="(item, innerIndex) in cleaningList" :key="innerIndex">
-          <b v-if="innerIndex % 2 === 0"> {{ innerIndex / 2 + 1 }}: </b>
+          <b v-if="innerIndex % 2 === 0">
+            {{ String.fromCharCode(97 + innerIndex / 2) }}:
+          </b>
 
           <b v-if="innerIndex % 2 === 0">
             {{
               item.substring(item.indexOf("**") + 2, item.lastIndexOf("**"))
             }}</b
           >
-
           <!-- eslint-disable vue/no-v-html -->
-          <p v-else class="mb-3" v-html="parseItem(item)"></p>
+          <p v-else class="mb-3 ml-4" v-html="parseItem(item)"></p>
           <!-- eslint-enable vue/no-v-html -->
         </div>
       </n-space>
 
       <n-space v-if="token === 'Uses'" vertical>
         <div v-for="(item, innerIndex) in usesList" :key="innerIndex">
-          <b v-if="innerIndex % 2 === 0"> {{ innerIndex / 2 + 1 }}: </b>
+          <b v-if="innerIndex % 2 === 0">
+            {{ String.fromCharCode(97 + innerIndex / 2) }}:
+          </b>
 
           <b v-if="innerIndex % 2 === 0">
             {{
               item.substring(item.indexOf("**") + 2, item.lastIndexOf("**"))
             }}</b
           >
-
           <!-- eslint-disable vue/no-v-html -->
-          <p v-else class="mb-3" v-html="parseItem(item)"></p>
+          <p v-else class="mb-3 ml-4" v-html="parseItem(item)"></p>
           <!-- eslint-enable vue/no-v-html -->
         </div>
       </n-space>
 
       <n-space v-if="token === 'Distribution'" vertical>
         <div v-for="(item, innerIndex) in distributionList" :key="innerIndex">
-          <b v-if="innerIndex % 2 === 0"> {{ innerIndex / 2 + 1 }}: </b>
+          <b v-if="innerIndex % 2 === 0">
+            {{ String.fromCharCode(97 + innerIndex / 2) }}:
+          </b>
 
           <b v-if="innerIndex % 2 === 0">
             {{
               item.substring(item.indexOf("**") + 2, item.lastIndexOf("**"))
             }}</b
           >
-
           <!-- eslint-disable vue/no-v-html -->
-          <p v-else class="mb-3" v-html="parseItem(item)"></p>
+          <p v-else class="mb-3 ml-4" v-html="parseItem(item)"></p>
           <!-- eslint-enable vue/no-v-html -->
         </div>
       </n-space>
 
       <n-space v-if="token === 'Maintenance'" vertical>
         <div v-for="(item, innerIndex) in maintenanceList" :key="innerIndex">
-          <b v-if="innerIndex % 2 === 0"> {{ innerIndex / 2 + 1 }}: </b>
+          <b v-if="innerIndex % 2 === 0">
+            {{ String.fromCharCode(97 + innerIndex / 2) }}:
+          </b>
 
           <b v-if="innerIndex % 2 === 0">
             {{
               item.substring(item.indexOf("**") + 2, item.lastIndexOf("**"))
             }}</b
           >
-
           <!-- eslint-disable vue/no-v-html -->
-          <p v-else class="mb-3" v-html="parseItem(item)"></p>
+          <p v-else class="mb-3 ml-4" v-html="parseItem(item)"></p>
           <!-- eslint-enable vue/no-v-html -->
         </div>
       </n-space>
