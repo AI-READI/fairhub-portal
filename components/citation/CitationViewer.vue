@@ -6,7 +6,7 @@ const props = defineProps({
   },
   creators: {
     required: true,
-    type: Array as PropType<DatasetDescription["Creator"][]>,
+    type: Array as PropType<DatasetDescription["Creator"]>,
   },
 });
 
