@@ -5,7 +5,7 @@ import { lexer, parse } from "marked";
 const _props = defineProps({
   healthsheet: {
     required: true,
-    type: Object as PropType<Metadata["dataSheet"]>,
+    type: String as PropType<Metadata["dataSheet"]>,
   },
 });
 

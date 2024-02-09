@@ -140,7 +140,9 @@ if (dataset.value) {
         <n-tab-pane name="Dashboard" tab="Dashboard"> Dashboard </n-tab-pane>
 
         <n-tab-pane name="Healthsheet" tab="Healthsheet">
-          <metadata-health-sheet :healthsheet="dataset?.metadata.dataSheet" />
+          <metadata-health-sheet
+            :healthsheet="dataset?.metadata.dataSheet || ''"
+          />
         </n-tab-pane>
 
         <n-tab-pane name="Study Description" tab="Study Description">
