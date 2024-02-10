@@ -18,8 +18,8 @@ const items = [
     label: "Dashboard",
   },
   {
-    href: `/datasets/${datasetid}/datasheet`,
-    label: "Datasheet",
+    href: `/datasets/${datasetid}/healthsheet`,
+    label: "Healthsheet",
   },
   {
     href: `/datasets/${datasetid}/study-metadata`,
@@ -39,8 +39,8 @@ const tabsShown = reactive({
   About: true,
   Dashboard: false,
   "Dataset Metadata": false,
-  Datasheet: false,
   "Datatype Metadata": false,
+  Healthsheet: false,
   "Study Metadata": false,
 });
 
@@ -226,7 +226,7 @@ const navigate = (target: string) => {
             </div>
 
             <div
-              v-if="tabsShown['Datasheet']"
+              v-if="tabsShown['Healthsheet']"
               name="Healthsheet"
               tab="Healthsheet"
             >
