@@ -66,10 +66,11 @@ useSchemaOrg([
     name: dataset.value?.title,
     "@context": "https://schema.org",
     "@type": "Dataset",
-    // creator: {
-    //   name: dataset.value?.creator,
-    //   "@type": "Person",
-    // },
+    creator: dataset.value?.creators.map((creator) => ({
+      "@type": "Person",
+      familyName: creator.familyName,
+      givenName: creator.givenName,
+    })),
     description: dataset.value?.description,
     // license: dataset.value?.license,
     url: `https://fairhub.io/datasets/${dataset.value?.id}`,
