@@ -12,13 +12,14 @@ defineProps({
 function convertFile(file: FolderStructure): TreeOption {
   return {
     children: file.children ? file.children.map(convertFile) : undefined,
-    key: file.label,
+    key: useId(), // generate unique id for each file
     label: file.label,
     prefix: () =>
       h(Icon, {
-        name: file.children?.length
-          ? "ic:baseline-folder"
-          : "pepicons-pencil:file",
+        name:
+          "children" in file || file.children?.length
+            ? "ic:baseline-folder"
+            : "pepicons-pencil:file",
       }),
   };
 }
