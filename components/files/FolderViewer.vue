@@ -46,12 +46,10 @@ const updatePrefixWithExpaned = (
 </script>
 
 <template>
-  <n-tab-pane name="Files" tab="Files">
-    <n-tree
-      block-line
-      expand-on-click
-      :data="folderStructure.map(convertFile)"
-      :on-update:expanded-keys="updatePrefixWithExpaned"
-    />
-  </n-tab-pane>
+  <n-tree
+    block-line
+    expand-on-click
+    :data="folderStructure.map(convertFile)"
+    :on-update:expanded-keys="updatePrefixWithExpaned"
+  />
 </template>

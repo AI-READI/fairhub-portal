@@ -33,6 +33,10 @@ const items = [
     href: `/datasets/${datasetid}/datatype-metadata`,
     label: "Datatype Metadata",
   },
+  {
+    href: `/datasets/${datasetid}/files`,
+    label: "Files",
+  },
 ];
 
 const tabsShown = reactive({
@@ -40,6 +44,7 @@ const tabsShown = reactive({
   Dashboard: false,
   "Dataset Metadata": false,
   "Datatype Metadata": false,
+  Files: false,
   Healthsheet: false,
   "Study Metadata": false,
 });
@@ -304,6 +309,10 @@ const navigate = (target: string) => {
               tab="Datatype Description"
             >
               Datatype Metadata
+            </div>
+
+            <div v-if="tabsShown.Files" name="Files" tab="Files">
+              <FilesFolderViewer :folder-structure="dataset?.files || []" />
             </div>
           </TransitionFade>
         </div>
