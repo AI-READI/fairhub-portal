@@ -354,6 +354,7 @@ interface DatasetArrayItem {
   createdAt: number; // unix timestamp - the date the dataset was published
   title: string;
   description: string;
+  keywords: string[];
   version: string;
 }
 

@@ -36,34 +36,43 @@ if (error.value) {
     </div>
 
     <section class="relative">
-      <img
+      <!-- <img
         src="/images/background/ooorganize-orange-grid.svg"
         class="absolute left-0 top-0 h-full w-full object-cover"
         style="
           mask-image: linear-gradient(to bottom, white 1%, transparent 70%);
         "
-      />
+      /> -->
 
       <div
         class="relative mx-auto flex max-w-screen-xl flex-col px-4 lg:grid lg:grid-cols-12 lg:gap-8 xl:gap-0"
       >
-        <div class="place-self-center lg:col-span-8 lg:mr-auto">
+        <PatternDotGrid
+          :size="60"
+          :radius="3"
+          :offset-x="0"
+          :offset-y="20"
+          class="absolute inset-0 h-full w-full fill-orange-500/30 [mask-image:radial-gradient(black,transparent_85%)]"
+        >
+        </PatternDotGrid>
+
+        <div class="relative place-self-center lg:col-span-8 lg:mr-auto">
           <h1
-            class="mb-2 max-w-2xl bg-gradient-to-r from-sky-400 to-yellow-300 bg-clip-text text-center text-3xl font-extrabold leading-none tracking-tight text-transparent md:text-4xl lg:text-left xl:text-5xl"
+            class="mb-3 max-w-2xl bg-gradient-to-tl from-sky-400 via-teal-300 to-yellow-400 bg-clip-text py-1 text-center text-3xl font-extrabold leading-none tracking-tight text-transparent md:text-4xl lg:text-left xl:text-6xl"
           >
-            Make breakthrough discoveries with AI-ready datasets
+            Make breakthrough discoveries with AI Ready datasets
           </h1>
 
           <p
-            class="mb-2 max-w-2xl text-center text-xl font-normal text-gray-800 lg:text-left"
+            class="mb-2 max-w-2xl text-center text-2xl font-normal text-gray-800 lg:text-left"
           >
             Find and reuse FAIR, AI-ready datasets shared through the FAIRhub
             data management and curation platform.
           </p>
 
-          <n-divider />
+          <n-divider class="hidden" />
 
-          <div class="max-w-2xl font-normal text-gray-800">
+          <div class="hidden max-w-2xl font-normal text-gray-800">
             Manage and share your own clinical research data with FAIRhub.
             <div class="mt-1 flex gap-3 duration-0">
               <NuxtLink
@@ -71,14 +80,14 @@ if (error.value) {
                 class="timing text-blue-500 transition-all hover:text-amber-500"
                 icon-placement="right"
               >
-                Submit a dataset
+                Share a dataset
                 <Icon name="fluent:arrow-right-24-filled" />
               </NuxtLink>
             </div>
           </div>
         </div>
 
-        <div class="flex justify-center lg:col-span-4 lg:mt-0 lg:flex">
+        <div class="relative flex justify-center lg:col-span-4 lg:mt-0 lg:flex">
           <img src="/images/hero/research.webp" alt="mockup" />
         </div>
       </div>
@@ -92,9 +101,9 @@ if (error.value) {
           class="mx-auto flex w-full max-w-screen-xl items-center justify-between px-2"
         >
           <n-space vertical class="mt-8 w-full">
-            <h1 id="datasets">Datasets</h1>
+            <h1 id="datasets">Explore Datasets</h1>
 
-            <p>Explore FAIR, AI-ready datasets.</p>
+            <p>View FAIR, AI-ready datasets.</p>
 
             <div
               class="flex w-full flex-col items-center space-y-2 pt-4 sm:flex-row sm:space-x-5 sm:space-y-0"
@@ -173,9 +182,58 @@ if (error.value) {
                     {{ $dayjs.unix(dataset.createdAt).format("MMMM DD, YYYY") }}
                   </p>
                 </n-space>
+
+                <n-space>
+                  <n-tag
+                    v-for="keyword in dataset.keywords"
+                    :key="keyword"
+                    :bordered="false"
+                  >
+                    {{ keyword }}
+                  </n-tag>
+                </n-space>
               </div>
             </div>
           </NuxtLink>
+        </div>
+      </div>
+    </section>
+
+    <n-divider />
+
+    <section class="p-16">
+      <div class="relative overflow-hidden">
+        <div class="mx-auto max-w-[85rem] sm:px-6 lg:px-8">
+          <div class="mx-auto mt-5 max-w-2xl text-center">
+            <h1
+              class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text text-4xl font-bold text-transparent md:text-5xl lg:text-6xl"
+            >
+              Submit your own datasets
+            </h1>
+          </div>
+
+          <div class="mx-auto mt-5 max-w-3xl text-center">
+            <p class="text-lg text-gray-600">
+              Our study management platform is designed to be easy to use and to
+              help you to make your data FAIR and AI ready.
+            </p>
+          </div>
+
+          <div class="mt-8 flex justify-center gap-3">
+            <NuxtLink to="https://staging.app.fairhub.io" target="__blank">
+              <n-button
+                size="large"
+                icon-placement="right"
+                type="warning"
+                tertiary
+              >
+                <template #icon>
+                  <Icon name="fluent:arrow-right-24-filled" />
+                </template>
+                Submit a Dataset
+              </n-button>
+            </NuxtLink>
+          </div>
         </div>
       </div>
     </section>
