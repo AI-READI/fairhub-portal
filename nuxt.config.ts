@@ -29,6 +29,8 @@ export default defineNuxtConfig({
     enabled: true,
   },
 
+  image: {},
+
   imports: {
     dirs: ["stores"],
   },
@@ -45,6 +47,7 @@ export default defineNuxtConfig({
     "nuxt-headlessui",
     "dayjs-nuxt",
     "nuxt-lodash",
+    "@nuxt/image",
     [
       "@nuxtjs/google-fonts",
       {

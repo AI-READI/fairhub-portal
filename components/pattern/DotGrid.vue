@@ -1,4 +1,8 @@
-<script setup>
+<script setup lang="ts">
+import { nanoid } from "nanoid";
+
+const id = nanoid();
+
 defineProps({
   offsetX: {
     default: 0,
@@ -23,7 +27,7 @@ defineProps({
   <svg>
     <defs>
       <pattern
-        id="dot-pattern"
+        :id="`dot-pattern-${id}`"
         :width="size"
         :height="size"
         patternUnits="userSpaceOnUse"
@@ -39,7 +43,7 @@ defineProps({
       width="100%"
       height="100%"
       stroke-width="0"
-      fill="url(#dot-pattern)"
+      :fill="`url(#dot-pattern-${id})`"
     ></rect>
   </svg>
 </template>

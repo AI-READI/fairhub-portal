@@ -13,7 +13,7 @@ if (error.value) {
 </script>
 
 <template>
-  <main class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50">
+  <main class="h-screen overflow-auto bg-gradient-to-br from-white to-blue-50">
     <div
       class="mb-4 flex items-center justify-center border bg-yellow-50 p-4 text-lg text-yellow-600"
       role="alert"
@@ -52,7 +52,7 @@ if (error.value) {
           :radius="3"
           :offset-x="0"
           :offset-y="20"
-          class="absolute inset-0 h-full w-full fill-orange-500/30 [mask-image:radial-gradient(black,transparent_85%)]"
+          class="dot-grid-1 absolute inset-0 h-full w-full fill-orange-500/30 [mask-image:radial-gradient(black,transparent_85%)]"
         >
         </PatternDotGrid>
 
@@ -203,8 +203,17 @@ if (error.value) {
 
     <section class="p-16">
       <div class="relative overflow-hidden">
-        <div class="mx-auto max-w-[85rem] sm:px-6 lg:px-8">
-          <div class="mx-auto mt-5 max-w-2xl text-center">
+        <div class="relative mx-auto max-w-[85rem] sm:px-6 lg:px-8">
+          <PatternDotGrid
+            :size="50"
+            :radius="4"
+            :offset-x="0"
+            :offset-y="0"
+            class="dot-grid-2 absolute inset-0 h-full w-full fill-sky-500/20 [mask-image:radial-gradient(black,transparent_85%)]"
+          >
+          </PatternDotGrid>
+
+          <div class="relative mx-auto mt-5 max-w-2xl text-center">
             <h1
               class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text text-4xl font-bold text-transparent md:text-5xl lg:text-6xl"
             >
@@ -212,7 +221,7 @@ if (error.value) {
             </h1>
           </div>
 
-          <div class="mx-auto mt-5 max-w-3xl text-center">
+          <div class="relative mx-auto mt-5 max-w-3xl text-center">
             <p class="text-lg text-gray-600">
               Our study management platform is designed to be easy to use and to
               help you to make your data FAIR and AI ready.
@@ -220,7 +229,7 @@ if (error.value) {
           </div>
 
           <div class="mt-8 flex justify-center gap-3">
-            <NuxtLink to="https://staging.app.fairhub.io" target="__blank">
+            <NuxtLink to="/submit">
               <n-button
                 size="large"
                 icon-placement="right"

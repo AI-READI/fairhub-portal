@@ -6,7 +6,7 @@ const steps = ref([
       "Sign up to create an account on FAIRhub. Create a new study and provide basic information about it to get started.",
     heading: "Create study",
     number: "Step 1",
-    percentage: 35,
+    percentage: 33,
   },
   {
     name: "et-upload",
@@ -14,7 +14,7 @@ const steps = ref([
       "Upload data on the go as it is being collected. Follow instructions to include metadata with the data so FAIRhub can process it automatically. Track data collection through available dashboards.",
     heading: "Upload data",
     number: "Step 2",
-    percentage: 65,
+    percentage: 66,
   },
   {
     name: "arcticons:efa-publish",
@@ -23,29 +23,6 @@ const steps = ref([
     heading: "Publish dataset",
     number: "Step 3",
     percentage: 100,
-  },
-]);
-
-const statistics = ref([
-  {
-    details: "Participants anticipated in the study",
-    heading: "Upload data",
-    number: "200",
-  },
-  {
-    details: "Data types to be collected (vitals, electrocardiogram, etc.)",
-    heading: "Upload data",
-    number: "25+",
-  },
-  {
-    details: "Research institutions involved",
-    heading: "Upload data",
-    number: "14",
-  },
-  {
-    details: "Project Team members",
-    heading: "Upload data",
-    number: "56",
   },
 ]);
 </script>
@@ -93,24 +70,27 @@ const statistics = ref([
       <div class="mx-auto mb-5 flex max-w-screen-xl flex-col items-center">
         <h2 class="text-4xl font-bold">About</h2>
 
-        <div class="mb-10 mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
-          <img
+        <div class="my-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+          <NuxtImg
+            loading="lazy"
             class="rounded-lg"
-            src="../public/images/publish-dataset/research01.jpg"
+            src="https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           />
 
-          <img
+          <NuxtImg
+            loading="lazy"
             class="rounded-lg"
-            src="../public/images/publish-dataset/research02.jpg"
+            src="https://images.unsplash.com/photo-1618053448492-2b629c2c912c?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           />
 
-          <img
+          <NuxtImg
+            loading="lazy"
             class="rounded-lg"
-            src="../public/images/publish-dataset/research03.jpg"
+            src="https://images.unsplash.com/photo-1582719201918-f1fa99cc3c1d?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           />
         </div>
 
-        <p class="text-center text-xl font-medium">
+        <p class="text-center text-xl font-normal">
           FAIRhub is an open source platform for sharing and accessing FAIR and
           and AI-readi datasets. Your clinical research data can be easily with
           the world through FAIRhub in a way that it is optimally reusable
@@ -121,42 +101,6 @@ const statistics = ref([
         </p>
       </div>
     </section>
-
-    <!--    <section class="pb-4 pt-4">-->
-    <!--      <div class="px-8">-->
-    <!--        <div-->
-    <!--          class="m-2 mx-auto max-w-screen-xl rounded-lg bg-slate-100 pb-4 pl-16 pr-16 pt-8 text-center"-->
-    <!--        >-->
-    <!--          <h2-->
-    <!--            class="mb-2 text-3xl font-bold tracking-tight text-blue00 sm:text-4xl"-->
-    <!--          >-->
-    <!--            Snapshot of the FAIRhub-->
-    <!--          </h2>-->
-    <!--          <p class="text-xl font-medium">-->
-    <!--            Some key numbers from the project-->
-    <!--          </p>-->
-    <!--          <div class="flex justify-center">-->
-    <!--            <div-->
-    <!--              v-for="(statistic, index) in statistics"-->
-    <!--              :key="index"-->
-    <!--              class="flex flex-row items-center justify-start space-y-3 text-center"-->
-    <!--            >-->
-    <!--              <div>-->
-    <!--                <dt class="mt-3 text-5xl font-bold text-amber-400">-->
-    <!--                  {{ statistic.number }}-->
-    <!--                </dt>-->
-    <!--                <dd class="text-lg font-medium text-gray-900">-->
-    <!--                  {{ statistic.details }}-->
-    <!--                </dd>-->
-    <!--              </div>-->
-    <!--              <div v-if="index !== statistics.length - 1" class="h-40 border-l">-->
-    <!--                <n-divider vertical />-->
-    <!--              </div>-->
-    <!--            </div>-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </section>-->
 
     <section class="py-16">
       <div
@@ -179,78 +123,43 @@ const statistics = ref([
         <div
           v-for="step in steps"
           :key="step.heading"
-          class="flex max-w-md flex-1 flex-col justify-start rounded-xl border-2 border-orange-100 bg-orange-50 px-6 py-4"
+          class="flex max-w-md flex-1 flex-col justify-start rounded-xl border-2 border-orange-100 bg-orange-50/50 px-6 py-4"
         >
-          <div class="flex flex-row gap-6">
-            <h3 class="pt-3 text-4xl font-bold text-blue-600">
+          <n-space align="center">
+            <Icon :name="step.name" class="size-10 text-orange-500/70" />
+
+            <h3 class="text-4xl font-medium text-orange-500/80">
               {{ step.number }}
             </h3>
-
-            <Icon :name="step.name" class="h-16 w-12 text-blue-600" />
-          </div>
+          </n-space>
 
           <n-progress
-            class="mb-10 mt-4"
+            class="mb-6 mt-4"
             type="line"
+            color="skyblue"
             :show-indicator="false"
             status="info"
+            processing
             :percentage="step.percentage"
           />
 
-          <h4 class="pr-3 text-4xl font-semibold text-orange-400">
+          <h4 class="pr-3 text-4xl font-bold text-blue-500">
             {{ step.heading }}
           </h4>
 
-          <p class="py-10 pr-4">
+          <p class="py-5">
             {{ step.description }}
           </p>
         </div>
       </div>
     </section>
 
-    <!--    <section class="p-16">-->
-    <!--      <div-->
-    <!--        class="mx-auto mb-5 flex max-w-screen-xl flex-col items-center max-2xl:px-10"-->
-    <!--      >-->
-    <!--        <h2 class="pb-3 pt-3 text-4xl font-bold">Share Data</h2>-->
-    <!--        <p class="text-center text-xl font-medium">-->
-    <!--          FAIRhub combines intuitive user interfaces with automation tools and-->
-    <!--          integration with existing data management tools such as REDCap to-->
-    <!--          simplify the process of sharing AI-ready clinical research data. You-->
-    <!--          can do that in few easy steps and start getting credit whenever your-->
-    <!--          data is reused to fuel future discoveries!-->
-    <!--        </p>-->
-    <!--      </div>-->
-    <!--      <div-->
-    <!--        class="mx-auto flex max-w-screen-xl gap-10 px-4 py-10 max-2xl:px-10 max-lg:max-w-screen-md max-lg:flex-wrap"-->
-    <!--      >-->
-    <!--        <div-->
-    <!--          v-for="step in steps"-->
-    <!--          :key="step.heading"-->
-    <!--          class="min-w-70 flex max-w-md flex-1 flex-col justify-start rounded-xl border-2 border-slate-200 bg-gray-50 px-6 py-4"-->
-    <!--        >-->
-    <!--          <div>-->
-    <!--            <h3 class="pt-3 text-4xl font-bold text-blue-600">-->
-    <!--              {{ step.number }}-->
-    <!--            </h3>-->
-    <!--            <n-divider v-if="step" />-->
-    <!--          </div>-->
-    <!--          <h4 class="pr-3 text-4xl font-semibold text-amber-400">-->
-    <!--            {{ step.heading }}-->
-    <!--          </h4>-->
-    <!--          <p class="py-10 pr-4 text-base">-->
-    <!--            {{ step.description }}-->
-    <!--          </p>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </section>-->
-
-    <section class="py-16">
+    <section class="pt-16">
       <div
         class="mx-auto h-20 rounded-t-[50%] bg-gradient-to-b from-blue-50 via-blue-50 to-blue-50 text-center"
       ></div>
 
-      <div class="mx-auto flex flex-col items-center bg-blue-50">
+      <div class="mx-auto flex flex-col items-center bg-blue-50 px-5">
         <h2 class="mb-16 pb-3 pt-3 text-4xl font-bold">
           The layers of FAIRhub platform
         </h2>
@@ -270,7 +179,7 @@ const statistics = ref([
 
           <img
             class="min-w-md mr-8 max-w-md rounded-md"
-            src="../public/images/schema01.jpg"
+            src="/images/schema01.jpg"
           />
         </div>
 
@@ -291,7 +200,7 @@ const statistics = ref([
 
           <img
             class="min-w-md mr-8 max-w-md rounded-md"
-            src="../public/images/schema01.jpg"
+            src="/images/schema01.jpg"
           />
         </div>
 
@@ -310,13 +219,14 @@ const statistics = ref([
 
           <img
             class="min-w-md mr-8 max-w-md rounded-md"
-            src="../public/images/schema01.jpg"
+            src="/images/schema01.jpg"
           />
         </div>
       </div>
 
+      <!-- unhide this when we have a section to put below -->
       <div
-        class="mx-auto h-20 rounded-b-[50%] bg-gradient-to-t from-blue-50 via-blue-50 to-blue-50 text-center"
+        class="mx-auto hidden h-20 rounded-b-[50%] bg-gradient-to-t from-blue-50 via-blue-50 to-blue-50 text-center"
       ></div>
     </section>
   </main>
