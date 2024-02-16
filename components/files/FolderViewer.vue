@@ -75,7 +75,7 @@ const data = props.folderStructure.map((file) => convertFile(file, 0));
       :on-update:expanded-keys="updatePrefixWithExpaned"
     />
 
-    <n-drawer v-model:show="drawerActive" :width="502" placement="right">
+    <n-drawer v-model:show="drawerActive" :width="502" placement="bottom">
       <n-drawer-content title="View metadata">
         Datatype specific metadata
       </n-drawer-content>
