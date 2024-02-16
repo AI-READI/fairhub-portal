@@ -190,7 +190,7 @@ const navigate = (target: string) => {
               as="li"
               @click="navigate(item.label)"
             >
-              <a
+              <NuxtLink
                 href="#"
                 :class="[
                   isActive
@@ -201,7 +201,7 @@ const navigate = (target: string) => {
                 @click.prevent="setActive"
               >
                 {{ item.label }}
-              </a>
+              </NuxtLink>
             </NavItem>
           </NavList>
         </div>
