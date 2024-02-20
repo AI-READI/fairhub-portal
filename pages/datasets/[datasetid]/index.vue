@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import sanitizeHtml from "sanitize-html";
 import { parse } from "marked";
-
+import type { Dataset, WithContext } from "schema-dts";
 const push = usePush();
 const route = useRoute();
 
@@ -56,21 +56,63 @@ if (error.value) {
 
 const markdownToHtml = ref<string>("");
 
-useSchemaOrg([
-  {
-    name: dataset.value?.title,
-    "@context": "https://schema.org",
-    "@type": "Dataset",
-    creator: dataset.value?.creators.map((creator) => ({
+const NuxtSchemaDataset: WithContext<Dataset> = {
+  name: dataset.value?.metadata.datasetDescription.Title.filter(
+    (value) => !value.titleType
+  ).map((value) => value.titleValue),
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  contentLocation:
+    dataset.value?.metadata.studyDescription.ContactsLocationsModule.LocationList.map(
+      (location) => {
+        return {
+          "@type": "Place",
+          address: {
+            "@type": "PostalAddress",
+            addressCountry: location.LocationCountry,
+            addressLocality: location.LocationCity,
+            addressRegion: location.LocationState,
+            postalCode: location.LocationZip,
+          },
+        };
+      }
+    ),
+  contributor: dataset.value?.metadata.datasetDescription.Contributor?.map(
+    (contributor) => {
+      return {
+        "@type": "Person",
+        additionalType: contributor.nameType,
+        affiliation: contributor.affiliation?.map((affiliation) => ({
+          "@type": "Organization",
+          identifier: affiliation.affiliationIdentifier,
+        })),
+        givenName: contributor.contributorName,
+      };
+    }
+  ),
+  creator: dataset.value?.metadata.datasetDescription.Creator.map(
+    (creator) => ({
       "@type": "Person",
-      familyName: creator.familyName,
-      givenName: creator.givenName,
-    })),
-    description: dataset.value?.description,
-    // license: dataset.value?.license,
-    url: `https://fairhub.io/datasets/${dataset.value?.id}`,
-  },
-]);
+      additionalType: creator.nameType,
+      affiliation: creator.affiliation?.map((affiliation) => ({
+        "@type": "Organization",
+        identifier: affiliation.affiliationIdentifier,
+      })),
+      givenName: creator.creatorName,
+    })
+  ),
+  description: dataset.value?.metadata.datasetDescription.Description?.filter(
+    (value) => value.descriptionType === "Abstract"
+  ).map((value) => value.descriptionValue),
+
+  funder: dataset.value?.metadata.datasetDescription.ManagingOrganisation.name,
+  identifier:
+    dataset.value?.metadata.datasetDescription.Identifier.identifierType,
+  keywords: dataset.value?.keywords.join(","),
+  url: `https://fairhub.io/datasets/${dataset.value?.id}`,
+};
+
+useSchemaOrg([NuxtSchemaDataset]);
 
 useSeoMeta({
   title: dataset.value?.title || "Fairhub",
