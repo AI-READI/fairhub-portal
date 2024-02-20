@@ -2,7 +2,6 @@
 import sanitizeHtml from "sanitize-html";
 import { parse } from "marked";
 
-const push = usePush();
 const route = useRoute();
 
 const { datasetid } = route.params as { datasetid: string };
