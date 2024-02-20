@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const push = usePush();
 const { data: datasets, error } = await useFetch(`/api/datasets`);
 
 if (error.value) {
