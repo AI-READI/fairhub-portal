@@ -65,6 +65,7 @@
     "nuxt-lodash": "2.5.3",
     "pinia": "2.1.7",
     "sanitize-html": "2.11.0",
+    "schema-dts": "^1.1.2",
     "validator": "13.11.0",
     "vue-json-pretty": "2.3.0",
     "vue-json-viewer": "2.2.22",
