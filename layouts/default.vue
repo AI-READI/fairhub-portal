@@ -10,7 +10,7 @@ const links = [
     href: "/",
   },
   {
-    title: "Submit a dataset",
+    title: "Share a dataset",
 
     href: "/submit",
   },
@@ -43,7 +43,7 @@ const links = [
               <span
                 class="bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-2xl font-extrabold text-transparent"
               >
-                fairhub
+                FAIRhub
               </span>
             </NuxtLink>
           </div>

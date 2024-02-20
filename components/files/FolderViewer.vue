@@ -1,25 +1,43 @@
 <script setup lang="ts">
 import type { TreeOption } from "naive-ui";
+import { NButton } from "naive-ui";
 import { Icon } from "#components";
 
-defineProps({
+const drawerActive = ref(false);
+
+const props = defineProps({
   folderStructure: {
     required: true,
     type: Array as PropType<Array<FolderStructure>>,
   },
 });
 
-function convertFile(file: FolderStructure): TreeOption {
+function convertFile(file: FolderStructure, level: number): TreeOption {
   return {
-    children: file.children ? file.children.map(convertFile) : undefined,
-    key: file.label,
+    children: file.children
+      ? file.children.map((f) => convertFile(f, level + 1))
+      : undefined,
+    key: useId(), // generate unique id for each file
     label: file.label,
     prefix: () =>
       h(Icon, {
-        name: file.children?.length
-          ? "ic:baseline-folder"
-          : "pepicons-pencil:file",
+        name:
+          "children" in file || file.children?.length
+            ? "ic:baseline-folder"
+            : "pepicons-pencil:file",
       }),
+    suffix: () =>
+      level === 0
+        ? h(
+            NButton,
+            {
+              class: "",
+              onClick: () => (drawerActive.value = true),
+              size: "tiny",
+            },
+            { default: () => "View metadata" }
+          )
+        : undefined,
   };
 }
 
@@ -43,15 +61,24 @@ const updatePrefixWithExpaned = (
       break;
   }
 };
+
+const data = props.folderStructure.map((file) => convertFile(file, 0));
 </script>
 
 <template>
-  <n-tab-pane name="Files" tab="Files">
+  <div>
     <n-tree
       block-line
+      show-line
       expand-on-click
-      :data="folderStructure.map(convertFile)"
+      :data="data"
       :on-update:expanded-keys="updatePrefixWithExpaned"
     />
-  </n-tab-pane>
+
+    <n-drawer v-model:show="drawerActive" :width="502" placement="bottom">
+      <n-drawer-content title="View metadata">
+        Datatype specific metadata
+      </n-drawer-content>
+    </n-drawer>
+  </div>
 </template>

@@ -1,0 +1,238 @@
+[
+  {
+    "children": [
+      {
+        "label": "manifest.tsv"
+      },
+      {
+        "label": "CFP",
+        "children": [
+          {
+            "label": "optomed_aurora",
+            "children": [
+              {
+                "label": "1051",
+                "children": [
+                  {
+                    "label": "1051_optomed_mac_or_disc_centered_CFP_R_1.2.276.0.3112111075856244474.dcm"
+                  },
+                  {
+                    "label": "1051_optomed_mac_or_disc_centered_CFP_R_1.2.276.0.3112111075856244474.dcm"
+                  },
+                  {
+                    "label": "1051_optomed_mac_or_disc_centered_CFP_R_1.2.276.0.3112111075856244474.dcm"
+                  },
+                  {
+                    "label": "1051_optomed_mac_or_disc_centered_CFP_L_1.2.276.0.31142111075856244474.dcm"
+                  }
+                ]
+              },
+              {
+                "label": "1052",
+                "children": [
+                  {
+                    "label": "1052_optomed_mac_or_disc_centered_CFP_R_1.2.276.0.3112111075856244474.dcm"
+                  },
+                  {
+                    "label": "1052_optomed_mac_or_disc_centered_CFP_R_1.2.276.0.3112111072336244474.dcm"
+                  },
+                  {
+                    "label": "1052_optomed_mac_or_disc_centered_CFP_L_1.2.276.0.34112111075856244474.dcm"
+                  },
+                  {
+                    "label": "1052_optomed_mac_or_disc_centered_CFP_L_1.2.276.0.31142111075856244474.dcm"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "topcon_maestro2",
+            "children": []
+          },
+          {
+            "label": "icare_eidon",
+            "children": []
+          },
+          {
+            "label": "topcon_triton",
+            "children": []
+          }
+        ]
+      },
+      {
+        "label": "IR",
+        "children": [
+          {
+            "label": "topcon_maestro2",
+            "children": []
+          },
+          {
+            "label": "icare_eidon",
+            "children": []
+          },
+          {
+            "label": "heidelberg_spectralis",
+            "children": []
+          }
+        ]
+      },
+      {
+        "label": "FAF",
+        "children": [
+          {
+            "label": "icare_eidon",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "label": "retinal_photography"
+  },
+  {
+    "children": [
+      {
+        "label": "manifest.tsv"
+      },
+
+      {
+        "label": "topcon_maestro2",
+        "children": []
+      },
+      {
+        "label": "heidelberg_spectralis",
+        "children": []
+      },
+      {
+        "label": "topcon_triton",
+        "children": []
+      }
+    ],
+    "label": "oct"
+  },
+  {
+    "children": [
+      {
+        "label": "manifest.tsv"
+      },
+      {
+        "label": "volume_analysis",
+        "children": [
+          {
+            "label": "topcon_maestro2",
+            "children": []
+          },
+          {
+            "label": "topcon_triton",
+            "children": []
+          }
+        ]
+      },
+      {
+        "label": "enface",
+        "children": [
+          {
+            "label": "topcon_maestro2",
+            "children": []
+          },
+          {
+            "label": "topcon_triton",
+            "children": []
+          }
+        ]
+      },
+      {
+        "label": "segmentation",
+        "children": [
+          {
+            "label": "topcon_maestro2",
+            "children": []
+          },
+          {
+            "label": "topcon_triton",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "label": "octa"
+  },
+  {
+    "children": [
+      {
+        "label": "manifest.tsv"
+      },
+      {
+        "label": "Philips_PageWriiterTC30",
+        "children": [
+          {
+            "label": "1001",
+            "children": [
+              {
+                "label": "1001-ECG-hhhhhhhh.wfdb"
+              },
+              {
+                "label": "1001-ECG-hhhhhhhh.hea"
+              }
+            ]
+          },
+          {
+            "label": "7777",
+            "children": [
+              {
+                "label": "7777-ECG-hhhhhhhh.wfdb"
+              },
+              {
+                "label": "7777-ECG-hhhhhhhh.hea"
+              },
+              {
+                "label": "7777-ECG-hhhhhhh2.wfdb"
+              },
+              {
+                "label": "7777-ECG-hhhhhhh2.hea"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "label": "ecg"
+  },
+  {
+    "children": [
+      {
+        "label": "manifest.tsv"
+      },
+      {
+        "label": "LeeLab_Anura",
+        "children": [
+          {
+            "label": "1001",
+            "children": [
+              {
+                "label": "1001-ENV.csv"
+              }
+            ]
+          },
+          {
+            "label": "1002",
+            "children": [
+              {
+                "label": "1002-ENV.csv"
+              }
+            ]
+          },
+          {
+            "label": "1003",
+            "children": [
+              {
+                "label": "1003-ENV.csv"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "label": "environmental_sensor"
+  }
+]

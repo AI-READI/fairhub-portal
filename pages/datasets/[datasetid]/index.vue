@@ -8,41 +8,36 @@ const route = useRoute();
 const { datasetid } = route.params as { datasetid: string };
 const sanitize = (html: string) => sanitizeHtml(html);
 
-const items = [
+const tabs = reactive([
   {
-    href: `/datasets/${datasetid}`,
     label: "About",
+    shown: true,
   },
   {
-    href: `/datasets/${datasetid}/dashboard`,
     label: "Dashboard",
+    shown: false,
   },
   {
-    href: `/datasets/${datasetid}/healthsheet`,
     label: "Healthsheet",
+    shown: false,
   },
   {
-    href: `/datasets/${datasetid}/study-metadata`,
     label: "Study Metadata",
+    shown: false,
   },
   {
-    href: `/datasets/${datasetid}/dataset-metadata`,
     label: "Dataset Metadata",
+    shown: false,
   },
   {
-    href: `/datasets/${datasetid}/datatype-metadata`,
     label: "Datatype Metadata",
+    shown: false,
   },
-];
-
-const tabsShown = reactive({
-  About: true,
-  Dashboard: false,
-  "Dataset Metadata": false,
-  "Datatype Metadata": false,
-  Healthsheet: false,
-  "Study Metadata": false,
-});
+  {
+    label: "Dataset Preview",
+    shown: false,
+  },
+]);
 
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
@@ -96,11 +91,14 @@ const navigate = (target: string) => {
   // the callback is fired once the animation is completed
   // to allow smooth transition
 
-  for (const key in tabsShown) {
-    tabsShown[key as keyof typeof tabsShown] = false;
-  }
+  // set all tabs to false
+  for (const item of tabs) {
+    item.shown = false;
 
-  tabsShown[target as keyof typeof tabsShown] = true;
+    if (item.label === target) {
+      item.shown = true;
+    }
+  }
 };
 </script>
 
@@ -187,13 +185,13 @@ const navigate = (target: string) => {
 
           <NavList as="ul" class="relative flex items-stretch gap-3">
             <NavItem
-              v-for="(item, index) in items"
+              v-for="(item, index) in tabs"
               :key="index"
               v-slot="{ setActive, isActive }"
               as="li"
               @click="navigate(item.label)"
             >
-              <a
+              <NuxtLink
                 href="#"
                 :class="[
                   isActive
@@ -204,7 +202,7 @@ const navigate = (target: string) => {
                 @click.prevent="setActive"
               >
                 {{ item.label }}
-              </a>
+              </NuxtLink>
             </NavItem>
           </NavList>
         </div>
@@ -213,7 +211,7 @@ const navigate = (target: string) => {
       <div class="px-5 py-5 lg:grid lg:grid-cols-12 lg:gap-10">
         <div class="col-span-8">
           <TransitionFade>
-            <div v-if="tabsShown.About" name="About" tab="About">
+            <div v-if="tabs[0].shown">
               <!-- eslint-disable vue/no-v-html -->
               <div
                 class="prose mt-0 min-h-[300px] max-w-none text-black"
@@ -222,25 +220,15 @@ const navigate = (target: string) => {
               <!-- eslint-enable vue/no-v-html -->
             </div>
 
-            <div v-if="tabsShown.Dashboard" name="Dashboard" tab="Dashboard">
-              Dashboard
-            </div>
+            <div v-if="tabs[1].shown">Dashboard</div>
 
-            <div
-              v-if="tabsShown['Healthsheet']"
-              name="Healthsheet"
-              tab="Healthsheet"
-            >
+            <div v-if="tabs[2].shown">
               <metadata-health-sheet
                 :healthsheet="dataset?.metadata.dataSheet || ''"
               />
             </div>
 
-            <div
-              v-if="tabsShown['Study Metadata']"
-              name="Study Metadata"
-              tab="Study Metadata"
-            >
+            <div v-if="tabs[3].shown">
               <MetadataStudyDescription
                 :metadata="(dataset?.metadata.studyDescription as StudyDescription)"
                 :study-title="(dataset?.studyTitle as string)"
@@ -261,11 +249,7 @@ const navigate = (target: string) => {
               </n-collapse>
             </div>
 
-            <div
-              v-if="tabsShown['Dataset Metadata']"
-              name="Dataset Description"
-              tab="Dataset Description"
-            >
+            <div v-if="tabs[4].shown">
               <MetadataDatasetDescription
                 :metadata="(dataset?.metadata.datasetDescription as DatasetDescription)"
               />
@@ -299,12 +283,10 @@ const navigate = (target: string) => {
               </n-collapse>
             </div>
 
-            <div
-              v-if="tabsShown['Datatype Metadata']"
-              name="Datatype Description"
-              tab="Datatype Description"
-            >
-              Datatype Metadata
+            <div v-if="tabs[5].shown">Datatype Metadata</div>
+
+            <div v-if="tabs[6].shown">
+              <FilesFolderViewer :folder-structure="dataset?.files || []" />
             </div>
           </TransitionFade>
         </div>
