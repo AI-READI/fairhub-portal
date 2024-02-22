@@ -54,7 +54,7 @@ const markdownToHtml = ref<string>("");
 
 const NuxtSchemaDataset: WithContext<Dataset> = {
   name: dataset.value?.metadata.datasetDescription.Title.filter(
-    (value) => !value.titleType
+    (value) => !value.titleType,
   ).map((value) => value.titleValue),
   "@context": "https://schema.org",
   "@type": "Dataset",
@@ -71,7 +71,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
             postalCode: location.LocationZip,
           },
         };
-      }
+      },
     ),
   contributor: dataset.value?.metadata.datasetDescription.Contributor?.map(
     (contributor) => {
@@ -84,7 +84,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
         })),
         givenName: contributor.contributorName,
       };
-    }
+    },
   ),
   creator: dataset.value?.metadata.datasetDescription.Creator.map(
     (creator) => ({
@@ -95,10 +95,10 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
         identifier: affiliation.affiliationIdentifier,
       })),
       givenName: creator.creatorName,
-    })
+    }),
   ),
   description: dataset.value?.metadata.datasetDescription.Description?.filter(
-    (value) => value.descriptionType === "Abstract"
+    (value) => value.descriptionType === "Abstract",
   ).map((value) => value.descriptionValue),
 
   funder: dataset.value?.metadata.datasetDescription.ManagingOrganisation.name,
@@ -143,7 +143,7 @@ const navigate = (target: string) => {
 <template>
   <main class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50">
     <div
-      class="mx-auto mt-10 flex w-full max-w-screen-xl items-center justify-between px-3"
+      class="debug mx-auto mt-10 flex w-full max-w-screen-xl items-center justify-between px-3"
     >
       <n-space vertical>
         <h1>{{ dataset?.title }}</h1>
@@ -267,8 +267,10 @@ const navigate = (target: string) => {
 
             <div v-if="tabs[3].shown">
               <MetadataStudyDescription
-                :metadata="(dataset?.metadata.studyDescription as StudyDescription)"
-                :study-title="(dataset?.studyTitle as string)"
+                :metadata="
+                  dataset?.metadata.studyDescription as StudyDescription
+                "
+                :study-title="dataset?.studyTitle as string"
               />
 
               <n-divider />
@@ -288,7 +290,9 @@ const navigate = (target: string) => {
 
             <div v-if="tabs[4].shown">
               <MetadataDatasetDescription
-                :metadata="(dataset?.metadata.datasetDescription as DatasetDescription)"
+                :metadata="
+                  dataset?.metadata.datasetDescription as DatasetDescription
+                "
               />
 
               <n-divider />
@@ -349,13 +353,11 @@ const navigate = (target: string) => {
                 <n-space vertical align="center" size="small">
                   <n-space size="small" align="center">
                     <Icon name="lets-icons:view-duotone" size="23" />
-                  <p class="text-sm font-medium">
-                    1045
-                  </p>
 
+                    <p class="text-sm font-medium">1045</p>
+                  </n-space>
 
-                </n-space>
-                <span class="font-normal text-sm">Views</span>
+                  <span class="text-sm font-normal">Views</span>
                 </n-space>
 
                 <div>
@@ -365,13 +367,11 @@ const navigate = (target: string) => {
                 <n-space vertical align="center" size="small">
                   <n-space size="small" align="center">
                     <Icon name="ic:round-download" size="18" />
-                  <p class="text-sm font-medium">
-                    2000
-                  </p>
 
-
+                    <p class="text-sm font-medium">2000</p>
                   </n-space>
-                  <span class="font-normal text-sm">Downloads</span>
+
+                  <span class="text-sm font-normal">Downloads</span>
                 </n-space>
 
                 <div>
@@ -381,13 +381,11 @@ const navigate = (target: string) => {
                 <n-space vertical align="center" size="small">
                   <n-space size="small" align="center">
                     <Icon name="bi:journal-text" size="16" />
-                  <p class="text-sm font-medium">
-                    5
-                  </p>
 
-
+                    <p class="text-sm font-medium">5</p>
                   </n-space>
-                  <span class="font-normal text-sm">Cited by</span>
+
+                  <span class="text-sm font-normal">Cited by</span>
                 </n-space>
               </n-space>
             </n-space>
@@ -430,11 +428,14 @@ const navigate = (target: string) => {
             </n-space>
 
             <CitationViewer
-              :id="(dataset?.id as number)"
-              :creators="(dataset?.metadata.datasetDescription.Creator as DatasetDescription['Creator'])"
+              :id="dataset?.id as number"
+              :creators="
+                dataset?.metadata.datasetDescription
+                  .Creator as DatasetDescription['Creator']
+              "
             />
 
-            <VersionSelector :id="(dataset?.id as number)" />
+            <VersionSelector :id="dataset?.id as number" />
           </n-space>
         </div>
       </div>
