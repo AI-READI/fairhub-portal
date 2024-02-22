@@ -143,7 +143,7 @@ const navigate = (target: string) => {
 <template>
   <main class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50">
     <div
-      class="debug mx-auto mt-10 flex w-full max-w-screen-xl items-center justify-between px-3"
+      class="mx-auto mt-10 flex w-full max-w-screen-xl items-center justify-between px-3"
     >
       <n-space vertical>
         <h1>{{ dataset?.title }}</h1>
