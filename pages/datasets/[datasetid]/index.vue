@@ -3,6 +3,7 @@ import sanitizeHtml from "sanitize-html";
 import { parse } from "marked";
 import type { Dataset, WithContext } from "schema-dts";
 
+const { isMobile } = useDevice();
 const route = useRoute();
 
 const { datasetid } = route.params as { datasetid: string };
@@ -129,6 +130,8 @@ const navigate = (target: string) => {
   // the callback is fired once the animation is completed
   // to allow smooth transition
 
+  console.log(target);
+
   // set all tabs to false
   for (const item of tabs) {
     item.shown = false;
@@ -204,6 +207,7 @@ const navigate = (target: string) => {
 
     <div class="mx-auto w-full max-w-screen-xl">
       <NavGroup
+        v-if="!isMobile"
         v-slot="{ ready, size, position, duration }"
         fluid
         :duration="350"
@@ -244,6 +248,17 @@ const navigate = (target: string) => {
           </NavList>
         </div>
       </NavGroup>
+
+      <n-tabs v-if="isMobile" type="line" size="large" @update:value="navigate">
+        <n-tab
+          v-for="(item, index) in tabs"
+          :key="index"
+          :name="item.label"
+          @update:value="navigate"
+        >
+          {{ item.label }}
+        </n-tab>
+      </n-tabs>
 
       <div class="px-5 py-5 lg:grid lg:grid-cols-12 lg:gap-10">
         <div class="col-span-8">
