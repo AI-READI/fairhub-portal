@@ -343,19 +343,19 @@ const navigate = (target: string) => {
           <n-space vertical class="col-span-2">
             <n-space
               vertical
-              class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
+              class="rounded-xl border border-blue-200 bg-slate-50 px-1 py-4"
             >
-              <n-space justify="center" class="px-6 py-3" align="center">
+              <n-space justify="center" align="center">
                 <n-space vertical align="center" size="small">
-                  <p class="text-xl font-medium">
-                    <n-number-animation :from="0" :to="104540" show-separator />
-                  </p>
-
                   <n-space size="small" align="center">
                     <Icon name="lets-icons:view-duotone" size="23" />
+                  <p class="text-sm font-medium">
+                    1045
+                  </p>
 
-                    <span class="font-normal">Views</span>
-                  </n-space>
+
+                </n-space>
+                <span class="font-normal text-sm">Views</span>
                 </n-space>
 
                 <div>
@@ -363,15 +363,31 @@ const navigate = (target: string) => {
                 </div>
 
                 <n-space vertical align="center" size="small">
-                  <p class="text-xl font-medium">
-                    <n-number-animation :from="0" :to="1033" show-separator />
-                  </p>
-
                   <n-space size="small" align="center">
                     <Icon name="ic:round-download" size="18" />
+                  <p class="text-sm font-medium">
+                    2000
+                  </p>
 
-                    <span class="font-normal">Downloads</span>
+
                   </n-space>
+                  <span class="font-normal text-sm">Downloads</span>
+                </n-space>
+
+                <div>
+                  <n-divider vertical />
+                </div>
+
+                <n-space vertical align="center" size="small">
+                  <n-space size="small" align="center">
+                    <Icon name="bi:journal-text" size="16" />
+                  <p class="text-sm font-medium">
+                    5
+                  </p>
+
+
+                  </n-space>
+                  <span class="font-normal text-sm">Cited by</span>
                 </n-space>
               </n-space>
             </n-space>
@@ -384,7 +400,7 @@ const navigate = (target: string) => {
                 <h3>License</h3>
 
                 <NuxtLink
-                  to="https://spdx.org/licenses/MIT.html"
+                  to="https://doi.org/10.5281/zenodo.10642459"
                   target="_blank"
                   class="underline transition-all hover:text-slate-600"
                 >
