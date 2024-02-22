@@ -15,7 +15,9 @@ const props = defineProps({
 function convertFile(file: FolderStructure, level: number): TreeOption {
   return {
     children: file.children
-      ? file.children.map((f) => convertFile(f, level + 1))
+      ? level < 1
+        ? file.children.map((f) => convertFile(f, level + 1))
+        : undefined
       : undefined,
     key: useId(), // generate unique id for each file
     label: file.label,
@@ -32,10 +34,12 @@ function convertFile(file: FolderStructure, level: number): TreeOption {
             NButton,
             {
               class: "",
-              onClick: () => (drawerActive.value = true),
+              onClick: () => {
+                drawerActive.value = true;
+              },
               size: "tiny",
             },
-            { default: () => "View metadata" }
+            { default: () => "Learn More" }
           )
         : undefined,
   };

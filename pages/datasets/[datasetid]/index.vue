@@ -30,10 +30,6 @@ const tabs = reactive([
     shown: false,
   },
   {
-    label: "Datatype Metadata",
-    shown: false,
-  },
-  {
     label: "Dataset Preview",
     shown: false,
   },
@@ -125,7 +121,7 @@ useSeoMeta({
 
 if (dataset.value) {
   if (dataset.value?.metadata.readme) {
-    markdownToHtml.value = sanitize(parse(dataset.value.metadata.readme));
+    markdownToHtml.value = sanitize(await parse(dataset.value.metadata.readme));
   }
 }
 
@@ -212,7 +208,7 @@ const navigate = (target: string) => {
         fluid
         :duration="350"
         as="nav"
-        class="relative border-b px-4"
+        class="relative border-b"
       >
         <div class="relative py-1">
           <div
@@ -233,8 +229,7 @@ const navigate = (target: string) => {
               as="li"
               @click="navigate(item.label)"
             >
-              <NuxtLink
-                href="#"
+              <button
                 :class="[
                   isActive
                     ? 'text-sky-600'
@@ -244,7 +239,7 @@ const navigate = (target: string) => {
                 @click.prevent="setActive"
               >
                 {{ item.label }}
-              </NuxtLink>
+              </button>
             </NavItem>
           </NavList>
         </div>
@@ -325,10 +320,21 @@ const navigate = (target: string) => {
               </n-collapse>
             </div>
 
-            <div v-if="tabs[5].shown">Datatype Metadata</div>
+            <div v-if="tabs[5].shown">
+              <n-space vertical>
+                <h3>Preview</h3>
 
-            <div v-if="tabs[6].shown">
-              <FilesFolderViewer :folder-structure="dataset?.files || []" />
+                <p>
+                  A preview of the highest folder levels of the dataset is shown
+                  below. To view the full dataset, please click the
+                  <code> Access this dataset</code>
+                  button above.
+                </p>
+
+                <n-divider />
+
+                <FilesFolderViewer :folder-structure="dataset?.files || []" />
+              </n-space>
             </div>
           </TransitionFade>
         </div>
