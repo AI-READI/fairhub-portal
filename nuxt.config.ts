@@ -46,7 +46,6 @@ export default defineNuxtConfig({
     "@nuxtjs/device",
     "nuxt-headlessui",
     "dayjs-nuxt",
-    "nuxt-lodash",
     "@nuxt/image",
     [
       "@nuxtjs/google-fonts",

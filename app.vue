@@ -15,8 +15,6 @@
 </template>
 
 <script setup lang="ts">
-import "md-editor-v3/lib/style.css";
-
 import { pastelTheme } from "notivue";
 import type { ThemeConfig } from "@bg-dev/nuxt-naiveui";
 

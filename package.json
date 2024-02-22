@@ -49,20 +49,15 @@
     "typescript": "5.3.3"
   },
   "dependencies": {
-    "@codemirror/view": "6.24.0",
     "@headlessui/vue": "1.7.19",
     "@nuxt/image": "1.3.0",
     "@pinia/nuxt": "0.5.1",
     "@vueuse/core": "10.8.0",
     "dayjs": "1.11.10",
-    "lodash": "4.17.21",
-    "lodash-es": "4.17.21",
     "marked": "12.0.0",
-    "md-editor-v3": "4.11.2",
     "mongodb": "^6.3.0",
     "nanoid": "5.0.6",
     "notivue": "2.2.1",
-    "nuxt-lodash": "2.5.3",
     "pinia": "2.1.7",
     "sanitize-html": "2.11.0",
     "schema-dts": "^1.1.2",
@@ -70,8 +65,7 @@
     "vue-json-pretty": "2.3.0",
     "vue-json-viewer": "2.2.22",
     "vue3-lottie": "3.2.0",
-    "vue3-marquee": "4.2.0",
-    "zod": "3.22.4"
+    "vue3-marquee": "4.2.0"
   },
   "engines": {
     "node": ">=18.0.0"
