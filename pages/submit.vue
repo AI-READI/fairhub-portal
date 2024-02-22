@@ -9,7 +9,7 @@ const steps = ref([
     percentage: 33,
   },
   {
-    name: "et-upload",
+    name: "lets-icons:upload-light",
     description:
       "Upload data on the go as it is being collected. Follow instructions to include metadata with the data so FAIRhub can process it automatically. Track data collection through available dashboards.",
     heading: "Upload data",
