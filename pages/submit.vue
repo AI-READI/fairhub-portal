@@ -68,7 +68,11 @@ const steps = ref([
 
     <section class="bg-blue-50 p-16">
       <div class="mx-auto mb-5 flex max-w-screen-xl flex-col items-center">
-        <h2 class="text-4xl font-bold">About</h2>
+        <h2
+          class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text py-5 text-5xl font-bold text-transparent"
+        >
+          About
+        </h2>
 
         <div class="my-6 grid grid-cols-1 gap-4 md:grid-cols-3">
           <NuxtImg
@@ -106,7 +110,11 @@ const steps = ref([
       <div
         class="mx-auto mb-5 flex max-w-screen-xl flex-col items-center max-2xl:px-10"
       >
-        <h2 class="pb-3 pt-3 text-4xl font-bold">Share Data</h2>
+        <h2
+          class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text py-5 text-5xl font-bold text-transparent"
+        >
+          Share Data
+        </h2>
 
         <p class="text-center text-xl font-medium">
           FAIRhub combines intuitive user interfaces with automation tools and
@@ -160,7 +168,9 @@ const steps = ref([
       ></div>
 
       <div class="mx-auto flex flex-col items-center bg-blue-50 px-5">
-        <h2 class="mb-16 pb-3 pt-3 text-4xl font-bold">
+        <h2
+          class="mb-16 block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text py-5 text-5xl font-bold text-transparent"
+        >
           The layers of FAIRhub platform
         </h2>
 
