@@ -344,10 +344,8 @@ const navigate = (target: string) => {
                 <h3>Preview</h3>
 
                 <p>
-                  A preview of the highest folder levels of the dataset is shown
-                  below. To view the full dataset, please click the
-                  <code> Access this dataset</code>
-                  button above.
+                  To access the dataset, please click the
+                  <code>Access this dataset</code> button above.
                 </p>
 
                 <n-divider />
