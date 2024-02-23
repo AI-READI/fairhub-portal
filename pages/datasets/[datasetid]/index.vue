@@ -352,7 +352,12 @@ const navigate = (target: string) => {
 
                 <n-divider />
 
-                <FilesFolderViewer :folder-structure="dataset?.files || []" />
+                <FilesFolderViewer
+                  :folder-structure="dataset?.files || []"
+                  :datatype-dictionary="
+                    dataset?.metadata.datatypeDictionary || []
+                  "
+                />
               </n-space>
             </div>
           </TransitionFade>

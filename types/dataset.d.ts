@@ -335,6 +335,38 @@ interface StudyDescription {
     };
   };
 }
+
+interface DatatypeDictionary {
+  code_name: string;
+  datatype_description: {
+    description_text: string;
+    description_source?: {
+      organization: {
+        full_name: string;
+        link: string;
+      };
+    };
+    source?: {
+      link: string;
+    };
+  };
+  aliases?: string[];
+  related_terms?: string[];
+  related_standards?: {
+    full_name: string;
+    reference: string;
+    standard_description: string;
+  }[];
+}
+
+interface Metadata {
+  dataSheet: string;
+  readme: string;
+  studyDescription: StudyDescription;
+  datasetDescription: DatasetDescription;
+  datatypeDictionary: DatatypeDictionary[];
+}
+
 interface Dataset {
   id: number;
   keywords: string[];
@@ -365,12 +397,6 @@ interface FolderStructure {
   label: string;
 }
 
-interface Metadata {
-  dataSheet: string;
-  readme: string;
-  studyDescription: StudyDescription;
-  datasetDescription: DatasetDescription;
-}
 interface Version {
   id: string;
   title: string;
