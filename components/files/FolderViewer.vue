@@ -6,6 +6,10 @@ import { Icon } from "#components";
 const drawerActive = ref(false);
 
 const props = defineProps({
+  datatypeDictionary: {
+    required: true,
+    type: Object as PropType<Array<DatatypeDictionary>>,
+  },
   folderStructure: {
     required: true,
     type: Array as PropType<Array<FolderStructure>>,
@@ -34,12 +38,12 @@ function convertFile(file: FolderStructure, level: number): TreeOption {
             NButton,
             {
               class: "",
-              onClick: () => {
-                drawerActive.value = true;
+              onClick: (value) => {
+                openMetdataDrawer(file.label);
               },
               size: "tiny",
             },
-            { default: () => "Learn More" }
+            { default: () => "Learn More" },
           )
         : undefined,
   };
@@ -51,7 +55,7 @@ const updatePrefixWithExpaned = (
   meta: {
     action: "expand" | "collapse" | "filter";
     node: TreeOption | null;
-  }
+  },
 ) => {
   if (!meta.node) return;
   switch (meta.action) {
@@ -67,6 +71,28 @@ const updatePrefixWithExpaned = (
 };
 
 const data = props.folderStructure.map((file) => convertFile(file, 0));
+
+const drawerTitle = ref("");
+const drawerDescription = ref("");
+
+const openMetdataDrawer = (label: string) => {
+  drawerTitle.value = label;
+
+  // get the datatype from the dictionary
+  const datatype = props.datatypeDictionary.find(
+    (d) => d.code_name === label || d.aliases?.includes(label),
+  );
+
+  console.log(datatype);
+
+  if (datatype) {
+    drawerDescription.value = datatype.datatype_description.description_text;
+  } else {
+    drawerDescription.value = "No metadata found for this file";
+  }
+
+  drawerActive.value = true;
+};
 </script>
 
 <template>
@@ -80,8 +106,10 @@ const data = props.folderStructure.map((file) => convertFile(file, 0));
     />
 
     <n-drawer v-model:show="drawerActive" :width="502" placement="bottom">
-      <n-drawer-content title="View metadata">
-        Datatype specific metadata
+      <n-drawer-content :title="drawerTitle">
+        <p>
+          {{ drawerDescription }}
+        </p>
       </n-drawer-content>
     </n-drawer>
   </div>
