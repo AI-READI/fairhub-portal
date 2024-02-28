@@ -6,13 +6,18 @@ const props = defineProps({
   },
 });
 
-const { data: citation, pending } = await useFetch(
-  `/api/citation/${props.id}`,
-  {
-    lazy: true,
-    server: false,
-  },
-);
+const {
+  data: citation,
+  error: citationError,
+  pending,
+} = await useFetch(`/api/citation/${props.id}`, {
+  lazy: true,
+  server: false,
+});
+
+if (citationError.value) {
+  console.error("Error fetching citation", citationError);
+}
 
 // todo: add a watchEffect for the error responses
 </script>
@@ -31,22 +36,30 @@ const { data: citation, pending } = await useFetch(
         </div>
 
         <div v-else>
-          <div class="">
-            <p class="pb-1 text-sm font-medium">
-              When using this resource, please cite:
-            </p>
+          <TransitionFade>
+            <n-alert v-if="citationError" type="error">
+              Something went wrong with creating the citation
+            </n-alert>
 
-            <p class="text-sm">
-              {{ citation?.split }}
+            <div v-else>
+              <p class="pb-1 text-sm font-medium">
+                When using this resource, please cite:
+              </p>
 
-              <NuxtLink
-                :to="citation?.doi"
-                class="underline transition-all hover:text-slate-600"
-              >
-                {{ citation?.doi }}</NuxtLink
-              >.
-            </p>
-          </div>
+              <p class="text-sm">
+                {{ citation?.split }}
+
+                <br />
+
+                <NuxtLink
+                  :to="citation?.doi"
+                  class="underline transition-all hover:text-slate-600"
+                >
+                  {{ citation?.doi }}</NuxtLink
+                >.
+              </p>
+            </div>
+          </TransitionFade>
         </div>
       </TransitionFade>
     </n-space>
