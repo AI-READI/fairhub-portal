@@ -1,5 +1,5 @@
 <template>
-  <NaiveConfig>
+  <NaiveConfig :theme-config="themeConfig">
     <Notivue v-slot="item">
       <NotivueSwipe :item="item">
         <Notifications :item="item" :theme="pastelTheme" />
@@ -15,8 +15,6 @@
 </template>
 
 <script setup lang="ts">
-import "md-editor-v3/lib/style.css";
-
 import { pastelTheme } from "notivue";
 import type { ThemeConfig } from "@bg-dev/nuxt-naiveui";
 
@@ -25,7 +23,11 @@ const themeConfig: ThemeConfig = {
   light: {}, // Theme options applied on light mode
   mobile: {}, // Theme options applied on mobile only
   mobileOrTablet: {}, // Theme options applied on mobile and tablet
-  shared: {}, // Common theme options
+  shared: {
+    Tree: {
+      fontSize: "17px",
+    },
+  }, // Common theme options
 };
 
 useHead({

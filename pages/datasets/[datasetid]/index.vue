@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import sanitizeHtml from "sanitize-html";
 import { parse } from "marked";
+import type { Dataset, WithContext } from "schema-dts";
 
+const { isMobile } = useDevice();
 const route = useRoute();
 
 const { datasetid } = route.params as { datasetid: string };
@@ -29,10 +31,6 @@ const tabs = reactive([
     shown: false,
   },
   {
-    label: "Datatype Metadata",
-    shown: false,
-  },
-  {
     label: "Dataset Preview",
     shown: false,
   },
@@ -55,20 +53,63 @@ if (error.value) {
 
 const markdownToHtml = ref<string>("");
 
-useSchemaOrg([
-  {
-    name: dataset.value?.title,
-    "@context": "https://schema.org",
-    "@type": "Dataset",
-    // creator: {
-    //   name: dataset.value?.creator,
-    //   "@type": "Person",
-    // },
-    description: dataset.value?.description,
-    // license: dataset.value?.license,
-    url: `https://fairhub.io/datasets/${dataset.value?.id}`,
-  },
-]);
+const NuxtSchemaDataset: WithContext<Dataset> = {
+  name: dataset.value?.metadata.datasetDescription.Title.filter(
+    (value) => !value.titleType,
+  ).map((value) => value.titleValue),
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  contentLocation:
+    dataset.value?.metadata.studyDescription.ContactsLocationsModule.LocationList.map(
+      (location) => {
+        return {
+          "@type": "Place",
+          address: {
+            "@type": "PostalAddress",
+            addressCountry: location.LocationCountry,
+            addressLocality: location.LocationCity,
+            addressRegion: location.LocationState,
+            postalCode: location.LocationZip,
+          },
+        };
+      },
+    ),
+  contributor: dataset.value?.metadata.datasetDescription.Contributor?.map(
+    (contributor) => {
+      return {
+        "@type": "Person",
+        additionalType: contributor.nameType,
+        affiliation: contributor.affiliation?.map((affiliation) => ({
+          "@type": "Organization",
+          identifier: affiliation.affiliationIdentifier,
+        })),
+        givenName: contributor.contributorName,
+      };
+    },
+  ),
+  creator: dataset.value?.metadata.datasetDescription.Creator.map(
+    (creator) => ({
+      "@type": "Person",
+      additionalType: creator.nameType,
+      affiliation: creator.affiliation?.map((affiliation) => ({
+        "@type": "Organization",
+        identifier: affiliation.affiliationIdentifier,
+      })),
+      givenName: creator.creatorName,
+    }),
+  ),
+  description: dataset.value?.metadata.datasetDescription.Description?.filter(
+    (value) => value.descriptionType === "Abstract",
+  ).map((value) => value.descriptionValue),
+
+  funder: dataset.value?.metadata.datasetDescription.ManagingOrganisation.name,
+  identifier:
+    dataset.value?.metadata.datasetDescription.Identifier.identifierType,
+  keywords: dataset.value?.keywords.join(","),
+  url: `https://fairhub.io/datasets/${dataset.value?.id}`,
+};
+
+useSchemaOrg([NuxtSchemaDataset]);
 
 useSeoMeta({
   title: dataset.value?.title || "Fairhub",
@@ -81,13 +122,15 @@ useSeoMeta({
 
 if (dataset.value) {
   if (dataset.value?.metadata.readme) {
-    markdownToHtml.value = sanitize(parse(dataset.value.metadata.readme));
+    markdownToHtml.value = sanitize(await parse(dataset.value.metadata.readme));
   }
 }
 
 const navigate = (target: string) => {
   // the callback is fired once the animation is completed
   // to allow smooth transition
+
+  console.log(target);
 
   // set all tabs to false
   for (const item of tabs) {
@@ -164,11 +207,12 @@ const navigate = (target: string) => {
 
     <div class="mx-auto w-full max-w-screen-xl">
       <NavGroup
+        v-if="!isMobile"
         v-slot="{ ready, size, position, duration }"
         fluid
         :duration="350"
         as="nav"
-        class="relative border-b px-4"
+        class="relative border-b"
       >
         <div class="relative py-1">
           <div
@@ -189,8 +233,7 @@ const navigate = (target: string) => {
               as="li"
               @click="navigate(item.label)"
             >
-              <NuxtLink
-                href="#"
+              <button
                 :class="[
                   isActive
                     ? 'text-sky-600'
@@ -200,11 +243,22 @@ const navigate = (target: string) => {
                 @click.prevent="setActive"
               >
                 {{ item.label }}
-              </NuxtLink>
+              </button>
             </NavItem>
           </NavList>
         </div>
       </NavGroup>
+
+      <n-tabs v-if="isMobile" type="line" size="large" @update:value="navigate">
+        <n-tab
+          v-for="(item, index) in tabs"
+          :key="index"
+          :name="item.label"
+          @update:value="navigate"
+        >
+          {{ item.label }}
+        </n-tab>
+      </n-tabs>
 
       <div class="px-5 py-5 lg:grid lg:grid-cols-12 lg:gap-10">
         <div class="col-span-8">
@@ -228,8 +282,10 @@ const navigate = (target: string) => {
 
             <div v-if="tabs[3].shown">
               <MetadataStudyDescription
-                :metadata="(dataset?.metadata.studyDescription as StudyDescription)"
-                :study-title="(dataset?.studyTitle as string)"
+                :metadata="
+                  dataset?.metadata.studyDescription as StudyDescription
+                "
+                :study-title="dataset?.studyTitle as string"
               />
 
               <n-divider />
@@ -249,7 +305,9 @@ const navigate = (target: string) => {
 
             <div v-if="tabs[4].shown">
               <MetadataDatasetDescription
-                :metadata="(dataset?.metadata.datasetDescription as DatasetDescription)"
+                :metadata="
+                  dataset?.metadata.datasetDescription as DatasetDescription
+                "
               />
 
               <n-divider />
@@ -281,10 +339,24 @@ const navigate = (target: string) => {
               </n-collapse>
             </div>
 
-            <div v-if="tabs[5].shown">Datatype Metadata</div>
+            <div v-if="tabs[5].shown">
+              <n-space vertical>
+                <h3>Preview</h3>
 
-            <div v-if="tabs[6].shown">
-              <FilesFolderViewer :folder-structure="dataset?.files || []" />
+                <p>
+                  To access the dataset, please click the
+                  <code>Access this dataset</code> button above.
+                </p>
+
+                <n-divider />
+
+                <FilesFolderViewer
+                  :folder-structure="dataset?.files || []"
+                  :datatype-dictionary="
+                    dataset?.metadata.datatypeDictionary || []
+                  "
+                />
+              </n-space>
             </div>
           </TransitionFade>
         </div>
@@ -293,19 +365,17 @@ const navigate = (target: string) => {
           <n-space vertical class="col-span-2">
             <n-space
               vertical
-              class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
+              class="rounded-xl border border-blue-200 bg-slate-50 px-1 py-4"
             >
-              <n-space justify="center" class="px-6 py-3" align="center">
+              <n-space justify="center" align="center">
                 <n-space vertical align="center" size="small">
-                  <p class="text-xl font-medium">
-                    <n-number-animation :from="0" :to="104540" show-separator />
-                  </p>
-
                   <n-space size="small" align="center">
                     <Icon name="lets-icons:view-duotone" size="23" />
 
-                    <span class="font-normal">Views</span>
+                    <p class="text-sm font-medium">1045</p>
                   </n-space>
+
+                  <span class="text-sm font-normal">Views</span>
                 </n-space>
 
                 <div>
@@ -313,15 +383,27 @@ const navigate = (target: string) => {
                 </div>
 
                 <n-space vertical align="center" size="small">
-                  <p class="text-xl font-medium">
-                    <n-number-animation :from="0" :to="1033" show-separator />
-                  </p>
-
                   <n-space size="small" align="center">
                     <Icon name="ic:round-download" size="18" />
 
-                    <span class="font-normal">Downloads</span>
+                    <p class="text-sm font-medium">2000</p>
                   </n-space>
+
+                  <span class="text-sm font-normal">Downloads</span>
+                </n-space>
+
+                <div>
+                  <n-divider vertical />
+                </div>
+
+                <n-space vertical align="center" size="small">
+                  <n-space size="small" align="center">
+                    <Icon name="bi:journal-text" size="16" />
+
+                    <p class="text-sm font-medium">5</p>
+                  </n-space>
+
+                  <span class="text-sm font-normal">Cited by</span>
                 </n-space>
               </n-space>
             </n-space>
@@ -334,7 +416,7 @@ const navigate = (target: string) => {
                 <h3>License</h3>
 
                 <NuxtLink
-                  to="https://spdx.org/licenses/MIT.html"
+                  to="https://doi.org/10.5281/zenodo.10642459"
                   target="_blank"
                   class="underline transition-all hover:text-slate-600"
                 >
@@ -364,11 +446,14 @@ const navigate = (target: string) => {
             </n-space>
 
             <CitationViewer
-              :id="(dataset?.id as number)"
-              :creators="(dataset?.metadata.datasetDescription.Creator as DatasetDescription['Creator'])"
+              :id="dataset?.id as number"
+              :creators="
+                dataset?.metadata.datasetDescription
+                  .Creator as DatasetDescription['Creator']
+              "
             />
 
-            <VersionSelector :id="(dataset?.id as number)" />
+            <VersionSelector :id="dataset?.id as number" />
           </n-space>
         </div>
       </div>
