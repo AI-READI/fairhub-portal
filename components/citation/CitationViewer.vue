@@ -12,12 +12,16 @@ const props = defineProps({
 
 const {
   data: citation,
-  error,
+  error: citationError,
   pending,
 } = await useFetch(`/api/citation/${props.id}`, {
   lazy: true,
   server: false,
 });
+
+if (citationError.value) {
+  console.error("Error fetching citation", citationError);
+}
 
 // todo: add a watchEffect for the error responses
 </script>
@@ -36,35 +40,41 @@ const {
         </div>
 
         <div v-else>
-          <div class="">
-            <p class="pb-1 text-sm font-medium">
-              When using this resource, please cite:
-            </p>
+          <TransitionFade>
+            <n-alert v-if="citationError" type="error">
+              Something went wrong with creating the citation
+            </n-alert>
 
-            <p class="text-sm">
-              <span v-for="(creator, index) in creators" :key="index">
-                {{ creator?.creatorName.trim()
-                }}<template v-if="index !== creators.length - 1"
-                  ><span class="mr-2">,</span></template
+            <div v-else>
+              <p class="pb-1 text-sm font-medium">
+                When using this resource, please cite:
+              </p>
+
+              <p class="text-sm">
+                <span v-for="(creator, index) in creators" :key="index">
+                  {{ creator?.creatorName.trim() }}
+                  <span v-if="index !== creators.length - 1" class="mr-1"
+                    >,</span
+                  >
+
+                  <span v-else class="mr-1">.</span>
+                </span>
+
+                <span>({{ citation?.split.split("(")[1] }} </span>
+
+                <span>({{ citation?.split.split("(")[2] }}</span>
+
+                <br />
+
+                <NuxtLink
+                  :to="citation?.doi"
+                  class="underline transition-all hover:text-slate-600"
                 >
-
-                <template v-else><span class="mr-2">.</span></template>
-              </span>
-
-              <span>({{ citation?.split.split("(")[1] }}</span>
-
-              <span>({{ citation?.split.split("(")[2] }}</span>
-
-              <br />
-
-              <NuxtLink
-                :to="citation?.doi"
-                class="underline transition-all hover:text-slate-600"
-              >
-                {{ citation?.doi }}</NuxtLink
-              >.
-            </p>
-          </div>
+                  {{ citation?.doi }}</NuxtLink
+                >.
+              </p>
+            </div></TransitionFade
+          >
         </div>
       </TransitionFade>
     </n-space>
