@@ -1,7 +1,11 @@
 <script setup lang="ts">
-const _props = defineProps({
+defineProps({
   active: {
     required: true,
+    type: Boolean,
+  },
+  disabled: {
+    default: false,
     type: Boolean,
   },
 });
@@ -9,7 +13,24 @@ const _props = defineProps({
 
 <template>
   <n-space>
-    <n-switch :round="true" size="large" :value="active">
+    <Icon
+      size="25"
+      :name="
+        active ? 'icon-park-solid:check-one' : 'fluent-emoji-flat:no-entry'
+      "
+      :class="{
+        'text-green-500': active,
+        'text-red-500': !active,
+      }"
+    />
+
+    <n-switch
+      :round="true"
+      size="large"
+      :value="active"
+      :disabled="disabled"
+      class="hidden"
+    >
       <template #checked-icon>
         <Icon name="ic:baseline-check" color="#8acba8" />
       </template>

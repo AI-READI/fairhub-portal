@@ -195,27 +195,27 @@
     },
     "readme": "## Overview of the study\n  The AI-READI project seeks to create and share a flagship ethically-sourced dataset of type 2 diabetes. The data will be optimized for future artificial intelligence/machine learning (AI/ML) analysis that could provide critical insights and especially shine a light on the salutogenic pathways from diabetes to return to health. Six cross-disciplinary project modules involving teams located across eight institutions are working together to develop this flagship dataset. The project will aim to collect data from 4,000 participants across three sites: the University of Alabama at Birmingham (UAB), the University of California San Diego (UCSD), and the University of Washington (UW). To ensure the data is population-representative, the 4,000 participants will be balanced for three factors: disease severity, ethnicity, and sex. More information about the study can be found on the study website at [aireadi.org](https://aireadi.org). \n  \n  ## Description of the dataset\n  This dataset contain data from 4 participants from the pilot study of the project. Details about the participants of the study are provided in the [participants.json](participants.json) metadata file. Data from multiple modalities are collected. A full list is provided in the \"Data Standards\" section below. The data in this dataset has been deidentified using awesome tools x, y, z and contain no personel health information (PHI).  \n  \n  The dataset contains a total of 1,265 files (including data and metadata files) and is 420 GB in size.\n  \n  ## Protocol\n  The protocol followed:\n  - For collecting the dataset can be found at [protocols.io](https://protocols.io/).\n  \n  - For curating and sharing the dataset can be found at [protocols.io](https://protocols.io/). \n  \n  ## Dataset access/restrictions\n  This dataset is publicly accessible without any restrictions under the terms of the license described below in the \"License\" section. For accessing a version of the dataset that contains PHI, follow the instructions available [here](https://aireadi.org/).\n  \n  ## Data standards followed\n  This dataset is organized at the highest-level following the [Clinical Dataset Structure](https://github.com/AI-READI/high-level-dataset-structure). Each data type was organized according to either an existing standard if vailable for that data type or a newly developed one if no community agreed standard was found. Details are provided in the table below.\n  \n  | Data type      | Standards followed |\n  | ----------- | ----------- |\n  | Electrocardiogram      | [X standard]()       |\n  | Optical Coherence Tomography   | [Y standard]()      |\n  \n  ## Resources\n  All of our data files are in formats that are accessible with free software commonly used for such data types so no specific software is required.\n  \n  Besides the information contained in the various metadata files included in this dataset and the study website and protocols listed above, the manuscripts from the project listed below could provide more context for reusing the data:\n  - AI-READI Project (2023). Some manuscript. Some Journal, 361(9353), 195-200. https://doi.org/10.5281/zenodo.7641684\n  - AI-READI Project (2023). Another manuscript. Another Journal, 96(6), 266-272. https://doi.org/10.5281/zenodo.7641684\n \n  ## Contact\n  For any questions, suggestions, or feedback related to this dataset, please email contact@aireadi.org. We refer to the [study_description.json](study_description.json) and [dataset_description.json](dataset_description.json) metadata files for additional information about contact person/entity, authors, and contributors of the dataset.\n  \n  ## Acknowledgement\n  This project is supported by the NIH-funded Bridge2AI program ([1OT2OD032644](https://reporter.nih.gov/search/1ADgncihCk6fdMRJdCnBjg/project-details/10471118)). The content is solely the responsibility of the authors and does not necessarily represent the official views of the NIH.",
     "dataset_description": {
-      "AccessDetails": {
+      "accessDetails": {
         "description": "Description of the Public Download Access. We provide free for all people (as long as you have internet)"
       },
-      "AccessType": "PublicDownloadSelfAttestationRequired",
-      "AlternateIdentifier": [
+      "accessType": "PublicDownloadSelfAttestationRequired",
+      "alternateIdentifier": [
         {
           "alternateIdentifierType": "EAN13",
           "alternateIdentifierValue": "asd"
         }
       ],
-      "Contributor": [
+      "contributor": [
         {
           "affiliation": [
             {
               "affiliationIdentifier": "04wxnsj81",
               "affiliationIdentifierScheme": "ROR",
-              "affiliationValue": "University of Chicago",
+              "affiliationName": "University of Chicago",
               "schemeURI": "https://ror.org/04wxnsj81"
             }
           ],
-          "contributorName": "Light Yagami",
+          "contributorName": "Yagami, Light",
           "contributorType": "DataCollector",
           "nameIdentifier": [
             {
@@ -239,17 +239,17 @@
           "nameType": "Organizational"
         }
       ],
-      "Creator": [
+      "creator": [
         {
           "affiliation": [
             {
               "affiliationIdentifier": "0156zyn36",
               "affiliationIdentifierScheme": "ROR",
-              "affiliationValue": "University Of Marlen",
+              "affiliationName": "University Of Marlen",
               "schemeURI": "https://ror.org"
             }
           ],
-          "creatorName": "Joe Bloggs",
+          "creatorName": "Bloggs, Joe",
           "nameIdentifier": [
             {
               "nameIdentifierScheme": "ORCID",
@@ -264,11 +264,11 @@
             {
               "affiliationIdentifier": "0156zyn36",
               "affiliationIdentifierScheme": "ROR",
-              "affiliationValue": "University Of Marlen",
+              "affiliationName": "University Of Marlen",
               "schemeURI": "https://ror.org"
             }
           ],
-          "creatorName": "Doug Lyphe",
+          "creatorName": "Lyphe, Doug",
           "nameIdentifier": [
             {
               "nameIdentifierScheme": "ORCID",
@@ -279,7 +279,7 @@
           "nameType": "Personal"
         }
       ],
-      "DatasetConsent": {
+      "datasetConsent": {
         "consentGeneticOnly": true,
         "consentGeogRestrict": true,
         "consentNoMethods": true,
@@ -287,7 +287,7 @@
         "consentResearchType": true,
         "consentType": "GeneralResearchUse"
       },
-      "DatasetDeIdentLevel": {
+      "datasetDeIdentLevel": {
         "deIdentDates": true,
         "deIdentDirect": true,
         "deIdentHIPAA": false,
@@ -295,10 +295,7 @@
         "deIdentNonarr": false,
         "deIdentType": "DeIdentificationApplied"
       },
-      "DatasetRecordKeys": {
-        "keysType": "Pseudonymised"
-      },
-      "Date": [
+      "date": [
         {
           "dateInformation": "Copyright striked by YouTube",
           "dateType": "Copyrighted",
@@ -309,7 +306,7 @@
           "dateValue": "2023-12-28T00:00:00Z"
         }
       ],
-      "Description": [
+      "description": [
         {
           "descriptionType": "Abstract",
           "descriptionValue": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016"
@@ -319,7 +316,7 @@
           "descriptionValue": "Description for Dataset. The dataset is full of data that is useful for knowledge"
         }
       ],
-      "FundingReference": [
+      "fundingReference": [
         {
           "awardNumber": {
             "awardNumberValue": "DOI:123988178",
@@ -360,69 +357,37 @@
           "funderName": "Texas Road House"
         }
       ],
-      "Identifier": {
+      "identifier": {
         "identifierType": "DOI",
         "identifierValue": "1928aec8-3eae-4970-b22e-ff025527319a"
       },
-      "Language": "ja",
-      "ManagingOrganisation": {
+      "language": "ja",
+      "managingOrganisation": {
         "name": "Dr. Suess Inc"
       },
-      "PublicationYear": "2024",
-      "Publisher": "Dr. Suess",
+      "publicationYear": "2024",
+      "publisher": {
+        "publisherName": "Dr. Suess Inc",
+        "publisherIdentifier": "04z8jg394",
+        "publisherIdentifierScheme": "ROR",
+        "schemeURI": "https://ror.org"
+      },
       "RelatedIdentifier": [],
-      "RelatedItem": [
-        {
-          "title": [
-            {
-              "titleValue": "Family Name, Petter"
-            },
-            {
-              "titleType": "Subtitle",
-              "titleValue": "Griffin, Petttter"
-            }
-          ],
-          "contributor": [
-            {
-              "contributorName": "Contributed By Mike",
-              "contributorType": "Editor",
-              "nameType": "Organizational"
-            }
-          ],
-          "creator": [
-            {
-              "creatorName": "Creator Here",
-              "nameType": "Personal"
-            },
-            {
-              "creatorName": "Carl's JR",
-              "nameType": "Organizational"
-            }
-          ],
-          "relatedItemIdentifier": [
-            {
-              "relatedItemIdentifierType": "bibcode",
-              "relatedItemIdentifierValue": "License"
-            }
-          ],
-          "relatedItemType": "ComputationalNotebook",
-          "relationType": "IsContinuedBy"
-        }
-      ],
-      "ResourceType": {
+      "resourceType": {
         "resourceTypeGeneral": "Dataset",
         "resourceTypeValue": "tesdt"
       },
-      "Rights": [
+      "rights": [
         {
           "rightsIdentifier": "h",
           "rightsIdentifierScheme": "h",
           "rightsURI": "44",
-          "rightsValue": "Glide"
+          "rightsName": "Glide"
         }
       ],
-      "Size": [],
-      "Subject": [
+      "size": [],
+      "format": [],
+      "subject": [
         {
           "classificationCode": "CLASSIFIED BY THE CIA",
           "schemeURI": "BEST URI",
@@ -434,7 +399,7 @@
           "subjectValue": "SUBJECT 2"
         }
       ],
-      "Title": [
+      "title": [
         {
           "titleValue": "Tasty Wooden Computer"
         },
@@ -443,7 +408,7 @@
           "titleValue": "New Wooden Computer"
         }
       ],
-      "Version": "c2cab241-418d-4d9a-aecf-9fad9a8b2e15"
+      "version": "c2cab241-418d-4d9a-aecf-9fad9a8b2e15"
     },
     "datatype_dictionary": [
       {

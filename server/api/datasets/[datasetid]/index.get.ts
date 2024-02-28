@@ -32,6 +32,7 @@ export default defineEventHandler(async (event) => {
       datasetDescription: dbDataset.metadata.dataset_description,
       dataSheet: dbDataset.metadata.data_sheet,
       datatypeDictionary: dbDataset.metadata.datatype_dictionary,
+      healthsheet: dbDataset.metadata.healthsheet,
       readme: dbDataset.metadata.readme,
       studyDescription: dbDataset.metadata.study_description,
     },

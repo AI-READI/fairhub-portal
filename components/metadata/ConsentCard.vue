@@ -17,7 +17,7 @@ function getConsentType(consentType: string) {
 }
 
 const formattedConsentType = getConsentType(
-  _props.metadata.DatasetConsent.consentType
+  _props.metadata.datasetConsent.consentType,
 );
 </script>
 
@@ -38,8 +38,9 @@ const formattedConsentType = getConsentType(
       </p>
 
       <p>
-        <switch-boolean-switch
-          :active="metadata.DatasetConsent.consentNoncommercial"
+        <SwitchWithLabel
+          disabled
+          :active="metadata.datasetConsent.consentNoncommercial"
         />
       </p>
 
@@ -49,8 +50,9 @@ const formattedConsentType = getConsentType(
       </p>
 
       <p>
-        <switch-boolean-switch
-          :active="metadata.DatasetConsent.consentGeogRestrict"
+        <SwitchWithLabel
+          disabled
+          :active="metadata.datasetConsent.consentGeogRestrict"
         />
       </p>
 
@@ -60,8 +62,9 @@ const formattedConsentType = getConsentType(
       </p>
 
       <p>
-        <switch-boolean-switch
-          :active="metadata.DatasetConsent.consentResearchType"
+        <SwitchWithLabel
+          disabled
+          :active="metadata.datasetConsent.consentResearchType"
         />
       </p>
 
@@ -70,8 +73,9 @@ const formattedConsentType = getConsentType(
       </p>
 
       <p>
-        <switch-boolean-switch
-          :active="metadata.DatasetConsent.consentGeneticOnly"
+        <SwitchWithLabel
+          disabled
+          :active="metadata.datasetConsent.consentGeneticOnly"
         />
       </p>
 
@@ -81,8 +85,9 @@ const formattedConsentType = getConsentType(
       </p>
 
       <p>
-        <switch-boolean-switch
-          :active="metadata.DatasetConsent.consentNoMethods"
+        <SwitchWithLabel
+          disabled
+          :active="metadata.datasetConsent.consentNoMethods"
         />
       </p>
     </n-space>

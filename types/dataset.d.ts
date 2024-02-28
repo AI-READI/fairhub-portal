@@ -1,18 +1,18 @@
 interface DatasetDescription {
-  Identifier: {
+  identifier: {
     identifierValue: string;
     identifierType: string;
   };
-  Title: {
+  title: {
     titleType?: string;
     titleValue: string;
   }[];
-  Version: string;
-  AlternateIdentifier?: {
+  version: string;
+  lternateIdentifier?: {
     alternateIdentifierType: string;
     alternateIdentifierValue: string;
   }[];
-  Creator: {
+  creator: {
     creatorName: string;
     nameType: string;
     nameIdentifier?: {
@@ -24,10 +24,10 @@ interface DatasetDescription {
       affiliationIdentifier?: string;
       affiliationIdentifierScheme?: string;
       schemeURI?: string;
-      affiliationValue?: string;
+      affiliationName?: string;
     }[];
   }[];
-  Contributor?: {
+  contributor?: {
     contributorName: string;
     contributorType: string;
     nameType: string;
@@ -40,20 +40,20 @@ interface DatasetDescription {
       affiliationIdentifier?: string;
       affiliationIdentifierScheme?: string;
       schemeURI?: string;
-      affiliationValue?: string;
+      affiliationName?: string;
     }[];
   }[];
-  PublicationYear: string;
-  Date?: {
+  publicationYear: string;
+  date?: {
     dateValue: string;
     dateType: string;
     dateInformation?: string;
   }[];
-  ResourceType: {
+  resourceType: {
     resourceTypeGeneral: string;
     resourceTypeValue: string;
   }[];
-  DatasetDeIdentLevel: {
+  datasetDeIdentLevel: {
     deIdentType: string;
     deIdentDirect: boolean;
     deIdentHIPAA: boolean;
@@ -62,7 +62,7 @@ interface DatasetDescription {
     deIdentKAnon: boolean;
     deIdentDetails?: string;
   };
-  DatasetConsent: {
+  datasetConsent: {
     consentType: string;
     consentNoncommercial: boolean;
     consentGeogRestrict: boolean;
@@ -71,12 +71,12 @@ interface DatasetDescription {
     consentNoMethods: boolean;
     consentsDetails?: string;
   };
-  Description?: {
+  description?: {
     descriptionType: string;
     descriptionValue: string;
   }[];
-  Language?: string;
-  RelatedIdentifier?: {
+  language?: string;
+  relatedIdentifier?: {
     relatedIdentifierType: string;
     relatedIdentifierValue: string;
     relationType: string;
@@ -85,36 +85,42 @@ interface DatasetDescription {
     schemeType?: string;
     resourceTypeGeneral?: string;
   }[];
-  Subject?: {
+  subject?: {
     subjectValue: string;
     subjectScheme?: string;
     schemeURI?: string;
     valueURI?: string;
     classificationCode?: string;
   }[];
-  ManagingOrganisation: {
+  managingOrganisation: {
     name: string;
     rorId?: string;
   };
-  AcessType: string;
-  AcessDetails: {
+  acessType: string;
+  acessDetails: {
     description: string;
     url: string;
     urlLastChecked: string;
   };
-  Rights: {
-    rightsValue: string;
+  rights: {
+    rightsName: string;
     rightsURI?: string;
     rightsIdentifier?: string;
     rightsIdentifierScheme?: string;
   }[];
-  Publisher: string;
-  Size?: string[];
-  FundingReference?: {
+  publisher: {
+    publisherName: string;
+    publisherIdentifier?: string;
+    publisherIdentifierScheme?: string;
+    schemeURI?: string;
+  };
+  size?: string[];
+  format?: string[];
+  fundingReference?: {
     funderName: string;
-    funderIdentifier?: {
+    funderIdentifier: {
       funderIdentifierValue: string;
-      funderIdentifierType?: string;
+      funderIdentifierType: string;
     };
     awardNumber?: {
       awardNumberValue: string;
@@ -122,40 +128,14 @@ interface DatasetDescription {
     };
     awardTitle?: string;
   }[];
-  RelatedItem?: {
-    relatedItemType: string;
+  relatedIdentifier?: {
+    relatedIdentifierValue: string;
+    relatedIdentifierType: string;
     relationType: string;
-    relatedItemIdentifier?: {
-      relatedItemIdentifierValue: string;
-      relatedItemIdentifierType?: string;
-      relatedMetadataScheme?: string;
-      schemeURI?: string;
-      schemeType?: string;
-    }[];
-    creator: {
-      creatorName: string;
-      nameType: string;
-    }[];
-    title: {
-      titleType?: string;
-      titleValue: string;
-    }[];
-    publicationYear?: string;
-    volume?: string;
-    issue?: string;
-    number: {
-      numberType?: string;
-      numberValue: string;
-    };
-    firstPage?: string;
-    lastPage?: string;
-    publisher?: string;
-    edition?: string;
-    contributor?: {
-      contributorName: string;
-      contributorType: string;
-      nameType: string;
-    }[];
+    resourceTypeGeneral?: string;
+    relatedMetadataScheme?: string;
+    schemeURI?: string;
+    schemeType?: string;
   }[];
 }
 
@@ -164,19 +144,16 @@ interface DatasetCreator {
   familyName: string;
 }
 
-interface DatasetCreators extends Array<DatasetCreator> {}
-
 interface DatasetCreator {
   givenName: string;
   familyName: string;
 }
 
+interface DatasetCreators extends Array<DatasetCreator> {}
 interface Study {
   title: string;
   id: string;
 }
-
-interface DatasetCreators extends Array<DatasetCreator> {}
 
 interface StudyDescription {
   ArmsInterventionsModule: {
@@ -359,12 +336,29 @@ interface DatatypeDictionary {
   }[];
 }
 
+interface HealthsheetRecord {
+  id: number;
+  question: string;
+  response: string;
+}
+
+interface HealthsheetRecords {
+  motivation: HealthsheetRecord[];
+  composition: HealthsheetRecord[];
+  collection: HealthsheetRecord[];
+  preprocessing: HealthsheetRecord[];
+  uses: HealthsheetRecord[];
+  distribution: HealthsheetRecord[];
+  maintenance: HealthsheetRecord[];
+}
+
 interface Metadata {
   dataSheet: string;
   readme: string;
   studyDescription: StudyDescription;
   datasetDescription: DatasetDescription;
   datatypeDictionary: DatatypeDictionary[];
+  healthsheet: HealthsheetRecords;
 }
 
 interface Dataset {

@@ -4,20 +4,15 @@ const props = defineProps({
     required: true,
     type: Number,
   },
-  creators: {
-    required: true,
-    type: Array as PropType<DatasetDescription["Creator"]>,
-  },
 });
 
-const {
-  data: citation,
-  error,
-  pending,
-} = await useFetch(`/api/citation/${props.id}`, {
-  lazy: true,
-  server: false,
-});
+const { data: citation, pending } = await useFetch(
+  `/api/citation/${props.id}`,
+  {
+    lazy: true,
+    server: false,
+  },
+);
 
 // todo: add a watchEffect for the error responses
 </script>
@@ -42,20 +37,7 @@ const {
             </p>
 
             <p class="text-sm">
-              <span v-for="(creator, index) in creators" :key="index">
-                {{ creator?.creatorName.trim()
-                }}<template v-if="index !== creators.length - 1"
-                  ><span class="mr-2">,</span></template
-                >
-
-                <template v-else><span class="mr-2">.</span></template>
-              </span>
-
-              <span>({{ citation?.split.split("(")[1] }}</span>
-
-              <span>({{ citation?.split.split("(")[2] }}</span>
-
-              <br />
+              {{ citation?.split }}
 
               <NuxtLink
                 :to="citation?.doi"
