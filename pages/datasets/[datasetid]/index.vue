@@ -54,9 +54,9 @@ if (error.value) {
 const markdownToHtml = ref<string>("");
 
 const NuxtSchemaDataset: WithContext<Dataset> = {
-  name: dataset.value?.metadata.datasetDescription.Title.filter(
-    (value) => !value.titleType,
-  ).map((value) => value.titleValue),
+  name: dataset.value?.metadata.datasetDescription.title
+    .filter((value) => !value.titleType)
+    .map((value) => value.titleValue),
   "@context": "https://schema.org",
   "@type": "Dataset",
   contentLocation:
@@ -74,7 +74,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
         };
       },
     ),
-  contributor: dataset.value?.metadata.datasetDescription.Contributor?.map(
+  contributor: dataset.value?.metadata.datasetDescription.contributor?.map(
     (contributor) => {
       return {
         "@type": "Person",
@@ -87,7 +87,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       };
     },
   ),
-  creator: dataset.value?.metadata.datasetDescription.Creator.map(
+  creator: dataset.value?.metadata.datasetDescription.creator.map(
     (creator) => ({
       "@type": "Person",
       additionalType: creator.nameType,
@@ -98,13 +98,13 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       givenName: creator.creatorName,
     }),
   ),
-  description: dataset.value?.metadata.datasetDescription.Description?.filter(
-    (value) => value.descriptionType === "Abstract",
-  ).map((value) => value.descriptionValue),
+  description: dataset.value?.metadata.datasetDescription.description
+    ?.filter((value) => value.descriptionType === "Abstract")
+    .map((value) => value.descriptionValue),
 
-  funder: dataset.value?.metadata.datasetDescription.ManagingOrganisation.name,
+  funder: dataset.value?.metadata.datasetDescription.managingOrganisation.name,
   identifier:
-    dataset.value?.metadata.datasetDescription.Identifier.identifierType,
+    dataset.value?.metadata.datasetDescription.identifier.identifierType,
   keywords: dataset.value?.keywords.join(","),
   url: `https://fairhub.io/datasets/${dataset.value?.id}`,
 };
@@ -141,6 +141,16 @@ const navigate = (target: string) => {
     }
   }
 };
+
+const generateCombinedFullName = (name: string) => {
+  const nameArray = name.split(",");
+
+  if (nameArray.length > 1) {
+    return `${nameArray[1]} ${nameArray[0]}`;
+  } else {
+    return name;
+  }
+};
 </script>
 
 <template>
@@ -155,16 +165,16 @@ const navigate = (target: string) => {
           <n-space horizontal class="items-center align-middle">
             <div
               v-for="(creator, index) in dataset?.metadata.datasetDescription
-                .Creator"
+                .creator"
               :key="index"
               class="flex flex-row flex-wrap items-center align-middle text-black"
             >
               <!-- if on the last index create a different span -->
               <span class="mr-1 text-sm font-light">{{
-                creator.creatorName
+                generateCombinedFullName(creator.creatorName)
               }}</span>
 
-              <button-badge-button
+              <ButtonIdentifierBadge
                 v-if="creator?.nameIdentifier"
                 class="pt-1"
                 :type="creator.nameIdentifier[0]"
@@ -172,9 +182,9 @@ const navigate = (target: string) => {
 
               <span
                 v-if="
-                  dataset?.metadata.datasetDescription.Creator &&
+                  dataset?.metadata.datasetDescription.creator &&
                   index !=
-                    dataset?.metadata.datasetDescription.Creator.length - 1
+                    dataset?.metadata.datasetDescription.creator.length - 1
                 "
                 class="text-sm"
               >
@@ -275,7 +285,7 @@ const navigate = (target: string) => {
             <div v-if="tabs[1].shown">Dashboard</div>
 
             <div v-if="tabs[2].shown">
-              <metadata-health-sheet
+              <MetadataHealthSheet
                 :healthsheet="dataset?.metadata.dataSheet || ''"
               />
             </div>
@@ -318,14 +328,6 @@ const navigate = (target: string) => {
                   name="1"
                   size="large"
                 >
-                  <json-viewer
-                    :value="dataset?.metadata.datasetDescription || {}"
-                    copyable
-                    :show-array-index="false"
-                  />
-
-                  <n-divider />
-
                   <VueJsonPretty
                     :data="dataset?.metadata.datasetDescription || {}"
                     show-line
@@ -445,15 +447,9 @@ const navigate = (target: string) => {
               </n-space>
             </n-space>
 
-            <CitationViewer
-              :id="dataset?.id as number"
-              :creators="
-                dataset?.metadata.datasetDescription
-                  .Creator as DatasetDescription['Creator']
-              "
-            />
+            <CitationViewer :id="dataset?.id || 0" />
 
-            <VersionSelector :id="dataset?.id as number" />
+            <VersionSelector :id="dataset?.id || 0" />
           </n-space>
         </div>
       </div>

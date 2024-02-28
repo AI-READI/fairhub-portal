@@ -1,1 +1,1 @@
-declare module "calver";
+declare module "citation-js";

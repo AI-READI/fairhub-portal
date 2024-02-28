@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const _props = defineProps({
+defineProps({
   metadata: {
     required: true,
     type: Object as PropType<DatasetDescription>,
@@ -36,7 +36,7 @@ function boolOtherSchemes(identifier: Identifier) {
 
 <template>
   <n-space vertical size="large">
-    <card-collapsible-card
+    <CardCollapsibleCard
       id="creators"
       title="Creators"
       data-section-title="Creators"
@@ -55,7 +55,7 @@ function boolOtherSchemes(identifier: Identifier) {
           </thead>
 
           <tbody>
-            <tr v-for="(creator, index) in metadata.Creator" :key="index">
+            <tr v-for="(creator, index) in metadata.creator" :key="index">
               <div class="flex flex-col">
                 <td>
                   <div class="flex flex-row items-center">
@@ -63,7 +63,7 @@ function boolOtherSchemes(identifier: Identifier) {
                       <b>{{ creator.creatorName }}</b>
                     </span>
 
-                    <button-badge-button
+                    <ButtonIdentifierBadge
                       v-if="creator?.nameIdentifier"
                       :type="creator.nameIdentifier[0]"
                     />
@@ -101,10 +101,10 @@ function boolOtherSchemes(identifier: Identifier) {
                       <n-li>
                         <div class="flex flex-row items-center">
                           <span class="mr-2">
-                            {{ affiliation.affiliationValue || "N/A" }}
+                            {{ affiliation.affiliationName || "N/A" }}
                           </span>
 
-                          <button-badge-button :type="affiliation" />
+                          <ButtonIdentifierBadge :type="affiliation" />
                         </div>
 
                         <n-ul class="disc-hollow">
@@ -125,9 +125,9 @@ function boolOtherSchemes(identifier: Identifier) {
           </tbody>
         </n-table>
       </n-space>
-    </card-collapsible-card>
+    </CardCollapsibleCard>
 
-    <card-collapsible-card
+    <CardCollapsibleCard
       id="contributors"
       title="Contributors"
       data-section-title="Contributors"
@@ -144,100 +144,98 @@ function boolOtherSchemes(identifier: Identifier) {
 
           <tbody>
             <tr
-              v-for="(contributor, index) in metadata.Contributor"
+              v-for="(contributor, index) in metadata.contributor"
               :key="index"
             >
-              <div class="flex flex-col">
-                <td>
-                  <div class="flex flex-row justify-between">
-                    <div class="flex flex-row items-center">
-                      <span class="mr-2 inline-block align-middle text-base">
-                        <b>{{ contributor.contributorName }}</b>
-                      </span>
-
-                      <button-badge-button
-                        v-if="contributor?.nameIdentifier"
-                        :type="contributor?.nameIdentifier[0]"
-                      />
-                    </div>
-
-                    <span>
-                      <tag-contributor-tag
-                        :contributor-type="contributor.contributorType"
-                      />
+              <td>
+                <div class="flex flex-row justify-between">
+                  <div class="flex flex-row items-center">
+                    <span class="mr-2 inline-block align-middle text-base">
+                      <b>{{ contributor.contributorName }}</b>
                     </span>
+
+                    <ButtonIdentifierBadge
+                      v-if="contributor?.nameIdentifier"
+                      :type="contributor?.nameIdentifier[0]"
+                    />
                   </div>
 
-                  <div
-                    v-if="
-                      contributor?.nameIdentifier &&
-                      boolOtherSchemes(contributor?.nameIdentifier[0])
-                    "
-                    class="ml-4 mt-3"
-                  >
-                    <span>
-                      <p class="text-[.91rem]">Identifier:</p>
+                  <span>
+                    <tag-contributor-tag
+                      :contributor-type="contributor.contributorType"
+                    />
+                  </span>
+                </div>
 
-                      <n-ul
-                        v-for="(
-                          indentifier, innerIndex
-                        ) in contributor.nameIdentifier"
-                        :key="innerIndex"
-                        class="mb-2 list-disc"
-                      >
-                        <n-li>
-                          {{ indentifier.nameIdentifierScheme || "N/A" }}:
-                          {{ indentifier.nameIdentifierValue }}
-                        </n-li>
-                      </n-ul>
-                    </span>
-                  </div>
+                <div
+                  v-if="
+                    contributor?.nameIdentifier &&
+                    boolOtherSchemes(contributor?.nameIdentifier[0])
+                  "
+                  class="ml-4 mt-3"
+                >
+                  <span>
+                    <p class="text-[.91rem]">Identifier:</p>
 
-                  <div
-                    v-if="contributor.nameType != 'Organizational'"
-                    class="ml-4"
-                  >
-                    <span>
-                      <p class="mt-2 text-[.91rem]">Affiliation:</p>
+                    <n-ul
+                      v-for="(
+                        indentifier, innerIndex
+                      ) in contributor.nameIdentifier"
+                      :key="innerIndex"
+                      class="mb-2 list-disc"
+                    >
+                      <n-li>
+                        {{ indentifier.nameIdentifierScheme || "N/A" }}:
+                        {{ indentifier.nameIdentifierValue }}
+                      </n-li>
+                    </n-ul>
+                  </span>
+                </div>
 
-                      <n-ul
-                        v-for="(
-                          affiliation, innerIndex
-                        ) in contributor.affiliation"
-                        :key="innerIndex"
-                        class="mb-2 list-disc text-base"
-                      >
-                        <n-li>
-                          <div class="flex flex-row items-center">
-                            <span class="mr-2 align-middle">
-                              {{ affiliation.affiliationValue || "N/A" }}
-                            </span>
+                <div
+                  v-if="contributor.nameType != 'Organizational'"
+                  class="ml-4"
+                >
+                  <span>
+                    <p class="mt-2 text-[.91rem]">Affiliation:</p>
 
-                            <button-badge-button :type="affiliation" />
-                          </div>
+                    <n-ul
+                      v-for="(
+                        affiliation, innerIndex
+                      ) in contributor.affiliation"
+                      :key="innerIndex"
+                      class="mb-2 list-disc text-base"
+                    >
+                      <n-li>
+                        <div class="flex flex-row items-center">
+                          <span class="mr-2 align-middle">
+                            {{ affiliation.affiliationName || "N/A" }}
+                          </span>
 
-                          <n-ul class="disc-hollow">
-                            <n-li
-                              v-if="boolOtherSchemes(affiliation)"
-                              class="!mt-2 text-base"
-                            >
-                              {{ affiliation.affiliationIdentifierScheme }}:
-                              {{ affiliation.affiliationIdentifier || "N/A" }}
-                            </n-li>
-                          </n-ul>
-                        </n-li>
-                      </n-ul>
-                    </span>
-                  </div>
-                </td>
-              </div>
+                          <ButtonIdentifierBadge :type="affiliation" />
+                        </div>
+
+                        <n-ul class="disc-hollow">
+                          <n-li
+                            v-if="boolOtherSchemes(affiliation)"
+                            class="!mt-2 text-base"
+                          >
+                            {{ affiliation.affiliationIdentifierScheme }}:
+                            {{ affiliation.affiliationIdentifier || "N/A" }}
+                          </n-li>
+                        </n-ul>
+                      </n-li>
+                    </n-ul>
+                  </span>
+                </div>
+              </td>
             </tr>
           </tbody>
         </n-table>
       </n-space>
-    </card-collapsible-card>
+    </CardCollapsibleCard>
 
-    <card-collapsible-card
+    <CardCollapsibleCard
       id="funders"
       title="Funders"
       data-section-title="Funders"
@@ -265,7 +263,7 @@ function boolOtherSchemes(identifier: Identifier) {
         </thead>
 
         <tbody>
-          <tr v-for="(funder, index) in metadata.FundingReference" :key="index">
+          <tr v-for="(funder, index) in metadata.fundingReference" :key="index">
             <td>{{ funder.funderName }}</td>
 
             <td>
@@ -280,10 +278,10 @@ function boolOtherSchemes(identifier: Identifier) {
           </tr>
         </tbody>
       </n-table>
-    </card-collapsible-card>
+    </CardCollapsibleCard>
 
-    <metadata-de-identify-card :metadata="metadata" />
+    <MetadataDeIdentifyCard :metadata="metadata" />
 
-    <metadata-consent-card :metadata="metadata" />
+    <MetadataConsentCard :metadata="metadata" />
   </n-space>
 </template>

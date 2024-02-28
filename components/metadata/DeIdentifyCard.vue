@@ -17,7 +17,7 @@ function getDeIdentType(deIdentType: string) {
 }
 
 const formattedDeIdentType = getDeIdentType(
-  _props.metadata.DatasetDeIdentLevel.deIdentType
+  _props.metadata.datasetDeIdentLevel.deIdentType,
 );
 </script>
 
@@ -42,8 +42,9 @@ const formattedDeIdentType = getDeIdentType(
       </p>
 
       <p>
-        <switch-boolean-switch
-          :active="metadata.DatasetDeIdentLevel.deIdentDirect"
+        <SwitchWithLabel
+          disabled
+          :active="metadata.datasetDeIdentLevel.deIdentDirect"
         />
       </p>
 
@@ -52,8 +53,9 @@ const formattedDeIdentType = getDeIdentType(
       </p>
 
       <p>
-        <switch-boolean-switch
-          :active="metadata.DatasetDeIdentLevel.deIdentHIPAA"
+        <SwitchWithLabel
+          disabled
+          :active="metadata.datasetDeIdentLevel.deIdentHIPAA"
         />
       </p>
 
@@ -62,8 +64,9 @@ const formattedDeIdentType = getDeIdentType(
       </p>
 
       <p>
-        <switch-boolean-switch
-          :active="metadata.DatasetDeIdentLevel.deIdentDates"
+        <SwitchWithLabel
+          disabled
+          :active="metadata.datasetDeIdentLevel.deIdentDates"
         />
       </p>
 
@@ -72,8 +75,9 @@ const formattedDeIdentType = getDeIdentType(
       </p>
 
       <p>
-        <switch-boolean-switch
-          :active="metadata.DatasetDeIdentLevel.deIdentNonarr"
+        <SwitchWithLabel
+          disabled
+          :active="metadata.datasetDeIdentLevel.deIdentNonarr"
         />
       </p>
 
@@ -82,8 +86,9 @@ const formattedDeIdentType = getDeIdentType(
       </p>
 
       <p>
-        <switch-boolean-switch
-          :active="metadata.DatasetDeIdentLevel.deIdentKAnon"
+        <SwitchWithLabel
+          disabled
+          :active="metadata.datasetDeIdentLevel.deIdentKAnon"
         />
       </p>
     </n-space>

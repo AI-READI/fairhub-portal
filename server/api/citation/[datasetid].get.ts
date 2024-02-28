@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import Cite from "citation-js";
 import mongodbClientPromise from "~/server/utils/mongodb";
 
 export default defineEventHandler(async (event) => {
@@ -8,11 +9,9 @@ export default defineEventHandler(async (event) => {
 
   const db = mongodbClient.db(process.env.MONGODB_DB);
 
-  const dbDataset: DatabaseDatasetRecord = await db
-    .collection("dataset")
-    .findOne({
-      identifier: Number(datasetid),
-    });
+  const dbDataset = await db.collection("dataset").findOne({
+    identifier: Number(datasetid),
+  });
 
   if (!dbDataset) {
     console.log(`Dataset ${datasetid} not found`);
@@ -23,14 +22,21 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const creators: DatasetCreators = dbDataset.creators;
+  const datasetDescription = dbDataset.metadata.dataset_description;
+  const creators = datasetDescription.creator;
 
   let creatorsCitationText = "";
 
   for (let i = 0; i < creators.length; i++) {
     const creator = creators[i];
 
-    creatorsCitationText += `${creator.givenName} ${creator.familyName}`;
+    const splitCreatorName = creator.creatorName.split(",");
+
+    if (splitCreatorName.length === 2) {
+      creatorsCitationText += `${splitCreatorName[1]} ${splitCreatorName[0]}`;
+    } else {
+      creatorsCitationText += creator.creatorName;
+    }
 
     if (i === creators.length - 2) {
       creatorsCitationText += " & ";
@@ -49,9 +55,12 @@ export default defineEventHandler(async (event) => {
   const doiCitationText = `https://doi.org/${dbDataset.doi}`;
   const fullCitationText = `${splitCitationText} ${doiCitationText}`;
 
+  const json = new Cite("10.5281/zenodo.1005176");
+
   return {
     doi: doiCitationText,
     full: fullCitationText,
+    json,
     split: splitCitationText,
   };
 });

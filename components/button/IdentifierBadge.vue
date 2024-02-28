@@ -8,7 +8,7 @@ interface Identifier {
   schemeURI?: string;
 }
 
-const _props = defineProps({
+defineProps({
   type: {
     required: true,
     type: Object as PropType<Identifier>,
@@ -91,10 +91,10 @@ function directToIdentifierPage(identifier: Identifier) {
   <div class="flex w-auto flex-row">
     <NuxtLink
       v-if="
-        _props.type?.nameIdentifierScheme === 'ORCID' ||
-        _props.type?.affiliationIdentifierScheme === 'ORCID'
+        type?.nameIdentifierScheme === 'ORCID' ||
+        type?.affiliationIdentifierScheme === 'ORCID'
       "
-      :to="directToIdentifierPage(_props.type)"
+      :to="directToIdentifierPage(type)"
       target="_blank"
     >
       <n-button
@@ -108,10 +108,10 @@ function directToIdentifierPage(identifier: Identifier) {
 
     <NuxtLink
       v-else-if="
-        _props.type?.nameIdentifierScheme === 'ROR' ||
-        _props.type?.affiliationIdentifierScheme === 'ROR'
+        type?.nameIdentifierScheme === 'ROR' ||
+        type?.affiliationIdentifierScheme === 'ROR'
       "
-      :to="directToIdentifierPage(_props.type)"
+      :to="directToIdentifierPage(type)"
       target="_blank"
     >
       <n-button
@@ -125,17 +125,17 @@ function directToIdentifierPage(identifier: Identifier) {
 
     <NuxtLink
       v-else-if="
-        _props.type?.nameIdentifierScheme === 'INSI' ||
-        _props.type?.affiliationIdentifierScheme === 'INSI'
+        type?.nameIdentifierScheme === 'INSI' ||
+        type?.affiliationIdentifierScheme === 'INSI'
       "
-      :to="directToIdentifierPage(_props.type)"
+      :to="directToIdentifierPage(type)"
       target="_blank"
     >
       <n-button
         text
         class="rounded-full p-1 transition-all hover:!bg-cyan-100"
         type="info"
-        @click="directToIdentifierPage(_props.type)"
+        @click="directToIdentifierPage(type)"
       >
         <Icon name="academicons:isni" color="#312783" size="20" />
       </n-button>

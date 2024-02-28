@@ -4,10 +4,6 @@ const props = defineProps({
     required: true,
     type: Number,
   },
-  creators: {
-    required: true,
-    type: Array as PropType<DatasetDescription["Creator"]>,
-  },
 });
 
 const {
@@ -51,18 +47,7 @@ if (citationError.value) {
               </p>
 
               <p class="text-sm">
-                <span v-for="(creator, index) in creators" :key="index">
-                  {{ creator?.creatorName.trim() }}
-                  <span v-if="index !== creators.length - 1" class="mr-1"
-                    >,</span
-                  >
-
-                  <span v-else class="mr-1">.</span>
-                </span>
-
-                <span>({{ citation?.split.split("(")[1] }} </span>
-
-                <span>({{ citation?.split.split("(")[2] }}</span>
+                {{ citation?.split }}
 
                 <br />
 
@@ -73,8 +58,8 @@ if (citationError.value) {
                   {{ citation?.doi }}</NuxtLink
                 >.
               </p>
-            </div></TransitionFade
-          >
+            </div>
+          </TransitionFade>
         </div>
       </TransitionFade>
     </n-space>
