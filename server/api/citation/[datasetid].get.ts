@@ -5,6 +5,8 @@ import mongodbClientPromise from "~/server/utils/mongodb";
 export default defineEventHandler(async (event) => {
   const { datasetid } = event.context.params as { datasetid: string };
 
+  const { format } = getQuery(event);
+
   const mongodbClient = await mongodbClientPromise;
 
   const db = mongodbClient.db(process.env.MONGODB_DB);
@@ -55,12 +57,16 @@ export default defineEventHandler(async (event) => {
   const doiCitationText = `https://doi.org/${dbDataset.doi}`;
   const fullCitationText = `${splitCitationText} ${doiCitationText}`;
 
-  const json = new Cite("10.5281/zenodo.1005176");
+  const cite = new Cite("10.5281/zenodo.10728774");
+
+  const requestedCitationFormatText: string = cite.format("bibliography", {
+    template: format,
+  });
 
   return {
     doi: doiCitationText,
+    formattedText: requestedCitationFormatText,
     full: fullCitationText,
-    json,
     split: splitCitationText,
   };
 });
