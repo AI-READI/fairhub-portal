@@ -21,6 +21,18 @@ const citationFormats = [
     label: "Vancouver",
     value: "vancouver",
   },
+  {
+    label: "MLA",
+    value: "mla",
+  },
+  {
+    label: "Chicago",
+    value: "chicago",
+  },
+  {
+    label: "IEEE",
+    value: "ieee",
+  },
 ];
 
 const citation = ref({
@@ -83,48 +95,50 @@ onMounted(() => {
     <n-space vertical :size="[0, 0]">
       <h3 class="mb-3">Citation</h3>
 
+      <p class="pb-1 text-sm font-medium">
+        When using this resource, please cite:
+      </p>
+
       <TransitionFade>
-        <div v-if="citationPending" class="flex justify-center p-2">
-          <Icon name="svg-spinners:3-dots-scale" size="30" />
+        <div v-if="citationPending" class="py-2">
+          <n-skeleton text style="width: 80%" />
+
+          <n-skeleton text />
+
+          <n-skeleton text style="width: 60%" />
         </div>
 
         <div v-else>
-          <TransitionFade>
-            <n-alert v-if="citationError" type="error">
-              Something went wrong with creating the citation
-            </n-alert>
+          <n-alert v-if="citationError" type="error">
+            Something went wrong with creating the citation
+          </n-alert>
 
-            <div v-else>
-              <p class="pb-1 text-sm font-medium">
-                When using this resource, please cite:
-              </p>
-
-              <P class="mb-4 text-sm">{{ citation?.formattedText }}</P>
-
-              <n-space align="center" justify="space-between">
-                <n-select
-                  v-model:value="citationFormat"
-                  size="small"
-                  :options="citationFormats"
-                  :consistent-menu-width="false"
-                  @update:value="getFormattedCitation"
-                />
-
-                <n-button
-                  quaternary
-                  type="info"
-                  size="large"
-                  @click="copyToClipboard(citation?.formattedText)"
-                >
-                  <template #icon>
-                    <Icon name="uil:copy" />
-                  </template>
-                </n-button>
-              </n-space>
-            </div>
-          </TransitionFade>
+          <div v-else>
+            <P class="mb-4 text-sm">{{ citation?.formattedText }}</P>
+          </div>
         </div>
       </TransitionFade>
+
+      <n-space align="center" justify="space-between">
+        <n-select
+          v-model:value="citationFormat"
+          size="small"
+          :options="citationFormats"
+          :consistent-menu-width="false"
+          @update:value="getFormattedCitation"
+        />
+
+        <n-button
+          quaternary
+          type="info"
+          size="large"
+          @click="copyToClipboard(citation?.formattedText)"
+        >
+          <template #icon>
+            <Icon name="uil:copy" />
+          </template>
+        </n-button>
+      </n-space>
 
       <n-divider />
 

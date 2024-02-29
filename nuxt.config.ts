@@ -89,14 +89,14 @@ export default defineNuxtConfig({
         process.env.NUXT_SITE_ENV === "dev"
           ? "http://localhost:6000"
           : process.env.NUXT_SITE_ENV === "staging"
-          ? "https://staging.fairhub.io"
-          : "https://fairhub.io",
+            ? "https://staging.fairhub.io"
+            : "https://fairhub.io",
       FAIRHUB_API_URL:
         process.env.NUXT_SITE_ENV === "dev"
           ? "http://localhost:5000"
           : process.env.NUXT_SITE_ENV === "staging"
-          ? "https://staging.api.fairhub.io"
-          : "https://api.fairhub.io",
+            ? "https://staging.api.fairhub.io"
+            : "https://api.fairhub.io",
     },
   },
 
