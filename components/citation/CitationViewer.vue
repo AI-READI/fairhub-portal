@@ -45,7 +45,7 @@ const citation = ref({
 const citationError = ref(false);
 const citationPending = ref(true);
 
-const getCitation = async () => {
+const getCitation = async (format: string = "apa") => {
   citationError.value = false;
   citation.value = {
     doi: "",
@@ -56,7 +56,7 @@ const getCitation = async () => {
 
   citationPending.value = true;
 
-  await $fetch(`/api/citation/${props.id}?format=${citationFormat.value}`)
+  await $fetch(`/api/citation/${props.id}?format=${format}`)
     .then((data) => {
       citation.value = data;
     })
@@ -77,9 +77,7 @@ const copyToClipboard = (text: string = "") => {
 };
 
 const getFormattedCitation = async (format: string) => {
-  citationFormat.value = format;
-
-  await getCitation();
+  await getCitation(format);
 };
 
 onMounted(() => {
@@ -108,14 +106,12 @@ onMounted(() => {
           <n-skeleton text style="width: 60%" />
         </div>
 
-        <div v-else>
+        <div v-else class="py-2">
           <n-alert v-if="citationError" type="error">
             Something went wrong with creating the citation
           </n-alert>
 
-          <div v-else>
-            <P class="mb-4 text-sm">{{ citation?.formattedText }}</P>
-          </div>
+          <p v-else class="text-sm">{{ citation?.formattedText }}</p>
         </div>
       </TransitionFade>
 
