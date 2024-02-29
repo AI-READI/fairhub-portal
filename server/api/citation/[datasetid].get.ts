@@ -50,7 +50,7 @@ export default defineEventHandler(async (event) => {
     .unix(dbDataset.createdAt)
     .format("YYYY")}). ${dbDataset.title} (${
     dbDataset.fairhub.version.title
-  }). Fairhub.`;
+  }). FAIRhub.`;
 
   const doiCitationText = `https://doi.org/${dbDataset.doi}`;
   const fullCitationText = `${splitCitationText} ${doiCitationText}`;
