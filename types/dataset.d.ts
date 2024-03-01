@@ -107,6 +107,7 @@ interface DatasetDescription {
     rightsURI?: string;
     rightsIdentifier?: string;
     rightsIdentifierScheme?: string;
+    schemeURI?: string;
   }[];
   publisher: {
     publisherName: string;
