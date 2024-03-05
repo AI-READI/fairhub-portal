@@ -88,7 +88,7 @@ onMounted(() => {
 <template>
   <n-space
     vertical
-    class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
+    class="rounded-xl border border-blue-200 bg-white px-4 pb-5 pt-3"
   >
     <n-space vertical :size="[0, 0]">
       <h3 class="mb-3">Citation</h3>

@@ -129,9 +129,6 @@ if (dataset.value) {
 const navigate = (target: string) => {
   // the callback is fired once the animation is completed
   // to allow smooth transition
-
-  console.log(target);
-
   // set all tabs to false
   for (const item of tabs) {
     item.shown = false;
@@ -367,7 +364,7 @@ const generateCombinedFullName = (name: string) => {
           <n-space vertical class="col-span-2">
             <n-space
               vertical
-              class="rounded-xl border border-blue-200 bg-slate-50 px-1 py-4"
+              class="rounded-xl border border-blue-200 bg-white px-1 py-4"
             >
               <n-space justify="center" align="center">
                 <n-space vertical align="center" size="small">
@@ -412,7 +409,7 @@ const generateCombinedFullName = (name: string) => {
 
             <n-space
               vertical
-              class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
+              class="rounded-xl border border-blue-200 bg-white px-4 pb-5 pt-3"
             >
               <n-space vertical>
                 <h3>License</h3>
@@ -429,9 +426,9 @@ const generateCombinedFullName = (name: string) => {
 
             <n-space
               vertical
-              class="rounded-xl border border-blue-200 bg-slate-50 px-4 pb-5 pt-3"
+              class="rounded-xl border border-blue-200 bg-white px-4 pb-5 pt-3"
             >
-              <n-space vertical class="mt-3">
+              <n-space vertical>
                 <h3>Keywords</h3>
 
                 <n-space>
