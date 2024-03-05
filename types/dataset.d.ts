@@ -8,7 +8,7 @@ interface DatasetDescription {
     titleValue: string;
   }[];
   version: string;
-  lternateIdentifier?: {
+  alternateIdentifier?: {
     alternateIdentifierType: string;
     alternateIdentifierValue: string;
   }[];
@@ -92,7 +92,7 @@ interface DatasetDescription {
     valueURI?: string;
     classificationCode?: string;
   }[];
-  managingOrganisation: {
+  managingOrganization: {
     name: string;
     rorId?: string;
   };
@@ -157,159 +157,225 @@ interface Study {
 }
 
 interface StudyDescription {
-  ArmsInterventionsModule: {
-    ArmGroupList: {
-      ArmGroupLabel: string;
-      ArmGroupDescription: string;
+  armsInterventionsModule: {
+    armGroupList: {
+      armGroupLabel: string;
+      armGroupType?: string;
+      armGroupInterventionList?: string[];
+      armGroupDescription: string;
     }[];
-    InterventionList: {
-      InterventionType: string;
-      InterventionName: string;
-      InterventionOtherNameList: string[];
-      InterventionArmGroupLabelList: string[];
+    interventionList: {
+      interventionType: string;
+      interventionName: string;
+      interventionDescription: string;
+      interventionOtherNameList?: string[];
     }[];
   };
-  ConditionsModule: {
-    ConditionList: string[];
-    KeywordList: string[];
-  };
-  ContactsLocationsModule: {
-    CentralContactList?: {
-      CentralContactAffiliation: string;
-      CentralContactName: string;
-      CentralContactPhone: string;
-      CentralContactEMail: string;
-      CentralContactPhoneExt?: string;
+  conditionsModule: {
+    conditionList: {
+      conditionName: string;
+      conditionIdentifier?: {
+        conditionClassificationCode: string;
+        conditionScheme: string;
+        schemeURI?: string;
+        conditionURI?: string;
+      };
     }[];
-    LocationList: {
-      LocationFacility: string;
-      LocationCity: string;
-      LocationState?: string;
-      LocationZip?: string;
-      LocationStatus: string;
-      LocationCountry: string;
-      LocationContactList?: {
-        LocationContactName: string;
-        LocationContactRole: string;
-        LocationContactPhone: string;
-        LocationContactEMail: string;
-        LocationContactPhoneExt?: string;
+    keywordList?: {
+      keywordValue: string;
+      keywordIdentifier?: {
+        keywordClassificationCode: string;
+        keywordScheme: string;
+        schemeURI?: string;
+        keywordURI?: string;
+      };
+    }[];
+  };
+  contactsLocationsModule: {
+    centralContactList: {
+      centralContactFirstName: string;
+      centralContactLastName: string;
+      centralContactDegree?: string;
+      centralContactIdentifier?: {
+        centralContactIdentifierValue: string;
+        centralContactIdentifierScheme: string;
+        schemeURI?: string;
+      }[];
+      centralContactAffiliation: {
+        centralContactAffiliationName: string;
+        centralContactAffiliationIdentifier?: {
+          centralContactAffiliationIdentifierValue: string;
+          centralContactAffiliationIdentifierScheme: string;
+          schemeURI?: string;
+        };
+      };
+      centralContactPhone?: string;
+      centralContactPhoneExt?: string;
+      centralContactEMail: string;
+    }[];
+    locationList: {
+      locationFacility: string;
+      locationStatus: string;
+      locationCity: string;
+      locationState?: string;
+      locationZip?: string;
+      locationCountry: string;
+      locationIdentifier?: {
+        locationIdentifierValue: string;
+        locationIdentifierScheme: string;
+        schemeURI?: string;
+      };
+      locationContactList?: {
+        locationContactFirstName: string;
+        locationContactLastName: string;
+        locationContactIdentifier?: {
+          locationContactIdentifierValue: string;
+          locationContactIdentifierScheme: string;
+          schemeURI?: string;
+        }[];
+        locationContactRole: string;
+        locationContactPhone: string;
+        locationContactEMail: string;
+        locationContactPhoneExt?: string;
       }[];
     }[];
-    OverallOfficialList?: {
-      OverallOfficialName: string;
-      OverallOfficialAffiliation: string;
-      OverallOfficialRole: string;
-    }[];
-  };
-  DescriptionModule: {
-    BriefSummary: string;
-    DetailedDescription: string;
-  };
-  DesignModule: {
-    BioSpec?: {
-      BioSpecRetention: string;
-      BioSpecDescription?: string;
-    };
-    DesignInfo: {
-      DesignAllocation?: string;
-      DesignInterventionModel?: string;
-      DesignIterventionModelDescription?: string;
-      DesignObservationalModelList?: string[];
-      DesignMaskingInfo?: {
-        DesignMasking: string;
-        DesignMaskingDescription?: string;
-        DesignWhoMaskedList: string[];
+    overallOfficialList?: {
+      overallOfficialFirstName: string;
+      overallOfficialLastName: string;
+      overallOfficialDegree: string;
+      overallOfficialIdentifier?: {
+        overallOfficialIdentifierValue: string;
+        overallOfficialIdentifierScheme: string;
+        schemeURI?: string;
+      }[];
+      overallOfficialAffiliation: {
+        overallOfficialAffiliationName: string;
+        overallOfficialAffiliationIdentifier?: {
+          overallOfficialAffiliationIdentifierValue: string;
+          overallOfficialAffiliationIdentifierScheme: string;
+          schemeURI?: string;
+        };
       };
-      DesignObservationModel?: string;
-      DesignPrimaryPurpose?: string;
-      DesignTimePerspectiveList?: string[];
-    };
-    EnrollmentInfo: {
-      EnrollmentCount: string;
-      EnrollmentType: string;
-    };
-    NumberArms?: string;
-    PhaseList?: string[];
-    StudyType: string;
-    TargetDuration: string;
-    NumberGroupsCohorts: int;
-  };
-  EligibilityModule: {
-    Gender: string;
-    GenderBased: string;
-    GenderDescription?: string;
-    MinimumAge: string;
-    MaximumAge: string;
-    HealthyVolunteers?: string;
-    EligibilityCriteria: string;
-    StudyPopulation?: string;
-    SamplingMethod?: string;
-  };
-  IdentificationModule: {
-    OrgStudyIdInfo: {
-      OrgStudyId: string;
-      OrgStudyIdType: string;
-    };
-    SecondaryIdInfoList?: {
-      SecondaryId: string;
-      SecondaryIdType: string;
-      SecondaryIdLink?: string;
-      SecondaryIdDomain?: string;
+      overallOfficialRole: string;
     }[];
   };
-  IPDSharingStatementModule: {
-    IPDSharing: string;
-    IPDSharingDescription?: string;
-    IPDSharingInfoTypeList?: string[];
-    IPDSharingTimeFrame?: string;
-    IPDSharingAccessCriteria?: string;
-    IPDSharingURL?: string;
+  descriptionModule: {
+    briefSummary: string;
+    detailedDescription: string;
   };
-  OversightModule: {
-    OversightHasDMC?: string;
-  };
-  ReferencesModule: {
-    ReferenceList?: {
-      ReferenceID?: string;
-      ReferenceType?: string;
-      ReferenceCitation: string;
-    }[];
-    SeeAlsoLinkList?: {
-      SeeAlsoLinkLabel?: string;
-      SeeAlsoLinkURL: string;
-    }[];
-    AvailIPDList?: {
-      AvailIPDId: string;
-      AvailIPDType: string;
-      AvailIPDURL: string;
-      AvailIPDComment?: string;
-    }[];
-  };
-  SponsorCollaboratorsModule: {
-    ResponsibleParty: {
-      ResponsiblePartyType: string;
-      ResponsiblePartyInvestigatorFullName?: string;
-      ResponsiblePartyInvestigatorTitle?: string;
-      ResponsiblePartyInvestigatorAffiliation?: string;
+  designModule: {
+    bioSpec?: {
+      bioSpecRetention: string;
+      bioSpecDescription?: string;
     };
-    LeadSponsor: {
-      LeadSponsorName: string;
+    designInfo: {
+      designAllocation?: string;
+      designInterventionModel?: string;
+      designIterventionModelDescription?: string;
+      designObservationalModelList?: string[];
+      designMaskingInfo?: {
+        designMasking: string;
+        designMaskingDescription?: string;
+        designWhoMaskedList: string[];
+      };
+      designObservationModel?: string;
+      designPrimaryPurpose?: string;
+      designTimePerspectiveList?: string[];
     };
-    CollaboratorList?: {
-      CollaboratorName: string;
+    enrollmentInfo: {
+      enrollmentCount: string;
+      enrollmentType: string;
+    };
+    numberArms?: string;
+    phaseList?: string[];
+    studyType: string;
+    targetDuration: string;
+    isPatientRegistry?: string;
+    numberGroupsCohorts: int;
+  };
+  eligibilityModule: {
+    sex: string;
+    genderBased: string;
+    genderDescription?: string;
+    minimumAge: string;
+    maximumAge: string;
+    healthyVolunteers: string;
+    eligibilityCriteria: {
+      eligibilityCriteriaInclusion: string[];
+      eligibilityCriteriaExclusion: string[];
+    };
+    studyPopulation?: string;
+    samplingMethod?: string;
+  };
+  identificationModule: {
+    officialTitle: string;
+    acronym?: string;
+    orgStudyIdInfo: {
+      orgStudyId: string;
+      orgStudyIdType: string;
+      orgStudyIdDomain?: string;
+      orgStudyIdLink?: string;
+    };
+    secondaryIdInfoList?: {
+      secondaryId: string;
+      secondaryIdType: string;
+      secondaryIdLink?: string;
+      secondaryIdDomain?: string;
     }[];
   };
-  StatusModule: {
-    OverallStatus: string;
-    WhyStopped?: string;
-    StartDateStruct: {
-      StartDate: string;
-      StartDateType: string;
+  oversightModule: {
+    isFDARegulatedDrug?: string;
+    isFDARegulatedDevice?: string;
+    humanSubjectReviewStatus: string;
+    oversightHasDMC?: string;
+  };
+  sponsorCollaboratorsModule: {
+    responsibleParty: {
+      responsiblePartyType: string;
+      responsiblePartyInvestigatorFirstName?: string;
+      responsiblePartyInvestigatorLastName?: string;
+      responsiblePartyInvestigatorTitle?: string;
+      responsiblePartyInvestigatorIdentifier?: {
+        responsiblePartyInvestigatorIdentifierValue: string;
+        responsiblePartyInvestigatorIdentifierScheme: string;
+        schemeURI?: string;
+      }[];
+      responsiblePartyInvestigatorAffiliation?: {
+        responsiblePartyInvestigatorAffiliationName: string;
+        responsiblePartyInvestigatorAffiliationIdentifier?: {
+          responsiblePartyInvestigatorAffiliationIdentifierValue: string;
+          responsiblePartyInvestigatorAffiliationIdentifierScheme: string;
+          schemeURI?: string;
+        };
+      };
     };
-    CompletionDateStruct?: {
-      CompletionDate: string;
-      CompletionDateType: string;
+    leadSponsor: {
+      leadSponsorName: string;
+      leadSponsorIdentifier: {
+        leadSponsorIdentifierValue: string;
+        leadSponsorIdentifierScheme: string;
+        schemeURI?: string;
+      };
+    };
+    collaboratorList?: {
+      collaboratorName: string;
+      collaboratorNameIdentifier: {
+        collaboratorNameIdentifierValue: string;
+        collaboratorNameIdentifierScheme: string;
+        schemeURI?: string;
+      };
+    }[];
+  };
+  statusModule: {
+    overallStatus: string;
+    whyStopped?: string;
+    startDateStruct: {
+      startDate: string;
+      startDateType: string;
+    };
+    completionDateStruct: {
+      completionDate: string;
+      completionDateType: string;
     };
   };
 }

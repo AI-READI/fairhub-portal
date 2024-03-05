@@ -85,7 +85,7 @@ export default defineNuxtConfig({
   },
 
   notivue: {
-    // Options
+    position: "bottom-right",
   },
 
   runtimeConfig: {
