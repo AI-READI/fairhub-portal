@@ -12,6 +12,13 @@ export default defineNuxtConfig({
           content: "width=device-width, initial-scale=1",
         },
       ],
+      script: [
+        {
+          async: true,
+          "data-website-id": "446adad1-ec44-4f9d-95c6-f7c295715b0a",
+          src: "https://umami.fairdataihub.org/mushroom",
+        },
+      ],
     },
     layoutTransition: { name: "layout", mode: "out-in" },
     pageTransition: { name: "page", mode: "out-in" },

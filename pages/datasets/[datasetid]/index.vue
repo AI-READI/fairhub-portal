@@ -371,11 +371,17 @@ const generateCombinedFullName = (name: string) => {
             >
               <n-space justify="center" align="center">
                 <n-space vertical align="center" size="small">
-                  <n-space size="small" align="center">
-                    <Icon name="lets-icons:view-duotone" size="23" />
+                  <NuxtLink
+                    target="_blank"
+                    :to="`https://umami.aireadi.org/share/w56IOiviBTVZOlHu/staging.fairhub.io?url=${encodeURIComponent('/datasets/' + dataset?.id)}`"
+                    class="text-sm font-medium text-sky-500 transition-all hover:text-sky-600"
+                  >
+                    <n-space size="small" align="center">
+                      <Icon name="lets-icons:view-duotone" size="23" />
 
-                    <p class="text-sm font-medium">1045</p>
-                  </n-space>
+                      <p class="text-sm font-medium">1045</p>
+                    </n-space>
+                  </NuxtLink>
 
                   <span class="text-sm font-normal">Views</span>
                 </n-space>
