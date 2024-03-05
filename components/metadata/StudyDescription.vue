@@ -1,11 +1,4 @@
 <script setup lang="ts">
-import sanitizeHtml from "sanitize-html";
-import { parse } from "marked";
-
-const sanitize = (html: string) => sanitizeHtml(html);
-
-const eligibilityMarkdown = ref<string>("");
-
 const props = defineProps({
   metadata: {
     required: true,
@@ -16,17 +9,11 @@ const props = defineProps({
     type: String,
   },
 });
-
-onBeforeMount(() => {
-  eligibilityMarkdown.value = sanitize(
-    parse(props.metadata.EligibilityModule.EligibilityCriteria)
-  );
-});
 </script>
 
 <template>
   <n-space vertical size="large">
-    <card-collapsible-card
+    <CardCollapsibleCard
       id="DescriptionModule"
       data-section-title="Study Overview"
       title="Study Overview"
@@ -38,7 +25,7 @@ onBeforeMount(() => {
           <p class="mb-1 w-full border-b font-semibold">Brief Summary</p>
 
           <p>
-            {{ metadata.DescriptionModule.BriefSummary }}
+            {{ metadata.descriptionModule.briefSummary }}
           </p>
 
           <p class="mb-1 mt-4 w-full border-b font-semibold">
@@ -46,7 +33,7 @@ onBeforeMount(() => {
           </p>
 
           <p>
-            {{ metadata.DescriptionModule.DetailedDescription }}
+            {{ metadata.descriptionModule.detailedDescription }}
           </p>
 
           <p class="mb-1 mt-4 w-full border-b font-semibold">Official Title</p>
@@ -59,12 +46,12 @@ onBeforeMount(() => {
 
           <n-space>
             <n-tag
-              v-for="condition in metadata.ConditionsModule.ConditionList"
-              :key="condition"
+              v-for="condition in metadata.conditionsModule.conditionList"
+              :key="condition.conditionName"
               type="info"
               :bordered="false"
             >
-              {{ condition }}
+              {{ condition.conditionName }}
             </n-tag>
           </n-space>
         </n-space>
@@ -72,40 +59,40 @@ onBeforeMount(() => {
         <n-space vertical class="col-span-3 ml-2">
           <p class="mb-1 w-full border-b font-semibold">
             Study Start ({{
-              metadata.StatusModule.StartDateStruct.StartDateType
+              metadata.statusModule.startDateStruct.startDateType
             }})
           </p>
 
-          <p>{{ metadata.StatusModule.StartDateStruct.StartDate }}</p>
+          <p>{{ metadata.statusModule.startDateStruct.startDate }}</p>
 
-          <div v-if="metadata.StatusModule.CompletionDateStruct" class="mt-4">
+          <div v-if="metadata.statusModule.completionDateStruct" class="mt-4">
             <p class="mb-1 w-full border-b font-semibold">
               Study Completion ({{
-                metadata.StatusModule.CompletionDateStruct.CompletionDateType
+                metadata.statusModule.completionDateStruct.completionDateType
               }})
             </p>
 
             <p>
-              {{ metadata.StatusModule.CompletionDateStruct.CompletionDate }}
+              {{ metadata.statusModule.completionDateStruct.completionDate }}
             </p>
           </div>
 
-          <div v-if="metadata.StatusModule.WhyStopped" class="mt-4">
+          <div v-if="metadata.statusModule.whyStopped" class="mt-4">
             <p class="mb-1 w-full border-b font-semibold">Why Stopped</p>
 
             <p>
-              {{ metadata.StatusModule.WhyStopped }}
+              {{ metadata.statusModule.whyStopped }}
             </p>
           </div>
 
           <p class="mb-1 mt-4 w-full border-b font-semibold">Overall Status</p>
 
           <p>
-            {{ metadata.StatusModule.OverallStatus }}
+            {{ metadata.statusModule.overallStatus }}
           </p>
         </n-space>
       </div>
-    </card-collapsible-card>
+    </CardCollapsibleCard>
 
     <!-- <n-card title="Contact and Locations" id="cContactsLocationsModule" data-section-title="Contact and Locations" class="shadow-md">
       <n-space vertical>
@@ -118,7 +105,7 @@ onBeforeMount(() => {
       </n-space>
     </n-card> -->
 
-    <card-collapsible-card
+    <CardCollapsibleCard
       id="DesignModule"
       data-section-title="Design"
       title="Design"
@@ -128,25 +115,25 @@ onBeforeMount(() => {
         <p class="mb-1 w-full border-b font-semibold">Study Type</p>
 
         <p>
-          {{ metadata.DesignModule.StudyType }}
+          {{ metadata.designModule.studyType }}
         </p>
 
         <p class="mb-1 mt-2 w-full border-b font-semibold">
           Enrollment Count ({{
-            metadata.DesignModule.EnrollmentInfo.EnrollmentType
+            metadata.designModule.enrollmentInfo.enrollmentType
           }})
         </p>
 
         <div>
           <p>
-            {{ metadata.DesignModule.EnrollmentInfo.EnrollmentCount }}
+            {{ metadata.designModule.enrollmentInfo.enrollmentCount }}
           </p>
         </div>
 
         <p class="mb-1 mt-2 w-full border-b font-semibold">Target Duration</p>
 
         <p>
-          {{ metadata.DesignModule.TargetDuration }}
+          {{ metadata.designModule.targetDuration }}
         </p>
 
         <p class="mb-1 mt-2 w-full border-b font-semibold">
@@ -154,18 +141,18 @@ onBeforeMount(() => {
         </p>
 
         <p>
-          {{ metadata.DesignModule.NumberGroupsCohorts }}
+          {{ metadata.designModule.numberGroupsCohorts }}
         </p>
 
         <div
-          v-if="metadata.DesignModule.StudyType === 'Interventional'"
+          v-if="metadata.designModule.studyType === 'Interventional'"
           class="mt-2"
         >
-          <div v-if="metadata.DesignModule.PhaseList">
+          <div v-if="metadata.designModule.phaseList">
             <p class="mb-1 w-full border-b font-semibold">Phase List</p>
 
             <n-ul
-              v-for="(phase, index) in metadata.DesignModule.PhaseList"
+              v-for="(phase, index) in metadata.designModule.phaseList"
               :key="index"
               class="list-disc text-base"
             >
@@ -175,13 +162,13 @@ onBeforeMount(() => {
             </n-ul>
           </div>
 
-          <div v-if="metadata.DesignModule.DesignInfo">
+          <div v-if="metadata.designModule.designInfo">
             <p class="mb-1 mt-2 w-full border-b font-semibold">
               Design Allocation
             </p>
 
             <p>
-              {{ metadata.DesignModule.DesignInfo.DesignAllocation }}
+              {{ metadata.designModule.designInfo.designAllocation }}
             </p>
 
             <p class="mb-1 mt-2 w-full border-b font-semibold">
@@ -189,7 +176,7 @@ onBeforeMount(() => {
             </p>
 
             <p>
-              {{ metadata.DesignModule.DesignInfo.DesignInterventionModel }}
+              {{ metadata.designModule.designInfo.designInterventionModel }}
             </p>
 
             <p class="mb-1 mt-2 w-full border-b font-semibold">
@@ -197,7 +184,7 @@ onBeforeMount(() => {
             </p>
 
             <p>
-              {{ metadata.DesignModule.DesignInfo.DesignPrimaryPurpose }}
+              {{ metadata.designModule.designInfo.designPrimaryPurpose }}
             </p>
 
             <p class="mb-1 mt-2 w-full border-b font-semibold">
@@ -206,8 +193,8 @@ onBeforeMount(() => {
 
             <p>
               {{
-                metadata.DesignModule.DesignInfo.DesignMaskingInfo
-                  ?.DesignMasking
+                metadata.designModule.designInfo.designMaskingInfo
+                  ?.designMasking
               }}
             </p>
 
@@ -216,8 +203,8 @@ onBeforeMount(() => {
             </p>
 
             <n-ul
-              v-for="(masked, index) in metadata.DesignModule.DesignInfo
-                .DesignMaskingInfo?.DesignWhoMaskedList"
+              v-for="(masked, index) in metadata.designModule.designInfo
+                .designMaskingInfo?.designWhoMaskedList"
               :key="index"
               class="list-disc text-base"
             >
@@ -228,8 +215,8 @@ onBeforeMount(() => {
 
             <div
               v-if="
-                metadata.DesignModule.DesignInfo.DesignMaskingInfo
-                  ?.DesignMaskingDescription
+                metadata.designModule.designInfo.designMaskingInfo
+                  ?.designMaskingDescription
               "
               class="mt-2"
             >
@@ -239,8 +226,8 @@ onBeforeMount(() => {
 
               <p>
                 {{
-                  metadata.DesignModule.DesignInfo.DesignMaskingInfo
-                    .DesignMaskingDescription
+                  metadata.designModule.designInfo.designMaskingInfo
+                    .designMaskingDescription
                 }}
               </p>
             </div>
@@ -248,19 +235,19 @@ onBeforeMount(() => {
         </div>
 
         <div
-          v-if="metadata.DesignModule.StudyType === 'Observational'"
+          v-if="metadata.designModule.studyType === 'Observational'"
           class="mt-2"
         >
-          <div v-if="metadata.DesignModule.DesignInfo.DesignAllocation">
+          <div v-if="metadata.designModule.designInfo.designAllocation">
             <p class="mb-1 w-full border-b font-semibold">Design Allocation</p>
 
             <p>
-              {{ metadata.DesignModule.DesignInfo.DesignAllocation }}
+              {{ metadata.designModule.designInfo.designAllocation }}
             </p>
           </div>
 
           <div
-            v-if="metadata.DesignModule.DesignInfo.DesignObservationModel"
+            v-if="metadata.designModule.designInfo.designObservationModel"
             class="mt-4"
           >
             <p class="mb-1 w-full border-b font-semibold">
@@ -268,12 +255,12 @@ onBeforeMount(() => {
             </p>
 
             <p>
-              {{ metadata.DesignModule.DesignInfo.DesignObservationModel }}
+              {{ metadata.designModule.designInfo.designObservationModel }}
             </p>
           </div>
 
           <div
-            v-if="metadata.DesignModule.DesignInfo.DesignObservationalModelList"
+            v-if="metadata.designModule.designInfo.designObservationalModelList"
             class="mt-3"
           >
             <p class="mb-2 w-full border-b font-semibold">
@@ -281,8 +268,8 @@ onBeforeMount(() => {
             </p>
 
             <n-ul
-              v-for="model in metadata.DesignModule.DesignInfo
-                .DesignObservationalModelList"
+              v-for="model in metadata.designModule.designInfo
+                .designObservationalModelList"
               :key="model"
               class="list-disc text-base"
             >
@@ -293,7 +280,7 @@ onBeforeMount(() => {
           </div>
 
           <div
-            v-if="metadata.DesignModule.DesignInfo.DesignTimePerspectiveList"
+            v-if="metadata.designModule.designInfo.designTimePerspectiveList"
             class="mt-5"
           >
             <p class="mb-2 w-full border-b font-semibold">
@@ -301,8 +288,8 @@ onBeforeMount(() => {
             </p>
 
             <n-ul
-              v-for="perspective in metadata.DesignModule.DesignInfo
-                .DesignTimePerspectiveList"
+              v-for="perspective in metadata.designModule.designInfo
+                .designTimePerspectiveList"
               :key="perspective"
               class="list-disc text-base"
             >
@@ -312,15 +299,15 @@ onBeforeMount(() => {
             </n-ul>
           </div>
 
-          <div v-if="metadata.DesignModule.BioSpec" class="mt-4">
+          <div v-if="metadata.designModule.bioSpec" class="mt-4">
             <p class="mb-1 w-full border-b font-semibold">Biospecimens</p>
 
             <p>
-              {{ metadata.DesignModule.BioSpec.BioSpecRetention }}
+              {{ metadata.designModule.bioSpec.bioSpecRetention }}
             </p>
 
             <div
-              v-if="metadata.DesignModule.BioSpec.BioSpecDescription"
+              v-if="metadata.designModule.bioSpec.bioSpecDescription"
               class="mt-2"
             >
               <p class="mb-1 w-full border-b font-semibold">
@@ -328,12 +315,12 @@ onBeforeMount(() => {
               </p>
 
               <p>
-                {{ metadata.DesignModule.BioSpec.BioSpecDescription }}
+                {{ metadata.designModule.bioSpec.bioSpecDescription }}
               </p>
             </div>
 
             <div
-              v-if="metadata.DesignModule.BioSpec.BioSpecDescription"
+              v-if="metadata.designModule.bioSpec.bioSpecDescription"
               class="mt-2"
             >
               <p class="mb-1 w-full border-b font-semibold">
@@ -341,88 +328,106 @@ onBeforeMount(() => {
               </p>
 
               <p>
-                {{ metadata.DesignModule.BioSpec.BioSpecDescription }}
+                {{ metadata.designModule.bioSpec.bioSpecDescription }}
               </p>
             </div>
           </div>
         </div>
       </n-space>
-    </card-collapsible-card>
+    </CardCollapsibleCard>
 
-    <card-collapsible-card
+    <CardCollapsibleCard
       id="EligibilityModule"
       data-section-title="Eligibility"
       title="Eligibility"
       class="mb-4 shadow-md"
     >
       <n-space vertical>
-        <p class="mb-1 w-full border-b font-semibold">Eligibility Criteria</p>
-        <!-- eslint-disable vue/no-v-html -->
-        <div
-          class="prose mt-2 max-w-none text-black"
-          v-html="eligibilityMarkdown"
-        ></div>
-        <!-- eslint-enable vue/no-v-html -->
-
-        <p class="mb-1 mt-2 w-full border-b font-semibold">Gender</p>
+        <p class="mb-1 mt-2 w-full border-b font-semibold">Sex</p>
 
         <p class="">
-          {{ metadata.EligibilityModule.Gender }}
+          {{ metadata.eligibilityModule.sex }}
         </p>
 
         <p class="mb-1 mt-2 w-full border-b font-semibold">Gender Based</p>
 
         <p>
-          {{ metadata.EligibilityModule.GenderBased }}
+          {{ metadata.eligibilityModule.genderBased }}
         </p>
 
-        <div v-if="metadata.EligibilityModule.GenderDescription" class="mt-2">
+        <div v-if="metadata.eligibilityModule.genderDescription" class="mt-2">
           <p class="mb-3 w-full border-b font-semibold">Gender Description</p>
 
           <p>
-            {{ metadata.EligibilityModule.GenderDescription }}
+            {{ metadata.eligibilityModule.genderDescription }}
           </p>
         </div>
 
         <p class="mb-1 mt-2 w-full border-b font-semibold">Minimum Age</p>
 
         <p>
-          {{ metadata.EligibilityModule.MinimumAge }}
+          {{ metadata.eligibilityModule.minimumAge }}
         </p>
 
         <p class="mb-1 mt-2 w-full border-b font-semibold">Maximum Age</p>
 
         <p>
-          {{ metadata.EligibilityModule.MaximumAge }}
+          {{ metadata.eligibilityModule.maximumAge }}
         </p>
 
-        <div v-if="metadata.EligibilityModule.HealthyVolunteers" class="mt-2">
+        <div v-if="metadata.eligibilityModule.healthyVolunteers" class="mt-2">
           <p class="mb-2 w-full border-b font-semibold">Healthy Volunteers</p>
 
           <p>
-            {{ metadata.EligibilityModule.HealthyVolunteers }}
+            {{ metadata.eligibilityModule.healthyVolunteers }}
           </p>
         </div>
 
-        <div v-if="metadata.EligibilityModule.StudyPopulation" class="mt-2">
+        <p class="mb-1 w-full border-b font-semibold">Inclusion Criteria</p>
+
+        <ul class="list-inside list-disc">
+          <li
+            v-for="(criteria, index) in metadata.eligibilityModule
+              .eligibilityCriteria.eligibilityCriteriaInclusion"
+            :key="index"
+          >
+            {{ criteria }}
+          </li>
+        </ul>
+
+        <p class="mb-1 mt-2 w-full border-b font-semibold">
+          Exclusion Criteria
+        </p>
+
+        <ul class="list-inside list-disc">
+          <li
+            v-for="(criteria, index) in metadata.eligibilityModule
+              .eligibilityCriteria.eligibilityCriteriaExclusion"
+            :key="index"
+          >
+            {{ criteria }}
+          </li>
+        </ul>
+
+        <div v-if="metadata.eligibilityModule.studyPopulation" class="mt-2">
           <p class="mb-3 w-full border-b font-semibold">Study Population</p>
 
           <p>
-            {{ metadata.EligibilityModule.StudyPopulation }}
+            {{ metadata.eligibilityModule.studyPopulation }}
           </p>
         </div>
 
-        <div v-if="metadata.EligibilityModule.SamplingMethod" class="mt-2">
+        <div v-if="metadata.eligibilityModule.samplingMethod" class="mt-2">
           <p class="mb-3 w-full border-b font-semibold">Sampling Method</p>
 
           <p>
-            {{ metadata.EligibilityModule.SamplingMethod }}
+            {{ metadata.eligibilityModule.samplingMethod }}
           </p>
         </div>
       </n-space>
-    </card-collapsible-card>
+    </CardCollapsibleCard>
 
-    <card-collapsible-card
+    <CardCollapsibleCard
       id="IdentificationModule"
       title="Identification Information"
       data-section-title="Identification Information"
@@ -432,7 +437,7 @@ onBeforeMount(() => {
         <p class="mb-1 w-full border-b font-semibold">Organization Study ID</p>
 
         <p>
-          {{ metadata.IdentificationModule.OrgStudyIdInfo.OrgStudyId }}
+          {{ metadata.identificationModule.orgStudyIdInfo.orgStudyId }}
         </p>
 
         <p class="mb-1 mt-3 w-full border-b font-semibold">
@@ -440,11 +445,11 @@ onBeforeMount(() => {
         </p>
 
         <p>
-          {{ metadata.IdentificationModule.OrgStudyIdInfo.OrgStudyIdType }}
+          {{ metadata.identificationModule.orgStudyIdInfo.orgStudyIdType }}
         </p>
 
         <div
-          v-if="metadata.IdentificationModule.SecondaryIdInfoList"
+          v-if="metadata.identificationModule.secondaryIdInfoList"
           class="mb-1 mt-4 w-full"
         >
           <p class="mb-4 w-full border-b font-semibold">Secondary ID</p>
@@ -464,213 +469,67 @@ onBeforeMount(() => {
 
             <tbody>
               <tr
-                v-for="(secondaryId, index) in metadata.IdentificationModule
-                  .SecondaryIdInfoList"
+                v-for="(secondaryId, index) in metadata.identificationModule
+                  .secondaryIdInfoList"
                 :key="index"
               >
-                <td>{{ secondaryId.SecondaryId }}</td>
+                <td>{{ secondaryId.secondaryId }}</td>
 
-                <td>{{ secondaryId.SecondaryIdType }}</td>
+                <td>{{ secondaryId.secondaryIdType }}</td>
 
-                <td>{{ secondaryId.SecondaryIdLink || "N/A" }}</td>
+                <td>{{ secondaryId.secondaryIdLink || "N/A" }}</td>
 
-                <td>{{ secondaryId.SecondaryIdDomain || "N/A" }}</td>
+                <td>{{ secondaryId.secondaryIdDomain || "N/A" }}</td>
               </tr>
             </tbody>
           </n-table>
         </div>
       </n-space>
-    </card-collapsible-card>
+    </CardCollapsibleCard>
 
-    <card-collapsible-card
-      id="IPDSharingStatementModule"
-      title="IPD Sharing"
-      data-section-title="IPD Sharing"
-      class="mb-4 shadow-md"
-    >
-      <n-space vertical>
-        <p>
-          {{ metadata.IPDSharingStatementModule.IPDSharing }}
-        </p>
-
-        <div
-          v-if="metadata.IPDSharingStatementModule.IPDSharing === 'Yes'"
-          class="mt-2"
-        >
-          <p class="mb-1 w-full border-b font-semibold">
-            IPD Sharing Description
-          </p>
-
-          <p>
-            {{ metadata.IPDSharingStatementModule.IPDSharingDescription }}
-          </p>
-
-          <p class="mb-1 mt-2 w-full border-b font-semibold">
-            IPD Sharing Info Types
-          </p>
-
-          <n-ul
-            v-for="(type, index) in metadata.IPDSharingStatementModule
-              .IPDSharingInfoTypeList"
-            :key="index"
-            class="list-disc text-base"
-          >
-            <n-li>
-              {{ type }}
-            </n-li>
-          </n-ul>
-
-          <p class="mb-1 mt-2 w-full border-b font-semibold">
-            IPD Sharing Time Frame
-          </p>
-
-          <p>
-            {{ metadata.IPDSharingStatementModule.IPDSharingTimeFrame }}
-          </p>
-
-          <p class="mb-1 mt-2 w-full border-b font-semibold">
-            IPD Sharing Access Criteria
-          </p>
-
-          <p>
-            {{ metadata.IPDSharingStatementModule.IPDSharingAccessCriteria }}
-          </p>
-
-          <p class="mb-1 mt-2 w-full border-b font-semibold">IPD Sharing URL</p>
-
-          <p>
-            {{ metadata.IPDSharingStatementModule.IPDSharingURL }}
-          </p>
-        </div>
-      </n-space>
-    </card-collapsible-card>
-
-    <card-collapsible-card
+    <CardCollapsibleCard
       id="OversightModule"
       data-section-title="Oversight"
       title="Oversight"
       class="mb-4 shadow-md"
     >
       <n-space vertical>
-        <p class="mb-1 w-full border-b font-semibold">Oversight Has DMC?</p>
+        <p class="mb-1 w-full border-b font-semibold">
+          Has the clinical study has been reviewed and approved by at least one
+          human subjects protection review board?
+        </p>
 
         <p>
-          {{ metadata.OversightModule.OversightHasDMC }}
+          {{ metadata.oversightModule.humanSubjectReviewStatus }}
+        </p>
+
+        <p class="mb-1 w-full border-b font-semibold">
+          Is this clinical study for a drug product
+        </p>
+
+        <p>
+          {{ metadata.oversightModule.isFDARegulatedDrug }}
+        </p>
+
+        <p class="mb-1 mt-2 w-full border-b font-semibold">
+          Is this clinical study for a medical device?
+        </p>
+
+        <p>
+          {{ metadata.oversightModule.isFDARegulatedDevice }}
+        </p>
+
+        <p class="mb-1 w-full border-b font-semibold">
+          Was a data monitoring committee appointed for this study?
+        </p>
+
+        <p>
+          {{ metadata.oversightModule.oversightHasDMC }}
         </p>
       </n-space>
-    </card-collapsible-card>
+    </CardCollapsibleCard>
 
-    <card-collapsible-card
-      id="ReferencesModule"
-      data-section-title="References"
-      title="References"
-      class="mb-4 shadow-md"
-    >
-      <n-space vertical>
-        <div v-if="metadata.ReferencesModule.ReferenceList">
-          <p class="mb-4 w-full border-b font-semibold">References</p>
-
-          <n-table :bordered="false" :single-line="false">
-            <thead>
-              <tr>
-                <th>Reference Citation</th>
-
-                <th>Reference Type</th>
-
-                <th>Reference ID</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr
-                v-for="(reference, index) in metadata.ReferencesModule
-                  .ReferenceList"
-                :key="index"
-              >
-                <td>{{ reference.ReferenceCitation }}</td>
-
-                <td>{{ reference.ReferenceType || "N/A" }}</td>
-
-                <td>{{ reference.ReferenceID || "N/A" }}</td>
-              </tr>
-            </tbody>
-          </n-table>
-        </div>
-
-        <div v-if="metadata.ReferencesModule.SeeAlsoLinkList" class="mt-4">
-          <p class="mb-4 w-full border-b font-semibold">See Also</p>
-
-          <n-table :bordered="false" :single-line="false">
-            <thead>
-              <tr>
-                <th>URL</th>
-
-                <th>Label</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr
-                v-for="(seeAlso, index) in metadata.ReferencesModule
-                  .SeeAlsoLinkList"
-                :key="index"
-              >
-                <td>
-                  <n-a
-                    class="color-blue-600"
-                    :href="seeAlso.SeeAlsoLinkURL"
-                    target="_blank"
-                    >{{ seeAlso.SeeAlsoLinkURL }}
-                  </n-a>
-                </td>
-
-                <td>{{ seeAlso.SeeAlsoLinkLabel || "N/A" }}</td>
-              </tr>
-            </tbody>
-          </n-table>
-        </div>
-
-        <div v-if="metadata.ReferencesModule.AvailIPDList" class="mt-4">
-          <p class="mb-4 w-full border-b font-semibold">Available IPDs</p>
-
-          <n-table :bordered="false" :single-line="false">
-            <thead>
-              <tr>
-                <th>ID</th>
-
-                <th>Type</th>
-
-                <th>URL</th>
-
-                <th>Comments</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr
-                v-for="(availIPD, index) in metadata.ReferencesModule
-                  .AvailIPDList"
-                :key="index"
-              >
-                <td>{{ availIPD.AvailIPDId }}</td>
-
-                <td>{{ availIPD.AvailIPDType }}</td>
-
-                <td>
-                  <n-a :href="availIPD.AvailIPDURL" target="_blank">
-                    {{ availIPD.AvailIPDURL }}
-                  </n-a>
-                </td>
-
-                <td>{{ availIPD.AvailIPDComment || "N/A" }}</td>
-              </tr>
-            </tbody>
-          </n-table>
-        </div>
-      </n-space>
-    </card-collapsible-card>
-
-    <card-collapsible-card
+    <CardCollapsibleCard
       id="SponsorCollaboratorsModule"
       data-section-title="Sponsors and Collaborators"
       title="Sponsors and Collaborators"
@@ -680,7 +539,7 @@ onBeforeMount(() => {
         <p class="mb-1 w-full border-b font-semibold">Sponsor</p>
 
         <p>
-          {{ metadata.SponsorCollaboratorsModule.LeadSponsor.LeadSponsorName }}
+          {{ metadata.sponsorCollaboratorsModule.leadSponsor.leadSponsorName }}
         </p>
 
         <div class="mt-2">
@@ -689,11 +548,11 @@ onBeforeMount(() => {
           <n-space vertical>
             <n-ul
               v-for="(collaborator, index) in metadata
-                .SponsorCollaboratorsModule.CollaboratorList"
+                .sponsorCollaboratorsModule.collaboratorList"
               :key="index"
               class="list-disc text-base"
             >
-              <n-li>{{ collaborator.CollaboratorName }}</n-li>
+              <n-li>{{ collaborator.collaboratorName }}</n-li>
             </n-ul>
           </n-space>
         </div>
@@ -709,7 +568,7 @@ onBeforeMount(() => {
 
               <th>Affiliation</th>
 
-              <th>Party Type</th>
+              <th>Type</th>
             </tr>
           </thead>
 
@@ -717,38 +576,41 @@ onBeforeMount(() => {
             <tr>
               <td>
                 {{
-                  metadata.SponsorCollaboratorsModule.ResponsibleParty
-                    .ResponsiblePartyInvestigatorTitle || "N/A"
+                  metadata.sponsorCollaboratorsModule.responsibleParty
+                    .responsiblePartyInvestigatorTitle || "N/A"
                 }}
               </td>
 
               <td>
                 {{
-                  metadata.SponsorCollaboratorsModule.ResponsibleParty
-                    .ResponsiblePartyInvestigatorFullName || "N/A"
+                  metadata.sponsorCollaboratorsModule.responsibleParty
+                    .responsiblePartyInvestigatorFirstName
+                    ? `${metadata.sponsorCollaboratorsModule.responsibleParty.responsiblePartyInvestigatorFirstName} ${metadata.sponsorCollaboratorsModule.responsibleParty.responsiblePartyInvestigatorLastName}`
+                    : "N/A"
                 }}
               </td>
 
               <td>
                 {{
-                  metadata.SponsorCollaboratorsModule.ResponsibleParty
-                    .ResponsiblePartyType
+                  metadata.sponsorCollaboratorsModule.responsibleParty
+                    .responsiblePartyInvestigatorAffiliation
+                    ?.responsiblePartyInvestigatorAffiliationName || "N/A"
                 }}
               </td>
 
               <td>
                 {{
-                  metadata.SponsorCollaboratorsModule.ResponsibleParty
-                    .ResponsiblePartyInvestigatorAffiliation || "N/A"
+                  metadata.sponsorCollaboratorsModule.responsibleParty
+                    .responsiblePartyType
                 }}
               </td>
             </tr>
           </tbody>
         </n-table>
       </n-space>
-    </card-collapsible-card>
+    </CardCollapsibleCard>
 
-    <!-- <card-collapsible-card
+    <!-- <CardCollapsibleCard
       id="status-information"
       title="Status Information"
       class="shadow-md"
@@ -790,6 +652,6 @@ onBeforeMount(() => {
           </p>
         </div>
       </n-space>
-    </card-collapsible-card> -->
+    </CardCollapsibleCard> -->
   </n-space>
 </template>

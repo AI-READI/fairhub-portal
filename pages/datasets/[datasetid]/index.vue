@@ -60,16 +60,16 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   "@context": "https://schema.org",
   "@type": "Dataset",
   contentLocation:
-    dataset.value?.metadata.studyDescription.ContactsLocationsModule.LocationList.map(
+    dataset.value?.metadata.studyDescription.contactsLocationsModule.locationList.map(
       (location) => {
         return {
           "@type": "Place",
           address: {
             "@type": "PostalAddress",
-            addressCountry: location.LocationCountry,
-            addressLocality: location.LocationCity,
-            addressRegion: location.LocationState,
-            postalCode: location.LocationZip,
+            addressCountry: location.locationCountry,
+            addressLocality: location.locationCity,
+            addressRegion: location.locationState,
+            postalCode: location.locationZip,
           },
         };
       },
@@ -102,7 +102,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
     ?.filter((value) => value.descriptionType === "Abstract")
     .map((value) => value.descriptionValue),
 
-  funder: dataset.value?.metadata.datasetDescription.managingOrganisation.name,
+  funder: dataset.value?.metadata.datasetDescription.managingOrganization.name,
   identifier:
     dataset.value?.metadata.datasetDescription.identifier.identifierType,
   keywords: dataset.value?.keywords.join(","),
@@ -112,8 +112,8 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
 useSchemaOrg([NuxtSchemaDataset]);
 
 useSeoMeta({
-  title: dataset.value?.title || "Fairhub",
-  description: dataset.value?.description || "Fairhub",
+  title: dataset.value?.title || "FAIRhub",
+  description: dataset.value?.description || "FAIRhub",
   ogDescription: dataset.value?.description,
   ogImage: `https://kalai.fairdataihub.org/api/generate?app=fairhub&title=${dataset.value?.title}&org=ai-readi&description=${dataset.value?.description}`,
   ogTitle: dataset.value?.title,

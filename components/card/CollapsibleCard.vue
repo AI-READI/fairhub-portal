@@ -30,7 +30,7 @@ const toggleCollapse = () => {
         'bg-slate-50/50': !contentCollapsed,
       }"
     >
-      <div class="text-xl font-bold">{{ title }}</div>
+      <h2 class="text-xl">{{ title }}</h2>
 
       <div class="flex items-center">
         <slot name="header-extra"></slot>
