@@ -420,7 +420,6 @@ interface HealthsheetRecords {
 }
 
 interface Metadata {
-  dataSheet: string;
   readme: string;
   studyDescription: StudyDescription;
   datasetDescription: DatasetDescription;
