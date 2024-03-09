@@ -54,58 +54,70 @@ if (error.value) {
 const markdownToHtml = ref<string>("");
 
 const NuxtSchemaDataset: WithContext<Dataset> = {
-  name: dataset.value?.metadata.datasetDescription.title
-    .filter((value) => !value.titleType)
-    .map((value) => value.titleValue),
+  name: dataset.value?.title,
   "@context": "https://schema.org",
+  "@id": `https://doi.org/10.34534/${dataset.value?.id}`,
   "@type": "Dataset",
-  contentLocation:
-    dataset.value?.metadata.studyDescription.contactsLocationsModule.locationList.map(
-      (location) => {
-        return {
-          "@type": "Place",
-          address: {
-            "@type": "PostalAddress",
-            addressCountry: location.locationCountry,
-            addressLocality: location.locationCity,
-            addressRegion: location.locationState,
-            postalCode: location.locationZip,
-          },
-        };
-      },
-    ),
   contributor: dataset.value?.metadata.datasetDescription.contributor?.map(
     (contributor) => {
+      if (contributor.nameType === "Personal") {
+        return {
+          name: contributor.contributorName,
+          "@type": "Person",
+          additionalType: contributor.contributorType,
+          affiliation: contributor.affiliation?.map((affiliation) => ({
+            name: affiliation.affiliationName,
+            "@type": "Organization",
+          })),
+          familyName: contributor.contributorName.split(",")[0] || "",
+          givenName:
+            contributor.contributorName.split(",")[1] ||
+            contributor.contributorName,
+        };
+      } else {
+        return {
+          name: contributor.contributorName,
+          "@type": "Organization",
+        };
+      }
+    },
+  ),
+  creator: dataset.value?.metadata.datasetDescription.creator.map((creator) => {
+    if (creator.nameType === "Personal") {
       return {
         "@type": "Person",
-        additionalType: contributor.nameType,
-        affiliation: contributor.affiliation?.map((affiliation) => ({
+        affiliation: creator.affiliation?.map((affiliation) => ({
+          name: affiliation.affiliationName,
           "@type": "Organization",
-          identifier: affiliation.affiliationIdentifier,
         })),
-        givenName: contributor.contributorName,
+        familyName: creator.creatorName.split(",")[0] || "",
+        givenName: creator.creatorName.split(",")[1] || creator.creatorName,
+      };
+    } else {
+      return {
+        name: creator.creatorName,
+        "@type": "Organization",
+      };
+    }
+  }),
+  datePublished: dataset.value?.metadata.datasetDescription.publicationYear, // todo: add the datePublished
+  description: dataset.value?.metadata.datasetDescription.description?.find(
+    (value) => value.descriptionType === "Abstract",
+  )?.descriptionValue,
+  funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
+    (funder) => {
+      return {
+        name: funder.funderName,
+        "@type": "Organization",
       };
     },
   ),
-  creator: dataset.value?.metadata.datasetDescription.creator.map(
-    (creator) => ({
-      "@type": "Person",
-      additionalType: creator.nameType,
-      affiliation: creator.affiliation?.map((affiliation) => ({
-        "@type": "Organization",
-        identifier: affiliation.affiliationIdentifier,
-      })),
-      givenName: creator.creatorName,
-    }),
-  ),
-  description: dataset.value?.metadata.datasetDescription.description
-    ?.filter((value) => value.descriptionType === "Abstract")
-    .map((value) => value.descriptionValue),
-
-  funder: dataset.value?.metadata.datasetDescription.managingOrganization.name,
-  identifier:
-    dataset.value?.metadata.datasetDescription.identifier.identifierType,
-  keywords: dataset.value?.keywords.join(","),
+  identifier: `https://doi.org/10.34534/${dataset.value?.id}`,
+  keywords: dataset.value?.keywords.join(", "),
+  publisher: {
+    name: "FAIRhub",
+    "@type": "Organization",
+  },
   url: `https://fairhub.io/datasets/${dataset.value?.id}`,
 };
 
