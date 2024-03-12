@@ -29,7 +29,8 @@ export default defineEventHandler(async (event) => {
     keywords: dbDataset.keywords,
     metadata: {
       datasetDescription: dbDataset.metadata.dataset_description,
-      datatypeDictionary: dbDataset.metadata.datatype_dictionary,
+      datasetStructureDescription:
+        dbDataset.metadata.dataset_structure_description,
       healthsheet: dbDataset.metadata.healthsheet,
       readme: dbDataset.metadata.readme,
       studyDescription: dbDataset.metadata.study_description,

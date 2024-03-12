@@ -403,6 +403,39 @@ interface DatatypeDictionary {
   }[];
 }
 
+interface DatasetStructureDescriptionSubDirectory {
+  directoryName: string;
+  directoryType: string;
+  directoryDescription: string;
+  subdirectory?: DatasetStructureDescriptionSubDirectory[];
+}
+
+interface DatasetStructureDescription {
+  datasetStructure: {
+    directoryName: string;
+    directoryType: string;
+    directoryDescription: string;
+    relatedTerm: {
+      relatedTermValue: string;
+    }[];
+    relatedStandard: {
+      standardName: string;
+      standardDescription: string;
+      standardUse: string;
+      standardRelatedIdentifier: {
+        relatedIdentifierValue: string;
+        relatedIdentifierType: string;
+        relationType: string;
+      }[];
+      standardIdentifier?: {
+        identifierValue: string;
+        identifierType: string;
+      }[];
+    }[];
+    subDirectory: DatasetStructureDescriptionSubDirectory[];
+  }[];
+}
+
 interface HealthsheetRecord {
   id: number;
   question: string;
@@ -423,7 +456,7 @@ interface Metadata {
   readme: string;
   studyDescription: StudyDescription;
   datasetDescription: DatasetDescription;
-  datatypeDictionary: DatatypeDictionary[];
+  datasetStructureDescription: DatasetStructureDescription;
   healthsheet: HealthsheetRecords;
 }
 
