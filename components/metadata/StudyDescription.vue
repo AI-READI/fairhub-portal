@@ -4,10 +4,6 @@ defineProps({
     required: true,
     type: Object as PropType<StudyDescription>,
   },
-  studyTitle: {
-    required: true,
-    type: String,
-  },
 });
 </script>
 
@@ -39,7 +35,7 @@ defineProps({
           <p class="mb-1 mt-4 w-full border-b font-semibold">Official Title</p>
 
           <p>
-            {{ studyTitle }}
+            {{ metadata.identificationModule.officialTitle }}
           </p>
 
           <p class="mb-2 mt-4 w-full border-b font-semibold">Conditions</p>
