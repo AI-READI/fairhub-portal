@@ -546,14 +546,16 @@ defineProps({
           <p class="mb-1 w-full border-b font-semibold">Collaborators</p>
 
           <n-space vertical>
-            <n-ul
-              v-for="(collaborator, index) in metadata
-                .sponsorCollaboratorsModule.collaboratorList"
-              :key="index"
-              class="list-disc text-base"
-            >
-              <n-li>{{ collaborator.collaboratorName }}</n-li>
-            </n-ul>
+            <ul class="list-inside list-disc">
+              <li
+                v-for="(collaborator, index) in metadata
+                  .sponsorCollaboratorsModule.collaboratorList"
+                :key="index"
+                class="py-1"
+              >
+                {{ collaborator.collaboratorName }}
+              </li>
+            </ul>
           </n-space>
         </div>
 

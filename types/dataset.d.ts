@@ -436,7 +436,6 @@ interface Dataset {
   title: string;
   description: string;
   metadata: Metadata;
-  creators: DatasetCreators;
   studyTitle: string;
 }
 

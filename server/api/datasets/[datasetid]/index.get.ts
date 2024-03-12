@@ -24,7 +24,6 @@ export default defineEventHandler(async (event) => {
     id: dbDataset.identifier,
     title: dbDataset.title,
     createdAt: dbDataset.createdAt,
-    creators: dbDataset.creators,
     description: dbDataset.description,
     files: dbDataset?.files,
     keywords: dbDataset.keywords,
