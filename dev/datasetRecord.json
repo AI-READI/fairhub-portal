@@ -1,7 +1,4 @@
 {
-  "_id": {
-    "$oid": "659efd90d8fb5d6ad9442498"
-  },
   "identifier": 1,
   "title": "Flagship Dataset of Type 2 Diabetes from the AI-READI Project",
   "createdAt": 1701351828,
@@ -10,413 +7,550 @@
   "doi": "10.36478/fairhub.10230",
   "metadata": {
     "study_description": {
-      "armsInterventionsModule": {
-        "armGroupList": [
-          {
-            "armGroupDescription": "This is the description of the arm metadata",
-            "armGroupLabel": "Label for Arm"
-          },
-          {
-            "armGroupDescription": "Add another description here for the arm metadata",
-            "armGroupLabel": "Arm Number 2"
-          }
-        ],
-        "interventionList": [
-          {
-            "interventionDescription": "Description",
-            "interventionName": "Intervention Name",
-            "interventionOtherNameList": ["Other Names"],
-            "interventionType": "Procedure/Surgery"
-          }
-        ]
-      },
-      "conditionsModule": {
-        "conditionList": [
-          {
-            "conditionName": "Diabetes"
-          },
-          {
-            "conditionName": "Pre-Diabetes"
-          }
-        ],
-        "keywordList": [
-          {
-            "keywordValue": "Diabetes"
-          },
-          {
-            "keywordValue": "Pre-Diabetes"
-          }
-        ]
-      },
-      "contactsLocationsModule": {
-        "centralContactList": [
-          {
-            "centralContactAffiliation": {
-              "centralContactAffiliationName": "University of Chicago"
-            },
-            "centralContactEMail": "sashagotanemail@fairhub.io",
-            "centralContactFirstName": "Sasha",
-            "centralContactLastName": "Braus",
-            "centralContactPhone": "1-800-566-3823",
-            "centralContactPhoneExt": "212"
-          },
-          {
-            "centralContactAffiliation": {
-              "centralContactAffiliationName": "University of Chicago"
-            },
-            "centralContactEMail": "philz@fairhub.io",
-            "centralContactFirstName": "Phil",
-            "centralContactLastName": "Zimmerman",
-            "centralContactPhone": "909-33333-3333",
-            "centralContactPhoneExt": "909"
-          }
-        ],
-        "locationList": [
-          {
-            "locationCity": "sdfsdf",
-            "locationCountry": "American Samoa",
-            "locationFacility": "asdas",
-            "locationState": "sdfs",
-            "locationStatus": "Active, not recruiting",
-            "locationZip": "sdf"
-          }
-        ],
-        "overallOfficialList": [
-          {
-            "overallOfficialAffiliation": {
-              "overallOfficialAffiliationName": "asda"
-            },
-            "overallOfficialFirstName": "aSd",
-            "overallOfficialLastName": "asdasd",
-            "overallOfficialRole": "Study Director"
-          },
-          {
-            "overallOfficialAffiliation": {
-              "overallOfficialAffiliationName": "asda"
-            },
-            "overallOfficialFirstName": "aSd",
-            "overallOfficialLastName": "asdasd",
-            "overallOfficialRole": "Study Principal Investigator"
-          }
-        ]
-      },
-      "descriptionModule": {
-        "briefSummary": "The study will collect a cross-sectional dataset of 4000 people across the US from diverse racial/ethnic groups who are either 1) healthy, or 2) belong in one of the three stages of diabetes severity (pre-diabetes/diet controlled, oral medication and/or non-insulin-injectable medication controlled, or insulin dependent), forming a total of four groups of patients.\nClinical data (social determinants of health surveys, continuous glucose monitoring data, biomarkers, genetic data, retinal imaging, cognitive testing, etc.) will be collected.\nThe purpose of this project is data generation to allow future creation of artificial intelligence/machine learning (AI/ML) algorithms aimed at defining disease trajectories and underlying genetic links in different racial/ethnic cohorts.\nA smaller subgroup of participants will be invited to come for a follow-up visit in year 4 of the project (longitudinal arm of the study).\nData will be placed in an open-source repository and samples will be sent to the study sample repository and used for future research.Brief Summary",
-        "detailedDescription": "The Artificial Intelligence Ready and Equitable Atlas for Diabetes Insights (AI-READI) project seeks to create a flagship ethically-sourced dataset to enable future generations of artificial intelligence/machine learning (AI/ML) research to provide critical insights into type 2 diabetes mellitus (T2DM), including salutogenic pathways to return to health. The ability to understand and affect the course of complex, multi-organ diseases such as T2DM has been limited by a lack of well-designed, high quality, large, and inclusive multimodal datasets. The AI-READI team of investigators will aim to collect a cross-sectional dataset of 4,000 people and longitudinal data from 10% of the study cohort across the US. The study cohort will be balanced for self-reported race/ethnicity, gender, and diabetes disease stage. Data collection will be specifically designed to permit downstream pseudo-time manifold analysis, an approach used to predict disease trajectories by collecting and learning from complex, multimodal data from participants with differing disease severity (normal to insulin-dependent T2DM). The long-term objective for this project is to develop a foundational dataset in T2DM, agnostic to existing classification criteria or biases, which can be used to reconstruct a temporal atlas of T2DM development and reversal towards health (i.e., salutogenesis). Six cross-disciplinary project modules involving teams located across eight institutions will work together to develop this flagship dataset. Data will be optimized for downstream AI/ML research and made publicly available. This project will also create a roadmap for ethical and equitable research that focuses on the diversity of the research participants and the workforce involved at all stages of the research process (study design and data collection, curation, analysis, and sharing and collaboration)."
-      },
-      "designModule": {
-        "bioSpec": {
-          "bioSpecRetention": "Samples With DNA"
-        },
-        "designInfo": {
-          "designObservationalModelList": ["Case-Control"],
-          "designTimePerspectiveList": ["Cross-sectional"]
-        },
-        "enrollmentInfo": {
-          "enrollmentCount": "123",
-          "enrollmentType": "Anticipated"
-        },
-        "numberGroupsCohorts": "123",
-        "isPatientRegistry": "No",
-        "studyType": "Observational",
-        "targetDuration": "5"
-      },
-      "eligibilityModule": {
-        "eligibilityCriteria": {
-          "eligibilityCriteriaInclusion": [
-            "Inclusion Criteria 1",
-            "Inclusion Criteria 2"
-          ],
-          "eligibilityCriteriaExclusion": [
-            "Exclusion Criteria 1",
-            "Exclusion Criteria 2"
-          ]
-        },
-        "sex": "All",
-        "genderBased": "Yes",
-        "genderDescription": "",
-        "healthyVolunteers": "No",
-        "maximumAge": "4 Days",
-        "minimumAge": "1 Years",
-        "samplingMethod": "Probability Sample",
-        "studyPopulation": "Observed Population"
-      },
       "identificationModule": {
-        "officialTitle": "AI-READI Project",
+        "officialTitle": "AI Ready and Equitable Atlas for Diabetes Insights",
+        "acronym": "AI-READI",
         "orgStudyIdInfo": {
-          "orgStudyId": "sad",
-          "orgStudyIdType": "NIH Grant Number"
+          "orgStudyId": "OT2OD032644",
+          "orgStudyIdType": "U.S. National Institutes of Health (NIH) Grant/Contract Award Number",
+          "orgStudyIdLink": "https://reporter.nih.gov/search/yatARMM-qUyKAhnQgsCTAQ/project-details/10885481"
         },
         "secondaryIdInfoList": [
           {
-            "secondaryId": "test",
-            "secondaryIdDomain": "dfasdf",
-            "secondaryIdLink": "test",
-            "secondaryIdType": "Other Grant/Funding Number"
+            "secondaryId": "NCT06002048",
+            "secondaryIdType": "ClinicalTrials.gov",
+            "secondaryIdLink": "https://classic.clinicaltrials.gov/ct2/show/NCT06002048"
+          }
+        ]
+      },
+      "statusModule": {
+        "overallStatus": "Enrolling by invitation",
+        "startDateStruct": {
+          "startDate": "2023-07-19",
+          "startDateType": "Actual"
+        },
+        "completionDateStruct": {
+          "completionDate": "2027-01-01",
+          "completionDateType": "Anticipated"
+        }
+      },
+      "sponsorCollaboratorsModule": {
+        "leadSponsor": {
+          "leadSponsorName": "University of Washington",
+          "leadSponsorIdentifier": {
+            "leadSponsorIdentifierValue": "https://ror.org/00cvxb145",
+            "leadSponsorIdentifierScheme": "ROR",
+            "schemeURI": "https://ror.org/"
+          }
+        },
+        "responsibleParty": {
+          "responsiblePartyType": "Principal Investigator",
+          "responsiblePartyInvestigatorFirstName": "Aaron",
+          "responsiblePartyInvestigatorLastName": "Aaron",
+          "responsiblePartyInvestigatorTitle": "Associate Professor",
+          "responsiblePartyInvestigatorIdentifier": [
+            {
+              "responsiblePartyInvestigatorIdentifierValue": "https://orcid.org/0000-0002-7452-1648",
+              "responsiblePartyInvestigatorIdentifierScheme": "ORCID",
+              "schemeURI": "https://orcid.org/"
+            }
+          ],
+          "responsiblePartyInvestigatorAffiliation": {
+            "responsiblePartyInvestigatorAffiliationName": "University of Washington",
+            "responsiblePartyInvestigatorAffiliationIdentifier": {
+              "responsiblePartyInvestigatorAffiliationIdentifierValue": "https://ror.org/00cvxb145",
+              "responsiblePartyInvestigatorAffiliationIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          }
+        },
+        "collaboratorList": [
+          {
+            "collaboratorName": "National Institutes of Health",
+            "collaboratorNameIdentifier": {
+              "collaboratorNameIdentifierValue": "https://ror.org/01cwqze88",
+              "collaboratorNameIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
           },
           {
-            "secondaryId": "asda",
-            "secondaryIdType": "EudraCT Number"
+            "collaboratorName": "California Medical Innovations Institute",
+            "collaboratorNameIdentifier": {
+              "collaboratorNameIdentifierValue": "https://ror.org/0156zyn36",
+              "collaboratorNameIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          },
+          {
+            "collaboratorName": "Johns Hopkins University",
+            "collaboratorNameIdentifier": {
+              "collaboratorNameIdentifierValue": "https://ror.org/00za53h95",
+              "collaboratorNameIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          },
+          {
+            "collaboratorName": "Native BioData Consortium"
+          },
+          {
+            "collaboratorName": "Oregon Health & Science University",
+            "collaboratorNameIdentifier": {
+              "collaboratorNameIdentifierValue": "https://ror.org/009avj582",
+              "collaboratorNameIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          },
+          {
+            "collaboratorName": "Stanford University",
+            "collaboratorNameIdentifier": {
+              "collaboratorNameIdentifierValue": "https://ror.org/00f54p054",
+              "collaboratorNameIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          },
+          {
+            "collaboratorName": "University of Alabama at Birmingham",
+            "collaboratorNameIdentifier": {
+              "collaboratorNameIdentifierValue": "https://ror.org/008s83205",
+              "collaboratorNameIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          },
+          {
+            "collaboratorName": "University of California, San Diego",
+            "collaboratorNameIdentifier": {
+              "collaboratorNameIdentifierValue": "https://ror.org/0168r3w48",
+              "collaboratorNameIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
           }
         ]
       },
       "oversightModule": {
         "isFDARegulatedDrug": "No",
         "isFDARegulatedDevice": "No",
-        "humanSubjectReviewStatus": "Exempt",
-        "oversightHasDMC": "Yes"
+        "humanSubjectReviewStatus": "Submitted, approved",
+        "oversightHasDMC": "No"
       },
-      "sponsorCollaboratorsModule": {
-        "collaboratorList": [
+      "descriptionModule": {
+        "briefSummary": "The study will collect a cross-sectional dataset of 4000 people across the US from diverse racial/ethnic groups who are either 1) healthy, or 2) belong in one of the three stages of diabetes severity (pre-diabetes/diet controlled, oral medication and/or non-insulin-injectable medication controlled, or insulin dependent), forming a total of four groups of patients. Clinical data (social determinants of health surveys, continuous glucose monitoring data, biomarkers, genetic data, retinal imaging, cognitive testing, etc.) will be collected. The purpose of this project is data generation to allow future creation of artificial intelligence/machine learning (AI/ML) algorithms aimed at defining disease trajectories and underlying genetic links in different racial/ethnic cohorts. A smaller subgroup of participants will be invited to come for a follow-up visit in year 4 of the project (longitudinal arm of the study). Data will be placed in an open-source repository and samples will be sent to the study sample repository and used for future research.",
+        "detailedDescription": "The Artificial Intelligence Ready and Equitable Atlas for Diabetes Insights (AI-READI) project seeks to create a flagship ethically-sourced dataset to enable future generations of artificial intelligence/machine learning (AI/ML) research to provide critical insights into type 2 diabetes mellitus (T2DM), including salutogenic pathways to return to health. The ability to understand and affect the course of complex, multi-organ diseases such as T2DM has been limited by a lack of well-designed, high quality, large, and inclusive multimodal datasets. The AI-READI team of investigators will aim to collect a cross-sectional dataset of 4,000 people and longitudinal data from 10% of the study cohort across the US. The study cohort will be balanced for self-reported race/ethnicity, gender, and diabetes disease stage. Data collection will be specifically designed to permit downstream pseudo-time manifold analysis, an approach used to predict disease trajectories by collecting and learning from complex, multimodal data from participants with differing disease severity (normal to insulin-dependent T2DM). The long-term objective for this project is to develop a foundational dataset in T2DM, agnostic to existing classification criteria or biases, which can be used to reconstruct a temporal atlas of T2DM development and reversal towards health (i.e., salutogenesis). Six cross-disciplinary project modules involving teams located across eight institutions will work together to develop this flagship dataset. Data will be optimized for downstream AI/ML research and made publicly available. This project will also create a roadmap for ethical and equitable research that focuses on the diversity of the research participants and the workforce involved at all stages of the research process (study design and data collection, curation, analysis, and sharing and collaboration)."
+      },
+      "conditionsModule": {
+        "conditionList": [
           {
-            "collaboratorName": "Full Name Goes hErE"
-          },
-          {
-            "collaboratorName": "Testing ONe Omre here"
+            "conditionName": "Type 2 Diabetes",
+            "conditionIdentifier": {
+              "conditionClassificationCode": "D003924",
+              "conditionScheme": "Medical Subject Headings (MeSH)",
+              "schemeURI": "https://meshb.nlm.nih.gov/",
+              "conditionURI": "https://meshb.nlm.nih.gov/record/ui?ui=D003924"
+            }
           }
         ],
-        "leadSponsor": {
-          "leadSponsorName": "Testing Dtoria"
-        },
-        "responsibleParty": {
-          "responsiblePartyInvestigatorAffiliation": {
-            "responsiblePartyInvestigatorAffiliationName": "University of Chicago"
+        "keywordList": [
+          {
+            "keywordValue": "Retinal Imaging"
           },
-          "responsiblePartyInvestigatorFirstName": "First",
-          "responsiblePartyInvestigatorLastName": "Last",
-          "responsiblePartyInvestigatorTitle": "Investigator Title",
-          "responsiblePartyType": "Principal Investigator"
+          {
+            "keywordValue": "Data Sharing",
+            "keywordIdentifier": {
+              "keywordClassificationCode": "D033181",
+              "keywordScheme": "Medical Subject Headings (MeSH)",
+              "schemeURI": "https://meshb.nlm.nih.gov/",
+              "keywordURI": "https://meshb.nlm.nih.gov/record/ui?ui=D033181"
+            }
+          },
+          {
+            "keywordValue": "Equitable Data Collection"
+          },
+          {
+            "keywordValue": "Machine Learning",
+            "keywordIdentifier": {
+              "keywordClassificationCode": "D000069550",
+              "keywordScheme": "Medical Subject Headings (MeSH)",
+              "schemeURI": "https://meshb.nlm.nih.gov/",
+              "keywordURI": "https://meshb.nlm.nih.gov/record/ui?ui=D000069550"
+            }
+          },
+          {
+            "keywordValue": "Artificial Intelligence",
+            "keywordIdentifier": {
+              "keywordClassificationCode": "D001185",
+              "keywordScheme": "Medical Subject Headings (MeSH)",
+              "schemeURI": "https://meshb.nlm.nih.gov/",
+              "keywordURI": "https://meshb.nlm.nih.gov/record/ui?ui=D001185"
+            }
+          },
+          {
+            "keywordValue": "Electrocardiography",
+            "keywordIdentifier": {
+              "keywordClassificationCode": "D004562",
+              "keywordScheme": "Medical Subject Headings (MeSH)",
+              "schemeURI": "https://meshb.nlm.nih.gov/",
+              "keywordURI": "https://meshb.nlm.nih.gov/record/ui?ui=D004562"
+            }
+          },
+          {
+            "keywordValue": "Continuous Glucose Monitoring",
+            "keywordIdentifier": {
+              "keywordClassificationCode": "D000095583",
+              "keywordScheme": "Medical Subject Headings (MeSH)",
+              "schemeURI": "https://meshb.nlm.nih.gov/",
+              "keywordURI": "https://meshb.nlm.nih.gov/record/ui?ui=D000095583"
+            }
+          },
+          {
+            "keywordValue": "Retinal imaging"
+          },
+          {
+            "keywordValue": "Eye exam"
+          }
+        ]
+      },
+      "designModule": {
+        "studyType": "Observational",
+        "isPatientRegistry": "No",
+        "designInfo": {
+          "designObservationalModelList": ["Cohort"],
+          "designTimePerspectiveList": ["Cross-sectional"]
+        },
+        "bioSpec": {
+          "bioSpecRetention": "Samples With DNA",
+          "bioSpecDescription": "Whole blood and urine samples will be retained in a biorepository",
+          "$comment": "Check wording of the description"
+        },
+        "enrollmentInfo": {
+          "enrollmentCount": "4000",
+          "enrollmentType": "Anticipated"
         }
       },
-      "statusModule": {
-        "completionDateStruct": {
-          "completionDate": "December 15, 2023",
-          "completionDateType": "Anticipated"
+      "armsInterventionsModule": {
+        "armGroupList": [
+          {
+            "armGroupLabel": "Healthy",
+            "armGroupDescription": "Participants who do not have Type 1 or Type 2 Diabetes",
+            "armGroupInterventionList": ["AI-READI protocol"]
+          },
+          {
+            "armGroupLabel": "Pre-diabetes/Diet Controlled",
+            "armGroupDescription": "Participants with pre-Type 2 Diabetes and those with Type 2 Diabetes whose blood sugar is controlled by diet",
+            "armGroupInterventionList": ["AI-READI protocol"]
+          },
+          {
+            "armGroupLabel": "Oral Medication and/or Non-insulin-injectable Medication Controlled",
+            "armGroupDescription": "Participants with Type 2 Diabetes whose blood sugar is controlled by oral or injectable medications other than insulin",
+            "armGroupInterventionList": ["AI-READI protocol"]
+          },
+          {
+            "armGroupLabel": "Insulin Dependent",
+            "armGroupDescription": "Participants with Type 2 Diabetes whose blood sugar is controlled by insulin",
+            "armGroupInterventionList": ["AI-READI protocol"]
+          }
+        ],
+        "interventionList": [
+          {
+            "interventionType": "Other",
+            "interventionName": "AI-READI protocol",
+            "interventionDescription": "Custom protocol followed for the AI-READI study. Details are available at https://docs.aireadi.org/"
+          }
+        ]
+      },
+      "eligibilityModule": {
+        "sex": "All",
+        "genderBased": "No",
+        "minimumAge": "40 Years",
+        "maximumAge": "85 Years",
+        "healthyVolunteers": "No",
+        "eligibilityCriteria": {
+          "eligibilityCriteriaInclusion": [
+            "Adults (≥ 40 years old)",
+            "Patients with and without type 2 diabetes",
+            "Able to provide consent",
+            "Must be able to read and speak English"
+          ],
+          "eligibilityCriteriaExclusion": [
+            "Adults older than 85 years of age",
+            "Pregnancy",
+            "Gestational diabetes",
+            "Type 1 diabetes"
+          ]
         },
-        "overallStatus": "Not yet recruiting",
-        "startDateStruct": {
-          "startDate": "November 16, 2023",
-          "startDateType": "Anticipated"
-        },
-        "whyStopped": "dsfdsf"
+        "studyPopulation": "Adult patients will be recruited into one of four groups: 1) healthy/no diabetes, 2) pre-diabetes/borderline diabetes/diet-controlled diabetes, 3) oral medication and/or non-insulin injectable medication controlled type 2 diabetes, or 4) insulin dependent type 2 diabetes. The investigators aim to recruit approximately 1000 patients into each of the four groups. Patients will be recruited from University of Washington (UW), University of California at San Diego (UCSD), and University of Alabama at Birmingham (UAB). The study aims to recruit 1,000 subjects from each of the following racial and ethnic groups: White, Asian, Hispanic, and Black. Subjects will be age- and sex-matched within and between groups.",
+        "samplingMethod": "Non-Probability Sample"
+      },
+      "contactsLocationsModule": {
+        "centralContactList": [
+          {
+            "centralContactFirstName": "Aaron",
+            "centralContactLastName": "Lee",
+            "centralContactDegree": "MD",
+            "centralContactIdentifier": [
+              {
+                "centralContactIdentifierValue": "https://orcid.org/0000-0002-7452-1648",
+                "centralContactIdentifierScheme": "ORCID",
+                "schemeURI": "https://orcid.org"
+              }
+            ],
+            "centralContactAffiliation": {
+              "centralContactAffiliationName": "University of Washington",
+              "centralContactAffiliationIdentifier": {
+                "centralContactAffiliationIdentifierValue": "https://ror.org/00cvxb145",
+                "centralContactAffiliationIdentifierScheme": "ROR",
+                "schemeURI": "https://ror.org"
+              }
+            },
+            "centralContactEMail": "contact@aireadi.org"
+          }
+        ],
+        "overallOfficialList": [
+          {
+            "overallOfficialFirstName": "Aaron",
+            "overallOfficialLastName": "Lee",
+            "overallOfficialDegree": "MD",
+            "overallOfficialIdentifier": [
+              {
+                "overallOfficialIdentifierValue": "https://orcid.org/0000-0002-7452-1648",
+                "overallOfficialIdentifierScheme": "ORCID",
+                "schemeURI": "https://orcid.org"
+              }
+            ],
+            "overallOfficialAffiliation": {
+              "overallOfficialAffiliationName": "University of Washington",
+              "overallOfficialAffiliationIdentifier": {
+                "overallOfficialAffiliationIdentifierValue": "https://ror.org/00cvxb145",
+                "overallOfficialAffiliationIdentifierScheme": "ROR",
+                "schemeURI": "https://ror.org"
+              }
+            },
+            "overallOfficialRole": "Study Principal Investigator"
+          },
+          { "$comment": "Add all PIs here" }
+        ],
+        "locationList": [
+          {
+            "locationFacility": "University of Alabama at Birmingham",
+            "locationStatus": "Enrolling by invitation",
+            "locationCity": "Birmingham",
+            "locationZip": "35233",
+            "locationState": "Alabama",
+            "locationCountry": "United States",
+            "locationIdentifier": {
+              "locationIdentifierValue": "https://ror.org/008s83205",
+              "locationIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          },
+          {
+            "locationFacility": "University of California, San Diego",
+            "locationStatus": "Enrolling by invitation",
+            "locationCity": "San Diego",
+            "locationZip": "92093",
+            "locationState": "California",
+            "locationCountry": "United States",
+            "locationIdentifier": {
+              "locationIdentifierValue": "https://ror.org/0168r3w48",
+              "locationIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          },
+          {
+            "locationFacility": "University of Washington",
+            "locationStatus": "Enrolling by invitation",
+            "locationCity": "Seattle",
+            "locationZip": "98109",
+            "locationState": "Washington",
+            "locationCountry": "United States",
+            "locationIdentifier": {
+              "locationIdentifierValue": "https://ror.org/00cvxb145",
+              "locationIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          }
+        ]
       }
     },
-    "readme": "## Overview of the study\n  The AI-READI project seeks to create and share a flagship ethically-sourced dataset of type 2 diabetes. The data will be optimized for future artificial intelligence/machine learning (AI/ML) analysis that could provide critical insights and especially shine a light on the salutogenic pathways from diabetes to return to health. Six cross-disciplinary project modules involving teams located across eight institutions are working together to develop this flagship dataset. The project will aim to collect data from 4,000 participants across three sites: the University of Alabama at Birmingham (UAB), the University of California San Diego (UCSD), and the University of Washington (UW). To ensure the data is population-representative, the 4,000 participants will be balanced for three factors: disease severity, ethnicity, and sex. More information about the study can be found on the study website at [aireadi.org](https://aireadi.org). \n  \n  ## Description of the dataset\n  This dataset contain data from 4 participants from the pilot study of the project. Details about the participants of the study are provided in the [participants.json](participants.json) metadata file. Data from multiple modalities are collected. A full list is provided in the \"Data Standards\" section below. The data in this dataset has been deidentified using awesome tools x, y, z and contain no personel health information (PHI).  \n  \n  The dataset contains a total of 1,265 files (including data and metadata files) and is 420 GB in size.\n  \n  ## Protocol\n  The protocol followed:\n  - For collecting the dataset can be found at [protocols.io](https://protocols.io/).\n  \n  - For curating and sharing the dataset can be found at [protocols.io](https://protocols.io/). \n  \n  ## Dataset access/restrictions\n  This dataset is publicly accessible without any restrictions under the terms of the license described below in the \"License\" section. For accessing a version of the dataset that contains PHI, follow the instructions available [here](https://aireadi.org/).\n  \n  ## Data standards followed\n  This dataset is organized at the highest-level following the [Clinical Dataset Structure](https://github.com/AI-READI/high-level-dataset-structure). Each data type was organized according to either an existing standard if vailable for that data type or a newly developed one if no community agreed standard was found. Details are provided in the table below.\n  \n  | Data type      | Standards followed |\n  | ----------- | ----------- |\n  | Electrocardiogram      | [X standard]()       |\n  | Optical Coherence Tomography   | [Y standard]()      |\n  \n  ## Resources\n  All of our data files are in formats that are accessible with free software commonly used for such data types so no specific software is required.\n  \n  Besides the information contained in the various metadata files included in this dataset and the study website and protocols listed above, the manuscripts from the project listed below could provide more context for reusing the data:\n  - AI-READI Project (2023). Some manuscript. Some Journal, 361(9353), 195-200. https://doi.org/10.5281/zenodo.7641684\n  - AI-READI Project (2023). Another manuscript. Another Journal, 96(6), 266-272. https://doi.org/10.5281/zenodo.7641684\n \n  ## Contact\n  For any questions, suggestions, or feedback related to this dataset, please email contact@aireadi.org. We refer to the [study_description.json](study_description.json) and [dataset_description.json](dataset_description.json) metadata files for additional information about contact person/entity, authors, and contributors of the dataset.\n  \n  ## Acknowledgement\n  This project is supported by the NIH-funded Bridge2AI program ([1OT2OD032644](https://reporter.nih.gov/search/1ADgncihCk6fdMRJdCnBjg/project-details/10471118)). The content is solely the responsibility of the authors and does not necessarily represent the official views of the NIH.",
+    "readme": "## Overview of the study\nThe Artificial Intelligence Ready and Equitable Atlas for Diabetes Insights (AI-READI) project seeks to create a flagship ethically-sourced dataset to enable future generations of artificial intelligence/machine learning (AI/ML) research to provide critical insights into type 2 diabetes mellitus (T2DM), including salutogenic pathways to return to health. The ability to understand and affect the course of complex, multi-organ diseases such as T2DM has been limited by a lack of well-designed, high quality, large, and inclusive multimodal datasets. The AI-READI team of investigators will aim to collect a cross-sectional dataset of 4,000 people and longitudinal data from 10% of the study cohort across the US. The study cohort will be balanced for self-reported race/ethnicity, gender, and diabetes disease stage. Data collection will be specifically designed to permit downstream pseudo-time manifold analysis, an approach used to predict disease trajectories by collecting and learning from complex, multimodal data from participants with differing disease severity (normal to insulin-dependent T2DM). The long-term objective for this project is to develop a foundational dataset in T2DM, agnostic to existing classification criteria or biases, which can be used to reconstruct a temporal atlas of T2DM development and reversal towards health (i.e., salutogenesis). Six cross-disciplinary project modules involving teams located across eight institutions will work together to develop this flagship dataset. Data will be optimized for downstream AI/ML research and made publicly available. This project will also create a roadmap for ethical and equitable research that focuses on the diversity of the research participants and the workforce involved at all stages of the research process (study design and data collection, curation, analysis, and sharing and collaboration).\n\n## Description of the dataset\nThis dataset contain data from 204 participants from the pilot period of the project (July 19, 2023 to November 30, 2023). Data from multiple modalities are included. A full list is provided in the \"Data Standards\" section below. The data in this dataset contain no personel health information (PHI). Information related to the sex and race/ethnicity of the participants has also been removed.\n\nThe dataset contains a total of 1,265 files (including data and metadata files) and is 250 GB in size.\n\n!comment: Update final file count and dataset size.\n\nA detailed description of the dataset is available at [docs.aireadi.org](https://docs.aireadi.org/).\n\n## Protocol\nThe protocol followed for collecting the data can be found at [protocols.io](https://protocols.io/).\n!comment: where protocol?\n\nThe protocol for curating and sharing the data can be found at [protocols.io](https://protocols.io/). \n!comment: where protocol?\n\n## Dataset access/restrictions\nAccessing the dataset requires several steps, including:\n1. Login in through a verified ID system (such as Microsoft Entra Verified ID or Login.gov)\n2. Agreeing to use the data only for type 2 diabetes related research.\n3. Agreeing to the license terms which set certain restrictions and obligations for data usage (see \"License\" section below). \n\n## Data standards followed\nThis dataset is organized following the [Clinical Dataset Structure (CDS) v0.1.0](https://github.com/AI-READI/high-level-dataset-structure). We refer to the CDS documentation for more details. Briefly, data is organized at the root level into one folder per datatype (c.f. Table below). Within each datatype folder, there is one folder per modality, if there are multiple modalities. Within each modality folder, there is one folder per device used to collect that modality. Within each device folder, there is one folder per participant. Each datype, modality, and device folder is named using a code name that best defines it while keeping it short. Each participant folder is named after the participant's ID number used in the study. For each datatype, the data files follow the standards listed in the Table below. More details are available in the datatype_dictionary metadata file included in this dataset. An example of the dataset structure (with mock data) is available [here](https://github.com/AI-READI/ai-readi-dataset-template/tree/main/versions).\n\n| Datatype      | Code name | Description | File format standard followed |\n| ----------- | ----------- | ----------- | ----------- \n| Activity Monitoring      | activity_monitoring  | description | Open mHealth\n| Contiuous Glucose Monitoring   | cgm      | description | Open mHealth\n| Clinical data     | clinical_data  | description | Observational Medical Outcomes Partnership (OMOP) Common Data Model (CDM)\n| Electrocardiogram    | ekg  | description | WaveForm DataBase (WFDB)\n| Environmental sensor data    | environmental_sensor  | description | Earth Science Data Systems (ESDS) format\n| Fluorescence Lifetime Imaging Ophthalmoscopy (FLIO) image   | flio | description | Digital Imaging and Communications in Medicine (DICOM)\n| Optical Coherence Tomography (OCT) image  | oct  | description | Digital Imaging and Communications in Medicine (DICOM)\n| Optical Coherence Tomography Angiography (OCTA) image  | octa  | description | Digital Imaging and Communications in Medicine (DICOM)\n| Retinal photography image    | retinal_photography  | description | Digital Imaging and Communications in Medicine (DICOM)\n\n\n!comment: add CDS link + description in table\n\n## Resources\nAll of our data files are in formats that are accessible with free software commonly used for such data types so no specific software is required. Some useful resources related to this dataset are listed below:\n- Documentation of the dataset: [docs.aireadi.org](https://docs.aireadi.org/)\n- Dataset template with mock data and metadata: [GitHub template](https://github.com/AI-READI/ai-readi-dataset-template/tree/main/versions)\n- AI-READI project website: [aireadi.org](https://aireadi.org/)\n- Zenodo community of the AI-READI project: [zenodo.org/communities/aireadi](https://zenodo.org/communities/aireadi)\n- GitHub organization of the AI-READI project: [github.com/AI-READI](https://github.com/AI-READI)\n\n## License\nThis work is licensed under a custom License. These license terms were specifically tailored to enable reuse of the AI-READI dataset (and other clinical datasets) for commercial or research purpose while putting strong requirements around data usage, security, and secondary sharing to protect study participants, especially when data is reused for artificial intelligence (AI) and machine learning (ML) related applications. More details are available in the License file available at https://doi.org/10.5281/zenodo.10642459. \n\n## How to cite\n If you use this dataset for any purpose, please cite the dataset on FAIRhub and the AI-READI marker paper:\n - AI-READI project. (2023). Flagship Dataset of Type 2 Diabetes from the AI-READI Project (1.0.0). FAIRhub. https://doi.org/10.5281/zenodo.7641684\n - AI-READI Project (2023). AI-READI Marker Paper. Best Journal, 61(53), 95-180. https://doi.org/10.5281/zenodo.7641684\n\n !comment: Add citations when available\n\n## Contact\nFor any questions, suggestions, or feedback related to this dataset, please email contact@aireadi.org. We refer to the study_description.json and dataset_description.json metadata files included in this dataset for additional information about contact person/entity, authors, and contributors of the dataset.\n\n## Acknowledgement\nThe AI-READI project is supported by NIH grant [1OT2OD032644](https://reporter.nih.gov/search/1ADgncihCk6fdMRJdCnBjg/project-details/10471118) through the NIH Bridge2AI Common Fund program.",
     "dataset_description": {
-      "accessDetails": {
-        "description": "Description of the Public Download Access. We provide free for all people (as long as you have internet)"
+      "identifier": {
+        "identifierValue": "10.21384/fairhub.12414",
+        "identifierType": "DOI"
       },
-      "accessType": "PublicDownloadSelfAttestationRequired",
-      "alternateIdentifier": [
+      "title": [
         {
-          "alternateIdentifierType": "EAN13",
-          "alternateIdentifierValue": "asd"
-        }
-      ],
-      "contributor": [
-        {
-          "affiliation": [
-            {
-              "affiliationIdentifier": "04wxnsj81",
-              "affiliationIdentifierScheme": "ROR",
-              "affiliationName": "University of Chicago",
-              "schemeURI": "https://ror.org/04wxnsj81"
-            }
-          ],
-          "contributorName": "Yagami, Light",
-          "contributorType": "DataCollector",
-          "nameIdentifier": [
-            {
-              "nameIdentifierScheme": "ORCID",
-              "nameIdentifierValue": "0000-0002-4306-4464",
-              "schemeURI": "https://orcid.org/0000-0002-4306-4464"
-            }
-          ],
-          "nameType": "Personal"
+          "titleValue": "Flagship Dataset of Type 2 Diabetes from the AI-READI Project"
         },
         {
-          "contributorName": "City of Chicago",
-          "contributorType": "Editor",
-          "nameIdentifier": [
-            {
-              "nameIdentifierScheme": "ROR",
-              "nameIdentifierValue": "04wxnsj81",
-              "schemeURI": "https://ror.org/04wxnsj81"
-            }
-          ],
+          "titleValue": "AI-READI dataset",
+          "titleType": "AlternativeTitle"
+        }
+      ],
+      "version": "1.0",
+      "creator": [
+        {
+          "creatorName": "AI-READI Consortium",
           "nameType": "Organizational"
         }
       ],
-      "creator": [
-        {
-          "affiliation": [
-            {
-              "affiliationIdentifier": "0156zyn36",
-              "affiliationIdentifierScheme": "ROR",
-              "affiliationName": "University Of Marlen",
-              "schemeURI": "https://ror.org"
-            }
-          ],
-          "creatorName": "Bloggs, Joe",
-          "nameIdentifier": [
-            {
-              "nameIdentifierScheme": "ORCID",
-              "nameIdentifierValue": "https://orcid.org/0000-0002-4306-4464",
-              "schemeURI": "https://orcid.org"
-            }
-          ],
-          "nameType": "Personal"
-        },
-        {
-          "affiliation": [
-            {
-              "affiliationIdentifier": "0156zyn36",
-              "affiliationIdentifierScheme": "ROR",
-              "affiliationName": "University Of Marlen",
-              "schemeURI": "https://ror.org"
-            }
-          ],
-          "creatorName": "Lyphe, Doug",
-          "nameIdentifier": [
-            {
-              "nameIdentifierScheme": "ORCID",
-              "nameIdentifierValue": "https://orcid.org/0000-0002-4306-4464",
-              "schemeURI": "https://orcid.org"
-            }
-          ],
-          "nameType": "Personal"
-        }
-      ],
-      "datasetConsent": {
-        "consentGeneticOnly": true,
-        "consentGeogRestrict": true,
-        "consentNoMethods": true,
-        "consentNoncommercial": true,
-        "consentResearchType": true,
-        "consentType": "GeneralResearchUse"
-      },
-      "datasetDeIdentLevel": {
-        "deIdentDates": true,
-        "deIdentDirect": true,
-        "deIdentHIPAA": false,
-        "deIdentKAnon": false,
-        "deIdentNonarr": false,
-        "deIdentType": "DeIdentificationApplied"
-      },
+      "publicationYear": "2024",
       "date": [
         {
-          "dateInformation": "Copyright striked by YouTube",
-          "dateType": "Copyrighted",
-          "dateValue": "2023-12-04T00:00:00Z"
+          "dateValue": "2024-04-01",
+          "dateType": "Available",
+          "dateInformation": "Date dataset made availabe on FAIRhub"
         },
         {
+          "dateValue": "2023-07-19/2023-11-30",
           "dateType": "Collected",
-          "dateValue": "2023-12-28T00:00:00Z"
+          "dateInformation": "Period of the pilot phase when the data was collected"
         }
       ],
+      "resourceType": {
+        "resourceTypeValue": "Type 2 Diabetes",
+        "resourceTypeGeneral": "Dataset"
+      },
+      "datasetDeIdentLevel": {
+        "deIdentType": "NoDeIdentification",
+        "deIdentDirect": true,
+        "deIdentHIPAA": true,
+        "deIdentDates": false,
+        "deIdentNonarr": false,
+        "deIdentKAnon": false,
+        "deIdentDetails": "No identifiers were collected so no active de-identification was necessary but we checked that no identifiable data per US HIPAA were present in the data."
+      },
+      "datasetConsent": {
+        "consentType": "ConsentSpecifiedNotElsewhereCategorised",
+        "consentNoncommercial": false,
+        "consentGeogRestrict": false,
+        "consentResearchType": false,
+        "consentGeneticOnly": false,
+        "consentNoMethods": false,
+        "consentsDetails": "The public version of the dataset can only be used for type 2 diabetes related research. A private version will allow for more generic use."
+      },
       "description": [
         {
-          "descriptionType": "Abstract",
-          "descriptionValue": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016"
-        },
-        {
-          "descriptionType": "TableOfContents",
-          "descriptionValue": "Description for Dataset. The dataset is full of data that is useful for knowledge"
+          "descriptionValue": "Copy from README when finalized",
+          "descriptionType": "Abstract"
         }
       ],
-      "fundingReference": [
+      "language": "en",
+      "relatedIdentifier": [
         {
-          "awardNumber": {
-            "awardNumberValue": "DOI:123988178",
-            "awardURI": "https://orcid.org/0000-0002-4306-4464"
-          },
-          "awardTitle": "Participation Award",
-          "funderIdentifier": {
-            "funderIdentifierType": "ROR",
-            "funderIdentifierValue": "04wxnsj81",
-            "schemeURI": "https://ror.org"
-          },
-          "funderName": "NIH"
+          "relatedIdentifierValue": "Add marker paper DOI when availabe",
+          "relatedIdentifierType": "DOI",
+          "relationType": "IsDescribedBy",
+          "resourceTypeGeneral": "Preprint"
         },
         {
-          "awardNumber": {
-            "awardNumberValue": "GMFB: 1372745899",
-            "awardURI": "https://doi.org/10.2312/12313"
-          },
-          "awardTitle": "Participation Award",
-          "funderIdentifier": {
-            "funderIdentifierType": "ROR",
-            "funderIdentifierValue": "04wxnsj81",
-            "schemeURI": "https://ror.org"
-          },
-          "funderName": "Aflac"
+          "relatedIdentifierValue": "https://docs.aireadi.org/",
+          "relatedIdentifierType": "URL",
+          "relationType": "IsDocumentedBy",
+          "resourceTypeGeneral": "Other"
         },
         {
-          "awardNumber": {
-            "awardNumberValue": "World Cup 2024",
-            "awardURI": "https://doi.org/10.2312/123423423"
-          },
-          "awardTitle": "Stanley Award",
-          "funderIdentifier": {
-            "funderIdentifierType": "ROR",
-            "funderIdentifierValue": "66654522145",
-            "schemeURI": "https://ror.org"
-          },
-          "funderName": "Texas Road House"
+          "relatedIdentifierValue": "https://github.com/AI-READI/ai-readi-dataset-template/tree/main/versions",
+          "relatedIdentifierType": "URL",
+          "relationType": "IsDocumentedBy",
+          "resourceTypeGeneral": "Other"
+        },
+        {
+          "relatedIdentifierValue": "https://aireadi.org/",
+          "relatedIdentifierType": "URL",
+          "relationType": "IsDocumentedBy",
+          "resourceTypeGeneral": "Other"
         }
       ],
-      "identifier": {
-        "identifierType": "DOI",
-        "identifierValue": "1928aec8-3eae-4970-b22e-ff025527319a"
-      },
-      "language": "ja",
+      "subject": [
+        {
+          "subjectValue": "Diabetes mellitus",
+          "subjectIdentifier": {
+            "classificationCode": "45636-8",
+            "subjectScheme": "Logical Observation Identifier Names and Codes (LOINC)",
+            "schemeURI": "https://loinc.org/",
+            "valueURI": "https://loinc.org/45636-8"
+          }
+        },
+        {
+          "subjectValue": "Machine Learning",
+          "subjectIdentifier": {
+            "classificationCode": "D000069550",
+            "subjectScheme": "Medical Subject Headings (MeSH)",
+            "schemeURI": "https://meshb.nlm.nih.gov/record/",
+            "valueURI": "https://meshb.nlm.nih.gov/record/ui?ui=D000069550"
+          }
+        },
+        {
+          "subjectValue": "Artificial Intelligence",
+          "subjectIdentifier": {
+            "classificationCode": "D001185",
+            "subjectScheme": "Medical Subject Headings (MeSH)",
+            "schemeURI": "https://meshb.nlm.nih.gov/",
+            "valueURI": "https://meshb.nlm.nih.gov/record/ui?ui=D001185"
+          }
+        },
+        {
+          "subjectValue": "Electrocardiography",
+          "subjectIdentifier": {
+            "classificationCode": "D004562",
+            "subjectScheme": "Medical Subject Headings (MeSH)",
+            "schemeURI": "https://meshb.nlm.nih.gov/",
+            "valueURI": "https://meshb.nlm.nih.gov/record/ui?ui=D004562"
+          }
+        },
+        {
+          "subjectValue": "Continuous Glucose Monitoring",
+          "subjectIdentifier": {
+            "classificationCode": "D000095583",
+            "subjectScheme": "Medical Subject Headings (MeSH)",
+            "schemeURI": "https://meshb.nlm.nih.gov/",
+            "valueURI": "https://meshb.nlm.nih.gov/record/ui?ui=D000095583"
+          }
+        },
+        {
+          "subjectValue": "Retinal imaging"
+        },
+        {
+          "subjectValue": "Eye exam"
+        }
+      ],
       "managingOrganization": {
-        "name": "Dr. Suess Inc"
+        "name": "University of Washington",
+        "managingOrganizationIdentifier": {
+          "managingOrganizationIdentifierValue": "https://ror.org/00cvxb145",
+          "managingOrganizationScheme": "ROR",
+          "schemeURI": "https://ror.org"
+        }
       },
-      "publicationYear": "2024",
-      "publisher": {
-        "publisherName": "Dr. Suess Inc",
-        "publisherIdentifier": "04z8jg394",
-        "publisherIdentifierScheme": "ROR",
-        "schemeURI": "https://ror.org"
-      },
-      "RelatedIdentifier": [],
-      "resourceType": {
-        "resourceTypeGeneral": "Dataset",
-        "resourceTypeValue": "tesdt"
+      "accessType": "PublicDownloadSelfAttestationRequired",
+      "accessDetails": {
+        "description": "Accessing the dataset requires several steps, including: 1. Login in through a verified ID system (such as Microsoft Entra Verified ID or Login.gov); 2. Agreeing to use the data only for type 2 diabetes related research.; 3. Agreeing to the license terms which set certain restrictions and obligations for data usage (see 'rights' property)"
       },
       "rights": [
         {
-          "rightsIdentifier": "h",
-          "rightsIdentifierScheme": "h",
-          "rightsURI": "44",
-          "rightsName": "Glide"
+          "rightsName": "AI-READI custom license v1.0",
+          "rightsURI": "https://doi.org/10.5281/zenodo.10642459"
         }
       ],
-      "size": [],
-      "format": [],
-      "subject": [
+      "publisher": {
+        "publisherName": "FAIRhub"
+      },
+      "size": ["250 GB", "2,000 files"],
+      "fundingReference": [
         {
-          "classificationCode": "CLASSIFIED BY THE CIA",
-          "schemeURI": "BEST URI",
-          "subjectScheme": "Scheme of all schemes",
-          "subjectValue": "Test Subject One",
-          "valueURI": "Priceless URI"
-        },
-        {
-          "subjectValue": "SUBJECT 2"
+          "funderName": "National Institutes of Health",
+          "funderIdentifier": {
+            "funderIdentifierValue": "https://ror.org/01cwqze88",
+            "funderIdentifierType": "ROR",
+            "schemeURI": "https://ror.org"
+          },
+          "awardNumber": {
+            "awardNumberValue": "OT2OD032644",
+            "awardURI": "https://reporter.nih.gov/search/yatARMM-qUyKAhnQgsCTAQ/project-details/10885481"
+          },
+          "awardTitle": "Bridge2AI: Salutogenesis Data Generation Project"
         }
       ],
-      "title": [
-        {
-          "titleValue": "Tasty Wooden Computer"
-        },
-        {
-          "titleType": "AlternativeTitle",
-          "titleValue": "New Wooden Computer"
-        }
-      ],
-      "version": "c2cab241-418d-4d9a-aecf-9fad9a8b2e15"
+      "format": ["image/DICOM", "text/markdown", "table/csv"]
     },
     "datatype_dictionary": [
       {
@@ -1170,7 +1304,7 @@
     },
     "version": {
       "id": "7022aff7-dedb-4092-8313-31ca46d8c3cc",
-      "title": "v1"
+      "title": "1.0"
     }
   },
   "keywords": ["Diabetes", "Artificial Intelligence", "Eye Imaging"],

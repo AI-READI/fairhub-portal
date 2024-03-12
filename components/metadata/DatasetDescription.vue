@@ -135,6 +135,7 @@ function boolOtherSchemes(identifier: Identifier) {
     >
       <n-space vertical>
         <n-table
+          v-if="metadata.contributor && metadata.contributor.length > 0"
           :bordered="false"
           :single-line="true"
           :single-column="true"
@@ -232,6 +233,12 @@ function boolOtherSchemes(identifier: Identifier) {
             </tr>
           </tbody>
         </n-table>
+
+        <n-alert
+          v-else
+          type="info"
+          title="No additional contributors listed."
+        />
       </n-space>
     </CardCollapsibleCard>
 
@@ -257,8 +264,6 @@ function boolOtherSchemes(identifier: Identifier) {
             <th><strong>Award Number</strong></th>
 
             <th><strong>Award Title</strong></th>
-
-            <th><strong>Award URI</strong></th>
           </tr>
         </thead>
 
@@ -273,8 +278,6 @@ function boolOtherSchemes(identifier: Identifier) {
             <td>{{ funder.awardNumber?.awardNumberValue || "N/A" }}</td>
 
             <td>{{ funder.awardTitle || "N/A" }}</td>
-
-            <td>{{ funder.awardNumber?.awardURI || "N/A" }}</td>
           </tr>
         </tbody>
       </n-table>

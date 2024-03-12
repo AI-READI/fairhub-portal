@@ -295,7 +295,9 @@ const generateCombinedFullName = (name: string) => {
 
             <div v-if="tabs[2].shown">
               <MetadataHealthSheet
-                :healthsheet="dataset?.metadata.healthsheet || ''"
+                :healthsheet="
+                  dataset?.metadata.healthsheet as HealthsheetRecords
+                "
               />
             </div>
 
