@@ -144,7 +144,7 @@ if (error.value) {
                     <h3>{{ dataset.title }}</h3>
 
                     <n-tag type="info" :bordered="false">
-                      Version {{ dataset.version }}
+                      Version {{ dataset.version_title }}
                     </n-tag>
                   </div>
 
@@ -157,17 +157,20 @@ if (error.value) {
                   <p>
                     <span class="font-bold">Created on:</span>
 
-                    {{ $dayjs.unix(dataset.createdAt).format("MMMM DD, YYYY") }}
+                    {{
+                      $dayjs.unix(dataset.created_at).format("MMMM DD, YYYY")
+                    }}
                   </p>
                 </n-space>
 
                 <n-space>
                   <n-tag
-                    v-for="keyword in dataset.keywords"
-                    :key="keyword"
+                    v-for="(subject, index) in dataset.metadata
+                      .datasetDescription.subject"
+                    :key="index"
                     :bordered="false"
                   >
-                    {{ keyword }}
+                    {{ subject.subjectValue }}
                   </n-tag>
                 </n-space>
               </div>

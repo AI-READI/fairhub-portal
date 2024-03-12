@@ -1,5 +1,4 @@
 import Cite from "citation-js";
-import mongodbClientPromise from "~/server/utils/mongodb";
 
 const additionalFormats: { [key: string]: string } = {
   chicago:
@@ -11,17 +10,17 @@ const additionalFormats: { [key: string]: string } = {
 export default defineEventHandler(async (event) => {
   const { datasetid } = event.context.params as { datasetid: string };
 
+  console.log(`Citation for dataset ${datasetid}`);
+
   const { format } = getQuery(event);
 
-  const mongodbClient = await mongodbClientPromise;
-
-  const db = mongodbClient.db(process.env.MONGODB_DB);
-
-  const dbDataset = await db.collection("dataset").findOne({
-    identifier: Number(datasetid),
+  const dataset = await prisma.published_dataset.findUnique({
+    where: {
+      id: datasetid,
+    },
   });
 
-  if (!dbDataset) {
+  if (!dataset) {
     console.log(`Dataset ${datasetid} not found`);
 
     throw createError({

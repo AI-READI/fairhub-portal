@@ -1,19 +1,13 @@
-import mongodbClientPromise from "~/server/utils/mongodb";
-
 export default defineEventHandler(async (event) => {
   const { datasetid } = event.context.params as { datasetid: string };
 
-  const mongodbClient = await mongodbClientPromise;
+  const dataset = await prisma.published_dataset.findUnique({
+    where: {
+      id: datasetid,
+    },
+  });
 
-  const db = mongodbClient.db(process.env.MONGODB_DB);
-
-  const dbDataset: DatabaseDatasetRecord = await db
-    .collection("dataset")
-    .findOne({
-      identifier: Number(datasetid),
-    });
-
-  if (!dbDataset) {
+  if (!dataset) {
     console.log(`Dataset ${datasetid} not found`);
 
     throw createError({
@@ -22,31 +16,26 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const fairhubDatasetId = dbDataset.fairhub.dataset.id;
+  const datasetId = dataset.dataset_id;
 
-  // get all datasets with the same fairhubDatasetId
-  // This is the same as all versions of the same dataset in fairhub
-  const relatedDatasets = await db
-    .collection("dataset")
-    .find({
-      "fairhub.dataset.id": fairhubDatasetId,
-    })
-    .toArray();
+  // get all datasets with the same dataset_id
+  // This is the same as all versions of the same dataset in fairhub study management
+  const relatedDatasets = await prisma.published_dataset.findMany({
+    orderBy: {
+      created_at: "desc",
+    },
+    where: {
+      dataset_id: datasetId,
+    },
+  });
 
-  const versions: VersionArray = relatedDatasets.map(
-    (relatedDataset: DatabaseDatasetRecord) => {
-      return {
-        id: relatedDataset.identifier,
-        title: relatedDataset.fairhub.version.title,
-        createdAt: relatedDataset.createdAt,
-        doi: relatedDataset.doi,
-      };
-    }
-  );
-
-  // sort versions by createdAt
-  versions.sort((a: any, b: any) => {
-    return b.createdAt - a.createdAt;
+  const versions: VersionArray = relatedDatasets.map((relatedDataset) => {
+    return {
+      id: Number(relatedDataset.id).toString(),
+      title: relatedDataset.version_title,
+      createdAt: Number(BigInt(relatedDataset.created_at)),
+      doi: relatedDataset.doi,
+    };
   });
 
   return versions;

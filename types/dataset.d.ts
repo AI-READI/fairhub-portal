@@ -461,28 +461,22 @@ interface Metadata {
 }
 
 interface Dataset {
-  id: number;
-  keywords: string[];
-  updatedOn: number;
-  files: FolderStructure[];
-  createdAt: number; // unix timestamp - the date the dataset was published
+  id: string;
+  study_id: string;
+  dataset_id: string;
+  version_id: string;
+  doi: string;
   title: string;
   description: string;
+  version_title: string;
+  study_title: string;
   metadata: Metadata;
-  studyTitle: string;
+  files: FolderStructure[];
+  data: any;
+  created_at: number;
 }
 
-interface DatasetArrayItem {
-  id: number;
-  updatedOn: number;
-  createdAt: number; // unix timestamp - the date the dataset was published
-  title: string;
-  description: string;
-  keywords: string[];
-  version: string;
-}
-
-interface DatasetArray extends Array<DatasetArrayItem> {}
+interface DatasetArray extends Array<Dataset> {}
 
 interface FolderStructure {
   children?: FolderStructure[];
@@ -495,24 +489,10 @@ interface Version {
 }
 
 interface VersionArrayItem {
-  id: number;
+  id: string;
   createdAt: number;
   title: string;
   doi: string;
 }
 
 interface VersionArray extends Array<VersionArrayItem> {}
-
-interface DatabaseDatasetRecord extends Dataset {
-  _id: string;
-  identifier: number;
-  doi: string;
-  fairhub: {
-    // contains the original ids from fairhub study management portal
-    dataset: {
-      id: string;
-    };
-    study: Study;
-    version: Version;
-  };
-}

@@ -1,17 +1,13 @@
-import mongodbClientPromise from "~/server/utils/mongodb";
-
 export default defineEventHandler(async (event) => {
   const { datasetid } = event.context.params as { datasetid: string };
 
-  const mongodbClient = await mongodbClientPromise;
-
-  const db = mongodbClient.db(process.env.MONGODB_DB);
-
-  const dbDataset = await db.collection("dataset").findOne({
-    identifier: Number(datasetid),
+  const publishedDataset = await prisma.published_dataset.findUnique({
+    where: {
+      id: datasetid,
+    },
   });
 
-  if (!dbDataset) {
+  if (!publishedDataset) {
     console.log(`Dataset ${datasetid} not found`);
 
     throw createError({
@@ -20,23 +16,36 @@ export default defineEventHandler(async (event) => {
     });
   }
 
+  const datasetId = Number(publishedDataset.id).toString();
+
+  const datasetCreatedAt: bigint = BigInt(publishedDataset.created_at);
+
+  const datasetMetadata = JSON.parse(
+    publishedDataset.published_metadata as string,
+  );
+  const datasetFiles = JSON.parse(publishedDataset.files as string);
+
   const dataset: Dataset = {
-    id: dbDataset.identifier,
-    title: dbDataset.title,
-    createdAt: dbDataset.createdAt,
-    description: dbDataset.description,
-    files: dbDataset?.files,
-    keywords: dbDataset.keywords,
+    id: datasetId,
+    title: publishedDataset.title,
+    created_at: Number(datasetCreatedAt),
+    data: publishedDataset.data,
+    dataset_id: publishedDataset.dataset_id,
+    description: publishedDataset.description,
+    doi: publishedDataset.doi,
+    files: datasetFiles,
     metadata: {
-      datasetDescription: dbDataset.metadata.dataset_description,
+      datasetDescription: datasetMetadata.dataset_description,
       datasetStructureDescription:
-        dbDataset.metadata.dataset_structure_description,
-      healthsheet: dbDataset.metadata.healthsheet,
-      readme: dbDataset.metadata.readme,
-      studyDescription: dbDataset.metadata.study_description,
+        datasetMetadata.dataset_structure_description,
+      healthsheet: datasetMetadata.healthsheet,
+      readme: datasetMetadata.readme,
+      studyDescription: datasetMetadata.study_description,
     },
-    studyTitle: dbDataset.fairhub.study.title,
-    updatedOn: dbDataset.updatedOn,
+    study_id: publishedDataset.study_id,
+    study_title: publishedDataset.study_title,
+    version_id: publishedDataset.version_id,
+    version_title: publishedDataset.version_title,
   };
 
   return dataset;

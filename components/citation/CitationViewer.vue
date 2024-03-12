@@ -2,7 +2,7 @@
 const props = defineProps({
   id: {
     required: true,
-    type: Number,
+    type: String,
   },
 });
 
@@ -86,6 +86,8 @@ onMounted(() => {
   >
     <n-space vertical :size="[0, 0]">
       <h3 class="mb-3">Citation</h3>
+
+      <pre>{{ id }}</pre>
 
       <p class="pb-1 text-sm font-medium">
         When using this resource, please cite:

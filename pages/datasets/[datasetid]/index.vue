@@ -113,7 +113,9 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
     },
   ),
   identifier: `https://doi.org/10.34534/${dataset.value?.id}`,
-  keywords: dataset.value?.keywords.join(", "),
+  keywords: dataset.value?.metadata.datasetDescription.subject
+    ?.map((subject) => subject.subjectValue)
+    .join(", "),
   publisher: {
     name: "FAIRhub",
     "@type": "Organization",
@@ -446,7 +448,11 @@ const generateCombinedFullName = (name: string) => {
 
                 <n-space>
                   <n-tag
-                    v-for="(keyword, index) in dataset?.keywords"
+                    v-for="(
+                      keyword, index
+                    ) in dataset?.metadata.datasetDescription.subject?.map(
+                      (subject) => subject.subjectValue,
+                    )"
                     :key="index"
                     type="info"
                     size="small"
@@ -457,9 +463,9 @@ const generateCombinedFullName = (name: string) => {
               </n-space>
             </n-space>
 
-            <CitationViewer :id="dataset?.id || 0" />
+            <CitationViewer :id="dataset?.id || ''" />
 
-            <VersionSelector :id="dataset?.id || 0" />
+            <VersionSelector :id="dataset?.id || ''" />
           </n-space>
         </div>
       </div>
