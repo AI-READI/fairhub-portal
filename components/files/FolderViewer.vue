@@ -6,9 +6,9 @@ import { Icon } from "#components";
 const drawerActive = ref(false);
 
 const props = defineProps({
-  datatypeDictionary: {
+  datasetStructureDescription: {
     required: true,
-    type: Object as PropType<Array<DatatypeDictionary>>,
+    type: Object as PropType<DatasetStructureDescription>,
   },
   folderStructure: {
     required: true,
@@ -38,7 +38,7 @@ function convertFile(file: FolderStructure, level: number): TreeOption {
             NButton,
             {
               class: "",
-              onClick: (value) => {
+              onClick: (_value) => {
                 openMetdataDrawer(file.label);
               },
               size: "tiny",
@@ -79,14 +79,14 @@ const openMetdataDrawer = (label: string) => {
   drawerTitle.value = label;
 
   // get the datatype from the dictionary
-  const datatype = props.datatypeDictionary.find(
-    (d) => d.code_name === label || d.aliases?.includes(label),
+  const datatype = props.datasetStructureDescription.datasetStructure.find(
+    (d) => d.directoryName === label,
   );
 
   console.log(datatype);
 
   if (datatype) {
-    drawerDescription.value = datatype.datatype_description.description_text;
+    drawerDescription.value = datatype.directoryDescription;
   } else {
     drawerDescription.value = "No metadata found for this file";
   }

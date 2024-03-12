@@ -203,7 +203,7 @@ const generateCombinedFullName = (name: string) => {
           </n-space>
         </p>
 
-        <p>{{ dataset?.description }}</p>
+        <p class="hidden">{{ dataset?.description }}</p>
 
         <NuxtLink to="https://download.fairhub.io/1" target="__blank">
           <n-button size="large" type="info" secondary class="my-3">
@@ -365,8 +365,9 @@ const generateCombinedFullName = (name: string) => {
 
                 <FilesFolderViewer
                   :folder-structure="dataset?.files || []"
-                  :datatype-dictionary="
-                    dataset?.metadata.datatypeDictionary || []
+                  :dataset-structure-description="
+                    dataset?.metadata
+                      .datasetStructureDescription as DatasetStructureDescription
                   "
                 />
               </n-space>
