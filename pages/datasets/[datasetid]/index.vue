@@ -170,38 +170,33 @@ const generateCombinedFullName = (name: string) => {
       <n-space vertical>
         <h1>{{ dataset?.title }}</h1>
 
-        <p>
-          <n-space horizontal class="items-center align-middle">
-            <div
-              v-for="(creator, index) in dataset?.metadata.datasetDescription
-                .creator"
-              :key="index"
-              class="flex flex-row flex-wrap items-center align-middle text-black"
-            >
-              <!-- if on the last index create a different span -->
-              <span class="mr-1 text-sm font-light">{{
-                generateCombinedFullName(creator.creatorName)
-              }}</span>
+        <div
+          v-for="(creator, index) in dataset?.metadata.datasetDescription
+            .creator"
+          :key="index"
+          class="flex flex-row flex-wrap items-center align-middle text-black"
+        >
+          <!-- if on the last index create a different span -->
+          <span class="mr-1 text-sm font-light">{{
+            generateCombinedFullName(creator.creatorName)
+          }}</span>
 
-              <ButtonIdentifierBadge
-                v-if="creator?.nameIdentifier"
-                class="pt-1"
-                :type="creator.nameIdentifier[0]"
-              />
+          <ButtonIdentifierBadge
+            v-if="creator?.nameIdentifier"
+            class="pt-1"
+            :type="creator.nameIdentifier[0]"
+          />
 
-              <span
-                v-if="
-                  dataset?.metadata.datasetDescription.creator &&
-                  index !=
-                    dataset?.metadata.datasetDescription.creator.length - 1
-                "
-                class="text-sm"
-              >
-                ,
-              </span>
-            </div>
-          </n-space>
-        </p>
+          <span
+            v-if="
+              dataset?.metadata.datasetDescription.creator &&
+              index != dataset?.metadata.datasetDescription.creator.length - 1
+            "
+            class="text-sm"
+          >
+            ,
+          </span>
+        </div>
 
         <p class="hidden">{{ dataset?.description }}</p>
 
