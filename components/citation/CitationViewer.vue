@@ -36,10 +36,7 @@ const citationFormats = [
 ];
 
 const citation = ref({
-  doi: "",
   formattedText: "",
-  full: "",
-  split: "",
 });
 
 const citationError = ref(false);
@@ -48,10 +45,7 @@ const citationPending = ref(true);
 const getCitation = async (format: string = "apa") => {
   citationError.value = false;
   citation.value = {
-    doi: "",
     formattedText: "",
-    full: "",
-    split: "",
   };
 
   citationPending.value = true;
