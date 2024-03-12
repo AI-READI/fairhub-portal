@@ -167,7 +167,7 @@ const generateCombinedFullName = (name: string) => {
 <template>
   <main class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50">
     <div
-      class="mx-auto mt-10 flex w-full max-w-screen-xl items-center justify-between px-3"
+      class="mx-auto mt-10 flex w-full max-w-screen-xl flex-col-reverse items-center justify-between px-3 sm:flex-row"
     >
       <n-space vertical>
         <h1>{{ dataset?.title }}</h1>
@@ -215,7 +215,7 @@ const generateCombinedFullName = (name: string) => {
       <n-image
         src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
         :alt="dataset?.title"
-        class="size-32 h-32 w-32 rounded-lg"
+        class="mb-3 size-32 h-32 w-32 rounded-lg sm:mb-0"
       />
     </div>
 

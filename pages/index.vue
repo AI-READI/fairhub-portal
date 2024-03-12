@@ -127,7 +127,9 @@ if (error.value) {
             :to="`/datasets/${dataset.id}`"
             class="h-full rounded-lg border border-blue-300 bg-white px-5 py-3 shadow-sm transition-all hover:border-blue-600 hover:bg-sky-50/50 hover:shadow-lg"
           >
-            <div class="flex h-full w-full items-start space-x-5">
+            <div
+              class="flex h-full w-full flex-col items-start space-y-5 sm:flex-row sm:space-x-5 sm:space-y-0"
+            >
               <n-image
                 src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
                 :alt="dataset.title"
