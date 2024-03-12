@@ -1,25 +1,21 @@
-import mongodbClientPromise from "~/server/utils/mongodb";
-
 export default defineEventHandler(async () => {
-  const mongodbClient = await mongodbClientPromise;
+  const datasets = await prisma.published_dataset.findMany({
+    orderBy: {
+      created_at: "desc",
+    },
+  });
 
-  const db = mongodbClient.db(process.env.MONGODB_DB);
-
-  const dbDatasets = await db
-    .collection("dataset")
-    .find({})
-    .sort({ createdAt: -1 })
-    .toArray();
-
-  if (!dbDatasets) {
+  if (!datasets) {
     console.log("No datasets found");
     return [];
   }
 
-  return dbDatasets.map((dataset: DatabaseDatasetRecord) => {
+  return datasets.map((dataset) => {
+    const datasetId = Number(dataset.id).toString();
+
     return {
       _sitemap: "pages",
-      loc: `/datasets/${dataset.identifier}`,
+      loc: `/datasets/${datasetId}`,
     };
   });
 });

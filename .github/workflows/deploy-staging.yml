@@ -34,8 +34,7 @@ jobs:
           output_location: ".output/public" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env:
-          MONGODB_URI: ${{ secrets.MONGODB_URI }}
-          MONGODB_DB: ${{ secrets.MONGODB_DB }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
           NUXT_SITE_ENV: "staging"
 
   close_pull_request_job:
