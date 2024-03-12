@@ -301,27 +301,23 @@ const generateCombinedFullName = (name: string) => {
                 :metadata="
                   dataset?.metadata.studyDescription as StudyDescription
                 "
-                :study-title="dataset?.studyTitle as string"
               />
 
               <n-divider />
 
-              <n-collapse>
-                <n-collapse-item
-                  title="View the full study_description.json file"
-                  name="1"
-                  size="large"
-                >
-                  <VueJsonPretty
-                    :data="dataset?.metadata.studyDescription || {}"
-                    show-line
-                    :deep="1"
-                    highlight-selected-node
-                    collapsed-on-click-brackets
-                    :show-double-quotes="false"
-                  />
-                </n-collapse-item>
-              </n-collapse>
+              <CardCollapsibleCard
+                title="View the full study_description.json file"
+                class="mb-4 shadow-md"
+              >
+                <VueJsonPretty
+                  :data="dataset?.metadata.studyDescription || {}"
+                  show-line
+                  :deep="1"
+                  highlight-selected-node
+                  collapsed-on-click-brackets
+                  :show-double-quotes="false"
+                />
+              </CardCollapsibleCard>
             </div>
 
             <div v-if="tabs[4].shown">
@@ -333,22 +329,19 @@ const generateCombinedFullName = (name: string) => {
 
               <n-divider />
 
-              <n-collapse>
-                <n-collapse-item
-                  title="View the full dataset_description.json file"
-                  name="1"
-                  size="large"
-                >
-                  <VueJsonPretty
-                    :data="dataset?.metadata.datasetDescription || {}"
-                    show-line
-                    :deep="1"
-                    highlight-selected-node
-                    collapsed-on-click-brackets
-                    :show-double-quotes="false"
-                  />
-                </n-collapse-item>
-              </n-collapse>
+              <CardCollapsibleCard
+                title="View the full dataset_description.json file"
+                class="mb-4 shadow-md"
+              >
+                <VueJsonPretty
+                  :data="dataset?.metadata.datasetDescription || {}"
+                  show-line
+                  :deep="1"
+                  highlight-selected-node
+                  collapsed-on-click-brackets
+                  :show-double-quotes="false"
+                />
+              </CardCollapsibleCard>
             </div>
 
             <div v-if="tabs[5].shown">
