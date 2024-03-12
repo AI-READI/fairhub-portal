@@ -312,8 +312,13 @@ const generateCombinedFullName = (name: string) => {
                   name="1"
                   size="large"
                 >
-                  <json-viewer
-                    :value="dataset?.metadata.studyDescription || {}"
+                  <VueJsonPretty
+                    :data="dataset?.metadata.studyDescription || {}"
+                    show-line
+                    :deep="1"
+                    highlight-selected-node
+                    collapsed-on-click-brackets
+                    :show-double-quotes="false"
                   />
                 </n-collapse-item>
               </n-collapse>
@@ -337,7 +342,6 @@ const generateCombinedFullName = (name: string) => {
                   <VueJsonPretty
                     :data="dataset?.metadata.datasetDescription || {}"
                     show-line
-                    show-icon
                     :deep="1"
                     highlight-selected-node
                     collapsed-on-click-brackets

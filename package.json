@@ -68,7 +68,6 @@
     "schema-dts": "^1.1.2",
     "validator": "13.11.0",
     "vue-json-pretty": "2.3.0",
-    "vue-json-viewer": "2.2.22",
     "vue3-lottie": "3.2.0",
     "vue3-marquee": "4.2.0",
     "xml2js": "^0.6.2"
