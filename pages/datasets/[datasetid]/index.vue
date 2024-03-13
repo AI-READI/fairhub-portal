@@ -113,7 +113,9 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
     },
   ),
   identifier: `https://doi.org/10.34534/${dataset.value?.id}`,
-  keywords: dataset.value?.keywords.join(", "),
+  keywords: dataset.value?.metadata.datasetDescription.subject
+    ?.map((subject) => subject.subjectValue)
+    .join(", "),
   publisher: {
     name: "FAIRhub",
     "@type": "Organization",
@@ -165,7 +167,7 @@ const generateCombinedFullName = (name: string) => {
 <template>
   <main class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50">
     <div
-      class="mx-auto mt-10 flex w-full max-w-screen-xl items-center justify-between px-3"
+      class="mx-auto mt-10 flex w-full max-w-screen-xl flex-col-reverse items-center justify-between px-3 sm:flex-row"
     >
       <n-space vertical>
         <h1>{{ dataset?.title }}</h1>
@@ -213,7 +215,7 @@ const generateCombinedFullName = (name: string) => {
       <n-image
         src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
         :alt="dataset?.title"
-        class="size-32 h-32 w-32 rounded-lg"
+        class="mb-3 size-32 h-32 w-32 rounded-lg sm:mb-0"
       />
     </div>
 
@@ -446,7 +448,11 @@ const generateCombinedFullName = (name: string) => {
 
                 <n-space>
                   <n-tag
-                    v-for="(keyword, index) in dataset?.keywords"
+                    v-for="(
+                      keyword, index
+                    ) in dataset?.metadata.datasetDescription.subject?.map(
+                      (subject) => subject.subjectValue,
+                    )"
                     :key="index"
                     type="info"
                     size="small"
@@ -457,9 +463,9 @@ const generateCombinedFullName = (name: string) => {
               </n-space>
             </n-space>
 
-            <CitationViewer :id="dataset?.id || 0" />
+            <CitationViewer :id="dataset?.id || ''" />
 
-            <VersionSelector :id="dataset?.id || 0" />
+            <VersionSelector :id="dataset?.id || ''" />
           </n-space>
         </div>
       </div>

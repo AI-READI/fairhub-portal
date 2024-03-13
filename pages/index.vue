@@ -127,7 +127,9 @@ if (error.value) {
             :to="`/datasets/${dataset.id}`"
             class="h-full rounded-lg border border-blue-300 bg-white px-5 py-3 shadow-sm transition-all hover:border-blue-600 hover:bg-sky-50/50 hover:shadow-lg"
           >
-            <div class="flex h-full w-full items-start space-x-5">
+            <div
+              class="flex h-full w-full flex-col items-start space-y-5 sm:flex-row sm:space-x-5 sm:space-y-0"
+            >
               <n-image
                 src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
                 :alt="dataset.title"
@@ -144,7 +146,7 @@ if (error.value) {
                     <h3>{{ dataset.title }}</h3>
 
                     <n-tag type="info" :bordered="false">
-                      Version {{ dataset.version }}
+                      Version {{ dataset.version_title }}
                     </n-tag>
                   </div>
 
@@ -157,17 +159,20 @@ if (error.value) {
                   <p>
                     <span class="font-bold">Created on:</span>
 
-                    {{ $dayjs.unix(dataset.createdAt).format("MMMM DD, YYYY") }}
+                    {{
+                      $dayjs.unix(dataset.created_at).format("MMMM DD, YYYY")
+                    }}
                   </p>
                 </n-space>
 
                 <n-space>
                   <n-tag
-                    v-for="keyword in dataset.keywords"
-                    :key="keyword"
+                    v-for="(subject, index) in dataset.metadata
+                      .datasetDescription.subject"
+                    :key="index"
                     :bordered="false"
                   >
-                    {{ keyword }}
+                    {{ subject.subjectValue }}
                   </n-tag>
                 </n-space>
               </div>

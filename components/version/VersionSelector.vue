@@ -2,18 +2,17 @@
 const props = defineProps({
   id: {
     required: true,
-    type: Number,
+    type: String,
   },
 });
 
-const {
-  data: versions,
-  error,
-  pending,
-} = await useFetch(`/api/versions/${props.id}`, {
-  lazy: true,
-  server: false,
-});
+const { data: versions, pending } = await useFetch(
+  `/api/versions/${props.id}`,
+  {
+    lazy: true,
+    server: false,
+  },
+);
 
 // todo: add a watchEffect for the error responses
 </script>
