@@ -35,6 +35,7 @@
     }
   ],
   "navigationFallback": {
-    "rewrite": "/api/server"
+    "rewrite": "/api/server",
+    "exclude": ["/.auth/login/aadb2c"]
   }
 }
