@@ -97,6 +97,13 @@ export default defineNuxtConfig({
           : process.env.NUXT_SITE_ENV === "staging"
             ? "https://staging.fairhub.io"
             : "https://fairhub.io",
+      ENTRA_CONFIG: {
+        authority:
+          "https://aireadi.b2clogin.com/aireadi.onmicrosoft.com/B2C_1_userauth",
+        clientId: "d173c9cb-36ce-4c77-92f3-025e48f0e533",
+        knownAuthorities: ["aireadi.b2clogin.com"],
+        redirectUri: "https://staging.fairhub.io/login",
+      },
       FAIRHUB_API_URL:
         process.env.NUXT_SITE_ENV === "dev"
           ? "http://localhost:5000"
