@@ -7,28 +7,31 @@ import { getCurrentInstance, type Ref, toRefs } from "vue";
 
 export type MsalContext = {
   accounts: Ref<AccountInfo[]>;
+  authClient: PublicClientApplication;
   inProgress: Ref<InteractionStatus>;
-  instance: PublicClientApplication;
 };
 
-export function useMsal(): MsalContext {
+/**
+ * Provides access to the MSAL.js authentication client and related state.
+ */
+export function useAuthClient(): MsalContext {
   const internalInstance = getCurrentInstance();
   if (!internalInstance) {
     throw new Error(
       "useMsal() cannot be called outside the setup() function of a component",
     );
   }
-  const { accounts, inProgress, instance } = toRefs(
+  const { accounts, authClient, inProgress } = toRefs(
     internalInstance.appContext.config.globalProperties.$msal,
   );
 
-  if (!instance.value || !accounts.value || !inProgress.value) {
+  if (!authClient.value || !accounts.value || !inProgress.value) {
     throw new Error("Please install the msalPlugin");
   }
 
   if (inProgress.value === InteractionStatus.Startup) {
-    instance.value.initialize().then(() => {
-      instance.value.handleRedirectPromise().catch(() => {
+    authClient.value.initialize().then(() => {
+      authClient.value.handleRedirectPromise().catch(() => {
         // Errors should be handled by listening to the LOGIN_FAILURE event
       });
     });
@@ -36,7 +39,7 @@ export function useMsal(): MsalContext {
 
   return {
     accounts,
+    authClient: authClient.value,
     inProgress,
-    instance: instance.value,
   };
 }

@@ -49,8 +49,8 @@ export const msalPlugin = (app: App, msalInstance: PublicClientApplication) => {
 
   const state = reactive({
     accounts,
+    authClient: msalInstance,
     inProgress,
-    instance: msalInstance,
   });
 
   app.config.globalProperties.$msal = state;
@@ -71,6 +71,11 @@ export const msalPlugin = (app: App, msalInstance: PublicClientApplication) => {
         if (!accountArraysAreEqual(currentAccounts, state.accounts)) {
           state.accounts = currentAccounts;
         }
+
+        if (message.payload && "state" in message.payload) {
+          navigateTo(message.payload.state);
+        }
+
         break;
       }
     }
@@ -91,6 +96,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     auth: { ...config.public.ENTRA_CONFIG },
     cache: {
       cacheLocation: BrowserCacheLocation.SessionStorage,
+      storeAuthStateInCookie: true,
     },
   });
   nuxtApp.vueApp.use(msalPlugin, msalInstance);
