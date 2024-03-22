@@ -38,7 +38,8 @@ if (error.value) {
           <h1
             class="mb-3 max-w-2xl bg-gradient-to-tl from-sky-400 via-teal-300 to-yellow-400 bg-clip-text py-1 text-center text-3xl font-extrabold leading-none tracking-tight text-transparent md:text-4xl lg:text-left xl:text-6xl"
           >
-            Make breakthrough discoveries with AI Ready datasets
+            Make breakthrough discoveries with <br />
+            AI-Ready datasets
           </h1>
 
           <p
@@ -125,7 +126,7 @@ if (error.value) {
             v-for="dataset in datasets"
             :key="dataset.id"
             :to="`/datasets/${dataset.id}`"
-            class="h-full rounded-lg border border-blue-300 bg-white px-5 py-3 shadow-sm transition-all hover:border-blue-600 hover:bg-sky-50/50 hover:shadow-lg"
+            class="h-full rounded-lg border border-sky-300 bg-white px-5 py-3 shadow-sm transition-all hover:border-sky-600 hover:bg-sky-50/70 hover:shadow-lg"
           >
             <div
               class="flex h-full w-full flex-col items-start space-y-5 sm:flex-row sm:space-x-5 sm:space-y-0"
