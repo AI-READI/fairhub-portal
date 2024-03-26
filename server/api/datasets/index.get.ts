@@ -19,12 +19,13 @@ export default defineEventHandler(async (_event) => {
 
     const datasetMetadata = dataset.published_metadata as any;
     const datasetFiles = JSON.parse(dataset.files as string);
+    const datasetAdditionalData = JSON.parse(dataset.data as string);
 
     const item: Dataset = {
       id: datasetId,
       title: dataset.title,
       created_at: Number(datasetCreatedAt),
-      data: dataset.data,
+      data: datasetAdditionalData,
       dataset_id: dataset.dataset_id,
       description: dataset.description,
       doi: dataset.doi,
