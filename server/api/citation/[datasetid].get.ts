@@ -42,7 +42,7 @@ export default defineEventHandler(async (event) => {
     config.templates.add(format, csl);
   }
 
-  const cite = new Cite("10.5281/zenodo.10642459");
+  const cite = new Cite("10.60775/fairhub.1");
 
   const requestedCitationFormatText: string = cite.format("bibliography", {
     template: format,
