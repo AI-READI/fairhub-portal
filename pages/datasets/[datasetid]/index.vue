@@ -422,6 +422,11 @@ const generateCombinedFullName = (name: string) => {
               </n-space>
             </n-space>
 
+            <SideDatasetSize
+              :size="dataset?.data.size"
+              :file-count="dataset?.data.fileCount"
+            />
+
             <n-space
               vertical
               class="rounded-xl border border-blue-200 bg-white px-4 pb-5 pt-3"
@@ -463,9 +468,9 @@ const generateCombinedFullName = (name: string) => {
               </n-space>
             </n-space>
 
-            <CitationViewer :id="dataset?.id || ''" />
+            <SideCitationViewer :id="dataset?.id || ''" />
 
-            <VersionSelector :id="dataset?.id || ''" />
+            <SideVersionSelector :id="dataset?.id || ''" />
           </n-space>
         </div>
       </div>
