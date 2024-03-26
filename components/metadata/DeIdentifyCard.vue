@@ -24,8 +24,8 @@ const formattedDeIdentType = getDeIdentType(
 <template>
   <card-collapsible-card
     id="de-identified-levels"
-    title="De-Identified Levels"
-    data-section-title="De-Identified Levels"
+    title="De-Identification Levels"
+    data-section-title="De-Identification Levels"
     class="mb-4 shadow-md"
   >
     <n-space vertical>

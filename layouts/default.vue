@@ -5,12 +5,12 @@ const navCollapsed = ref(false);
 
 const links = [
   {
-    title: "Datasets",
+    title: "Find Datasets",
 
     href: "/",
   },
   {
-    title: "Share a dataset",
+    title: "Share datasets",
 
     href: "/submit",
   },

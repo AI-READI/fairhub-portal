@@ -15,7 +15,7 @@ const tabs = reactive([
     shown: true,
   },
   {
-    label: "Dashboard",
+    label: "Study Dashboard",
     shown: false,
   },
   {
@@ -31,7 +31,7 @@ const tabs = reactive([
     shown: false,
   },
   {
-    label: "Dataset Preview",
+    label: "Dataset Structure Preview",
     shown: false,
   },
 ]);

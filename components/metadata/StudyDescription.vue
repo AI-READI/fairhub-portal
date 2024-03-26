@@ -307,19 +307,6 @@ defineProps({
               class="mt-2"
             >
               <p class="mb-1 w-full border-b font-semibold">
-                Biospecimen Description
-              </p>
-
-              <p>
-                {{ metadata.designModule.bioSpec.bioSpecDescription }}
-              </p>
-            </div>
-
-            <div
-              v-if="metadata.designModule.bioSpec.bioSpecDescription"
-              class="mt-2"
-            >
-              <p class="mb-1 w-full border-b font-semibold">
                 Biospecimens Description
               </p>
 
@@ -560,9 +547,9 @@ defineProps({
         <n-table :bordered="false" :single-line="false">
           <thead>
             <tr>
-              <th>Title</th>
-
               <th>Name</th>
+
+              <th>Title</th>
 
               <th>Affiliation</th>
 
@@ -575,16 +562,16 @@ defineProps({
               <td>
                 {{
                   metadata.sponsorCollaboratorsModule.responsibleParty
-                    .responsiblePartyInvestigatorTitle || "N/A"
+                    .responsiblePartyInvestigatorFirstName
+                    ? `${metadata.sponsorCollaboratorsModule.responsibleParty.responsiblePartyInvestigatorFirstName} ${metadata.sponsorCollaboratorsModule.responsibleParty.responsiblePartyInvestigatorLastName}`
+                    : "N/A"
                 }}
               </td>
 
               <td>
                 {{
                   metadata.sponsorCollaboratorsModule.responsibleParty
-                    .responsiblePartyInvestigatorFirstName
-                    ? `${metadata.sponsorCollaboratorsModule.responsibleParty.responsiblePartyInvestigatorFirstName} ${metadata.sponsorCollaboratorsModule.responsibleParty.responsiblePartyInvestigatorLastName}`
-                    : "N/A"
+                    .responsiblePartyInvestigatorTitle || "N/A"
                 }}
               </td>
 
