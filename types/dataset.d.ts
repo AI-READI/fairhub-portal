@@ -460,6 +460,11 @@ interface Metadata {
   healthsheet: HealthsheetRecords;
 }
 
+interface AdditionalData {
+  size: number;
+  fileCount: number;
+}
+
 interface Dataset {
   id: string;
   study_id: string;
@@ -472,7 +477,7 @@ interface Dataset {
   study_title: string;
   metadata: Metadata;
   files: FolderStructure[];
-  data: any;
+  data: AdditionalData;
   created_at: number;
 }
 
