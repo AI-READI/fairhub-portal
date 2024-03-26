@@ -80,7 +80,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
           "@type": "Organization",
         };
       }
-    },
+    }
   ),
   creator: dataset.value?.metadata.datasetDescription.creator.map((creator) => {
     if (creator.nameType === "Personal") {
@@ -102,7 +102,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   }),
   datePublished: dataset.value?.metadata.datasetDescription.publicationYear, // todo: add the datePublished
   description: dataset.value?.metadata.datasetDescription.description?.find(
-    (value) => value.descriptionType === "Abstract",
+    (value) => value.descriptionType === "Abstract"
   )?.descriptionValue,
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
     (funder) => {
@@ -110,7 +110,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
         name: funder.funderName,
         "@type": "Organization",
       };
-    },
+    }
   ),
   identifier: `https://doi.org/10.34534/${dataset.value?.id}`,
   keywords: dataset.value?.metadata.datasetDescription.subject
@@ -215,7 +215,7 @@ const generateCombinedFullName = (name: string) => {
       <n-image
         src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
         :alt="dataset?.title"
-        class="mb-3 size-32 h-32 w-32 rounded-lg sm:mb-0"
+        class="size-32 mb-3 h-32 w-32 rounded-lg sm:mb-0"
       />
     </div>
 
@@ -379,7 +379,9 @@ const generateCombinedFullName = (name: string) => {
                 <n-space vertical align="center" size="small">
                   <NuxtLink
                     target="_blank"
-                    :to="`https://umami.aireadi.org/share/w56IOiviBTVZOlHu/staging.fairhub.io?url=${encodeURIComponent('/datasets/' + dataset?.id)}`"
+                    :to="`https://umami.aireadi.org/share/w56IOiviBTVZOlHu/staging.fairhub.io?url=${encodeURIComponent(
+                      '/datasets/' + dataset?.id
+                    )}`"
                     class="text-sm font-medium text-sky-500 transition-all hover:text-sky-600"
                   >
                     <n-space size="small" align="center">
@@ -422,6 +424,11 @@ const generateCombinedFullName = (name: string) => {
               </n-space>
             </n-space>
 
+            <SideDatasetSize
+              :size="dataset?.data.size"
+              :file-count="dataset?.data.fileCount"
+            />
+
             <n-space
               vertical
               class="rounded-xl border border-blue-200 bg-white px-4 pb-5 pt-3"
@@ -451,7 +458,7 @@ const generateCombinedFullName = (name: string) => {
                     v-for="(
                       keyword, index
                     ) in dataset?.metadata.datasetDescription.subject?.map(
-                      (subject) => subject.subjectValue,
+                      (subject) => subject.subjectValue
                     )"
                     :key="index"
                     type="info"
@@ -463,9 +470,9 @@ const generateCombinedFullName = (name: string) => {
               </n-space>
             </n-space>
 
-            <CitationViewer :id="dataset?.id || ''" />
+            <SideCitationViewer :id="dataset?.id || ''" />
 
-            <VersionSelector :id="dataset?.id || ''" />
+            <SideVersionSelector :id="dataset?.id || ''" />
           </n-space>
         </div>
       </div>
