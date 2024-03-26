@@ -91,6 +91,14 @@ const formattedDeIdentType = getDeIdentType(
           :active="metadata.datasetDeIdentLevel.deIdentKAnon"
         />
       </p>
+
+      <p class="mb-1 mt-2 w-full border-b font-semibold">
+        De-identification Details
+      </p>
+
+      <p>
+        {{ metadata.datasetDeIdentLevel.deIdentDetails }}
+      </p>
     </n-space>
   </card-collapsible-card>
 </template>
