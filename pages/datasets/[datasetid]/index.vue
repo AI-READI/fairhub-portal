@@ -294,8 +294,6 @@ const generateCombinedFullName = (name: string) => {
 
             <div v-if="tabs[1].shown">Dashboard</div>
 
-            <div v-if="tabs[6].shown">Clinical Data Quality</div>
-
             <div v-if="tabs[2].shown">
               <MetadataHealthSheet
                 :healthsheet="
@@ -372,6 +370,8 @@ const generateCombinedFullName = (name: string) => {
                 />
               </n-space>
             </div>
+
+            <div v-if="tabs[6].shown">Clinical Data Quality</div>
           </TransitionFade>
         </div>
 
