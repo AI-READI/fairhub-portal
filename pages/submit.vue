@@ -42,8 +42,10 @@ const steps = ref([
 
           <div class="mx-auto mt-5 max-w-3xl text-center">
             <p class="text-lg text-gray-600">
-              Are you collecting clinical research data? Make it AI-ready and
-              share it here easily using our study management platform.
+              The FAIRhub study management platform (app.fairhub.io) is designed
+              to help you easily manage your clinicals research data and share
+              it on the FAIRhub data platform (fairhub.io) such that it is FAIR
+              and AI-ready.
             </p>
           </div>
 
@@ -58,7 +60,7 @@ const steps = ref([
                 <template #icon>
                   <Icon name="fluent:arrow-right-24-filled" />
                 </template>
-                Learn more
+                Manage and share datasets
               </n-button>
             </NuxtLink>
           </div>
