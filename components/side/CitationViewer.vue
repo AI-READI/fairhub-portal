@@ -52,7 +52,16 @@ const getCitation = async (format: string = "apa") => {
 
   await $fetch(`/api/citation/${props.id}?format=${format}`)
     .then((data) => {
-      citation.value = data;
+      // Find the `/FAIRHUB.` string and replace it with a lowercase version
+      const formattedText = data.formattedText;
+      const lowercaseFormattedText = formattedText.replace(
+        /\/FAIRHUB\./g,
+        "/fairhub.",
+      );
+
+      citation.value = {
+        formattedText: lowercaseFormattedText,
+      };
     })
     .catch((err) => {
       console.error("Error fetching citation", err);
