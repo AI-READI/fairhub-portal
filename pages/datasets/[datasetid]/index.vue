@@ -34,6 +34,10 @@ const tabs = reactive([
     label: "Dataset Structure Preview",
     shown: false,
   },
+  {
+    label: "Clinical Data Quality",
+    shown: false,
+  },
 ]);
 
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
@@ -80,7 +84,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
           "@type": "Organization",
         };
       }
-    }
+    },
   ),
   creator: dataset.value?.metadata.datasetDescription.creator.map((creator) => {
     if (creator.nameType === "Personal") {
@@ -102,7 +106,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   }),
   datePublished: dataset.value?.metadata.datasetDescription.publicationYear, // todo: add the datePublished
   description: dataset.value?.metadata.datasetDescription.description?.find(
-    (value) => value.descriptionType === "Abstract"
+    (value) => value.descriptionType === "Abstract",
   )?.descriptionValue,
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
     (funder) => {
@@ -110,7 +114,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
         name: funder.funderName,
         "@type": "Organization",
       };
-    }
+    },
   ),
   identifier: `https://doi.org/10.34534/${dataset.value?.id}`,
   keywords: dataset.value?.metadata.datasetDescription.subject
@@ -215,7 +219,7 @@ const generateCombinedFullName = (name: string) => {
       <n-image
         src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
         :alt="dataset?.title"
-        class="size-32 mb-3 h-32 w-32 rounded-lg sm:mb-0"
+        class="mb-3 size-32 h-32 w-32 rounded-lg sm:mb-0"
       />
     </div>
 
@@ -289,6 +293,8 @@ const generateCombinedFullName = (name: string) => {
             </div>
 
             <div v-if="tabs[1].shown">Dashboard</div>
+
+            <div v-if="tabs[6].shown">Clinical Data Quality</div>
 
             <div v-if="tabs[2].shown">
               <MetadataHealthSheet
@@ -380,7 +386,7 @@ const generateCombinedFullName = (name: string) => {
                   <NuxtLink
                     target="_blank"
                     :to="`https://umami.aireadi.org/share/w56IOiviBTVZOlHu/staging.fairhub.io?url=${encodeURIComponent(
-                      '/datasets/' + dataset?.id
+                      '/datasets/' + dataset?.id,
                     )}`"
                     class="text-sm font-medium text-sky-500 transition-all hover:text-sky-600"
                   >
@@ -458,7 +464,7 @@ const generateCombinedFullName = (name: string) => {
                     v-for="(
                       keyword, index
                     ) in dataset?.metadata.datasetDescription.subject?.map(
-                      (subject) => subject.subjectValue
+                      (subject) => subject.subjectValue,
                     )"
                     :key="index"
                     type="info"
