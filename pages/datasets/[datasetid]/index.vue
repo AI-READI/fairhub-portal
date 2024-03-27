@@ -280,7 +280,7 @@ const generateCombinedFullName = (name: string) => {
         </n-tab>
       </n-tabs>
 
-      <div class="px-5 py-5 lg:grid lg:grid-cols-12 lg:gap-10">
+      <div class="flex flex-col gap-10 px-5 py-5 lg:grid lg:grid-cols-12">
         <div class="col-span-8">
           <TransitionFade>
             <div v-if="tabs[0].shown">
