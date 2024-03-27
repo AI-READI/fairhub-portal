@@ -18,8 +18,8 @@ export default defineEventHandler(async (_event) => {
     const datasetCreatedAt: bigint = BigInt(dataset.created_at);
 
     const datasetMetadata = dataset.published_metadata as any;
-    const datasetFiles = JSON.parse(dataset.files as string);
-    const datasetAdditionalData = JSON.parse(dataset.data as string);
+    const datasetFiles = dataset.files as any;
+    const datasetAdditionalData = dataset.data as any;
 
     const item: Dataset = {
       id: datasetId,

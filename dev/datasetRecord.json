@@ -1,11 +1,14 @@
 {
-  "identifier": 1,
-  "title": "Flagship Dataset of Type 2 Diabetes from the AI-READI Project",
-  "createdAt": 1701351828,
-  "description": "The AI-READI project seeks to create and share a flagship ethically-sourced dataset of type 2 diabetes",
-  "updatedOn": 1701351828,
+  "id": "1                                   ",
+  "study_id": "f5d4172f-b0fb-48c8-b545-0192d812b329",
+  "dataset_id": "d894862f-0795-4ba6-b40b-fae14eb77813",
+  "version_id": "f74d3683-3cc0-4cff-ba1d-031e63630182",
   "doi": "10.60775/fairhub.1",
-  "metadata": {
+  "title": "Flagship Dataset of Type 2 Diabetes from the AI-READI Project",
+  "description": "The AI-READI project seeks to create and share a flagship ethically-sourced dataset of type 2 diabetes",
+  "version_title": "1.0",
+  "study_title": "AI Ready and Equitable Atlas for Diabetes Insights",
+  "published_metadata": {
     "study_description": {
       "identificationModule": {
         "officialTitle": "AI Ready and Equitable Atlas for Diabetes Insights",
@@ -325,7 +328,9 @@
             },
             "overallOfficialRole": "Study Principal Investigator"
           },
-          { "$comment": "Add all PIs here" }
+          {
+            "$comment": "Add all PIs here"
+          }
         ],
         "locationList": [
           {
@@ -559,8 +564,12 @@
           "directoryType": "data type",
           "directoryDescription": "This directory contains data collected through an wearable fitness tracker.",
           "relatedTerm": [
-            { "relatedTermValue": "smartwatch" },
-            { "relatedTermValue": "activity monitoring" }
+            {
+              "relatedTermValue": "smartwatch"
+            },
+            {
+              "relatedTermValue": "activity monitoring"
+            }
           ],
           "relatedStandard": [
             {
@@ -922,9 +931,6 @@
       ]
     }
   },
-  "study": {
-    "title": "AI Ready and Equitable Atlas for Diabetes Insights"
-  },
   "files": [
     {
       "children": [],
@@ -990,32 +996,9 @@
       "label": "study_description.json"
     }
   ],
-  "fairhub": {
-    "dataset": {
-      "id": "adf1bc3a-f124-44a3-8edb-a3a5f17f3e87"
-    },
-    "study": {
-      "id": "c85943cf-8897-4c43-a1df-b8023f11927d",
-      "title": "AI Ready and Equitable Atlas for Diabetes Insights"
-    },
-    "version": {
-      "id": "7022aff7-dedb-4092-8313-31ca46d8c3cc",
-      "title": "1.0"
-    }
+  "data": {
+    "size": 32434,
+    "fileCount": 234234
   },
-  "keywords": ["Diabetes", "Artificial Intelligence", "Eye Imaging"],
-  "creators": [
-    {
-      "familyName": "Fushiguro",
-      "givenName": "Megumi"
-    },
-    {
-      "familyName": "Gojo",
-      "givenName": "Satoru"
-    },
-    {
-      "familyName": "Geto",
-      "givenName": "Suguru"
-    }
-  ]
+  "created_at": "1710279780"
 }
