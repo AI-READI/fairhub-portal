@@ -90,6 +90,12 @@ const formattedConsentType = getConsentType(
           :active="metadata.datasetConsent.consentNoMethods"
         />
       </p>
+
+      <p class="mb-1 mt-2 w-full border-b font-semibold">Consent Details</p>
+
+      <p>
+        {{ metadata.datasetConsent.consentsDetails }}
+      </p>
     </n-space>
   </card-collapsible-card>
 </template>

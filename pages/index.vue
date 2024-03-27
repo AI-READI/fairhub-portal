@@ -38,15 +38,14 @@ if (error.value) {
           <h1
             class="mb-3 max-w-2xl bg-gradient-to-tl from-sky-400 via-teal-300 to-yellow-400 bg-clip-text py-1 text-center text-3xl font-extrabold leading-none tracking-tight text-transparent md:text-4xl lg:text-left xl:text-6xl"
           >
-            Make breakthrough discoveries with <br />
-            AI-Ready datasets
+            Make breakthrough discoveries with AI-ready datasets
           </h1>
 
           <p
             class="mb-2 max-w-2xl text-center text-2xl font-normal text-gray-800 lg:text-left"
           >
-            Find and reuse FAIR, AI-ready datasets shared through the FAIRhub
-            data management and curation platform.
+            Conveniently find and access FAIR, AI-ready clinical research
+            datasets.
           </p>
 
           <n-divider class="hidden" />
@@ -75,7 +74,7 @@ if (error.value) {
     <n-divider />
 
     <section>
-      <div class="mb-16 flex h-36 items-center">
+      <div class="mb-4 flex h-36 items-center">
         <div
           class="mx-auto flex w-full max-w-screen-xl items-center justify-between px-2"
         >
@@ -84,42 +83,42 @@ if (error.value) {
 
             <p>View FAIR, AI-ready datasets.</p>
 
-            <div
-              class="flex w-full flex-col items-center space-y-2 pt-4 sm:flex-row sm:space-x-5 sm:space-y-0"
-            >
-              <n-input
-                size="large"
-                placeholder="Diabetes Salutogenesis"
-                class=""
-              >
-                <template #prefix>
-                  <Icon
-                    name="lets-icons:chat-search-fill"
-                    size="25"
-                    class="opacity-90"
-                  />
-                </template>
-              </n-input>
+            <!--            <div-->
+            <!--              class="flex w-full flex-col items-center space-y-2 pt-4 sm:flex-row sm:space-x-5 sm:space-y-0"-->
+            <!--            >-->
+            <!--              <n-input-->
+            <!--                size="large"-->
+            <!--                placeholder="Diabetes Salutogenesis"-->
+            <!--                class=""-->
+            <!--              >-->
+            <!--                <template #prefix>-->
+            <!--                  <Icon-->
+            <!--                    name="lets-icons:chat-search-fill"-->
+            <!--                    size="25"-->
+            <!--                    class="opacity-90"-->
+            <!--                  />-->
+            <!--                </template>-->
+            <!--              </n-input>-->
 
-              <n-button
-                type="primary"
-                secondary
-                size="large"
-                icon-placement="right"
-                class="w-3/5 sm:w-auto"
-              >
-                <template #icon>
-                  <Icon name="mingcute:arrow-right-fill" size="25" />
-                </template>
-                Search
-              </n-button>
-            </div>
+            <!--              <n-button-->
+            <!--                type="primary"-->
+            <!--                secondary-->
+            <!--                size="large"-->
+            <!--                icon-placement="right"-->
+            <!--                class="w-3/5 sm:w-auto"-->
+            <!--              >-->
+            <!--                <template #icon>-->
+            <!--                  <Icon name="mingcute:arrow-right-fill" size="25" />-->
+            <!--                </template>-->
+            <!--                Search-->
+            <!--              </n-button>-->
+            <!--            </div>-->
           </n-space>
         </div>
       </div>
 
       <div
-        class="mx-auto flex h-full w-full max-w-screen-xl flex-col px-3 py-5"
+        class="mx-auto flex h-full w-full max-w-screen-xl flex-col px-3 pb-5"
       >
         <div class="flex flex-col space-y-6">
           <NuxtLink
@@ -201,14 +200,14 @@ if (error.value) {
             <h1
               class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text text-4xl font-bold text-transparent md:text-5xl lg:text-6xl"
             >
-              Submit your own datasets
+              Share your own datasets
             </h1>
           </div>
 
           <div class="relative mx-auto mt-5 max-w-3xl text-center">
             <p class="text-lg text-gray-600">
-              Our study management platform is designed to be easy to use and to
-              help you to make your data FAIR and AI ready.
+              Are you collecting clinical research data? Make it AI-ready and
+              share it here easily using our study management platform.
             </p>
           </div>
 
@@ -223,7 +222,7 @@ if (error.value) {
                 <template #icon>
                   <Icon name="fluent:arrow-right-24-filled" />
                 </template>
-                Submit a Dataset
+                Learn more
               </n-button>
             </NuxtLink>
           </div>

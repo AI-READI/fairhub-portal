@@ -36,14 +36,16 @@ const steps = ref([
             <h1
               class="block bg-gradient-to-tl from-blue-400 to-emerald-400 bg-clip-text text-4xl font-bold text-transparent md:text-5xl lg:text-6xl"
             >
-              Submit your own datasets
+              Share your own datasets
             </h1>
           </div>
 
           <div class="mx-auto mt-5 max-w-3xl text-center">
             <p class="text-lg text-gray-600">
-              Our study management platform is designed to be easy to use and to
-              help you to make your data FAIR and AI ready.
+              The FAIRhub study management platform (app.fairhub.io) is designed
+              to help you easily manage your clinicals research data and share
+              it on the FAIRhub data platform (fairhub.io) such that it is FAIR
+              and AI-ready.
             </p>
           </div>
 
@@ -58,7 +60,7 @@ const steps = ref([
                 <template #icon>
                   <Icon name="fluent:arrow-right-24-filled" />
                 </template>
-                Submit a Dataset
+                Manage and share datasets
               </n-button>
             </NuxtLink>
           </div>

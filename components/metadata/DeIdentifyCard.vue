@@ -24,8 +24,8 @@ const formattedDeIdentType = getDeIdentType(
 <template>
   <card-collapsible-card
     id="de-identified-levels"
-    title="De-Identified Levels"
-    data-section-title="De-Identified Levels"
+    title="De-Identification Levels"
+    data-section-title="De-Identification Levels"
     class="mb-4 shadow-md"
   >
     <n-space vertical>
@@ -90,6 +90,14 @@ const formattedDeIdentType = getDeIdentType(
           disabled
           :active="metadata.datasetDeIdentLevel.deIdentKAnon"
         />
+      </p>
+
+      <p class="mb-1 mt-2 w-full border-b font-semibold">
+        De-identification Details
+      </p>
+
+      <p>
+        {{ metadata.datasetDeIdentLevel.deIdentDetails }}
       </p>
     </n-space>
   </card-collapsible-card>
