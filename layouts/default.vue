@@ -15,6 +15,11 @@ const links = [
     href: "/submit",
   },
   {
+    title: "About",
+
+    href: "/about",
+  },
+  {
     title: "Documentation",
 
     href: "https://docs.fairhub.io",
