@@ -66,7 +66,7 @@ if (error.value) {
         </div>
 
         <div class="relative flex justify-center lg:col-span-4 lg:mt-0 lg:flex">
-          <img src="/images/hero/research.webp" alt="mockup" />
+          <img src="/images/hero/research.png" alt="mockup" />
         </div>
       </div>
     </section>

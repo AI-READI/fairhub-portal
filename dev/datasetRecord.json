@@ -558,999 +558,995 @@
       "format": ["image/DICOM", "text/markdown", "table/csv"]
     },
     "dataset_structure_description": {
-    "schema": "https://schema.aireadi.org/files/v0.1.0/dataset_structure_description.json",
-    "directoryList": [
-      {
-        "directoryName": "cardiac_ecg",
-        "directoryType": "dataType",
-        "directoryDescription": "This directory contains electrocardiogram data.",
-        "relatedIdentifier": [
-          {
-            "relatedIdentifierValue": "https://docs.aireadi.org",
-            "relatedIdentifierType": "URL",
-            "relationType": "IsDocumentedBy",
-            "resourceTypeGeneral": "Other"
-          }
-        ],
-        "relatedTerm": [
-          {
-            "relatedTermValue": "Electrocardiogram",
-            "relatedTermIdentifier": [
-              {
-                "relatedTermClassificationCode": "C168186",
-                "relatedTermScheme": "NCI Thesaurus (NCIT)",
-                "relatedTermSchemeURI": "https://ncim.nci.nih.gov/",
-                "relatedTermValueURI": "https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI%20Thesaurus&code=C168186"
-              }
-            ]
-          },
-          {
-            "relatedTermValue": "Electrocardiography",
-            "relatedTermIdentifier": [
-              {
-                "relatedTermClassificationCode": "D004562",
-                "relatedTermScheme": "Medical Subject Headings (MeSH)",
-                "relatedTermSchemeURI": "https://meshb.nlm.nih.gov/",
-                "relatedTermValueURI": "https://meshb.nlm.nih.gov/record/ui?ui=D004562"
-              }
-            ]
-          }
-        ],
-        "relatedStandard": [
-          {
-            "standardName": "Clinical Data Structure (CDS) v0.1.0",
-            "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
-            "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          },
-          {
-            "standardName": "WaveForm DataBase (WFDB)",
-            "standardDescription": "Set of file standards designed for reading and storing physiologic signal data, and associated annotations.",
-            "standardUse": "All the data files within this directory follow the format specified in this standard.",
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://wfdb.readthedocs.io/en/latest/wfdb.html",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          }
-        ],
-        "directoryList": [
-          {
-            "directoryName": "ecg_12lead",
-            "directoryType": "modality",
-            "directoryDescription": "[Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder]",
-            "directoryList": [
-              {
-                "directoryName": "philips_tc30",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              }
-            ]
-          }
-        ],
-        "metadataFileList": [
-          {
-            "metadataFileName": "manifest.tsv",
-            "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS) v0.1.0",
-            "relatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDocumentedBy",
-                "resourceTypeGeneral": "Other"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "directoryName": "clinical_data",
-        "directoryType": "dataType",
-        "directoryDescription": "This directory contains clinical data collected through REDCap. Each CSV file in this directory is a one-to-one mapping to the OMOP CDM tables.",
-        "relatedIdentifier": [
-          {
-            "relatedIdentifierValue": "https://docs.aireadi.org",
-            "relatedIdentifierType": "URL",
-            "relationType": "IsDocumentedBy",
-            "resourceTypeGeneral": "Other"
-          }
-        ],
-        "relatedTerm": [
-          {
-            "relatedTermValue": "Clinical Data",
-            "relatedTermIdentifier": [
-              {
-                "relatedTermClassificationCode": "C15783",
-                "relatedTermScheme": "NCI Thesaurus (NCIT)",
-                "relatedTermSchemeURI": "https://ncim.nci.nih.gov/",
-                "relatedTermValueURI": "https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI%20Thesaurus&code=C15783"
-              }
-            ]
-          }
-        ],
-        "relatedStandard": [
-          {
-            "standardName": "Clinical Data Structure (CDS) v0.1.0",
-            "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
-            "standardUse": "This directory is named following the specification of this standard.",
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          },
-          {
-            "standardName": "The Observational Medical Outcomes Partnership (OMOP) Common Data Model (CDM)",
-            "standardDescription": "Standard designed to standardize the structure and content of observational data and to enable efficient analyses that can produce reliable evidence.",
-            "standardUse": "All the data files within this directory follow this standard.",
-            "standardIdentifier": [
-              {
-                "identifierValue": "https://doi.org/10.25504/FAIRsharing.qk984b",
-                "identifierType": "DOI"
-              }
-            ],
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://ohdsi.github.io/TheBookOfOhdsi/CommonDataModel.html",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "directoryName": "environment",
-        "directoryType": "dataType",
-        "directoryDescription": "This directory contains data collected through an environmental sensor device custom built for the AI-READI project.",
-        "relatedIdentifier": [
-          {
-            "relatedIdentifierValue": "https://docs.aireadi.org",
-            "relatedIdentifierType": "URL",
-            "relationType": "IsDocumentedBy",
-            "resourceTypeGeneral": "Other"
-          }
-        ],
-        "relatedTerm": [
-          {
-            "relatedTermValue": "Environmental sensor data"
-          }
-        ],
-        "relatedStandard": [
-          {
-            "standardName": "Clinical Data Structure (CDS) v0.1.0",
-            "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
-            "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          },
-          {
-            "standardName": "ASCII File Format Guidelines for Earth Science Data",
-            "standardDescription": "NASA recommended practices for formatting and describing ASCII encoded data files",
-            "standardUse": "All the data files within this directory follow the format specified in this standard.",
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://www.earthdata.nasa.gov/esdis/esco/standards-and-practices/ascii-file-format-guidelines-for-earth-science-data",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          }
-        ],
-        "directoryList": [
-          {
-            "directoryName": "environmental_sensor_variables",
-            "directoryType": "modality",
-            "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
-            "directoryList": [
-              {
-                "directoryName": "leelab_anura",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              }
-            ]
-          }
-        ],
-        "metadataFileList": [
-          {
-            "metadataFileName": "manifest.tsv",
-            "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
-            "relatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDocumentedBy",
-                "resourceTypeGeneral": "Other"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "directoryName": "retinal_flio",
-        "directoryType": "dataType",
-        "directoryDescription": "This directory contains data collected through fluorescence lifetime imaging ophthalmoscopy (FLIO), an imaging modality for in vivo measurement of lifetimes of endogenous retinal fluorophores.",
-        "relatedIdentifier": [
-          {
-            "relatedIdentifierValue": "https://docs.aireadi.org",
-            "relatedIdentifierType": "URL",
-            "relationType": "IsDocumentedBy",
-            "resourceTypeGeneral": "Other"
-          }
-        ],
-        "relatedTerm": [
-          {
-            "relatedTermValue": "Fuorescence Lifetime Imaging Ophthalmoscopy"
-          }
-        ],
-        "relatedStandard": [
-          {
-            "standardName": "Clinical Data Structure (CDS) v0.1.0",
-            "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
-            "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          },
-          {
-            "standardName": "Digital Imaging and Communications in Medicine (DICOM)",
-            "standardDescription": "Standard for the digital storage and transmission of medical images and related information.",
-            "standardUse": "All the data files within this directory follow the format specified in this standard.",
-            "standardIdentifier": [
-              {
-                "identifierValue": "https://doi.org/10.25504/FAIRsharing.b7z8by",
-                "identifierType": "DOI"
-              }
-            ],
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "http://medical.nema.org/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          }
-        ],
-        "directoryList": [
-          {
-            "directoryName": "flio",
-            "directoryType": "modality",
-            "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
-            "directoryList": [
-              {
-                "directoryName": "heidelberg_flio",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              }
-            ]
-          }
-        ],
-        "metadataFileList": [
-          {
-            "metadataFileName": "manifest.tsv",
-            "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
-            "relatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDocumentedBy",
-                "resourceTypeGeneral": "Other"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "directoryName": "retinal_oct",
-        "directoryType": "dataType",
-        "directoryDescription": "This directory contains data collected using optical coherence tomography (OCT), an imaging method using lasers that is used for mapping subsurface structure.",
-        "relatedIdentifier": [
-          {
-            "relatedIdentifierValue": "https://docs.aireadi.org",
-            "relatedIdentifierType": "URL",
-            "relationType": "IsDocumentedBy",
-            "resourceTypeGeneral": "Other"
-          }
-        ],
-        "relatedTerm": [
-          {
-            "relatedTermValue": "Optical Coherence Tomography",
-            "relatedTermIdentifier": [
-              {
-                "relatedTermClassificationCode": "C20828",
-                "relatedTermScheme": "NCI Thesaurus (NCIT)",
-                "relatedTermSchemeURI": "https://ncim.nci.nih.gov/",
-                "relatedTermValueURI": "https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI%20Thesaurus&code=C20828"
-              }
-            ]
-          },
-          {
-            "relatedTermValue": "Tomography, Optical Coherence",
-            "relatedTermIdentifier": [
-              {
-                "relatedTermClassificationCode": "D041623",
-                "relatedTermScheme": "Medical Subject Headings (MeSH)",
-                "relatedTermSchemeURI": "https://meshb.nlm.nih.gov/",
-                "relatedTermValueURI": "https://meshb.nlm.nih.gov/record/ui?ui=D041623"
-              }
-            ]
-          }
-        ],
-        "relatedStandard": [
-          {
-            "standardName": "Clinical Data Structure (CDS) v0.1.0",
-            "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
-            "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          },
-          {
-            "standardName": "Digital Imaging and Communications in Medicine (DICOM)",
-            "standardDescription": "Standard for the digital storage and transmission of medical images and related information.",
-            "standardUse": "All the data files within this directory follow the format specified in this standard.",
-            "standardIdentifier": [
-              {
-                "identifierValue": "https://doi.org/10.25504/FAIRsharing.b7z8by",
-                "identifierType": "DOI"
-              }
-            ],
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "http://medical.nema.org/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          }
-        ],
-        "directoryList": [
-          {
-            "directoryName": "structural_oct",
-            "directoryType": "modality",
-            "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
-            "directoryList": [
-              {
-                "directoryName": "heidelberg_spectralis",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              },
-              {
-                "directoryName": "topcon_maestro2",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              },
-              {
-                "directoryName": "topcon_triton",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              }
-            ]
-          }
-        ],
-        "metadataFileList": [
-          {
-            "metadataFileName": "manifest.tsv",
-            "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
-            "relatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDocumentedBy",
-                "resourceTypeGeneral": "Other"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "directoryName": "retinal_octa",
-        "directoryType": "dataType",
-        "directoryDescription": "This directory contains data collected using optical coherence tomography angiography (OCTA), a non-invasive imaging technique that generates volumetric angiography images.",
-        "relatedIdentifier": [
-          {
-            "relatedIdentifierValue": "https://docs.aireadi.org",
-            "relatedIdentifierType": "URL",
-            "relationType": "IsDocumentedBy",
-            "resourceTypeGeneral": "Other"
-          }
-        ],
-        "relatedTerm": [
-          {
-            "relatedTermValue": "Optical Coherence Tomography Angiography"
-          },
-          {
-            "relatedTermValue": "Optical Coherence Tomography Angiography Images"
-          },
-          {
-            "relatedTermValue": "OCTA Images"
-          }
-        ],
-        "relatedStandard": [
-          {
-            "standardName": "Clinical Data Structure (CDS) v0.1.0",
-            "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
-            "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          },
-          {
-            "standardName": "Digital Imaging and Communications in Medicine (DICOM)",
-            "standardDescription": "Standard for the digital storage and transmission of medical images and related information.",
-            "standardUse": "All the data files within this directory follow the format specified in this standard.",
-            "standardIdentifier": [
-              {
-                "identifierValue": "https://doi.org/10.25504/FAIRsharing.b7z8by",
-                "identifierType": "DOI"
-              }
-            ],
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "http://medical.nema.org/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          }
-        ],
-        "directoryList": [
-          {
-            "directoryName": "enface",
-            "directoryType": "modality",
-            "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
-            "directoryList": [
-              {
-                "directoryName": "topcon_maestro2",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              },
-              {
-                "directoryName": "topcon_triton",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              }
-            ]
-          },
-          {
-            "directoryName": "flow_cube",
-            "directoryType": "modality",
-            "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
-            "directoryList": [
-              {
-                "directoryName": "topcon_maestro2",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              },
-              {
-                "directoryName": "topcon_triton",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              }
-            ]
-          },
-          {
-            "directoryName": "segmentation",
-            "directoryType": "modality",
-            "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
-            "directoryList": [
-              {
-                "directoryName": "topcon_maestro2",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              },
-              {
-                "directoryName": "topcon_triton",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              }
-            ]
-          }
-        ],
-        "metadataFileList": [
-          {
-            "metadataFileName": "manifest.tsv",
-            "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
-            "relatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDocumentedBy",
-                "resourceTypeGeneral": "Other"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "directoryName": "retinal_photography",
-        "directoryType": "dataType",
-        "directoryDescription": "This directory contains data collected using a fundus camera to record color images of the condition of the interior surface of the eye.",
-        "relatedIdentifier": [
-          {
-            "relatedIdentifierValue": "https://docs.aireadi.org",
-            "relatedIdentifierType": "URL",
-            "relationType": "IsDocumentedBy",
-            "resourceTypeGeneral": "Other"
-          }
-        ],
-        "relatedTerm": [
-          {
-            "relatedTermValue": "Eye Fundus Photography",
-            "relatedTermIdentifier": [
-              {
-                "relatedTermClassificationCode": "C147467",
-                "relatedTermScheme": "NCI Thesaurus (NCIT)",
-                "relatedTermSchemeURI": "https://ncim.nci.nih.gov/",
-                "relatedTermValueURI": "https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI%20Thesaurus&code=C147467"
-              }
-            ]
-          }
-        ],
-        "relatedStandard": [
-          {
-            "standardName": "Clinical Data Structure (CDS) v0.1.0",
-            "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
-            "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          },
-          {
-            "standardName": "Digital Imaging and Communications in Medicine (DICOM)",
-            "standardDescription": "Standard for the digital storage and transmission of medical images and related information.",
-            "standardUse": "All the data files within this directory follow the format specified in this standard.",
-            "standardIdentifier": [
-              {
-                "identifierValue": "https://doi.org/10.25504/FAIRsharing.b7z8by",
-                "identifierType": "DOI"
-              }
-            ],
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "http://medical.nema.org/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          }
-        ],
-        "directoryList": [
-          {
-            "directoryName": "cfp",
-            "directoryType": "modality",
-            "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
-            "directoryList": [
-              {
-                "directoryName": "icare_eidon",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              },
-              {
-                "directoryName": "optomed_aurora",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              },
-              {
-                "directoryName": "topcon_maestro2",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              },
-              {
-                "directoryName": "/topcon_triton",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              }
-            ]
-          },
-          {
-            "directoryName": "faf",
-            "directoryType": "modality",
-            "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
-            "directoryList": [
-              {
-                "directoryName": "icare_eidon",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              }
-            ]
-          },
-          {
-            "directoryName": "ir",
-            "directoryType": "modality",
-            "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
-            "directoryList": [
-              {
-                "directoryName": "heidelberg_spectralis",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              },
-              {
-                "directoryName": "icare_eidon",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              },
-              {
-                "directoryName": "topcon_maestro2",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              }
-            ]
-          }
-        ],
-        "metadataFileList": [
-          {
-            "metadataFileName": "manifest.tsv",
-            "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
-            "relatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDocumentedBy",
-                "resourceTypeGeneral": "Other"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "directoryName": "wearable_activity_monitor",
-        "directoryType": "dataType",
-        "directoryDescription": "This directory contains data collected through a wearable fitness tracker.",
-        "relatedIdentifier": [
-          {
-            "relatedIdentifierValue": "https://docs.aireadi.org",
-            "relatedIdentifierType": "URL",
-            "relationType": "IsDocumentedBy",
-            "resourceTypeGeneral": "Other"
-          }
-        ],
-        "relatedTerm": [
-          {
-            "relatedTermValue": "smartwatch"
-          },
-          {
-            "relatedTermValue": "activity monitoring"
-          }
-        ],
-        "relatedStandard": [
-          {
-            "standardName": "Clinical Data Structure (CDS) v0.1.0",
-            "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
-            "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          },
-          {
-            "standardName": "Open mHealth",
-            "standardDescription": "Leading mobile health data interoperability standard.",
-            "standardUse": "All the data files within this directory follow the format specified in this standard",
-            "standardIdentifier": [
-              {
-                "identifierValue": "https://doi.org/10.25504/FAIRsharing.mrpMBj",
-                "identifierType": "DOI"
-              }
-            ],
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://www.openmhealth.org/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          }
-        ],
-        "directoryList": [
-          {
-            "directoryName": "heart_rate",
-            "directoryType": "modality",
-            "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
-            "directoryList": [
-              {
-                "directoryName": "garmin_vivosmart5",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              }
-            ]
-          },
-          {
-            "directoryName": "oxygen_saturation",
-            "directoryType": "modality",
-            "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
-            "directoryList": [
-              {
-                "directoryName": "garmin_vivosmart5",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              }
-            ]
-          },
-          {
-            "directoryName": "physical_activity",
-            "directoryType": "modality",
-            "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
-            "directoryList": [
-              {
-                "directoryName": "garmin_vivosmart5",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              }
-            ]
-          },
-          {
-            "directoryName": "respiratory_rate",
-            "directoryType": "modality",
-            "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
-            "directoryList": [
-              {
-                "directoryName": "garmin_vivosmart5",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              }
-            ]
-          },
-          {
-            "directoryName": "sleep",
-            "directoryType": "modality",
-            "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
-            "directoryList": [
-              {
-                "directoryName": "garmin_vivosmart5",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              }
-            ]
-          },
-          {
-            "directoryName": "stress",
-            "directoryType": "modality",
-            "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
-            "directoryList": [
-              {
-                "directoryName": "garmin_vivosmart5",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              }
-            ]
-          }
-        ],
-        "metadataFileList": [
-          {
-            "metadataFileName": "manifest.tsv",
-            "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
-            "relatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDocumentedBy",
-                "resourceTypeGeneral": "Other"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "directoryName": "wearable_blood_glucose",
-        "directoryType": "dataType",
-        "directoryDescription": "This directory contains data collected through a continuous glucose monitoring (CGM) device.",
-        "relatedIdentifier": [
-          {
-            "relatedIdentifierValue": "https://docs.aireadi.org",
-            "relatedIdentifierType": "URL",
-            "relationType": "IsDocumentedBy",
-            "resourceTypeGeneral": "Other"
-          }
-        ],
-        "relatedTerm": [
-          {
-            "relatedTermValue": "Continuous Glucose Monitoring System",
-            "relatedTermIdentifier": [
-              {
-                "relatedTermClassificationCode": "C159776",
-                "relatedTermScheme": "NCI Thesaurus (NCIT)",
-                "relatedTermSchemeURI": "https://ncim.nci.nih.gov/",
-                "relatedTermValueURI": "https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI%20Thesaurus&code=C159776"
-              }
-            ]
-          }
-        ],
-        "relatedStandard": [
-          {
-            "standardName": "Clinical Data Structure (CDS) v0.1.0",
-            "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
-            "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          },
-          {
-            "standardName": "Open mHealth",
-            "standardDescription": "Leading mobile health data interoperability standard.",
-            "standardUse": "All the data files within this directory follow the format specified in this standard",
-            "standardIdentifier": [
-              {
-                "identifierValue": "https://doi.org/10.25504/FAIRsharing.mrpMBj",
-                "identifierType": "DOI"
-              }
-            ],
-            "standardRelatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://www.openmhealth.org/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDescribedBy"
-              }
-            ]
-          }
-        ],
-        "directoryList": [
-          {
-            "directoryName": "continuous_glucose_monitoring",
-            "directoryType": "modality",
-            "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
-            "directoryList": [
-              {
-                "directoryName": "dexcom_g6",
-                "directoryType": "device",
-                "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
-              }
-            ]
-          }
-        ],
-        "metadataFileList": [
-          {
-            "metadataFileName": "manifest.tsv",
-            "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
-            "relatedIdentifier": [
-              {
-                "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-                "relatedIdentifierType": "URL",
-                "relationType": "IsDocumentedBy",
-                "resourceTypeGeneral": "Other"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "metadataFileList": [
-      {
-        "metadataFileName": "CHANGELOG.md",
-        "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
-        "relatedIdentifier": [
-          {
-            "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-            "relatedIdentifierType": "URL",
-            "relationType": "IsDocumentedBy",
-            "resourceTypeGeneral": "Other"
-          }
-        ]
-      },
-      {
-        "metadataFileName": "dataset_description.json",
-        "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
-        "relatedIdentifier": [
-          {
-            "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-            "relatedIdentifierType": "URL",
-            "relationType": "IsDocumentedBy",
-            "resourceTypeGeneral": "Other"
-          }
-        ]
-      },
-      {
-        "metadataFileName": "dataset_structure_description.json",
-        "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
-        "relatedIdentifier": [
-          {
-            "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-            "relatedIdentifierType": "URL",
-            "relationType": "IsDocumentedBy",
-            "resourceTypeGeneral": "Other"
-          }
-        ]
-      },
-      {
-        "metadataFileName": "healthsheet.md",
-        "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
-        "relatedIdentifier": [
-          {
-            "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-            "relatedIdentifierType": "URL",
-            "relationType": "IsDocumentedBy",
-            "resourceTypeGeneral": "Other"
-          }
-        ]
-      },
-      {
-        "metadataFileName": "LICENSE.txt",
-        "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
-        "relatedIdentifier": [
-          {
-            "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-            "relatedIdentifierType": "URL",
-            "relationType": "IsDocumentedBy",
-            "resourceTypeGeneral": "Other"
-          }
-        ]
-      },
-      {
-        "metadataFileName": "participants.json",
-        "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
-        "relatedIdentifier": [
-          {
-            "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-            "relatedIdentifierType": "URL",
-            "relationType": "IsDocumentedBy",
-            "resourceTypeGeneral": "Other"
-          }
-        ]
-      },
-      {
-        "metadataFileName": "README.md",
-        "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
-        "relatedIdentifier": [
-          {
-            "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-            "relatedIdentifierType": "URL",
-            "relationType": "IsDocumentedBy",
-            "resourceTypeGeneral": "Other"
-          }
-        ]
-      },
-      {
-        "metadataFileName": "study_description.json",
-        "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
-        "relatedIdentifier": [
-          {
-            "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
-            "relatedIdentifierType": "URL",
-            "relationType": "IsDocumentedBy",
-            "resourceTypeGeneral": "Other"
-          }
-        ]
-      }
-    ]
-  },
+      "schema": "https://schema.aireadi.org/files/v0.1.0/dataset_structure_description.json",
+      "directoryList": [
+        {
+          "directoryName": "cardiac_ecg",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains electrocardiogram data.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            {
+              "relatedTermValue": "Electrocardiogram",
+              "relatedTermIdentifier": [
+                {
+                  "relatedTermClassificationCode": "C168186",
+                  "relatedTermScheme": "NCI Thesaurus (NCIT)",
+                  "relatedTermSchemeURI": "https://ncim.nci.nih.gov/",
+                  "relatedTermValueURI": "https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI%20Thesaurus&code=C168186"
+                }
+              ]
+            },
+            {
+              "relatedTermValue": "Electrocardiography",
+              "relatedTermIdentifier": [
+                {
+                  "relatedTermClassificationCode": "D004562",
+                  "relatedTermScheme": "Medical Subject Headings (MeSH)",
+                  "relatedTermSchemeURI": "https://meshb.nlm.nih.gov/",
+                  "relatedTermValueURI": "https://meshb.nlm.nih.gov/record/ui?ui=D004562"
+                }
+              ]
+            }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "WaveForm DataBase (WFDB)",
+              "standardDescription": "Set of file standards designed for reading and storing physiologic signal data, and associated annotations.",
+              "standardUse": "All the data files within this directory follow the format specified in this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://wfdb.readthedocs.io/en/latest/wfdb.html",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ],
+          "directoryList": [
+            {
+              "directoryName": "ecg_12lead",
+              "directoryType": "modality",
+              "directoryDescription": "[Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder]",
+              "directoryList": [
+                {
+                  "directoryName": "philips_tc30",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            }
+          ],
+          "metadataFileList": [
+            {
+              "metadataFileName": "manifest.tsv",
+              "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS) v0.1.0",
+              "relatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDocumentedBy",
+                  "resourceTypeGeneral": "Other"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "directoryName": "clinical_data",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains clinical data collected through REDCap. Each CSV file in this directory is a one-to-one mapping to the OMOP CDM tables.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            {
+              "relatedTermValue": "Clinical Data",
+              "relatedTermIdentifier": [
+                {
+                  "relatedTermClassificationCode": "C15783",
+                  "relatedTermScheme": "NCI Thesaurus (NCIT)",
+                  "relatedTermSchemeURI": "https://ncim.nci.nih.gov/",
+                  "relatedTermValueURI": "https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI%20Thesaurus&code=C15783"
+                }
+              ]
+            }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory is named following the specification of this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "The Observational Medical Outcomes Partnership (OMOP) Common Data Model (CDM)",
+              "standardDescription": "Standard designed to standardize the structure and content of observational data and to enable efficient analyses that can produce reliable evidence.",
+              "standardUse": "All the data files within this directory follow this standard.",
+              "standardIdentifier": [
+                {
+                  "identifierValue": "https://doi.org/10.25504/FAIRsharing.qk984b",
+                  "identifierType": "DOI"
+                }
+              ],
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://ohdsi.github.io/TheBookOfOhdsi/CommonDataModel.html",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "directoryName": "environment",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains data collected through an environmental sensor device custom built for the AI-READI project.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            {
+              "relatedTermValue": "Environmental sensor data"
+            }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "ASCII File Format Guidelines for Earth Science Data",
+              "standardDescription": "NASA recommended practices for formatting and describing ASCII encoded data files",
+              "standardUse": "All the data files within this directory follow the format specified in this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://www.earthdata.nasa.gov/esdis/esco/standards-and-practices/ascii-file-format-guidelines-for-earth-science-data",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ],
+          "directoryList": [
+            {
+              "directoryName": "environmental_sensor_variables",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "leelab_anura",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            }
+          ],
+          "metadataFileList": [
+            {
+              "metadataFileName": "manifest.tsv",
+              "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+              "relatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDocumentedBy",
+                  "resourceTypeGeneral": "Other"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "directoryName": "retinal_flio",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains data collected through fluorescence lifetime imaging ophthalmoscopy (FLIO), an imaging modality for in vivo measurement of lifetimes of endogenous retinal fluorophores.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            {
+              "relatedTermValue": "Fuorescence Lifetime Imaging Ophthalmoscopy"
+            }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "Digital Imaging and Communications in Medicine (DICOM)",
+              "standardDescription": "Standard for the digital storage and transmission of medical images and related information.",
+              "standardUse": "All the data files within this directory follow the format specified in this standard.",
+              "standardIdentifier": [
+                {
+                  "identifierValue": "https://doi.org/10.25504/FAIRsharing.b7z8by",
+                  "identifierType": "DOI"
+                }
+              ],
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "http://medical.nema.org/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ],
+          "directoryList": [
+            {
+              "directoryName": "flio",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "heidelberg_flio",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            }
+          ],
+          "metadataFileList": [
+            {
+              "metadataFileName": "manifest.tsv",
+              "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+              "relatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDocumentedBy",
+                  "resourceTypeGeneral": "Other"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "directoryName": "retinal_oct",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains data collected using optical coherence tomography (OCT), an imaging method using lasers that is used for mapping subsurface structure.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            {
+              "relatedTermValue": "Optical Coherence Tomography",
+              "relatedTermIdentifier": [
+                {
+                  "relatedTermClassificationCode": "C20828",
+                  "relatedTermScheme": "NCI Thesaurus (NCIT)",
+                  "relatedTermSchemeURI": "https://ncim.nci.nih.gov/",
+                  "relatedTermValueURI": "https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI%20Thesaurus&code=C20828"
+                }
+              ]
+            },
+            {
+              "relatedTermValue": "Tomography, Optical Coherence",
+              "relatedTermIdentifier": [
+                {
+                  "relatedTermClassificationCode": "D041623",
+                  "relatedTermScheme": "Medical Subject Headings (MeSH)",
+                  "relatedTermSchemeURI": "https://meshb.nlm.nih.gov/",
+                  "relatedTermValueURI": "https://meshb.nlm.nih.gov/record/ui?ui=D041623"
+                }
+              ]
+            }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "Digital Imaging and Communications in Medicine (DICOM)",
+              "standardDescription": "Standard for the digital storage and transmission of medical images and related information.",
+              "standardUse": "All the data files within this directory follow the format specified in this standard.",
+              "standardIdentifier": [
+                {
+                  "identifierValue": "https://doi.org/10.25504/FAIRsharing.b7z8by",
+                  "identifierType": "DOI"
+                }
+              ],
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "http://medical.nema.org/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ],
+          "directoryList": [
+            {
+              "directoryName": "structural_oct",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "heidelberg_spectralis",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "topcon_maestro2",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "topcon_triton",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            }
+          ],
+          "metadataFileList": [
+            {
+              "metadataFileName": "manifest.tsv",
+              "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+              "relatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDocumentedBy",
+                  "resourceTypeGeneral": "Other"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "directoryName": "retinal_octa",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains data collected using optical coherence tomography angiography (OCTA), a non-invasive imaging technique that generates volumetric angiography images.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            {
+              "relatedTermValue": "Optical Coherence Tomography Angiography"
+            },
+            {
+              "relatedTermValue": "Optical Coherence Tomography Angiography Images"
+            },
+            {
+              "relatedTermValue": "OCTA Images"
+            }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "Digital Imaging and Communications in Medicine (DICOM)",
+              "standardDescription": "Standard for the digital storage and transmission of medical images and related information.",
+              "standardUse": "All the data files within this directory follow the format specified in this standard.",
+              "standardIdentifier": [
+                {
+                  "identifierValue": "https://doi.org/10.25504/FAIRsharing.b7z8by",
+                  "identifierType": "DOI"
+                }
+              ],
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "http://medical.nema.org/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ],
+          "directoryList": [
+            {
+              "directoryName": "enface",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "topcon_maestro2",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "topcon_triton",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "flow_cube",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "topcon_maestro2",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "topcon_triton",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "segmentation",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "topcon_maestro2",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "topcon_triton",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            }
+          ],
+          "metadataFileList": [
+            {
+              "metadataFileName": "manifest.tsv",
+              "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+              "relatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDocumentedBy",
+                  "resourceTypeGeneral": "Other"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "directoryName": "retinal_photography",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains data collected using a fundus camera to record color images of the condition of the interior surface of the eye.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            {
+              "relatedTermValue": "Eye Fundus Photography",
+              "relatedTermIdentifier": [
+                {
+                  "relatedTermClassificationCode": "C147467",
+                  "relatedTermScheme": "NCI Thesaurus (NCIT)",
+                  "relatedTermSchemeURI": "https://ncim.nci.nih.gov/",
+                  "relatedTermValueURI": "https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI%20Thesaurus&code=C147467"
+                }
+              ]
+            }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "Digital Imaging and Communications in Medicine (DICOM)",
+              "standardDescription": "Standard for the digital storage and transmission of medical images and related information.",
+              "standardUse": "All the data files within this directory follow the format specified in this standard.",
+              "standardIdentifier": [
+                {
+                  "identifierValue": "https://doi.org/10.25504/FAIRsharing.b7z8by",
+                  "identifierType": "DOI"
+                }
+              ],
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "http://medical.nema.org/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ],
+          "directoryList": [
+            {
+              "directoryName": "cfp",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "icare_eidon",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "optomed_aurora",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "topcon_maestro2",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "/topcon_triton",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "faf",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "icare_eidon",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "ir",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "heidelberg_spectralis",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "icare_eidon",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "topcon_maestro2",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            }
+          ],
+          "metadataFileList": [
+            {
+              "metadataFileName": "manifest.tsv",
+              "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+              "relatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDocumentedBy",
+                  "resourceTypeGeneral": "Other"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "directoryName": "wearable_activity_monitor",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains data collected through a wearable fitness tracker.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            { "relatedTermValue": "smartwatch" },
+            { "relatedTermValue": "activity monitoring" }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "Open mHealth",
+              "standardDescription": "Leading mobile health data interoperability standard.",
+              "standardUse": "All the data files within this directory follow the format specified in this standard",
+              "standardIdentifier": [
+                {
+                  "identifierValue": "https://doi.org/10.25504/FAIRsharing.mrpMBj",
+                  "identifierType": "DOI"
+                }
+              ],
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://www.openmhealth.org/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ],
+          "directoryList": [
+            {
+              "directoryName": "heart_rate",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "garmin_vivosmart5",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "oxygen_saturation",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "garmin_vivosmart5",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "physical_activity",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "garmin_vivosmart5",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "respiratory_rate",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "garmin_vivosmart5",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "sleep",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "garmin_vivosmart5",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "stress",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "garmin_vivosmart5",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            }
+          ],
+          "metadataFileList": [
+            {
+              "metadataFileName": "manifest.tsv",
+              "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+              "relatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDocumentedBy",
+                  "resourceTypeGeneral": "Other"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "directoryName": "wearable_blood_glucose",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains data collected through a continuous glucose monitoring (CGM) device.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            {
+              "relatedTermValue": "Continuous Glucose Monitoring System",
+              "relatedTermIdentifier": [
+                {
+                  "relatedTermClassificationCode": "C159776",
+                  "relatedTermScheme": "NCI Thesaurus (NCIT)",
+                  "relatedTermSchemeURI": "https://ncim.nci.nih.gov/",
+                  "relatedTermValueURI": "https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI%20Thesaurus&code=C159776"
+                }
+              ]
+            }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "Open mHealth",
+              "standardDescription": "Leading mobile health data interoperability standard.",
+              "standardUse": "All the data files within this directory follow the format specified in this standard",
+              "standardIdentifier": [
+                {
+                  "identifierValue": "https://doi.org/10.25504/FAIRsharing.mrpMBj",
+                  "identifierType": "DOI"
+                }
+              ],
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://www.openmhealth.org/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ],
+          "directoryList": [
+            {
+              "directoryName": "continuous_glucose_monitoring",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "dexcom_g6",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            }
+          ],
+          "metadataFileList": [
+            {
+              "metadataFileName": "manifest.tsv",
+              "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+              "relatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDocumentedBy",
+                  "resourceTypeGeneral": "Other"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "metadataFileList": [
+        {
+          "metadataFileName": "CHANGELOG.md",
+          "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ]
+        },
+        {
+          "metadataFileName": "dataset_description.json",
+          "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ]
+        },
+        {
+          "metadataFileName": "dataset_structure_description.json",
+          "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ]
+        },
+        {
+          "metadataFileName": "healthsheet.md",
+          "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ]
+        },
+        {
+          "metadataFileName": "LICENSE.txt",
+          "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ]
+        },
+        {
+          "metadataFileName": "participants.json",
+          "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ]
+        },
+        {
+          "metadataFileName": "README.md",
+          "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ]
+        },
+        {
+          "metadataFileName": "study_description.json",
+          "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ]
+        }
+      ]
+    },
     "healthsheet": {
       "collection": [
         {
@@ -2435,7 +2431,7 @@
   }
 ],
   "data": {
-    "size": 676,
+    "size": 32434,
     "fileCount": 234234
   },
   "created_at": "1710279780"
