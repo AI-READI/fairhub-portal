@@ -19,9 +19,7 @@ const props = defineProps({
 function convertFile(file: FolderStructure, level: number): TreeOption {
   return {
     children: file.children
-      ? level < 3
-        ? file.children.map((f) => convertFile(f, level + 1))
-        : undefined
+      ? file.children.map((f) => convertFile(f, level + 1))
       : undefined,
     key: useId(), // generate unique id for each file
     label: file.label,
@@ -33,19 +31,17 @@ function convertFile(file: FolderStructure, level: number): TreeOption {
             : "pepicons-pencil:file",
       }),
     suffix: () =>
-      level === 0
-        ? h(
-            NButton,
-            {
-              class: "",
-              onClick: (_value) => {
-                openMetdataDrawer(file.label);
-              },
-              size: "tiny",
-            },
-            { default: () => "Learn More" },
-          )
-        : undefined,
+      h(
+        NButton,
+        {
+          class: "",
+          onClick: (_value) => {
+            openMetdataDrawer(file.label);
+          },
+          size: "tiny",
+        },
+        { default: () => "Learn More" },
+      ),
   };
 }
 
