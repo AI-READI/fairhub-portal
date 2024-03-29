@@ -19,7 +19,7 @@ const props = defineProps({
 function convertFile(file: FolderStructure, level: number): TreeOption {
   return {
     children: file.children
-      ? level < 1
+      ? level < 3
         ? file.children.map((f) => convertFile(f, level + 1))
         : undefined
       : undefined,
