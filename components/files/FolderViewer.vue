@@ -16,10 +16,10 @@ const props = defineProps({
   },
 });
 
-function convertFile(file: FolderStructure, level: number): TreeOption {
+function convertFile(file: FolderStructure): TreeOption {
   return {
     children: file.children
-      ? file.children.map((f) => convertFile(f, level + 1))
+      ? file.children.map((f) => convertFile(f))
       : undefined,
     key: useId(), // generate unique id for each file
     label: file.label,
@@ -66,7 +66,7 @@ const updatePrefixWithExpaned = (
   }
 };
 
-const data = props.folderStructure.map((file) => convertFile(file, 0));
+const data = props.folderStructure.map((file) => convertFile(file));
 
 const drawerTitle = ref("");
 const drawerDescription = ref("");
