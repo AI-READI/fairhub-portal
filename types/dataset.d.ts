@@ -411,7 +411,7 @@ interface DatasetStructureDescriptionSubDirectory {
 }
 
 interface DatasetStructureDescription {
-  datasetStructure: {
+  directoryList: {
     directoryName: string;
     directoryType: string;
     directoryDescription: string;

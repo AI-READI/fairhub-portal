@@ -35,7 +35,7 @@ function convertFile(file: FolderStructure): TreeOption {
         NButton,
         {
           class: "",
-          onClick: (_value) => {
+          onClick: () => {
             openMetdataDrawer(file.label);
           },
           size: "tiny",
@@ -75,7 +75,7 @@ const openMetdataDrawer = (label: string) => {
   drawerTitle.value = label;
 
   // get the datatype from the dictionary
-  const datatype = props.datasetStructureDescription.datasetStructure.find(
+  const datatype = props.datasetStructureDescription.directoryList.find(
     (d) => d.directoryName === label,
   );
 
