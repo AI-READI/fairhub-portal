@@ -83,7 +83,7 @@ const layers = ref([
           >
             <img
               class="min-w-[15rem] rounded-2xl border-4 border-sky-100 bg-white p-4 max-xl:hidden"
-              src="/images/c.svg"
+              src="/images/study_platform.svg"
             />
 
             <div class="grow rounded-2xl border-4 border-sky-100 bg-white p-6">
