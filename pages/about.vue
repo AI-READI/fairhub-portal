@@ -28,7 +28,9 @@
 </script>
 
 <template>
-  <main class="flex h-screen w-full flex-col overflow-auto to-blue-50">
+  <main
+    class="flex h-screen w-full flex-col overflow-auto bg-gradient-to-tl from-blue-50"
+  >
     <section class="px-16 py-12">
       <div class="mx-auto mb-5 flex max-w-screen-xl flex-col items-center">
         <h1
@@ -69,9 +71,9 @@
       </div>
     </section>
 
-    <section class="py-16">
+    <section>
       <div
-        class="mx-auto flex flex-col items-center rounded-t-[10%] bg-[url('/images/Meteor.svg')] bg-cover px-5 pb-16"
+        class="mx-auto flex flex-col items-center rounded-t-[10%] bg-[url('/images/Meteor.svg')] bg-cover px-5"
       >
         <h2
           class="mt-8 block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text text-4xl font-bold text-transparent max-md:text-4xl"
@@ -81,7 +83,7 @@
 
         <div class="max-w-[80rem] rounded-3xl p-4">
           <div
-            class="flex flex-row items-center gap-8 p-4 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
+            class="flex flex-row items-center gap-4 p-2 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
           >
             <div
               class="gro w flex min-h-[20rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
@@ -126,7 +128,7 @@
           </div>
 
           <div
-            class="flex gap-8 p-4 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
+            class="flex gap-8 p-2 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
           >
             <div
               class="flex grow flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"

@@ -28,7 +28,9 @@ const steps = ref([
 </script>
 
 <template>
-  <main class="flex h-screen w-full flex-col overflow-auto to-blue-50">
+  <main
+    class="flex h-screen w-full flex-col overflow-auto bg-gradient-to-tl from-blue-50 to-white"
+  >
     <section class="p-16">
       <div class="relative overflow-hidden">
         <div class="mx-auto max-w-[85rem] sm:px-6 lg:px-8">
@@ -68,7 +70,7 @@ const steps = ref([
       </div>
     </section>
 
-    <section class="py-24">
+    <section>
       <div
         class="mx-auto h-20 rounded-t-[50%] bg-gradient-to-b from-blue-50 via-blue-50 to-blue-50 text-center"
       ></div>
