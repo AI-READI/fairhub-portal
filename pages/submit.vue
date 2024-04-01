@@ -80,7 +80,7 @@ const steps = ref([
           <h2
             class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text py-5 text-5xl font-bold text-transparent"
           >
-            Share and reuse the data
+            How to share and reuse the data
           </h2>
 
           <p class="text-center text-xl font-medium">
@@ -91,12 +91,12 @@ const steps = ref([
         </div>
 
         <div
-          class="mx-auto flex max-w-screen-xl gap-10 px-4 py-10 max-2xl:px-10 max-xl:justify-center max-lg:max-w-screen-md max-lg:flex-wrap"
+          class="mx-auto flex max-w-screen-xl gap-10 px-4 py-10 max-2xl:px-10 max-xl:flex-wrap max-xl:justify-center max-lg:max-w-screen-md"
         >
           <div
             v-for="step in steps"
             :key="step.heading"
-            class="flex max-w-md flex-1 flex-col justify-start rounded-xl border-2 border-orange-300 bg-orange-50/50 px-6 py-4 max-md:min-w-[18rem]"
+            class="flex max-w-md flex-1 flex-col justify-start rounded-xl border-2 border-orange-300 bg-orange-50/50 px-6 py-4 max-lg:min-w-[20rem]"
           >
             <n-space align="center">
               <Icon :name="step.name" class="size-10 text-orange-500/70" />
@@ -109,7 +109,7 @@ const steps = ref([
             <n-progress
               class="mb-6 mt-4"
               type="line"
-              color="skyblue"
+              color="#93c5fd"
               :show-indicator="false"
               status="info"
               processing
