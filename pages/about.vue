@@ -71,20 +71,20 @@
 
     <section class="py-16">
       <div
-        class="mx-auto flex flex-col items-center rounded-t-[10%] bg-[url('/images/Meteor.svg')] bg-cover px-5 pb-32"
+        class="mx-auto flex flex-col items-center rounded-t-[10%] bg-[url('/images/Meteor.svg')] bg-cover px-5 pb-16"
       >
         <h2
-          class="mt-16 block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text py-5 text-4xl font-bold text-transparent max-md:text-4xl"
+          class="mt-8 block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text text-4xl font-bold text-transparent max-md:text-4xl"
         >
           The layers of FAIRhub platform
         </h2>
 
-        <div class="max-w-[80rem] rounded-3xl p-8">
+        <div class="max-w-[80rem] rounded-3xl p-4">
           <div
             class="flex flex-row items-center gap-8 p-4 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
           >
             <div
-              class="gro w flex min-h-[20rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6"
+              class="gro w flex min-h-[20rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
                 <img
@@ -106,7 +106,7 @@
             </div>
 
             <div
-              class="flex min-h-[20rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6"
+              class="flex min-h-[20rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
                 <img
@@ -129,7 +129,7 @@
             class="flex gap-8 p-4 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
           >
             <div
-              class="flex grow flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6"
+              class="flex grow flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
                 <img
@@ -148,7 +148,7 @@
             </div>
 
             <div
-              class="flex min-h-[20rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6"
+              class="flex min-h-[20rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
                 <img
