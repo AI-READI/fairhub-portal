@@ -78,9 +78,9 @@ const steps = ref([
           class="mx-auto mb-5 flex max-w-screen-xl flex-col items-center max-2xl:px-10"
         >
           <h2
-            class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text py-5 text-5xl font-bold text-transparent"
+            class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text py-5 text-4xl font-bold text-transparent"
           >
-            How to share and reuse the data
+            How to share and reuse data
           </h2>
 
           <p class="text-center text-xl font-medium">
@@ -101,7 +101,7 @@ const steps = ref([
             <n-space align="center">
               <Icon :name="step.name" class="size-10 text-orange-500/70" />
 
-              <h3 class="text-4xl font-medium text-orange-500/80">
+              <h3 class="text-3xl font-medium text-orange-500/80">
                 {{ step.number }}
               </h3>
             </n-space>
@@ -109,16 +109,16 @@ const steps = ref([
             <n-progress
               class="mb-6 mt-4"
               type="line"
-              color="#93c5fd"
+              color="#bae6fd"
               :show-indicator="false"
               status="info"
               processing
               :percentage="step.percentage"
             />
 
-            <h4 class="pr-3 text-4xl font-bold text-blue-500">
+            <h3 class="pr-3 text-2xl font-bold text-sky-600">
               {{ step.heading }}
-            </h4>
+            </h3>
 
             <p class="py-5">
               {{ step.description }}
