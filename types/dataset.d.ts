@@ -403,12 +403,12 @@ interface DatatypeDictionary {
   }[];
 }
 
-interface DatasetStructureDescriptionSubDirectory {
-  directoryName: string;
-  directoryType: string;
-  directoryDescription: string;
-  subdirectory?: DatasetStructureDescriptionSubDirectory[];
-}
+// interface DatasetStructureDescriptionSubDirectory {
+//   directoryName: string;
+//   directoryType: string;
+//   directoryDescription: string;
+//   subdirectory?: DatasetStructureDescriptionSubDirectory[];
+// }
 
 interface DatasetStructureDescription {
   directoryList: {
@@ -444,7 +444,17 @@ interface DatasetStructureDescription {
         identifierType: string;
       }[];
     }[];
-    subDirectory?: DatasetStructureDescriptionSubDirectory[];
+    // subDirectory?: DatasetStructureDescriptionSubDirectory[];
+    metadataFileList:{
+      metadataFileName: string;
+      metadataFileDescription: string;
+      relatedIdentifier: {
+      relatedIdentifier: string;
+      relatedIdentifierType: string;
+      relationType: string;
+      resourceTypeGeneral: string;
+    }[] | undefined;
+  }[];
   }[];
 
 }
