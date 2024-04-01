@@ -1,28 +1,22 @@
 <script setup lang="ts">
-const steps = ref([
+const layers = ref([
   {
-    name: "carbon:intent-request-create",
-    description:
-      "Sign up to create an account on FAIRhub. Create a new study and provide basic information about it to get started.",
-    heading: "Create study",
-    number: "Step 1",
-    percentage: 33,
+    colSpan: 5,
+    header: "FAIRhub Data platform",
+    img: "/images/schema01.jpg",
+    text: "FAIRhub is an open source platform for sharing and accessing FAIR and AI-ready datasets. Your clinical research data can be easily shared with the world through FAIRhub in a way that it is optimally reusable by both researchers and AI applications.",
   },
   {
-    name: "lets-icons:upload-light",
-    description:
-      "Upload data on the go as it is being collected. Follow instructions to include metadata with the data so FAIRhub can process it automatically. Track data collection through available dashboards.",
-    heading: "Upload data",
-    number: "Step 2",
-    percentage: 66,
+    colSpan: 2,
+    header: "FAIRhub study management platform",
+    img: "/images/schema01.jpg",
+    text: "Conveniently find and access FAIR, AI-ready clinical research datasets.",
   },
   {
-    name: "arcticons:efa-publish",
-    description:
-      "Follow our simple data sharing workflow to select select data to be shared, select a data use license, review data and metadata structure, create public/protected versions, reserve a DOI, and publish your dataset.",
-    heading: "Publish dataset",
-    number: "Step 3",
-    percentage: 100,
+    colSpan: 4,
+    header: "FAIRhub Platform Pipeline",
+    img: "/images/schema01.jpg",
+    text: "The pipeline repository serves as a centralized location housing scripts designed for managing data flow and executing logical operations within a system. These scripts typically include interactions with a database to retrieve, manipulate, or store data, facilitating efficient data processing workflows. By encapsulating database interactions and logical procedures within the pipeline scripts, the repository promotes modularity, maintainability, and and scalability of the overall system architecture.",
   },
 ]);
 </script>
@@ -76,75 +70,80 @@ const steps = ref([
 
       <div class="mx-auto flex flex-col items-center bg-blue-50 px-5">
         <h2
-          class="my-16 block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text py-5 text-5xl font-bold text-transparent"
+          class="my-16 block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text py-5 text-5xl font-bold text-transparent max-md:text-4xl"
         >
           The layers of FAIRhub platform
         </h2>
 
-        <h3>App.fairhub.io</h3>
-
         <div
-          class="m-16 flex flex-row gap-32 max-xl:flex-wrap max-xl:justify-center"
+          class="max-w-[90rem] rounded-3xl bg-white bg-gradient-to-br from-white to-orange-50 p-8"
         >
-          <p class="min-w-md max-w-md text-xl font-medium" style="flex-grow: 2">
-            FAIRhub combines intuitive user interfaces with automation tools and
-            integration with existing data management tools such as REDCap to
-            simplify the process of sharing AI-ready clinical research data. You
-            can do that in few easy steps and start getting credit whenever your
-            data is reused to fuel future discoveries!
-          </p>
+          <div
+            class="flex flex-row gap-8 p-4 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
+          >
+            <img
+              class="min-w-[15rem] rounded-2xl border-4 border-sky-100 bg-white p-4 max-xl:hidden"
+              src="/images/c.svg"
+            />
 
-          <img
-            class="min-w-md mr-8 max-w-md rounded-md"
-            src="/images/schema01.jpg"
-          />
-        </div>
+            <div class="grow rounded-2xl border-4 border-sky-100 bg-white p-6">
+              <h3 class="mt-8 text-center">FAIRhub Data platform</h3>
 
-        <h3>fairhub.io</h3>
+              <p class="mt-4 text-xl font-medium">
+                FAIRhub provide easy access to well structure, AI-ready
+                datasets. A simplified mechanism is available to access
+                protected versions of datasets.
+              </p>
+            </div>
+          </div>
 
-        <div
-          class="m-16 flex flex-row-reverse gap-32 max-xl:flex-wrap max-xl:justify-center"
-        >
-          <p class="min-w-md max-w-md text-xl font-medium">
-            Making data FAIR and AI-ready requires several steps (converting
-            files to files to files to standard format, including metadata in a
-            standard using controlled vocabulary, organizing data and metadata
-            into an structured dataset, etc.). Therefore, doing so can be
-            difficult and time consuming for data collecting researchers.
-            FAIRhub is intended to streamline this process to encourage
-            systematic data sharing.
-          </p>
+          <div
+            class="flex gap-8 p-4 max-xl:flex-col-reverse max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
+          >
+            <div class="grow rounded-2xl border-4 border-sky-100 bg-white p-6">
+              <h3 class="text-center">FAIRhub study management platform</h3>
 
-          <img
-            class="min-w-md mr-8 max-w-md rounded-md"
-            src="/images/schema01.jpg"
-          />
-        </div>
+              <p class="mt-4 text-xl font-medium">
+                FAIRhub combines intuitive user interfaces with automation tools
+                and integration with existing data management tools such as
+                REDCap to simplify the process of sharing AI-ready clinical
+                research data.
+              </p>
+            </div>
 
-        <h3>API</h3>
+            <img
+              class="min-w-[15em] rounded-2xl border-4 border-sky-100 bg-white p-4 shadow-sm max-xl:hidden"
+              src="/images/share.svg"
+            />
+          </div>
 
-        <div
-          class="m-16 flex flex-row gap-32 max-xl:flex-wrap max-xl:justify-center"
-        >
-          <p class="min-w-md max-w-md text-xl font-medium">
-            AI-READI (Artificial Intelligence Ready and Equitable Atlas for
-            Diabetes Insights) is one of the data generation projects of the
-            National Institutes of Health (NIH) funded Bridge2AI Program. The
-            AI-READI project seeks to create and share a flagship
-            ethically-sourced dataset of type 2 diabetes.
-          </p>
+          <div
+            class="flex gap-8 p-4 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
+          >
+            <img
+              class="min-w-md min-w-[15rem] max-w-md rounded-2xl border-4 border-sky-100 bg-white max-xl:hidden"
+              src="/images/pipeline.svg"
+            />
 
-          <img
-            class="min-w-md mr-8 max-w-md rounded-md"
-            src="/images/schema01.jpg"
-          />
+            <div class="rounded-2xl border-4 border-sky-100 bg-white p-6">
+              <h3 class="text-center">FAIRhub Platform Pipeline</h3>
+
+              <p class="min-w-md mt-4 text-xl font-medium">
+                The pipeline repository serves as a centralized location housing
+                scripts designed for managing data flow and executing logical
+                operations within a system. These scripts include interactions
+                with a database to retrieve, manipulate, or store data,
+                facilitating efficient data processing workflows.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- unhide this when we have a section to put below -->
-      <div
-        class="mx-auto hidden h-20 rounded-b-[50%] bg-gradient-to-t from-blue-50 via-blue-50 to-blue-50 text-center"
-      ></div>
+      <!--      <div-->
+      <!--        class="mx-auto hidden h-20 rounded-b-[50%] bg-gradient-to-t from-blue-50 via-blue-50 to-blue-50 text-center"-->
+      <!--      ></div>-->
     </section>
   </main>
 </template>
