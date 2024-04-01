@@ -415,8 +415,20 @@ interface DatasetStructureDescription {
     directoryName: string;
     directoryType: string;
     directoryDescription: string;
+    relatedIdentifier: {
+      relatedIdentifier: string;
+      relatedIdentifierType: string;
+      relationType: string;
+      resourceTypeGeneral: string;
+    }[] | undefined;
     relatedTerm: {
       relatedTermValue: string;
+      relatedTermIdentifier: {
+        relatedTermClassificationCode: string;
+        relatedTermScheme: string;
+        relatedTermSchemeURI: string;
+        relatedTermValueURI: string;
+      }[];
     }[];
     relatedStandard: {
       standardName: string;
@@ -432,8 +444,9 @@ interface DatasetStructureDescription {
         identifierType: string;
       }[];
     }[];
-    subDirectory: DatasetStructureDescriptionSubDirectory[];
+    subDirectory?: DatasetStructureDescriptionSubDirectory[];
   }[];
+
 }
 
 interface HealthsheetRecord {
