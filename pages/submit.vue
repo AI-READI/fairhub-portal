@@ -68,58 +68,62 @@ const steps = ref([
       </div>
     </section>
 
-    <section class="py-16">
+    <section class="py-24">
       <div
-        class="mx-auto mb-5 flex max-w-screen-xl flex-col items-center max-2xl:px-10"
-      >
-        <h2
-          class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text py-5 text-5xl font-bold text-transparent"
-        >
-          Share Data
-        </h2>
+        class="mx-auto h-20 rounded-t-[50%] bg-gradient-to-b from-blue-50 via-blue-50 to-blue-50 text-center"
+      ></div>
 
-        <p class="text-center text-xl font-medium">
-          FAIRhub combines intuitive user interfaces with automation tools and
-          integration with existing data management tools such as REDCap to
-          simplify the process of sharing AI-ready clinical research data. You
-          can do that in few easy steps and start getting credit whenever your
-          data is reused to fuel future discoveries!
-        </p>
-      </div>
-
-      <div
-        class="mx-auto flex max-w-screen-xl gap-10 px-4 py-10 max-2xl:px-10 max-lg:max-w-screen-md max-lg:flex-wrap"
-      >
+      <div class="bg-blue-50 pb-32">
         <div
-          v-for="step in steps"
-          :key="step.heading"
-          class="flex max-w-md flex-1 flex-col justify-start rounded-xl border-2 border-orange-100 bg-orange-50/50 px-6 py-4"
+          class="mx-auto mb-5 flex max-w-screen-xl flex-col items-center max-2xl:px-10"
         >
-          <n-space align="center">
-            <Icon :name="step.name" class="size-10 text-orange-500/70" />
+          <h2
+            class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text py-5 text-5xl font-bold text-transparent"
+          >
+            Share and reuse the data
+          </h2>
 
-            <h3 class="text-4xl font-medium text-orange-500/80">
-              {{ step.number }}
-            </h3>
-          </n-space>
-
-          <n-progress
-            class="mb-6 mt-4"
-            type="line"
-            color="skyblue"
-            :show-indicator="false"
-            status="info"
-            processing
-            :percentage="step.percentage"
-          />
-
-          <h4 class="pr-3 text-4xl font-bold text-blue-500">
-            {{ step.heading }}
-          </h4>
-
-          <p class="py-5">
-            {{ step.description }}
+          <p class="text-center text-xl font-medium">
+            In FAIRhub platform, you can share the data in few easy steps and
+            start getting credit whenever your data is reused to fuel future
+            discoveries!
           </p>
+        </div>
+
+        <div
+          class="mx-auto flex max-w-screen-xl gap-10 px-4 py-10 max-2xl:px-10 max-xl:justify-center max-lg:max-w-screen-md max-lg:flex-wrap"
+        >
+          <div
+            v-for="step in steps"
+            :key="step.heading"
+            class="flex max-w-md flex-1 flex-col justify-start rounded-xl border-2 border-orange-300 bg-orange-50/50 px-6 py-4 max-md:min-w-[18rem]"
+          >
+            <n-space align="center">
+              <Icon :name="step.name" class="size-10 text-orange-500/70" />
+
+              <h3 class="text-4xl font-medium text-orange-500/80">
+                {{ step.number }}
+              </h3>
+            </n-space>
+
+            <n-progress
+              class="mb-6 mt-4"
+              type="line"
+              color="skyblue"
+              :show-indicator="false"
+              status="info"
+              processing
+              :percentage="step.percentage"
+            />
+
+            <h4 class="pr-3 text-4xl font-bold text-blue-500">
+              {{ step.heading }}
+            </h4>
+
+            <p class="py-5">
+              {{ step.description }}
+            </p>
+          </div>
         </div>
       </div>
     </section>
