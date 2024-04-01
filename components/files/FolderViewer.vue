@@ -18,17 +18,14 @@ const props = defineProps({
 
 function convertFile(file: FolderStructure): TreeOption {
   return {
-    children: file.children
+    children: file.children?.length
       ? file.children.map((f) => convertFile(f))
       : undefined,
     key: useId(), // generate unique id for each file
     label: file.label,
     prefix: () =>
       h(Icon, {
-        name:
-          "children" in file || file.children?.length
-            ? "ic:baseline-folder"
-            : "pepicons-pencil:file",
+        name: file.children ? "ic:baseline-folder" : "pepicons-pencil:file",
       }),
     suffix: () =>
       h(
