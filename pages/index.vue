@@ -118,7 +118,7 @@ if (error.value) {
       </div>
 
       <div
-        class="mx-auto flex h-full w-full max-w-screen-xl flex-col px-3 pb-5"
+        class="dataset-banner mx-auto flex h-full w-full max-w-screen-xl flex-col px-3 pb-5"
       >
         <div class="flex flex-col space-y-6">
           <NuxtLink

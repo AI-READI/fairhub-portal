@@ -92,7 +92,7 @@ const links = [
                 exact-active-class="text-sky-500"
                 :target="link.href.startsWith('http') ? '_blank' : '_self'"
               >
-                <p>{{ link.title }}</p>
+                <p class="menu-header">{{ link.title }}</p>
 
                 <Icon
                   v-if="link.href.startsWith('http')"

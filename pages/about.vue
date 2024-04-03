@@ -34,12 +34,12 @@
     <section class="px-16 py-12">
       <div class="mx-auto mb-5 flex max-w-screen-xl flex-col items-center">
         <h1
-          class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text py-5 text-4xl font-bold text-transparent text-transparent md:text-5xl lg:text-6xl"
+          class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text py-5 text-5xl font-bold text-transparent md:text-5xl lg:text-6xl"
         >
           About
         </h1>
 
-        <p class="pb-8 text-center text-2xl font-normal">
+        <p class="pb-8 text-center text-2xl font-normal text-gray-800">
           FAIRhub is an open source platform for sharing and accessing FAIR and
           and AI-ready datasets. Your clinical research data can be easily with
           the world through FAIRhub in a way that it is optimally reusable
@@ -70,7 +70,7 @@
 
     <section>
       <div
-        class="mx-auto flex flex-col items-center bg-[url('/images/Meteor.svg')] bg-cover px-5 py-24"
+        class="content z-10 mx-auto flex flex-col items-center bg-cover px-5 py-24"
       >
         <h2
           class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text pb-8 text-4xl font-bold text-transparent md:text-4xl lg:text-5xl"
@@ -91,9 +91,7 @@
                   src="/images/study_platform.svg"
                 />
 
-                <h3 class="text-center text-sky-700">
-                  Study Management Platform
-                </h3>
+                <h3 class="text-sky-700">Study Management Platform</h3>
               </div>
 
               <p class="text-xl font-medium">
@@ -113,7 +111,7 @@
                   src="/images/share.svg"
                 />
 
-                <h3 class="text-center text-sky-700">Data Platform</h3>
+                <h3 class="text-sky-700">Data Platform</h3>
               </div>
 
               <p class="text-xl font-medium">
@@ -136,7 +134,7 @@
                   src="/images/pipeline.svg"
                 />
 
-                <h3 class="text-center text-sky-700">API</h3>
+                <h3 class="text-sky-700">API</h3>
               </div>
 
               <p class="min-w-md text-xl font-medium">
@@ -155,7 +153,7 @@
                   src="/images/api.svg"
                 />
 
-                <h3 class="text-center text-sky-700">Platform Pipeline</h3>
+                <h3 class="text-sky-700">Platform Pipeline</h3>
               </div>
 
               <p class="min-w-md text-xl font-medium">

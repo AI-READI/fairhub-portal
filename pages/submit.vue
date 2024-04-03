@@ -36,14 +36,14 @@ const steps = ref([
         <div class="mx-auto max-w-[85rem] sm:px-6 lg:px-8">
           <div class="mx-auto mt-5 max-w-2xl text-center">
             <h1
-              class="block bg-gradient-to-tl from-blue-400 to-emerald-400 bg-clip-text text-4xl font-bold text-transparent md:text-5xl lg:text-6xl"
+              class="block bg-gradient-to-tl from-blue-400 to-emerald-400 bg-clip-text text-5xl font-bold text-transparent md:text-5xl lg:text-6xl"
             >
               Share your own datasets
             </h1>
           </div>
 
           <div class="mx-auto mt-5 max-w-3xl text-center">
-            <p class="text-xl text-gray-600">
+            <p class="text-center text-2xl font-normal text-gray-800">
               The FAIRhub study management platform (app.fairhub.io) is designed
               to help you easily manage your clinicals research data and share
               it on the FAIRhub data platform (fairhub.io) such that it is FAIR
@@ -72,15 +72,17 @@ const steps = ref([
 
     <section>
       <div
-        class="mx-auto h-20 rounded-t-[50%] bg-gradient-to-b from-blue-50 via-blue-50 to-blue-50 text-center"
+        class="mx-auto h-20 rounded-t-[50%] bg-gradient-to-r from-blue-50 via-blue-50 to-transparent text-center"
       ></div>
 
-      <div class="bg-blue-50 pb-16">
+      <div
+        class="bg-gradient-to-r from-blue-50 via-blue-50 to-transparent pb-16"
+      >
         <div
           class="mx-auto mb-5 flex max-w-screen-xl flex-col items-center max-2xl:px-10"
         >
           <h2
-            class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text pb-5 text-4xl font-bold text-transparent"
+            class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text pb-5 text-3xl font-bold text-transparent md:text-4xl lg:text-5xl"
           >
             How to share and reuse data
           </h2>
