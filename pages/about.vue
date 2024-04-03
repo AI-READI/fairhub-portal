@@ -34,19 +34,16 @@
     <section class="px-16 py-12">
       <div class="mx-auto mb-5 flex max-w-screen-xl flex-col items-center">
         <h1
-          class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text py-5 text-5xl font-bold text-transparent"
+          class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text py-5 text-4xl font-bold text-transparent text-transparent md:text-5xl lg:text-6xl"
         >
           About
         </h1>
 
-        <p class="pb-8 text-center text-xl font-normal">
+        <p class="pb-8 text-center text-2xl font-normal">
           FAIRhub is an open source platform for sharing and accessing FAIR and
-          and AI-readi datasets. Your clinical research data can be easily with
+          and AI-ready datasets. Your clinical research data can be easily with
           the world through FAIRhub in a way that it is optimally reusable
-          reusable by both researchers and AI applications. It is built from the
-          the ground up to include convenient and efficient tools for data
-          management, tracking, curation, and sharing in line with the FAIR
-          (Findable, Accessible, Interoperable, Reusable) Principles.
+          reusable by both researchers and AI applications.
         </p>
 
         <div class="my-6 grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -73,20 +70,20 @@
 
     <section>
       <div
-        class="mx-auto flex flex-col items-center rounded-t-[10%] bg-[url('/images/Meteor.svg')] bg-cover px-5"
+        class="mx-auto flex flex-col items-center bg-[url('/images/Meteor.svg')] bg-cover px-5 py-24"
       >
         <h2
-          class="mt-8 block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text text-4xl font-bold text-transparent max-md:text-4xl"
+          class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text pb-8 text-4xl font-bold text-transparent md:text-4xl lg:text-5xl"
         >
           The layers of FAIRhub platform
         </h2>
 
-        <div class="max-w-[80rem] rounded-3xl p-4">
+        <div class="max-w-[80rem] rounded-3xl px-4">
           <div
             class="flex flex-row items-center gap-4 p-2 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
           >
             <div
-              class="gro w flex min-h-[20rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
+              class="gro w flex min-h-[15rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
                 <img
@@ -108,7 +105,7 @@
             </div>
 
             <div
-              class="flex min-h-[20rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
+              class="flex min-h-[15rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
                 <img
@@ -131,7 +128,7 @@
             class="flex gap-8 p-2 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
           >
             <div
-              class="flex grow flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
+              class="flex min-h-[15rem] grow flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
                 <img
@@ -150,7 +147,7 @@
             </div>
 
             <div
-              class="flex min-h-[20rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
+              class="flex min-h-[15rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
                 <img
