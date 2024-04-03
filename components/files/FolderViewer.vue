@@ -16,10 +16,13 @@ const props = defineProps({
   },
 });
 
-function convertFile(file: FolderStructure): TreeOption {
+function convertFile(
+  file: FolderStructure,
+  currentPath: Array<string>,
+): TreeOption {
   return {
     children: file.children?.length
-      ? file.children.map((f) => convertFile(f))
+      ? file.children.map((f) => convertFile(f, [...currentPath, file.label]))
       : undefined,
     key: useId(), // generate unique id for each file
     label: file.label,
@@ -33,7 +36,7 @@ function convertFile(file: FolderStructure): TreeOption {
         {
           class: "",
           onClick: () => {
-            openMetdataDrawer(file.label);
+            openMetdataDrawer([...currentPath, file.label]);
           },
           size: "tiny",
         },
@@ -63,23 +66,40 @@ const updatePrefixWithExpaned = (
   }
 };
 
-const data = props.folderStructure.map((file) => convertFile(file));
+const data = props.folderStructure.map((file) => convertFile(file, []));
 
 const drawerTitle = ref("");
 const drawerDescription = ref("");
+const drawerRelatedIdentifier = ref<RelatedIdentifier[] | undefined>(undefined);
 
-const openMetdataDrawer = (label: string) => {
-  drawerTitle.value = label;
+const openMetdataDrawer = (currentPath: Array<string>) => {
+  let directoryList: Array<Directory> | undefined =
+    props.datasetStructureDescription.directoryList;
+  let metadataFileList: Array<MetadataFileList> | undefined =
+    props.datasetStructureDescription.metadataFileList;
+  let filetype = null;
+  let datatype = null;
+  for (const d of currentPath) {
+    filetype = metadataFileList?.find((file) => file.metadataFileName === d);
+    if (filetype) continue;
+    datatype = directoryList?.find((dir) => dir.directoryName === d);
+    if (datatype) {
+      directoryList = datatype?.directoryList;
+      metadataFileList = datatype?.metadataFileList;
+      continue;
+    } else {
+      filetype = null;
+      datatype = null;
+      break;
+    }
+  }
 
-  // get the datatype from the dictionary
-  const datatype = props.datasetStructureDescription.directoryList.find(
-    (d) => d.directoryName === label,
-  );
-
-  console.log(datatype);
-
-  if (datatype) {
+  if (filetype) {
+    drawerDescription.value = filetype.metadataFileDescription;
+    drawerRelatedIdentifier.value = filetype.relatedIdentifier;
+  } else if (datatype) {
     drawerDescription.value = datatype.directoryDescription;
+    drawerRelatedIdentifier.value = datatype.relatedIdentifier;
   } else {
     drawerDescription.value = "No metadata found for this file";
   }
@@ -103,6 +123,12 @@ const openMetdataDrawer = (label: string) => {
         <p>
           {{ drawerDescription }}
         </p>
+
+        <ul v-for="(item, index) in drawerRelatedIdentifier" :key="index">
+          <li>{{ item.relatedIdentifierValue }}</li>
+
+          <li>{{ item.relationType }}</li>
+        </ul>
       </n-drawer-content>
     </n-drawer>
   </div>

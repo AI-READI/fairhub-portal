@@ -403,59 +403,55 @@ interface DatatypeDictionary {
   }[];
 }
 
-// interface DatasetStructureDescriptionSubDirectory {
-//   directoryName: string;
-//   directoryType: string;
-//   directoryDescription: string;
-//   subdirectory?: DatasetStructureDescriptionSubDirectory[];
-// }
+interface MetadataFileList {
+  metadataFileName: string;
+  metadataFileDescription: string;
+  relatedIdentifier?: RelatedIdentifier[];
+}
+
+interface RelatedIdentifier {
+  relatedIdentifier: string;
+  relatedIdentifierType: string;
+  relationType: string;
+  resourceTypeGeneral: string;
+}
+
+interface Directory {
+  directoryName: string;
+  directoryList?: Directory[];
+  directoryType: string;
+  directoryDescription: string;
+  metadataFileList?: MetadataFileList[]
+  relatedIdentifier?: RelatedIdentifier[];
+  relatedTerm: {
+    relatedTermValue: string;
+    relatedTermIdentifier: {
+      relatedTermClassificationCode: string;
+      relatedTermScheme: string;
+      relatedTermSchemeURI: string;
+      relatedTermValueURI: string;
+    }[];
+  }[];
+  relatedStandard: {
+    standardName: string;
+    standardDescription: string;
+    standardUse: string;
+    standardRelatedIdentifier: {
+      relatedIdentifierValue: string;
+      relatedIdentifierType: string;
+      relationType: string;
+    }[];
+    standardIdentifier?: {
+      identifierValue: string;
+      identifierType: string;
+    }[];
+    }[];
+}
+
 
 interface DatasetStructureDescription {
-  directoryList: {
-    directoryName: string;
-    directoryType: string;
-    directoryDescription: string;
-    relatedIdentifier: {
-      relatedIdentifier: string;
-      relatedIdentifierType: string;
-      relationType: string;
-      resourceTypeGeneral: string;
-    }[] | undefined;
-    relatedTerm: {
-      relatedTermValue: string;
-      relatedTermIdentifier: {
-        relatedTermClassificationCode: string;
-        relatedTermScheme: string;
-        relatedTermSchemeURI: string;
-        relatedTermValueURI: string;
-      }[];
-    }[];
-    relatedStandard: {
-      standardName: string;
-      standardDescription: string;
-      standardUse: string;
-      standardRelatedIdentifier: {
-        relatedIdentifierValue: string;
-        relatedIdentifierType: string;
-        relationType: string;
-      }[];
-      standardIdentifier?: {
-        identifierValue: string;
-        identifierType: string;
-      }[];
-    }[];
-    // subDirectory?: DatasetStructureDescriptionSubDirectory[];
-    metadataFileList:{
-      metadataFileName: string;
-      metadataFileDescription: string;
-      relatedIdentifier: {
-      relatedIdentifier: string;
-      relatedIdentifierType: string;
-      relationType: string;
-      resourceTypeGeneral: string;
-    }[] | undefined;
-  }[];
-  }[];
+  directoryList: Directory[];
+  metadataFileList:MetadataFile[];
 
 }
 
