@@ -244,6 +244,3 @@ body {
 .router-link-active .menu-header,.menu-header:hover{
   color: #0284c7;
 }
-
-.dataset-banner:hover,.dataset-banner{
-  border-color: #0284c7;}

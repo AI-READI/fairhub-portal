@@ -125,7 +125,7 @@ if (error.value) {
             v-for="dataset in datasets"
             :key="dataset.id"
             :to="`/datasets/${dataset.id}`"
-            class="h-full rounded-lg border border-sky-300 bg-white px-5 py-3 shadow-sm transition-all hover:border-sky-600 hover:bg-sky-50/70 hover:shadow-lg"
+            class="h-full rounded-lg border border-sky-400 bg-white px-5 py-3 shadow-sm transition-all hover:border-sky-600 hover:bg-sky-50/70 hover:shadow-lg"
           >
             <div
               class="flex h-full w-full flex-col items-start space-y-5 sm:flex-row sm:space-x-5 sm:space-y-0"

@@ -29,7 +29,7 @@ const steps = ref([
 
 <template>
   <main
-    class="flex h-screen w-full flex-col overflow-auto bg-gradient-to-tl from-blue-50 to-white"
+    class="flex h-screen w-full flex-col overflow-auto bg-gradient-to-tl from-sky-50 to-white"
   >
     <section class="p-16">
       <div class="relative overflow-hidden">
