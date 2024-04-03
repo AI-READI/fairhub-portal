@@ -124,10 +124,20 @@ const openMetdataDrawer = (currentPath: Array<string>) => {
           {{ drawerDescription }}
         </p>
 
-        <ul v-for="(item, index) in drawerRelatedIdentifier" :key="index">
-          <li>{{ item.relatedIdentifierValue }}</li>
+        <ul
+          v-for="(item, index) in drawerRelatedIdentifier"
+          :key="index"
+          class="list"
+        >
+          <li>
+            <n-tag class="mr-4">{{ item.relationType }}</n-tag>
 
-          <li>{{ item.relationType }}</li>
+            <a
+              class="text-blue-500"
+              href="https://github.com/AI-READI/fairhub-app/blob/staging/src/assets/data/form.json#L702-L883"
+              >{{ item.relatedIdentifierValue }}</a
+            >
+          </li>
         </ul>
       </n-drawer-content>
     </n-drawer>
