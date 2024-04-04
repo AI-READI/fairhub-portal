@@ -34,12 +34,12 @@
     <section class="px-16 py-12">
       <div class="mx-auto mb-5 flex max-w-screen-xl flex-col items-center">
         <h1
-          class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text py-5 text-5xl font-bold text-transparent md:text-5xl lg:text-6xl"
+          class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text pb-12 pt-5 text-5xl font-bold text-transparent md:text-5xl lg:text-6xl"
         >
           About
         </h1>
 
-        <p class="pb-8 text-center text-2xl font-normal text-gray-800">
+        <p class="pb-4 text-center text-2xl font-normal text-gray-800">
           FAIRhub is an open source platform for sharing and accessing FAIR and
           and AI-ready datasets. Your clinical research data can be easily with
           the world through FAIRhub in a way that it is optimally reusable
@@ -73,22 +73,22 @@
         class="content z-10 mx-auto flex flex-col items-center bg-cover px-5 py-24"
       >
         <h2
-          class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text pb-8 text-4xl font-bold text-transparent md:text-4xl lg:text-5xl"
+          class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text pb-12 text-4xl font-bold text-transparent md:text-4xl lg:text-5xl"
         >
           The layers of FAIRhub platform
         </h2>
 
         <div class="max-w-[80rem] rounded-3xl px-4">
           <div
-            class="flex flex-row items-center gap-4 p-2 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
+            class="flex flex-row items-center gap-4 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
           >
             <div
-              class="gro w flex min-h-[15rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
+              class="gro w flex min-h-[16.7rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
-                <img
-                  class="min-w-md min-w-[2.5rem] max-w-md"
-                  src="/images/study_platform.svg"
+                <Icon
+                  name="carbon:ibm-openshift-container-platform-on-vpc-for-regulated-industries"
+                  class="min-w-md min-h-[2.5rem] min-w-[2.5rem] max-w-md text-sky-700"
                 />
 
                 <h3 class="text-sky-700">Study Management Platform</h3>
@@ -103,21 +103,23 @@
             </div>
 
             <div
-              class="flex min-h-[15rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
+              class="flex min-h-[16.7rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
-                <img
-                  class="min-w-md min-w-[2rem] max-w-md"
-                  src="/images/share.svg"
+                <Icon
+                  name="icon-park-twotone:data-switching"
+                  class="min-w-md min-h-[2.5rem] min-w-[2.5rem] max-w-md text-sky-700"
                 />
 
-                <h3 class="text-sky-700">Data Platform</h3>
+                <h3 class="text-sky-700">Platform Pipeline</h3>
               </div>
 
-              <p class="text-xl font-medium">
-                Our platform provide easy access to well structure, AI-ready
-                datasets. A simplified mechanism is available to access
-                protected versions of datasets.
+              <p class="min-w-md text-xl font-medium">
+                The pipeline repository serves as a centralized location housing
+                scripts designed for managing data flow and executing logical
+                operations within a system. These scripts include interactions
+                with a database to retrieve facilitating efficient data
+                processing workflows.
               </p>
             </div>
           </div>
@@ -126,12 +128,12 @@
             class="flex gap-8 p-2 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
           >
             <div
-              class="flex min-h-[15rem] grow flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
+              class="flex min-h-[16.7rem] grow flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
-                <img
-                  class="min-w-md min-w-[2.5rem] max-w-md"
-                  src="/images/pipeline.svg"
+                <Icon
+                  name="material-symbols:dataset-linked-outline-sharp"
+                  class="min-w-md min-h-[2.5rem] min-w-[2.5rem] max-w-md text-sky-700"
                 />
 
                 <h3 class="text-sky-700">API</h3>
@@ -145,23 +147,21 @@
             </div>
 
             <div
-              class="flex min-h-[15rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
+              class="flex min-h-[16.7rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
-                <img
-                  class="min-w-md min-w-[2.5rem] max-w-md"
-                  src="/images/api.svg"
+                <Icon
+                  name="gis:map-share"
+                  class="min-w-md min-h-[2rem] min-w-[2rem] max-w-md text-sky-700"
                 />
 
-                <h3 class="text-sky-700">Platform Pipeline</h3>
+                <h3 class="text-sky-700">Data Platform</h3>
               </div>
 
-              <p class="min-w-md text-xl font-medium">
-                The pipeline repository serves as a centralized location housing
-                scripts designed for managing data flow and executing logical
-                operations within a system. These scripts include interactions
-                with a database to retrieve, manipulate, or store data,
-                facilitating efficient data processing workflows.
+              <p class="text-xl font-medium">
+                Our platform provide easy access to well structure, AI-ready
+                datasets. A simplified mechanism is available to access
+                protected versions of datasets.
               </p>
             </div>
           </div>

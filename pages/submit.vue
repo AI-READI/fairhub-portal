@@ -42,7 +42,7 @@ const steps = ref([
             </h1>
           </div>
 
-          <div class="mx-auto mt-5 max-w-3xl text-center">
+          <div class="mx-auto mt-12 max-w-3xl text-center">
             <p class="text-center text-2xl font-normal text-gray-800">
               The FAIRhub study management platform (app.fairhub.io) is designed
               to help you easily manage your clinicals research data and share
@@ -79,15 +79,15 @@ const steps = ref([
         class="bg-gradient-to-r from-blue-50 via-blue-50 to-transparent pb-16"
       >
         <div
-          class="mx-auto mb-5 flex max-w-screen-xl flex-col items-center max-2xl:px-10"
+          class="mx-auto mb-4 flex max-w-screen-xl flex-col items-center max-2xl:px-10"
         >
           <h2
-            class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text pb-5 text-3xl font-bold text-transparent md:text-4xl lg:text-5xl"
+            class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text pb-8 text-3xl font-bold text-transparent md:text-4xl lg:text-5xl"
           >
             How to share and reuse data
           </h2>
 
-          <p class="text-center text-xl font-medium">
+          <p class="pb-4 text-center text-xl font-medium">
             In FAIRhub platform, you can share the data in few easy steps and
             start getting credit whenever your data is reused to fuel future
             discoveries!
@@ -95,7 +95,7 @@ const steps = ref([
         </div>
 
         <div
-          class="mx-auto flex max-w-screen-xl gap-10 px-4 py-8 max-2xl:px-10 max-xl:flex-wrap max-xl:justify-center max-lg:max-w-screen-md"
+          class="mx-auto flex max-w-screen-xl gap-10 px-4 max-2xl:px-10 max-xl:flex-wrap max-xl:justify-center max-lg:max-w-screen-md"
         >
           <div
             v-for="step in steps"
