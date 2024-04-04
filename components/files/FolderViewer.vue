@@ -118,27 +118,46 @@ const openMetdataDrawer = (currentPath: Array<string>) => {
       :on-update:expanded-keys="updatePrefixWithExpaned"
     />
 
-    <n-drawer v-model:show="drawerActive" :width="502" placement="bottom">
+    <n-drawer
+      v-model:show="drawerActive"
+      :width="502"
+      :height="350"
+      placement="bottom"
+    >
       <n-drawer-content :title="drawerTitle">
-        <p>
-          {{ drawerDescription }}
-        </p>
+        <n-space vertical>
+          <div class="mb-4 text-lg font-bold">Metadata Details</div>
 
-        <ul
-          v-for="(item, index) in drawerRelatedIdentifier"
-          :key="index"
-          class="list"
-        >
-          <li>
-            <n-tag class="mr-4">{{ item.relationType }}</n-tag>
+          <p class="my-1 w-full border-b pb-2 font-semibold">Description</p>
 
-            <a
-              class="text-blue-500"
-              href="https://github.com/AI-READI/fairhub-app/blob/staging/src/assets/data/form.json#L702-L883"
-              >{{ item.relatedIdentifierValue }}</a
-            >
-          </li>
-        </ul>
+          <p>
+            {{ drawerDescription }}
+          </p>
+
+          <div
+            v-for="(item, index) in drawerRelatedIdentifier"
+            :key="index"
+            class="list mt-4"
+          >
+            <p class="mb-1 w-full border-b pb-2 font-semibold">Relation type</p>
+
+            <div>
+              <n-tag class="my-4">{{
+                item.relationType.replace(/([a-z])([A-Z])/g, "$1 $2")
+              }}</n-tag>
+            </div>
+
+            <p class="mb-1 w-full border-b pb-2 font-semibold">
+              Relation identifier value
+            </p>
+
+            <p>
+              <a class="text-sky-400" href="">{{
+                item.relatedIdentifierValue
+              }}</a>
+            </p>
+          </div>
+        </n-space>
       </n-drawer-content>
     </n-drawer>
   </div>
