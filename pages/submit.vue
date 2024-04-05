@@ -42,7 +42,7 @@ const steps = ref([
             </h1>
           </div>
 
-          <div class="mx-auto mt-12 max-w-3xl text-center">
+          <div class="mx-auto mt-4 max-w-3xl text-center">
             <p class="text-center text-2xl font-normal text-gray-800">
               The FAIRhub study management platform (app.fairhub.io) is designed
               to help you easily manage your clinicals research data and share

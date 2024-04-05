@@ -237,7 +237,7 @@ body {
     background-image: url("../../public/images/Meteor.svg");
     background-size: cover;
     background-position: center;
-    mask-image: linear-gradient(to left, white, transparent)!important;
+    mask-image: linear-gradient(to bottom, white, transparent)!important;
     z-index: -1;
 }
 

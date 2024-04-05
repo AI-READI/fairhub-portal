@@ -34,7 +34,7 @@
     <section class="px-16 py-12">
       <div class="mx-auto mb-5 flex max-w-screen-xl flex-col items-center">
         <h1
-          class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text pb-12 pt-5 text-5xl font-bold text-transparent md:text-5xl lg:text-6xl"
+          class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text pb-4 pt-5 text-5xl font-bold text-transparent md:text-5xl lg:text-6xl"
         >
           About
         </h1>
@@ -80,15 +80,15 @@
 
         <div class="max-w-[80rem] rounded-3xl px-4">
           <div
-            class="flex flex-row items-center gap-4 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
+            class="flex flex-row items-center gap-2 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
           >
             <div
-              class="gro w flex min-h-[16.7rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
+              class="flex min-h-[16.7rem] grow flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
                 <Icon
                   name="carbon:ibm-openshift-container-platform-on-vpc-for-regulated-industries"
-                  class="min-w-md min-h-[2.5rem] min-w-[2.5rem] max-w-md text-sky-700"
+                  class="min-w-md min-h-[2rem] min-w-[2rem] max-w-md text-sky-700"
                 />
 
                 <h3 class="text-sky-700">Study Management Platform</h3>
@@ -108,7 +108,7 @@
               <div class="flex flex-row items-center gap-4">
                 <Icon
                   name="icon-park-twotone:data-switching"
-                  class="min-w-md min-h-[2.5rem] min-w-[2.5rem] max-w-md text-sky-700"
+                  class="min-w-md min-h-[2rem] min-w-[2rem] max-w-md text-sky-700"
                 />
 
                 <h3 class="text-sky-700">Platform Pipeline</h3>
@@ -125,7 +125,7 @@
           </div>
 
           <div
-            class="flex gap-8 p-2 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
+            class="flex gap-2 py-2 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
           >
             <div
               class="flex min-h-[16.7rem] grow flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
