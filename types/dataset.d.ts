@@ -411,6 +411,7 @@ interface MetadataFileList {
 
 interface RelatedIdentifier {
   relatedIdentifier: string;
+  relatedIdentifierValue: string;
   relatedIdentifierType: string;
   relationType: string;
   resourceTypeGeneral: string;

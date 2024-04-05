@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { TreeOption } from "naive-ui";
 import { NButton } from "naive-ui";
+import identifierType from "../../assets/related_identifier.json";
 import { Icon } from "#components";
-
 const drawerActive = ref(false);
 
 const props = defineProps({
@@ -70,7 +70,17 @@ const data = props.folderStructure.map((file) => convertFile(file, []));
 
 const drawerTitle = ref("");
 const drawerDescription = ref("");
-const drawerRelatedIdentifier = ref<RelatedIdentifier[] | undefined>(undefined);
+const drawerIcon = ref("");
+const drawerText = ref("");
+const relationType = ref<RelatedIdentifier[] | undefined>(undefined);
+const drawerRelatedIdentifierValue = ref<RelatedIdentifier | undefined>(
+  undefined,
+);
+
+const getRelationName = (relationType: string) => {
+  const relation = identifierType.find((r: string) => r.value === relationType);
+  return relation?.label;
+};
 
 const openMetdataDrawer = (currentPath: Array<string>) => {
   let directoryList: Array<Directory> | undefined =
@@ -95,11 +105,27 @@ const openMetdataDrawer = (currentPath: Array<string>) => {
   }
 
   if (filetype) {
+    drawerTitle.value = filetype.metadataFileName;
+    drawerIcon.value = "pepicons-pencil:file";
+    drawerText.value = "This file";
     drawerDescription.value = filetype.metadataFileDescription;
-    drawerRelatedIdentifier.value = filetype.relatedIdentifier;
+    relationType.value = filetype.relatedIdentifier?.map((r) =>
+      getRelationName(r.relationType),
+    );
+    drawerRelatedIdentifierValue.value = filetype.relatedIdentifier?.find(
+      (r) => r.relatedIdentifierValue,
+    );
   } else if (datatype) {
+    drawerTitle.value = datatype.directoryName;
+    drawerIcon.value = "ic:baseline-folder";
+    drawerText.value = "This directory";
     drawerDescription.value = datatype.directoryDescription;
-    drawerRelatedIdentifier.value = datatype.relatedIdentifier;
+    relationType.value = datatype.relatedIdentifier?.map((r) =>
+      getRelationName(r.relationType),
+    );
+    drawerRelatedIdentifierValue.value =
+      datatype.relatedIdentifier?.find((r) => r.relatedIdentifierValue) ||
+      undefined;
   } else {
     drawerDescription.value = "No metadata found for this file";
   }
@@ -121,12 +147,15 @@ const openMetdataDrawer = (currentPath: Array<string>) => {
     <n-drawer
       v-model:show="drawerActive"
       :width="502"
-      :height="350"
+      :height="280"
       placement="bottom"
     >
-      <n-drawer-content :title="drawerTitle">
+      <n-drawer-content>
         <n-space vertical>
-          <div class="mb-4 text-lg font-bold">Metadata Details</div>
+          <div class="text-md mb-4 font-bold">
+            <Icon :name="drawerIcon" color="#0284c7" />
+            {{ drawerTitle }}
+          </div>
 
           <p class="my-1 w-full border-b pb-2 font-semibold">Description</p>
 
@@ -135,27 +164,24 @@ const openMetdataDrawer = (currentPath: Array<string>) => {
           </p>
 
           <div
-            v-for="(item, index) in drawerRelatedIdentifier"
-            :key="index"
+            v-if="drawerRelatedIdentifierValue && relationType"
             class="list mt-4"
           >
             <p class="mb-1 w-full border-b pb-2 font-semibold">Relation type</p>
 
-            <div>
-              <n-tag class="my-4">{{
-                item.relationType.replace(/([a-z])([A-Z])/g, "$1 $2")
-              }}</n-tag>
-            </div>
+            <ul v-for="(type, index) in relationType" :key="index" class="mt-4">
+              <li>
+                {{ drawerText }}
+                <span class="mr-2 lowercase">{{ type }}</span>
 
-            <p class="mb-1 w-full border-b pb-2 font-semibold">
-              Relation identifier value
-            </p>
-
-            <p>
-              <a class="text-sky-400" href="">{{
-                item.relatedIdentifierValue
-              }}</a>
-            </p>
+                <a
+                  class="text-sky-600"
+                  :href="drawerRelatedIdentifierValue?.relatedIdentifierValue"
+                  target="_blank"
+                  >{{ drawerRelatedIdentifierValue?.relatedIdentifierValue }}</a
+                >
+              </li>
+            </ul>
           </div>
         </n-space>
       </n-drawer-content>
