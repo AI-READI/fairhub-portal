@@ -159,12 +159,14 @@ const openMetdataDrawer = (currentPath: Array<string>) => {
     >
       <n-drawer-content>
         <n-space vertical>
-          <div class="text-md mb-4 font-bold">
+          <div class="mb-1 text-lg font-bold">
             <Icon :name="drawerIcon" color="#0284c7" />
             {{ drawerTitle }}
           </div>
 
-          <p class="my-1 w-full border-b pb-2 font-semibold">Description</p>
+          <p class="text-md my-1 w-full border-b pb-2 font-semibold">
+            Description
+          </p>
 
           <p>
             {{ drawerDescription }}
@@ -174,12 +176,14 @@ const openMetdataDrawer = (currentPath: Array<string>) => {
             v-if="drawerRelatedIdentifierValue && relationType"
             class="list mt-4"
           >
-            <p class="mb-1 w-full border-b pb-2 font-semibold">Relation type</p>
+            <p class="text-md mb-1 w-full border-b pb-2 font-semibold">
+              Relation type
+            </p>
 
             <ul v-for="(type, index) in relationType" :key="index" class="mt-4">
               <li>
                 {{ drawerText }}
-                <span class="mr-2 lowercase">{{ type }}</span>
+                <span class="mr-2 lowercase">{{ type.relationType }}</span>
 
                 <a
                   class="text-sky-600"
