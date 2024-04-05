@@ -42,7 +42,7 @@
     "eslint-plugin-sort-keys-custom-order": "1.0.5",
     "eslint-plugin-unused-imports": "3.1.0",
     "npm-run-all": "4.1.5",
-    "nuxt": "^3.10.0",
+    "nuxt": "^3.11.2",
     "nuxt-headlessui": "1.1.4",
     "nuxt-icon": "0.6.8",
     "nuxt-link-checker": "^3.0.0-rc.6",
