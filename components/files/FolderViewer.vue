@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { TreeOption } from "naive-ui";
 import { NButton } from "naive-ui";
-import identifierType from "../../assets/related_identifier.json";
+import identifierType from "../../dev/related_identifier.json";
 import { Icon } from "#components";
 const drawerActive = ref(false);
 
