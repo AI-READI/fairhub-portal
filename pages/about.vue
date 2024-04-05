@@ -88,7 +88,8 @@
               <div class="flex flex-row items-center gap-4">
                 <Icon
                   name="carbon:ibm-openshift-container-platform-on-vpc-for-regulated-industries"
-                  class="min-w-md min-h-[2rem] min-w-[2rem] max-w-md text-sky-700"
+                  color="#0284c7"
+                  size="2rem"
                 />
 
                 <h3 class="text-sky-700">Study Management Platform</h3>
@@ -108,7 +109,8 @@
               <div class="flex flex-row items-center gap-4">
                 <Icon
                   name="icon-park-twotone:data-switching"
-                  class="min-w-md min-h-[2rem] min-w-[2rem] max-w-md text-sky-700"
+                  color="#0284c7"
+                  size="2rem"
                 />
 
                 <h3 class="text-sky-700">Platform Pipeline</h3>
@@ -133,7 +135,8 @@
               <div class="flex flex-row items-center gap-4">
                 <Icon
                   name="material-symbols:dataset-linked-outline-sharp"
-                  class="min-w-md min-h-[2.5rem] min-w-[2.5rem] max-w-md text-sky-700"
+                  color="#0284c7"
+                  size="2.5rem"
                 />
 
                 <h3 class="text-sky-700">API</h3>
@@ -150,10 +153,7 @@
               class="flex min-h-[16.7rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
-                <Icon
-                  name="gis:map-share"
-                  class="min-w-md min-h-[2rem] min-w-[2rem] max-w-md text-sky-700"
-                />
+                <Icon name="gis:map-share" color="#0284c7" size="2rem" />
 
                 <h3 class="text-sky-700">Data Platform</h3>
               </div>
