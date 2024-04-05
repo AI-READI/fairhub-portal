@@ -103,7 +103,7 @@ const links = [
 
               <ButtonAuthenticationTrigger
                 class="flex items-center justify-center border-b border-gray-100 px-3 py-2 text-gray-700 transition-all hover:bg-gray-50 hover:text-cyan-500 lg:border-0 lg:p-0 lg:hover:bg-transparent"
-                :show-login="true"
+                :show-login="false"
               />
             </ul>
           </div>

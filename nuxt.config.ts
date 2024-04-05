@@ -88,6 +88,7 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    entraClientSecret: "",
     public: {
       // Only values that are not sensitive should be set here
       // These values are accessible from both server and client side
@@ -117,6 +118,7 @@ export default defineNuxtConfig({
             ? "https://staging.api.fairhub.io"
             : "https://api.fairhub.io",
     },
+    sessionPassword: "",
   },
 
   schemaOrg: {

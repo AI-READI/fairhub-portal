@@ -6,15 +6,23 @@ defineProps({
   },
 });
 
-const { authenticated } = useAccount();
-const { authClient } = useAuthClient();
+const { authenticated } = useUserDetails();
+const route = useRoute();
 
-const login = () => {
-  authClient.loginRedirect({ scopes: ["openid", "email", "profile"] });
+const login = async () => {
+  const redirectTo = route.fullPath;
+  await navigateTo(
+    `${window.location.origin}/login-redirect?redirectTo=${redirectTo}`,
+    {
+      external: true,
+    },
+  );
 };
 
-const logout = () => {
-  authClient.logoutRedirect();
+const logout = async () => {
+  await navigateTo(`${window.location.origin}/logout`, {
+    external: true,
+  });
 };
 </script>
 
