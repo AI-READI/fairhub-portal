@@ -78,8 +78,9 @@ const drawerRelatedIdentifierValue = ref<RelatedIdentifier | undefined>(
 );
 
 const getRelationName = (relationType: string) => {
-  const relation = identifierType.find((r: string) => r.value === relationType);
-  return relation?.label;
+  const relation = identifierType.find((r) => r.value === relationType);
+  return relation?.label || "";
+  // return "";
 };
 
 const openMetdataDrawer = (currentPath: Array<string>) => {
@@ -109,9 +110,12 @@ const openMetdataDrawer = (currentPath: Array<string>) => {
     drawerIcon.value = "pepicons-pencil:file";
     drawerText.value = "This file";
     drawerDescription.value = filetype.metadataFileDescription;
-    relationType.value = filetype.relatedIdentifier?.map((r) =>
-      getRelationName(r.relationType),
-    );
+    relationType.value = filetype.relatedIdentifier?.map((r) => {
+      return {
+        ...r,
+        relationType: getRelationName(r.relationType),
+      };
+    });
     drawerRelatedIdentifierValue.value = filetype.relatedIdentifier?.find(
       (r) => r.relatedIdentifierValue,
     );
@@ -120,9 +124,12 @@ const openMetdataDrawer = (currentPath: Array<string>) => {
     drawerIcon.value = "ic:baseline-folder";
     drawerText.value = "This directory";
     drawerDescription.value = datatype.directoryDescription;
-    relationType.value = datatype.relatedIdentifier?.map((r) =>
-      getRelationName(r.relationType),
-    );
+    relationType.value = datatype.relatedIdentifier?.map((r) => {
+      return {
+        ...r,
+        relationType: getRelationName(r.relationType),
+      };
+    });
     drawerRelatedIdentifierValue.value =
       datatype.relatedIdentifier?.find((r) => r.relatedIdentifierValue) ||
       undefined;
