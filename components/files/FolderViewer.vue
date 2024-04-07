@@ -180,7 +180,11 @@ const openMetdataDrawer = (currentPath: Array<string>) => {
               Relation type
             </p>
 
-            <ul v-for="(type, index) in relationType" :key="index" class="mt-4">
+            <ul
+              v-for="(type, index) in relationType"
+              :key="index"
+              class="mt-4 flex"
+            >
               <li>
                 {{ drawerText }}
                 <span class="mr-2 lowercase">{{ type.relationType }}</span>
