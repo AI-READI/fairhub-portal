@@ -43,7 +43,7 @@
           FAIRhub is an open source platform for sharing and accessing FAIR and
           AI-ready datasets. Your clinical research data can be easily shared
           with the world through FAIRhub in a way that it is optimally reusable
-          reusable by both researchers and AI applications.
+          by both researchers and AI applications.
         </p>
 
         <div class="my-6 grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -75,7 +75,7 @@
         <h2
           class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text pb-12 text-4xl font-bold text-transparent md:text-4xl lg:text-5xl"
         >
-          The layers of FAIRhub platform
+          Layers of FAIRhub platform
         </h2>
 
         <div class="max-w-[80rem] rounded-3xl px-4">
@@ -159,7 +159,7 @@
               </div>
 
               <p class="min-w-md text-xl font-medium">
-                API serve as the communication channels through which clients
+                APIs serve as a communication channels through which clients
                 interact with a web server or service. Each endpoint represents
                 a specific functionality or resource provided by the server.
               </p>
@@ -181,8 +181,8 @@
               </div>
 
               <p class="text-xl font-medium">
-                Our platform provide easy access to well structure, AI-ready
-                datasets. A simplified mechanism is available to access
+                Our platform provide easy access to well-structured, AI-ready
+                datasets. A simplified mechanism is available for accessing
                 protected versions of datasets.
               </p>
             </div>
