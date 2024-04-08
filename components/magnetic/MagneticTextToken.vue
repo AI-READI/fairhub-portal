@@ -48,7 +48,7 @@ const weight = computed(() => {
   const value = (props.threshold - lambda) / props.threshold;
 
   return Math.round(
-    Math.min(Math.max(value * props.max, props.min), props.max)
+    Math.min(Math.max(value * props.max, props.min), props.max),
   );
 });
 

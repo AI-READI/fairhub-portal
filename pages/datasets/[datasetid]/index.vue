@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import sanitizeHtml from "sanitize-html";
+// import { fetchAllDashboardConnectors } from "~/stores/dashboard";
 import { parse } from "marked";
 import type { Dataset, WithContext } from "schema-dts";
 
+// Temp AI-READI Study ID From ENV
+const aireadiStudyId: string = nuxtConfig().public.AIREADI_STUDY_UUID;
 const { isMobile } = useDevice();
 const route = useRoute();
 
@@ -15,11 +18,11 @@ const tabs = reactive([
     shown: true,
   },
   {
-    label: "Study Dashboard",
+    label: "Healthsheet",
     shown: false,
   },
   {
-    label: "Healthsheet",
+    label: "Study Dashboard",
     shown: false,
   },
   {
@@ -43,6 +46,11 @@ const tabs = reactive([
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
 });
+
+console.log(dataset);
+
+// Get Study ID here. For now, we reference our environment variable
+const studyId = aireadiStudyId;
 
 if (error.value) {
   console.error(error.value);
@@ -219,6 +227,7 @@ const generateCombinedFullName = (name: string) => {
       <n-image
         src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
         :alt="dataset?.title"
+        object-fit="contain"
         class="mb-3 size-32 h-32 w-32 rounded-lg sm:mb-0"
       />
     </div>
@@ -292,9 +301,7 @@ const generateCombinedFullName = (name: string) => {
               <!-- eslint-enable vue/no-v-html -->
             </div>
 
-            <div v-if="tabs[1].shown">Dashboard</div>
-
-            <div v-if="tabs[2].shown">
+            <div v-if="tabs[1].shown">
               <MetadataHealthSheet
                 :healthsheet="
                   dataset?.metadata.healthsheet as HealthsheetRecords
@@ -302,11 +309,16 @@ const generateCombinedFullName = (name: string) => {
               />
             </div>
 
+            <div v-if="tabs[2].shown">
+              <DashboardView :study-id="studyId" />
+            </div>
+
             <div v-if="tabs[3].shown">
               <MetadataStudyDescription
                 :metadata="
                   dataset?.metadata.studyDescription as StudyDescription
                 "
+                :study-title="dataset?.study?.title as string"
               />
 
               <n-divider />
