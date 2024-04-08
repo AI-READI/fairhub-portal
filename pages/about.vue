@@ -41,8 +41,8 @@
 
         <p class="pb-4 text-center text-2xl font-normal text-gray-800">
           FAIRhub is an open source platform for sharing and accessing FAIR and
-          and AI-ready datasets. Your clinical research data can be easily with
-          the world through FAIRhub in a way that it is optimally reusable
+          AI-ready datasets. Your clinical research data can be easily shared
+          with the world through FAIRhub in a way that it is optimally reusable
           reusable by both researchers and AI applications.
         </p>
 
@@ -92,7 +92,13 @@
                   size="2rem"
                 />
 
-                <h3 class="text-sky-700">Study Management Platform</h3>
+                <a
+                  href="https://github.com/AI-READI/fairhub-app"
+                  target="_blank"
+                  ><h3 class="text-sky-700 hover:underline">
+                    Study Management Platform
+                  </h3>
+                </a>
               </div>
 
               <p class="text-xl font-medium">
@@ -113,7 +119,13 @@
                   size="2rem"
                 />
 
-                <h3 class="text-sky-700">Platform Pipeline</h3>
+                <a
+                  href="https://github.com/AI-READI/fairhub-pipeline"
+                  target="_blank"
+                  ><h3 class="text-sky-700 hover:underline">
+                    Platform Pipeline
+                  </h3></a
+                >
               </div>
 
               <p class="min-w-md text-xl font-medium">
@@ -139,7 +151,11 @@
                   size="2.5rem"
                 />
 
-                <h3 class="text-sky-700">API</h3>
+                <a
+                  href="https://github.com/AI-READI/fairhub-api"
+                  target="_blank"
+                  ><h3 class="text-sky-700 hover:underline">API</h3></a
+                >
               </div>
 
               <p class="min-w-md text-xl font-medium">
@@ -155,7 +171,13 @@
               <div class="flex flex-row items-center gap-4">
                 <Icon name="gis:map-share" color="#0284c7" size="2rem" />
 
-                <h3 class="text-sky-700">Data Platform</h3>
+                <a
+                  href="https://github.com/AI-READI/fairhub-portal"
+                  target="_blank"
+                  ><h3 class="text-sky-700 hover:underline">
+                    Data Platform
+                  </h3></a
+                >
               </div>
 
               <p class="text-xl font-medium">
