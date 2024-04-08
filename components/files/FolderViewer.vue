@@ -214,7 +214,7 @@ const openMetadataDrawer = (currentPath: Array<string>) => {
             class="list mt-4"
           >
             <p class="text-md mb-1 w-full border-b pb-2 font-semibold">
-              Relation type
+              Additional Information
             </p>
 
             <ul
