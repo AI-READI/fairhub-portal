@@ -362,7 +362,6 @@ const generateCombinedFullName = (name: string) => {
                 <n-divider />
 
                 <FilesFolderViewer
-                  :folder-structure="dataset?.files || []"
                   :dataset-structure-description="
                     dataset?.metadata
                       .datasetStructureDescription as DatasetStructureDescription

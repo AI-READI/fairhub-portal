@@ -10,25 +10,28 @@ const props = defineProps({
     required: true,
     type: Object as PropType<DatasetStructureDescription>,
   },
-  folderStructure: {
-    required: true,
-    type: Array as PropType<Array<FolderStructure>>,
-  },
 });
 
-function convertFile(
-  file: FolderStructure,
-  currentPath: Array<string>,
+const drawerTitle = ref("");
+const drawerDescription = ref("");
+const drawerIcon = ref("");
+const drawerText = ref("");
+const relationType = ref<RelatedIdentifier[] | undefined>(undefined);
+const drawerRelatedIdentifierValue = ref<RelatedIdentifier | undefined>(
+  undefined,
+);
+
+function convertMetadataFile(
+  file: MetadataFile,
+  previousPath: Array<string>,
 ): TreeOption {
   return {
-    children: file.children?.length
-      ? file.children.map((f) => convertFile(f, [...currentPath, file.label]))
-      : undefined,
-    key: useId(), // generate unique id for each file
-    label: file.label,
+    children: undefined,
+    key: useId(),
+    label: file.metadataFileName,
     prefix: () =>
       h(Icon, {
-        name: file.children ? "ic:baseline-folder" : "pepicons-pencil:file",
+        name: "pepicons-pencil:file",
       }),
     suffix: () =>
       h(
@@ -36,7 +39,7 @@ function convertFile(
         {
           class: "",
           onClick: () => {
-            openMetdataDrawer([...currentPath, file.label]);
+            openMetadataDrawer([...previousPath, file.metadataFileName]);
           },
           size: "tiny",
         },
@@ -44,6 +47,51 @@ function convertFile(
       ),
   };
 }
+
+function convertDirectory(
+  directory: Directory,
+  previousPath: Array<string>,
+): TreeOption {
+  const naiveDirs: Array<TreeOption> | undefined = directory.directoryList?.map(
+    (d) => convertDirectory(d, [...previousPath, directory.directoryName]),
+  );
+  const naiveFiles: Array<TreeOption> | undefined =
+    directory.metadataFileList?.map((f) =>
+      convertMetadataFile(f, [...previousPath, directory.directoryName]),
+    );
+  const children = [...(naiveDirs || []), ...(naiveFiles || [])];
+  return {
+    children: children.length ? children : undefined,
+    key: useId(), // generate unique id for each file
+    label: directory.directoryName,
+    prefix: () =>
+      h(Icon, {
+        name: "ic:baseline-folder",
+      }),
+    suffix: () =>
+      h(
+        NButton,
+        {
+          class: "",
+          onClick: () => {
+            openMetadataDrawer([...previousPath, directory.directoryName]);
+          },
+          size: "tiny",
+        },
+        { default: () => "Learn More" },
+      ),
+  };
+}
+
+// const data = props.folderStructure.map((file) => convertFile(file, []));
+const dataStr = props.datasetStructureDescription.directoryList.map((d) =>
+  convertDirectory(d, []),
+);
+const datafile = props.datasetStructureDescription.metadataFileList.map((f) =>
+  convertMetadataFile(f, []),
+);
+
+const folderStructure = [...dataStr, ...datafile];
 
 const updatePrefixWithExpaned = (
   _keys: Array<string | number>,
@@ -66,41 +114,30 @@ const updatePrefixWithExpaned = (
   }
 };
 
-const data = props.folderStructure.map((file) => convertFile(file, []));
-
-const drawerTitle = ref("");
-const drawerDescription = ref("");
-const drawerIcon = ref("");
-const drawerText = ref("");
-const relationType = ref<RelatedIdentifier[] | undefined>(undefined);
-const drawerRelatedIdentifierValue = ref<RelatedIdentifier | undefined>(
-  undefined,
-);
-
 const getRelationName = (relationType: string) => {
   const relation = identifierType.find((r) => r.value === relationType);
   return relation?.label || "";
   // return "";
 };
 
-const openMetdataDrawer = (currentPath: Array<string>) => {
+const openMetadataDrawer = (currentPath: Array<string>) => {
   let directoryList: Array<Directory> | undefined =
     props.datasetStructureDescription.directoryList;
-  let metadataFileList: Array<MetadataFileList> | undefined =
+  let metadataFileList: Array<MetadataFile> | undefined =
     props.datasetStructureDescription.metadataFileList;
   let filetype = null;
-  let datatype = null;
+  let foldertype = null;
   for (const d of currentPath) {
     filetype = metadataFileList?.find((file) => file.metadataFileName === d);
     if (filetype) continue;
-    datatype = directoryList?.find((dir) => dir.directoryName === d);
-    if (datatype) {
-      directoryList = datatype?.directoryList;
-      metadataFileList = datatype?.metadataFileList;
+    foldertype = directoryList?.find((dir) => dir.directoryName === d);
+    if (foldertype) {
+      directoryList = foldertype?.directoryList;
+      metadataFileList = foldertype?.metadataFileList;
       continue;
     } else {
       filetype = null;
-      datatype = null;
+      foldertype = null;
       break;
     }
   }
@@ -119,19 +156,19 @@ const openMetdataDrawer = (currentPath: Array<string>) => {
     drawerRelatedIdentifierValue.value = filetype.relatedIdentifier?.find(
       (r) => r.relatedIdentifierValue,
     );
-  } else if (datatype) {
-    drawerTitle.value = datatype.directoryName;
+  } else if (foldertype) {
+    drawerTitle.value = foldertype.directoryName;
     drawerIcon.value = "ic:baseline-folder";
     drawerText.value = "This directory";
-    drawerDescription.value = datatype.directoryDescription;
-    relationType.value = datatype.relatedIdentifier?.map((r) => {
+    drawerDescription.value = foldertype.directoryDescription;
+    relationType.value = foldertype.relatedIdentifier?.map((r) => {
       return {
         ...r,
         relationType: getRelationName(r.relationType),
       };
     });
     drawerRelatedIdentifierValue.value =
-      datatype.relatedIdentifier?.find((r) => r.relatedIdentifierValue) ||
+      foldertype.relatedIdentifier?.find((r) => r.relatedIdentifierValue) ||
       undefined;
   } else {
     drawerDescription.value = "No metadata found for this file";
@@ -147,7 +184,7 @@ const openMetdataDrawer = (currentPath: Array<string>) => {
       block-line
       show-line
       expand-on-click
-      :data="data"
+      :data="folderStructure"
       :on-update:expanded-keys="updatePrefixWithExpaned"
     />
 

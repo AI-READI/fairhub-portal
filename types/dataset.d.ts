@@ -403,7 +403,7 @@ interface DatatypeDictionary {
   }[];
 }
 
-interface MetadataFileList {
+interface MetadataFile {
   metadataFileName: string;
   metadataFileDescription: string;
   relatedIdentifier?: RelatedIdentifier[];
@@ -422,7 +422,7 @@ interface Directory {
   directoryList?: Directory[];
   directoryType: string;
   directoryDescription: string;
-  metadataFileList?: MetadataFileList[]
+  metadataFileList?: MetadataFile[]
   relatedIdentifier?: RelatedIdentifier[];
   relatedTerm: {
     relatedTermValue: string;
