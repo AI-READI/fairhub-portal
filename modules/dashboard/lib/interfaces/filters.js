@@ -89,8 +89,8 @@ class Filters extends Interface {
     Generate Filters
     */
 
-  update(event, data) {
-    let self = this;
+  update(data) {
+    const self = this;
 
     self.clear();
 
