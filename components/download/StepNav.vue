@@ -3,8 +3,8 @@ import type { StepsProps } from "naive-ui";
 
 const steps = [
   "Overview",
-  "Log In",
   "Training",
+  "Log In",
   "Research Purpose",
   "License",
   "Select Data",

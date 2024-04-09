@@ -101,7 +101,9 @@ const handleLogin = async () => {
             <div v-if="authenticated">
               <p>Logged in as {{ userDetails?.email }}.</p>
 
-              <NuxtLink :to="`/datasets/${dataset?.id}/access/training`">
+              <NuxtLink
+                :to="`/datasets/${dataset?.id}/access/research-purpose`"
+              >
                 <n-button size="large" type="info" secondary class="my-3"
                   >Next</n-button
                 >

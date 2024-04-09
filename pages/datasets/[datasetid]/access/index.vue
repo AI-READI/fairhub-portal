@@ -88,12 +88,12 @@ const currentStep = ref<number>(1);
             <p>To obtain access to this dataset, you must:</p>
 
             <ol>
-              <li>Log in using our authentication provider</li>
-
               <li>
                 Answer some questions about your training in research methods
                 and ethics
               </li>
+
+              <li>Log in using our authentication provider</li>
 
               <li>Describe the purpose of your research</li>
 
@@ -107,7 +107,7 @@ const currentStep = ref<number>(1);
               </li>
             </ol>
 
-            <NuxtLink :to="`/datasets/${dataset?.id}/access/login`">
+            <NuxtLink :to="`/datasets/${dataset?.id}/access/training`">
               <n-button size="large" type="info" secondary class="my-3">
                 Begin
               </n-button>
