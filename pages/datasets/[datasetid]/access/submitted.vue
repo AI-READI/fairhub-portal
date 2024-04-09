@@ -101,6 +101,11 @@ const currentStep = ref<number>(7);
             <p>
               Once created, you will have 72 hours to download your dataset.
             </p>
+
+            <p>
+              For those attending the Bridge2AI Open House in person, please
+              contact your DGP coordinator for details on accessing the dataset.
+            </p>
           </div>
         </TransitionFade>
       </div>

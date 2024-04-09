@@ -95,7 +95,11 @@ const currentStep = ref<number>(1);
 
               <li>Log in using our authentication provider</li>
 
-              <li>Describe the purpose of your research</li>
+              <li>
+                Describe the purpose of your research <br />
+                This information, along with your name, will be publicly shared
+                on the AI-READI website
+              </li>
 
               <li>Agree to the terms of the dataset license</li>
 
