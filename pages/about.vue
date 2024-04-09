@@ -178,9 +178,9 @@
               </div>
 
               <p class="text-xl font-medium">
-                Our platform provides an easy access to well-structured,
-                AI-ready datasets, with a simplified mechanism available for
-                accessing protected versions of datasets.
+                Our platform provides easy access to well-structured, AI-ready
+                datasets, with a simplified mechanism available for accessing
+                protected versions of datasets.
               </p>
 
               <a
