@@ -34,10 +34,6 @@ const tabs = reactive([
     label: "Dataset Structure Preview",
     shown: false,
   },
-  {
-    label: "Clinical Data Quality",
-    shown: false,
-  },
 ]);
 
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
@@ -371,7 +367,7 @@ const generateCombinedFullName = (name: string) => {
               </n-space>
             </div>
 
-            <div v-if="tabs[6].shown">Clinical Data Quality</div>
+            <!--            <div v-if="tabs[6].shown">Clinical Data Quality</div>-->
           </TransitionFade>
         </div>
 
