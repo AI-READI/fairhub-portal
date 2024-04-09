@@ -55,13 +55,13 @@ function setActive(event) {
     context.setActiveItem(
       index.value,
       container.value.getBoundingClientRect().height,
-      container.value.offsetTop
+      container.value.offsetTop,
     );
   } else {
     context.setActiveItem(
       index.value,
       container.value.getBoundingClientRect().width,
-      container.value.offsetLeft
+      container.value.offsetLeft,
     );
   }
 

@@ -10,7 +10,7 @@ const TargetBlankExtension = (md: any) => {
     idx: number,
     options: any,
     env: any,
-    self: any
+    self: any,
   ) {
     const aIndex = tokens[idx].attrIndex("target");
 

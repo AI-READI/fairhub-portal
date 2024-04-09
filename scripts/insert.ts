@@ -34,7 +34,6 @@ const func = async () => {
           nameIdentifierScheme: "ROR",
           nameIdentifierValue: "https://ror.org/04wxnsj81",
           schemeURI: "https://ror.org",
-
         },
       ],
       nameType: "Personal",
@@ -76,7 +75,6 @@ const func = async () => {
         },
       ],
       nameType: "Personal",
-
     },
   ];
 
@@ -88,9 +86,8 @@ const func = async () => {
     {
       $set: {
         "metadata.dataset_description.Creator": datasetDescription,
-
       },
-    }
+    },
   );
 };
 
