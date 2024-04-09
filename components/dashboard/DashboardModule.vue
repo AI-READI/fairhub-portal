@@ -75,8 +75,12 @@ export default {
           :id="`${visualization.setID}_filters`"
           trigger="click"
           :options="visualization.Filters.data"
-          :on-select="() => visualization.update($event, filter)"
           placement="right-start"
+          @select="
+            (filter) => {
+              return visualization.update(filter);
+            }
+          "
         >
           <n-button>{{
             `${visualization.accessors.filterby.name} > ${visualization.selectedFilter}`

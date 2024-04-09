@@ -401,7 +401,7 @@ class StackedBarChart extends Chart {
   }
 
   update(filter) {
-    let self = this;
+    const self = this;
 
     self.clear();
 
