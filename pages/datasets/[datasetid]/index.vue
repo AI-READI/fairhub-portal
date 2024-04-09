@@ -15,10 +15,6 @@ const tabs = reactive([
     shown: true,
   },
   {
-    label: "Study Dashboard",
-    shown: false,
-  },
-  {
     label: "Healthsheet",
     shown: false,
   },
@@ -32,10 +28,6 @@ const tabs = reactive([
   },
   {
     label: "Dataset Structure Preview",
-    shown: false,
-  },
-  {
-    label: "Clinical Data Quality",
     shown: false,
   },
 ]);
@@ -292,7 +284,7 @@ const generateCombinedFullName = (name: string) => {
               <!-- eslint-enable vue/no-v-html -->
             </div>
 
-            <div v-if="tabs[1].shown">Dashboard</div>
+            <!--            <div v-if="tabs[1].shown">Dashboard</div>-->
 
             <div v-if="tabs[2].shown">
               <MetadataHealthSheet
@@ -370,7 +362,7 @@ const generateCombinedFullName = (name: string) => {
               </n-space>
             </div>
 
-            <div v-if="tabs[6].shown">Clinical Data Quality</div>
+            <!--            <div v-if="tabs[6].shown">Clinical Data Quality</div>-->
           </TransitionFade>
         </div>
 
