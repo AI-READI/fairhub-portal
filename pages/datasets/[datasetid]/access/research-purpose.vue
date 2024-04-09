@@ -31,10 +31,12 @@ const generateCombinedFullName = (name: string) => {
 };
 
 const currentStep = ref<number>(4);
-const researchPurpose = ref<string>("");
+const researchPurpose = useCookie(`dataset-${datasetid}-research-purpose`, {
+  default: () => "",
+});
 const validResearchPurpose = computed(
   () =>
-    researchPurpose.value.length > 20 && researchPurpose.value.length <= 500,
+    researchPurpose.value.length > 100 && researchPurpose.value.length <= 500,
 );
 </script>
 
@@ -106,7 +108,7 @@ const validResearchPurpose = computed(
               <n-input
                 v-model:value="researchPurpose"
                 type="textarea"
-                :minlength="20"
+                :minlength="100"
                 :maxlength="500"
                 :rows="5"
                 show-count

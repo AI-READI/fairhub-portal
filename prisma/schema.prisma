@@ -1,14 +1,18 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  schemas  = ["download", "public"]
 }
 
 model alembic_version {
   version_num String @id(map: "alembic_version_pkc") @db.VarChar(32)
+
+  @@schema("public")
 }
 
 model dataset {
@@ -33,6 +37,8 @@ model dataset {
   dataset_subject               dataset_subject[]
   dataset_title                 dataset_title[]
   version                       version[]
+
+  @@schema("public")
 }
 
 model dataset_access {
@@ -42,6 +48,8 @@ model dataset_access {
   url_last_checked BigInt?
   dataset_id       String  @id @db.Char(36)
   dataset          dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_alternate_identifier {
@@ -51,6 +59,8 @@ model dataset_alternate_identifier {
   created_at BigInt
   dataset_id String  @db.Char(36)
   dataset    dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_consent {
@@ -63,6 +73,8 @@ model dataset_consent {
   details       String  @db.VarChar
   dataset_id    String  @id @db.Char(36)
   dataset       dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_contributor {
@@ -79,6 +91,8 @@ model dataset_contributor {
   created_at                 BigInt
   dataset_id                 String  @db.Char(36)
   dataset                    dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_date {
@@ -89,6 +103,8 @@ model dataset_date {
   created_at  BigInt
   dataset_id  String  @db.Char(36)
   dataset     dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_de_ident_level {
@@ -101,6 +117,8 @@ model dataset_de_ident_level {
   details    String  @db.VarChar
   dataset_id String  @id @db.Char(36)
   dataset    dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_description {
@@ -110,6 +128,8 @@ model dataset_description {
   created_at  BigInt
   dataset_id  String  @db.Char(36)
   dataset     dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_funder {
@@ -124,6 +144,8 @@ model dataset_funder {
   created_at            BigInt
   dataset_id            String  @db.Char(36)
   dataset               dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_healthsheet {
@@ -136,6 +158,19 @@ model dataset_healthsheet {
   maintenance   Json    @db.Json
   dataset_id    String  @id @db.Char(36)
   dataset       dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
+}
+
+model dataset_managing_organization {
+  name                  String  @db.VarChar
+  identifier            String  @db.VarChar
+  identifier_scheme     String  @db.VarChar
+  identifier_scheme_uri String  @db.VarChar
+  dataset_id            String  @id @db.Char(36)
+  dataset               dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_other {
@@ -147,6 +182,8 @@ model dataset_other {
   acknowledgement    String   @db.VarChar
   dataset_id         String   @id @db.Char(36)
   dataset            dataset  @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_related_identifier {
@@ -161,6 +198,8 @@ model dataset_related_identifier {
   created_at              BigInt
   dataset_id              String  @db.Char(36)
   dataset                 dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_rights {
@@ -174,6 +213,8 @@ model dataset_rights {
   created_at            BigInt
   dataset_id            String  @db.Char(36)
   dataset               dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_subject {
@@ -186,6 +227,8 @@ model dataset_subject {
   created_at          BigInt
   dataset_id          String  @db.Char(36)
   dataset             dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_title {
@@ -195,6 +238,8 @@ model dataset_title {
   created_at BigInt
   dataset_id String  @db.VarChar
   dataset    dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model email_verification {
@@ -203,6 +248,8 @@ model email_verification {
   created_at String @db.Char(36)
   user_id    String @db.Char(36)
   user       user   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model invited_study_contributor {
@@ -215,6 +262,7 @@ model invited_study_contributor {
   study         study  @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
   @@id([email_address, study_id])
+  @@schema("public")
 }
 
 model notification {
@@ -227,6 +275,8 @@ model notification {
   created_at BigInt
   user_id    String   @db.Char(36)
   user       user     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model participant {
@@ -240,22 +290,28 @@ model participant {
   study_id             String                 @db.Char(36)
   study                study                  @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
   version_participants version_participants[]
+
+  @@schema("public")
 }
 
 model published_dataset {
-  id                 String @id @db.Char(36)
-  study_id           String @db.VarChar
-  dataset_id         String @db.VarChar
-  version_id         String @db.VarChar
-  doi                String @db.VarChar
-  title              String @db.VarChar
-  description        String @db.VarChar
-  version_title      String @db.VarChar
-  study_title        String @db.VarChar
-  published_metadata Json   @db.Json
-  files              Json   @db.Json
-  data               Json   @db.Json
+  id                 String               @id @db.Char(36)
+  study_id           String               @db.VarChar
+  dataset_id         String               @db.VarChar
+  version_id         String               @db.VarChar
+  doi                String               @db.VarChar
+  title              String               @db.VarChar
+  description        String               @db.VarChar
+  version_title      String               @db.VarChar
+  study_title        String               @db.VarChar
+  published_metadata Json                 @db.Json
+  files              Json                 @db.Json
+  data               Json                 @db.Json
   created_at         BigInt
+  download_agreement download_agreement[]
+  download_request   download_request[]
+
+  @@schema("public")
 }
 
 model study {
@@ -287,6 +343,8 @@ model study {
   study_redcap              study_redcap[]
   study_sponsors            study_sponsors?
   study_status              study_status?
+
+  @@schema("public")
 }
 
 model study_arm {
@@ -298,6 +356,8 @@ model study_arm {
   created_at        BigInt
   study_id          String   @db.Char(36)
   study             study    @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_central_contact {
@@ -318,6 +378,8 @@ model study_central_contact {
   created_at                        BigInt
   study_id                          String @db.Char(36)
   study                             study  @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_collaborators {
@@ -329,6 +391,8 @@ model study_collaborators {
   created_at BigInt
   study_id   String @db.Char(36)
   study      study  @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_conditions {
@@ -341,6 +405,8 @@ model study_conditions {
   created_at          BigInt
   study_id            String @db.Char(36)
   study               study  @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_contributor {
@@ -352,6 +418,7 @@ model study_contributor {
   user       user   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@id([user_id, study_id])
+  @@schema("public")
 }
 
 model study_dashboard {
@@ -367,6 +434,8 @@ model study_dashboard {
   redcap_id    String       @db.Char(36)
   study_redcap study_redcap @relation(fields: [redcap_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
   study        study        @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_description {
@@ -374,6 +443,8 @@ model study_description {
   detailed_description String @db.VarChar
   study_id             String @id @db.Char(36)
   study                study  @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_design {
@@ -397,6 +468,8 @@ model study_design {
   is_patient_registry                   String?  @db.VarChar
   study_id                              String   @id @db.Char(36)
   study                                 study    @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_eligibility {
@@ -414,6 +487,8 @@ model study_eligibility {
   sampling_method    String?  @db.VarChar
   study_id           String   @id @db.Char(36)
   study              study    @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_identification {
@@ -426,6 +501,8 @@ model study_identification {
   created_at        BigInt
   study_id          String  @db.Char(36)
   study             study   @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_intervention {
@@ -437,6 +514,8 @@ model study_intervention {
   created_at      BigInt
   study_id        String   @db.Char(36)
   study           study    @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_keywords {
@@ -449,6 +528,8 @@ model study_keywords {
   created_at          String @db.VarChar
   study_id            String @db.Char(36)
   study               study  @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_location {
@@ -463,6 +544,8 @@ model study_location {
   study_id                    String                        @db.Char(36)
   study                       study                         @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
   study_location_contact_list study_location_contact_list[]
+
+  @@schema("public")
 }
 
 model study_location_contact_list {
@@ -479,12 +562,16 @@ model study_location_contact_list {
   created_at        BigInt
   study_location_id String         @db.Char(36)
   study_location    study_location @relation(fields: [study_location_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_other {
   size     BigInt
   study_id String @id @db.Char(36)
   study    study  @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_overall_official {
@@ -503,6 +590,8 @@ model study_overall_official {
   created_at                        BigInt
   study_id                          String  @db.Char(36)
   study                             study   @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_oversight {
@@ -512,6 +601,8 @@ model study_oversight {
   has_dmc                     String? @db.VarChar
   study_id                    String  @id @db.Char(36)
   study                       study   @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_redcap {
@@ -526,6 +617,8 @@ model study_redcap {
   study_id        String            @db.Char(36)
   study_dashboard study_dashboard[]
   study           study             @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_sponsors {
@@ -546,6 +639,8 @@ model study_sponsors {
   lead_sponsor_identifier_scheme_uri                              String  @db.VarChar
   study_id                                                        String  @id @db.Char(36)
   study                                                           study   @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_status {
@@ -557,6 +652,8 @@ model study_status {
   completion_date_type String? @db.VarChar
   study_id             String  @id @db.Char(36)
   study                study   @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model token_blacklist {
@@ -564,6 +661,8 @@ model token_blacklist {
   exp     String @db.VarChar
   user_id String @db.Char(36)
   user    user   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model user {
@@ -578,6 +677,8 @@ model user {
   study_contributor  study_contributor[]
   token_blacklist    token_blacklist[]
   user_details       user_details[]
+
+  @@schema("public")
 }
 
 model user_details {
@@ -591,6 +692,8 @@ model user_details {
   timezone      String? @db.VarChar
   user_id       String  @db.Char(36)
   user          user    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model version {
@@ -607,6 +710,8 @@ model version {
   dataset              dataset                @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   version_participants version_participants[]
   version_readme       version_readme?
+
+  @@schema("public")
 }
 
 model version_participants {
@@ -616,19 +721,73 @@ model version_participants {
   participant        participant @relation(fields: [participant_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@id([dataset_version_id, participant_id])
+  @@schema("public")
 }
 
 model version_readme {
   content    String? @db.VarChar
   version_id String  @id @db.Char(36)
   version    version @relation(fields: [version_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
-model dataset_managing_organization {
-  name                  String  @db.VarChar
-  identifier            String  @db.VarChar
-  identifier_scheme     String  @db.VarChar
-  identifier_scheme_uri String  @db.VarChar
-  dataset_id            String  @id @db.Char(36)
-  dataset               dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+model download_agreement {
+  id                    String                @id @db.Char(36)
+  user_details_id       String                @db.Char(36)
+  dataset_id            String                @db.Char(36)
+  research_purpose      String                @db.VarChar
+  license_accepted      Boolean
+  attestation_accepted  Boolean
+  created_at            BigInt
+  updated_on            BigInt
+  published_dataset     published_dataset     @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  download_user_details download_user_details @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  download_request      download_request[]
+
+  @@schema("download")
+}
+
+model download_request {
+  id                    String                @id @db.Char(36)
+  user_details_id       String                @db.Char(36)
+  dataset_id            String                @db.Char(36)
+  download_agreement_id String                @db.Char(36)
+  folders_selected      Json                  @db.Json
+  status                download_status       @default(PENDING)
+  download_uri          String?               @db.VarChar
+  download_key          String?               @db.VarChar
+  secure_hash           String?               @db.Char(64)
+  created_at            BigInt
+  updated_on            BigInt
+  published_dataset     published_dataset     @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  download_agreement    download_agreement    @relation(fields: [download_agreement_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  download_user_details download_user_details @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("download")
+}
+
+model download_user_details {
+  id                 String               @id @db.Char(36)
+  email              String               @unique @db.VarChar
+  given_name         String?              @db.VarChar
+  family_name        String?              @db.VarChar
+  affiliation        String?              @db.VarChar
+  organization       String?              @db.VarChar
+  phone              String?              @db.VarChar
+  created_at         BigInt
+  updated_on         BigInt
+  download_agreement download_agreement[]
+  download_request   download_request[]
+
+  @@schema("download")
+}
+
+enum download_status {
+  PENDING
+  PROCESSING
+  READY
+  EXPIRED
+
+  @@schema("download")
 }
