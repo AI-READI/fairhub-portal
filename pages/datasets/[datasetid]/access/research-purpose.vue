@@ -96,6 +96,12 @@ const validResearchPurpose = computed(
           <div>
             <h4>About Your Research</h4>
 
+            <p>
+              Please note, that by requesting a dataset, your name and research
+              purpose will be shared on the AI-READI website in order to promote
+              transparency and trust with the use of this data.
+            </p>
+
             <n-form-item label="Briefly describe the purpose of your research.">
               <n-input
                 v-model:value="researchPurpose"
