@@ -499,6 +499,8 @@ interface Dataset {
   files: FolderStructure[];
   data: AdditionalData;
   created_at: number;
+  creators: DatasetCreators;
+  study: Study;
 }
 
 interface DatasetArray extends Array<Dataset> {}
@@ -521,3 +523,17 @@ interface VersionArrayItem {
 }
 
 interface VersionArray extends Array<VersionArrayItem> {}
+
+interface DatabaseDatasetRecord extends Dataset {
+  _id: string;
+  identifier: number;
+  doi: string;
+  fairhub: {
+    // contains the original ids from fairhub study management portal
+    dataset: {
+      id: string;
+    };
+    study: Study;
+    version: Version;
+  };
+}

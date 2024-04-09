@@ -16,6 +16,8 @@ export default defineEventHandler(async (event) => {
     });
   }
 
+  console.log(publishedDataset);
+
   const datasetId = Number(publishedDataset.id).toString();
 
   const datasetCreatedAt: bigint = BigInt(publishedDataset.created_at);
@@ -50,6 +52,8 @@ export default defineEventHandler(async (event) => {
     study_title: publishedDataset.study_title,
     version_id: publishedDataset.version_id,
     version_title: publishedDataset.version_title,
+    // study: dbDataset.fairhub.study,
+    // updatedOn: dbDataset.updatedOn,
   };
 
   return dataset;

@@ -2,7 +2,6 @@
 
 export default defineNuxtConfig({
   alias: {},
-
   app: {
     head: {
       title: "Fairhub Portal",
@@ -87,11 +86,16 @@ export default defineNuxtConfig({
     position: "bottom-right",
   },
 
+  overrides: {
+    vue: "latest",
+  },
+
   runtimeConfig: {
     entraClientSecret: "",
     public: {
       // Only values that are not sensitive should be set here
       // These values are accessible from both server and client side
+      AIREADI_STUDY_UUID: process.env.AIREADI_STUDY_UUID,
       BASE_URL:
         process.env.NUXT_SITE_ENV === "dev"
           ? "http://localhost:6000"
@@ -113,12 +117,12 @@ export default defineNuxtConfig({
       },
       FAIRHUB_API_URL:
         process.env.NUXT_SITE_ENV === "dev"
-          ? "http://localhost:5000"
+          ? "http://127.0.0.1:5000"
           : process.env.NUXT_SITE_ENV === "staging"
             ? "https://staging.api.fairhub.io"
             : "https://api.fairhub.io",
     },
-    sessionPassword: "",
+    sessionPassword: "abcdefghijklmnopqrstuvwxyz0123456789",
   },
 
   schemaOrg: {
