@@ -71,13 +71,9 @@ const steps = ref([
     </section>
 
     <section>
-      <div
-        class="mx-auto h-20 rounded-t-[50%] bg-gradient-to-r from-blue-50 via-blue-50 to-transparent text-center"
-      ></div>
+      <div class="mx-auto h-20 rounded-t-[50%] bg-blue-50 text-center"></div>
 
-      <div
-        class="bg-gradient-to-r from-blue-50 via-blue-50 to-transparent pb-16"
-      >
+      <div class="bg-blue-50 pb-16">
         <div
           class="mx-auto mb-4 flex max-w-screen-xl flex-col items-center max-2xl:px-10"
         >
