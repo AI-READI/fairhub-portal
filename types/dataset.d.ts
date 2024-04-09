@@ -403,37 +403,57 @@ interface DatatypeDictionary {
   }[];
 }
 
-interface DatasetStructureDescriptionSubDirectory {
-  directoryName: string;
-  directoryType: string;
-  directoryDescription: string;
-  subdirectory?: DatasetStructureDescriptionSubDirectory[];
+interface MetadataFile {
+  metadataFileName: string;
+  metadataFileDescription: string;
+  relatedIdentifier?: RelatedIdentifier[];
 }
 
-interface DatasetStructureDescription {
-  datasetStructure: {
-    directoryName: string;
-    directoryType: string;
-    directoryDescription: string;
-    relatedTerm: {
-      relatedTermValue: string;
+interface RelatedIdentifier {
+  relatedIdentifier: string;
+  relatedIdentifierValue: string;
+  relatedIdentifierType: string;
+  relationType: string;
+  resourceTypeGeneral: string;
+}
+
+interface Directory {
+  directoryName: string;
+  directoryList?: Directory[];
+  directoryType: string;
+  directoryDescription: string;
+  metadataFileList?: MetadataFile[]
+  relatedIdentifier?: RelatedIdentifier[];
+  relatedTerm: {
+    relatedTermValue: string;
+    relatedTermIdentifier: {
+      relatedTermClassificationCode: string;
+      relatedTermScheme: string;
+      relatedTermSchemeURI: string;
+      relatedTermValueURI: string;
     }[];
-    relatedStandard: {
-      standardName: string;
-      standardDescription: string;
-      standardUse: string;
-      standardRelatedIdentifier: {
-        relatedIdentifierValue: string;
-        relatedIdentifierType: string;
-        relationType: string;
-      }[];
-      standardIdentifier?: {
-        identifierValue: string;
-        identifierType: string;
-      }[];
-    }[];
-    subDirectory: DatasetStructureDescriptionSubDirectory[];
   }[];
+  relatedStandard: {
+    standardName: string;
+    standardDescription: string;
+    standardUse: string;
+    standardRelatedIdentifier: {
+      relatedIdentifierValue: string;
+      relatedIdentifierType: string;
+      relationType: string;
+    }[];
+    standardIdentifier?: {
+      identifierValue: string;
+      identifierType: string;
+    }[];
+    }[];
+}
+
+
+interface DatasetStructureDescription {
+  directoryList: Directory[];
+  metadataFileList:MetadataFile[];
+
 }
 
 interface HealthsheetRecord {

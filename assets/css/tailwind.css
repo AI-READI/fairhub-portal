@@ -218,3 +218,7 @@ body {
 .disc-hollow {
   list-style-type: circle;
 }
+
+.list{
+  list-style-type: disc;
+}
