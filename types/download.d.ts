@@ -15,3 +15,10 @@ type SessionUserDetails = {
   organization: string | null;
   phone: string | null;
 };
+
+type Attestation = {
+  id: string;
+  agreed: boolean;
+  text: string;
+  validationStatus?: "success" | "warning" | "error";
+};
