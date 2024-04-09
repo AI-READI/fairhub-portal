@@ -75,7 +75,7 @@
         <h2
           class="block bg-gradient-to-tl from-orange-400 to-yellow-400 bg-clip-text pb-12 text-4xl font-bold text-transparent md:text-4xl lg:text-5xl"
         >
-          Layers of FAIRhub platform
+          The layers of FAIRhub platform
         </h2>
 
         <div class="max-w-[80rem] rounded-3xl px-4">
@@ -83,7 +83,7 @@
             class="flex flex-row items-center gap-2 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
           >
             <div
-              class="flex min-h-[16.7rem] grow flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
+              class="flex min-h-[16.7rem] shrink-[3] flex-col gap-9 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
                 <Icon
@@ -92,25 +92,26 @@
                   size="2rem"
                 />
 
-                <a
-                  href="https://github.com/AI-READI/fairhub-app"
-                  target="_blank"
-                  ><h3 class="text-sky-700 hover:underline">
-                    Study Management Platform
-                  </h3>
-                </a>
+                <h3 class="text-sky-700">Study Management Platform</h3>
               </div>
 
               <p class="text-xl font-medium">
-                FAIRhub combines intuitive user interfaces with automation tools
-                and integration with existing data management tools such as
-                REDCap to simplify the process of sharing AI-ready clinical
-                research data.
+                FAIRhub integrates user-friendly interfaces, automation, and
+                compatibility with tools like REDCap to streamline AI-ready
+                clinical research data sharing.
               </p>
+
+              <a
+                href="https://app.fairhub.io/"
+                class="font-bold text-sky-700 hover:underline"
+                target="_blank"
+                >Learn More
+                <Icon name="fluent:arrow-right-24-filled" />
+              </a>
             </div>
 
             <div
-              class="flex min-h-[16.7rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
+              class="min-md:max-h-[16rem] flex min-h-[16.7rem] shrink-[4] flex-col rounded-2xl border-4 border-sky-100 bg-white p-6 max-xl:gap-8 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
                 <Icon
@@ -119,22 +120,22 @@
                   size="2rem"
                 />
 
-                <a
-                  href="https://github.com/AI-READI/fairhub-pipeline"
-                  target="_blank"
-                  ><h3 class="text-sky-700 hover:underline">
-                    Platform Pipeline
-                  </h3></a
-                >
+                <h3 class="text-sky-700">Platform Pipeline</h3>
               </div>
 
-              <p class="min-w-md text-xl font-medium">
-                The pipeline repository serves as a centralized location housing
-                scripts designed for managing data flow and executing logical
-                operations within a system. These scripts include interactions
-                with a database to retrieve facilitating efficient data
-                processing workflows.
+              <p class="min-w-md text-xl font-medium md:pb-4 md:pt-7">
+                The pipeline repository centrally stores scripts for managing
+                data flow, conducting logical operations, and interacting with
+                databases to streamline data processing workflows.
               </p>
+
+              <a
+                href="https://github.com/AI-READI/fairhub-pipeline"
+                class="font-bold text-sky-700 hover:underline"
+                target="_blank"
+                >View on Github
+                <Icon name="fluent:arrow-right-24-filled" />
+              </a>
             </div>
           </div>
 
@@ -142,7 +143,7 @@
             class="flex gap-2 py-2 max-xl:flex-wrap max-xl:justify-center max-md:w-[20rem]"
           >
             <div
-              class="flex min-h-[16.7rem] grow flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
+              class="flex min-h-[16.7rem] shrink-[4] flex-col rounded-2xl border-4 border-sky-100 bg-white p-6 max-xl:gap-8 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
                 <Icon
@@ -151,40 +152,46 @@
                   size="2.5rem"
                 />
 
-                <a
-                  href="https://github.com/AI-READI/fairhub-api"
-                  target="_blank"
-                  ><h3 class="text-sky-700 hover:underline">API</h3></a
-                >
+                <h3 class="text-sky-700">API</h3>
               </div>
 
-              <p class="min-w-md text-xl font-medium">
-                APIs serve as a communication channels through which clients
+              <p class="min-w-md text-xl font-medium md:mb-2 md:mt-7">
+                API serve as the communication channels through which clients
                 interact with a web server or service. Each endpoint represents
                 a specific functionality or resource provided by the server.
               </p>
+
+              <a
+                href="https://github.com/AI-READI/fairhub-api"
+                class="font-bold text-sky-700 hover:underline"
+                target="_blank"
+                >View on Github
+                <Icon name="fluent:arrow-right-24-filled" />
+              </a>
             </div>
 
             <div
-              class="flex min-h-[16.7rem] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
+              class="flex min-h-[16.7rem] shrink-[3] flex-col gap-9 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
                 <Icon name="gis:map-share" color="#0284c7" size="2rem" />
 
-                <a
-                  href="https://github.com/AI-READI/fairhub-portal"
-                  target="_blank"
-                  ><h3 class="text-sky-700 hover:underline">
-                    Data Platform
-                  </h3></a
-                >
+                <h3 class="text-sky-700">Data Platform</h3>
               </div>
 
               <p class="text-xl font-medium">
-                Our platform provide easy access to well-structured, AI-ready
-                datasets. A simplified mechanism is available for accessing
+                Our platform provide easy access to well structure, AI-ready
+                datasets. A simplified mechanism is available to access
                 protected versions of datasets.
               </p>
+
+              <a
+                href="https://github.com/AI-READI/fairhub-portal"
+                class="font-bold text-sky-700 hover:underline"
+                target="_blank"
+                >View on Github
+                <Icon name="fluent:arrow-right-24-filled" />
+              </a>
             </div>
           </div>
         </div>
