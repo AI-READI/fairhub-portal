@@ -253,7 +253,7 @@ const generateCombinedFullName = (name: string) => {
                 :class="[
                   isActive
                     ? 'text-sky-600'
-                    : 'text-sky-900/70 hover:text-sky-500',
+                    : 'text-sky-900/70 hover:text-sky-600',
                 ]"
                 class="inline-block p-4 font-medium transition-all"
                 @click.prevent="setActive"
@@ -384,7 +384,7 @@ const generateCombinedFullName = (name: string) => {
                     :to="`https://umami.aireadi.org/share/w56IOiviBTVZOlHu/staging.fairhub.io?url=${encodeURIComponent(
                       '/datasets/' + dataset?.id,
                     )}`"
-                    class="text-sm font-medium text-sky-500 transition-all hover:text-sky-600"
+                    class="text-sm font-medium text-sky-600 transition-all hover:text-sky-700"
                   >
                     <n-space size="small" align="center">
                       <Icon name="lets-icons:view-duotone" size="23" />

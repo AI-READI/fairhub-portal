@@ -12,26 +12,27 @@ model alembic_version {
 }
 
 model dataset {
-  id                           String                         @id @db.Char(36)
-  updated_on                   BigInt
-  created_at                   BigInt
-  study_id                     String                         @db.Char(36)
-  study                        study                          @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  dataset_access               dataset_access?
-  dataset_alternate_identifier dataset_alternate_identifier[]
-  dataset_consent              dataset_consent?
-  dataset_contributor          dataset_contributor[]
-  dataset_date                 dataset_date[]
-  dataset_de_ident_level       dataset_de_ident_level?
-  dataset_description          dataset_description[]
-  dataset_funder               dataset_funder[]
-  dataset_healthsheet          dataset_healthsheet?
-  dataset_other                dataset_other?
-  dataset_related_identifier   dataset_related_identifier[]
-  dataset_rights               dataset_rights[]
-  dataset_subject              dataset_subject[]
-  dataset_title                dataset_title[]
-  version                      version[]
+  id                            String                         @id @db.Char(36)
+  updated_on                    BigInt
+  created_at                    BigInt
+  study_id                      String                         @db.Char(36)
+  study                         study                          @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  dataset_access                dataset_access?
+  dataset_alternate_identifier  dataset_alternate_identifier[]
+  dataset_consent               dataset_consent?
+  dataset_contributor           dataset_contributor[]
+  dataset_date                  dataset_date[]
+  dataset_de_ident_level        dataset_de_ident_level?
+  dataset_description           dataset_description[]
+  dataset_funder                dataset_funder[]
+  dataset_healthsheet           dataset_healthsheet?
+  dataset_managing_organization dataset_managing_organization?
+  dataset_other                 dataset_other?
+  dataset_related_identifier    dataset_related_identifier[]
+  dataset_rights                dataset_rights[]
+  dataset_subject               dataset_subject[]
+  dataset_title                 dataset_title[]
+  version                       version[]
 }
 
 model dataset_access {
@@ -138,16 +139,14 @@ model dataset_healthsheet {
 }
 
 model dataset_other {
-  resource_type                String   @db.VarChar
-  language                     String?  @db.VarChar
-  managing_organization_name   String   @db.VarChar
-  managing_organization_ror_id String   @db.VarChar
-  size                         String[] @db.VarChar
-  format                       String[] @db.VarChar
-  standards_followed           String   @db.VarChar
-  acknowledgement              String   @db.VarChar
-  dataset_id                   String   @id @db.Char(36)
-  dataset                      dataset  @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  resource_type      String   @db.VarChar
+  language           String?  @db.VarChar
+  size               String[] @db.VarChar
+  format             String[] @db.VarChar
+  standards_followed String   @db.VarChar
+  acknowledgement    String   @db.VarChar
+  dataset_id         String   @id @db.Char(36)
+  dataset            dataset  @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model dataset_related_identifier {
@@ -359,6 +358,7 @@ model study_dashboard {
   id           String       @id @db.Char(36)
   name         String?      @db.VarChar
   modules      Json?        @db.Json
+  public       Boolean?
   redcap_pid   BigInt?
   reports      Json?        @db.Json
   created_at   BigInt
@@ -622,4 +622,13 @@ model version_readme {
   content    String? @db.VarChar
   version_id String  @id @db.Char(36)
   version    version @relation(fields: [version_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model dataset_managing_organization {
+  name                  String  @db.VarChar
+  identifier            String  @db.VarChar
+  identifier_scheme     String  @db.VarChar
+  identifier_scheme_uri String  @db.VarChar
+  dataset_id            String  @id @db.Char(36)
+  dataset               dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
