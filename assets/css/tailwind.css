@@ -219,6 +219,10 @@ body {
   list-style-type: circle;
 }
 
+.list{
+  list-style-type: disc;
+}
+
 /*.content{*/
 /*        mask-image: linear-gradient(to top, white, transparent)!important;*/
 /*}*/
