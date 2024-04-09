@@ -27,7 +27,7 @@ const generateCombinedFullName = (name: string) => {
   }
 };
 
-const currentStep = ref<number>(2);
+const currentStep = ref<number>(3);
 
 const handleLogin = async () => {
   const redirectTo = route.fullPath;

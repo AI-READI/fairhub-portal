@@ -26,7 +26,7 @@ const generateCombinedFullName = (name: string) => {
   }
 };
 
-const currentStep = ref<number>(3);
+const currentStep = ref<number>(2);
 const allAgreed = ref<boolean | null>(null);
 </script>
 
