@@ -144,7 +144,7 @@ const openMetadataDrawer = (currentPath: Array<string>) => {
 
   if (filetype) {
     drawerTitle.value = filetype.metadataFileName;
-    drawerIcon.value = "pepicons-pencil:file";
+    drawerIcon.value = "iconamoon:file-fill";
     drawerText.value = "This file";
     drawerDescription.value = filetype.metadataFileDescription;
     relationType.value = filetype.relatedIdentifier?.map((r) => {
@@ -197,7 +197,7 @@ const openMetadataDrawer = (currentPath: Array<string>) => {
       <n-drawer-content>
         <n-space vertical>
           <div class="mb-1 text-lg font-bold">
-            <Icon :name="drawerIcon" color="#0284c7" />
+            <Icon :name="drawerIcon" size="22" color="#0284c7" />
             {{ drawerTitle }}
           </div>
 
