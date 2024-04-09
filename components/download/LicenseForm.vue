@@ -38,7 +38,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <n-form-item label="Review the license below.">
+    <n-form-item label="Please review the entire license below. Once you have reviewed the it you will be able to accept the license.">
       <n-input
         ref="textareaRef"
         type="textarea"
