@@ -202,7 +202,7 @@ const generateCombinedFullName = (name: string) => {
 
         <p class="hidden">{{ dataset?.description }}</p>
 
-        <NuxtLink to="https://download.fairhub.io/1" target="__blank">
+        <NuxtLink :to="`/datasets/${dataset?.id}/access`">
           <n-button size="large" type="info" secondary class="my-3">
             <template #icon>
               <Icon name="line-md:download-loop" />
