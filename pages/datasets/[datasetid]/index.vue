@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import sanitizeHtml from "sanitize-html";
+// import { fetchAllDashboardConnectors } from "~/stores/dashboard";
+
 import { parse } from "marked";
 import type { Dataset, WithContext } from "schema-dts";
+// Temp AI-READI Study ID From ENV
+const aireadiStudyId: string = nuxtConfig().public.AIREADI_STUDY_UUID;
 
 const { isMobile } = useDevice();
 const route = useRoute();
@@ -15,11 +19,11 @@ const tabs = reactive([
     shown: true,
   },
   {
-    label: "Study Dashboard",
+    label: "Healthsheet",
     shown: false,
   },
   {
-    label: "Healthsheet",
+    label: "Study Dashboard",
     shown: false,
   },
   {
@@ -39,6 +43,11 @@ const tabs = reactive([
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
 });
+
+console.log(dataset);
+
+// Get Study ID here. For now, we reference our environment variable
+const studyId = aireadiStudyId;
 
 if (error.value) {
   console.error(error.value);
@@ -253,7 +262,7 @@ const generateCombinedFullName = (name: string) => {
                 :class="[
                   isActive
                     ? 'text-sky-600'
-                    : 'text-sky-900/70 hover:text-sky-600',
+                    : 'text-sky-900/70 hover:text-sky-500',
                 ]"
                 class="inline-block p-4 font-medium transition-all"
                 @click.prevent="setActive"
@@ -288,9 +297,7 @@ const generateCombinedFullName = (name: string) => {
               <!-- eslint-enable vue/no-v-html -->
             </div>
 
-            <div v-if="tabs[1].shown">Dashboard</div>
-
-            <div v-if="tabs[2].shown">
+            <div v-if="tabs[1].shown">
               <MetadataHealthSheet
                 :healthsheet="
                   dataset?.metadata.healthsheet as HealthsheetRecords
@@ -298,11 +305,16 @@ const generateCombinedFullName = (name: string) => {
               />
             </div>
 
+            <div v-if="tabs[2].shown">
+              <DashboardView :study-id="studyId" />
+            </div>
+
             <div v-if="tabs[3].shown">
               <MetadataStudyDescription
                 :metadata="
                   dataset?.metadata.studyDescription as StudyDescription
                 "
+                :study-title="dataset?.study?.title as string"
               />
 
               <n-divider />
@@ -384,7 +396,7 @@ const generateCombinedFullName = (name: string) => {
                     :to="`https://umami.aireadi.org/share/w56IOiviBTVZOlHu/staging.fairhub.io?url=${encodeURIComponent(
                       '/datasets/' + dataset?.id,
                     )}`"
-                    class="text-sm font-medium text-sky-600 transition-all hover:text-sky-700"
+                    class="text-sm font-medium text-sky-500 transition-all hover:text-sky-700"
                   >
                     <n-space size="small" align="center">
                       <Icon name="lets-icons:view-duotone" size="23" />
