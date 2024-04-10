@@ -27,7 +27,24 @@ const generateCombinedFullName = (name: string) => {
 };
 
 const currentStep = ref<number>(2);
-const allAgreed = ref<boolean | null>(null);
+
+const researchMethodsSelection = ref<boolean | null>(null);
+const humanResearchEthicsSelection = ref<boolean | null>(null);
+const aiMlEthicsSelection = ref<boolean | null>(null);
+
+const allAnswered = computed(
+  () =>
+    researchMethodsSelection.value !== null &&
+    humanResearchEthicsSelection.value !== null &&
+    aiMlEthicsSelection.value !== null,
+);
+
+const allAccepted = computed(
+  () =>
+    researchMethodsSelection.value &&
+    humanResearchEthicsSelection.value &&
+    aiMlEthicsSelection.value,
+);
 </script>
 
 <template>
@@ -88,15 +105,81 @@ const allAgreed = ref<boolean | null>(null);
           <div>
             <h4>About Your Training</h4>
 
-            <DownloadTrainingForm v-model="allAgreed" />
+            <p>
+              Please answer the following questions about training you have
+              received in research methods and the ethical conduct of research
+              involving human participants.
+            </p>
 
-            <div v-if="allAgreed">
-              <NuxtLink
-                :to="`/datasets/${dataset?.id}/access/research-purpose`"
-              >
-                <n-button size="large" type="info" secondary class="my-3"
-                  >Next</n-button
+            <p>I have received formal training in:</p>
+
+            <div
+              class="flex flex-col flex-wrap md:flex-row md:items-center md:gap-6"
+            >
+              <n-form-item label="Research Methods">
+                <n-radio-group
+                  v-model:value="researchMethodsSelection"
+                  name="research-methods"
                 >
+                  <n-space>
+                    <n-radio :value="true">Yes</n-radio>
+
+                    <n-radio :value="false">No</n-radio>
+                  </n-space>
+                </n-radio-group>
+              </n-form-item>
+
+              <n-form-item label="Human Research Ethics">
+                <n-radio-group
+                  v-model:value="humanResearchEthicsSelection"
+                  name="human-research-ethics"
+                >
+                  <n-space>
+                    <n-radio :value="true">Yes</n-radio>
+
+                    <n-radio :value="false">No</n-radio>
+                  </n-space>
+                </n-radio-group>
+              </n-form-item>
+
+              <n-form-item label="AI/ML Ethical Practices">
+                <n-radio-group
+                  v-model:value="aiMlEthicsSelection"
+                  name="ai-ml-ethical-practices"
+                >
+                  <n-space>
+                    <n-radio :value="true">Yes</n-radio>
+
+                    <n-radio :value="false">No</n-radio>
+                  </n-space>
+                </n-radio-group>
+              </n-form-item>
+            </div>
+
+            <div v-if="allAnswered && allAccepted">
+              <NuxtLink :to="`/datasets/${dataset?.id}/access/login`">
+                <n-button size="large" type="info" secondary>Next</n-button>
+              </NuxtLink>
+            </div>
+
+            <div v-if="allAnswered && !allAccepted" class="-mt-4">
+              <n-divider />
+
+              <p>
+                You indicated that you have not received training in one or more
+                of the topics above. Please review the training resources
+                included in the page below.
+              </p>
+
+              <NuxtLink
+                to="https://docs.aireadi.org/docs/1/preliminary/training"
+                external
+                target="_blank"
+              >
+                <n-button size="large" type="info" secondary
+                  >AI-READI Documentation: Training
+                  <Icon name="mdi:open-in-new" class="ml-1" />
+                </n-button>
               </NuxtLink>
             </div>
           </div>
