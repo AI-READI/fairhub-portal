@@ -22,7 +22,7 @@ if (error.value) {
   throw new Error("Failed to fetch dataset");
 }
 
-if (researchPurpose.value === "") {
+if (!researchPurpose.value?.trim()) {
   console.warn("Redirecting to collect research purpose");
   await navigateTo(`/datasets/${dataset.value?.id}/access/research-purpose`);
 }
@@ -93,7 +93,7 @@ const handleSubmit = async () => {
         attestation_accepted: attestationsAccepted.value,
         dataset_id: dataset.value?.id,
         license_accepted: licenseAccepted.value,
-        research_purpose: researchPurpose.value,
+        research_purpose: researchPurpose.value.trim(),
       },
       headers: useRequestHeaders(["cookie"]),
       method: "POST",
