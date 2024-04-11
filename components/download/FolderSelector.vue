@@ -52,26 +52,23 @@ const folders = computed(() =>
   <n-checkbox-group v-model:value="selectedFolders">
     <n-space :vertical="true">
       <n-card v-for="folder in folders" :key="folder.id" size="small">
-        <div
-          role="none"
-          class="flex flex-row items-center justify-between gap-2"
-        >
-          <div role="none" class="flex flex-col gap-2">
-            <span :id="`folder-label-${folder.id}`" class="font-bold"
-              ><Icon name="ic:baseline-folder" /> {{ folder.label }}</span
-            >
-
-            <span :id="`folder-description-${folder.id}`">{{
-              folder.description
-            }}</span>
-          </div>
-
+        <div role="none" class="flex flex-row items-center gap-2">
           <n-checkbox
             size="large"
             :value="folder.label"
             :aria-labelledby="`folder-label-${folder.id}`"
             :aria-describedby="`folder-description-${folder.id}`"
           />
+
+          <div role="none" class="flex flex-col gap-2">
+            <span :id="`folder-label-${folder.id}`" class="font-bold">
+              <Icon name="ic:baseline-folder" /> {{ folder.label }}
+            </span>
+
+            <span :id="`folder-description-${folder.id}`">
+              {{ folder.description }}
+            </span>
+          </div>
         </div>
       </n-card>
     </n-space>
