@@ -7,6 +7,7 @@ const route = useRoute();
 
 const { datasetid } = route.params as { datasetid: string };
 const { data: dataset, error } = await useDataset(datasetid);
+const { data: agreement } = await useDownloadAgreement(datasetid);
 
 if (error.value) {
   console.error(error.value);
@@ -17,6 +18,11 @@ if (error.value) {
   });
 
   throw new Error("Failed to fetch dataset");
+}
+
+if (!agreement.value) {
+  console.warn("Redirecting to collect license agreement");
+  await navigateTo(`/datasets/${dataset.value?.id}/access/research-purpose`);
 }
 
 // TODO: Convert to a utility or extract a component?
@@ -32,12 +38,29 @@ const generateCombinedFullName = (name: string) => {
 
 const currentStep = ref<number>(6);
 const selectedFolders = ref<string[]>([]);
-
 const hasSelectedFolders = computed(() => selectedFolders.value.length > 0);
 
 const handleSubmit = async () => {
-  // TODO: create data request record
-  await navigateTo(`/datasets/${dataset.value?.id}/access/submitted`);
+  try {
+    await $fetch(`/api/downloads/request/create`, {
+      body: {
+        dataset_id: dataset.value?.id,
+        download_agreement_id: agreement.value?.id,
+        folders_selected: selectedFolders.value,
+      },
+      headers: useRequestHeaders(["cookie"]),
+      method: "POST",
+    });
+    await navigateTo(`/datasets/${dataset.value?.id}/access/submitted`);
+  } catch (error) {
+    console.error(error);
+    push.error({
+      title: "Something went wrong",
+      message: "Could not save download request",
+    });
+
+    throw new Error("Could not save download request");
+  }
 };
 </script>
 
