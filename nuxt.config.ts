@@ -110,6 +110,10 @@ export default defineNuxtConfig({
             ? "444bfea9-2fec-44ed-a4d7-767616afa9a3"
             : "d173c9cb-36ce-4c77-92f3-025e48f0e533",
         knownAuthorities: ["aireadi.b2clogin.com"],
+        logoutUri:
+          process.env.NUXT_SITE_ENV === "dev"
+            ? "http://localhost:3000/"
+            : "https://staging.fairhub.io/",
         redirectUri:
           process.env.NUXT_SITE_ENV === "dev"
             ? "http://localhost:3000/login"
