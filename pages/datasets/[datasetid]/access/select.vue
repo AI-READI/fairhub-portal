@@ -8,7 +8,6 @@ const route = useRoute();
 const { datasetid } = route.params as { datasetid: string };
 const { data: dataset, error } = await useDataset(datasetid);
 const { data: agreement } = await useDownloadAgreement(datasetid);
-console.log(agreement.value);
 
 if (error.value) {
   console.error(error.value);
