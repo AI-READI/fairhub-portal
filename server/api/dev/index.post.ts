@@ -33,6 +33,14 @@ export default defineEventHandler(async (_event) => {
     },
   });
 
+  if (!updatedRecord) {
+    console.log("No record updated, exiting function");
+     throw createError({
+        statusCode: 500,
+        statusMessage: 'No record updated',
+    })
+  }
+
   console.log("Updated record", updatedRecord);
 
   return {
