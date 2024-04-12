@@ -363,8 +363,10 @@ const generateCombinedFullName = (name: string) => {
                 <h3>Preview</h3>
 
                 <p>
-                  To access the dataset, please click the
-                  <code>Access this dataset</code> button above.
+                  This is a Preview of the structure of the dataset so you can
+                  overview how it is organized. To access the actual dataset,
+                  please click the <code>Access this dataset</code> button
+                  above.
                 </p>
 
                 <n-divider />
