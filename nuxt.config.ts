@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   alias: {},
   app: {
     head: {
-      title: "Fairhub Portal",
+      title: "FAIRhub Data Portal",
       meta: [
         {
           name: "viewport",
@@ -139,7 +139,7 @@ export default defineNuxtConfig({
   },
 
   site: {
-    name: "Fairhub Portal",
+    name: "FAIRhub Data Portal",
     indexable: false,
     url: "https://staging.fairhub.io",
   },

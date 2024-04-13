@@ -3,7 +3,7 @@ const steps = ref([
   {
     name: "carbon:intent-request-create",
     description:
-      "Sign up to create an account on FAIRhub. Create a new study and provide basic information about it to get started.",
+      "Sign up to create an account on app.fairhub.io. Create a new study and provide basic information about it to get started.",
     heading: "Create study",
     number: "Step 1",
     percentage: 33,
@@ -84,9 +84,8 @@ const steps = ref([
           </h2>
 
           <p class="pb-4 text-center text-xl font-medium">
-            In FAIRhub platform, you can share the data in few easy steps and
-            start getting credit whenever your data is reused to fuel future
-            discoveries!
+            With the FAIRhub study management platform, you can share your data
+            in a few easy steps and start getting credit whenever your data is reused to fuel future discoveries!
           </p>
         </div>
 

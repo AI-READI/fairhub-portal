@@ -83,7 +83,7 @@
             class="flex flex-row items-center gap-2 max-xl:flex-wrap max-xl:justify-center"
           >
             <div
-              class="flex min-h-[16.7rem] shrink-[3] flex-col gap-9 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
+              class="flex min-h-[18rem] shrink-[3.5] flex-col gap-9 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
                 <Icon
@@ -96,9 +96,10 @@
               </div>
 
               <p class="text-xl font-medium">
-                FAIRhub integrates user-friendly interfaces, automation, and
-                compatibility with tools like REDCap to streamline AI-ready
-                clinical research data sharing.
+                The FAIRhub study management platform integrates user-friendly
+                interfaces, automation, and compatibility with tools like REDCap
+                to streamline the management and sharing of AI-ready clinical
+                research datasets.
               </p>
 
               <a
@@ -111,7 +112,7 @@
             </div>
 
             <div
-              class="flex min-h-[16.7rem] shrink-[3.5] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem] xl:max-h-[16rem]"
+              class="flex min-h-[18.5rem] shrink-[3.5] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem] xl:max-h-[16rem]"
             >
               <div class="flex flex-row items-center gap-4">
                 <Icon
@@ -141,7 +142,7 @@
 
           <div class="flex gap-2 py-2 max-xl:flex-wrap max-xl:justify-center">
             <div
-              class="flex min-h-[16.7rem] shrink-[3.5] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
+              class="flex min-h-[18.5rem] shrink-[3.5] flex-col gap-8 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
                 <Icon
@@ -154,9 +155,8 @@
               </div>
 
               <p class="min-w-md text-xl font-medium">
-                APIs are the communication channels which clients interact with
-                a web server or service. Each endpoint signifies a server
-                functionality.
+                The FAIRhub APIs connect the user interfaces of the study
+                management platform and data portal with the backend services and web servers.
               </p>
 
               <a
@@ -169,7 +169,7 @@
             </div>
 
             <div
-              class="flex min-h-[16.7rem] shrink-[3.2] flex-col gap-9 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
+              class="flex min-h-[18.5rem] shrink-[3.2] flex-col gap-9 rounded-2xl border-4 border-sky-100 bg-white p-6 max-md:min-w-[20rem]"
             >
               <div class="flex flex-row items-center gap-4">
                 <Icon name="gis:map-share" color="#0284c7" size="2rem" />
@@ -178,9 +178,9 @@
               </div>
 
               <p class="text-xl font-medium">
-                Our platform provides easy access to well-structured, AI-ready
-                datasets, with a simplified mechanism available for accessing
-                protected versions of datasets.
+                The FAIRhub data portal provides easy access to well-structured,
+                rich in metadata, FAIR, and AI-ready datasets, with a simplified
+                mechanism available for accessing protected versions of datasets.
               </p>
 
               <a
