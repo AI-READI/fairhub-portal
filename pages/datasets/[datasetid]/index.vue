@@ -372,7 +372,7 @@ const generateCombinedFullName = (name: string) => {
                     This is a preview of the dataset's structure, designed to
                     provide an overview of its organization. To access the
                     actual dataset, please use the
-                    <code>Access this dataset </code> button located above."
+                    <code>Access this dataset </code> button above.
                   </p>
                 </n-alert>
 
