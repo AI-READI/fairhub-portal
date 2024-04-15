@@ -49,7 +49,7 @@ const healthsheetData = [
           target="_blank"
           class="font-bold"
           >paper</a
-        >
+        >.
       </p>
     </n-alert>
 

@@ -293,7 +293,7 @@ const generateCombinedFullName = (name: string) => {
               <n-alert title="Info" type="info">
                 <p class="text-md text-black">
                   This page provides an overview of the dataset and associated
-                  study
+                  study.
                 </p>
               </n-alert>
 
