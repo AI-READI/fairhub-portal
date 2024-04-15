@@ -38,6 +38,10 @@ const tabs = reactive([
     label: "Dataset Structure Preview",
     shown: false,
   },
+  {
+    label: "Dataset Quality Dashboard",
+    shown: false,
+  },
 ]);
 
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
@@ -388,7 +392,20 @@ const generateCombinedFullName = (name: string) => {
               </n-space>
             </div>
 
-            <!--            <div v-if="tabs[6].shown">Clinical Data Quality</div>-->
+            <div v-if="tabs[6].shown">
+              <h3>Clinical Data Quality</h3>
+
+              <n-space>
+                <NuxtLink
+                  to="http://b2ai-dqd.westus2.azurecontainer.io:3838/"
+                  target="_blank"
+                >
+                  <n-button size="large" type="info" secondary class="my-3">
+                    View the Data Quality Report
+                  </n-button>
+                </NuxtLink>
+              </n-space>
+            </div>
           </TransitionFade>
         </div>
 
