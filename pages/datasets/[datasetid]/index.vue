@@ -369,10 +369,10 @@ const generateCombinedFullName = (name: string) => {
               <n-space vertical>
                 <n-alert title="Info" type="info">
                   <p>
-                    This is a Preview of the structure of the dataset so you can
-                    overview how it is organized. To access the actual dataset,
-                    please click the <code>Access this dataset</code> button
-                    above.
+                    This is a preview of the dataset's structure, designed to
+                    provide an overview of its organization. To access the
+                    actual dataset, please use the
+                    <code>Access this dataset </code> button located above."
                   </p>
                 </n-alert>
 

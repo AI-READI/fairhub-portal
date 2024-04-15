@@ -265,3 +265,8 @@ body {
 .n-divider:not(.n-divider--vertical) {
   margin-top: 4px;
 }
+
+.n-tree-node-content__text{
+  min-width: 19rem;
+}
+
