@@ -3,7 +3,7 @@ const steps = ref([
   {
     name: "carbon:intent-request-create",
     description:
-      "Sign up to create an account on app.fairhub.io. Create a new study and provide basic information about it to get started.",
+      "Sign up to create an account on <a class='text-sky-700' target='_blank' href='https://app.fairhub.io'>app.fairhub.io</a>. Create a new study and provide basic information about it to get started.",
     heading: "Create study",
     number: "Step 1",
     percentage: 33,
@@ -119,9 +119,7 @@ const steps = ref([
               {{ step.heading }}
             </h3>
 
-            <p class="py-5">
-              {{ step.description }}
-            </p>
+            <p class="py-5" v-html="step.description"></p>
           </div>
         </div>
       </div>
