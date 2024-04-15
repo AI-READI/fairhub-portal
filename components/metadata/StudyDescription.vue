@@ -9,6 +9,15 @@ defineProps({
 
 <template>
   <n-space vertical size="large">
+    <n-alert title="Info" type="info">
+      <p class="text-md text-black">
+        This page provides detailed information about the study associated with
+        the dataset. It is based on the study_description.json metadata file
+        included in the dataset (this file is also viewable at the end of this
+        page).
+      </p>
+    </n-alert>
+
     <CardCollapsibleCard
       id="DescriptionModule"
       data-section-title="Study Overview"

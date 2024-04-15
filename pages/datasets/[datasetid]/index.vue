@@ -290,8 +290,15 @@ const generateCombinedFullName = (name: string) => {
           <TransitionFade>
             <div v-if="tabs[0].shown">
               <!-- eslint-disable vue/no-v-html -->
+              <n-alert title="Info" type="info">
+                <p class="text-md text-black">
+                  This page provides an overview of the dataset and associated
+                  study
+                </p>
+              </n-alert>
+
               <div
-                class="prose mt-0 min-h-[300px] max-w-none text-black"
+                class="prose mt-8 min-h-[300px] max-w-none text-black"
                 v-html="markdownToHtml"
               />
               <!-- eslint-enable vue/no-v-html -->
@@ -360,14 +367,14 @@ const generateCombinedFullName = (name: string) => {
 
             <div v-if="tabs[5].shown">
               <n-space vertical>
-                <h3>Preview</h3>
-
-                <p>
-                  This is a Preview of the structure of the dataset so you can
-                  overview how it is organized. To access the actual dataset,
-                  please click the <code>Access this dataset</code> button
-                  above.
-                </p>
+                <n-alert title="Info" type="info">
+                  <p>
+                    This is a Preview of the structure of the dataset so you can
+                    overview how it is organized. To access the actual dataset,
+                    please click the <code>Access this dataset</code> button
+                    above.
+                  </p>
+                </n-alert>
 
                 <n-divider />
 

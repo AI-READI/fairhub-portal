@@ -40,6 +40,19 @@ const healthsheetData = [
 
 <template>
   <n-space vertical size="large">
+    <n-alert title="Info" type="info">
+      <p class="text-md text-black">
+        The page contains the Healthsheet associated with the dataset.
+        Information about Healthsheet can be found in the associated
+        <a
+          href="https://dl.acm.org/doi/10.1145/3531146.3533239"
+          target="_blank"
+          class="font-bold"
+          >paper</a
+        >
+      </p>
+    </n-alert>
+
     <CardCollapsibleCard
       v-for="(rootItem, index) in healthsheetData"
       :key="index"
