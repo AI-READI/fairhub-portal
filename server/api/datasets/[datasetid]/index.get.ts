@@ -1,13 +1,13 @@
 export default defineEventHandler(async (event) => {
   const { datasetid } = event.context.params as { datasetid: string };
 
-  const dbDataset = await prisma.dataset.findUnique({
+  const publishedDataset = await prisma.published_dataset.findUnique({
     where: {
       id: datasetid,
     },
   });
 
-  if (!dbDataset) {
+  if (!publishedDataset) {
     console.log(`Dataset ${datasetid} not found`);
 
     throw createError({
@@ -16,43 +16,44 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const createdAt = Number(dbDataset.created_at);
-  const updatedOn = Number(dbDataset.updated_on);
+  console.log(publishedDataset);
 
-  const dbTitle = await prisma.dataset_title.findFirst({
-    where: {
-      dataset_id: datasetid,
-      type: "MainTitle",
-    },
-  });
+  const datasetId = Number(publishedDataset.id).toString();
 
-  const title = dbTitle?.title ?? "";
+  const datasetCreatedAt: bigint = BigInt(publishedDataset.created_at);
 
-  const dbDescription = await prisma.dataset_description.findFirst({
-    where: {
-      dataset_id: datasetid,
-      type: "Abstract",
-    },
-  });
+  // const datasetMetadata = JSON.parse(
+  //   publishedDataset.published_metadata as string,
+  // );
+  const datasetMetadata = publishedDataset.published_metadata as any;
 
-  const description = dbDescription?.description ?? "";
+  const datasetFiles = publishedDataset.files as any;
 
-  const dbCreators = await prisma.dataset_contributor.findMany({
-    where: {
-      creator: true,
-      dataset_id: datasetid,
-    },
-  });
-
-  const creators = dbCreators.map((dbCreator) => dbCreator.name);
+  const datasetAdditionalData = publishedDataset.data as any;
 
   const dataset: Dataset = {
-    id: dbDataset.id,
-    title,
-    createdAt,
-    creators,
-    description,
-    updatedOn,
+    id: datasetId,
+    title: publishedDataset.title,
+    created_at: Number(datasetCreatedAt),
+    data: datasetAdditionalData,
+    dataset_id: publishedDataset.dataset_id,
+    description: publishedDataset.description,
+    doi: publishedDataset.doi,
+    files: datasetFiles,
+    metadata: {
+      datasetDescription: datasetMetadata.dataset_description,
+      datasetStructureDescription:
+        datasetMetadata.dataset_structure_description,
+      healthsheet: datasetMetadata.healthsheet,
+      readme: datasetMetadata.readme,
+      studyDescription: datasetMetadata.study_description,
+    },
+    study_id: publishedDataset.study_id,
+    study_title: publishedDataset.study_title,
+    version_id: publishedDataset.version_id,
+    version_title: publishedDataset.version_title,
+    // study: dbDataset.fairhub.study,
+    // updatedOn: dbDataset.updatedOn,
   };
 
   return dataset;

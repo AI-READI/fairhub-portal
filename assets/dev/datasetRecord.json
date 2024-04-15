@@ -1,0 +1,1932 @@
+{
+  "id": "1                                   ",
+  "study_id": "f5d4172f-b0fb-48c8-b545-0192d812b329",
+  "dataset_id": "d894862f-0795-4ba6-b40b-fae14eb77813",
+  "version_id": "f74d3683-3cc0-4cff-ba1d-031e63630182",
+  "doi": "10.60775/fairhub.1",
+  "title": "Flagship Dataset of Type 2 Diabetes from the AI-READI Project",
+  "description": "The AI-READI project seeks to create and share a flagship ethically-sourced dataset of type 2 diabetes",
+  "version_title": "1.0",
+  "study_title": "AI Ready and Equitable Atlas for Diabetes Insights",
+  "published_metadata": {
+    "study_description": {
+      "identificationModule": {
+        "officialTitle": "AI Ready and Equitable Atlas for Diabetes Insights",
+        "acronym": "AI-READI",
+        "orgStudyIdInfo": {
+          "orgStudyId": "OT2OD032644",
+          "orgStudyIdType": "U.S. National Institutes of Health (NIH) Grant/Contract Award Number",
+          "orgStudyIdLink": "https://reporter.nih.gov/search/yatARMM-qUyKAhnQgsCTAQ/project-details/10885481"
+        },
+        "secondaryIdInfoList": [
+          {
+            "secondaryId": "NCT06002048",
+            "secondaryIdType": "ClinicalTrials.gov",
+            "secondaryIdLink": "https://classic.clinicaltrials.gov/ct2/show/NCT06002048"
+          }
+        ]
+      },
+      "statusModule": {
+        "overallStatus": "Enrolling by invitation",
+        "startDateStruct": {
+          "startDate": "2023-07-19",
+          "startDateType": "Actual"
+        },
+        "completionDateStruct": {
+          "completionDate": "2027-01-01",
+          "completionDateType": "Anticipated"
+        }
+      },
+      "sponsorCollaboratorsModule": {
+        "leadSponsor": {
+          "leadSponsorName": "University of Washington",
+          "leadSponsorIdentifier": {
+            "leadSponsorIdentifierValue": "https://ror.org/00cvxb145",
+            "leadSponsorIdentifierScheme": "ROR",
+            "schemeURI": "https://ror.org/"
+          }
+        },
+        "responsibleParty": {
+          "responsiblePartyType": "Principal Investigator",
+          "responsiblePartyInvestigatorFirstName": "Aaron",
+          "responsiblePartyInvestigatorLastName": "Aaron",
+          "responsiblePartyInvestigatorTitle": "Associate Professor",
+          "responsiblePartyInvestigatorIdentifier": [
+            {
+              "responsiblePartyInvestigatorIdentifierValue": "https://orcid.org/0000-0002-7452-1648",
+              "responsiblePartyInvestigatorIdentifierScheme": "ORCID",
+              "schemeURI": "https://orcid.org/"
+            }
+          ],
+          "responsiblePartyInvestigatorAffiliation": {
+            "responsiblePartyInvestigatorAffiliationName": "University of Washington",
+            "responsiblePartyInvestigatorAffiliationIdentifier": {
+              "responsiblePartyInvestigatorAffiliationIdentifierValue": "https://ror.org/00cvxb145",
+              "responsiblePartyInvestigatorAffiliationIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          }
+        },
+        "collaboratorList": [
+          {
+            "collaboratorName": "National Institutes of Health",
+            "collaboratorNameIdentifier": {
+              "collaboratorNameIdentifierValue": "https://ror.org/01cwqze88",
+              "collaboratorNameIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          },
+          {
+            "collaboratorName": "California Medical Innovations Institute",
+            "collaboratorNameIdentifier": {
+              "collaboratorNameIdentifierValue": "https://ror.org/0156zyn36",
+              "collaboratorNameIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          },
+          {
+            "collaboratorName": "Johns Hopkins University",
+            "collaboratorNameIdentifier": {
+              "collaboratorNameIdentifierValue": "https://ror.org/00za53h95",
+              "collaboratorNameIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          },
+          {
+            "collaboratorName": "Native BioData Consortium"
+          },
+          {
+            "collaboratorName": "Oregon Health & Science University",
+            "collaboratorNameIdentifier": {
+              "collaboratorNameIdentifierValue": "https://ror.org/009avj582",
+              "collaboratorNameIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          },
+          {
+            "collaboratorName": "Stanford University",
+            "collaboratorNameIdentifier": {
+              "collaboratorNameIdentifierValue": "https://ror.org/00f54p054",
+              "collaboratorNameIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          },
+          {
+            "collaboratorName": "University of Alabama at Birmingham",
+            "collaboratorNameIdentifier": {
+              "collaboratorNameIdentifierValue": "https://ror.org/008s83205",
+              "collaboratorNameIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          },
+          {
+            "collaboratorName": "University of California, San Diego",
+            "collaboratorNameIdentifier": {
+              "collaboratorNameIdentifierValue": "https://ror.org/0168r3w48",
+              "collaboratorNameIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          }
+        ]
+      },
+      "oversightModule": {
+        "isFDARegulatedDrug": "No",
+        "isFDARegulatedDevice": "No",
+        "humanSubjectReviewStatus": "Submitted, approved",
+        "oversightHasDMC": "No"
+      },
+      "descriptionModule": {
+        "briefSummary": "The study will collect a cross-sectional dataset of 4000 people across the US from diverse racial/ethnic groups who are either 1) healthy, or 2) belong in one of the three stages of diabetes severity (pre-diabetes/diet controlled, oral medication and/or non-insulin-injectable medication controlled, or insulin dependent), forming a total of four groups of patients. Clinical data (social determinants of health surveys, continuous glucose monitoring data, biomarkers, genetic data, retinal imaging, cognitive testing, etc.) will be collected. The purpose of this project is data generation to allow future creation of artificial intelligence/machine learning (AI/ML) algorithms aimed at defining disease trajectories and underlying genetic links in different racial/ethnic cohorts. A smaller subgroup of participants will be invited to come for a follow-up visit in year 4 of the project (longitudinal arm of the study). Data will be placed in an open-source repository and samples will be sent to the study sample repository and used for future research.",
+        "detailedDescription": "The Artificial Intelligence Ready and Equitable Atlas for Diabetes Insights (AI-READI) project seeks to create a flagship ethically-sourced dataset to enable future generations of artificial intelligence/machine learning (AI/ML) research to provide critical insights into type 2 diabetes mellitus (T2DM), including salutogenic pathways to return to health. The ability to understand and affect the course of complex, multi-organ diseases such as T2DM has been limited by a lack of well-designed, high quality, large, and inclusive multimodal datasets. The AI-READI team of investigators will aim to collect a cross-sectional dataset of 4,000 people and longitudinal data from 10% of the study cohort across the US. The study cohort will be balanced for self-reported race/ethnicity, gender, and diabetes disease stage. Data collection will be specifically designed to permit downstream pseudo-time manifold analysis, an approach used to predict disease trajectories by collecting and learning from complex, multimodal data from participants with differing disease severity (normal to insulin-dependent T2DM). The long-term objective for this project is to develop a foundational dataset in T2DM, agnostic to existing classification criteria or biases, which can be used to reconstruct a temporal atlas of T2DM development and reversal towards health (i.e., salutogenesis). Six cross-disciplinary project modules involving teams located across eight institutions will work together to develop this flagship dataset. Data will be optimized for downstream AI/ML research and made publicly available. This project will also create a roadmap for ethical and equitable research that focuses on the diversity of the research participants and the workforce involved at all stages of the research process (study design and data collection, curation, analysis, and sharing and collaboration)."
+      },
+      "conditionsModule": {
+        "conditionList": [
+          {
+            "conditionName": "Type 2 Diabetes",
+            "conditionIdentifier": {
+              "conditionClassificationCode": "D003924",
+              "conditionScheme": "Medical Subject Headings (MeSH)",
+              "schemeURI": "https://meshb.nlm.nih.gov/",
+              "conditionURI": "https://meshb.nlm.nih.gov/record/ui?ui=D003924"
+            }
+          }
+        ],
+        "keywordList": [
+          {
+            "keywordValue": "Retinal Imaging"
+          },
+          {
+            "keywordValue": "Data Sharing",
+            "keywordIdentifier": {
+              "keywordClassificationCode": "D033181",
+              "keywordScheme": "Medical Subject Headings (MeSH)",
+              "schemeURI": "https://meshb.nlm.nih.gov/",
+              "keywordURI": "https://meshb.nlm.nih.gov/record/ui?ui=D033181"
+            }
+          },
+          {
+            "keywordValue": "Equitable Data Collection"
+          },
+          {
+            "keywordValue": "Machine Learning",
+            "keywordIdentifier": {
+              "keywordClassificationCode": "D000069550",
+              "keywordScheme": "Medical Subject Headings (MeSH)",
+              "schemeURI": "https://meshb.nlm.nih.gov/",
+              "keywordURI": "https://meshb.nlm.nih.gov/record/ui?ui=D000069550"
+            }
+          },
+          {
+            "keywordValue": "Artificial Intelligence",
+            "keywordIdentifier": {
+              "keywordClassificationCode": "D001185",
+              "keywordScheme": "Medical Subject Headings (MeSH)",
+              "schemeURI": "https://meshb.nlm.nih.gov/",
+              "keywordURI": "https://meshb.nlm.nih.gov/record/ui?ui=D001185"
+            }
+          },
+          {
+            "keywordValue": "Electrocardiography",
+            "keywordIdentifier": {
+              "keywordClassificationCode": "D004562",
+              "keywordScheme": "Medical Subject Headings (MeSH)",
+              "schemeURI": "https://meshb.nlm.nih.gov/",
+              "keywordURI": "https://meshb.nlm.nih.gov/record/ui?ui=D004562"
+            }
+          },
+          {
+            "keywordValue": "Continuous Glucose Monitoring",
+            "keywordIdentifier": {
+              "keywordClassificationCode": "D000095583",
+              "keywordScheme": "Medical Subject Headings (MeSH)",
+              "schemeURI": "https://meshb.nlm.nih.gov/",
+              "keywordURI": "https://meshb.nlm.nih.gov/record/ui?ui=D000095583"
+            }
+          },
+          {
+            "keywordValue": "Retinal imaging"
+          },
+          {
+            "keywordValue": "Eye exam"
+          }
+        ]
+      },
+      "designModule": {
+        "studyType": "Observational",
+        "isPatientRegistry": "No",
+        "designInfo": {
+          "designObservationalModelList": ["Cohort"],
+          "designTimePerspectiveList": ["Cross-sectional"]
+        },
+        "bioSpec": {
+          "bioSpecRetention": "Samples With DNA",
+          "bioSpecDescription": "Whole blood and urine samples will be retained in a biorepository",
+          "$comment": "Check wording of the description"
+        },
+        "enrollmentInfo": {
+          "enrollmentCount": "4000",
+          "enrollmentType": "Anticipated"
+        }
+      },
+      "armsInterventionsModule": {
+        "armGroupList": [
+          {
+            "armGroupLabel": "Healthy",
+            "armGroupDescription": "Participants who do not have Type 1 or Type 2 Diabetes",
+            "armGroupInterventionList": ["AI-READI protocol"]
+          },
+          {
+            "armGroupLabel": "Pre-diabetes/Diet Controlled",
+            "armGroupDescription": "Participants with pre-Type 2 Diabetes and those with Type 2 Diabetes whose blood sugar is controlled by diet",
+            "armGroupInterventionList": ["AI-READI protocol"]
+          },
+          {
+            "armGroupLabel": "Oral Medication and/or Non-insulin-injectable Medication Controlled",
+            "armGroupDescription": "Participants with Type 2 Diabetes whose blood sugar is controlled by oral or injectable medications other than insulin",
+            "armGroupInterventionList": ["AI-READI protocol"]
+          },
+          {
+            "armGroupLabel": "Insulin Dependent",
+            "armGroupDescription": "Participants with Type 2 Diabetes whose blood sugar is controlled by insulin",
+            "armGroupInterventionList": ["AI-READI protocol"]
+          }
+        ],
+        "interventionList": [
+          {
+            "interventionType": "Other",
+            "interventionName": "AI-READI protocol",
+            "interventionDescription": "Custom protocol followed for the AI-READI study. Details are available at https://docs.aireadi.org/"
+          }
+        ]
+      },
+      "eligibilityModule": {
+        "sex": "All",
+        "genderBased": "No",
+        "minimumAge": "40 Years",
+        "maximumAge": "85 Years",
+        "healthyVolunteers": "No",
+        "eligibilityCriteria": {
+          "eligibilityCriteriaInclusion": [
+            "Adults (≥ 40 years old)",
+            "Patients with and without type 2 diabetes",
+            "Able to provide consent",
+            "Must be able to read and speak English"
+          ],
+          "eligibilityCriteriaExclusion": [
+            "Adults older than 85 years of age",
+            "Pregnancy",
+            "Gestational diabetes",
+            "Type 1 diabetes"
+          ]
+        },
+        "studyPopulation": "Adult patients will be recruited into one of four groups: 1) healthy/no diabetes, 2) pre-diabetes/borderline diabetes/diet-controlled diabetes, 3) oral medication and/or non-insulin injectable medication controlled type 2 diabetes, or 4) insulin dependent type 2 diabetes. The investigators aim to recruit approximately 1000 patients into each of the four groups. Patients will be recruited from University of Washington (UW), University of California at San Diego (UCSD), and University of Alabama at Birmingham (UAB). The study aims to recruit 1,000 subjects from each of the following racial and ethnic groups: White, Asian, Hispanic, and Black. Subjects will be age- and sex-matched within and between groups.",
+        "samplingMethod": "Non-Probability Sample"
+      },
+      "contactsLocationsModule": {
+        "centralContactList": [
+          {
+            "centralContactFirstName": "Aaron",
+            "centralContactLastName": "Lee",
+            "centralContactDegree": "MD",
+            "centralContactIdentifier": [
+              {
+                "centralContactIdentifierValue": "https://orcid.org/0000-0002-7452-1648",
+                "centralContactIdentifierScheme": "ORCID",
+                "schemeURI": "https://orcid.org"
+              }
+            ],
+            "centralContactAffiliation": {
+              "centralContactAffiliationName": "University of Washington",
+              "centralContactAffiliationIdentifier": {
+                "centralContactAffiliationIdentifierValue": "https://ror.org/00cvxb145",
+                "centralContactAffiliationIdentifierScheme": "ROR",
+                "schemeURI": "https://ror.org"
+              }
+            },
+            "centralContactEMail": "contact@aireadi.org"
+          }
+        ],
+        "overallOfficialList": [
+          {
+            "overallOfficialFirstName": "Aaron",
+            "overallOfficialLastName": "Lee",
+            "overallOfficialDegree": "MD",
+            "overallOfficialIdentifier": [
+              {
+                "overallOfficialIdentifierValue": "https://orcid.org/0000-0002-7452-1648",
+                "overallOfficialIdentifierScheme": "ORCID",
+                "schemeURI": "https://orcid.org"
+              }
+            ],
+            "overallOfficialAffiliation": {
+              "overallOfficialAffiliationName": "University of Washington",
+              "overallOfficialAffiliationIdentifier": {
+                "overallOfficialAffiliationIdentifierValue": "https://ror.org/00cvxb145",
+                "overallOfficialAffiliationIdentifierScheme": "ROR",
+                "schemeURI": "https://ror.org"
+              }
+            },
+            "overallOfficialRole": "Study Principal Investigator"
+          },
+          {
+            "$comment": "Add all PIs here"
+          }
+        ],
+        "locationList": [
+          {
+            "locationFacility": "University of Alabama at Birmingham",
+            "locationStatus": "Enrolling by invitation",
+            "locationCity": "Birmingham",
+            "locationZip": "35233",
+            "locationState": "Alabama",
+            "locationCountry": "United States",
+            "locationIdentifier": {
+              "locationIdentifierValue": "https://ror.org/008s83205",
+              "locationIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          },
+          {
+            "locationFacility": "University of California, San Diego",
+            "locationStatus": "Enrolling by invitation",
+            "locationCity": "San Diego",
+            "locationZip": "92093",
+            "locationState": "California",
+            "locationCountry": "United States",
+            "locationIdentifier": {
+              "locationIdentifierValue": "https://ror.org/0168r3w48",
+              "locationIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          },
+          {
+            "locationFacility": "University of Washington",
+            "locationStatus": "Enrolling by invitation",
+            "locationCity": "Seattle",
+            "locationZip": "98109",
+            "locationState": "Washington",
+            "locationCountry": "United States",
+            "locationIdentifier": {
+              "locationIdentifierValue": "https://ror.org/00cvxb145",
+              "locationIdentifierScheme": "ROR",
+              "schemeURI": "https://ror.org/"
+            }
+          }
+        ]
+      }
+    },
+    "readme": "## Overview of the study\nThe Artificial Intelligence Ready and Equitable Atlas for Diabetes Insights (AI-READI) project seeks to create a flagship ethically-sourced dataset to enable future generations of artificial intelligence/machine learning (AI/ML) research to provide critical insights into type 2 diabetes mellitus (T2DM), including salutogenic pathways to return to health. The ability to understand and affect the course of complex, multi-organ diseases such as T2DM has been limited by a lack of well-designed, high quality, large, and inclusive multimodal datasets. The AI-READI team of investigators will aim to collect a cross-sectional dataset of 4,000 people and longitudinal data from 10% of the study cohort across the US. The study cohort will be balanced for self-reported race/ethnicity, gender, and diabetes disease stage. Data collection will be specifically designed to permit downstream pseudo-time manifold analysis, an approach used to predict disease trajectories by collecting and learning from complex, multimodal data from participants with differing disease severity (normal to insulin-dependent T2DM). The long-term objective for this project is to develop a foundational dataset in T2DM, agnostic to existing classification criteria or biases, which can be used to reconstruct a temporal atlas of T2DM development and reversal towards health (i.e., salutogenesis). Six cross-disciplinary project modules involving teams located across eight institutions will work together to develop this flagship dataset. Data will be optimized for downstream AI/ML research and made publicly available. This project will also create a roadmap for ethical and equitable research that focuses on the diversity of the research participants and the workforce involved at all stages of the research process (study design and data collection, curation, analysis, and sharing and collaboration).\n\n## Description of the dataset\nThis dataset contain data from 204 participants from the pilot period of the project (July 19, 2023 to November 30, 2023). Data from multiple modalities are included. A full list is provided in the \"Data Standards\" section below. The data in this dataset contain no personel health information (PHI). Information related to the sex and race/ethnicity of the participants has also been removed.\n\nThe dataset contains a total of 1,265 files (including data and metadata files) and is 250 GB in size.\n\n!comment: Update final file count and dataset size.\n\nA detailed description of the dataset is available at [docs.aireadi.org](https://docs.aireadi.org/).\n\n## Protocol\nThe protocol followed for collecting the data can be found at [protocols.io](https://protocols.io/).\n!comment: where protocol?\n\nThe protocol for curating and sharing the data can be found at [protocols.io](https://protocols.io/). \n!comment: where protocol?\n\n## Dataset access/restrictions\nAccessing the dataset requires several steps, including:\n1. Login in through a verified ID system (such as Microsoft Entra Verified ID or Login.gov)\n2. Agreeing to use the data only for type 2 diabetes related research.\n3. Agreeing to the license terms which set certain restrictions and obligations for data usage (see \"License\" section below). \n\n## Data standards followed\nThis dataset is organized following the [Clinical Dataset Structure (CDS) v0.1.0](https://github.com/AI-READI/high-level-dataset-structure). We refer to the CDS documentation for more details. Briefly, data is organized at the root level into one folder per datatype (c.f. Table below). Within each datatype folder, there is one folder per modality, if there are multiple modalities. Within each modality folder, there is one folder per device used to collect that modality. Within each device folder, there is one folder per participant. Each datype, modality, and device folder is named using a code name that best defines it while keeping it short. Each participant folder is named after the participant's ID number used in the study. For each datatype, the data files follow the standards listed in the Table below. More details are available in the datatype_dictionary metadata file included in this dataset. An example of the dataset structure (with mock data) is available [here](https://github.com/AI-READI/ai-readi-dataset-template/tree/main/versions).\n\n| Datatype      | Code name | Description | File format standard followed |\n| ----------- | ----------- | ----------- | ----------- \n| Activity Monitoring      | activity_monitoring  | description | Open mHealth\n| Contiuous Glucose Monitoring   | cgm      | description | Open mHealth\n| Clinical data     | clinical_data  | description | Observational Medical Outcomes Partnership (OMOP) Common Data Model (CDM)\n| Electrocardiogram    | ekg  | description | WaveForm DataBase (WFDB)\n| Environmental sensor data    | environmental_sensor  | description | Earth Science Data Systems (ESDS) format\n| Fluorescence Lifetime Imaging Ophthalmoscopy (FLIO) image   | flio | description | Digital Imaging and Communications in Medicine (DICOM)\n| Optical Coherence Tomography (OCT) image  | oct  | description | Digital Imaging and Communications in Medicine (DICOM)\n| Optical Coherence Tomography Angiography (OCTA) image  | octa  | description | Digital Imaging and Communications in Medicine (DICOM)\n| Retinal photography image    | retinal_photography  | description | Digital Imaging and Communications in Medicine (DICOM)\n\n\n!comment: add CDS link + description in table\n\n## Resources\nAll of our data files are in formats that are accessible with free software commonly used for such data types so no specific software is required. Some useful resources related to this dataset are listed below:\n- Documentation of the dataset: [docs.aireadi.org](https://docs.aireadi.org/)\n- Dataset template with mock data and metadata: [GitHub template](https://github.com/AI-READI/ai-readi-dataset-template/tree/main/versions)\n- AI-READI project website: [aireadi.org](https://aireadi.org/)\n- Zenodo community of the AI-READI project: [zenodo.org/communities/aireadi](https://zenodo.org/communities/aireadi)\n- GitHub organization of the AI-READI project: [github.com/AI-READI](https://github.com/AI-READI)\n\n## License\nThis work is licensed under a custom License. These license terms were specifically tailored to enable reuse of the AI-READI dataset (and other clinical datasets) for commercial or research purpose while putting strong requirements around data usage, security, and secondary sharing to protect study participants, especially when data is reused for artificial intelligence (AI) and machine learning (ML) related applications. More details are available in the License file available at https://doi.org/10.5281/zenodo.10642459. \n\n## How to cite\n If you use this dataset for any purpose, please cite the dataset on FAIRhub and the AI-READI marker paper:\n - AI-READI project. (2023). Flagship Dataset of Type 2 Diabetes from the AI-READI Project (1.0.0). FAIRhub. https://doi.org/10.5281/zenodo.7641684\n - AI-READI Project (2023). AI-READI Marker Paper. Best Journal, 61(53), 95-180. https://doi.org/10.5281/zenodo.7641684\n\n !comment: Add citations when available\n\n## Contact\nFor any questions, suggestions, or feedback related to this dataset, please email contact@aireadi.org. We refer to the study_description.json and dataset_description.json metadata files included in this dataset for additional information about contact person/entity, authors, and contributors of the dataset.\n\n## Acknowledgement\nThe AI-READI project is supported by NIH grant [1OT2OD032644](https://reporter.nih.gov/search/1ADgncihCk6fdMRJdCnBjg/project-details/10471118) through the NIH Bridge2AI Common Fund program.",
+    "dataset_description": {
+      "identifier": {
+        "identifierValue": "10.60775/fairhub.1",
+        "identifierType": "DOI"
+      },
+      "title": [
+        {
+          "titleValue": "Flagship Dataset of Type 2 Diabetes from the AI-READI Project"
+        },
+        {
+          "titleValue": "AI-READI dataset",
+          "titleType": "AlternativeTitle"
+        }
+      ],
+      "version": "1.0",
+      "creator": [
+        {
+          "creatorName": "AI-READI Consortium",
+          "nameType": "Organizational"
+        }
+      ],
+      "publicationYear": "2024",
+      "date": [
+        {
+          "dateValue": "2024-04-01",
+          "dateType": "Available",
+          "dateInformation": "Date dataset made availabe on FAIRhub"
+        },
+        {
+          "dateValue": "2023-07-19/2023-11-30",
+          "dateType": "Collected",
+          "dateInformation": "Period of the pilot phase when the data was collected"
+        }
+      ],
+      "resourceType": {
+        "resourceTypeValue": "Type 2 Diabetes",
+        "resourceTypeGeneral": "Dataset"
+      },
+      "datasetDeIdentLevel": {
+        "deIdentType": "NoDeIdentification",
+        "deIdentDirect": true,
+        "deIdentHIPAA": true,
+        "deIdentDates": false,
+        "deIdentNonarr": false,
+        "deIdentKAnon": false,
+        "deIdentDetails": "No identifiers were collected so no active de-identification was necessary but we checked that no identifiable data per US HIPAA were present in the data."
+      },
+      "datasetConsent": {
+        "consentType": "ConsentSpecifiedNotElsewhereCategorised",
+        "consentNoncommercial": false,
+        "consentGeogRestrict": false,
+        "consentResearchType": false,
+        "consentGeneticOnly": false,
+        "consentNoMethods": false,
+        "consentsDetails": "The public version of the dataset can only be used for type 2 diabetes related research. A private version will allow for more generic use."
+      },
+      "description": [
+        {
+          "descriptionValue": "Copy from README when finalized",
+          "descriptionType": "Abstract"
+        }
+      ],
+      "language": "en",
+      "relatedIdentifier": [
+        {
+          "relatedIdentifierValue": "Add marker paper DOI when availabe",
+          "relatedIdentifierType": "DOI",
+          "relationType": "IsDescribedBy",
+          "resourceTypeGeneral": "Preprint"
+        },
+        {
+          "relatedIdentifierValue": "https://docs.aireadi.org/",
+          "relatedIdentifierType": "URL",
+          "relationType": "IsDocumentedBy",
+          "resourceTypeGeneral": "Other"
+        },
+        {
+          "relatedIdentifierValue": "https://github.com/AI-READI/ai-readi-dataset-template/tree/main/versions",
+          "relatedIdentifierType": "URL",
+          "relationType": "IsDocumentedBy",
+          "resourceTypeGeneral": "Other"
+        },
+        {
+          "relatedIdentifierValue": "https://aireadi.org/",
+          "relatedIdentifierType": "URL",
+          "relationType": "IsDocumentedBy",
+          "resourceTypeGeneral": "Other"
+        }
+      ],
+      "subject": [
+        {
+          "subjectValue": "Diabetes mellitus",
+          "subjectIdentifier": {
+            "classificationCode": "45636-8",
+            "subjectScheme": "Logical Observation Identifier Names and Codes (LOINC)",
+            "schemeURI": "https://loinc.org/",
+            "valueURI": "https://loinc.org/45636-8"
+          }
+        },
+        {
+          "subjectValue": "Machine Learning",
+          "subjectIdentifier": {
+            "classificationCode": "D000069550",
+            "subjectScheme": "Medical Subject Headings (MeSH)",
+            "schemeURI": "https://meshb.nlm.nih.gov/record/",
+            "valueURI": "https://meshb.nlm.nih.gov/record/ui?ui=D000069550"
+          }
+        },
+        {
+          "subjectValue": "Artificial Intelligence",
+          "subjectIdentifier": {
+            "classificationCode": "D001185",
+            "subjectScheme": "Medical Subject Headings (MeSH)",
+            "schemeURI": "https://meshb.nlm.nih.gov/",
+            "valueURI": "https://meshb.nlm.nih.gov/record/ui?ui=D001185"
+          }
+        },
+        {
+          "subjectValue": "Electrocardiography",
+          "subjectIdentifier": {
+            "classificationCode": "D004562",
+            "subjectScheme": "Medical Subject Headings (MeSH)",
+            "schemeURI": "https://meshb.nlm.nih.gov/",
+            "valueURI": "https://meshb.nlm.nih.gov/record/ui?ui=D004562"
+          }
+        },
+        {
+          "subjectValue": "Continuous Glucose Monitoring",
+          "subjectIdentifier": {
+            "classificationCode": "D000095583",
+            "subjectScheme": "Medical Subject Headings (MeSH)",
+            "schemeURI": "https://meshb.nlm.nih.gov/",
+            "valueURI": "https://meshb.nlm.nih.gov/record/ui?ui=D000095583"
+          }
+        },
+        {
+          "subjectValue": "Retinal imaging"
+        },
+        {
+          "subjectValue": "Eye exam"
+        }
+      ],
+      "managingOrganization": {
+        "name": "University of Washington",
+        "managingOrganizationIdentifier": {
+          "managingOrganizationIdentifierValue": "https://ror.org/00cvxb145",
+          "managingOrganizationScheme": "ROR",
+          "schemeURI": "https://ror.org"
+        }
+      },
+      "accessType": "PublicDownloadSelfAttestationRequired",
+      "accessDetails": {
+        "description": "Accessing the dataset requires several steps, including: 1. Login in through a verified ID system (such as Microsoft Entra Verified ID or Login.gov); 2. Agreeing to use the data only for type 2 diabetes related research.; 3. Agreeing to the license terms which set certain restrictions and obligations for data usage (see 'rights' property)"
+      },
+      "rights": [
+        {
+          "rightsName": "AI-READI custom license v1.0",
+          "rightsURI": "https://doi.org/10.5281/zenodo.10642459"
+        }
+      ],
+      "publisher": {
+        "publisherName": "FAIRhub"
+      },
+      "size": ["250 GB", "2,000 files"],
+      "fundingReference": [
+        {
+          "funderName": "National Institutes of Health",
+          "funderIdentifier": {
+            "funderIdentifierValue": "https://ror.org/01cwqze88",
+            "funderIdentifierType": "ROR",
+            "schemeURI": "https://ror.org"
+          },
+          "awardNumber": {
+            "awardNumberValue": "OT2OD032644",
+            "awardURI": "https://reporter.nih.gov/search/yatARMM-qUyKAhnQgsCTAQ/project-details/10885481"
+          },
+          "awardTitle": "Bridge2AI: Salutogenesis Data Generation Project"
+        }
+      ],
+      "format": ["image/DICOM", "text/markdown", "table/csv"]
+    },
+    "dataset_structure_description": {
+      "schema": "https://schema.aireadi.org/files/v0.1.0/dataset_structure_description.json",
+      "directoryList": [
+        {
+          "directoryName": "cardiac_ecg",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains electrocardiogram data.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            {
+              "relatedTermValue": "Electrocardiogram",
+              "relatedTermIdentifier": [
+                {
+                  "relatedTermClassificationCode": "C168186",
+                  "relatedTermScheme": "NCI Thesaurus (NCIT)",
+                  "relatedTermSchemeURI": "https://ncim.nci.nih.gov/",
+                  "relatedTermValueURI": "https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI%20Thesaurus&code=C168186"
+                }
+              ]
+            },
+            {
+              "relatedTermValue": "Electrocardiography",
+              "relatedTermIdentifier": [
+                {
+                  "relatedTermClassificationCode": "D004562",
+                  "relatedTermScheme": "Medical Subject Headings (MeSH)",
+                  "relatedTermSchemeURI": "https://meshb.nlm.nih.gov/",
+                  "relatedTermValueURI": "https://meshb.nlm.nih.gov/record/ui?ui=D004562"
+                }
+              ]
+            }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "WaveForm DataBase (WFDB)",
+              "standardDescription": "Set of file standards designed for reading and storing physiologic signal data, and associated annotations.",
+              "standardUse": "All the data files within this directory follow the format specified in this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://wfdb.readthedocs.io/en/latest/wfdb.html",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ],
+          "directoryList": [
+            {
+              "directoryName": "ecg_12lead",
+              "directoryType": "modality",
+              "directoryDescription": "[Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder]",
+              "directoryList": [
+                {
+                  "directoryName": "philips_tc30",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            }
+          ],
+          "metadataFileList": [
+            {
+              "metadataFileName": "manifest.tsv",
+              "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS) v0.1.0",
+              "relatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDocumentedBy",
+                  "resourceTypeGeneral": "Other"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "directoryName": "clinical_data",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains clinical data collected through REDCap. Each CSV file in this directory is a one-to-one mapping to the OMOP CDM tables.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            {
+              "relatedTermValue": "Clinical Data",
+              "relatedTermIdentifier": [
+                {
+                  "relatedTermClassificationCode": "C15783",
+                  "relatedTermScheme": "NCI Thesaurus (NCIT)",
+                  "relatedTermSchemeURI": "https://ncim.nci.nih.gov/",
+                  "relatedTermValueURI": "https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI%20Thesaurus&code=C15783"
+                }
+              ]
+            }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory is named following the specification of this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "The Observational Medical Outcomes Partnership (OMOP) Common Data Model (CDM)",
+              "standardDescription": "Standard designed to standardize the structure and content of observational data and to enable efficient analyses that can produce reliable evidence.",
+              "standardUse": "All the data files within this directory follow this standard.",
+              "standardIdentifier": [
+                {
+                  "identifierValue": "https://doi.org/10.25504/FAIRsharing.qk984b",
+                  "identifierType": "DOI"
+                }
+              ],
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://ohdsi.github.io/TheBookOfOhdsi/CommonDataModel.html",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "directoryName": "environment",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains data collected through an environmental sensor device custom built for the AI-READI project.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            {
+              "relatedTermValue": "Environmental sensor data"
+            }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "ASCII File Format Guidelines for Earth Science Data",
+              "standardDescription": "NASA recommended practices for formatting and describing ASCII encoded data files",
+              "standardUse": "All the data files within this directory follow the format specified in this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://www.earthdata.nasa.gov/esdis/esco/standards-and-practices/ascii-file-format-guidelines-for-earth-science-data",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ],
+          "directoryList": [
+            {
+              "directoryName": "environmental_sensor_variables",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "leelab_anura",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            }
+          ],
+          "metadataFileList": [
+            {
+              "metadataFileName": "manifest.tsv",
+              "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+              "relatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDocumentedBy",
+                  "resourceTypeGeneral": "Other"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "directoryName": "retinal_flio",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains data collected through fluorescence lifetime imaging ophthalmoscopy (FLIO), an imaging modality for in vivo measurement of lifetimes of endogenous retinal fluorophores.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            {
+              "relatedTermValue": "Fuorescence Lifetime Imaging Ophthalmoscopy"
+            }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "Digital Imaging and Communications in Medicine (DICOM)",
+              "standardDescription": "Standard for the digital storage and transmission of medical images and related information.",
+              "standardUse": "All the data files within this directory follow the format specified in this standard.",
+              "standardIdentifier": [
+                {
+                  "identifierValue": "https://doi.org/10.25504/FAIRsharing.b7z8by",
+                  "identifierType": "DOI"
+                }
+              ],
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "http://medical.nema.org/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ],
+          "directoryList": [
+            {
+              "directoryName": "flio",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "heidelberg_flio",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            }
+          ],
+          "metadataFileList": [
+            {
+              "metadataFileName": "manifest.tsv",
+              "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+              "relatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDocumentedBy",
+                  "resourceTypeGeneral": "Other"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "directoryName": "retinal_oct",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains data collected using optical coherence tomography (OCT), an imaging method using lasers that is used for mapping subsurface structure.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            {
+              "relatedTermValue": "Optical Coherence Tomography",
+              "relatedTermIdentifier": [
+                {
+                  "relatedTermClassificationCode": "C20828",
+                  "relatedTermScheme": "NCI Thesaurus (NCIT)",
+                  "relatedTermSchemeURI": "https://ncim.nci.nih.gov/",
+                  "relatedTermValueURI": "https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI%20Thesaurus&code=C20828"
+                }
+              ]
+            },
+            {
+              "relatedTermValue": "Tomography, Optical Coherence",
+              "relatedTermIdentifier": [
+                {
+                  "relatedTermClassificationCode": "D041623",
+                  "relatedTermScheme": "Medical Subject Headings (MeSH)",
+                  "relatedTermSchemeURI": "https://meshb.nlm.nih.gov/",
+                  "relatedTermValueURI": "https://meshb.nlm.nih.gov/record/ui?ui=D041623"
+                }
+              ]
+            }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "Digital Imaging and Communications in Medicine (DICOM)",
+              "standardDescription": "Standard for the digital storage and transmission of medical images and related information.",
+              "standardUse": "All the data files within this directory follow the format specified in this standard.",
+              "standardIdentifier": [
+                {
+                  "identifierValue": "https://doi.org/10.25504/FAIRsharing.b7z8by",
+                  "identifierType": "DOI"
+                }
+              ],
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "http://medical.nema.org/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ],
+          "directoryList": [
+            {
+              "directoryName": "structural_oct",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "heidelberg_spectralis",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "topcon_maestro2",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "topcon_triton",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            }
+          ],
+          "metadataFileList": [
+            {
+              "metadataFileName": "manifest.tsv",
+              "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+              "relatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDocumentedBy",
+                  "resourceTypeGeneral": "Other"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "directoryName": "retinal_octa",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains data collected using optical coherence tomography angiography (OCTA), a non-invasive imaging technique that generates volumetric angiography images.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            {
+              "relatedTermValue": "Optical Coherence Tomography Angiography"
+            },
+            {
+              "relatedTermValue": "Optical Coherence Tomography Angiography Images"
+            },
+            {
+              "relatedTermValue": "OCTA Images"
+            }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "Digital Imaging and Communications in Medicine (DICOM)",
+              "standardDescription": "Standard for the digital storage and transmission of medical images and related information.",
+              "standardUse": "All the data files within this directory follow the format specified in this standard.",
+              "standardIdentifier": [
+                {
+                  "identifierValue": "https://doi.org/10.25504/FAIRsharing.b7z8by",
+                  "identifierType": "DOI"
+                }
+              ],
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "http://medical.nema.org/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ],
+          "directoryList": [
+            {
+              "directoryName": "enface",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "topcon_maestro2",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "topcon_triton",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "flow_cube",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "topcon_maestro2",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "topcon_triton",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "segmentation",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "topcon_maestro2",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "topcon_triton",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            }
+          ],
+          "metadataFileList": [
+            {
+              "metadataFileName": "manifest.tsv",
+              "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+              "relatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDocumentedBy",
+                  "resourceTypeGeneral": "Other"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "directoryName": "retinal_photography",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains data collected using a fundus camera to record color images of the condition of the interior surface of the eye.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            {
+              "relatedTermValue": "Eye Fundus Photography",
+              "relatedTermIdentifier": [
+                {
+                  "relatedTermClassificationCode": "C147467",
+                  "relatedTermScheme": "NCI Thesaurus (NCIT)",
+                  "relatedTermSchemeURI": "https://ncim.nci.nih.gov/",
+                  "relatedTermValueURI": "https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI%20Thesaurus&code=C147467"
+                }
+              ]
+            }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "Digital Imaging and Communications in Medicine (DICOM)",
+              "standardDescription": "Standard for the digital storage and transmission of medical images and related information.",
+              "standardUse": "All the data files within this directory follow the format specified in this standard.",
+              "standardIdentifier": [
+                {
+                  "identifierValue": "https://doi.org/10.25504/FAIRsharing.b7z8by",
+                  "identifierType": "DOI"
+                }
+              ],
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "http://medical.nema.org/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ],
+          "directoryList": [
+            {
+              "directoryName": "cfp",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "icare_eidon",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "optomed_aurora",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "topcon_maestro2",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "/topcon_triton",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "faf",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "icare_eidon",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "ir",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "heidelberg_spectralis",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "icare_eidon",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                },
+                {
+                  "directoryName": "topcon_maestro2",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            }
+          ],
+          "metadataFileList": [
+            {
+              "metadataFileName": "manifest.tsv",
+              "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+              "relatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDocumentedBy",
+                  "resourceTypeGeneral": "Other"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "directoryName": "wearable_activity_monitor",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains data collected through a wearable fitness tracker.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            { "relatedTermValue": "smartwatch" },
+            { "relatedTermValue": "activity monitoring" }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "Open mHealth",
+              "standardDescription": "Leading mobile health data interoperability standard.",
+              "standardUse": "All the data files within this directory follow the format specified in this standard",
+              "standardIdentifier": [
+                {
+                  "identifierValue": "https://doi.org/10.25504/FAIRsharing.mrpMBj",
+                  "identifierType": "DOI"
+                }
+              ],
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://www.openmhealth.org/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ],
+          "directoryList": [
+            {
+              "directoryName": "heart_rate",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "garmin_vivosmart5",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "oxygen_saturation",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "garmin_vivosmart5",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "physical_activity",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "garmin_vivosmart5",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "respiratory_rate",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "garmin_vivosmart5",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "sleep",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "garmin_vivosmart5",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            },
+            {
+              "directoryName": "stress",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "garmin_vivosmart5",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            }
+          ],
+          "metadataFileList": [
+            {
+              "metadataFileName": "manifest.tsv",
+              "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+              "relatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDocumentedBy",
+                  "resourceTypeGeneral": "Other"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "directoryName": "wearable_blood_glucose",
+          "directoryType": "dataType",
+          "directoryDescription": "This directory contains data collected through a continuous glucose monitoring (CGM) device.",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://docs.aireadi.org",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ],
+          "relatedTerm": [
+            {
+              "relatedTermValue": "Continuous Glucose Monitoring System",
+              "relatedTermIdentifier": [
+                {
+                  "relatedTermClassificationCode": "C159776",
+                  "relatedTermScheme": "NCI Thesaurus (NCIT)",
+                  "relatedTermSchemeURI": "https://ncim.nci.nih.gov/",
+                  "relatedTermValueURI": "https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI%20Thesaurus&code=C159776"
+                }
+              ]
+            }
+          ],
+          "relatedStandard": [
+            {
+              "standardName": "Clinical Data Structure (CDS) v0.1.0",
+              "standardDescription": "Standard for consistently structuring and describing clinical research datasets",
+              "standardUse": "This directory and its sub-directories are named and organized following the specification from this standard.",
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            },
+            {
+              "standardName": "Open mHealth",
+              "standardDescription": "Leading mobile health data interoperability standard.",
+              "standardUse": "All the data files within this directory follow the format specified in this standard",
+              "standardIdentifier": [
+                {
+                  "identifierValue": "https://doi.org/10.25504/FAIRsharing.mrpMBj",
+                  "identifierType": "DOI"
+                }
+              ],
+              "standardRelatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://www.openmhealth.org/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDescribedBy"
+                }
+              ]
+            }
+          ],
+          "directoryList": [
+            {
+              "directoryName": "continuous_glucose_monitoring",
+              "directoryType": "modality",
+              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
+              "directoryList": [
+                {
+                  "directoryName": "dexcom_g6",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                }
+              ]
+            }
+          ],
+          "metadataFileList": [
+            {
+              "metadataFileName": "manifest.tsv",
+              "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+              "relatedIdentifier": [
+                {
+                  "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+                  "relatedIdentifierType": "URL",
+                  "relationType": "IsDocumentedBy",
+                  "resourceTypeGeneral": "Other"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "metadataFileList": [
+        {
+          "metadataFileName": "CHANGELOG.md",
+          "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ]
+        },
+        {
+          "metadataFileName": "dataset_description.json",
+          "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ]
+        },
+        {
+          "metadataFileName": "dataset_structure_description.json",
+          "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ]
+        },
+        {
+          "metadataFileName": "healthsheet.md",
+          "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ]
+        },
+        {
+          "metadataFileName": "LICENSE.txt",
+          "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ]
+        },
+        {
+          "metadataFileName": "participants.json",
+          "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ]
+        },
+        {
+          "metadataFileName": "README.md",
+          "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ]
+        },
+        {
+          "metadataFileName": "study_description.json",
+          "metadataFileDescription": "This is a metadata file based on the Clinical Dataset Structure (CDS)",
+          "relatedIdentifier": [
+            {
+              "relatedIdentifierValue": "https://cds-specification.readthedocs.io/en/v0.1.0/",
+              "relatedIdentifierType": "URL",
+              "relationType": "IsDocumentedBy",
+              "resourceTypeGeneral": "Other"
+            }
+          ]
+        }
+      ]
+    },
+    "healthsheet": {
+      "collection": [
+        {
+          "id": 1,
+          "question": "How was the data associated with each instance acquired?",
+          "response": "The data was acquired from the Labeled Faces in the Wild dataset. The dataset was validated by removing all sensitive data."
+        },
+        {
+          "id": 2,
+          "question": "What mechanisms or procedures were used to collect the data (e.g. hardware apparatus or sensor, manual human curation, software program, software API)?",
+          "response": ""
+        },
+        {
+          "id": 3,
+          "question": "If the dataset is a sample from a larger set, what was the sampling strategy (e.g. deterministic, probabilistic with specific sampling probabilities)?",
+          "response": ""
+        },
+        {
+          "id": 4,
+          "question": "Who was involved in the data collection process (e.g. students, crowdworkers, contractors) and how were they compensated (e.g. how much were crowdworkers paid)?",
+          "response": ""
+        },
+        {
+          "id": 5,
+          "question": "Over what timeframe was the data collected?",
+          "response": ""
+        },
+        {
+          "id": 6,
+          "question": "Were any ethical review processes conducted (e.g. by an institutional review board)?",
+          "response": ""
+        },
+        {
+          "id": 7,
+          "question": "Does the dataset relate to people?",
+          "response": ""
+        },
+        {
+          "id": 8,
+          "question": "Did you collect the data from the individuals in question directly, or obtain it via third parties or other sources (e.g. websites)?",
+          "response": ""
+        },
+        {
+          "id": 9,
+          "question": "Were the individuals in question notified about the data collection?",
+          "response": ""
+        },
+        {
+          "id": 10,
+          "question": "Did the individuals in question consent to the collection and use of their data?",
+          "response": ""
+        },
+        {
+          "id": 11,
+          "question": "If consent was obtained, were the consenting individuals provided with a mechanism to revoke their consent in the future or for certain uses?",
+          "response": ""
+        },
+        {
+          "id": 12,
+          "question": "Has an analysis of the potential impact of the dataset and its use on data subjects (e.g. a data protection impact analysis) been conducted?",
+          "response": ""
+        },
+        {
+          "id": 13,
+          "question": "Any other comments?",
+          "response": ""
+        }
+      ],
+      "composition": [
+        {
+          "id": 1,
+          "question": "What do the instances that comprise the dataset represent (e.g. documents, photos, people, countries)?",
+          "response": "Instances are images of people from the Labeled Faces in the Wild dataset."
+        },
+        {
+          "id": 2,
+          "question": "How many instances are there in total (of each type, if appropriate)?",
+          "response": "13,233 images of 5,749 people."
+        },
+        {
+          "id": 3,
+          "question": "Does the dataset contain all possible instances or is it a sample (not necessarily random) of instances from a larger set?",
+          "response": "The dataset is a sample of the Labeled Faces in the Wild dataset. The sample was chosen to provide a diverse range of people."
+        },
+        {
+          "id": 4,
+          "question": "What data does each instance consist of?",
+          "response": "Each instance is a 250x250 pixel image of a person's face."
+        },
+        {
+          "id": 5,
+          "question": "Is there a label or target associated with each instance?",
+          "response": "Each instance is labeled with the ID of the person in the image."
+        },
+        {
+          "id": 6,
+          "question": "Is any information missing from individual instances?",
+          "response": "No"
+        },
+        {
+          "id": 7,
+          "question": "Are relationships between individual instances made explicit (e.g. users' movie ratings, social network links)?",
+          "response": "No"
+        },
+        {
+          "id": 8,
+          "question": "Are there recommended data splits (e.g. training, development/validation, testing)?",
+          "response": "No"
+        },
+        {
+          "id": 9,
+          "question": "Are there any errors, sources of noise, or redundancies in the dataset?",
+          "response": "No"
+        },
+        {
+          "id": 10,
+          "question": "Is the dataset self-contained, or does it link to or otherwise rely on external resources (e.g. websites, tweets, other datasets)?",
+          "response": "Yes, the dataset is self-contained."
+        },
+        {
+          "id": 11,
+          "question": "Does the dataset contain data that might be considered confidential (e.g. data that is protected by legal privilege or by doctor-patient confidentiality, data that includes the content of individuals' non-public communications)?",
+          "response": "No. All sensitive data has been removed."
+        },
+        {
+          "id": 12,
+          "question": "Does the dataset contain data that, if viewed directly, might be offensive, insulting, threatening, or might otherwise cause anxiety?",
+          "response": "No."
+        },
+        {
+          "id": 13,
+          "question": "Does the dataset relate to people?",
+          "response": "Yes, the dataset contains images of people. However, all sensitive data has been removed."
+        },
+        {
+          "id": 14,
+          "question": "Does the dataset identify any subpopulations (e.g. by age, gender)?",
+          "response": "Yes, categories were made to identify subpopulations based on age and location."
+        },
+        {
+          "id": 15,
+          "question": "Is it possible to identify individuals (i.e., one or more natural persons), either directly or indirectly (i.e., in combination with other data) from the dataset?",
+          "response": "No, all sensitive data has been removed."
+        },
+        {
+          "id": 16,
+          "question": "Does the dataset contain data that might be considered sensitive in any way (e.g. data that reveals racial or ethnic origins, sexual orientations, religious beliefs, political opinions or union memberships, or locations; financial or health data; biometric or genetic data; forms of government identification, such as social security numbers; criminal history)?",
+          "response": "No, all sensitive data has been removed."
+        },
+        {
+          "id": 16,
+          "question": "Any other comments?",
+          "response": "N/A"
+        }
+      ],
+      "distribution": [
+        {
+          "id": 1,
+          "question": "Will the dataset be distributed to third parties outside of the entity (e.g. company, institution, organization) on behalf of which the dataset was created?",
+          "response": ""
+        },
+        {
+          "id": 2,
+          "question": "How will the dataset will be distributed (e.g. tarball on website, API, GitHub)?",
+          "response": ""
+        },
+        {
+          "id": 3,
+          "question": "When will the dataset be distributed?",
+          "response": ""
+        },
+        {
+          "id": 4,
+          "question": "Will the dataset be distributed under a copyright or other intellectual property (IP) license, and/or under applicable terms of use (ToU)?",
+          "response": ""
+        },
+        {
+          "id": 5,
+          "question": "Have any third parties imposed IP-based or other restrictions on the data associated with the instances?",
+          "response": ""
+        },
+        {
+          "id": 6,
+          "question": "Do any export controls or other regulatory restrictions apply to the dataset or to individual instances?",
+          "response": ""
+        },
+        {
+          "id": 7,
+          "question": "Any other comments?",
+          "response": ""
+        }
+      ],
+      "maintenance": [
+        {
+          "id": 1,
+          "question": "Who is supporting/hosting/maintaining the dataset?",
+          "response": ""
+        },
+        {
+          "id": 2,
+          "question": "How can the owner/curator/manager of the dataset be contacted (e.g. email address)?",
+          "response": ""
+        },
+        {
+          "id": 3,
+          "question": "Is there an erratum?",
+          "response": ""
+        },
+        {
+          "id": 4,
+          "question": "Will the dataset be updated (e.g. to correct labeling errors, add new instances, delete instances)?",
+          "response": ""
+        },
+        {
+          "id": 5,
+          "question": "If the dataset relates to people, are there applicable limits on the retention of the data associated with the instances (e.g. were individuals in question told that their data would be retained for a fixed period of time and then deleted)?",
+          "response": ""
+        },
+        {
+          "id": 6,
+          "question": "Will older versions of the dataset continue to be supported/hosted/maintained?",
+          "response": ""
+        },
+        {
+          "id": 7,
+          "question": "If others want to extend/augment/build on/contribute to the dataset, is there a mechanism for them to do so?",
+          "response": ""
+        },
+        {
+          "id": 8,
+          "question": "Any other comments?",
+          "response": ""
+        }
+      ],
+      "motivation": [
+        {
+          "id": 1,
+          "question": "For what purpose was the dataset created?",
+          "response": "To provide diverse data for the AI-READI project."
+        },
+        {
+          "id": 2,
+          "question": "Who created this dataset (e.g. which team, research group) and on behalf of which entity (e.g. company, institution, organization)?",
+          "response": "Created by the AI-READI team at the University of Melbourne."
+        },
+        {
+          "id": 3,
+          "question": "What support was needed to make this dataset?",
+          "response": "This work was supported by the Australian Government through the Australian Research Council’s Linkage Projects funding scheme (project number LP190100857)."
+        },
+        {
+          "id": 4,
+          "question": "Any other comments?",
+          "response": ""
+        }
+      ],
+      "preprocessing": [
+        {
+          "id": 1,
+          "question": "Was any preprocessing/cleaning/labeling of the data done (e.g. discretization or bucketing, tokenization, part-of-speech tagging, SIFT feature extraction, removal of instances, processing of missing values)?",
+          "response": ""
+        },
+        {
+          "id": 2,
+          "question": "Was the 'raw' data saved in addition to the preprocessed/cleaned/labeled data (e.g. to support unanticipated future uses)?",
+          "response": ""
+        },
+        {
+          "id": 3,
+          "question": "Is the software used to preprocess/clean/label the instances available?",
+          "response": ""
+        },
+        {
+          "id": 4,
+          "question": "Any other comments?",
+          "response": ""
+        }
+      ],
+      "uses": [
+        {
+          "id": 1,
+          "question": "Has the dataset been used for any tasks already?",
+          "response": ""
+        },
+        {
+          "id": 2,
+          "question": "Is there a repository that links to any or all papers or systems that use the dataset?",
+          "response": ""
+        },
+        {
+          "id": 3,
+          "question": "What (other) tasks could the dataset be used for?",
+          "response": ""
+        },
+        {
+          "id": 4,
+          "question": "Is there anything about the composition of the dataset or the way it was collected and preprocessed/cleaned/labeled that might impact future uses?",
+          "response": ""
+        },
+        {
+          "id": 5,
+          "question": "Are there tasks for which the dataset should not be used?",
+          "response": ""
+        },
+        {
+          "id": 6,
+          "question": "Any other comments?",
+          "response": ""
+        }
+      ]
+    }
+  },
+  "files": [
+    {
+      "children": [],
+      "label": "cardiac_ecg"
+    },
+    {
+      "children": [],
+      "label": "clinical_data"
+    },
+    {
+      "children": [],
+      "label": "environment"
+    },
+    {
+      "children": [],
+      "label": "retinal_flio"
+    },
+    {
+      "children": [],
+      "label": "retinal_oct"
+    },
+    {
+      "children": [],
+      "label": "retinal_octa"
+    },
+    {
+      "children": [],
+      "label": "retinal_photography"
+    },
+    {
+      "children": [],
+      "label": "wearable_activity_monitor"
+    },
+    {
+      "children": [],
+      "label": "wearable_blood_glucose"
+    },
+    {
+      "label": "CHANGELOG.md"
+    },
+    {
+      "label": "LICENSE.txt"
+    },
+    {
+      "label": "README.md"
+    },
+    {
+      "label": "dataset_description.json"
+    },
+    {
+      "label": "dataset_structure_description.json"
+    },
+    {
+      "label": "healthsheet.md"
+    },
+    {
+      "label": "participants.json"
+    },
+    {
+      "label": "participants.tsv"
+    },
+    {
+      "label": "study_description.json"
+    }
+  ],
+  "data": {
+    "size": 32434,
+    "fileCount": 234234
+  },
+  "created_at": "1710279780"
+}

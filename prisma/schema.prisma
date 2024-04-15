@@ -1,33 +1,44 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  schemas  = ["download", "public"]
+}
+
+model alembic_version {
+  version_num String @id(map: "alembic_version_pkc") @db.VarChar(32)
+
+  @@schema("public")
 }
 
 model dataset {
-  id                           String                         @id @db.Char(36)
-  updated_on                   BigInt
-  created_at                   BigInt
-  study_id                     String                         @db.Char(36)
-  study                        study                          @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  dataset_access               dataset_access?
-  dataset_alternate_identifier dataset_alternate_identifier[]
-  dataset_consent              dataset_consent?
-  dataset_contributor          dataset_contributor[]
-  dataset_date                 dataset_date[]
-  dataset_de_ident_level       dataset_de_ident_level?
-  dataset_description          dataset_description[]
-  dataset_funder               dataset_funder[]
-  dataset_other                dataset_other?
-  dataset_record_keys          dataset_record_keys?
-  dataset_related_item         dataset_related_item[]
-  dataset_rights               dataset_rights[]
-  dataset_subject              dataset_subject[]
-  dataset_title                dataset_title[]
-  version                      version[]
+  id                            String                         @id @db.Char(36)
+  updated_on                    BigInt
+  created_at                    BigInt
+  study_id                      String                         @db.Char(36)
+  study                         study                          @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  dataset_access                dataset_access?
+  dataset_alternate_identifier  dataset_alternate_identifier[]
+  dataset_consent               dataset_consent?
+  dataset_contributor           dataset_contributor[]
+  dataset_date                  dataset_date[]
+  dataset_de_ident_level        dataset_de_ident_level?
+  dataset_description           dataset_description[]
+  dataset_funder                dataset_funder[]
+  dataset_healthsheet           dataset_healthsheet?
+  dataset_managing_organization dataset_managing_organization?
+  dataset_other                 dataset_other?
+  dataset_related_identifier    dataset_related_identifier[]
+  dataset_rights                dataset_rights[]
+  dataset_subject               dataset_subject[]
+  dataset_title                 dataset_title[]
+  version                       version[]
+
+  @@schema("public")
 }
 
 model dataset_access {
@@ -37,6 +48,8 @@ model dataset_access {
   url_last_checked BigInt?
   dataset_id       String  @id @db.Char(36)
   dataset          dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_alternate_identifier {
@@ -46,6 +59,8 @@ model dataset_alternate_identifier {
   created_at BigInt
   dataset_id String  @db.Char(36)
   dataset    dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_consent {
@@ -58,11 +73,14 @@ model dataset_consent {
   details       String  @db.VarChar
   dataset_id    String  @id @db.Char(36)
   dataset       dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_contributor {
   id                         String  @id @db.Char(36)
-  name                       String  @db.VarChar
+  family_name                String? @db.VarChar
+  given_name                 String  @db.VarChar
   name_type                  String? @db.VarChar
   name_identifier            String  @db.VarChar
   name_identifier_scheme     String  @db.VarChar
@@ -73,6 +91,8 @@ model dataset_contributor {
   created_at                 BigInt
   dataset_id                 String  @db.Char(36)
   dataset                    dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_date {
@@ -83,6 +103,8 @@ model dataset_date {
   created_at  BigInt
   dataset_id  String  @db.Char(36)
   dataset     dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_de_ident_level {
@@ -95,6 +117,8 @@ model dataset_de_ident_level {
   details    String  @db.VarChar
   dataset_id String  @id @db.Char(36)
   dataset    dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_description {
@@ -104,6 +128,8 @@ model dataset_description {
   created_at  BigInt
   dataset_id  String  @db.Char(36)
   dataset     dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_funder {
@@ -118,96 +144,77 @@ model dataset_funder {
   created_at            BigInt
   dataset_id            String  @db.Char(36)
   dataset               dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
+}
+
+model dataset_healthsheet {
+  motivation    Json    @db.Json
+  composition   Json    @db.Json
+  collection    Json    @db.Json
+  preprocessing Json    @db.Json
+  uses          Json    @db.Json
+  distribution  Json    @db.Json
+  maintenance   Json    @db.Json
+  dataset_id    String  @id @db.Char(36)
+  dataset       dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
+}
+
+model dataset_managing_organization {
+  name                  String  @db.VarChar
+  identifier            String  @db.VarChar
+  identifier_scheme     String  @db.VarChar
+  identifier_scheme_uri String  @db.VarChar
+  dataset_id            String  @id @db.Char(36)
+  dataset               dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_other {
-  resource_type                String   @db.VarChar
-  language                     String?  @db.VarChar
-  managing_organization_name   String   @db.VarChar
-  managing_organization_ror_id String   @db.VarChar
-  size                         String[] @db.VarChar
-  standards_followed           String   @db.VarChar
-  acknowledgement              String   @db.VarChar
-  publisher                    String   @db.VarChar
-  dataset_id                   String   @id @db.Char(36)
-  dataset                      dataset  @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  resource_type      String   @db.VarChar
+  language           String?  @db.VarChar
+  size               String[] @db.VarChar
+  format             String[] @db.VarChar
+  standards_followed String   @db.VarChar
+  acknowledgement    String   @db.VarChar
+  dataset_id         String   @id @db.Char(36)
+  dataset            dataset  @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
-model dataset_record_keys {
-  key_type    String? @db.VarChar
-  key_details String  @db.VarChar
-  dataset_id  String  @id @db.Char(36)
-  dataset     dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-}
-
-model dataset_related_item {
-  id                               String                             @id @db.Char(36)
-  type                             String?                            @db.VarChar
-  relation_type                    String?                            @db.VarChar
-  created_at                       BigInt
-  dataset_id                       String                             @db.Char(36)
-  dataset                          dataset                            @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  dataset_related_item_contributor dataset_related_item_contributor[]
-  dataset_related_item_identifier  dataset_related_item_identifier[]
-  dataset_related_item_other       dataset_related_item_other?
-  dataset_related_item_title       dataset_related_item_title[]
-}
-
-model dataset_related_item_contributor {
-  id                      String               @id @db.Char(36)
-  name                    String               @db.VarChar
-  name_type               String?              @db.VarChar
-  creator                 Boolean
-  contributor_type        String?              @db.VarChar
+model dataset_related_identifier {
+  id                      String  @id @db.Char(36)
+  identifier              String  @db.VarChar
+  identifier_type         String? @db.VarChar
+  relation_type           String? @db.VarChar
+  related_metadata_scheme String  @db.VarChar
+  scheme_uri              String  @db.VarChar
+  scheme_type             String  @db.VarChar
+  resource_type           String? @db.VarChar
   created_at              BigInt
-  dataset_related_item_id String               @db.Char(36)
-  dataset_related_item    dataset_related_item @relation(fields: [dataset_related_item_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-}
+  dataset_id              String  @db.Char(36)
+  dataset                 dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
-model dataset_related_item_identifier {
-  id                      String               @id @db.Char(36)
-  identifier              String               @db.VarChar
-  type                    String?              @db.VarChar
-  metadata_scheme         String?              @db.VarChar
-  scheme_uri              String?              @db.VarChar
-  scheme_type             String?              @db.VarChar
-  created_at              BigInt
-  dataset_related_item_id String               @db.Char(36)
-  dataset_related_item    dataset_related_item @relation(fields: [dataset_related_item_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-}
-
-model dataset_related_item_other {
-  publication_year        BigInt?
-  volume                  String               @db.VarChar
-  issue                   String               @db.VarChar
-  number_value            String               @db.VarChar
-  number_type             String?              @db.VarChar
-  first_page              String               @db.VarChar
-  last_page               String               @db.VarChar
-  publisher               String               @db.VarChar
-  edition                 String               @db.VarChar
-  dataset_related_item_id String               @id @db.Char(36)
-  dataset_related_item    dataset_related_item @relation(fields: [dataset_related_item_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-}
-
-model dataset_related_item_title {
-  id                      String               @id @db.Char(36)
-  type                    String?              @db.VarChar
-  title                   String               @db.VarChar
-  created_at              BigInt
-  dataset_related_item_id String               @db.Char(36)
-  dataset_related_item    dataset_related_item @relation(fields: [dataset_related_item_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  @@schema("public")
 }
 
 model dataset_rights {
-  id                String  @id @db.Char(36)
-  rights            String  @db.VarChar
-  uri               String  @db.VarChar
-  identifier        String  @db.VarChar
-  identifier_scheme String  @db.VarChar
-  created_at        BigInt
-  dataset_id        String  @db.Char(36)
-  dataset           dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  id                    String  @id @db.Char(36)
+  rights                String  @db.VarChar
+  uri                   String  @db.VarChar
+  identifier            String  @db.VarChar
+  identifier_scheme     String  @db.VarChar
+  identifier_scheme_uri String  @db.VarChar
+  license_text          String  @db.VarChar
+  created_at            BigInt
+  dataset_id            String  @db.Char(36)
+  dataset               dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_subject {
@@ -220,6 +227,8 @@ model dataset_subject {
   created_at          BigInt
   dataset_id          String  @db.Char(36)
   dataset             dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model dataset_title {
@@ -229,6 +238,8 @@ model dataset_title {
   created_at BigInt
   dataset_id String  @db.VarChar
   dataset    dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model email_verification {
@@ -237,6 +248,8 @@ model email_verification {
   created_at String @db.Char(36)
   user_id    String @db.Char(36)
   user       user   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model invited_study_contributor {
@@ -249,6 +262,7 @@ model invited_study_contributor {
   study         study  @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
   @@id([email_address, study_id])
+  @@schema("public")
 }
 
 model notification {
@@ -261,6 +275,8 @@ model notification {
   created_at BigInt
   user_id    String   @db.Char(36)
   user       user     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model participant {
@@ -274,34 +290,61 @@ model participant {
   study_id             String                 @db.Char(36)
   study                study                  @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
   version_participants version_participants[]
+
+  @@schema("public")
+}
+
+model published_dataset {
+  id                 String               @id @db.Char(36)
+  study_id           String               @db.VarChar
+  dataset_id         String               @db.VarChar
+  version_id         String               @db.VarChar
+  doi                String               @db.VarChar
+  title              String               @db.VarChar
+  description        String               @db.VarChar
+  version_title      String               @db.VarChar
+  study_title        String               @db.VarChar
+  published_metadata Json                 @db.Json
+  files              Json                 @db.Json
+  data               Json                 @db.Json
+  created_at         BigInt
+  download_agreement download_agreement[]
+  download_request   download_request[]
+
+  @@schema("public")
 }
 
 model study {
-  id                           String                        @id @db.Char(36)
-  title                        String                        @db.VarChar
-  image                        String                        @db.VarChar
-  created_at                   BigInt
-  updated_on                   BigInt
-  dataset                      dataset[]
-  invited_study_contributor    invited_study_contributor[]
-  participant                  participant[]
-  study_arm                    study_arm[]
-  study_available_ipd          study_available_ipd[]
-  study_contact                study_contact[]
-  study_contributor            study_contributor[]
-  study_description            study_description?
-  study_design                 study_design?
-  study_eligibility            study_eligibility?
-  study_identification         study_identification[]
-  study_intervention           study_intervention[]
-  study_ipdsharing             study_ipdsharing?
-  study_link                   study_link[]
-  study_location               study_location[]
-  study_other                  study_other?
-  study_overall_official       study_overall_official[]
-  study_reference              study_reference[]
-  study_sponsors_collaborators study_sponsors_collaborators?
-  study_status                 study_status?
+  id                        String                      @id @db.Char(36)
+  title                     String                      @db.VarChar(300)
+  image                     String                      @db.VarChar
+  acronym                   String                      @db.VarChar(14)
+  created_at                BigInt
+  updated_on                BigInt
+  dataset                   dataset[]
+  invited_study_contributor invited_study_contributor[]
+  participant               participant[]
+  study_arm                 study_arm[]
+  study_central_contact     study_central_contact[]
+  study_collaborators       study_collaborators[]
+  study_conditions          study_conditions[]
+  study_contributor         study_contributor[]
+  study_dashboard           study_dashboard[]
+  study_description         study_description?
+  study_design              study_design?
+  study_eligibility         study_eligibility?
+  study_identification      study_identification[]
+  study_intervention        study_intervention[]
+  study_keywords            study_keywords[]
+  study_location            study_location[]
+  study_other               study_other?
+  study_overall_official    study_overall_official[]
+  study_oversight           study_oversight?
+  study_redcap              study_redcap[]
+  study_sponsors            study_sponsors?
+  study_status              study_status?
+
+  @@schema("public")
 }
 
 model study_arm {
@@ -313,31 +356,57 @@ model study_arm {
   created_at        BigInt
   study_id          String   @db.Char(36)
   study             study    @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
-model study_available_ipd {
-  id         String  @id @db.Char(36)
-  identifier String  @db.VarChar
-  type       String? @db.VarChar
-  url        String  @db.VarChar
-  comment    String  @db.VarChar
+model study_central_contact {
+  id                                String @id @db.Char(36)
+  first_name                        String @db.VarChar
+  last_name                         String @db.VarChar
+  degree                            String @db.VarChar
+  identifier                        String @db.VarChar
+  identifier_scheme                 String @db.VarChar
+  identifier_scheme_uri             String @db.VarChar
+  affiliation                       String @db.VarChar
+  affiliation_identifier            String @db.VarChar
+  affiliation_identifier_scheme     String @db.VarChar
+  affiliation_identifier_scheme_uri String @db.VarChar
+  phone                             String @db.VarChar
+  phone_ext                         String @db.VarChar
+  email_address                     String @db.VarChar
+  created_at                        BigInt
+  study_id                          String @db.Char(36)
+  study                             study  @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
+}
+
+model study_collaborators {
+  id         String @id @db.Char(36)
+  name       String @db.VarChar
+  identifier String @db.VarChar
+  scheme     String @db.VarChar
+  scheme_uri String @db.VarChar
   created_at BigInt
-  study_id   String  @db.Char(36)
-  study      study   @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  study_id   String @db.Char(36)
+  study      study  @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
-model study_contact {
-  id              String  @id @db.Char(36)
-  name            String  @db.VarChar
-  affiliation     String  @db.VarChar
-  role            String? @db.VarChar
-  phone           String  @db.VarChar
-  phone_ext       String  @db.VarChar
-  email_address   String  @db.VarChar
-  central_contact Boolean
-  created_at      BigInt
-  study_id        String  @db.Char(36)
-  study           study   @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+model study_conditions {
+  id                  String @id @db.Char(36)
+  name                String @db.VarChar
+  classification_code String @db.VarChar
+  scheme              String @db.VarChar
+  scheme_uri          String @db.VarChar
+  condition_uri       String @db.VarChar
+  created_at          BigInt
+  study_id            String @db.Char(36)
+  study               study  @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_contributor {
@@ -349,6 +418,24 @@ model study_contributor {
   user       user   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@id([user_id, study_id])
+  @@schema("public")
+}
+
+model study_dashboard {
+  id           String       @id @db.Char(36)
+  name         String?      @db.VarChar
+  modules      Json?        @db.Json
+  public       Boolean?
+  redcap_pid   BigInt?
+  reports      Json?        @db.Json
+  created_at   BigInt
+  updated_on   BigInt
+  study_id     String       @db.Char(36)
+  redcap_id    String       @db.Char(36)
+  study_redcap study_redcap @relation(fields: [redcap_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  study        study        @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_description {
@@ -356,6 +443,8 @@ model study_description {
   detailed_description String @db.VarChar
   study_id             String @id @db.Char(36)
   study                study  @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_design {
@@ -376,13 +465,15 @@ model study_design {
   bio_spec_retention                    String?  @db.VarChar
   bio_spec_description                  String?  @db.VarChar
   target_duration                       String?  @db.VarChar
-  number_groups_cohorts                 Int?
+  is_patient_registry                   String?  @db.VarChar
   study_id                              String   @id @db.Char(36)
   study                                 study    @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_eligibility {
-  gender             String?  @db.VarChar
+  sex                String?  @db.VarChar
   gender_based       String?  @db.VarChar
   gender_description String   @db.VarChar
   minimum_age_value  Int?
@@ -396,6 +487,8 @@ model study_eligibility {
   sampling_method    String?  @db.VarChar
   study_id           String   @id @db.Char(36)
   study              study    @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_identification {
@@ -408,91 +501,146 @@ model study_identification {
   created_at        BigInt
   study_id          String  @db.Char(36)
   study             study   @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_intervention {
-  id                   String   @id @db.Char(36)
-  type                 String?  @db.VarChar
-  name                 String   @db.VarChar
-  description          String   @db.VarChar
-  arm_group_label_list String[] @db.VarChar
-  other_name_list      String[] @db.VarChar
-  created_at           BigInt
-  study_id             String   @db.Char(36)
-  study                study    @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  id              String   @id @db.Char(36)
+  type            String?  @db.VarChar
+  name            String   @db.VarChar
+  description     String   @db.VarChar
+  other_name_list String[] @db.VarChar
+  created_at      BigInt
+  study_id        String   @db.Char(36)
+  study           study    @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
-model study_ipdsharing {
-  ipd_sharing                 String?  @db.VarChar
-  ipd_sharing_description     String   @db.VarChar
-  ipd_sharing_info_type_list  String[] @db.VarChar
-  ipd_sharing_time_frame      String   @db.VarChar
-  ipd_sharing_access_criteria String   @db.VarChar
-  ipd_sharing_url             String   @db.VarChar
-  study_id                    String   @id @db.Char(36)
-  study                       study    @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-}
+model study_keywords {
+  id                  String @id @db.Char(36)
+  name                String @db.VarChar
+  classification_code String @db.VarChar
+  scheme              String @db.VarChar
+  scheme_uri          String @db.VarChar
+  keyword_uri         String @db.VarChar
+  created_at          String @db.VarChar
+  study_id            String @db.Char(36)
+  study               study  @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
-model study_link {
-  id         String @id @db.Char(36)
-  url        String @db.VarChar
-  title      String @db.VarChar
-  created_at BigInt
-  study_id   String @db.Char(36)
-  study      study  @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  @@schema("public")
 }
 
 model study_location {
-  id         String  @id @db.Char(36)
-  facility   String  @db.VarChar
-  status     String? @db.VarChar
-  city       String  @db.VarChar
-  state      String  @db.VarChar
-  zip        String  @db.VarChar
-  country    String  @db.VarChar
-  created_at BigInt
-  study_id   String  @db.Char(36)
-  study      study   @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  id                          String                        @id @db.Char(36)
+  facility                    String                        @db.VarChar
+  status                      String?                       @db.VarChar
+  city                        String                        @db.VarChar
+  state                       String                        @db.VarChar
+  zip                         String                        @db.VarChar
+  country                     String                        @db.VarChar
+  created_at                  BigInt
+  study_id                    String                        @db.Char(36)
+  study                       study                         @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  study_location_contact_list study_location_contact_list[]
+
+  @@schema("public")
+}
+
+model study_location_contact_list {
+  id                String         @id @db.Char(36)
+  first_name        String         @db.VarChar
+  last_name         String         @db.VarChar
+  identifier        String         @db.VarChar
+  identifier_scheme String         @db.VarChar
+  zip               String         @db.VarChar
+  role              String         @db.VarChar
+  phone             String         @db.VarChar
+  phone_ext         String         @db.VarChar
+  email_address     String         @db.VarChar
+  created_at        BigInt
+  study_location_id String         @db.Char(36)
+  study_location    study_location @relation(fields: [study_location_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_other {
-  oversight_has_dmc Boolean
-  conditions        String[] @db.VarChar
-  keywords          String[] @db.VarChar
-  size              BigInt
-  study_id          String   @id @db.Char(36)
-  study             study    @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  size     BigInt
+  study_id String @id @db.Char(36)
+  study    study  @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_overall_official {
-  id          String  @id @db.Char(36)
-  name        String  @db.VarChar
-  affiliation String  @db.VarChar
-  role        String? @db.VarChar
-  created_at  BigInt
-  study_id    String  @db.Char(36)
-  study       study   @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  id                                String  @id @db.Char(36)
+  first_name                        String  @db.VarChar
+  last_name                         String  @db.VarChar
+  degree                            String  @db.VarChar
+  identifier                        String  @db.VarChar
+  identifier_scheme                 String  @db.VarChar
+  identifier_scheme_uri             String  @db.VarChar
+  affiliation                       String  @db.VarChar
+  affiliation_identifier            String  @db.VarChar
+  affiliation_identifier_scheme     String  @db.VarChar
+  affiliation_identifier_scheme_uri String  @db.VarChar
+  role                              String? @db.VarChar
+  created_at                        BigInt
+  study_id                          String  @db.Char(36)
+  study                             study   @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
-model study_reference {
-  id         String  @id @db.Char(36)
-  identifier String  @db.VarChar
-  type       String? @db.VarChar
-  citation   String  @db.VarChar
-  created_at BigInt
-  study_id   String  @db.Char(36)
-  study      study   @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+model study_oversight {
+  fda_regulated_drug          String? @db.VarChar
+  fda_regulated_device        String? @db.VarChar
+  human_subject_review_status String? @db.VarChar
+  has_dmc                     String? @db.VarChar
+  study_id                    String  @id @db.Char(36)
+  study                       study   @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
-model study_sponsors_collaborators {
-  responsible_party_type                     String?  @db.VarChar
-  responsible_party_investigator_name        String   @db.VarChar
-  responsible_party_investigator_title       String   @db.VarChar
-  responsible_party_investigator_affiliation String   @db.VarChar
-  lead_sponsor_name                          String   @db.VarChar
-  collaborator_name                          String[] @db.VarChar
-  study_id                                   String   @id @db.Char(36)
-  study                                      study    @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+model study_redcap {
+  id              String            @id @db.Char(36)
+  title           String?           @db.VarChar
+  api_pid         BigInt?
+  api_url         String?           @db.VarChar
+  api_key         String?           @db.VarChar
+  api_active      Boolean?
+  created_at      BigInt
+  updated_on      BigInt
+  study_id        String            @db.Char(36)
+  study_dashboard study_dashboard[]
+  study           study             @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
+}
+
+model study_sponsors {
+  responsible_party_type                                          String? @db.VarChar
+  responsible_party_investigator_first_name                       String  @db.VarChar
+  responsible_party_investigator_last_name                        String  @db.VarChar
+  responsible_party_investigator_title                            String  @db.VarChar
+  responsible_party_investigator_identifier_value                 String  @db.VarChar
+  responsible_party_investigator_identifier_scheme                String  @db.VarChar
+  responsible_party_investigator_identifier_scheme_uri            String  @db.VarChar
+  responsible_party_investigator_affiliation_name                 String  @db.VarChar
+  responsible_party_investigator_affiliation_identifier_value     String  @db.VarChar
+  responsible_party_investigator_affiliation_identifier_scheme    String  @db.VarChar
+  responsible_party_investigator_affiliation_identifier_scheme_ur String  @db.VarChar
+  lead_sponsor_name                                               String  @db.VarChar
+  lead_sponsor_identifier                                         String  @db.VarChar
+  lead_sponsor_identifier_scheme                                  String  @db.VarChar
+  lead_sponsor_identifier_scheme_uri                              String  @db.VarChar
+  study_id                                                        String  @id @db.Char(36)
+  study                                                           study   @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model study_status {
@@ -504,6 +652,8 @@ model study_status {
   completion_date_type String? @db.VarChar
   study_id             String  @id @db.Char(36)
   study                study   @relation(fields: [study_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model token_blacklist {
@@ -511,6 +661,8 @@ model token_blacklist {
   exp     String @db.VarChar
   user_id String @db.Char(36)
   user    user   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model user {
@@ -525,6 +677,8 @@ model user {
   study_contributor  study_contributor[]
   token_blacklist    token_blacklist[]
   user_details       user_details[]
+
+  @@schema("public")
 }
 
 model user_details {
@@ -538,6 +692,8 @@ model user_details {
   timezone      String? @db.VarChar
   user_id       String  @db.Char(36)
   user          user    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
 model version {
@@ -546,13 +702,16 @@ model version {
   published            Boolean
   changelog            String                 @db.VarChar
   updated_on           BigInt
-  doi                  String                 @db.VarChar
   created_at           BigInt
   published_on         BigInt
+  identifier           Int                    @unique @default(autoincrement())
+  doi                  String?                @unique @db.VarChar
   dataset_id           String                 @db.Char(36)
   dataset              dataset                @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   version_participants version_participants[]
   version_readme       version_readme?
+
+  @@schema("public")
 }
 
 model version_participants {
@@ -562,14 +721,73 @@ model version_participants {
   participant        participant @relation(fields: [participant_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@id([dataset_version_id, participant_id])
+  @@schema("public")
 }
 
 model version_readme {
   content    String? @db.VarChar
   version_id String  @id @db.Char(36)
   version    version @relation(fields: [version_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
 }
 
-model alembic_version {
-  version_num String @id(map: "alembic_version_pkc") @db.VarChar(32)
+model download_agreement {
+  id                    String                @id @db.Char(36)
+  user_details_id       String                @db.Char(36)
+  dataset_id            String                @db.Char(36)
+  research_purpose      String                @db.VarChar
+  license_accepted      Boolean
+  attestation_accepted  Boolean
+  created_at            BigInt
+  updated_on            BigInt
+  published_dataset     published_dataset     @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  download_user_details download_user_details @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  download_request      download_request[]
+
+  @@schema("download")
+}
+
+model download_request {
+  id                    String                @id @db.Char(36)
+  user_details_id       String                @db.Char(36)
+  dataset_id            String                @db.Char(36)
+  download_agreement_id String                @db.Char(36)
+  folders_selected      Json                  @db.Json
+  status                download_status       @default(PENDING)
+  download_uri          String?               @db.VarChar
+  download_key          String?               @db.VarChar
+  secure_hash           String?               @db.Char(64)
+  created_at            BigInt
+  updated_on            BigInt
+  published_dataset     published_dataset     @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  download_agreement    download_agreement    @relation(fields: [download_agreement_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  download_user_details download_user_details @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("download")
+}
+
+model download_user_details {
+  id                 String               @id @db.Char(36)
+  email              String               @unique @db.VarChar
+  given_name         String?              @db.VarChar
+  family_name        String?              @db.VarChar
+  affiliation        String?              @db.VarChar
+  organization       String?              @db.VarChar
+  phone              String?              @db.VarChar
+  created_at         BigInt
+  updated_on         BigInt
+  download_agreement download_agreement[]
+  download_request   download_request[]
+
+  @@schema("download")
+}
+
+enum download_status {
+  PENDING
+  PROCESSING
+  READY
+  EXPIRED
+
+  @@schema("download")
 }

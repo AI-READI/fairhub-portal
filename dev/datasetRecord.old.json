@@ -1,0 +1,1191 @@
+{
+  "_id": {
+    "$oid": "659efd90d8fb5d6ad9442498"
+  },
+  "identifier": 1,
+  "title": "Flagship Dataset of Type 2 Diabetes from the AI-READI Project",
+  "createdAt": 1701351828,
+  "description": "The AI-READI project seeks to create and share a flagship ethically-sourced dataset of type 2 diabetes",
+  "updatedOn": 1701351828,
+  "doi": "10.36478/fairhub.10230",
+  "metadata": {
+    "study_description": {
+      "armsInterventionsModule": {
+        "armGroupList": [
+          {
+            "armGroupDescription": "This is the description of the arm metadata",
+            "armGroupLabel": "Label for Arm"
+          },
+          {
+            "armGroupDescription": "Add another description here for the arm metadata",
+            "armGroupLabel": "Arm Number 2"
+          }
+        ],
+        "interventionList": [
+          {
+            "interventionDescription": "Description",
+            "interventionName": "Intervention Name",
+            "interventionOtherNameList": ["Other Names"],
+            "interventionType": "Procedure/Surgery"
+          }
+        ]
+      },
+      "conditionsModule": {
+        "conditionList": [
+          {
+            "conditionName": "Diabetes"
+          },
+          {
+            "conditionName": "Pre-Diabetes"
+          }
+        ],
+        "keywordList": [
+          {
+            "keywordValue": "Diabetes"
+          },
+          {
+            "keywordValue": "Pre-Diabetes"
+          }
+        ]
+      },
+      "contactsLocationsModule": {
+        "centralContactList": [
+          {
+            "centralContactAffiliation": {
+              "centralContactAffiliationName": "University of Chicago"
+            },
+            "centralContactEMail": "sashagotanemail@fairhub.io",
+            "centralContactFirstName": "Sasha",
+            "centralContactLastName": "Braus",
+            "centralContactPhone": "1-800-566-3823",
+            "centralContactPhoneExt": "212"
+          },
+          {
+            "centralContactAffiliation": {
+              "centralContactAffiliationName": "University of Chicago"
+            },
+            "centralContactEMail": "philz@fairhub.io",
+            "centralContactFirstName": "Phil",
+            "centralContactLastName": "Zimmerman",
+            "centralContactPhone": "909-33333-3333",
+            "centralContactPhoneExt": "909"
+          }
+        ],
+        "locationList": [
+          {
+            "locationCity": "sdfsdf",
+            "locationCountry": "American Samoa",
+            "locationFacility": "asdas",
+            "locationState": "sdfs",
+            "locationStatus": "Active, not recruiting",
+            "locationZip": "sdf"
+          }
+        ],
+        "overallOfficialList": [
+          {
+            "overallOfficialAffiliation": {
+              "overallOfficialAffiliationName": "asda"
+            },
+            "overallOfficialFirstName": "aSd",
+            "overallOfficialLastName": "asdasd",
+            "overallOfficialRole": "Study Director"
+          },
+          {
+            "overallOfficialAffiliation": {
+              "overallOfficialAffiliationName": "asda"
+            },
+            "overallOfficialFirstName": "aSd",
+            "overallOfficialLastName": "asdasd",
+            "overallOfficialRole": "Study Principal Investigator"
+          }
+        ]
+      },
+      "descriptionModule": {
+        "briefSummary": "The study will collect a cross-sectional dataset of 4000 people across the US from diverse racial/ethnic groups who are either 1) healthy, or 2) belong in one of the three stages of diabetes severity (pre-diabetes/diet controlled, oral medication and/or non-insulin-injectable medication controlled, or insulin dependent), forming a total of four groups of patients.\nClinical data (social determinants of health surveys, continuous glucose monitoring data, biomarkers, genetic data, retinal imaging, cognitive testing, etc.) will be collected.\nThe purpose of this project is data generation to allow future creation of artificial intelligence/machine learning (AI/ML) algorithms aimed at defining disease trajectories and underlying genetic links in different racial/ethnic cohorts.\nA smaller subgroup of participants will be invited to come for a follow-up visit in year 4 of the project (longitudinal arm of the study).\nData will be placed in an open-source repository and samples will be sent to the study sample repository and used for future research.Brief Summary",
+        "detailedDescription": "The Artificial Intelligence Ready and Equitable Atlas for Diabetes Insights (AI-READI) project seeks to create a flagship ethically-sourced dataset to enable future generations of artificial intelligence/machine learning (AI/ML) research to provide critical insights into type 2 diabetes mellitus (T2DM), including salutogenic pathways to return to health. The ability to understand and affect the course of complex, multi-organ diseases such as T2DM has been limited by a lack of well-designed, high quality, large, and inclusive multimodal datasets. The AI-READI team of investigators will aim to collect a cross-sectional dataset of 4,000 people and longitudinal data from 10% of the study cohort across the US. The study cohort will be balanced for self-reported race/ethnicity, gender, and diabetes disease stage. Data collection will be specifically designed to permit downstream pseudo-time manifold analysis, an approach used to predict disease trajectories by collecting and learning from complex, multimodal data from participants with differing disease severity (normal to insulin-dependent T2DM). The long-term objective for this project is to develop a foundational dataset in T2DM, agnostic to existing classification criteria or biases, which can be used to reconstruct a temporal atlas of T2DM development and reversal towards health (i.e., salutogenesis). Six cross-disciplinary project modules involving teams located across eight institutions will work together to develop this flagship dataset. Data will be optimized for downstream AI/ML research and made publicly available. This project will also create a roadmap for ethical and equitable research that focuses on the diversity of the research participants and the workforce involved at all stages of the research process (study design and data collection, curation, analysis, and sharing and collaboration)."
+      },
+      "designModule": {
+        "bioSpec": {
+          "bioSpecRetention": "Samples With DNA"
+        },
+        "designInfo": {
+          "designObservationalModelList": ["Case-Control"],
+          "designTimePerspectiveList": ["Cross-sectional"]
+        },
+        "enrollmentInfo": {
+          "enrollmentCount": "123",
+          "enrollmentType": "Anticipated"
+        },
+        "numberGroupsCohorts": "123",
+        "isPatientRegistry": "No",
+        "studyType": "Observational",
+        "targetDuration": "5"
+      },
+      "eligibilityModule": {
+        "eligibilityCriteria": {
+          "eligibilityCriteriaInclusion": [
+            "Inclusion Criteria 1",
+            "Inclusion Criteria 2"
+          ],
+          "eligibilityCriteriaExclusion": [
+            "Exclusion Criteria 1",
+            "Exclusion Criteria 2"
+          ]
+        },
+        "sex": "All",
+        "genderBased": "Yes",
+        "genderDescription": "",
+        "healthyVolunteers": "No",
+        "maximumAge": "4 Days",
+        "minimumAge": "1 Years",
+        "samplingMethod": "Probability Sample",
+        "studyPopulation": "Observed Population"
+      },
+      "identificationModule": {
+        "officialTitle": "AI-READI Project",
+        "orgStudyIdInfo": {
+          "orgStudyId": "sad",
+          "orgStudyIdType": "NIH Grant Number"
+        },
+        "secondaryIdInfoList": [
+          {
+            "secondaryId": "test",
+            "secondaryIdDomain": "dfasdf",
+            "secondaryIdLink": "test",
+            "secondaryIdType": "Other Grant/Funding Number"
+          },
+          {
+            "secondaryId": "asda",
+            "secondaryIdType": "EudraCT Number"
+          }
+        ]
+      },
+      "oversightModule": {
+        "isFDARegulatedDrug": "No",
+        "isFDARegulatedDevice": "No",
+        "humanSubjectReviewStatus": "Exempt",
+        "oversightHasDMC": "Yes"
+      },
+      "sponsorCollaboratorsModule": {
+        "collaboratorList": [
+          {
+            "collaboratorName": "Full Name Goes hErE"
+          },
+          {
+            "collaboratorName": "Testing ONe Omre here"
+          }
+        ],
+        "leadSponsor": {
+          "leadSponsorName": "Testing Dtoria"
+        },
+        "responsibleParty": {
+          "responsiblePartyInvestigatorAffiliation": {
+            "responsiblePartyInvestigatorAffiliationName": "University of Chicago"
+          },
+          "responsiblePartyInvestigatorFirstName": "First",
+          "responsiblePartyInvestigatorLastName": "Last",
+          "responsiblePartyInvestigatorTitle": "Investigator Title",
+          "responsiblePartyType": "Principal Investigator"
+        }
+      },
+      "statusModule": {
+        "completionDateStruct": {
+          "completionDate": "December 15, 2023",
+          "completionDateType": "Anticipated"
+        },
+        "overallStatus": "Not yet recruiting",
+        "startDateStruct": {
+          "startDate": "November 16, 2023",
+          "startDateType": "Anticipated"
+        },
+        "whyStopped": "dsfdsf"
+      }
+    },
+    "readme": "## Overview of the study\n  The AI-READI project seeks to create and share a flagship ethically-sourced dataset of type 2 diabetes. The data will be optimized for future artificial intelligence/machine learning (AI/ML) analysis that could provide critical insights and especially shine a light on the salutogenic pathways from diabetes to return to health. Six cross-disciplinary project modules involving teams located across eight institutions are working together to develop this flagship dataset. The project will aim to collect data from 4,000 participants across three sites: the University of Alabama at Birmingham (UAB), the University of California San Diego (UCSD), and the University of Washington (UW). To ensure the data is population-representative, the 4,000 participants will be balanced for three factors: disease severity, ethnicity, and sex. More information about the study can be found on the study website at [aireadi.org](https://aireadi.org). \n  \n  ## Description of the dataset\n  This dataset contain data from 4 participants from the pilot study of the project. Details about the participants of the study are provided in the [participants.json](participants.json) metadata file. Data from multiple modalities are collected. A full list is provided in the \"Data Standards\" section below. The data in this dataset has been deidentified using awesome tools x, y, z and contain no personel health information (PHI).  \n  \n  The dataset contains a total of 1,265 files (including data and metadata files) and is 420 GB in size.\n  \n  ## Protocol\n  The protocol followed:\n  - For collecting the dataset can be found at [protocols.io](https://protocols.io/).\n  \n  - For curating and sharing the dataset can be found at [protocols.io](https://protocols.io/). \n  \n  ## Dataset access/restrictions\n  This dataset is publicly accessible without any restrictions under the terms of the license described below in the \"License\" section. For accessing a version of the dataset that contains PHI, follow the instructions available [here](https://aireadi.org/).\n  \n  ## Data standards followed\n  This dataset is organized at the highest-level following the [Clinical Dataset Structure](https://github.com/AI-READI/high-level-dataset-structure). Each data type was organized according to either an existing standard if vailable for that data type or a newly developed one if no community agreed standard was found. Details are provided in the table below.\n  \n  | Data type      | Standards followed |\n  | ----------- | ----------- |\n  | Electrocardiogram      | [X standard]()       |\n  | Optical Coherence Tomography   | [Y standard]()      |\n  \n  ## Resources\n  All of our data files are in formats that are accessible with free software commonly used for such data types so no specific software is required.\n  \n  Besides the information contained in the various metadata files included in this dataset and the study website and protocols listed above, the manuscripts from the project listed below could provide more context for reusing the data:\n  - AI-READI Project (2023). Some manuscript. Some Journal, 361(9353), 195-200. https://doi.org/10.5281/zenodo.7641684\n  - AI-READI Project (2023). Another manuscript. Another Journal, 96(6), 266-272. https://doi.org/10.5281/zenodo.7641684\n \n  ## Contact\n  For any questions, suggestions, or feedback related to this dataset, please email contact@aireadi.org. We refer to the [study_description.json](study_description.json) and [dataset_description.json](dataset_description.json) metadata files for additional information about contact person/entity, authors, and contributors of the dataset.\n  \n  ## Acknowledgement\n  This project is supported by the NIH-funded Bridge2AI program ([1OT2OD032644](https://reporter.nih.gov/search/1ADgncihCk6fdMRJdCnBjg/project-details/10471118)). The content is solely the responsibility of the authors and does not necessarily represent the official views of the NIH.",
+    "dataset_description": {
+      "accessDetails": {
+        "description": "Description of the Public Download Access. We provide free for all people (as long as you have internet)"
+      },
+      "accessType": "PublicDownloadSelfAttestationRequired",
+      "alternateIdentifier": [
+        {
+          "alternateIdentifierType": "EAN13",
+          "alternateIdentifierValue": "asd"
+        }
+      ],
+      "contributor": [
+        {
+          "affiliation": [
+            {
+              "affiliationIdentifier": "04wxnsj81",
+              "affiliationIdentifierScheme": "ROR",
+              "affiliationName": "University of Chicago",
+              "schemeURI": "https://ror.org/04wxnsj81"
+            }
+          ],
+          "contributorName": "Yagami, Light",
+          "contributorType": "DataCollector",
+          "nameIdentifier": [
+            {
+              "nameIdentifierScheme": "ORCID",
+              "nameIdentifierValue": "0000-0002-4306-4464",
+              "schemeURI": "https://orcid.org/0000-0002-4306-4464"
+            }
+          ],
+          "nameType": "Personal"
+        },
+        {
+          "contributorName": "City of Chicago",
+          "contributorType": "Editor",
+          "nameIdentifier": [
+            {
+              "nameIdentifierScheme": "ROR",
+              "nameIdentifierValue": "04wxnsj81",
+              "schemeURI": "https://ror.org/04wxnsj81"
+            }
+          ],
+          "nameType": "Organizational"
+        }
+      ],
+      "creator": [
+        {
+          "affiliation": [
+            {
+              "affiliationIdentifier": "0156zyn36",
+              "affiliationIdentifierScheme": "ROR",
+              "affiliationName": "University Of Marlen",
+              "schemeURI": "https://ror.org"
+            }
+          ],
+          "creatorName": "Bloggs, Joe",
+          "nameIdentifier": [
+            {
+              "nameIdentifierScheme": "ORCID",
+              "nameIdentifierValue": "https://orcid.org/0000-0002-4306-4464",
+              "schemeURI": "https://orcid.org"
+            }
+          ],
+          "nameType": "Personal"
+        },
+        {
+          "affiliation": [
+            {
+              "affiliationIdentifier": "0156zyn36",
+              "affiliationIdentifierScheme": "ROR",
+              "affiliationName": "University Of Marlen",
+              "schemeURI": "https://ror.org"
+            }
+          ],
+          "creatorName": "Lyphe, Doug",
+          "nameIdentifier": [
+            {
+              "nameIdentifierScheme": "ORCID",
+              "nameIdentifierValue": "https://orcid.org/0000-0002-4306-4464",
+              "schemeURI": "https://orcid.org"
+            }
+          ],
+          "nameType": "Personal"
+        }
+      ],
+      "datasetConsent": {
+        "consentGeneticOnly": true,
+        "consentGeogRestrict": true,
+        "consentNoMethods": true,
+        "consentNoncommercial": true,
+        "consentResearchType": true,
+        "consentType": "GeneralResearchUse"
+      },
+      "datasetDeIdentLevel": {
+        "deIdentDates": true,
+        "deIdentDirect": true,
+        "deIdentHIPAA": false,
+        "deIdentKAnon": false,
+        "deIdentNonarr": false,
+        "deIdentType": "DeIdentificationApplied"
+      },
+      "date": [
+        {
+          "dateInformation": "Copyright striked by YouTube",
+          "dateType": "Copyrighted",
+          "dateValue": "2023-12-04T00:00:00Z"
+        },
+        {
+          "dateType": "Collected",
+          "dateValue": "2023-12-28T00:00:00Z"
+        }
+      ],
+      "description": [
+        {
+          "descriptionType": "Abstract",
+          "descriptionValue": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016"
+        },
+        {
+          "descriptionType": "TableOfContents",
+          "descriptionValue": "Description for Dataset. The dataset is full of data that is useful for knowledge"
+        }
+      ],
+      "fundingReference": [
+        {
+          "awardNumber": {
+            "awardNumberValue": "DOI:123988178",
+            "awardURI": "https://orcid.org/0000-0002-4306-4464"
+          },
+          "awardTitle": "Participation Award",
+          "funderIdentifier": {
+            "funderIdentifierType": "ROR",
+            "funderIdentifierValue": "04wxnsj81",
+            "schemeURI": "https://ror.org"
+          },
+          "funderName": "NIH"
+        },
+        {
+          "awardNumber": {
+            "awardNumberValue": "GMFB: 1372745899",
+            "awardURI": "https://doi.org/10.2312/12313"
+          },
+          "awardTitle": "Participation Award",
+          "funderIdentifier": {
+            "funderIdentifierType": "ROR",
+            "funderIdentifierValue": "04wxnsj81",
+            "schemeURI": "https://ror.org"
+          },
+          "funderName": "Aflac"
+        },
+        {
+          "awardNumber": {
+            "awardNumberValue": "World Cup 2024",
+            "awardURI": "https://doi.org/10.2312/123423423"
+          },
+          "awardTitle": "Stanley Award",
+          "funderIdentifier": {
+            "funderIdentifierType": "ROR",
+            "funderIdentifierValue": "66654522145",
+            "schemeURI": "https://ror.org"
+          },
+          "funderName": "Texas Road House"
+        }
+      ],
+      "identifier": {
+        "identifierType": "DOI",
+        "identifierValue": "1928aec8-3eae-4970-b22e-ff025527319a"
+      },
+      "language": "ja",
+      "managingOrganization": {
+        "name": "Dr. Suess Inc"
+      },
+      "publicationYear": "2024",
+      "publisher": {
+        "publisherName": "Dr. Suess Inc",
+        "publisherIdentifier": "04z8jg394",
+        "publisherIdentifierScheme": "ROR",
+        "schemeURI": "https://ror.org"
+      },
+      "RelatedIdentifier": [],
+      "resourceType": {
+        "resourceTypeGeneral": "Dataset",
+        "resourceTypeValue": "tesdt"
+      },
+      "rights": [
+        {
+          "rightsIdentifier": "h",
+          "rightsIdentifierScheme": "h",
+          "rightsURI": "44",
+          "rightsName": "Glide"
+        }
+      ],
+      "size": [],
+      "format": [],
+      "subject": [
+        {
+          "classificationCode": "CLASSIFIED BY THE CIA",
+          "schemeURI": "BEST URI",
+          "subjectScheme": "Scheme of all schemes",
+          "subjectValue": "Test Subject One",
+          "valueURI": "Priceless URI"
+        },
+        {
+          "subjectValue": "SUBJECT 2"
+        }
+      ],
+      "title": [
+        {
+          "titleValue": "Tasty Wooden Computer"
+        },
+        {
+          "titleType": "AlternativeTitle",
+          "titleValue": "New Wooden Computer"
+        }
+      ],
+      "version": "c2cab241-418d-4d9a-aecf-9fad9a8b2e15"
+    },
+    "datatype_dictionary": [
+      {
+        "code_name": "clinical_data",
+        "datatype_description": {
+          "description_text": "All clinical data (survey responses, blood/urine test results, etc.). Typically collected through REDCap.",
+          "description_source": {
+            "organization": {
+              "full_name": "AI-READI Consortium",
+              "link": "https://aireadi.org/"
+            }
+          }
+        },
+        "aliases": ["redcap_data"],
+        "related_terms": ["ncit:C15783"],
+        "related_standards": [
+          {
+            "full_name": "The Observational Medical Outcomes Partnership (OMOP) Common Data Model (CDM)",
+            "reference": "https://www.ohdsi.org/data-standardization/",
+            "standard_description": "Data standard designed to standardize the structure and content of observational data and to enable efficient analyses that can produce reliable evidence."
+          }
+        ]
+      },
+      {
+        "code_name": "ekg",
+        "datatype_description": {
+          "description_text": "Recording of the moment-to-moment electromotive forces of the heart as projected onto various sites on the body's surface, delineated as a scalar function of time. The recording is monitored by a tracing on slow moving chart paper or by observing it on a cardioscope, which is a cathode ray tube display.",
+          "source": {
+            "link": "https://meshb.nlm.nih.gov/record/ui?ui=D004562"
+          }
+        },
+        "aliases": [
+          "ecg",
+          "electrocardiogram",
+          "electrocardiography",
+          "ekg_data",
+          "ecg_data",
+          "electrocardiogram_data",
+          "electrocardiography_data",
+          "ekg_measurements",
+          "ecg_measurements",
+          "electrocardiogram_measurements",
+          "electrocardiography_measurements"
+        ],
+        "related_terms": ["mesh:D004562", "ncit:C168186"]
+      },
+      {
+        "code_name": "eye_fundus_photography",
+        "datatype_description": {
+          "description_text": "Data collected using a fundus camera to record color images of the condition of the interior surface of the eye.",
+          "description_source": {
+            "organization": {
+              "full_name": "AI-READI Consortium",
+              "link": "https://aireadi.org/"
+            }
+          }
+        },
+        "aliases": [
+          "eye_fundus_photography_data",
+          "eye_fundus_photography_images",
+          "color_fundus_retinal_photography",
+          "color_fundus_retinal_photography_data",
+          "color_fundus_retinal_photography_images"
+        ],
+        "related_terms": ["ncit:C147467"]
+      },
+      {
+        "code_name": "oct",
+        "datatype_description": {
+          "description_text": "Data collected using optical coherence tomography (OCT), an imaging method using lasers that is used for mapping subsurface structure.",
+          "description_source": {
+            "organization": {
+              "full_name": "AI-READI Consortium",
+              "link": "https://aireadi.org/"
+            }
+          }
+        },
+        "aliases": [
+          "optical_coherence_tomography",
+          "oct_data",
+          "optical_coherence_tomography_data",
+          "oct_images",
+          "optical_coherence tomography_images"
+        ],
+        "related_terms": ["mesh:D041623", "ncit:C20828"],
+        "related_standards": [
+          {
+            "full_name": "Digital Imaging and Communications in Medicine (DICOM)",
+            "reference": "https://dicom.nema.org/medical/dicom/2020b/output/chtml/part03/sect_C.8.17.14.html",
+            "standard_description": "Standard for the digital storage and transmission of medical images and related information"
+          }
+        ]
+      },
+      {
+        "code_name": "octa",
+        "datatype_description": {
+          "description_text": "Data collected using optical coherence tomography angiography (OCTA), a non-invasive imaging technique that generates volumetric angiography images.",
+          "description_source": {
+            "organization": {
+              "full_name": "AI-READI Consortium",
+              "link": "https://aireadi.org/"
+            }
+          }
+        },
+        "aliases": [
+          "optical_coherence_tomography_angiography",
+          "octa_data",
+          "optical_coherence_tomography_angiography_data",
+          "octa_images",
+          "optical_coherence tomography_angiography_images"
+        ],
+        "related_standards": [
+          {
+            "full_name": "Digital Imaging and Communications in Medicine (DICOM)",
+            "reference": "https://www.dicomstandard.org/news/supplements/view/ophthalmic-tomography-angiographic-(oct-a)-image-storage-sop-classes",
+            "standard_description": "Standard for the digital storage and transmission of medical images and related information"
+          }
+        ]
+      },
+      {
+        "code_name": "flio",
+        "datatype_description": {
+          "description_text": "Data collected through fluorescence lifetime imaging ophthalmoscopy (FLIO), an imaging modality for in vivo measurement of lifetimes of endogenous retinal fluorophores.",
+          "description_source": {
+            "organization": {
+              "full_name": "AI-READI Consortium",
+              "link": "https://aireadi.org/"
+            }
+          }
+        },
+        "aliases": [
+          "flio_data",
+          "flio_images",
+          "fluorescence_lifetime_imaging_ophthalmoscopy_data",
+          "fluorescence_lifetime_imaging_ophthalmoscopy_images"
+        ]
+      },
+      {
+        "code_name": "continuous_glucose_monitoring",
+        "datatype_description": {
+          "description_text": "Data collected through continuous glucose monitoring device.",
+          "description_source": {
+            "organization": {
+              "full_name": "AI-READI Consortium",
+              "link": "https://aireadi.org/"
+            }
+          }
+        },
+        "aliases": [
+          "continuous_glucose_monitoring_data",
+          "continuous_glucose_monitoring_measurements"
+        ],
+        "related_terms": ["ncit:C159776"]
+      },
+      {
+        "code_name": "activity_monitoring",
+        "datatype_description": {
+          "description_text": "Data collected through an activity monitoring device such as Fitbit, Apple Watch, etc.",
+          "description_source": {
+            "organization": {
+              "full_name": "AI-READI Consortium",
+              "link": "https://aireadi.org/"
+            }
+          }
+        },
+        "aliases": [
+          "phyisical_activity_monitoring",
+          "activity_monitoring_data",
+          "phyisical_activity_monitoring_data",
+          "activity_monitoring_measurements",
+          "phyisical_activity_monitoring_measurements"
+        ]
+      },
+      {
+        "code_name": "environmental_sensor_measurements",
+        "datatype_description": {
+          "description_text": "Data collected through environmental sensor device. Typically measures of air quality, light intensity, etc.",
+          "description_source": {
+            "organization": {
+              "full_name": "AI-READI Consortium",
+              "link": "https://aireadi.org/"
+            }
+          }
+        },
+        "aliases": ["environmental_sensor_measurements_data"]
+      }
+    ],
+    "healthsheet": {
+      "collection": [
+        {
+          "id": 1,
+          "question": "How was the data associated with each instance acquired?",
+          "response": "The data was acquired from the Labeled Faces in the Wild dataset. The dataset was validated by removing all sensitive data."
+        },
+        {
+          "id": 2,
+          "question": "What mechanisms or procedures were used to collect the data (e.g. hardware apparatus or sensor, manual human curation, software program, software API)?",
+          "response": ""
+        },
+        {
+          "id": 3,
+          "question": "If the dataset is a sample from a larger set, what was the sampling strategy (e.g. deterministic, probabilistic with specific sampling probabilities)?",
+          "response": ""
+        },
+        {
+          "id": 4,
+          "question": "Who was involved in the data collection process (e.g. students, crowdworkers, contractors) and how were they compensated (e.g. how much were crowdworkers paid)?",
+          "response": ""
+        },
+        {
+          "id": 5,
+          "question": "Over what timeframe was the data collected?",
+          "response": ""
+        },
+        {
+          "id": 6,
+          "question": "Were any ethical review processes conducted (e.g. by an institutional review board)?",
+          "response": ""
+        },
+        {
+          "id": 7,
+          "question": "Does the dataset relate to people?",
+          "response": ""
+        },
+        {
+          "id": 8,
+          "question": "Did you collect the data from the individuals in question directly, or obtain it via third parties or other sources (e.g. websites)?",
+          "response": ""
+        },
+        {
+          "id": 9,
+          "question": "Were the individuals in question notified about the data collection?",
+          "response": ""
+        },
+        {
+          "id": 10,
+          "question": "Did the individuals in question consent to the collection and use of their data?",
+          "response": ""
+        },
+        {
+          "id": 11,
+          "question": "If consent was obtained, were the consenting individuals provided with a mechanism to revoke their consent in the future or for certain uses?",
+          "response": ""
+        },
+        {
+          "id": 12,
+          "question": "Has an analysis of the potential impact of the dataset and its use on data subjects (e.g. a data protection impact analysis) been conducted?",
+          "response": ""
+        },
+        {
+          "id": 13,
+          "question": "Any other comments?",
+          "response": ""
+        }
+      ],
+      "composition": [
+        {
+          "id": 1,
+          "question": "What do the instances that comprise the dataset represent (e.g. documents, photos, people, countries)?",
+          "response": "Instances are images of people from the Labeled Faces in the Wild dataset."
+        },
+        {
+          "id": 2,
+          "question": "How many instances are there in total (of each type, if appropriate)?",
+          "response": "13,233 images of 5,749 people."
+        },
+        {
+          "id": 3,
+          "question": "Does the dataset contain all possible instances or is it a sample (not necessarily random) of instances from a larger set?",
+          "response": "The dataset is a sample of the Labeled Faces in the Wild dataset. The sample was chosen to provide a diverse range of people."
+        },
+        {
+          "id": 4,
+          "question": "What data does each instance consist of?",
+          "response": "Each instance is a 250x250 pixel image of a person's face."
+        },
+        {
+          "id": 5,
+          "question": "Is there a label or target associated with each instance?",
+          "response": "Each instance is labeled with the ID of the person in the image."
+        },
+        {
+          "id": 6,
+          "question": "Is any information missing from individual instances?",
+          "response": "No"
+        },
+        {
+          "id": 7,
+          "question": "Are relationships between individual instances made explicit (e.g. users' movie ratings, social network links)?",
+          "response": "No"
+        },
+        {
+          "id": 8,
+          "question": "Are there recommended data splits (e.g. training, development/validation, testing)?",
+          "response": "No"
+        },
+        {
+          "id": 9,
+          "question": "Are there any errors, sources of noise, or redundancies in the dataset?",
+          "response": "No"
+        },
+        {
+          "id": 10,
+          "question": "Is the dataset self-contained, or does it link to or otherwise rely on external resources (e.g. websites, tweets, other datasets)?",
+          "response": "Yes, the dataset is self-contained."
+        },
+        {
+          "id": 11,
+          "question": "Does the dataset contain data that might be considered confidential (e.g. data that is protected by legal privilege or by doctor-patient confidentiality, data that includes the content of individuals' non-public communications)?",
+          "response": "No. All sensitive data has been removed."
+        },
+        {
+          "id": 12,
+          "question": "Does the dataset contain data that, if viewed directly, might be offensive, insulting, threatening, or might otherwise cause anxiety?",
+          "response": "No."
+        },
+        {
+          "id": 13,
+          "question": "Does the dataset relate to people?",
+          "response": "Yes, the dataset contains images of people. However, all sensitive data has been removed."
+        },
+        {
+          "id": 14,
+          "question": "Does the dataset identify any subpopulations (e.g. by age, gender)?",
+          "response": "Yes, categories were made to identify subpopulations based on age and location."
+        },
+        {
+          "id": 15,
+          "question": "Is it possible to identify individuals (i.e., one or more natural persons), either directly or indirectly (i.e., in combination with other data) from the dataset?",
+          "response": "No, all sensitive data has been removed."
+        },
+        {
+          "id": 16,
+          "question": "Does the dataset contain data that might be considered sensitive in any way (e.g. data that reveals racial or ethnic origins, sexual orientations, religious beliefs, political opinions or union memberships, or locations; financial or health data; biometric or genetic data; forms of government identification, such as social security numbers; criminal history)?",
+          "response": "No, all sensitive data has been removed."
+        },
+        {
+          "id": 16,
+          "question": "Any other comments?",
+          "response": "N/A"
+        }
+      ],
+      "distribution": [
+        {
+          "id": 1,
+          "question": "Will the dataset be distributed to third parties outside of the entity (e.g. company, institution, organization) on behalf of which the dataset was created?",
+          "response": ""
+        },
+        {
+          "id": 2,
+          "question": "How will the dataset will be distributed (e.g. tarball on website, API, GitHub)?",
+          "response": ""
+        },
+        {
+          "id": 3,
+          "question": "When will the dataset be distributed?",
+          "response": ""
+        },
+        {
+          "id": 4,
+          "question": "Will the dataset be distributed under a copyright or other intellectual property (IP) license, and/or under applicable terms of use (ToU)?",
+          "response": ""
+        },
+        {
+          "id": 5,
+          "question": "Have any third parties imposed IP-based or other restrictions on the data associated with the instances?",
+          "response": ""
+        },
+        {
+          "id": 6,
+          "question": "Do any export controls or other regulatory restrictions apply to the dataset or to individual instances?",
+          "response": ""
+        },
+        {
+          "id": 7,
+          "question": "Any other comments?",
+          "response": ""
+        }
+      ],
+      "maintenance": [
+        {
+          "id": 1,
+          "question": "Who is supporting/hosting/maintaining the dataset?",
+          "response": ""
+        },
+        {
+          "id": 2,
+          "question": "How can the owner/curator/manager of the dataset be contacted (e.g. email address)?",
+          "response": ""
+        },
+        {
+          "id": 3,
+          "question": "Is there an erratum?",
+          "response": ""
+        },
+        {
+          "id": 4,
+          "question": "Will the dataset be updated (e.g. to correct labeling errors, add new instances, delete instances)?",
+          "response": ""
+        },
+        {
+          "id": 5,
+          "question": "If the dataset relates to people, are there applicable limits on the retention of the data associated with the instances (e.g. were individuals in question told that their data would be retained for a fixed period of time and then deleted)?",
+          "response": ""
+        },
+        {
+          "id": 6,
+          "question": "Will older versions of the dataset continue to be supported/hosted/maintained?",
+          "response": ""
+        },
+        {
+          "id": 7,
+          "question": "If others want to extend/augment/build on/contribute to the dataset, is there a mechanism for them to do so?",
+          "response": ""
+        },
+        {
+          "id": 8,
+          "question": "Any other comments?",
+          "response": ""
+        }
+      ],
+      "motivation": [
+        {
+          "id": 1,
+          "question": "For what purpose was the dataset created?",
+          "response": "To provide diverse data for the AI-READI project."
+        },
+        {
+          "id": 2,
+          "question": "Who created this dataset (e.g. which team, research group) and on behalf of which entity (e.g. company, institution, organization)?",
+          "response": "Created by the AI-READI team at the University of Melbourne."
+        },
+        {
+          "id": 3,
+          "question": "What support was needed to make this dataset?",
+          "response": "This work was supported by the Australian Government through the Australian Research Council’s Linkage Projects funding scheme (project number LP190100857)."
+        },
+        {
+          "id": 4,
+          "question": "Any other comments?",
+          "response": ""
+        }
+      ],
+      "preprocessing": [
+        {
+          "id": 1,
+          "question": "Was any preprocessing/cleaning/labeling of the data done (e.g. discretization or bucketing, tokenization, part-of-speech tagging, SIFT feature extraction, removal of instances, processing of missing values)?",
+          "response": ""
+        },
+        {
+          "id": 2,
+          "question": "Was the 'raw' data saved in addition to the preprocessed/cleaned/labeled data (e.g. to support unanticipated future uses)?",
+          "response": ""
+        },
+        {
+          "id": 3,
+          "question": "Is the software used to preprocess/clean/label the instances available?",
+          "response": ""
+        },
+        {
+          "id": 4,
+          "question": "Any other comments?",
+          "response": ""
+        }
+      ],
+      "uses": [
+        {
+          "id": 1,
+          "question": "Has the dataset been used for any tasks already?",
+          "response": ""
+        },
+        {
+          "id": 2,
+          "question": "Is there a repository that links to any or all papers or systems that use the dataset?",
+          "response": ""
+        },
+        {
+          "id": 3,
+          "question": "What (other) tasks could the dataset be used for?",
+          "response": ""
+        },
+        {
+          "id": 4,
+          "question": "Is there anything about the composition of the dataset or the way it was collected and preprocessed/cleaned/labeled that might impact future uses?",
+          "response": ""
+        },
+        {
+          "id": 5,
+          "question": "Are there tasks for which the dataset should not be used?",
+          "response": ""
+        },
+        {
+          "id": 6,
+          "question": "Any other comments?",
+          "response": ""
+        }
+      ]
+    }
+  },
+  "study": {
+    "title": "AI Ready and Equitable Atlas for Diabetes Insights"
+  },
+  "files": [
+    {
+      "children": [],
+      "label": "clinical_data"
+    },
+    {
+      "children": [
+        {
+          "label": "manifest.tsv"
+        },
+        {
+          "label": "CFP",
+          "children": [
+            {
+              "label": "optomed_aurora",
+              "children": [
+                {
+                  "label": "1051",
+                  "children": [
+                    {
+                      "label": "1051_optomed_mac_or_disc_centered_CFP_R_1.2.276.0.3112111075856244474.dcm"
+                    },
+                    {
+                      "label": "1051_optomed_mac_or_disc_centered_CFP_R_1.2.276.0.3112111075856244474.dcm"
+                    },
+                    {
+                      "label": "1051_optomed_mac_or_disc_centered_CFP_R_1.2.276.0.3112111075856244474.dcm"
+                    },
+                    {
+                      "label": "1051_optomed_mac_or_disc_centered_CFP_L_1.2.276.0.31142111075856244474.dcm"
+                    }
+                  ]
+                },
+                {
+                  "label": "1052",
+                  "children": [
+                    {
+                      "label": "1052_optomed_mac_or_disc_centered_CFP_R_1.2.276.0.3112111075856244474.dcm"
+                    },
+                    {
+                      "label": "1052_optomed_mac_or_disc_centered_CFP_R_1.2.276.0.3112111072336244474.dcm"
+                    },
+                    {
+                      "label": "1052_optomed_mac_or_disc_centered_CFP_L_1.2.276.0.34112111075856244474.dcm"
+                    },
+                    {
+                      "label": "1052_optomed_mac_or_disc_centered_CFP_L_1.2.276.0.31142111075856244474.dcm"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "topcon_maestro2",
+              "children": []
+            },
+            {
+              "label": "icare_eidon",
+              "children": []
+            },
+            {
+              "label": "topcon_triton",
+              "children": []
+            }
+          ]
+        },
+        {
+          "label": "IR",
+          "children": [
+            {
+              "label": "topcon_maestro2",
+              "children": []
+            },
+            {
+              "label": "icare_eidon",
+              "children": []
+            },
+            {
+              "label": "heidelberg_spectralis",
+              "children": []
+            }
+          ]
+        },
+        {
+          "label": "FAF",
+          "children": [
+            {
+              "label": "icare_eidon",
+              "children": []
+            }
+          ]
+        }
+      ],
+      "label": "retinal_photography"
+    },
+    {
+      "children": [
+        {
+          "label": "manifest.tsv"
+        },
+        {
+          "label": "topcon_maestro2",
+          "children": []
+        },
+        {
+          "label": "heidelberg_spectralis",
+          "children": []
+        },
+        {
+          "label": "topcon_triton",
+          "children": []
+        }
+      ],
+      "label": "oct"
+    },
+    {
+      "children": [
+        {
+          "label": "manifest.tsv"
+        },
+        {
+          "label": "volume_analysis",
+          "children": [
+            {
+              "label": "topcon_maestro2",
+              "children": []
+            },
+            {
+              "label": "topcon_triton",
+              "children": []
+            }
+          ]
+        },
+        {
+          "label": "enface",
+          "children": [
+            {
+              "label": "topcon_maestro2",
+              "children": []
+            },
+            {
+              "label": "topcon_triton",
+              "children": []
+            }
+          ]
+        },
+        {
+          "label": "segmentation",
+          "children": [
+            {
+              "label": "topcon_maestro2",
+              "children": []
+            },
+            {
+              "label": "topcon_triton",
+              "children": []
+            }
+          ]
+        }
+      ],
+      "label": "octa"
+    },
+    {
+      "children": [
+        {
+          "label": "manifest.tsv"
+        },
+        {
+          "label": "Philips_PageWriiterTC30",
+          "children": [
+            {
+              "label": "1001",
+              "children": [
+                {
+                  "label": "1001-ECG-hhhhhhhh.wfdb"
+                },
+                {
+                  "label": "1001-ECG-hhhhhhhh.hea"
+                }
+              ]
+            },
+            {
+              "label": "7777",
+              "children": [
+                {
+                  "label": "7777-ECG-hhhhhhhh.wfdb"
+                },
+                {
+                  "label": "7777-ECG-hhhhhhhh.hea"
+                },
+                {
+                  "label": "7777-ECG-hhhhhhh2.wfdb"
+                },
+                {
+                  "label": "7777-ECG-hhhhhhh2.hea"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "label": "ecg"
+    },
+    {
+      "children": [
+        {
+          "label": "manifest.tsv"
+        },
+        {
+          "label": "LeeLab_Anura",
+          "children": [
+            {
+              "label": "1001",
+              "children": [
+                {
+                  "label": "1001-ENV.csv"
+                }
+              ]
+            },
+            {
+              "label": "1002",
+              "children": [
+                {
+                  "label": "1002-ENV.csv"
+                }
+              ]
+            },
+            {
+              "label": "1003",
+              "children": [
+                {
+                  "label": "1003-ENV.csv"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "label": "environmental_sensor"
+    }
+  ],
+  "fairhub": {
+    "dataset": {
+      "id": "adf1bc3a-f124-44a3-8edb-a3a5f17f3e87"
+    },
+    "study": {
+      "id": "c85943cf-8897-4c43-a1df-b8023f11927d",
+      "title": "AI Ready and Equitable Atlas for Diabetes Insights"
+    },
+    "version": {
+      "id": "7022aff7-dedb-4092-8313-31ca46d8c3cc",
+      "title": "v1"
+    }
+  },
+  "keywords": ["Diabetes", "Artificial Intelligence", "Eye Imaging"],
+  "creators": [
+    {
+      "familyName": "Fushiguro",
+      "givenName": "Megumi"
+    },
+    {
+      "familyName": "Gojo",
+      "givenName": "Satoru"
+    },
+    {
+      "familyName": "Geto",
+      "givenName": "Suguru"
+    }
+  ]
+}
