@@ -113,11 +113,15 @@ export default defineNuxtConfig({
         logoutUri:
           process.env.NUXT_SITE_ENV === "dev"
             ? "http://localhost:3000/"
-            : "https://staging.fairhub.io/",
+            : process.env.NUXT_SITE_ENV === "staging"
+              ? "https://staging.fairhub.io/"
+              : "https://fairhub.io/",
         redirectUri:
           process.env.NUXT_SITE_ENV === "dev"
             ? "http://localhost:3000/login"
-            : "https://staging.fairhub.io/login",
+            : process.env.NUXT_SITE_ENV === "staging"
+              ? "https://staging.fairhub.io/login"
+              : "https://fairhub.io/login",
       },
       FAIRHUB_API_URL:
         process.env.NUXT_SITE_ENV === "dev"
