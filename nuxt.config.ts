@@ -14,7 +14,10 @@ export default defineNuxtConfig({
       script: [
         {
           async: true,
-          "data-website-id": "446adad1-ec44-4f9d-95c6-f7c295715b0a",
+          "data-website-id":
+            process.env.NUXT_SITE_ENV === "production"
+              ? "aba76571-843e-4b92-91df-da0af2b7aced"
+              : "446adad1-ec44-4f9d-95c6-f7c295715b0a",
           src: "https://umami.fairdataihub.org/mushroom",
         },
       ],
@@ -129,6 +132,11 @@ export default defineNuxtConfig({
           : process.env.NUXT_SITE_ENV === "staging"
             ? "https://staging.api.fairhub.io"
             : "https://api.fairhub.io",
+      UMAMI_SHARE_URL:
+        process.env.NUXT_SITE_ENV === "dev" ||
+        process.env.NUXT_SITE_ENV === "staging"
+          ? "https://umami.aireadi.org/share/w56IOiviBTVZOlHu/staging.fairhub.io"
+          : "https://umami.aireadi.org/share/o6trNZ4JS9gBri45/fairhub.io",
     },
     sessionPassword: "abcdefghijklmnopqrstuvwxyz0123456789",
   },

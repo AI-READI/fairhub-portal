@@ -7,6 +7,8 @@ import type { Dataset, WithContext } from "schema-dts";
 // Temp AI-READI Study ID From ENV
 const aireadiStudyId: string = nuxtConfig().public.AIREADI_STUDY_UUID;
 
+const config = useRuntimeConfig();
+
 const { isMobile } = useDevice();
 const route = useRoute();
 
@@ -293,7 +295,6 @@ const generateCombinedFullName = (name: string) => {
         <div class="col-span-8">
           <TransitionFade>
             <div v-if="tabs[0].shown">
-              <!-- eslint-disable vue/no-v-html -->
               <n-alert title="Info" type="info">
                 <p class="text-md text-black">
                   This page provides an overview of the dataset and associated
@@ -301,6 +302,7 @@ const generateCombinedFullName = (name: string) => {
                 </p>
               </n-alert>
 
+              <!-- eslint-disable vue/no-v-html -->
               <div
                 class="prose mt-8 min-h-[300px] max-w-none text-black"
                 v-html="markdownToHtml"
@@ -419,7 +421,7 @@ const generateCombinedFullName = (name: string) => {
                 <n-space vertical align="center" size="small">
                   <NuxtLink
                     target="_blank"
-                    :to="`https://umami.aireadi.org/share/w56IOiviBTVZOlHu/staging.fairhub.io?url=${encodeURIComponent(
+                    :to="`${config.public.UMAMI_SHARE_URL}?url=${encodeURIComponent(
                       '/datasets/' + dataset?.id,
                     )}`"
                     class="text-sm font-medium text-sky-500 transition-all hover:text-sky-700"
@@ -442,10 +444,10 @@ const generateCombinedFullName = (name: string) => {
                   <n-space size="small" align="center">
                     <Icon name="ic:round-download" size="18" />
 
-                    <p class="text-sm font-medium">2000</p>
+                    <p class="text-sm font-medium">0</p>
                   </n-space>
 
-                  <span class="text-sm font-normal">Downloads</span>
+                  <span class="text-sm font-normal">Access requested</span>
                 </n-space>
 
                 <div>
@@ -456,7 +458,7 @@ const generateCombinedFullName = (name: string) => {
                   <n-space size="small" align="center">
                     <Icon name="bi:journal-text" size="16" />
 
-                    <p class="text-sm font-medium">5</p>
+                    <p class="text-sm font-medium">0</p>
                   </n-space>
 
                   <span class="text-sm font-normal">Cited by</span>
