@@ -397,7 +397,7 @@ const generateCombinedFullName = (name: string) => {
 
               <n-space>
                 <NuxtLink
-                  to="http://aireadi-data-quality.fairhub.io:3838/"
+                  to="http://b2ai-dqd.westus2.azurecontainer.io:3838/"
                   target="_blank"
                 >
                   <n-button size="large" type="info" secondary class="my-3">
