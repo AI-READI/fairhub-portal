@@ -135,8 +135,8 @@ export default defineNuxtConfig({
       UMAMI_SHARE_URL:
         process.env.NUXT_SITE_ENV === "dev" ||
         process.env.NUXT_SITE_ENV === "staging"
-          ? "https://umami.fairdataihub.org/share/w56IOiviBTVZOlHu/staging.fairhub.io"
-          : "https://umami.fairdataihub.org/share/o6trNZ4JS9gBri45/fairhub.io",
+          ? "https://umami.aireadi.org/share/w56IOiviBTVZOlHu/staging.fairhub.io"
+          : "https://umami.aireadi.org/share/o6trNZ4JS9gBri45/fairhub.io",
     },
     sessionPassword: "abcdefghijklmnopqrstuvwxyz0123456789",
   },
