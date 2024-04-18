@@ -62,7 +62,9 @@ class Tooltip extends Interface {
       .text(self.title)
       .style("text-transform", "capitalize")
       .style("font-weight", "700")
-      .style("padding-bottom", "8px");
+      .style("padding-bottom", "8px")
+      .style("font-size", "1.2em")
+      .style("line-height", "2.2em");
 
     self.items = D3.select(`${self.getID}_tooltip`)
       .append("div")
@@ -111,7 +113,9 @@ class Tooltip extends Interface {
       .text(self.title)
       .style("text-transform", "capitalize")
       .style("font-weight", "700")
-      .style("padding-bottom", "8px");
+      .style("padding-bottom", "8px")
+      .style("font-size", "1.2em")
+      .style("line-height", "2.2em");
 
     self.items = D3.select(`${self.getID}_tooltip`)
       .append("div")
@@ -152,7 +156,9 @@ class Tooltip extends Interface {
       .text(self.title)
       .style("text-transform", "capitalize")
       .style("font-weight", "700")
-      .style("padding-bottom", "8px");
+      .style("padding-bottom", "8px")
+      .style("font-size", "1.2em")
+      .style("line-height", "2.2em");
 
     self.items = D3.select(`${self.getID}_tooltip`)
       .append("div")

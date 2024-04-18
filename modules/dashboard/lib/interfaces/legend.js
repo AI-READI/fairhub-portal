@@ -60,13 +60,16 @@ class Legend extends Interface {
       .text(self.title)
       .style("text-transform", "capitalize")
       .style("font-weight", "700")
-      .style("padding-bottom", "8px");
+      .style("padding-bottom", "8px")
+      .style("font-size", "1.2em")
+      .style("line-height", "2.2em");
 
     self.items = D3.select(`${self.getID}_legend`)
       .append("ul")
       .classed("legend-items", true)
       .style("list-style", "none")
       .style("padding-left", "0px")
+      .style("text-overflow", "ellipses")
       .selectAll(".legend-item")
       .data(self.data)
       .enter()
@@ -127,13 +130,16 @@ class Legend extends Interface {
       .text(self.title)
       .style("text-transform", "capitalize")
       .style("font-weight", "700")
-      .style("padding-bottom", "8px");
+      .style("padding-bottom", "8px")
+      .style("font-size", "1.2em")
+      .style("line-height", "2.2em");
 
     self.items = D3.select(`${self.getID}_legend`)
       .append("ul")
       .classed("legend-items", true)
       .style("list-style", "none")
       .style("padding-left", "0px")
+      .style("text-overflow", "ellipses")
       .selectAll(".legend-item")
       .data(self.data)
       .enter()

@@ -49,12 +49,12 @@ export default {
 
     <n-grid
       :id="`${visualization.setID}_interface`"
-      :cols="3"
-      :x-gap="20"
+      :cols="9"
+      :x-gap="12"
       :y-gap="20"
       class="interface"
     >
-      <n-grid-item v-if="visualization.legend">
+      <n-grid-item v-if="visualization.legend" :span="3">
         <n-card
           :id="`${visualization.setID}_legend`"
           :segmented="true"
@@ -62,7 +62,7 @@ export default {
         ></n-card>
       </n-grid-item>
 
-      <n-grid-item v-if="visualization.tooltip">
+      <n-grid-item v-if="visualization.tooltip" :span="3">
         <n-card
           :id="`${visualization.setID}_tooltip`"
           :segmented="true"
@@ -70,12 +70,12 @@ export default {
         ></n-card>
       </n-grid-item>
 
-      <n-grid-item v-if="visualization.filters">
+      <n-grid-item v-if="visualization.filters" :span="3">
         <n-dropdown
           :id="`${visualization.setID}_filters`"
           trigger="click"
           :options="visualization.Filters.data"
-          placement="right-start"
+          placement="bottom"
           @select="
             (filter) => {
               return visualization.update(filter);

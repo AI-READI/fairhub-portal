@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import sanitizeHtml from "sanitize-html";
 // import { fetchAllDashboardConnectors } from "~/stores/dashboard";
-
 import { parse } from "marked";
 import type { Dataset, WithContext } from "schema-dts";
 // Temp AI-READI Study ID From ENV
 const aireadiStudyId: string = nuxtConfig().public.AIREADI_STUDY_UUID;
-
 const config = useRuntimeConfig();
 
 const { isMobile } = useDevice();
@@ -396,7 +394,7 @@ const generateCombinedFullName = (name: string) => {
 
               <n-space>
                 <NuxtLink
-                  to="http://b2ai-dqd.westus2.azurecontainer.io:3838/"
+                  to="http://b21ai-dqd.fnbqhhfhbwfnd5h0.westus2.azurecontainer.io:3838/"
                   target="_blank"
                 >
                   <n-button size="large" type="info" secondary class="my-3">
