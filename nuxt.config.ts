@@ -95,7 +95,7 @@ export default defineNuxtConfig({
     public: {
       // Only values that are not sensitive should be set here
       // These values are accessible from both server and client side
-      AIREADI_STUDY_UUID: process.env.AIREADI_STUDY_UUID,
+      AIREADI_STUDY_UUID: "0ef3f72c-1bf0-4ea1-b9d1-e727c02b0f6c",
       BASE_URL:
         process.env.NUXT_SITE_ENV === "dev"
           ? "http://localhost:6000"

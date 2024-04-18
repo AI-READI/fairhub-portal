@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import sanitizeHtml from "sanitize-html";
-// import { fetchAllDashboardConnectors } from "~/stores/dashboard";
 import { parse } from "marked";
 import type { Dataset, WithContext } from "schema-dts";
 
 // Temp AI-READI Study ID From ENV
 const aireadiStudyId: string = nuxtConfig().public.AIREADI_STUDY_UUID;
+console.log(aireadiStudyId);
 const { isMobile } = useDevice();
 const route = useRoute();
 
@@ -46,8 +46,6 @@ const tabs = reactive([
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
 });
-
-console.log(dataset);
 
 // Get Study ID here. For now, we reference our environment variable
 const studyId = aireadiStudyId;
