@@ -422,7 +422,7 @@ interface Directory {
   directoryList?: Directory[];
   directoryType: string;
   directoryDescription: string;
-  metadataFileList?: MetadataFile[]
+  metadataFileList?: MetadataFile[];
   relatedIdentifier?: RelatedIdentifier[];
   relatedTerm: {
     relatedTermValue: string;
@@ -446,14 +446,12 @@ interface Directory {
       identifierValue: string;
       identifierType: string;
     }[];
-    }[];
+  }[];
 }
-
 
 interface DatasetStructureDescription {
   directoryList: Directory[];
-  metadataFileList:MetadataFile[];
-
+  metadataFileList: MetadataFile[];
 }
 
 interface HealthsheetRecord {
@@ -483,6 +481,7 @@ interface Metadata {
 interface AdditionalData {
   size: number;
   fileCount: number;
+  viewCount: number;
 }
 
 interface Dataset {
@@ -499,8 +498,6 @@ interface Dataset {
   files: FolderStructure[];
   data: AdditionalData;
   created_at: number;
-  creators: DatasetCreators;
-  study: Study;
 }
 
 interface DatasetArray extends Array<Dataset> {}
@@ -523,17 +520,3 @@ interface VersionArrayItem {
 }
 
 interface VersionArray extends Array<VersionArrayItem> {}
-
-interface DatabaseDatasetRecord extends Dataset {
-  _id: string;
-  identifier: number;
-  doi: string;
-  fairhub: {
-    // contains the original ids from fairhub study management portal
-    dataset: {
-      id: string;
-    };
-    study: Study;
-    version: Version;
-  };
-}
