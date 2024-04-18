@@ -120,6 +120,14 @@ const currentStep = ref<number>(7);
                 Once created, you will have 72 hours to download your dataset.
               </p>
             </blockquote>
+
+            <p>
+              <NuxtLink :to="`/datasets/${datasetid}`">
+                <n-button strong secondary type="info">
+                  Learn more about the dataset.
+                </n-button>
+              </NuxtLink>
+            </p>
           </div>
         </TransitionFade>
       </div>
