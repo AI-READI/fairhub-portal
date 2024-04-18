@@ -39,11 +39,6 @@ export default defineEventHandler(async (event) => {
   // );
   const datasetMetadata = publishedDataset.published_metadata as any;
 
-  console.log(typeof datasetMetadata.dataset_description);
-
-  console.log("datasetMetadata");
-  console.log(datasetMetadata.dataset_description);
-
   const datasetFiles = publishedDataset.files as any;
 
   const datasetAdditionalData = additionalData;
