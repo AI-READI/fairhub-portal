@@ -29,6 +29,16 @@ const generateCombinedFullName = (name: string) => {
 
 const currentStep = ref<number>(3);
 
+const userDescription = computed(() => {
+  if (authenticated.value) {
+    return userDetails.value.family_name && userDetails.value.given_name
+      ? `${userDetails.value.given_name} ${userDetails.value.family_name} (${userDetails.value.email})`
+      : userDetails.value.email;
+  }
+
+  return "";
+});
+
 const handleLogin = async () => {
   const redirectTo = route.fullPath;
   await navigateTo(
@@ -37,6 +47,24 @@ const handleLogin = async () => {
       external: true,
     },
   );
+};
+
+const handleSubmit = async () => {
+  try {
+    await useFetch(`/api/downloads/userdetails/create`, {
+      headers: useRequestHeaders(["cookie"]),
+      method: "POST",
+    });
+    await navigateTo(`/datasets/${dataset.value?.id}/access/research-purpose`);
+  } catch (error) {
+    console.error(error);
+    push.error({
+      title: "Something went wrong",
+      message: "Could not save user details",
+    });
+
+    throw new Error("Could not save user details");
+  }
 };
 </script>
 
@@ -99,15 +127,16 @@ const handleLogin = async () => {
             <h4>Log In</h4>
 
             <div v-if="authenticated">
-              <p>Logged in as {{ userDetails?.email }}.</p>
+              <p>Logged in as {{ userDescription }}.</p>
 
-              <NuxtLink
-                :to="`/datasets/${dataset?.id}/access/research-purpose`"
+              <n-button
+                size="large"
+                type="info"
+                secondary
+                class="my-3"
+                @click="handleSubmit"
+                >Next</n-button
               >
-                <n-button size="large" type="info" secondary class="my-3"
-                  >Next</n-button
-                >
-              </NuxtLink>
             </div>
 
             <div v-else>

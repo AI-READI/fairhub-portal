@@ -403,37 +403,55 @@ interface DatatypeDictionary {
   }[];
 }
 
-interface DatasetStructureDescriptionSubDirectory {
+interface MetadataFile {
+  metadataFileName: string;
+  metadataFileDescription: string;
+  relatedIdentifier?: RelatedIdentifier[];
+}
+
+interface RelatedIdentifier {
+  relatedIdentifier: string;
+  relatedIdentifierValue: string;
+  relatedIdentifierType: string;
+  relationType: string;
+  resourceTypeGeneral: string;
+}
+
+interface Directory {
   directoryName: string;
+  directoryList?: Directory[];
   directoryType: string;
   directoryDescription: string;
-  subdirectory?: DatasetStructureDescriptionSubDirectory[];
+  metadataFileList?: MetadataFile[];
+  relatedIdentifier?: RelatedIdentifier[];
+  relatedTerm: {
+    relatedTermValue: string;
+    relatedTermIdentifier: {
+      relatedTermClassificationCode: string;
+      relatedTermScheme: string;
+      relatedTermSchemeURI: string;
+      relatedTermValueURI: string;
+    }[];
+  }[];
+  relatedStandard: {
+    standardName: string;
+    standardDescription: string;
+    standardUse: string;
+    standardRelatedIdentifier: {
+      relatedIdentifierValue: string;
+      relatedIdentifierType: string;
+      relationType: string;
+    }[];
+    standardIdentifier?: {
+      identifierValue: string;
+      identifierType: string;
+    }[];
+  }[];
 }
 
 interface DatasetStructureDescription {
-  datasetStructure: {
-    directoryName: string;
-    directoryType: string;
-    directoryDescription: string;
-    relatedTerm: {
-      relatedTermValue: string;
-    }[];
-    relatedStandard: {
-      standardName: string;
-      standardDescription: string;
-      standardUse: string;
-      standardRelatedIdentifier: {
-        relatedIdentifierValue: string;
-        relatedIdentifierType: string;
-        relationType: string;
-      }[];
-      standardIdentifier?: {
-        identifierValue: string;
-        identifierType: string;
-      }[];
-    }[];
-    subDirectory: DatasetStructureDescriptionSubDirectory[];
-  }[];
+  directoryList: Directory[];
+  metadataFileList: MetadataFile[];
 }
 
 interface HealthsheetRecord {
@@ -463,6 +481,7 @@ interface Metadata {
 interface AdditionalData {
   size: number;
   fileCount: number;
+  viewCount: number;
 }
 
 interface Dataset {
@@ -479,8 +498,6 @@ interface Dataset {
   files: FolderStructure[];
   data: AdditionalData;
   created_at: number;
-  creators: DatasetCreators;
-  study: Study;
 }
 
 interface DatasetArray extends Array<Dataset> {}
@@ -503,17 +520,3 @@ interface VersionArrayItem {
 }
 
 interface VersionArray extends Array<VersionArrayItem> {}
-
-interface DatabaseDatasetRecord extends Dataset {
-  _id: string;
-  identifier: number;
-  doi: string;
-  fairhub: {
-    // contains the original ids from fairhub study management portal
-    dataset: {
-      id: string;
-    };
-    study: Study;
-    version: Version;
-  };
-}

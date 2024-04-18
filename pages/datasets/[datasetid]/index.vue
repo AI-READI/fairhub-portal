@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import sanitizeHtml from "sanitize-html";
+// import { fetchAllDashboardConnectors } from "~/stores/dashboard";
 import { parse } from "marked";
 import type { Dataset, WithContext } from "schema-dts";
-
 // Temp AI-READI Study ID From ENV
 const aireadiStudyId: string = nuxtConfig().public.AIREADI_STUDY_UUID;
-console.log(aireadiStudyId);
+const config = useRuntimeConfig();
+
 const { isMobile } = useDevice();
 const route = useRoute();
 
@@ -38,7 +39,7 @@ const tabs = reactive([
     shown: false,
   },
   {
-    label: "Clinical Data Quality",
+    label: "Dataset Quality Dashboard",
     shown: false,
   },
 ]);
@@ -225,7 +226,6 @@ const generateCombinedFullName = (name: string) => {
       <n-image
         src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
         :alt="dataset?.title"
-        object-fit="contain"
         class="mb-3 size-32 h-32 w-32 rounded-lg sm:mb-0"
       />
     </div>
@@ -291,9 +291,16 @@ const generateCombinedFullName = (name: string) => {
         <div class="col-span-8">
           <TransitionFade>
             <div v-if="tabs[0].shown">
+              <n-alert title="Info" type="info">
+                <p class="text-md text-black">
+                  This page provides an overview of the dataset and associated
+                  study.
+                </p>
+              </n-alert>
+
               <!-- eslint-disable vue/no-v-html -->
               <div
-                class="prose mt-0 min-h-[300px] max-w-none text-black"
+                class="prose mt-8 min-h-[300px] max-w-none text-black"
                 v-html="markdownToHtml"
               />
               <!-- eslint-enable vue/no-v-html -->
@@ -316,7 +323,6 @@ const generateCombinedFullName = (name: string) => {
                 :metadata="
                   dataset?.metadata.studyDescription as StudyDescription
                 "
-                :study-title="dataset?.study?.title as string"
               />
 
               <n-divider />
@@ -362,12 +368,14 @@ const generateCombinedFullName = (name: string) => {
 
             <div v-if="tabs[5].shown">
               <n-space vertical>
-                <h3>Preview</h3>
-
-                <p>
-                  To access the dataset, please click the
-                  <code>Access this dataset</code> button above.
-                </p>
+                <n-alert title="Info" type="info">
+                  <p>
+                    This is a preview of the dataset's structure, designed to
+                    provide an overview of its organization. To access the
+                    actual dataset, please use the
+                    <code>Access this dataset </code> button above.
+                  </p>
+                </n-alert>
 
                 <n-divider />
 
@@ -381,7 +389,20 @@ const generateCombinedFullName = (name: string) => {
               </n-space>
             </div>
 
-            <div v-if="tabs[6].shown">Clinical Data Quality</div>
+            <div v-if="tabs[6].shown">
+              <h3>Clinical Data Quality</h3>
+
+              <n-space>
+                <NuxtLink
+                  to="http://b2ai-dqd.westus2.azurecontainer.io:3838/"
+                  target="_blank"
+                >
+                  <n-button size="large" type="info" secondary class="my-3">
+                    View the Data Quality Report
+                  </n-button>
+                </NuxtLink>
+              </n-space>
+            </div>
           </TransitionFade>
         </div>
 
@@ -395,15 +416,17 @@ const generateCombinedFullName = (name: string) => {
                 <n-space vertical align="center" size="small">
                   <NuxtLink
                     target="_blank"
-                    :to="`https://umami.aireadi.org/share/w56IOiviBTVZOlHu/staging.fairhub.io?url=${encodeURIComponent(
+                    :to="`${config.public.UMAMI_SHARE_URL}?url=${encodeURIComponent(
                       '/datasets/' + dataset?.id,
                     )}`"
-                    class="text-sm font-medium text-sky-500 transition-all hover:text-sky-600"
+                    class="text-sm font-medium text-sky-500 transition-all hover:text-sky-700"
                   >
                     <n-space size="small" align="center">
                       <Icon name="lets-icons:view-duotone" size="23" />
 
-                      <p class="text-sm font-medium">1045</p>
+                      <p class="text-sm font-medium">
+                        {{ dataset?.data.viewCount }}
+                      </p>
                     </n-space>
                   </NuxtLink>
 
@@ -418,10 +441,10 @@ const generateCombinedFullName = (name: string) => {
                   <n-space size="small" align="center">
                     <Icon name="ic:round-download" size="18" />
 
-                    <p class="text-sm font-medium">2000</p>
+                    <p class="text-sm font-medium">0</p>
                   </n-space>
 
-                  <span class="text-sm font-normal">Downloads</span>
+                  <span class="text-sm font-normal">Access requested</span>
                 </n-space>
 
                 <div>
@@ -432,7 +455,7 @@ const generateCombinedFullName = (name: string) => {
                   <n-space size="small" align="center">
                     <Icon name="bi:journal-text" size="16" />
 
-                    <p class="text-sm font-medium">5</p>
+                    <p class="text-sm font-medium">0</p>
                   </n-space>
 
                   <span class="text-sm font-normal">Cited by</span>

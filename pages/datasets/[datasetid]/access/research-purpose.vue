@@ -31,11 +31,30 @@ const generateCombinedFullName = (name: string) => {
 };
 
 const currentStep = ref<number>(4);
-const researchPurpose = ref<string>("");
+const minLength = 100;
+const maxLength = 500;
+const researchPurpose = useCookie(`dataset-${datasetid}-research-purpose`, {
+  default: () => "",
+});
 const validResearchPurpose = computed(
   () =>
-    researchPurpose.value.length > 20 && researchPurpose.value.length <= 500,
+    researchPurpose.value.length > minLength &&
+    researchPurpose.value.length <= maxLength,
 );
+const validationRule = {
+  trigger: ["input", "blur"],
+  validator() {
+    if (!researchPurpose.value?.trim()) {
+      return new Error("May not be blank.");
+    }
+
+    if (!validResearchPurpose.value) {
+      return new Error(
+        `Must be between ${minLength} and ${maxLength} characters.`,
+      );
+    }
+  },
+};
 </script>
 
 <template>
@@ -102,12 +121,15 @@ const validResearchPurpose = computed(
               transparency and trust with the use of this data.
             </p>
 
-            <n-form-item label="Briefly describe the purpose of your research.">
+            <n-form-item
+              label="Briefly describe the purpose of your research."
+              :rule="validationRule"
+            >
               <n-input
                 v-model:value="researchPurpose"
                 type="textarea"
-                :minlength="20"
-                :maxlength="500"
+                :minlength="minLength"
+                :maxlength="maxLength"
                 :rows="5"
                 show-count
               />

@@ -41,6 +41,17 @@ const handleInput = (expected: string, inputValue: string) => {
     Confirm the following statements by retyping each one in the provided input.
   </p>
 
+  <p>
+    Please review the
+    <a
+      href="https://sharing.nih.gov/sites/default/files/flmngr/NIH_Best_Practices_for_Controlled-Access_Data_Subject_to_the_NIH_GDS_Policy.pdf"
+      target="_blank"
+    >
+      NIH cybersecurity guidelines
+    </a>
+    to ensure compliance with all recommended practices.
+  </p>
+
   <n-form-item
     v-for="attestation in userAttestations"
     :key="attestation.id"

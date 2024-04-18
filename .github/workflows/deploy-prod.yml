@@ -1,6 +1,9 @@
 name: Build and deploy to Azure Static Web Apps (lemon-island-0734b751e)
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:

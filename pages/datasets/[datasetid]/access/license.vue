@@ -7,6 +7,9 @@ const route = useRoute();
 
 const { datasetid } = route.params as { datasetid: string };
 const { data: dataset, error } = await useDataset(datasetid);
+const researchPurpose = useCookie(`dataset-${datasetid}-research-purpose`, {
+  default: () => "",
+});
 
 if (error.value) {
   console.error(error.value);
@@ -17,6 +20,11 @@ if (error.value) {
   });
 
   throw new Error("Failed to fetch dataset");
+}
+
+if (!researchPurpose.value?.trim()) {
+  console.warn("Redirecting to collect research purpose");
+  await navigateTo(`/datasets/${dataset.value?.id}/access/research-purpose`);
 }
 
 // TODO: Convert to a utility or extract a component?
@@ -77,6 +85,32 @@ const attestations = [
 const licenseAndAttestationComplete = computed(() => {
   return licenseAccepted.value && attestationsAccepted.value;
 });
+
+const handleSubmit = async () => {
+  try {
+    await $fetch(`/api/downloads/agreement/create`, {
+      body: {
+        attestation_accepted: attestationsAccepted.value,
+        dataset_id: dataset.value?.id,
+        license_accepted: licenseAccepted.value,
+        research_purpose: researchPurpose.value.trim(),
+      },
+      headers: useRequestHeaders(["cookie"]),
+      method: "POST",
+    });
+
+    researchPurpose.value = "";
+    await navigateTo(`/datasets/${dataset.value?.id}/access/select`);
+  } catch (error) {
+    console.error(error);
+    push.error({
+      title: "Something went wrong",
+      message: "Could not save license agreement",
+    });
+
+    throw new Error("Could not save license agreement");
+  }
+};
 </script>
 
 <template>
@@ -146,16 +180,15 @@ const licenseAndAttestationComplete = computed(() => {
               v-model="attestationsAccepted"
               :attestations="attestations"
             />
-            <NuxtLink :to="`/datasets/${dataset?.id}/access/select`">
-              <n-button
-                size="large"
-                type="info"
-                secondary
-                class="my-3"
-                :disabled="!licenseAndAttestationComplete"
-                >Agree</n-button
-              >
-            </NuxtLink>
+            <n-button
+              size="large"
+              type="info"
+              secondary
+              class="my-3"
+              :disabled="!licenseAndAttestationComplete"
+              @click="handleSubmit"
+              >Agree</n-button
+            >
           </div>
         </TransitionFade>
       </div>

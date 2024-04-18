@@ -36,6 +36,14 @@ function boolOtherSchemes(identifier: Identifier) {
 
 <template>
   <n-space vertical size="large">
+    <n-alert title="Info" type="info">
+      <p class="text-md text-black">
+        This page provides detailed information about the dataset. It is based
+        on the dataset_description.json metadata file included in the dataset
+        (this file is also viewable at the end of this page)
+      </p>
+    </n-alert>
+
     <CardCollapsibleCard
       id="creators"
       title="Creators"

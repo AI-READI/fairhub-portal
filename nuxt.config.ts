@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   alias: {},
   app: {
     head: {
-      title: "Fairhub Portal",
+      title: "FAIRhub Data Portal",
       meta: [
         {
           name: "viewport",
@@ -14,7 +14,10 @@ export default defineNuxtConfig({
       script: [
         {
           async: true,
-          "data-website-id": "446adad1-ec44-4f9d-95c6-f7c295715b0a",
+          "data-website-id":
+            process.env.NUXT_SITE_ENV === "production"
+              ? "aba76571-843e-4b92-91df-da0af2b7aced"
+              : "446adad1-ec44-4f9d-95c6-f7c295715b0a",
           src: "https://umami.fairdataihub.org/mushroom",
         },
       ],
@@ -104,16 +107,24 @@ export default defineNuxtConfig({
             : "https://fairhub.io",
       ENTRA_CONFIG: {
         authority:
-          "https://aireadi.b2clogin.com/aireadi.onmicrosoft.com/B2C_1_userauth",
+          "https://aireadi.b2clogin.com/aireadi.onmicrosoft.com/B2C_1_Local_User_SignIn",
         clientId:
           process.env.NUXT_SITE_ENV === "dev"
             ? "444bfea9-2fec-44ed-a4d7-767616afa9a3"
             : "d173c9cb-36ce-4c77-92f3-025e48f0e533",
         knownAuthorities: ["aireadi.b2clogin.com"],
+        logoutUri:
+          process.env.NUXT_SITE_ENV === "dev"
+            ? "http://localhost:3000/"
+            : process.env.NUXT_SITE_ENV === "staging"
+              ? "https://staging.fairhub.io/"
+              : "https://fairhub.io/",
         redirectUri:
           process.env.NUXT_SITE_ENV === "dev"
             ? "http://localhost:3000/login"
-            : "https://staging.fairhub.io/login",
+            : process.env.NUXT_SITE_ENV === "staging"
+              ? "https://staging.fairhub.io/login"
+              : "https://fairhub.io/login",
       },
       FAIRHUB_API_URL:
         process.env.NUXT_SITE_ENV === "dev"
@@ -121,6 +132,11 @@ export default defineNuxtConfig({
           : process.env.NUXT_SITE_ENV === "staging"
             ? "https://staging.api.fairhub.io"
             : "https://api.fairhub.io",
+      UMAMI_SHARE_URL:
+        process.env.NUXT_SITE_ENV === "dev" ||
+        process.env.NUXT_SITE_ENV === "staging"
+          ? "https://umami.aireadi.org/share/w56IOiviBTVZOlHu/staging.fairhub.io"
+          : "https://umami.aireadi.org/share/o6trNZ4JS9gBri45/fairhub.io",
     },
     sessionPassword: "abcdefghijklmnopqrstuvwxyz0123456789",
   },
@@ -135,7 +151,7 @@ export default defineNuxtConfig({
   },
 
   site: {
-    name: "Fairhub Portal",
+    name: "FAIRhub Data Portal",
     indexable: false,
     url: "https://staging.fairhub.io",
   },
