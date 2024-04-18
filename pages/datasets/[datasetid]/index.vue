@@ -50,8 +50,6 @@ const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
 });
 
-console.log(dataset);
-
 // Get Study ID here. For now, we reference our environment variable
 const studyId = aireadiStudyId;
 
@@ -327,7 +325,6 @@ const generateCombinedFullName = (name: string) => {
                 :metadata="
                   dataset?.metadata.studyDescription as StudyDescription
                 "
-                :study-title="dataset?.study?.title as string"
               />
 
               <n-divider />
@@ -429,7 +426,9 @@ const generateCombinedFullName = (name: string) => {
                     <n-space size="small" align="center">
                       <Icon name="lets-icons:view-duotone" size="23" />
 
-                      <p class="text-sm font-medium">1045</p>
+                      <p class="text-sm font-medium">
+                        {{ dataset?.data.viewCount }}
+                      </p>
                     </n-space>
                   </NuxtLink>
 

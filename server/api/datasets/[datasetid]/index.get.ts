@@ -16,7 +16,19 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  console.log(publishedDataset);
+  const additionalData = publishedDataset.data as any;
+
+  // Add 1 to the viewCount
+  additionalData.viewCount = (additionalData.viewCount || 0) + 1;
+
+  await prisma.published_dataset.update({
+    data: {
+      data: additionalData,
+    },
+    where: {
+      id: datasetid,
+    },
+  });
 
   const datasetId = Number(publishedDataset.id).toString();
 
@@ -27,9 +39,14 @@ export default defineEventHandler(async (event) => {
   // );
   const datasetMetadata = publishedDataset.published_metadata as any;
 
+  console.log(typeof datasetMetadata.dataset_description);
+
+  console.log("datasetMetadata");
+  console.log(datasetMetadata.dataset_description);
+
   const datasetFiles = publishedDataset.files as any;
 
-  const datasetAdditionalData = publishedDataset.data as any;
+  const datasetAdditionalData = additionalData;
 
   const dataset: Dataset = {
     id: datasetId,
@@ -52,8 +69,6 @@ export default defineEventHandler(async (event) => {
     study_title: publishedDataset.study_title,
     version_id: publishedDataset.version_id,
     version_title: publishedDataset.version_title,
-    // study: dbDataset.fairhub.study,
-    // updatedOn: dbDataset.updatedOn,
   };
 
   return dataset;
