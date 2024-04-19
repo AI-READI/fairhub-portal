@@ -61,6 +61,7 @@ const handleInput = (expected: string, inputValue: string) => {
       placeholder="Enter the statement above"
       :status="attestation.validationStatus"
       @input="handleInput(attestation.text, $event)"
+      @paste.prevent
     />
   </n-form-item>
 </template>
