@@ -206,7 +206,7 @@ const openMetadataDrawer = (currentPath: Array<string>) => {
           </p>
 
           <p>
-            {{ drawerDescription }}
+            {{ drawerDescription || "No description provided" }}
           </p>
 
           <div
