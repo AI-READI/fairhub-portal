@@ -165,18 +165,22 @@ if (error.value) {
                   </p>
                 </n-space>
 
-                <n-space>
-                  <span class="font-bold">Keywords: </span>
+                <div class="flex gap-2">
+                  <span class="font-bold">Keywords:</span>
 
-                  <n-tag
-                    v-for="(subject, index) in dataset.metadata
-                      .datasetDescription.subject"
-                    :key="index"
-                    :bordered="false"
-                  >
-                    {{ subject.subjectValue }}
-                  </n-tag>
-                </n-space>
+                  <div class="flex flex-wrap gap-2">
+                    <n-tag
+                      v-for="(subject, index) in dataset.metadata
+                        .datasetDescription.subject"
+                      :key="index"
+                      round
+                      size="small"
+                      :bordered="false"
+                    >
+                      {{ subject.subjectValue }}
+                    </n-tag>
+                  </div>
+                </div>
               </div>
             </div>
           </NuxtLink>
