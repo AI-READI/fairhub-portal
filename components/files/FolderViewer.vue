@@ -13,13 +13,10 @@ const props = defineProps({
 });
 
 const drawerTitle = ref("");
-const drawerDescription = ref("");
+const drawerDescription = ref<string | undefined>("");
 const drawerIcon = ref("");
 const drawerText = ref("");
 const relationType = ref<RelatedIdentifier[] | undefined>(undefined);
-const drawerRelatedIdentifierValue = ref<RelatedIdentifier | undefined>(
-  undefined,
-);
 
 function convertMetadataFile(
   file: MetadataFile,
@@ -153,9 +150,6 @@ const openMetadataDrawer = (currentPath: Array<string>) => {
         relationType: getRelationName(r.relationType),
       };
     });
-    drawerRelatedIdentifierValue.value = filetype.relatedIdentifier?.find(
-      (r) => r.relatedIdentifierValue,
-    );
   } else if (foldertype) {
     drawerTitle.value = foldertype.directoryName;
     drawerIcon.value = "ic:baseline-folder";
@@ -167,9 +161,6 @@ const openMetadataDrawer = (currentPath: Array<string>) => {
         relationType: getRelationName(r.relationType),
       };
     });
-    drawerRelatedIdentifierValue.value =
-      foldertype.relatedIdentifier?.find((r) => r.relatedIdentifierValue) ||
-      undefined;
   } else {
     drawerDescription.value = "No metadata found for this file";
   }
@@ -205,14 +196,15 @@ const openMetadataDrawer = (currentPath: Array<string>) => {
             Description
           </p>
 
-          <p>
-            {{ drawerDescription || "No description provided" }}
+          <p v-if="drawerDescription">
+            {{ drawerDescription }}
           </p>
 
-          <div
-            v-if="drawerRelatedIdentifierValue && relationType"
-            class="list mt-4"
-          >
+          <p v-else>
+            {{ "No description provided" }}
+          </p>
+
+          <div v-if="relationType" class="list mt-4">
             <p class="text-md mb-1 w-full border-b pb-2 font-semibold">
               Additional Information
             </p>
@@ -228,9 +220,9 @@ const openMetadataDrawer = (currentPath: Array<string>) => {
 
                 <a
                   class="text-sky-600"
-                  :href="drawerRelatedIdentifierValue?.relatedIdentifierValue"
+                  :href="type?.relatedIdentifierValue"
                   target="_blank"
-                  >{{ drawerRelatedIdentifierValue?.relatedIdentifierValue }}</a
+                  >{{ type?.relatedIdentifierValue }}</a
                 >
               </li>
             </ul>

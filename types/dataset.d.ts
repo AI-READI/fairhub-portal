@@ -421,7 +421,7 @@ interface Directory {
   directoryName: string;
   directoryList?: Directory[];
   directoryType: string;
-  directoryDescription: string;
+  directoryDescription?: string;
   metadataFileList?: MetadataFile[];
   relatedIdentifier?: RelatedIdentifier[];
   relatedTerm: {

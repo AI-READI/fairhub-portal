@@ -1163,7 +1163,7 @@
                       "relatedIdentifierDescription": "This document describes the real time clock (RTC)."
                     },
                     {
-                      "relatedIdentifierValue": "https://ams.com/documents/20143/36005/AS7341_DS000504_3-00.pdf",
+                      "relatedIdentifierValue": "https://sensirion.com/media/documents/6791EFA0/62A1F68F/Sensirion_Datasheet_Environmental_Node_SEN5x.pdf",
                       "relatedIdentifierType": "URL",
                       "relationType": "IsDocumentedBy",
                       "resourceTypeGeneral": "Other",
@@ -1346,7 +1346,6 @@
             {
               "directoryName": "structural_oct",
               "directoryType": "modality",
-              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
               "directoryList": [
                 {
                   "directoryName": "heidelberg_spectralis",
@@ -1685,12 +1684,8 @@
             }
           ],
           "relatedTerm": [
-            {
-              "relatedTermValue": "smartwatch"
-            },
-            {
-              "relatedTermValue": "activity monitoring"
-            }
+            { "relatedTermValue": "smartwatch" },
+            { "relatedTermValue": "activity monitoring" }
           ],
           "relatedStandard": [
             {
@@ -1728,72 +1723,60 @@
             {
               "directoryName": "heart_rate",
               "directoryType": "modality",
-              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
               "directoryList": [
                 {
                   "directoryName": "garmin_vivosmart5",
-                  "directoryType": "device",
-                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                  "directoryType": "device"
                 }
               ]
             },
             {
               "directoryName": "oxygen_saturation",
               "directoryType": "modality",
-              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
               "directoryList": [
                 {
                   "directoryName": "garmin_vivosmart5",
-                  "directoryType": "device",
-                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                  "directoryType": "device"
                 }
               ]
             },
             {
               "directoryName": "physical_activity",
               "directoryType": "modality",
-              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
               "directoryList": [
                 {
                   "directoryName": "garmin_vivosmart5",
-                  "directoryType": "device",
-                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                  "directoryType": "device"
                 }
               ]
             },
             {
               "directoryName": "respiratory_rate",
               "directoryType": "modality",
-              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
               "directoryList": [
                 {
                   "directoryName": "garmin_vivosmart5",
-                  "directoryType": "device",
-                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                  "directoryType": "device"
                 }
               ]
             },
             {
               "directoryName": "sleep",
               "directoryType": "modality",
-              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
               "directoryList": [
                 {
                   "directoryName": "garmin_vivosmart5",
-                  "directoryType": "device",
-                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                  "directoryType": "device"
                 }
               ]
             },
             {
               "directoryName": "stress",
               "directoryType": "modality",
-              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
               "directoryList": [
                 {
                   "directoryName": "garmin_vivosmart5",
-                  "directoryType": "device",
-                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                  "directoryType": "device"
                 }
               ]
             }
@@ -1875,12 +1858,10 @@
             {
               "directoryName": "continuous_glucose_monitoring",
               "directoryType": "modality",
-              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
               "directoryList": [
                 {
                   "directoryName": "dexcom_g6",
-                  "directoryType": "device",
-                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                  "directoryType": "device"
                 }
               ]
             }
