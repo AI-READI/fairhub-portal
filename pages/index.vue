@@ -166,6 +166,8 @@ if (error.value) {
                 </n-space>
 
                 <n-space>
+                  <span class="font-bold">Keywords: </span>
+
                   <n-tag
                     v-for="(subject, index) in dataset.metadata
                       .datasetDescription.subject"
