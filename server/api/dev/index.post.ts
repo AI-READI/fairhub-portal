@@ -17,7 +17,10 @@ export default defineEventHandler(async (_event) => {
   const updatedRecord = await prisma.published_dataset.update({
     data: {
       title: DatasetRecord.title,
-      data: DatasetRecord.data,
+      data: {
+        fileCount: DatasetRecord.data.fileCount,
+        size: DatasetRecord.data.size,
+      },
       dataset_id: DatasetRecord.dataset_id,
       description: DatasetRecord.description,
       doi: DatasetRecord.doi,
