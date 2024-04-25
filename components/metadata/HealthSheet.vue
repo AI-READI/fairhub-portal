@@ -39,7 +39,7 @@ const healthsheetData = [
 </script>
 
 <template>
-  <n-space vertical size="large">
+  <n-flex vertical size="large">
     <n-alert title="Info" type="info">
       <p class="text-md text-black">
         The page contains the Healthsheet associated with the dataset.
@@ -59,7 +59,7 @@ const healthsheetData = [
       :title="rootItem.title"
       :collapse="index > 0"
     >
-      <n-space vertical size="large">
+      <n-flex vertical size="large">
         <div v-for="item in rootItem.data" :key="item.id">
           <h3 class="mb-1 w-full border-b text-base font-semibold">
             {{ item.question }}
@@ -69,7 +69,7 @@ const healthsheetData = [
 
           <p v-else class="italic">N/A</p>
         </div>
-      </n-space>
+      </n-flex>
     </CardCollapsibleCard>
-  </n-space>
+  </n-flex>
 </template>

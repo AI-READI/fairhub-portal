@@ -18,11 +18,8 @@ const parsedSize = byteSize(props.size).toString();
 </script>
 
 <template>
-  <n-space
-    vertical
-    class="rounded-xl border border-blue-200 bg-white px-1 py-4"
-  >
-    <n-space justify="center" align="center">
+  <n-flex vertical class="rounded-xl border border-blue-200 bg-white px-1 py-4">
+    <n-flex justify="center" align="center">
       <p class="text-lg font-semibold">{{ parsedSize }}</p>
 
       <div>
@@ -33,6 +30,6 @@ const parsedSize = byteSize(props.size).toString();
         {{ fileCount.toLocaleString() }}
         <span class="font-normal"> Files </span>
       </p>
-    </n-space>
-  </n-space>
+    </n-flex>
+  </n-flex>
 </template>

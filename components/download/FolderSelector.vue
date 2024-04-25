@@ -50,7 +50,7 @@ const folders = computed(() =>
 
 <template>
   <n-checkbox-group v-model:value="selectedFolders">
-    <n-space :vertical="true">
+    <n-flex :vertical="true">
       <n-card v-for="folder in folders" :key="folder.id" size="small">
         <div role="none" class="flex flex-row items-center gap-2">
           <n-checkbox
@@ -71,6 +71,6 @@ const folders = computed(() =>
           </div>
         </div>
       </n-card>
-    </n-space>
+    </n-flex>
   </n-checkbox-group>
 </template>

@@ -52,7 +52,7 @@ const allAccepted = computed(
     <div
       class="mx-auto mt-10 flex w-full max-w-screen-xl items-center justify-between px-3"
     >
-      <n-space vertical>
+      <n-flex vertical>
         <h1>{{ dataset?.title }}</h1>
 
         <div
@@ -84,7 +84,7 @@ const allAccepted = computed(
         </div>
 
         <p class="hidden">{{ dataset?.description }}</p>
-      </n-space>
+      </n-flex>
 
       <n-image
         src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
@@ -121,11 +121,11 @@ const allAccepted = computed(
                   v-model:value="researchMethodsSelection"
                   name="research-methods"
                 >
-                  <n-space>
+                  <n-flex>
                     <n-radio :value="true">Yes</n-radio>
 
                     <n-radio :value="false">No</n-radio>
-                  </n-space>
+                  </n-flex>
                 </n-radio-group>
               </n-form-item>
 
@@ -134,11 +134,11 @@ const allAccepted = computed(
                   v-model:value="humanResearchEthicsSelection"
                   name="human-research-ethics"
                 >
-                  <n-space>
+                  <n-flex>
                     <n-radio :value="true">Yes</n-radio>
 
                     <n-radio :value="false">No</n-radio>
-                  </n-space>
+                  </n-flex>
                 </n-radio-group>
               </n-form-item>
 
@@ -147,11 +147,11 @@ const allAccepted = computed(
                   v-model:value="aiMlEthicsSelection"
                   name="ai-ml-ethical-practices"
                 >
-                  <n-space>
+                  <n-flex>
                     <n-radio :value="true">Yes</n-radio>
 
                     <n-radio :value="false">No</n-radio>
-                  </n-space>
+                  </n-flex>
                 </n-radio-group>
               </n-form-item>
             </div>
