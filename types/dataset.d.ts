@@ -461,10 +461,17 @@ interface HealthsheetRecord {
 }
 
 interface HealthsheetRecords {
+  general_information: HealthsheetRecord[];
+  versioning: HealthsheetRecord[];
   motivation: HealthsheetRecord[];
   composition: HealthsheetRecord[];
-  collection: HealthsheetRecord[];
+  devices: HealthsheetRecord[];
+  challenge: HealthsheetRecord[];
+  demographic_information: HealthsheetRecord[];
   preprocessing: HealthsheetRecord[];
+  labeling: HealthsheetRecord[];
+  collection: HealthsheetRecord[];
+  inclusion: HealthsheetRecord[];
   uses: HealthsheetRecord[];
   distribution: HealthsheetRecord[];
   maintenance: HealthsheetRecord[];
