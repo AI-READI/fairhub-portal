@@ -10,27 +10,55 @@ const props = defineProps({
 
 const healthsheetData = [
   {
+    title: "General Information",
+    data: props.healthsheet.general_information,
+  },
+  {
+    title: "Dataset versioning",
+    data: props.healthsheet.versioning,
+  },
+  {
     title: "Motivation",
     data: props.healthsheet.motivation,
   },
   {
-    title: "Composition",
+    title: "Data Composition",
     data: props.healthsheet.composition,
   },
   {
-    title: "Collection",
+    title: "Devices and Contextual Attributes in Data Collection",
+    data: props.healthsheet.devices,
+  },
+  {
+    title: "Challenge in tests and confounding factors",
+    data: props.healthsheet.challenge,
+  },
+  {
+    title: "Collection and use of demographic information",
+    data: props.healthsheet.demographic_information,
+  },
+  {
+    title: "Pre-processing / de-identification",
+    data: props.healthsheet.preprocessing,
+  },
+  {
+    title: "Labeling and subjectivity of labeling",
+    data: props.healthsheet.labeling,
+  },
+  {
+    title: "Collection Process",
     data: props.healthsheet.collection,
   },
   {
-    title: "Preprocessing / Cleaning / Labeling",
-    data: props.healthsheet.preprocessing,
+    title: "Inclusion Criteria-Accessibility in data collection",
+    data: props.healthsheet.inclusion,
   },
   {
     title: "Uses",
     data: props.healthsheet.uses,
   },
   {
-    title: "Distribution",
+    title: "Dataset Distribution",
     data: props.healthsheet.distribution,
   },
   {
