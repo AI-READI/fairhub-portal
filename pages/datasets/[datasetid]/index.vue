@@ -180,7 +180,7 @@ const generateCombinedFullName = (name: string) => {
     <div
       class="mx-auto mt-10 flex w-full max-w-screen-xl flex-col-reverse items-center justify-between px-3 sm:flex-row"
     >
-      <n-space vertical>
+      <n-flex vertical>
         <h1>{{ dataset?.title }}</h1>
 
         <div
@@ -213,15 +213,26 @@ const generateCombinedFullName = (name: string) => {
 
         <p class="hidden">{{ dataset?.description }}</p>
 
-        <NuxtLink :to="`/datasets/${dataset?.id}/access`">
-          <n-button size="large" type="info" secondary class="my-3">
-            <template #icon>
-              <Icon name="line-md:download-loop" />
-            </template>
-            Access this dataset
-          </n-button>
-        </NuxtLink>
-      </n-space>
+        <n-flex>
+          <NuxtLink :to="`/datasets/${dataset?.id}/access`">
+            <n-button size="large" type="info" secondary class="my-3">
+              <template #icon>
+                <Icon name="line-md:download-loop" />
+              </template>
+              Access this dataset
+            </n-button>
+          </NuxtLink>
+
+          <NuxtLink :to="`https://docs.aireadi.org`" target="_blank">
+            <n-button size="large" type="info" tertiary class="my-3">
+              <template #icon>
+                <Icon name="line-md:document" />
+              </template>
+              View the dataset documentation
+            </n-button>
+          </NuxtLink>
+        </n-flex>
+      </n-flex>
 
       <n-image
         src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
@@ -367,7 +378,7 @@ const generateCombinedFullName = (name: string) => {
             </div>
 
             <div v-if="tabs[5].shown">
-              <n-space vertical>
+              <n-flex vertical>
                 <n-alert title="Info" type="info">
                   <p>
                     This is a preview of the dataset's structure, designed to
@@ -386,13 +397,13 @@ const generateCombinedFullName = (name: string) => {
                       .datasetStructureDescription as DatasetStructureDescription
                   "
                 />
-              </n-space>
+              </n-flex>
             </div>
 
             <div v-if="tabs[6].shown">
               <h3>Clinical Data Quality</h3>
 
-              <n-space>
+              <n-flex>
                 <NuxtLink
                   to="http://b21ai-dqd.fnbqhhfhbwfnd5h0.westus2.azurecontainer.io:3838/"
                   target="_blank"
@@ -401,19 +412,19 @@ const generateCombinedFullName = (name: string) => {
                     View the Data Quality Report
                   </n-button>
                 </NuxtLink>
-              </n-space>
+              </n-flex>
             </div>
           </TransitionFade>
         </div>
 
         <div class="col-span-4">
-          <n-space vertical class="col-span-2">
-            <n-space
+          <n-flex vertical class="col-span-2">
+            <n-flex
               vertical
               class="rounded-xl border border-blue-200 bg-white px-1 py-4"
             >
-              <n-space justify="center" align="center">
-                <n-space vertical align="center" size="small">
+              <n-flex justify="center" align="center">
+                <n-flex vertical align="center" size="small">
                   <NuxtLink
                     target="_blank"
                     :to="`${config.public.UMAMI_SHARE_URL}?url=${encodeURIComponent(
@@ -421,58 +432,58 @@ const generateCombinedFullName = (name: string) => {
                     )}`"
                     class="text-sm font-medium text-sky-500 transition-all hover:text-sky-700"
                   >
-                    <n-space size="small" align="center">
+                    <n-flex size="small" align="center">
                       <Icon name="lets-icons:view-duotone" size="23" />
 
                       <p class="text-sm font-medium">
                         {{ dataset?.data.viewCount }}
                       </p>
-                    </n-space>
+                    </n-flex>
                   </NuxtLink>
 
                   <span class="text-sm font-normal">Views</span>
-                </n-space>
+                </n-flex>
 
                 <div>
                   <n-divider vertical />
                 </div>
 
-                <n-space vertical align="center" size="small">
-                  <n-space size="small" align="center">
+                <n-flex vertical align="center" size="small">
+                  <n-flex size="small" align="center">
                     <Icon name="ic:round-download" size="18" />
 
                     <p class="text-sm font-medium">0</p>
-                  </n-space>
+                  </n-flex>
 
                   <span class="text-sm font-normal">Access requested</span>
-                </n-space>
+                </n-flex>
 
                 <div>
                   <n-divider vertical />
                 </div>
 
-                <n-space vertical align="center" size="small">
-                  <n-space size="small" align="center">
+                <n-flex vertical align="center" size="small">
+                  <n-flex size="small" align="center">
                     <Icon name="bi:journal-text" size="16" />
 
                     <p class="text-sm font-medium">0</p>
-                  </n-space>
+                  </n-flex>
 
                   <span class="text-sm font-normal">Cited by</span>
-                </n-space>
-              </n-space>
-            </n-space>
+                </n-flex>
+              </n-flex>
+            </n-flex>
 
             <SideDatasetSize
               :size="dataset?.data.size"
               :file-count="dataset?.data.fileCount"
             />
 
-            <n-space
+            <n-flex
               vertical
               class="rounded-xl border border-blue-200 bg-white px-4 pb-5 pt-3"
             >
-              <n-space vertical>
+              <n-flex vertical>
                 <h3>License</h3>
 
                 <NuxtLink
@@ -482,17 +493,17 @@ const generateCombinedFullName = (name: string) => {
                 >
                   Health Data License
                 </NuxtLink>
-              </n-space>
-            </n-space>
+              </n-flex>
+            </n-flex>
 
-            <n-space
+            <n-flex
               vertical
               class="rounded-xl border border-blue-200 bg-white px-4 pb-5 pt-3"
             >
-              <n-space vertical>
+              <n-flex vertical>
                 <h3>Keywords</h3>
 
-                <n-space>
+                <n-flex>
                   <n-tag
                     v-for="(
                       keyword, index
@@ -505,14 +516,14 @@ const generateCombinedFullName = (name: string) => {
                   >
                     {{ keyword }}
                   </n-tag>
-                </n-space>
-              </n-space>
-            </n-space>
+                </n-flex>
+              </n-flex>
+            </n-flex>
 
             <SideCitationViewer :id="dataset?.id || ''" />
 
             <SideVersionSelector :id="dataset?.id || ''" />
-          </n-space>
+          </n-flex>
         </div>
       </div>
     </div>

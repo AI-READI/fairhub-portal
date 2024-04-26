@@ -38,7 +38,7 @@ const currentStep = ref<number>(7);
     <div
       class="mx-auto mt-10 flex w-full max-w-screen-xl items-center justify-between px-3"
     >
-      <n-space vertical>
+      <n-flex vertical>
         <h1>{{ dataset?.title }}</h1>
 
         <div
@@ -70,7 +70,7 @@ const currentStep = ref<number>(7);
         </div>
 
         <p class="hidden">{{ dataset?.description }}</p>
-      </n-space>
+      </n-flex>
 
       <n-image
         src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"

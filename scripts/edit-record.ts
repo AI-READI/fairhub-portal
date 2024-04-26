@@ -33,7 +33,6 @@ const main = async () => {
   const updatedRecord = await prisma.published_dataset.update({
     data: {
       title: DatasetRecord.title,
-      data: DatasetRecord.data,
       dataset_id: DatasetRecord.dataset_id,
       description: DatasetRecord.description,
       doi: DatasetRecord.doi,

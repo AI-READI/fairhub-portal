@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <n-space vertical size="large">
+  <n-flex vertical size="large">
     <n-alert title="Info" type="info">
       <p class="text-md text-black">
         This page provides detailed information about the study associated with
@@ -26,7 +26,7 @@ defineProps({
       :collapse="false"
     >
       <div class="grid grid-cols-12 gap-8">
-        <n-space vertical class="col-span-9 mr-2">
+        <n-flex vertical class="col-span-9 mr-2">
           <p class="mb-1 w-full border-b font-semibold">Brief Summary</p>
 
           <p>
@@ -49,7 +49,7 @@ defineProps({
 
           <p class="mb-2 mt-4 w-full border-b font-semibold">Conditions</p>
 
-          <n-space>
+          <n-flex>
             <n-tag
               v-for="condition in metadata.conditionsModule.conditionList"
               :key="condition.conditionName"
@@ -58,10 +58,10 @@ defineProps({
             >
               {{ condition.conditionName }}
             </n-tag>
-          </n-space>
-        </n-space>
+          </n-flex>
+        </n-flex>
 
-        <n-space vertical class="col-span-3 ml-2">
+        <n-flex vertical class="col-span-3 ml-2">
           <p class="mb-1 w-full border-b font-semibold">
             Study Start ({{
               metadata.statusModule.startDateStruct.startDateType
@@ -95,19 +95,19 @@ defineProps({
           <p>
             {{ metadata.statusModule.overallStatus }}
           </p>
-        </n-space>
+        </n-flex>
       </div>
     </CardCollapsibleCard>
 
     <!-- <n-card title="Contact and Locations" id="cContactsLocationsModule" data-section-title="Contact and Locations" class="shadow-md">
-      <n-space vertical>
+      <n-flex vertical>
         <p class="mb-1 w-full border-b font-medium">Brief Summary</p>
 
         <pre>
         {{ metadata.ContactsLocationsModule }}
        </pre
         >
-      </n-space>
+      </n-flex>
     </n-card> -->
 
     <CardCollapsibleCard
@@ -116,7 +116,7 @@ defineProps({
       title="Design"
       class="mb-4 shadow-md"
     >
-      <n-space vertical>
+      <n-flex vertical>
         <p class="mb-1 w-full border-b font-semibold">Study Type</p>
 
         <p>
@@ -325,7 +325,7 @@ defineProps({
             </div>
           </div>
         </div>
-      </n-space>
+      </n-flex>
     </CardCollapsibleCard>
 
     <CardCollapsibleCard
@@ -334,7 +334,7 @@ defineProps({
       title="Eligibility"
       class="mb-4 shadow-md"
     >
-      <n-space vertical>
+      <n-flex vertical>
         <p class="mb-1 mt-2 w-full border-b font-semibold">Sex</p>
 
         <p class="">
@@ -416,7 +416,7 @@ defineProps({
             {{ metadata.eligibilityModule.samplingMethod }}
           </p>
         </div>
-      </n-space>
+      </n-flex>
     </CardCollapsibleCard>
 
     <CardCollapsibleCard
@@ -425,7 +425,7 @@ defineProps({
       data-section-title="Identification Information"
       class="mb-4 shadow-md"
     >
-      <n-space vertical>
+      <n-flex vertical>
         <p class="mb-1 w-full border-b font-semibold">Organization Study ID</p>
 
         <p>
@@ -476,7 +476,7 @@ defineProps({
             </tbody>
           </n-table>
         </div>
-      </n-space>
+      </n-flex>
     </CardCollapsibleCard>
 
     <CardCollapsibleCard
@@ -485,7 +485,7 @@ defineProps({
       title="Oversight"
       class="mb-4 shadow-md"
     >
-      <n-space vertical>
+      <n-flex vertical>
         <p class="mb-1 w-full border-b font-semibold">
           Has the clinical study has been reviewed and approved by at least one
           human subjects protection review board?
@@ -518,7 +518,7 @@ defineProps({
         <p>
           {{ metadata.oversightModule.oversightHasDMC }}
         </p>
-      </n-space>
+      </n-flex>
     </CardCollapsibleCard>
 
     <CardCollapsibleCard
@@ -527,7 +527,7 @@ defineProps({
       title="Sponsors and Collaborators"
       class="mb-4 shadow-md"
     >
-      <n-space vertical>
+      <n-flex vertical>
         <p class="mb-1 w-full border-b font-semibold">Sponsor</p>
 
         <p>
@@ -537,7 +537,7 @@ defineProps({
         <div class="mt-2">
           <p class="mb-1 w-full border-b font-semibold">Collaborators</p>
 
-          <n-space vertical>
+          <n-flex vertical>
             <ul class="list-inside list-disc">
               <li
                 v-for="(collaborator, index) in metadata
@@ -548,7 +548,7 @@ defineProps({
                 {{ collaborator.collaboratorName }}
               </li>
             </ul>
-          </n-space>
+          </n-flex>
         </div>
 
         <p class="mb-1 mt-2 w-full border-b font-semibold">Responsible Party</p>
@@ -601,7 +601,7 @@ defineProps({
             </tr>
           </tbody>
         </n-table>
-      </n-space>
+      </n-flex>
     </CardCollapsibleCard>
 
     <!-- <CardCollapsibleCard
@@ -612,7 +612,7 @@ defineProps({
       bordered
       collapse
     >
-      <n-space vertical>
+      <n-flex vertical>
         <p class="mb-1 w-full border-b font-semibold">Overall Status</p>
 
         <p class="mb-1">
@@ -645,7 +645,7 @@ defineProps({
             {{ metadata.StatusModule.WhyStopped }}
           </p>
         </div>
-      </n-space>
+      </n-flex>
     </CardCollapsibleCard> -->
-  </n-space>
+  </n-flex>
 </template>

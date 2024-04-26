@@ -1146,37 +1146,8 @@
               "directoryList": [
                 {
                   "directoryName": "leelab_anura",
-                  "directoryType": "device",
-                  "relatedIdentifier": [
-                    {
-                      "relatedIdentifierValue": "https://ams.com/documents/20143/36005/AS7341_DS000504_3-00.pdf",
-                      "relatedIdentifierType": "URL",
-                      "relationType": "IsDocumentedBy",
-                      "resourceTypeGeneral": "Other",
-                      "relatedIdentifierDescription": "This document describes the AS7341 11-channel multi-spectral digital sensor used to collect the data included in this directory."
-                    },
-                    {
-                      "relatedIdentifierValue": "https://www.adafruit.com/product/5188",
-                      "relatedIdentifierType": "URL",
-                      "relationType": "IsDocumentedBy",
-                      "resourceTypeGeneral": "Other",
-                      "relatedIdentifierDescription": "This document describes the real time clock (RTC)."
-                    },
-                    {
-                      "relatedIdentifierValue": "https://sensirion.com/media/documents/6791EFA0/62A1F68F/Sensirion_Datasheet_Environmental_Node_SEN5x.pdf",
-                      "relatedIdentifierType": "URL",
-                      "relationType": "IsDocumentedBy",
-                      "resourceTypeGeneral": "Other",
-                      "relatedIdentifierDescription": "This document describes the SEN55 temperature, humidity, particle, NOx and VOC sensors used to collect the data included in this directory."
-                    },
-                    {
-                      "relatedIdentifierValue": "https://sensirion.com/media/documents/9F289B95/6294DFFC/Info_Note_NOx_Index.pdf",
-                      "relatedIdentifierType": "URL",
-                      "relationType": "IsDocumentedBy",
-                      "resourceTypeGeneral": "Other",
-                      "relatedIdentifierDescription": "This document descibes the NOx measurements index included in the data available in this directory."
-                    }
-                  ]
+                  "directoryDescription": "You can learn more about the data in this directory by consulting relevant documentation. Search 'AS7431' with Type set as 'Datasheet' at https://ams-osram.com/support/download-center. Search 'DS3231 Precision RTC' at https://www.adafruit.com, look for product ID 5188, select this link and scroll down to Technical Details to find a link for the Datasheet (as of this writing, you may find the datasheet at https://www.analog.com/media/en/technical-documentation/data-sheets/DS3231.pdf). Search 'Datasheet SEN5x' in the search box at https://sensirion.com/ to get the document titled 'Datasheet SEN5x' (the name of the downloaded file may be 'Sensirion_Datasheet_Environmental_Node_SEN5x.pdf'). Search 'NOx Index' in the search box at https://sensirion.com to get the document titled 'What is Sensirion's NOx Index?' (the name of the downloaded file may be 'Info_Note NOx_Index.pdf').",
+                  "directoryType": "device"
                 }
               ]
             }

@@ -186,7 +186,7 @@ const openMetadataDrawer = (currentPath: Array<string>) => {
       placement="bottom"
     >
       <n-drawer-content>
-        <n-space vertical>
+        <n-flex vertical>
           <div class="mb-1 text-lg font-bold">
             <Icon :name="drawerIcon" size="22" color="#0284c7" />
             {{ drawerTitle }}
@@ -227,7 +227,7 @@ const openMetadataDrawer = (currentPath: Array<string>) => {
               </li>
             </ul>
           </div>
-        </n-space>
+        </n-flex>
       </n-drawer-content>
     </n-drawer>
   </div>

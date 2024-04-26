@@ -89,11 +89,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <n-space
+  <n-flex
     vertical
     class="rounded-xl border border-blue-200 bg-white px-4 pb-5 pt-3"
   >
-    <n-space vertical :size="[0, 0]">
+    <n-flex vertical :size="[0, 0]">
       <h3 class="mb-3">Citation</h3>
 
       <p class="pb-1 text-sm font-medium">
@@ -118,7 +118,7 @@ onMounted(() => {
         </div>
       </TransitionFade>
 
-      <n-space align="center" justify="space-between">
+      <n-flex align="center" justify="space-between">
         <n-select
           v-model:value="citationFormat"
           size="small"
@@ -137,7 +137,7 @@ onMounted(() => {
             <Icon name="uil:copy" />
           </template>
         </n-button>
-      </n-space>
+      </n-flex>
 
       <n-divider />
 
@@ -145,6 +145,6 @@ onMounted(() => {
         There maybe other required citations when using this dataset. Please
         check the license and the resource for more information.
       </n-alert>
-    </n-space>
-  </n-space>
+    </n-flex>
+  </n-flex>
 </template>

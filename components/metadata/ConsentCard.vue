@@ -28,7 +28,7 @@ const formattedConsentType = getConsentType(
     data-section-title="Consent"
     class="mb-4 shadow-md"
   >
-    <n-space vertical>
+    <n-flex vertical>
       <p class="mb-1 w-full border-b font-semibold">Consent Type</p>
 
       <p>{{ formattedConsentType }}</p>
@@ -96,6 +96,6 @@ const formattedConsentType = getConsentType(
       <p>
         {{ metadata.datasetConsent.consentsDetails }}
       </p>
-    </n-space>
+    </n-flex>
   </card-collapsible-card>
 </template>

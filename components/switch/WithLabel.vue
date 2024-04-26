@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <n-space>
+  <n-flex>
     <Icon
       size="25"
       :name="
@@ -47,5 +47,5 @@ defineProps({
         <span class="text-sm font-medium text-black">No</span>
       </template>
     </n-switch>
-  </n-space>
+  </n-flex>
 </template>
