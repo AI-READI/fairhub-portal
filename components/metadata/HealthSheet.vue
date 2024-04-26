@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import MarkdownRender from "../markdown/MarkdownRender.vue";
+
 const props = defineProps({
   healthsheet: {
     required: true,
@@ -59,17 +61,23 @@ const healthsheetData = [
       :title="rootItem.title"
       :collapse="index > 0"
     >
-      <n-flex vertical size="large">
-        <div v-for="item in rootItem.data" :key="item.id">
-          <h3 class="mb-1 w-full border-b text-base font-semibold">
-            {{ item.question }}
-          </h3>
+      <div class="flex w-full flex-col space-y-10">
+        <ul v-for="item in rootItem.data" :key="item.id">
+          <li>
+            <MarkdownRender
+              :content="item.question"
+              class="w-full text-base font-semibold"
+            />
 
-          <p v-if="item.response.trim()">{{ item.response }}</p>
+            <MarkdownRender
+              v-if="item.response.trim()"
+              :content="item.response"
+            />
 
-          <p v-else class="italic">N/A</p>
-        </div>
-      </n-flex>
+            <p v-else class="italic">N/A</p>
+          </li>
+        </ul>
+      </div>
     </CardCollapsibleCard>
   </n-flex>
 </template>
