@@ -85,7 +85,8 @@ const steps = ref([
 
           <p class="pb-4 text-center text-xl font-medium">
             With the FAIRhub study management platform, you can share your data
-            in a few easy steps and start getting credit whenever your data is reused to fuel future discoveries!
+            in a few easy steps and start getting credit whenever your data is
+            reused to fuel future discoveries!
           </p>
         </div>
 
@@ -97,13 +98,13 @@ const steps = ref([
             :key="step.heading"
             class="flex max-w-md flex-1 flex-col justify-start rounded-xl border-2 border-orange-300 bg-orange-50/50 px-6 py-4 max-lg:min-w-[20rem]"
           >
-            <n-space align="center">
+            <n-flex align="center">
               <Icon :name="step.name" class="size-10 text-orange-500/70" />
 
               <h3 class="text-3xl font-medium text-orange-500/80">
                 {{ step.number }}
               </h3>
-            </n-space>
+            </n-flex>
 
             <n-progress
               class="mb-6 mt-4"

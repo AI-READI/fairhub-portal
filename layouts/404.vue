@@ -17,7 +17,7 @@
           </NuxtLink>
 
           <div class="lg:order-2">
-            <n-space align="center">
+            <n-flex align="center">
               <UiProfileDropdown />
 
               <button
@@ -55,7 +55,7 @@
                   ></path>
                 </svg>
               </button>
-            </n-space>
+            </n-flex>
           </div>
         </div>
       </nav>

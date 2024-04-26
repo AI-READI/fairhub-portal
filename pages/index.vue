@@ -78,7 +78,7 @@ if (error.value) {
         <div
           class="mx-auto flex w-full max-w-screen-xl items-center justify-between px-2"
         >
-          <n-space vertical class="mt-8 w-full">
+          <n-flex vertical class="mt-8 w-full">
             <h1 id="datasets">Explore Datasets</h1>
 
             <p>View FAIR, AI-ready datasets.</p>
@@ -113,7 +113,7 @@ if (error.value) {
             <!--                Search-->
             <!--              </n-button>-->
             <!--            </div>-->
-          </n-space>
+          </n-flex>
         </div>
       </div>
 
@@ -139,7 +139,7 @@ if (error.value) {
               <div
                 class="flex h-full w-full flex-grow flex-col items-stretch justify-between space-y-2"
               >
-                <n-space vertical>
+                <n-flex vertical>
                   <div
                     class="flex flex-wrap items-start justify-between md:flex-nowrap"
                   >
@@ -153,9 +153,9 @@ if (error.value) {
                   <p>
                     {{ dataset.description }}
                   </p>
-                </n-space>
+                </n-flex>
 
-                <n-space>
+                <n-flex>
                   <p>
                     <span class="font-bold">Created on:</span>
 
@@ -163,18 +163,24 @@ if (error.value) {
                       $dayjs.unix(dataset.created_at).format("MMMM DD, YYYY")
                     }}
                   </p>
-                </n-space>
+                </n-flex>
 
-                <n-space>
-                  <n-tag
-                    v-for="(subject, index) in dataset.metadata
-                      .datasetDescription.subject"
-                    :key="index"
-                    :bordered="false"
-                  >
-                    {{ subject.subjectValue }}
-                  </n-tag>
-                </n-space>
+                <div class="flex gap-2">
+                  <span class="font-bold">Keywords:</span>
+
+                  <div class="flex flex-wrap gap-2">
+                    <n-tag
+                      v-for="(subject, index) in dataset.metadata
+                        .datasetDescription.subject"
+                      :key="index"
+                      round
+                      size="small"
+                      :bordered="false"
+                    >
+                      {{ subject.subjectValue }}
+                    </n-tag>
+                  </div>
+                </div>
               </div>
             </div>
           </NuxtLink>

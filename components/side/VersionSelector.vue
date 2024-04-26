@@ -18,8 +18,8 @@ const { data: versions, pending } = await useFetch(
 </script>
 
 <template>
-  <n-space vertical class="rounded-xl border border-sky-200 bg-white pb-5 pt-3">
-    <n-space vertical :size="[0, 0]">
+  <n-flex vertical class="rounded-xl border border-sky-200 bg-white pb-5 pt-3">
+    <n-flex vertical :size="[0, 0]">
       <h3 class="mb-3 px-4">Versions</h3>
 
       <TransitionFade>
@@ -28,7 +28,7 @@ const { data: versions, pending } = await useFetch(
         </div>
 
         <div v-else>
-          <n-space
+          <n-flex
             v-for="version in versions"
             :key="version.id"
             justify="space-between"
@@ -58,9 +58,9 @@ const { data: versions, pending } = await useFetch(
             <p class="text-right text-xs text-gray-500">
               {{ $dayjs.unix(version.createdAt).format("MMM D, YYYY") }}
             </p>
-          </n-space>
+          </n-flex>
         </div>
       </TransitionFade>
-    </n-space>
-  </n-space>
+    </n-flex>
+  </n-flex>
 </template>

@@ -35,7 +35,7 @@ function boolOtherSchemes(identifier: Identifier) {
 </script>
 
 <template>
-  <n-space vertical size="large">
+  <n-flex vertical size="large">
     <n-alert title="Info" type="info">
       <p class="text-md text-black">
         This page provides detailed information about the dataset. It is based
@@ -51,7 +51,7 @@ function boolOtherSchemes(identifier: Identifier) {
       class="mb-4 shadow-md"
       :collapse="false"
     >
-      <n-space vertical>
+      <n-flex vertical>
         <n-table
           :bordered="false"
           :single-line="true"
@@ -132,7 +132,7 @@ function boolOtherSchemes(identifier: Identifier) {
             </tr>
           </tbody>
         </n-table>
-      </n-space>
+      </n-flex>
     </CardCollapsibleCard>
 
     <CardCollapsibleCard
@@ -141,7 +141,7 @@ function boolOtherSchemes(identifier: Identifier) {
       data-section-title="Contributors"
       class="mb-4 shadow-md"
     >
-      <n-space vertical>
+      <n-flex vertical>
         <n-table
           v-if="metadata.contributor && metadata.contributor.length > 0"
           :bordered="false"
@@ -247,7 +247,7 @@ function boolOtherSchemes(identifier: Identifier) {
           type="info"
           title="No additional contributors listed."
         />
-      </n-space>
+      </n-flex>
     </CardCollapsibleCard>
 
     <CardCollapsibleCard
@@ -294,5 +294,5 @@ function boolOtherSchemes(identifier: Identifier) {
     <MetadataDeIdentifyCard :metadata="metadata" />
 
     <MetadataConsentCard :metadata="metadata" />
-  </n-space>
+  </n-flex>
 </template>

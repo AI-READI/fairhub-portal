@@ -28,7 +28,7 @@ const formattedDeIdentType = getDeIdentType(
     data-section-title="De-Identification Levels"
     class="mb-4 shadow-md"
   >
-    <n-space vertical>
+    <n-flex vertical>
       <p class="mb-1 w-full border-b font-semibold">
         Level of de-identification from this dataset
       </p>
@@ -99,6 +99,6 @@ const formattedDeIdentType = getDeIdentType(
       <p>
         {{ metadata.datasetDeIdentLevel.deIdentDetails }}
       </p>
-    </n-space>
+    </n-flex>
   </card-collapsible-card>
 </template>

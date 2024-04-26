@@ -133,7 +133,7 @@ const links = [
                 </NuxtLink>
               </template>
 
-              <n-space vertical :size="[0, 0]">
+              <n-flex vertical :size="[0, 0]">
                 <NuxtLink
                   v-for="link in links"
                   :key="link.href"
@@ -150,7 +150,7 @@ const links = [
                     class="ml-1"
                   />
                 </NuxtLink>
-              </n-space>
+              </n-flex>
             </n-drawer-content>
           </n-drawer>
 

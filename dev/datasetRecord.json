@@ -1146,37 +1146,8 @@
               "directoryList": [
                 {
                   "directoryName": "leelab_anura",
-                  "directoryType": "device",
-                  "relatedIdentifier": [
-                    {
-                      "relatedIdentifierValue": "https://ams.com/documents/20143/36005/AS7341_DS000504_3-00.pdf",
-                      "relatedIdentifierType": "URL",
-                      "relationType": "IsDocumentedBy",
-                      "resourceTypeGeneral": "Other",
-                      "relatedIdentifierDescription": "This document describes the AS7341 11-channel multi-spectral digital sensor used to collect the data included in this directory."
-                    },
-                    {
-                      "relatedIdentifierValue": "https://www.adafruit.com/product/5188",
-                      "relatedIdentifierType": "URL",
-                      "relationType": "IsDocumentedBy",
-                      "resourceTypeGeneral": "Other",
-                      "relatedIdentifierDescription": "This document describes the real time clock (RTC)."
-                    },
-                    {
-                      "relatedIdentifierValue": "https://ams.com/documents/20143/36005/AS7341_DS000504_3-00.pdf",
-                      "relatedIdentifierType": "URL",
-                      "relationType": "IsDocumentedBy",
-                      "resourceTypeGeneral": "Other",
-                      "relatedIdentifierDescription": "This document describes the SEN55 temperature, humidity, particle, NOx and VOC sensors used to collect the data included in this directory."
-                    },
-                    {
-                      "relatedIdentifierValue": "https://sensirion.com/media/documents/9F289B95/6294DFFC/Info_Note_NOx_Index.pdf",
-                      "relatedIdentifierType": "URL",
-                      "relationType": "IsDocumentedBy",
-                      "resourceTypeGeneral": "Other",
-                      "relatedIdentifierDescription": "This document descibes the NOx measurements index included in the data available in this directory."
-                    }
-                  ]
+                  "directoryDescription": "You can learn more about the data in this directory by consulting relevant documentation. Search 'AS7431' with Type set as 'Datasheet' at https://ams-osram.com/support/download-center. Search 'DS3231 Precision RTC' at https://www.adafruit.com, look for product ID 5188, select this link and scroll down to Technical Details to find a link for the Datasheet (as of this writing, you may find the datasheet at https://www.analog.com/media/en/technical-documentation/data-sheets/DS3231.pdf). Search 'Datasheet SEN5x' in the search box at https://sensirion.com/ to get the document titled 'Datasheet SEN5x' (the name of the downloaded file may be 'Sensirion_Datasheet_Environmental_Node_SEN5x.pdf'). Search 'NOx Index' in the search box at https://sensirion.com to get the document titled 'What is Sensirion's NOx Index?' (the name of the downloaded file may be 'Info_Note NOx_Index.pdf').",
+                  "directoryType": "device"
                 }
               ]
             }
@@ -1346,7 +1317,6 @@
             {
               "directoryName": "structural_oct",
               "directoryType": "modality",
-              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
               "directoryList": [
                 {
                   "directoryName": "heidelberg_spectralis",
@@ -1685,12 +1655,8 @@
             }
           ],
           "relatedTerm": [
-            {
-              "relatedTermValue": "smartwatch"
-            },
-            {
-              "relatedTermValue": "activity monitoring"
-            }
+            { "relatedTermValue": "smartwatch" },
+            { "relatedTermValue": "activity monitoring" }
           ],
           "relatedStandard": [
             {
@@ -1728,72 +1694,60 @@
             {
               "directoryName": "heart_rate",
               "directoryType": "modality",
-              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
               "directoryList": [
                 {
                   "directoryName": "garmin_vivosmart5",
-                  "directoryType": "device",
-                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                  "directoryType": "device"
                 }
               ]
             },
             {
               "directoryName": "oxygen_saturation",
               "directoryType": "modality",
-              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
               "directoryList": [
                 {
                   "directoryName": "garmin_vivosmart5",
-                  "directoryType": "device",
-                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                  "directoryType": "device"
                 }
               ]
             },
             {
               "directoryName": "physical_activity",
               "directoryType": "modality",
-              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
               "directoryList": [
                 {
                   "directoryName": "garmin_vivosmart5",
-                  "directoryType": "device",
-                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                  "directoryType": "device"
                 }
               ]
             },
             {
               "directoryName": "respiratory_rate",
               "directoryType": "modality",
-              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
               "directoryList": [
                 {
                   "directoryName": "garmin_vivosmart5",
-                  "directoryType": "device",
-                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                  "directoryType": "device"
                 }
               ]
             },
             {
               "directoryName": "sleep",
               "directoryType": "modality",
-              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
               "directoryList": [
                 {
                   "directoryName": "garmin_vivosmart5",
-                  "directoryType": "device",
-                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                  "directoryType": "device"
                 }
               ]
             },
             {
               "directoryName": "stress",
               "directoryType": "modality",
-              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
               "directoryList": [
                 {
                   "directoryName": "garmin_vivosmart5",
-                  "directoryType": "device",
-                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                  "directoryType": "device"
                 }
               ]
             }
@@ -1875,12 +1829,10 @@
             {
               "directoryName": "continuous_glucose_monitoring",
               "directoryType": "modality",
-              "directoryDescription": "This directory contains XX [Add description if not clear from parent folder, especially if there are multiple modalities in the parent folder.]",
               "directoryList": [
                 {
                   "directoryName": "dexcom_g6",
-                  "directoryType": "device",
-                  "directoryDescription": "This directory contains data from XXX device [brief description of the device?]"
+                  "directoryType": "device"
                 }
               ]
             }
