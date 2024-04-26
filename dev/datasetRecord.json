@@ -2072,7 +2072,7 @@
         },
         {
           "id": 10,
-          "question": "Is the dataset self-contained, or does it link to or otherwise rely on external resources (e.g., websites, other datasets)? If it links to or relies on external resources,\n\n    a. are there guarantees that they will exist, and remain constant, over time;\n\n    b. are there official archival versions of the complete dataset (i.e., including the external resources as they existed at the time the dataset was created);\n\n    c. are there any restrictions (e.g., licenses, fees) associated with any of the external resources that might apply to a future user? Please provide descriptions of all external resources and any restrictions associated with them, as well as links or other access points, as appropriate.",
+          "question": "Is the dataset self-contained, or does it link to or otherwise rely on external resources (e.g., websites, other datasets)? If it links to or relies on external resources,\n\n a. are there guarantees that they will exist, and remain constant, over time;\n\n b. are there official archival versions of the complete dataset (i.e., including the external resources as they existed at the time the dataset was created);\n\n c. are there any restrictions (e.g., licenses, fees) associated with any of the external resources that might apply to a future user? Please provide descriptions of all external resources and any restrictions associated with them, as well as links or other access points, as appropriate.",
           "response": "The dataset is self-contained but does rely on the dataset documentation for users requiring additional information about the provenance of the dataset. The documentation is available at https://docs.aireadi.org. The documentation is shared under the CC-BY 4.0 license, so there are no restrictions associated with its use."
         },
         {
@@ -2123,8 +2123,8 @@
         },
         {
           "id": 2,
-          "question": "If no,\n\n   a. Is there any regulation that prevents demographic data collection in your study (for example, the country that the data is collected in)?\n\n   No\n\n   b. Are you employing methods to reduce the disparity of error rate between different demographic subgroups when demographic labels are unavailable? Please describe.",
-          "response": "We are suggesting a split for training/validation/testing models that is aimed at reducing disparities in models developed using this dataset."
+          "question": "If no,\n\n   a. Is there any regulation that prevents demographic data collection in your study (for example, the country that the data is collected in)?\n\n   b. Are you employing methods to reduce the disparity of error rate between different demographic subgroups when demographic labels are unavailable? Please describe.",
+          "response": "No. We are suggesting a split for training/validation/testing models that is aimed at reducing disparities in models developed using this dataset."
         }
       ],
       "preprocessing": [
@@ -2151,7 +2151,7 @@
         {
           "id": 5,
           "question": "If the dataset is a sample from a larger set, what was the sampling strategy (e.g., deterministic, probabilistic with specific sampling probabilities)? Answer this question for both the preliminary dataset and the current version of the dataset",
-          "response": ""
+          "response": "N/A"
         }
       ],
       "labeling": [

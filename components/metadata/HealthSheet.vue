@@ -89,9 +89,9 @@ const healthsheetData = [
       :title="rootItem.title"
       :collapse="index > 0"
     >
-      <div class="flex w-full flex-col space-y-10">
-        <ul v-for="item in rootItem.data" :key="item.id">
-          <li>
+      <div class="flex w-full flex-col space-y-7">
+        <ul v-for="item in rootItem.data" :key="item.id" class="list-none">
+          <li class="w-full">
             <MarkdownRender
               :content="item.question"
               class="w-full text-base font-semibold"
@@ -100,9 +100,10 @@ const healthsheetData = [
             <MarkdownRender
               v-if="item.response.trim()"
               :content="item.response"
+              class="pl-1"
             />
 
-            <p v-else class="italic">N/A</p>
+            <p v-else class="pl-1 italic">N/A</p>
           </li>
         </ul>
       </div>
