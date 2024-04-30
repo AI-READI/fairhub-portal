@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import MarkdownRender from "../markdown/MarkdownRender.vue";
+
 const props = defineProps({
   healthsheet: {
     required: true,
@@ -8,27 +10,55 @@ const props = defineProps({
 
 const healthsheetData = [
   {
+    title: "General Information",
+    data: props.healthsheet.general_information,
+  },
+  {
+    title: "Dataset versioning",
+    data: props.healthsheet.versioning,
+  },
+  {
     title: "Motivation",
     data: props.healthsheet.motivation,
   },
   {
-    title: "Composition",
+    title: "Data Composition",
     data: props.healthsheet.composition,
   },
   {
-    title: "Collection",
+    title: "Devices and Contextual Attributes in Data Collection",
+    data: props.healthsheet.devices,
+  },
+  {
+    title: "Challenge in tests and confounding factors",
+    data: props.healthsheet.challenge,
+  },
+  {
+    title: "Collection and use of demographic information",
+    data: props.healthsheet.demographic_information,
+  },
+  {
+    title: "Pre-processing / de-identification",
+    data: props.healthsheet.preprocessing,
+  },
+  {
+    title: "Labeling and subjectivity of labeling",
+    data: props.healthsheet.labeling,
+  },
+  {
+    title: "Collection Process",
     data: props.healthsheet.collection,
   },
   {
-    title: "Preprocessing / Cleaning / Labeling",
-    data: props.healthsheet.preprocessing,
+    title: "Inclusion Criteria-Accessibility in data collection",
+    data: props.healthsheet.inclusion,
   },
   {
     title: "Uses",
     data: props.healthsheet.uses,
   },
   {
-    title: "Distribution",
+    title: "Dataset Distribution",
     data: props.healthsheet.distribution,
   },
   {
@@ -59,17 +89,24 @@ const healthsheetData = [
       :title="rootItem.title"
       :collapse="index > 0"
     >
-      <n-flex vertical size="large">
-        <div v-for="item in rootItem.data" :key="item.id">
-          <h3 class="mb-1 w-full border-b text-base font-semibold">
-            {{ item.question }}
-          </h3>
+      <div class="flex w-full flex-col space-y-7">
+        <ul v-for="item in rootItem.data" :key="item.id" class="list-none">
+          <li class="w-full">
+            <MarkdownRender
+              :content="item.question"
+              class="w-full text-base font-semibold"
+            />
 
-          <p v-if="item.response.trim()">{{ item.response }}</p>
+            <MarkdownRender
+              v-if="item.response.trim()"
+              :content="item.response"
+              class="pl-1"
+            />
 
-          <p v-else class="italic">N/A</p>
-        </div>
-      </n-flex>
+            <p v-else class="pl-1 italic">N/A</p>
+          </li>
+        </ul>
+      </div>
     </CardCollapsibleCard>
   </n-flex>
 </template>
