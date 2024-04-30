@@ -411,7 +411,7 @@ const generateCombinedFullName = (name: string) => {
                   summary of how well the data conforms to the
                   <NuxtLink to="https://www.ohdsi.org/data-standardization/"
                     >OMOP CDM</NuxtLink
-                  >, but in structure, content and veracity of the data.
+                  >, in terms of structure, content and veracity of the data.
                 </p>
               </n-alert>
 
