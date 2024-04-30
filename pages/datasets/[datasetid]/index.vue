@@ -401,7 +401,19 @@ const generateCombinedFullName = (name: string) => {
             </div>
 
             <div v-if="tabs[6].shown">
-              <h3>Clinical Data Quality</h3>
+              <n-alert title="Info" type="info">
+                <p class="text-md text-black">
+                  This page links to the
+                  <NuxtLink to="https://ohdsi.github.io/DataQualityDashboard/"
+                    >Data Quality Dashboard</NuxtLink
+                  >
+                  for the clinical data for AI-READI. This report provides a
+                  summary of how well the data conforms to the
+                  <NuxtLink to="https://www.ohdsi.org/data-standardization/"
+                    >OMOP CDM</NuxtLink
+                  >, in terms of structure, content and veracity of the data.
+                </p>
+              </n-alert>
 
               <n-flex>
                 <NuxtLink
@@ -409,7 +421,7 @@ const generateCombinedFullName = (name: string) => {
                   target="_blank"
                 >
                   <n-button size="large" type="info" secondary class="my-3">
-                    View the Data Quality Report
+                    View the Dataset Quality Report
                   </n-button>
                 </NuxtLink>
               </n-flex>
