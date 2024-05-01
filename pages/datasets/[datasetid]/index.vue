@@ -326,6 +326,11 @@ const generateCombinedFullName = (name: string) => {
             </div>
 
             <div v-if="tabs[2].shown">
+              <n-alert title="Info" type="info">
+                <p class="text-md text-black">
+                  This page provides a visual overview of participant recruitment and survey completion for the study.
+                </p>
+              </n-alert>
               <DashboardView :study-id="studyId" />
             </div>
 
