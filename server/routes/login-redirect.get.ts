@@ -28,7 +28,7 @@ export default defineEventHandler(async (event) => {
     codeChallenge: pkceCodes.challenge,
     codeChallengeMethod: pkceCodes.challengeMethod,
     redirectUri: config.public.ENTRA_CONFIG.redirectUri,
-    scopes: ["openid", "email", "profile"],
+    scopes: ["openid", "email", "profile", "org.cilogon.userinfo"],
   };
 
   if (query.redirectTo && typeof query.redirectTo === "string") {
