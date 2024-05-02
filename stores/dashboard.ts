@@ -34,6 +34,7 @@ export const useDashboardStore = defineStore("dashboard", () => {
   const fetchPublicDashboardView = async (studyId: string) => {
     loading.value = true;
 
+    // Get Public Dashboard
     const response = await fetch(
       `${baseURL}/study/${studyId}/dashboard/public`,
       {
@@ -44,6 +45,7 @@ export const useDashboardStore = defineStore("dashboard", () => {
       throw new Error("DashboardView GET not found");
     }
 
+    // Extract Dashboard & Dashboard Modules
     const dashboardViewResponse = await response.json();
     const reports = toRaw(<DashboardModuleView[]>dashboardViewResponse.reports);
     const modules = toRaw(<DashboardModuleView[]>dashboardViewResponse.modules);
