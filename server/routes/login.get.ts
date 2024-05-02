@@ -113,7 +113,7 @@ export default defineEventHandler(async (event) => {
     code: query.code as string,
     codeVerifier: session.data.auth.pkceCodes.verifier,
     redirectUri: config.public.ENTRA_CONFIG.redirectUri,
-    scopes: ["openid", "email", "profile","org.cilogon.userinfo"],
+    scopes: ["openid", "email", "profile"],
   };
 
   try {
