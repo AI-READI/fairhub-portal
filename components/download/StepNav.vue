@@ -23,7 +23,7 @@ const currentStatus = ref<StepsProps["status"]>("process");
 </script>
 
 <template>
-  <div>
+  <div class="pb-4">
     <n-steps
       :current="props.currentStep"
       :status="currentStatus"

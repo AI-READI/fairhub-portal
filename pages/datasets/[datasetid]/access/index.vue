@@ -85,6 +85,17 @@ const currentStep = ref<number>(1);
 
         <TransitionFade>
           <div>
+            <n-alert title="For Type 2 Diabetes Research Only" type="info">
+              <p>
+                Please, do not request to download the data if your research is
+                not related to type 2 diabetes. If you have questions, please
+                contact the
+                <a href="mailto:aireadi-dac@aireadi.org"
+                  >AI-READI Data Access Committee</a
+                >.
+              </p>
+            </n-alert>
+
             <p>To obtain access to this dataset, you must:</p>
 
             <ol>
