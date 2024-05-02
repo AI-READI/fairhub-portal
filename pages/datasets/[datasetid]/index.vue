@@ -328,9 +328,11 @@ const generateCombinedFullName = (name: string) => {
             <div v-if="tabs[2].shown">
               <n-alert title="Info" type="info">
                 <p class="text-md text-black">
-                  This page provides a visual overview of participant recruitment and survey completion for the study.
+                  This page provides a visual overview of participant
+                  recruitment and survey completion for the study.
                 </p>
               </n-alert>
+
               <DashboardView :study-id="studyId" />
             </div>
 
@@ -442,12 +444,20 @@ const generateCombinedFullName = (name: string) => {
             >
               <n-flex justify="center" align="center">
                 <n-flex vertical align="center" size="small">
+                  <n-flex size="small" align="center">
+                    <Icon name="lets-icons:view-duotone" size="23" />
+
+                    <p class="text-sm font-medium">
+                      {{ dataset?.data.viewCount }}
+                    </p>
+                  </n-flex>
+
                   <NuxtLink
                     target="_blank"
                     :to="`${config.public.UMAMI_SHARE_URL}?url=${encodeURIComponent(
                       '/datasets/' + dataset?.id,
                     )}`"
-                    class="text-sm font-medium text-sky-500 transition-all hover:text-sky-700"
+                    class="hidden text-sm font-medium text-sky-500 transition-all hover:text-sky-700"
                   >
                     <n-flex size="small" align="center">
                       <Icon name="lets-icons:view-duotone" size="23" />
