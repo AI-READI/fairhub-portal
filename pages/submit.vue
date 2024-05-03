@@ -120,7 +120,9 @@ const steps = ref([
               {{ step.heading }}
             </h3>
 
+            <!-- eslint-disable vue/no-v-html -->
             <p class="py-5" v-html="step.description"></p>
+            <!-- eslint-enable vue/no-v-html -->
           </div>
         </div>
       </div>
