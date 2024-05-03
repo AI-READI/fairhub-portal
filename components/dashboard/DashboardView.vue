@@ -20,7 +20,7 @@ const publicDashboardView: Ref<DashboardView> = computed(
 </script>
 
 <template>
-  <main class="flex w-full flex-col pr-7">
+  <main class="flex w-full flex-col pr-8">
 
     <TransitionFade>
 
