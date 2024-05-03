@@ -21,7 +21,7 @@ const publicDashboardView: Ref<DashboardView> = computed(
 
 <template>
   <main class="flex w-full flex-col pr-6">
-
+    <LottieLoader v-if="isLoading" :width="200" :height="200" />
 
     <TransitionFade>
       <div v-if="isLoading">
