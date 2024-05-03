@@ -26,7 +26,6 @@ const publicDashboardView: Ref<DashboardView> = computed(
     <TransitionFade>
       <div v-if="isLoading">
         <br/>
-        <h2>Loading Dashboard</h2>
 
         <LottieLoader :width="300" :height="300" />
       </div>

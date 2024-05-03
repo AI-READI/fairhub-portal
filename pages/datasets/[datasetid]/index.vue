@@ -238,6 +238,7 @@ const generateCombinedFullName = (name: string) => {
         src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
         :alt="dataset?.title"
         class="mb-3 size-32 h-32 w-32 rounded-lg sm:mb-0"
+        object-fit="contain"
       />
     </div>
 
@@ -326,12 +327,17 @@ const generateCombinedFullName = (name: string) => {
             </div>
 
             <div v-if="tabs[2].shown">
+
               <n-alert title="Info" type="info">
                 <p class="text-md text-black">
                   This page provides a visual overview of participant recruitment and survey completion for the study.
                 </p>
               </n-alert>
-              <DashboardView :study-id="studyId" />
+
+              <n-flex vertical>
+                <DashboardView :study-id="studyId" />
+              </n-flex>
+
             </div>
 
             <div v-if="tabs[3].shown">
