@@ -125,6 +125,7 @@ onMounted(() => {
           :options="citationFormats"
           :consistent-menu-width="false"
           class="w-max"
+          :loading="citationPending"
           :disabled="citationPending"
           @update:value="getFormattedCitation"
         />
