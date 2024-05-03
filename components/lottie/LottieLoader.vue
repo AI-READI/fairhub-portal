@@ -38,8 +38,7 @@ defineProps({
   border-radius: 50%;
   box-sizing: border-box;
   animation: animloader 1s ease-in infinite;
-/*  @apply bg-sky-500;*/
-  background-color: #334155;
+  @apply bg-sky-500;
 }
 
 @keyframes animloader {
