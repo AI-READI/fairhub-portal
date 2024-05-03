@@ -111,6 +111,7 @@ const handleSubmit = async () => {
         src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
         :alt="dataset?.title"
         class="size-32 h-32 w-32 rounded-lg"
+        object-fit="contain"
       />
     </div>
 
@@ -140,6 +141,15 @@ const handleSubmit = async () => {
             </div>
 
             <div v-else>
+              <n-alert title="Please note:" type="info">
+                <p>
+                  When registering for access you must use your organization or
+                  institutional email address. Accounts not affiliated with a
+                  recognized entity will be dismissed. AI-READI admins will
+                  confirm your identity before granting access to the dataset.
+                </p>
+              </n-alert>
+
               <n-button
                 size="large"
                 type="info"
