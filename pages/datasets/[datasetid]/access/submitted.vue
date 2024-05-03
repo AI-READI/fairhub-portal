@@ -91,35 +91,16 @@ const currentStep = ref<number>(7);
           <div>
             <h4>Request Submitted</h4>
 
-            <!-- TODO: delete after the open house -->
-            <div
-              class="rounded border border-l-8 border-blue-500 bg-blue-100 px-2 py-4 font-extrabold text-blue-500"
-            >
-              <Icon name="ic:baseline-info" />
-
-              For those attending the Bridge2AI Open House in person, please
-              contact your DGP coordinator for details on accessing the dataset.
-            </div>
+            <p>
+              Your download is being created. Due to the size of the dataset and
+              necessary processing, this may take some time. When your dataset
+              is ready, you will receive an email containing a link to a page
+              with instructions on how to access it.
+            </p>
 
             <p>
-              The following paragraphs describe how the download process will
-              function after the open house.
+              Once created, you will have 72 hours to download your dataset.
             </p>
-            <!-- stop deleting here -->
-
-            <!-- TODO: remove wrapping blockquote after the open house -->
-            <blockquote>
-              <p>
-                Your download is being created. Due to the size of the dataset
-                and necessary processing, this may take some time. When your
-                dataset is ready, you will receive an email containing a link to
-                a page with instructions on how to access it.
-              </p>
-
-              <p>
-                Once created, you will have 72 hours to download your dataset.
-              </p>
-            </blockquote>
 
             <p>
               <NuxtLink :to="`/datasets/${datasetid}`">
