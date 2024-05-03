@@ -20,8 +20,6 @@ const publicDashboardView: Ref<DashboardView> = computed(
 </script>
 
 <template>
-  <main class="flex w-full flex-col pr-8">
-    <LottieLoader v-if="isLoading" :width="200" :height="200" />
 
     <TransitionFade>
 
@@ -38,7 +36,7 @@ const publicDashboardView: Ref<DashboardView> = computed(
             :id="module.id"
             class="rounded-lg border border-slate-300 bg-white shadow-lg"
           >
-            <div class="border-t-2 px-6 py-7">
+            <div class="px-6 py-7">
               <h3>{{ module.title }}</h3>
 
               <p class="pt-2">{{ module.subtitle }}<br /></p>
@@ -51,10 +49,13 @@ const publicDashboardView: Ref<DashboardView> = computed(
           </div>
 
           <n-divider />
+
         </div>
+
       </TransitionGroup>
+
     </TransitionFade>
-  </main>
+
 </template>
 
 <style></style>

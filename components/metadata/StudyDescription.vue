@@ -135,24 +135,29 @@ defineProps({
           </p>
         </div>
 
-        <p class="mb-1 mt-2 w-full border-b font-semibold">Target Duration</p>
+        <p
+          v-if="metadata.designModule.targetDuration"
+          class="mb-1 mt-2 w-full border-b font-semibold"
+        >
+          Target Duration
+        </p>
 
-        <p>
+        <p v-if="metadata.designModule.targetDuration">
           {{ metadata.designModule.targetDuration }}
         </p>
 
-        <p class="mb-1 mt-2 w-full border-b font-semibold">
+        <p
+          v-if="metadata.designModule.numberGroupsCohorts"
+          class="mb-1 mt-2 w-full border-b font-semibold"
+        >
           Number of Cohort Groups
         </p>
 
-        <p>
+        <p v-if="metadata.designModule.numberGroupsCohorts">
           {{ metadata.designModule.numberGroupsCohorts }}
         </p>
 
-        <div
-          v-if="metadata.designModule.studyType === 'Interventional'"
-          class="mt-2"
-        >
+        <div v-if="metadata.designModule.studyType === 'Interventional'">
           <div v-if="metadata.designModule.phaseList">
             <p class="mb-1 w-full border-b font-semibold">Phase List</p>
 
@@ -239,10 +244,7 @@ defineProps({
           </div>
         </div>
 
-        <div
-          v-if="metadata.designModule.studyType === 'Observational'"
-          class="mt-2"
-        >
+        <div v-if="metadata.designModule.studyType === 'Observational'">
           <div v-if="metadata.designModule.designInfo.designAllocation">
             <p class="mb-1 w-full border-b font-semibold">Design Allocation</p>
 
