@@ -134,6 +134,7 @@ if (error.value) {
                 src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
                 :alt="dataset.title"
                 class="h-auto w-32 self-center rounded-xl"
+                object-fit="contain"
               />
 
               <div

@@ -238,6 +238,7 @@ const generateCombinedFullName = (name: string) => {
         src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
         :alt="dataset?.title"
         class="mb-3 size-32 h-32 w-32 rounded-lg sm:mb-0"
+        object-fit="contain"
       />
     </div>
 
@@ -326,12 +327,16 @@ const generateCombinedFullName = (name: string) => {
             </div>
 
             <div v-if="tabs[2].shown">
-              <n-alert title="Info" type="info">
-                <p class="text-md text-black">
-                  This page provides a visual overview of participant recruitment and survey completion for the study.
-                </p>
-              </n-alert>
-              <DashboardView :study-id="studyId" />
+              <n-flex vertical>
+                <n-alert title="Info" type="info">
+                  <p class="text-md text-black">
+                    This page provides a visual overview of participant
+                    recruitment and survey completion for the study.
+                  </p>
+                </n-alert>
+
+                <DashboardView :study-id="studyId" />
+              </n-flex>
             </div>
 
             <div v-if="tabs[3].shown">
@@ -442,12 +447,20 @@ const generateCombinedFullName = (name: string) => {
             >
               <n-flex justify="center" align="center">
                 <n-flex vertical align="center" size="small">
+                  <n-flex size="small" align="center">
+                    <Icon name="lets-icons:view-duotone" size="23" />
+
+                    <p class="text-sm font-medium">
+                      {{ dataset?.data.viewCount }}
+                    </p>
+                  </n-flex>
+
                   <NuxtLink
                     target="_blank"
                     :to="`${config.public.UMAMI_SHARE_URL}?url=${encodeURIComponent(
                       '/datasets/' + dataset?.id,
                     )}`"
-                    class="text-sm font-medium text-sky-500 transition-all hover:text-sky-700"
+                    class="hidden text-sm font-medium text-sky-500 transition-all hover:text-sky-700"
                   >
                     <n-flex size="small" align="center">
                       <Icon name="lets-icons:view-duotone" size="23" />
@@ -461,11 +474,11 @@ const generateCombinedFullName = (name: string) => {
                   <span class="text-sm font-normal">Views</span>
                 </n-flex>
 
-                <div>
+                <div class="hidden">
                   <n-divider vertical />
                 </div>
 
-                <n-flex vertical align="center" size="small">
+                <n-flex vertical align="center" size="small" class="!hidden">
                   <n-flex size="small" align="center">
                     <Icon name="ic:round-download" size="18" />
 

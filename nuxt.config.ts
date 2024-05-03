@@ -107,12 +107,12 @@ export default defineNuxtConfig({
             : "https://fairhub.io",
       ENTRA_CONFIG: {
         authority:
-          "https://aireadi.b2clogin.com/aireadi.onmicrosoft.com/B2C_1_Local_User_SignIn",
+          "https://aireadi.b2clogin.com/aireadi.onmicrosoft.com/B2C_1_ARVO_SignUpSignIn_Workflow",
         clientId:
           process.env.NUXT_SITE_ENV === "dev"
             ? "444bfea9-2fec-44ed-a4d7-767616afa9a3"
             : "d173c9cb-36ce-4c77-92f3-025e48f0e533",
-        knownAuthorities: ["aireadi.b2clogin.com", "https://cilogon.org/"],
+        knownAuthorities: ["aireadi.b2clogin.com", "https://cilogon.org"],
         logoutUri:
           process.env.NUXT_SITE_ENV === "dev"
             ? "http://localhost:3000/"

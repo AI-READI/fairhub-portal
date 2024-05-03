@@ -156,7 +156,8 @@
 
               <p class="min-w-md text-xl font-medium">
                 The FAIRhub APIs connect the user interfaces of the study
-                management platform and data portal with the backend services and web servers.
+                management platform and data portal with the backend services
+                and web servers.
               </p>
 
               <a
@@ -174,13 +175,14 @@
               <div class="flex flex-row items-center gap-4">
                 <Icon name="gis:map-share" color="#0284c7" size="2rem" />
 
-                <h3 class="text-sky-700">Data Platform</h3>
+                <h3 class="text-sky-700">Data Portal</h3>
               </div>
 
               <p class="text-xl font-medium">
                 The FAIRhub data portal provides easy access to well-structured,
                 rich in metadata, FAIR, and AI-ready datasets, with a simplified
-                mechanism available for accessing protected versions of datasets.
+                mechanism available for accessing protected versions of
+                datasets.
               </p>
 
               <a

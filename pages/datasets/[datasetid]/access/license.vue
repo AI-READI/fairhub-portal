@@ -156,6 +156,7 @@ const handleSubmit = async () => {
         src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
         :alt="dataset?.title"
         class="size-32 h-32 w-32 rounded-lg"
+        object-fit="contain"
       />
     </div>
 
