@@ -20,15 +20,11 @@ const publicDashboardView: Ref<DashboardView> = computed(
 </script>
 
 <template>
-  <main class="flex w-full flex-col pr-6">
+  <main class="flex w-full flex-col pr-7">
 
     <TransitionFade>
-      <div v-if="isLoading">
-        <br/>
 
-        <LottieLoader :width="300" :height="300" />
-
-      </div>
+      <LottieLoader v-if="isLoading" />
 
       <TransitionGroup v-else name="fade" tag="div" class="p-0">
         <div
