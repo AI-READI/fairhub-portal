@@ -52,7 +52,7 @@ const steps = ref([
           </div>
 
           <div class="mt-8 flex justify-center gap-3">
-            <NuxtLink to="https://staging.app.fairhub.io" target="__blank">
+            <NuxtLink to="https://app.fairhub.io" target="__blank">
               <n-button
                 size="large"
                 icon-placement="right"
@@ -120,7 +120,9 @@ const steps = ref([
               {{ step.heading }}
             </h3>
 
+            <!-- eslint-disable vue/no-v-html -->
             <p class="py-5" v-html="step.description"></p>
+            <!-- eslint-enable vue/no-v-html -->
           </div>
         </div>
       </div>
