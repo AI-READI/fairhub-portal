@@ -289,9 +289,9 @@ interface StudyDescription {
     numberArms?: string;
     phaseList?: string[];
     studyType: string;
-    targetDuration: string;
+    targetDuration?: string;
     isPatientRegistry?: string;
-    numberGroupsCohorts: int;
+    numberGroupsCohorts?: int;
   };
   eligibilityModule: {
     sex: string;
