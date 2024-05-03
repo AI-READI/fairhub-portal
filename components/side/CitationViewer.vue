@@ -146,7 +146,8 @@ onMounted(() => {
 
       <n-alert type="warning" :bordered="false">
         There maybe other required citations when using this dataset. Please
-        check the license and the resource for more information.
+        check the license and other resources associated with the dataset for
+        more information.
       </n-alert>
     </n-flex>
   </n-flex>

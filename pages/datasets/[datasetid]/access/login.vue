@@ -141,6 +141,23 @@ const handleSubmit = async () => {
             </div>
 
             <div v-else>
+              <n-alert title="Please note:" type="info">
+                <p>
+                  On the next screen, you will have the ability to create an
+                  account for access (click on "Sign up now").
+                </p>
+
+                <p>
+                  When registering for access
+                  <strong
+                    >you must use your organization or institutional email
+                    address</strong
+                  >. Accounts not affiliated with a recognized entity email will
+                  be delayed and Al-READI admins will confirm your identity
+                  before granting access to the dataset.
+                </p>
+              </n-alert>
+
               <n-button
                 size="large"
                 type="info"

@@ -327,19 +327,16 @@ const generateCombinedFullName = (name: string) => {
             </div>
 
             <div v-if="tabs[2].shown">
-
               <n-flex vertical>
-
                 <n-alert title="Info" type="info">
                   <p class="text-md text-black">
-                    This page provides a visual overview of participant recruitment and survey completion for the study.
+                    This page provides a visual overview of participant
+                    recruitment and survey completion for the study.
                   </p>
                 </n-alert>
 
                 <DashboardView :study-id="studyId" />
-
               </n-flex>
-
             </div>
 
             <div v-if="tabs[3].shown">
@@ -477,11 +474,11 @@ const generateCombinedFullName = (name: string) => {
                   <span class="text-sm font-normal">Views</span>
                 </n-flex>
 
-                <div>
+                <div class="hidden">
                   <n-divider vertical />
                 </div>
 
-                <n-flex vertical align="center" size="small">
+                <n-flex vertical align="center" size="small" class="!hidden">
                   <n-flex size="small" align="center">
                     <Icon name="ic:round-download" size="18" />
 
