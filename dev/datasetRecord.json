@@ -2257,8 +2257,7 @@
         {
           "id": 3,
           "question": "If data is part of a clinical study, what are the inclusion criteria?",
-          "response": "The eligibility criteria for the study were as follows:\n\n    Inclusion Criteria:\n\n    - Able to provide consent\n    - ≥ 40 years old\n    - Persons with or without type 2 diabetes\n    - Must speak and read English\n\n    Exclusion Criteria:\n\n    - Must not be pregnant\n    - Must not have gestational diabetes\n    - Must not have Type 1 diabetes"
-        }
+          "response": "The eligibility criteria for the study were as follows:\n\n Inclusion Criteria:\n\n - Able to provide consent\n - ≥ 40 years old\n - Persons with or without type 2 diabetes\n - Must speak and read English\n\n Exclusion Criteria:\n\n - Must not be pregnant\n - Must not have gestational diabetes\n - Must not have Type 1 diabetes"        }
       ],
       "uses": [
         {
