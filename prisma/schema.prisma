@@ -756,7 +756,7 @@ model download_request {
   folders_selected      Json                  @db.Json
   status                download_status       @default(PENDING)
   download_uri          String?               @db.VarChar
-  download_key          String?               @db.VarChar
+  download_key          String?               @db.Text
   secure_hash           String?               @db.Char(64)
   created_at            BigInt
   updated_on            BigInt
