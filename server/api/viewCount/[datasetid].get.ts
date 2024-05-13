@@ -55,7 +55,7 @@ export default defineEventHandler(async (event) => {
       "and total count is",
       data.pageviews[0].y,
     );
-    return data.pageviews[0].y;
+    return data;
   } else {
     console.error("view count failed");
   }
