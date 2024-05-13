@@ -5,10 +5,6 @@ const viewCount: { [key: string]: string } = {
 export default defineEventHandler(async (event) => {
   const { datasetid } = event.context.params as { datasetid: string };
 
-  console.log(`Count view for dataset ${datasetid}`);
-
-  const { format } = getQuery(event);
-
   const dataset = await prisma.published_dataset.findUnique({
     where: {
       id: datasetid,
@@ -51,5 +47,11 @@ export default defineEventHandler(async (event) => {
       method: "GET",
     },
   );
+  if (response.ok) {
+    const data = await res.json();
+    return data.pageviews[0].y;
+  } else {
+    console.error("Login failed");
+  }
   return res;
 });
