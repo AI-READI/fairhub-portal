@@ -49,6 +49,12 @@ export default defineEventHandler(async (event) => {
   );
   if (response.ok) {
     const data = await res.json();
+    console.log(
+      "total statistics are",
+      data,
+      "and total count is",
+      data.pageviews[0].y,
+    );
     return data.pageviews[0].y;
   } else {
     console.error("view count failed");
