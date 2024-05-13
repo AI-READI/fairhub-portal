@@ -39,7 +39,7 @@ export default defineEventHandler(async (event) => {
   const token = r.token;
 
   const res = await fetch(
-    `https://umami.aireadi.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/pageviews?unit=year&endAt=1715629073000&startAt=1705174673000&url=/datasets/${datasetid}`,
+    `https://umami.aireadi.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/pageviews?unit=year&endAt=1715631787000&startAt=1704137873000&url=/datasets/${datasetid}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
