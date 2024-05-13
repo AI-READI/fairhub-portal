@@ -48,6 +48,7 @@ const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
 });
 
+
 // Get Study ID here. For now, we reference our environment variable
 const studyId = aireadiStudyId;
 
@@ -173,6 +174,23 @@ const generateCombinedFullName = (name: string) => {
     return name;
   }
 };
+
+const totalViewCount = ref({});
+
+const getViewCount = async () => {
+  await $fetch(`/api/viewCount/${datasetid}`)
+    .then((data) => {
+      totalViewCount.value = data.pageviews;
+     console.log(totalViewCount.value, "fffffffffffffffffffffffffffffff")
+
+    })
+    .catch((err: string) => {
+      console.error("Error fetching view count", err);
+    });
+};
+onMounted(() => {
+  getViewCount();
+});
 </script>
 
 <template>
@@ -450,8 +468,8 @@ const generateCombinedFullName = (name: string) => {
                   <n-flex size="small" align="center">
                     <Icon name="lets-icons:view-duotone" size="23" />
 
-                    <p class="text-sm font-medium">
-                      {{ dataset?.data.viewCount }}
+                    <p class="text-sm font-medium" v-for="(totalCount,index ) in totalViewCount" :key="index">
+                      {{ totalCount.y }}
                     </p>
                   </n-flex>
 

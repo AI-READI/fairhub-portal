@@ -1,0 +1,55 @@
+const viewCount: { [key: string]: string } = {
+  url: "https://umami.aireadi.org/api/websites/",
+};
+
+export default defineEventHandler(async (event) => {
+  const { datasetid } = event.context.params as { datasetid: string };
+
+  console.log(`Count view for dataset ${datasetid}`);
+
+  const { format } = getQuery(event);
+
+  const dataset = await prisma.published_dataset.findUnique({
+    where: {
+      id: datasetid,
+    },
+  });
+
+  if (!dataset) {
+    console.log(`Dataset ${datasetid} not found`);
+
+    throw createError({
+      message: `Dataset ${datasetid} not found`,
+      statusCode: 404,
+    });
+  }
+
+  const response = await fetch(`https://umami.aireadi.org/api/auth/login`, {
+    body: JSON.stringify({
+      username: process.env.UMAMI_USERNAME,
+      password: process.env.UMAMI_PASSWORD,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+  });
+  if (response.ok) {
+    console.log("Login successful");
+  } else {
+    console.error("Login failed");
+  }
+  const r = await response.json();
+  const token = r.token;
+
+  const res = await fetch(
+    `https://umami.aireadi.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/pageviews?unit=year&endAt=1715578870000&startAt=1709162436000&url=/datasets/${datasetid}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: "GET",
+    },
+  );
+  return res;
+});
