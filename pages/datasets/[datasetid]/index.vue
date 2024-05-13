@@ -480,7 +480,7 @@ onMounted(() => {
                       <Icon name="lets-icons:view-duotone" size="23" />
 
                       <p class="text-sm font-medium">
-                        {{ dataset?.data.viewCount }}
+                        {{ totalViewCount || "" }}
                       </p>
                     </n-flex>
                   </NuxtLink>
