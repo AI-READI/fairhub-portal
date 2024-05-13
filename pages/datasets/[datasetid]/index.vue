@@ -181,7 +181,6 @@ const getViewCount = async () => {
   await $fetch(`/api/viewCount/${datasetid}`)
     .then((data) => {
       totalViewCount.value = data.pageviews;
-     console.log(totalViewCount.value, "fffffffffffffffffffffffffffffff")
 
     })
     .catch((err: string) => {
