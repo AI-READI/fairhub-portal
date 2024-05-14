@@ -37,9 +37,9 @@ export default defineEventHandler(async (event) => {
   }
   const r = await response.json();
   const token = r.token;
-
+  const currentTime: number = Date.now();
   const res = await fetch(
-    `https://umami.aireadi.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/pageviews?unit=year&endAt=1715635111000&startAt=1704137873000&url=/datasets/${datasetid}`,
+    `https://umami.aireadi.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/pageviews?unit=year&endAt=${currentTime}&startAt=1704137873000&url=/datasets/${datasetid}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
