@@ -466,13 +466,15 @@ onMounted(() => {
                   <n-flex size="small" align="center">
                     <Icon name="lets-icons:view-duotone" size="23" />
 
-                    <div v-if="totalVieCountSpinner">
-                      <n-spin :size="12" />
-                    </div>
+                    <TransitionFade>
+                      <div v-if="totalVieCountSpinner">
+                        <n-spin :size="12" />
+                      </div>
 
-                    <div v-else class="text-sm font-medium">
-                      {{ totalViewCount }}
-                    </div>
+                      <div v-else class="text-sm font-medium">
+                        {{ totalViewCount }}
+                      </div>
+                    </TransitionFade>
                   </n-flex>
 
                   <NuxtLink
