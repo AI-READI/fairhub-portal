@@ -43,6 +43,8 @@ const tabs = reactive([
     shown: false,
   },
 ]);
+const totalViewCount = ref(0);
+const totalViewCountSpinner = ref(true);
 
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
@@ -173,6 +175,23 @@ const generateCombinedFullName = (name: string) => {
     return name;
   }
 };
+
+const getViewCount = async () => {
+  await $fetch(`/api/viewCount/${datasetid}`)
+    .then((data) => {
+      totalViewCount.value = data;
+      totalViewCountSpinner.value = false;
+    })
+    .catch((err: string) => {
+      console.error("Error fetching view count", err);
+    })
+    .finally(() => {
+      totalViewCountSpinner.value = false;
+    });
+};
+onMounted(() => {
+  getViewCount();
+});
 </script>
 
 <template>
@@ -450,9 +469,15 @@ const generateCombinedFullName = (name: string) => {
                   <n-flex size="small" align="center">
                     <Icon name="lets-icons:view-duotone" size="23" />
 
-                    <p class="text-sm font-medium">
-                      {{ dataset?.data.viewCount }}
-                    </p>
+                    <TransitionFade>
+                      <div v-if="totalViewCountSpinner">
+                        <n-spin :size="12" />
+                      </div>
+
+                      <div v-else class="text-sm font-medium">
+                        {{ totalViewCount }}
+                      </div>
+                    </TransitionFade>
                   </n-flex>
 
                   <NuxtLink
@@ -466,7 +491,7 @@ const generateCombinedFullName = (name: string) => {
                       <Icon name="lets-icons:view-duotone" size="23" />
 
                       <p class="text-sm font-medium">
-                        {{ dataset?.data.viewCount }}
+                        {{ totalViewCount }}
                       </p>
                     </n-flex>
                   </NuxtLink>
