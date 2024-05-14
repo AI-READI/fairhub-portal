@@ -44,7 +44,7 @@ const tabs = reactive([
   },
 ]);
 const totalViewCount = ref(0);
-const totalVieCountSpinner = ref(true);
+const totalViewCountSpinner = ref(true);
 
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
@@ -180,10 +180,13 @@ const getViewCount = async () => {
   await $fetch(`/api/viewCount/${datasetid}`)
     .then((data) => {
       totalViewCount.value = data;
-      totalVieCountSpinner.value = false;
+      totalViewCountSpinner.value = false;
     })
     .catch((err: string) => {
       console.error("Error fetching view count", err);
+    })
+    .finally(() => {
+      totalViewCountSpinner.value = false;
     });
 };
 onMounted(() => {
@@ -467,7 +470,7 @@ onMounted(() => {
                     <Icon name="lets-icons:view-duotone" size="23" />
 
                     <TransitionFade>
-                      <div v-if="totalVieCountSpinner">
+                      <div v-if="totalViewCountSpinner">
                         <n-spin :size="12" />
                       </div>
 

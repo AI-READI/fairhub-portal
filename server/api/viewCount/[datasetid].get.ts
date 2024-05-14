@@ -33,7 +33,7 @@ export default defineEventHandler(async (event) => {
   if (response.ok) {
     console.log("Login successful");
   } else {
-    console.error("Login failed");
+    Error("Login failed");
   }
   const r = await response.json();
   const token = r.token;
