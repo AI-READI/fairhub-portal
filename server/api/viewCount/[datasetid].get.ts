@@ -39,7 +39,7 @@ export default defineEventHandler(async (event) => {
   const token = r.token;
   const currentTime: number = Date.now();
   const res = await fetch(
-    `https://umami.aireadi.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/pageviews?unit=year&endAt=${currentTime}&startAt=1704137873000&url=/datasets/${datasetid}`,
+    `https://umami.aireadi.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/pageviews?unit=year&endAt=${currentTime}&startAt=1709149073000&url=/datasets/${datasetid}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -49,9 +49,12 @@ export default defineEventHandler(async (event) => {
   );
   if (response.ok) {
     const data = await res.json();
-    return data.pageviews[0].y;
+    return data.pageviews.reduce(
+      (acc: number, totalNum: number) => acc + totalNum.y,
+      0,
+    );
+    // return data
   } else {
     console.error("view count failed");
   }
-  return res;
 });
