@@ -44,6 +44,7 @@ const tabs = reactive([
   },
 ]);
 const totalViewCount = ref(0);
+const totalVieCountSpinner = ref(true);
 
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
@@ -179,6 +180,7 @@ const getViewCount = async () => {
   await $fetch(`/api/viewCount/${datasetid}`)
     .then((data) => {
       totalViewCount.value = data;
+      totalVieCountSpinner.value = false;
     })
     .catch((err: string) => {
       console.error("Error fetching view count", err);
@@ -464,9 +466,13 @@ onMounted(() => {
                   <n-flex size="small" align="center">
                     <Icon name="lets-icons:view-duotone" size="23" />
 
-                    <p class="text-sm font-medium">
-                      {{ totalViewCount || "" }}
-                    </p>
+                    <div v-if="totalVieCountSpinner">
+                      <n-spin :size="12" />
+                    </div>
+
+                    <div v-else class="text-sm font-medium">
+                      {{ totalViewCount }}
+                    </div>
                   </n-flex>
 
                   <NuxtLink
@@ -480,7 +486,7 @@ onMounted(() => {
                       <Icon name="lets-icons:view-duotone" size="23" />
 
                       <p class="text-sm font-medium">
-                        {{ totalViewCount || "" }}
+                        {{ totalViewCount }}
                       </p>
                     </n-flex>
                   </NuxtLink>

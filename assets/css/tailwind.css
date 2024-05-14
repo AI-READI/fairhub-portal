@@ -296,3 +296,8 @@ body {
   --n-box-shadow-hover: #6aafd2;
 
 }
+
+.n-base-loading__container .n-base-loading__icon{
+    color: #0284c7;
+
+}
