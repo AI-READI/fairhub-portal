@@ -24,6 +24,13 @@ const themeConfig: ThemeConfig = {
   mobile: {}, // Theme options applied on mobile only
   mobileOrTablet: {}, // Theme options applied on mobile and tablet
   shared: {
+    Cascader: { optionCheckMarkColor: "#0284c7" },
+    common: {
+      primaryColor: "#0284c7",
+      primaryColorHover: "#0284c7",
+      primaryColorPressed: "#0284c7",
+      primaryColorSuppl: "#0284c7",
+    },
     Spin: {
       color: "#0284c7",
     },
