@@ -33,7 +33,10 @@ export default defineEventHandler(async (event) => {
   if (response.ok) {
     console.log("Login successful");
   } else {
-    Error("Login failed");
+    throw createError({
+      message: "Error",
+      statusCode: 401,
+    });
   }
   const r = await response.json();
   const token = r.token;
@@ -55,6 +58,6 @@ export default defineEventHandler(async (event) => {
     );
     // return data
   } else {
-    console.error("view count failed");
+    console.error("error");
   }
 });
