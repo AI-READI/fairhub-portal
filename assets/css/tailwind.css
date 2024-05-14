@@ -8,7 +8,6 @@ body {
   height: 100vh;
   margin: 0px;
   padding: 0px;
-
   overflow: auto @apply bg-slate-50;
   @apply text-slate-700;
 }
@@ -270,29 +269,3 @@ body {
   min-width: 19rem;
 }
 
-.n-base-selection-label,
-.n-base-select-option--selected.n-base-select-option--pending.n-base-select-option--show-checkmark,
-.n-base-select-menu .n-base-select-option.n-base-select-option--selected,
-.n-base-select-option--selected.n-base-select-option--pending .n-base-icon.n-base-select-option__check,
-.n-base-select-option--selected.n-base-select-option--pending .n-base-select-option__content{
-  color: #0284c7;
-  --n-option-check-color: #0284c7;
-  --n-option-text-color-active: #0284c7;
-  --n-option-text-color-pressed: #0284c7;
-  --n-loading-color: #0284c7;
-}
-
-.n-base-selection-label,
-.n-base-selection.n-base-selection--selected,
-.n-base-selection--active.n-base-selection--selected.n-base-selection--focus,
-.n-base-selection--selected.n-base-selection--focus{
-  --n-border-active: #0284c7;
-  --n-border-focus: #0284c7;
-  --n-border-hover: #0284c7;
-  --n-box-shadow-focus: #0284c7;
-  --n-caret-color: #0284c7;
-  --n-loading-color: #0284c7;
-  --n-box-shadow-active: #6aafd2;
-  --n-box-shadow-hover: #6aafd2;
-
-}
