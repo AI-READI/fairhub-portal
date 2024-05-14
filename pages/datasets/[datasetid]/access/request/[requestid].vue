@@ -26,7 +26,7 @@ const dataReady = request.status === "READY";
 const isExpired = request.status === "EXPIRED";
 
 const data = request.download_key as string;
-const byteString = atob(data);
+const byteString = atob(data) + "\n";
 
 const source = ref(byteString);
 const { copied, copy, isSupported, text } = useClipboard({ source });
