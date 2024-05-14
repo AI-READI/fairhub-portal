@@ -27,9 +27,9 @@ const themeConfig: ThemeConfig = {
     Cascader: { optionCheckMarkColor: "#0284c7" },
     common: {
       primaryColor: "#0284c7",
-      primaryColorHover: "#0284c7",
-      primaryColorPressed: "#0284c7",
-      primaryColorSuppl: "#0284c7",
+      primaryColorHover: "#0ea5e9",
+      primaryColorPressed: "#0369a1",
+      primaryColorSuppl: "#0ea5e9",
     },
     Spin: {
       color: "#0284c7",
