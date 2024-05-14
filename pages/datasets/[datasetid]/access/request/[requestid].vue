@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useClipboard } from "@vueuse/core";
+
 definePageMeta({
   middleware: ["auth"],
 });
@@ -22,6 +24,12 @@ const userKey = user.email.replace(/[^a-zA-Z0-9]/g, "");
 const notUserDownload = user.id !== request.user_details_id;
 const dataReady = request.status === "READY";
 const isExpired = request.status === "EXPIRED";
+
+const data = request.download_key as string;
+const byteString = atob(data);
+
+const source = ref(byteString);
+const { copied, copy, isSupported, text } = useClipboard({ source });
 
 if (error.value) {
   console.error(error.value);
@@ -79,18 +87,9 @@ if (error.value) {
           <div v-else-if="dataReady">
             <p>
               Your dataset is ready for download. Please use the following
-              address and SSH key to access the data. Download the SSH key and
-              save it in a secure location.
-            </p>
-
-            <p>
-              <n-button strong secondary type="info">
-                <a
-                  :href="`/api/downloads/key/${requestid}`"
-                  :download="`${userKey}.key`"
-                  >Download your SSH key</a
-                >
-              </n-button>
+              address and SSH key to access the data. Copy the SSH key and save
+              it in a secure location. Make sure that the file permissions are
+              set read-only for your account.
             </p>
 
             <p>
@@ -105,8 +104,24 @@ if (error.value) {
               line:
             </p>
 
-            <code>sftp -i {{ userKey }}.key {{ request?.download_uri }}</code>
+            <pre>sftp -i {{ userKey }}.key {{ request?.download_uri }}</pre>
+
+            <h4>SSH Key</h4>
+
+            <div v-if="isSupported">
+              <n-button strong secondary type="info" @click="copy(source)">
+                <!-- by default, `copied` will be reset in 1.5s -->
+                <span v-if="!copied">Copy key</span>
+
+                <span v-else>Copied!</span>
+              </n-button>
+            </div>
+
+            <p v-else>Your browser does not support Clipboard API</p>
+
+            <pre ref="key">{{ byteString }}</pre>
           </div>
+
           <!-- Request is not ready -->
           <div v-else-if="isExpired">
             <!-- If the request is expired -->
