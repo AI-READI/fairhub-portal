@@ -24,6 +24,9 @@ const themeConfig: ThemeConfig = {
   mobile: {}, // Theme options applied on mobile only
   mobileOrTablet: {}, // Theme options applied on mobile and tablet
   shared: {
+    Spin: {
+      color: "#0284c7",
+    },
     Tree: {
       fontSize: "17px",
     },

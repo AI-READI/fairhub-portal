@@ -276,7 +276,7 @@ body {
 .n-base-select-menu .n-base-select-option.n-base-select-option--selected,
 .n-base-select-option--selected.n-base-select-option--pending .n-base-icon.n-base-select-option__check,
 .n-base-select-option--selected.n-base-select-option--pending .n-base-select-option__content{
-  color: #0284c7;
+    color: var(--primary-color);
   --n-option-check-color: var(--primary-color);
   --n-option-text-color-active: var(--primary-color);
   --n-option-text-color-pressed: var(--primary-color);
@@ -295,10 +295,4 @@ body {
   --n-loading-color: var(--primary-color);
   --n-box-shadow-active: --secondary-color;
   --n-box-shadow-hover: --secondary-color;
-
-}
-
-.n-base-loading__container .n-base-loading__icon{
-    color: var(--primary-color);
-
 }
