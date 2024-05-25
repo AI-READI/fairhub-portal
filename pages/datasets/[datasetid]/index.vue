@@ -42,6 +42,10 @@ const tabs = reactive([
     label: "Dataset Quality Dashboard",
     shown: false,
   },
+  {
+    label: "Dataset Uses",
+    shown: false,
+  },
 ]);
 const totalViewCount = ref(0);
 const totalViewCountSpinner = ref(true);
@@ -283,7 +287,7 @@ onMounted(() => {
             class="absolute bottom-0 left-0 h-1 w-[--size] translate-x-[--position] bg-orange-400 transition-[width,transform] duration-[--duration]"
           />
 
-          <NavList as="ul" class="relative flex items-stretch gap-3">
+          <NavList as="ul" class="relative flex items-stretch gap-2">
             <NavItem
               v-for="(item, index) in tabs"
               :key="index"
@@ -297,7 +301,7 @@ onMounted(() => {
                     ? 'text-sky-600'
                     : 'text-sky-900/70 hover:text-sky-500',
                 ]"
-                class="inline-block p-4 font-medium transition-all"
+                class="inline-block p-2 font-medium transition-all"
                 @click.prevent="setActive"
               >
                 {{ item.label }}
@@ -454,6 +458,17 @@ onMounted(() => {
                   </n-button>
                 </NuxtLink>
               </n-flex>
+            </div>
+
+            <div v-if="tabs[7].shown">
+              <n-alert title="Info" type="info">
+                <p class="text-md text-black">
+                  This page provides information about the research purpose of
+                  requests for the dataset.
+                </p>
+              </n-alert>
+
+              <DownloadAgreementList class="mt-3" :datasetid="datasetid" />
             </div>
           </TransitionFade>
         </div>
