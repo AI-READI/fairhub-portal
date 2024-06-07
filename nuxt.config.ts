@@ -144,16 +144,16 @@ export default defineNuxtConfig({
   schemaOrg: {
     identity: {
       name: "Fairhub",
-      logo: "https://staging.fairhub.io/logo.png",
+      logo: "https://fairhub.io/logo.png",
       type: "Organization",
-      url: "https://staging.fairhub.io",
+      url: "https://fairhub.io",
     },
   },
 
   site: {
     name: "FAIRhub Data Portal",
-    indexable: false,
-    url: "https://staging.fairhub.io",
+    indexable: true,
+    url: "https://fairhub.io",
   },
 
   sitemap: {
