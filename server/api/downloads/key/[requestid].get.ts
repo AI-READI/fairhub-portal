@@ -24,15 +24,13 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const data = request.download_key as string;
+  const keyData = request.download_key as string;
+  const decodedKey = atob(keyData);
+  const keyBuffer = Buffer.from(decodedKey);
 
-  const userKey = userDetails.email.replace(/[^a-zA-Z0-9]/g, "");
-
-  const byteString = atob(data);
-  const file = new File([byteString], `${userKey}.key`);
-
-  if (file) {
-    return file;
+  if (keyData) {
+    setResponseHeader(event, "content-type", "text/plain");
+    return keyBuffer;
   } else {
     return createError({
       statusCode: 404,
