@@ -101,7 +101,7 @@ export default defineNuxtConfig({
       AIREADI_STUDY_UUID: "0ef3f72c-1bf0-4ea1-b9d1-e727c02b0f6c",
       BASE_URL:
         process.env.NUXT_SITE_ENV === "dev"
-          ? "http://localhost:6000"
+          ? "http://localhost:3000"
           : process.env.NUXT_SITE_ENV === "staging"
             ? "https://staging.fairhub.io"
             : "https://fairhub.io",
