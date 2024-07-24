@@ -14,6 +14,7 @@ type SessionUserDetails = {
   given_name: string | null;
   organization: string | null;
   phone: string | null;
+  idp: string | null;
 };
 
 type Attestation = {

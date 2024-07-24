@@ -80,6 +80,7 @@ function convertTokenResponse(
     email,
     family_name: getStringTokenClaim(indexableClaims, "family_name"),
     given_name: getStringTokenClaim(indexableClaims, "given_name"),
+    idp: getStringTokenClaim(indexableClaims, "idp"),
     organization: getStringTokenClaim(indexableClaims, "organization"),
     phone: getStringTokenClaim(indexableClaims, "phone"),
   };
@@ -93,6 +94,22 @@ function getTokenExpiration(
   const expiration = getNumericTokenClaim(indexableClaims, "exp");
 
   return expiration ?? defaultExpiration;
+}
+
+function checkTokenIdp(tokenResponse: AuthenticationResult): boolean {
+  const cnRegex = /(\.edu\.cn\/)/;
+  const microsoftRegex = /(sts\.windows\.net)/;
+  const githubRegex = /github\.com/;
+
+  const indexableClaims = { ...tokenResponse.idTokenClaims };
+  const idpName = getStringTokenClaim(indexableClaims, "idp");
+
+  return (
+    idpName !== null &&
+    !cnRegex.test(idpName) &&
+    !microsoftRegex.test(idpName) &&
+    !githubRegex.test(idpName)
+  );
 }
 
 /**
@@ -113,27 +130,36 @@ export default defineEventHandler(async (event) => {
     code: query.code as string,
     codeVerifier: session.data.auth.pkceCodes.verifier,
     redirectUri: config.public.ENTRA_CONFIG.redirectUri,
-    scopes: ["openid", "email", "profile"],
+    scopes: ["openid", "email", "profile", "org.cilogon.userinfo"],
   };
 
   try {
+    let redirectTo;
     const tokenResponse =
       await clientApplication.acquireTokenByCode(tokenRequest);
 
-    const sessionUserDetails = convertTokenResponse(tokenResponse);
-    const tokenExpiration = getTokenExpiration(tokenResponse);
+    // checking token for forbidden URL parameters
+    if (checkTokenIdp(tokenResponse)) {
+      // redirect to 404
+      let logoutUri = `${config.public.ENTRA_CONFIG.authority}/oauth2/v2.0/`;
+      logoutUri += `logout?post_logout_redirect_uri=${config.public.ENTRA_CONFIG.forbiddenUri}`;
+      redirectTo = logoutUri;
+    } else {
+      const sessionUserDetails = convertTokenResponse(tokenResponse);
+      const tokenExpiration = getTokenExpiration(tokenResponse);
 
-    await session.update({
-      auth: {
-        idToken: tokenResponse.idToken,
-        idTokenClaims: tokenResponse.idTokenClaims,
-        pkceCodes: null,
-        tokenExpiration,
-        userDetails: sessionUserDetails,
-      },
-    });
+      await session.update({
+        auth: {
+          idToken: tokenResponse.idToken,
+          idTokenClaims: tokenResponse.idTokenClaims,
+          pkceCodes: null,
+          tokenExpiration,
+          userDetails: sessionUserDetails,
+        },
+      });
 
-    const redirectTo = query.state ? (query.state as string) : "/";
+      redirectTo = query.state ? (query.state as string) : "/";
+    }
     await sendRedirect(event, redirectTo);
   } catch (error) {
     throw createError({

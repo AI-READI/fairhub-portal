@@ -9,12 +9,6 @@ datasource db {
   schemas  = ["download", "public"]
 }
 
-model alembic_version {
-  version_num String @id(map: "alembic_version_pkc") @db.VarChar(32)
-
-  @@schema("public")
-}
-
 model dataset {
   id                            String                         @id @db.Char(36)
   updated_on                    BigInt
@@ -295,21 +289,19 @@ model participant {
 }
 
 model published_dataset {
-  id                 String               @id @db.Char(36)
-  study_id           String               @db.VarChar
-  dataset_id         String               @db.VarChar
-  version_id         String               @db.VarChar
-  doi                String               @db.VarChar
-  title              String               @db.VarChar
-  description        String               @db.VarChar
-  version_title      String               @db.VarChar
-  study_title        String               @db.VarChar
-  published_metadata Json                 @db.Json
-  files              Json                 @db.Json
-  data               Json                 @db.Json
+  id                 String @id @db.Char(36)
+  study_id           String @db.VarChar
+  dataset_id         String @db.VarChar
+  version_id         String @db.VarChar
+  doi                String @db.VarChar
+  title              String @db.VarChar
+  description        String @db.VarChar
+  version_title      String @db.VarChar
+  study_title        String @db.VarChar
+  published_metadata Json   @db.Json
+  files              Json   @db.Json
+  data               Json   @db.Json
   created_at         BigInt
-  download_agreement download_agreement[]
-  download_request   download_request[]
 
   @@schema("public")
 }
@@ -741,7 +733,6 @@ model download_agreement {
   attestation_accepted  Boolean
   created_at            BigInt
   updated_on            BigInt
-  published_dataset     published_dataset     @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   download_user_details download_user_details @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   download_request      download_request[]
 
@@ -756,11 +747,11 @@ model download_request {
   folders_selected      Json                  @db.Json
   status                download_status       @default(PENDING)
   download_uri          String?               @db.VarChar
-  download_key          String?               @db.Text
+  download_key          String?
   secure_hash           String?               @db.Char(64)
   created_at            BigInt
   updated_on            BigInt
-  published_dataset     published_dataset     @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  download_files        download_files[]
   download_agreement    download_agreement    @relation(fields: [download_agreement_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   download_user_details download_user_details @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
@@ -779,6 +770,22 @@ model download_user_details {
   updated_on         BigInt
   download_agreement download_agreement[]
   download_request   download_request[]
+
+  @@schema("download")
+}
+
+model download_files {
+  id                  BigInt           @id(map: "download_files_id") @default(autoincrement())
+  download_request_id String           @db.Char(36)
+  created_at          DateTime         @db.Timestamp(6)
+  identifier          String           @db.Char(36)
+  seed                String           @db.Char(36)
+  salt                String           @db.Char(32)
+  input_file_hash     String           @db.Char(32)
+  output_file_hash    String           @db.Char(32)
+  input_file_path     String           @db.VarChar
+  output_file_path    String           @db.VarChar
+  download_request    download_request @relation(fields: [download_request_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@schema("download")
 }
