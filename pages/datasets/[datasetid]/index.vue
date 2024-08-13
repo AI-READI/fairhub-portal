@@ -9,6 +9,7 @@ const config = useRuntimeConfig();
 
 const { isMobile } = useDevice();
 const route = useRoute();
+const dayjs = useDayjs();
 
 const { datasetid } = route.params as { datasetid: string };
 const sanitize = (html: string) => sanitizeHtml(html);
@@ -117,7 +118,9 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       };
     }
   }),
-  datePublished: dataset.value?.metadata.datasetDescription.publicationYear, // todo: add the datePublished
+  datePublished: dataset.value?.created_at
+    ? dayjs.unix(dataset.value.created_at).format("YYYY-MM-DD")
+    : "Unknown",
   description: dataset.value?.metadata.datasetDescription.description?.find(
     (value) => value.descriptionType === "Abstract",
   )?.descriptionValue,
@@ -365,7 +368,8 @@ onMounted(() => {
             <div v-if="tabs[3].shown">
               <MetadataStudyDescription
                 :metadata="
-                  dataset?.metadata.studyDescription as StudyDescription
+                  dataset?.metadata
+                    .studyDescription as unknown as StudyDescription
                 "
               />
 
