@@ -107,7 +107,7 @@ export default defineNuxtConfig({
             : "https://fairhub.io",
       ENTRA_CONFIG: {
         authority:
-          "https://aireadi.b2clogin.com/aireadi.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1A_TRUSTFRAMEWORKBASE_CILOGON_IDP_RESTRICTED",
+          "https://aireadi.b2clogin.com/aireadi.onmicrosoft.com/B2C_1A_TRUSTFRAMEWORKBASE_CILOGON_IDP_RESTRICTED", // https://aireadi.b2clogin.com/aireadi.onmicrosoft.com/B2C_1_ARVO_SignUpSignIn_Workflow",
         clientId:
           process.env.NUXT_SITE_ENV === "dev"
             ? "444bfea9-2fec-44ed-a4d7-767616afa9a3"
