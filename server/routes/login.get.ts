@@ -96,7 +96,7 @@ function getTokenExpiration(
   return expiration ?? defaultExpiration;
 }
 
-function checkTokenIdp(tokenResponse: AuthenticationResult): boolean {
+function checkTokenIdPIsValid(tokenResponse: AuthenticationResult): boolean {
   const cnRegex = /(\.edu\.cn\/)/;
   const microsoftRegex = /(sts\.windows\.net)/;
   const githubRegex = /github\.com/;
@@ -134,17 +134,24 @@ export default defineEventHandler(async (event) => {
   };
 
   try {
+    console.log(`\nQuery:\n${JSON.stringify(query)}`);
+    console.log(`\n\ntrying token request ${JSON.stringify(tokenRequest)}\n\n`);
     let redirectTo;
     const tokenResponse =
       await clientApplication.acquireTokenByCode(tokenRequest);
+    console.log(
+      `returned from token request: ${JSON.stringify(tokenResponse)}`,
+    );
 
     // checking token for forbidden URL parameters
-    if (checkTokenIdp(tokenResponse)) {
+    if (checkTokenIdPIsValid(tokenResponse)) {
       // redirect to 404
+      console.log("caught in IdP; shouldn't be here");
       let logoutUri = `${config.public.ENTRA_CONFIG.authority}/oauth2/v2.0/`;
       logoutUri += `logout?post_logout_redirect_uri=${config.public.ENTRA_CONFIG.forbiddenUri}`;
       redirectTo = logoutUri;
     } else {
+      console.log("passed IdP Check");
       const sessionUserDetails = convertTokenResponse(tokenResponse);
       const tokenExpiration = getTokenExpiration(tokenResponse);
 
@@ -160,6 +167,7 @@ export default defineEventHandler(async (event) => {
 
       redirectTo = query.state ? (query.state as string) : "/";
     }
+    console.log(`redirecting to: ${redirectTo}`);
     await sendRedirect(event, redirectTo);
   } catch (error) {
     throw createError({
