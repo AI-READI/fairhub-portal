@@ -289,19 +289,20 @@ model participant {
 }
 
 model published_dataset {
-  id                 String @id @db.Char(36)
-  study_id           String @db.VarChar
-  dataset_id         String @db.VarChar
-  version_id         String @db.VarChar
-  doi                String @db.VarChar
-  title              String @db.VarChar
-  description        String @db.VarChar
-  version_title      String @db.VarChar
-  study_title        String @db.VarChar
-  published_metadata Json   @db.Json
-  files              Json   @db.Json
-  data               Json   @db.Json
+  id                 String             @id @db.Char(36)
+  study_id           String             @db.VarChar
+  dataset_id         String             @db.VarChar
+  version_id         String             @db.VarChar
+  doi                String             @db.VarChar
+  title              String             @db.VarChar
+  description        String             @db.VarChar
+  version_title      String             @db.VarChar
+  study_title        String             @db.VarChar
+  published_metadata Json               @db.Json
+  files              Json               @db.Json
+  data               Json               @db.Json
   created_at         BigInt
+  download_request   download_request[]
 
   @@schema("public")
 }
@@ -740,20 +741,35 @@ model download_agreement {
 }
 
 model download_request {
-  id                    String                @id @db.Char(36)
-  user_details_id       String                @db.Char(36)
-  dataset_id            String                @db.Char(36)
-  download_agreement_id String                @db.Char(36)
-  folders_selected      Json                  @db.Json
-  status                download_status       @default(PENDING)
-  download_uri          String?               @db.VarChar
-  download_key          String?
-  secure_hash           String?               @db.Char(64)
+  id                    String                    @id @db.Char(36)
+  user_details_id       String                    @db.Char(36)
+  dataset_id            String                    @db.Char(36)
+  download_agreement_id String                    @db.Char(36)
+  approval_id           String                    @db.Char(36)
+  folders_selected      Json                      @db.Json
+  status                download_status           @default(PENDING)
+  download_uri          String?                   @db.VarChar
+  download_key          String?                   @db.Text
+  secure_hash           String?                   @db.Char(64)
   created_at            BigInt
   updated_on            BigInt
   download_files        download_files[]
-  download_agreement    download_agreement    @relation(fields: [download_agreement_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  download_user_details download_user_details @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  published_dataset     published_dataset         @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  download_agreement    download_agreement        @relation(fields: [download_agreement_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  download_user_details download_user_details     @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  approval              download_request_approval @relation(fields: [approval_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("download")
+}
+
+model download_request_approval {
+  id               String             @id @db.Char(36)
+  approval_status  approval_status    @default(AWAITING_APPROVAL)
+  updated_by       String?            @db.VarChar
+  created_at       BigInt
+  updated_on       BigInt
+  status_notes     String?            @db.Text
+  download_request download_request[]
 
   @@schema("download")
 }
@@ -790,6 +806,14 @@ model download_files {
   input_file_path     String           @db.VarChar
   output_file_path    String           @db.VarChar
   download_request    download_request @relation(fields: [download_request_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("download")
+}
+
+enum approval_status {
+  AWAITING_APPROVAL
+  NOT_APPROVED
+  APPROVED
 
   @@schema("download")
 }

@@ -9,6 +9,7 @@ const config = useRuntimeConfig();
 
 const { isMobile } = useDevice();
 const route = useRoute();
+const dayjs = useDayjs();
 
 const { datasetid } = route.params as { datasetid: string };
 const sanitize = (html: string) => sanitizeHtml(html);
@@ -40,6 +41,10 @@ const tabs = reactive([
   },
   {
     label: "Dataset Quality Dashboard",
+    shown: false,
+  },
+  {
+    label: "Dataset Uses",
     shown: false,
   },
 ]);
@@ -113,7 +118,9 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       };
     }
   }),
-  datePublished: dataset.value?.metadata.datasetDescription.publicationYear, // todo: add the datePublished
+  datePublished: dataset.value?.created_at
+    ? dayjs.unix(dataset.value.created_at).format("YYYY-MM-DD")
+    : "Unknown",
   description: dataset.value?.metadata.datasetDescription.description?.find(
     (value) => value.descriptionType === "Abstract",
   )?.descriptionValue,
@@ -283,7 +290,7 @@ onMounted(() => {
             class="absolute bottom-0 left-0 h-1 w-[--size] translate-x-[--position] bg-orange-400 transition-[width,transform] duration-[--duration]"
           />
 
-          <NavList as="ul" class="relative flex items-stretch gap-3">
+          <NavList as="ul" class="relative flex items-stretch gap-2">
             <NavItem
               v-for="(item, index) in tabs"
               :key="index"
@@ -297,7 +304,7 @@ onMounted(() => {
                     ? 'text-sky-600'
                     : 'text-sky-900/70 hover:text-sky-500',
                 ]"
-                class="inline-block p-4 font-medium transition-all"
+                class="inline-block p-2 font-medium transition-all"
                 @click.prevent="setActive"
               >
                 {{ item.label }}
@@ -361,7 +368,8 @@ onMounted(() => {
             <div v-if="tabs[3].shown">
               <MetadataStudyDescription
                 :metadata="
-                  dataset?.metadata.studyDescription as StudyDescription
+                  dataset?.metadata
+                    .studyDescription as unknown as StudyDescription
                 "
               />
 
@@ -454,6 +462,17 @@ onMounted(() => {
                   </n-button>
                 </NuxtLink>
               </n-flex>
+            </div>
+
+            <div v-if="tabs[7].shown">
+              <n-alert title="Info" type="info">
+                <p class="text-md text-black">
+                  This page provides information about the research purpose of
+                  requests for the dataset.
+                </p>
+              </n-alert>
+
+              <DownloadAgreementList class="mt-3" :datasetid="datasetid" />
             </div>
           </TransitionFade>
         </div>
