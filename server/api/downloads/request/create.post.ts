@@ -53,6 +53,7 @@ export default defineEventHandler(async (event) => {
 
     return downloadRequest;
   } catch (error) {
+    console.error(error);
     throw createError({
       statusCode: 422,
       statusMessage: "Download request could not be created",

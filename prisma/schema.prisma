@@ -760,7 +760,10 @@ model download_request {
 
 model download_user_details {
   id                 String               @id @db.Char(36)
-  email              String               @unique @db.VarChar
+  issuer             String               @db.VarChar
+  subject            String               @db.VarChar
+  idp                String?              @db.VarChar
+  email              String               @db.VarChar
   given_name         String?              @db.VarChar
   family_name        String?              @db.VarChar
   affiliation        String?              @db.VarChar
@@ -771,6 +774,7 @@ model download_user_details {
   download_agreement download_agreement[]
   download_request   download_request[]
 
+  @@unique([issuer, subject], name: "oidc_user_id")
   @@schema("download")
 }
 

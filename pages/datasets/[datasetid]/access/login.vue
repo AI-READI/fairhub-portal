@@ -48,24 +48,6 @@ const handleLogin = async () => {
     },
   );
 };
-
-const handleSubmit = async () => {
-  try {
-    await useFetch(`/api/downloads/userdetails/create`, {
-      headers: useRequestHeaders(["cookie"]),
-      method: "POST",
-    });
-    await navigateTo(`/datasets/${dataset.value?.id}/access/research-purpose`);
-  } catch (error) {
-    console.error(error);
-    push.error({
-      title: "Something went wrong",
-      message: "Could not save user details",
-    });
-
-    throw new Error("Could not save user details");
-  }
-};
 </script>
 
 <template>
@@ -130,14 +112,13 @@ const handleSubmit = async () => {
             <div v-if="authenticated">
               <p>Logged in as {{ userDescription }}.</p>
 
-              <n-button
-                size="large"
-                type="info"
-                secondary
-                class="my-3"
-                @click="handleSubmit"
-                >Next</n-button
+              <NuxtLink
+                :to="`/datasets/${dataset?.id}/access/research-purpose`"
               >
+                <n-button size="large" type="info" secondary class="my-3"
+                  >Next</n-button
+                >
+              </NuxtLink>
             </div>
 
             <div v-else>

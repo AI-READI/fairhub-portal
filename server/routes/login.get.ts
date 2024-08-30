@@ -3,6 +3,7 @@ import {
   AuthorizationCodeRequest,
 } from "@azure/msal-node";
 import createMsalClient from "../utils/msalClient";
+import { findOrCreateUserDetails } from "../utils/getOrCreateUserDetails";
 
 type StringIndexable = { [key: string]: unknown };
 
@@ -50,6 +51,11 @@ function getEmail(tokenResponse: AuthenticationResult): string {
     emailRegex.test(tokenResponse.account.username)
   ) {
     email = tokenResponse.account.username;
+  } else if (
+    "email" in tokenResponse.idTokenClaims &&
+    typeof tokenResponse.idTokenClaims.email === "string"
+  ) {
+    email = tokenResponse.idTokenClaims.email;
   } else if ("emails" in tokenResponse.idTokenClaims) {
     const emails = getTokenClaim({ ...tokenResponse.idTokenClaims }, "emails");
     email =
@@ -59,31 +65,37 @@ function getEmail(tokenResponse: AuthenticationResult): string {
   return email;
 }
 
-function convertTokenResponse(
-  tokenResponse: AuthenticationResult,
-): SessionUserDetails {
+async function convertTokenResponse(tokenResponse: AuthenticationResult) {
   const indexableClaims = { ...tokenResponse.idTokenClaims };
-  const id = getStringTokenClaim(indexableClaims, "oid");
+  const issuer = getStringTokenClaim(indexableClaims, "iss");
+  const subject = getStringTokenClaim(indexableClaims, "sub");
   const email = getEmail(tokenResponse);
 
-  if (!id) {
-    throw new Error("ID could not be extracted from token response");
+  if (!issuer) {
+    throw new Error("Issuer could not be extracted from token response");
+  }
+
+  if (!subject) {
+    throw new Error("Subject could not be extracted from token response");
   }
 
   if (!email) {
     throw new Error("Email could not be extracted from token response");
   }
 
-  return {
-    id,
+  const userDetails = await findOrCreateUserDetails({
     affiliation: getStringTokenClaim(indexableClaims, "affiliation"),
     email,
     family_name: getStringTokenClaim(indexableClaims, "family_name"),
     given_name: getStringTokenClaim(indexableClaims, "given_name"),
     idp: getStringTokenClaim(indexableClaims, "idp"),
+    issuer,
     organization: getStringTokenClaim(indexableClaims, "organization"),
     phone: getStringTokenClaim(indexableClaims, "phone"),
-  };
+    subject,
+  });
+
+  return userDetails;
 }
 
 function getTokenExpiration(
@@ -97,18 +109,18 @@ function getTokenExpiration(
 }
 
 function checkTokenIdPIsValid(tokenResponse: AuthenticationResult): boolean {
-  const cnRegex = /(\.edu\.cn\/)/;
-  const microsoftRegex = /(sts\.windows\.net)/;
-  const githubRegex = /github\.com/;
+  const forbiddenIdpPatterns = [
+    /(\.edu\.cn\/)/,
+    /(sts\.windows\.net)/,
+    /github\.com/,
+  ];
 
   const indexableClaims = { ...tokenResponse.idTokenClaims };
   const idpName = getStringTokenClaim(indexableClaims, "idp");
 
   return (
     idpName !== null &&
-    !cnRegex.test(idpName) &&
-    !microsoftRegex.test(idpName) &&
-    !githubRegex.test(idpName)
+    forbiddenIdpPatterns.every((pattern) => !pattern.test(idpName))
   );
 }
 
@@ -134,25 +146,13 @@ export default defineEventHandler(async (event) => {
   };
 
   try {
-    console.log(`\nQuery:\n${JSON.stringify(query)}`);
-    console.log(`\n\ntrying token request ${JSON.stringify(tokenRequest)}\n\n`);
     let redirectTo;
     const tokenResponse =
       await clientApplication.acquireTokenByCode(tokenRequest);
-    console.log(
-      `returned from token request: ${JSON.stringify(tokenResponse)}`,
-    );
 
-    // checking token for forbidden URL parameters
+    // check token for forbidden IdPs
     if (checkTokenIdPIsValid(tokenResponse)) {
-      // redirect to 404
-      console.log("caught in IdP; shouldn't be here");
-      let logoutUri = `${config.public.ENTRA_CONFIG.authority}/oauth2/v2.0/`;
-      logoutUri += `logout?post_logout_redirect_uri=${config.public.ENTRA_CONFIG.forbiddenUri}`;
-      redirectTo = logoutUri;
-    } else {
-      console.log("passed IdP Check");
-      const sessionUserDetails = convertTokenResponse(tokenResponse);
+      const sessionUserDetails = await convertTokenResponse(tokenResponse);
       const tokenExpiration = getTokenExpiration(tokenResponse);
 
       await session.update({
@@ -166,10 +166,16 @@ export default defineEventHandler(async (event) => {
       });
 
       redirectTo = query.state ? (query.state as string) : "/";
+    } else {
+      // redirect to 404
+      let logoutUri = `${config.public.ENTRA_CONFIG.authority}/oauth2/v2.0/`;
+      logoutUri += `logout?post_logout_redirect_uri=${config.public.ENTRA_CONFIG.forbiddenUri}`;
+      redirectTo = logoutUri;
     }
-    console.log(`redirecting to: ${redirectTo}`);
+
     await sendRedirect(event, redirectTo);
   } catch (error) {
+    console.error(error);
     throw createError({
       statusCode: 500,
       statusMessage: "Login could not be processed",
