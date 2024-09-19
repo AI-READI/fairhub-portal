@@ -295,21 +295,19 @@ model participant {
 }
 
 model published_dataset {
-  id                 String               @id @db.Char(36)
-  study_id           String               @db.VarChar
-  dataset_id         String               @db.VarChar
-  version_id         String               @db.VarChar
-  doi                String               @db.VarChar
-  title              String               @db.VarChar
-  description        String               @db.VarChar
-  version_title      String               @db.VarChar
-  study_title        String               @db.VarChar
-  published_metadata Json                 @db.Json
-  files              Json                 @db.Json
-  data               Json                 @db.Json
+  id                 String @id @db.Char(36)
+  study_id           String @db.VarChar
+  dataset_id         String @db.VarChar
+  version_id         String @db.VarChar
+  doi                String @db.VarChar
+  title              String @db.VarChar
+  description        String @db.VarChar
+  version_title      String @db.VarChar
+  study_title        String @db.VarChar
+  published_metadata Json   @db.Json
+  files              Json   @db.Json
+  data               Json   @db.Json
   created_at         BigInt
-  download_agreement download_agreement[]
-  download_request   download_request[]
 
   @@schema("public")
 }
@@ -732,84 +730,13 @@ model version_readme {
   @@schema("public")
 }
 
-model download_agreement {
-  id                    String                @id @db.Char(36)
-  user_details_id       String                @db.Char(36)
-  dataset_id            String                @db.Char(36)
-  research_purpose      String                @db.VarChar
-  license_accepted      Boolean
-  attestation_accepted  Boolean
-  created_at            BigInt
-  updated_on            BigInt
-  published_dataset     published_dataset     @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  download_user_details download_user_details @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  download_request      download_request[]
-
-  @@schema("download")
-}
-
-model download_request {
-  id                    String                    @id @db.Char(36)
-  user_details_id       String                    @db.Char(36)
-  dataset_id            String                    @db.Char(36)
-  download_agreement_id String                    @db.Char(36)
-  approval_id           String                    @db.Char(36)
-  folders_selected      Json                      @db.Json
-  status                download_status           @default(PENDING)
-  download_uri          String?                   @db.VarChar
-  download_key          String?                   @db.Text
-  secure_hash           String?                   @db.Char(64)
-  created_at            BigInt
-  updated_on            BigInt
-  published_dataset     published_dataset         @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  download_agreement    download_agreement        @relation(fields: [download_agreement_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  download_user_details download_user_details     @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  approval              download_request_approval @relation(fields: [approval_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@schema("download")
-}
-
 model download_request_approval {
-  id               String             @id @db.Char(36)
-  approval_status  approval_status    @default(AWAITING_APPROVAL)
-  updated_by       String?            @db.VarChar
-  created_at       BigInt
-  updated_on       BigInt
-  status_notes     String?            @db.Text
-  download_request download_request[]
-
-  @@schema("download")
-}
-
-model download_user_details {
-  id                 String               @id @db.Char(36)
-  email              String               @unique @db.VarChar
-  given_name         String?              @db.VarChar
-  family_name        String?              @db.VarChar
-  affiliation        String?              @db.VarChar
-  organization       String?              @db.VarChar
-  phone              String?              @db.VarChar
-  created_at         BigInt
-  updated_on         BigInt
-  download_agreement download_agreement[]
-  download_request   download_request[]
-
-  @@schema("download")
-}
-
-enum approval_status {
-  AWAITING_APPROVAL
-  NOT_APPROVED
-  APPROVED
-
-  @@schema("download")
-}
-
-enum download_status {
-  PENDING
-  PROCESSING
-  READY
-  EXPIRED
+  id              String  @id @db.Char(36)
+  approval_status String  @db.VarChar(255)
+  updated_by      String? @db.VarChar(255)
+  created_at      BigInt
+  updated_on      BigInt
+  status_notes    String?
 
   @@schema("download")
 }

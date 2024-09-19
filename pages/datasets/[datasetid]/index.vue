@@ -49,7 +49,10 @@ const tabs = reactive([
   },
 ]);
 const totalViewCount = ref(0);
+const totalDownloads = ref("");
+
 const totalViewCountSpinner = ref(true);
+const totalDownloadsSpinner = ref(true);
 
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
@@ -198,6 +201,23 @@ const getViewCount = async () => {
 };
 onMounted(() => {
   getViewCount();
+});
+
+const getDownloads = async () => {
+  await $fetch(`/api/viewDownload/${datasetid}`)
+    .then((data) => {
+      totalDownloads.value = data;
+      totalDownloadsSpinner.value = false;
+    })
+    .catch((err: string) => {
+      console.error("Error fetching download status", err);
+    })
+    .finally(() => {
+      totalDownloadsSpinner.value = false;
+    });
+};
+onMounted(() => {
+  getDownloads();
 });
 </script>
 
@@ -544,6 +564,19 @@ onMounted(() => {
                   </n-flex>
 
                   <span class="text-sm font-normal">Cited by</span>
+                </n-flex>
+
+                <n-flex vertical align="center" size="small">
+                  <n-flex size="small" align="center">
+                    <Icon name="ri:folder-download-line" size="16" />
+
+                      <p class="text-sm font-medium">
+                        {{ totalDownloads.toLowerCase() }}
+                      </p>
+                  </n-flex>
+
+                  <span class="text-sm font-normal">Downloads</span>
+
                 </n-flex>
               </n-flex>
             </n-flex>
