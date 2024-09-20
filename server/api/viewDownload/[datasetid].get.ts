@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
       dataset_id: datasetid,
     },
   });
-  const approvalId = request.map((m) => m.approval_id);
+  const approvalIds = request.map((m) => m.approval_id);
 
   const requestAccess = await prisma.download_request_approval.findMany({
     select: {
@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
     },
     where: {
       id: {
-        in: approvalId,
+        in: approvalIds,
       },
     },
   });
