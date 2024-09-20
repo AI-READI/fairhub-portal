@@ -565,14 +565,22 @@ onMounted(() => {
 
                   <span class="text-sm font-normal">Cited by</span>
                 </n-flex>
-
+                <div>
+                  <n-divider vertical />
+                </div>
                 <n-flex vertical align="center" size="small">
                   <n-flex size="small" align="center">
                     <Icon name="ri:folder-download-line" size="16" />
+                    <TransitionFade>
+                      <div v-if="totalDownloadsSpinner">
+                        <n-spin :size="12" />
+                      </div>
 
-                      <p class="text-sm font-medium">
+                      <div v-else class="text-sm font-medium">
                         {{ totalDownloads }}
-                      </p>
+                      </div>
+                    </TransitionFade>
+
                   </n-flex>
 
                   <span class="text-sm font-normal">Downloads</span>
