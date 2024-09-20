@@ -16,19 +16,28 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const datasetId = dataset.dataset_id;
+  const request = await prisma.download_request.findMany({
+    select: {
+      approval_id: true,
+    },
+    where: {
+      dataset_id: datasetid,
+    },
+  });
+  const approvalId = request.map((m) => m.approval_id);
 
-  // get all datasets with the same dataset_id
-  // This is the same as all versions of the same dataset in fairhub study management
-
-  const requestAproval = await prisma.download_request_approval.findUnique({
+  const requestAccess = await prisma.download_request_approval.findMany({
     select: {
       approval_status: true,
     },
     where: {
-      id: datasetId,
+      id: {
+        in: approvalId,
+      },
     },
   });
-
-  return requestAproval.approval_status;
+  const approvedRequests = requestAccess.filter(
+    (record) => record.approval_status.toUpperCase() === "APPROVED",
+  );
+  return approvedRequests.length;
 });

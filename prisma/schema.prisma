@@ -731,12 +731,81 @@ model version_readme {
 }
 
 model download_request_approval {
-  id              String  @id @db.Char(36)
-  approval_status String  @db.VarChar(255)
-  updated_by      String? @db.VarChar(255)
-  created_at      BigInt
-  updated_on      BigInt
-  status_notes    String?
+  id               String             @id @db.Char(36)
+  approval_status  String             @db.VarChar(255)
+  updated_by       String?            @db.VarChar(255)
+  created_at       BigInt
+  updated_on       BigInt
+  status_notes     String?
+  download_request download_request[]
+
+  @@schema("download")
+}
+
+model download_agreement {
+  id                    String                @id @db.Char(36)
+  user_details_id       String                @db.Char(36)
+  dataset_id            String                @db.Char(36)
+  research_purpose      String                @db.VarChar
+  license_accepted      Boolean
+  attestation_accepted  Boolean
+  created_at            BigInt
+  updated_on            BigInt
+  download_user_details download_user_details @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  download_request      download_request[]
+
+  @@schema("download")
+}
+
+model download_files {
+  id                  Int              @id @default(autoincrement())
+  download_request_id String           @db.Char(36)
+  created_at          DateTime         @db.Timestamp(6)
+  identifier          String           @db.Char(36)
+  seed                String           @db.Char(36)
+  salt                String           @db.Char(32)
+  input_file_hash     String           @db.Char(32)
+  output_file_hash    String           @db.Char(32)
+  input_file_path     String           @db.VarChar
+  output_file_path    String           @db.VarChar
+  download_request    download_request @relation(fields: [download_request_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("download")
+}
+
+model download_request {
+  id                        String                    @id @db.Char(36)
+  user_details_id           String                    @db.Char(36)
+  dataset_id                String                    @db.Char(36)
+  download_agreement_id     String                    @db.Char(36)
+  folders_selected          Json                      @db.Json
+  status                    String                    @db.VarChar
+  download_uri              String?                   @db.VarChar
+  download_key              String?
+  secure_hash               String?                   @db.Char(64)
+  created_at                BigInt
+  updated_on                BigInt
+  approval_id               String                    @db.Char(36)
+  download_files            download_files[]
+  download_agreement        download_agreement        @relation(fields: [download_agreement_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  download_request_approval download_request_approval @relation(fields: [approval_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "download_request_download_request_approval_id_fkey")
+  download_user_details     download_user_details     @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("download")
+}
+
+model download_user_details {
+  id                 String               @id @db.Char(36)
+  email              String               @unique @db.VarChar
+  given_name         String?              @db.VarChar
+  family_name        String?              @db.VarChar
+  affiliation        String?              @db.VarChar
+  organization       String?              @db.VarChar
+  phone              String?              @db.VarChar
+  created_at         BigInt
+  updated_on         BigInt
+  download_agreement download_agreement[]
+  download_request   download_request[]
 
   @@schema("download")
 }

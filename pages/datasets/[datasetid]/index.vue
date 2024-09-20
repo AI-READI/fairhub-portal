@@ -49,7 +49,7 @@ const tabs = reactive([
   },
 ]);
 const totalViewCount = ref(0);
-const totalDownloads = ref("");
+const totalDownloads = ref(0);
 
 const totalViewCountSpinner = ref(true);
 const totalDownloadsSpinner = ref(true);
@@ -571,7 +571,7 @@ onMounted(() => {
                     <Icon name="ri:folder-download-line" size="16" />
 
                       <p class="text-sm font-medium">
-                        {{ totalDownloads.toLowerCase() }}
+                        {{ totalDownloads }}
                       </p>
                   </n-flex>
 
