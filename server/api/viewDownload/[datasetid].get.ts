@@ -1,3 +1,16 @@
+async function sendLog(message: string) {
+  await fetch(
+    `https://logwatch.aireadi.org/api/log/cm1bg6iw70004yk6cqx5v0oyq`,
+    {
+      body: new URLSearchParams({
+        level: "debug",
+        message,
+      }),
+      method: "POST",
+    },
+  );
+}
+
 export default defineEventHandler(async (event) => {
   const { datasetid } = event.context.params as { datasetid: string };
 
@@ -16,6 +29,8 @@ export default defineEventHandler(async (event) => {
     });
   }
 
+  await sendLog(`Dataset ${datasetid} requested`);
+
   const request = await prisma.download_request.findMany({
     select: {
       approval_id: true,
@@ -24,6 +39,9 @@ export default defineEventHandler(async (event) => {
       dataset_id: datasetid,
     },
   });
+
+  await sendLog(`Requests for dataset ${datasetid}: ${request.length}`);
+
   const approvalIds = request.map((m) => m.approval_id);
 
   const requestAccess = await prisma.download_request_approval.findMany({
