@@ -42,7 +42,7 @@ export default defineEventHandler(async (event) => {
       prisma.download_request_approval.create({
         data: {
           id: approvalId,
-          approval_status: "AWAITING_APPROVAL",
+          approval_status: "APPROVED",
           created_at: timestamp,
           updated_on: timestamp,
         },
