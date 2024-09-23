@@ -57,5 +57,5 @@ export default defineEventHandler(async (event) => {
   const approvedRequests = requestAccess.filter(
     (record) => record.approval_status.toUpperCase() === "APPROVED",
   );
-  return approvedRequests.length;
+  return requestAccess.length;
 });
