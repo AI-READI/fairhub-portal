@@ -39,9 +39,6 @@ export default defineEventHandler(async (event) => {
       dataset_id: datasetid,
     },
   });
-
-  await sendLog(`Requests for dataset ${datasetid}: ${request.length}`);
-
   const approvalIds = request.map((m) => m.approval_id);
 
   const requestAccess = await prisma.download_request_approval.findMany({
@@ -57,5 +54,5 @@ export default defineEventHandler(async (event) => {
   const approvedRequests = requestAccess.filter(
     (record) => record.approval_status.toUpperCase() === "APPROVED",
   );
-  return requestAccess.length;
+  return approvedRequests.length;
 });
