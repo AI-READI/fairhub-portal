@@ -49,10 +49,10 @@ const tabs = reactive([
   },
 ]);
 const totalViewCount = ref(0);
-const totalDownloads = ref(0);
+const totalDownloadApprovals = ref(0);
 
 const totalViewCountSpinner = ref(true);
-const totalDownloadsSpinner = ref(true);
+const totalDownloadApprovalSpinner = ref(true);
 
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
@@ -199,24 +199,22 @@ const getViewCount = async () => {
       totalViewCountSpinner.value = false;
     });
 };
-onMounted(() => {
-  getViewCount();
-});
 
 const getDownloads = async () => {
   await $fetch(`/api/viewDownload/${datasetid}`)
     .then((data) => {
-      totalDownloads.value = data;
-      totalDownloadsSpinner.value = false;
+      totalDownloadApprovals.value = data;
+      totalDownloadApprovalSpinner.value = false;
     })
     .catch((err: string) => {
       console.error("Error fetching download status", err);
     })
     .finally(() => {
-      totalDownloadsSpinner.value = false;
+      totalDownloadApprovalSpinner.value = false;
     });
 };
 onMounted(() => {
+  getViewCount();
   getDownloads();
 });
 </script>
@@ -564,27 +562,30 @@ onMounted(() => {
                   </n-flex>
 
                   <span class="text-sm font-normal">Cited by</span>
-                     </n-flex>
+                </n-flex>
+
                 <div>
                   <n-divider vertical />
                 </div>
+
                 <n-flex vertical align="center" size="small">
                   <n-flex size="small" align="center">
                     <Icon name="ri:folder-download-line" size="16" />
+
                     <TransitionFade>
-                      <div v-if="totalDownloadsSpinner">
+                      <div v-if="totalDownloadApprovalSpinner">
                         <n-spin :size="12" />
                       </div>
 
                       <div v-else class="text-sm font-medium">
-                        {{ totalDownloads }}
+                        {{ totalDownloadApprovals }}
                       </div>
                     </TransitionFade>
-
                   </n-flex>
 
-                  <span class="text-sm font-normal">Downloads</span>
+                  <span class="text-sm font-normal">Download</span>
 
+                  <span class="text-sm font-normal">approvals</span>
                 </n-flex>
               </n-flex>
             </n-flex>
