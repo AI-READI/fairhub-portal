@@ -1,16 +1,3 @@
-async function sendLog(message: string) {
-  await fetch(
-    `https://logwatch.aireadi.org/api/log/cm1bg6iw70004yk6cqx5v0oyq`,
-    {
-      body: new URLSearchParams({
-        level: "debug",
-        message,
-      }),
-      method: "POST",
-    },
-  );
-}
-
 export default defineEventHandler(async (event) => {
   const { datasetid } = event.context.params as { datasetid: string };
 
@@ -28,8 +15,6 @@ export default defineEventHandler(async (event) => {
       statusCode: 404,
     });
   }
-
-  await sendLog(`Dataset ${datasetid} requested`);
 
   const request = await prisma.download_request.findMany({
     select: {
