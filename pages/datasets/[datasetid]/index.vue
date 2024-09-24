@@ -501,7 +501,7 @@ onMounted(() => {
               vertical
               class="rounded-xl border border-blue-200 bg-white px-1 py-4"
             >
-              <n-flex justify="center" align="center">
+              <n-flex justify="center" align="top">
                 <n-flex vertical align="center" size="small">
                   <n-flex size="small" align="center">
                     <Icon name="lets-icons:view-duotone" size="23" />
@@ -583,9 +583,9 @@ onMounted(() => {
                     </TransitionFade>
                   </n-flex>
 
-                  <span class="text-sm font-normal">Download</span>
-
-                  <span class="text-sm font-normal">approvals</span>
+                  <span class="max-w-[60px] text-sm font-normal"
+                    >Download approvals</span
+                  >
                 </n-flex>
               </n-flex>
             </n-flex>
