@@ -26,7 +26,6 @@ function getStringTokenClaim(
   if (typeof claimValue === "string") {
     return claimValue;
   }
-
   return null;
 }
 
@@ -69,6 +68,7 @@ async function convertTokenResponse(tokenResponse: AuthenticationResult) {
   const indexableClaims = { ...tokenResponse.idTokenClaims };
   const issuer = getStringTokenClaim(indexableClaims, "iss");
   const subject = getStringTokenClaim(indexableClaims, "sub");
+  // const id = getStringTokenClaim(indexableClaims, "oid");
   const email = getEmail(tokenResponse);
 
   if (!issuer) {
@@ -108,20 +108,31 @@ function getTokenExpiration(
   return expiration ?? defaultExpiration;
 }
 
-function checkTokenIdPIsValid(tokenResponse: AuthenticationResult): boolean {
-  const forbiddenIdpPatterns = [
-    /(\.edu\.cn\/)/,
-    /(sts\.windows\.net)/,
-    /github\.com/,
+function checkTokenIdPIsValid(tokenResponse: AuthenticationResult): string {
+  const adversarialIdpPatterns = [
+    /(\.cn\/)/, // People's Republic of China
+    /(\.hk\/)/, // Hong Kong
+    /(\.ve\/)/, // Venezuela
+    /(\.cu\/)/, // Cuba
+    /(\.ir\/)/, // Iran
+    /(\.kp\/)/, // Democratic People's Republic of Korea
+    /(\.ru\/)/, // Russian Federation
   ];
+  const selfAttestationIdPPatterns = [/(sts\.windows\.net)/, /github\.com/];
 
   const indexableClaims = { ...tokenResponse.idTokenClaims };
   const idpName = getStringTokenClaim(indexableClaims, "idp");
 
-  return (
-    idpName !== null &&
-    forbiddenIdpPatterns.every((pattern) => !pattern.test(idpName))
-  );
+  if (idpName === null) {
+    return "invalid";
+  }
+  if (selfAttestationIdPPatterns.some((pattern) => pattern.test(idpName))) {
+    return "invalid";
+  }
+  if (adversarialIdpPatterns.some((pattern) => pattern.test(idpName))) {
+    return "adversarial";
+  }
+  return "valid";
 }
 
 /**
@@ -150,11 +161,15 @@ export default defineEventHandler(async (event) => {
     const tokenResponse =
       await clientApplication.acquireTokenByCode(tokenRequest);
 
+    const idpType = checkTokenIdPIsValid(tokenResponse);
+
+    console.log(`Got here with IDPTYPE: ${idpType}`);
+
     // check token for forbidden IdPs
-    if (checkTokenIdPIsValid(tokenResponse)) {
+    if (idpType === "valid") {
+      console.log("valid");
       const sessionUserDetails = await convertTokenResponse(tokenResponse);
       const tokenExpiration = getTokenExpiration(tokenResponse);
-
       await session.update({
         auth: {
           idToken: tokenResponse.idToken,
@@ -169,7 +184,7 @@ export default defineEventHandler(async (event) => {
     } else {
       // redirect to 404
       let logoutUri = `${config.public.ENTRA_CONFIG.authority}/oauth2/v2.0/`;
-      logoutUri += `logout?post_logout_redirect_uri=${config.public.ENTRA_CONFIG.forbiddenUri}`;
+      logoutUri += `logout?post_logout_redirect_uri=${config.public.ENTRA_CONFIG.forbiddenUri}?type=${encodeURIComponent(idpType)}`;
       redirectTo = logoutUri;
     }
 

@@ -1,15 +1,34 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const route = useRoute();
+
+const { badIdPType } = route.params as { badIdPType: string };
+</script>
 
 <template>
   <main class="flex h-full w-full flex-col items-center px-12 py-12">
-    <div class="font-dark text-5xl font-bold">404</div>
+    <div class="font-dark text-5xl font-bold">403: Forbidden</div>
 
     <p class="text-2xl font-light leading-normal md:text-3xl">
-      Sorry, but the IdP you have used is not permitted to access project
+      We're sorry, but the IdP you have used is not permitted to access project
       resources.
     </p>
 
-    <p class="mb-8">
+    <div v-if="badIdPType === 'adversarial'">
+      <p class="text-2xl font-light leading-normal md:text-3xl">
+        You have been directed to this page because you have authenticated using
+        an Identity Provider that is based in a country that has been designated
+        by the U.S. Department of Commerce as a United States Foreign Adversary.
+      </p>
+    </div>
+
+    <div v-else>
+      <p class="text-2xl font-light leading-normal md:text-3xl">
+        The Identity Provider you have utilized has not been verified by the
+        Data Access committee to provide sufficiently secure user attestation.
+      </p>
+    </div>
+
+    <p class="md:text-3xl">
       If you believe you were directed here mistakenly, please contact the
       <a href="mailto:fairhub@ohsu.edu">Data Access Committee</a>.
     </p>
