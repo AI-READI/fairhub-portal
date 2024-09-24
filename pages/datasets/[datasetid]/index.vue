@@ -565,9 +565,9 @@ onMounted(() => {
                 </n-flex>
               </n-flex>
 
-              <div class="access-provided w-1/5">
-                <n-divider />
-              </div>
+              <div
+                class="mb-[8px] mt-[8px] h-[1px] w-[60%] w-full bg-gray-100"
+              ></div>
 
               <n-flex vertical align="center" size="small">
                 <n-flex size="small" align="center">
