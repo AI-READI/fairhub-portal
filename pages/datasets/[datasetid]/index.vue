@@ -499,9 +499,9 @@ onMounted(() => {
           <n-flex vertical class="col-span-2">
             <n-flex
               vertical
-              class="rounded-xl border border-blue-200 bg-white px-1 py-4"
+              class="items-center rounded-xl border border-blue-200 bg-white px-1 py-4"
             >
-              <n-flex justify="center" align="top">
+              <n-flex justify="center" align="center">
                 <n-flex vertical align="center" size="small">
                   <n-flex size="small" align="center">
                     <Icon name="lets-icons:view-duotone" size="23" />
@@ -563,30 +563,28 @@ onMounted(() => {
 
                   <span class="text-sm font-normal">Cited by</span>
                 </n-flex>
+              </n-flex>
 
-                <div>
-                  <n-divider vertical />
-                </div>
+              <div class="access-provided w-1/5">
+                <n-divider />
+              </div>
 
-                <n-flex vertical align="center" size="small">
-                  <n-flex size="small" align="center">
-                    <Icon name="ri:folder-download-line" size="16" />
+              <n-flex vertical align="center" size="small">
+                <n-flex size="small" align="center">
+                  <Icon name="ri:folder-download-line" size="16" />
 
-                    <TransitionFade>
-                      <div v-if="totalDownloadApprovalSpinner">
-                        <n-spin :size="12" />
-                      </div>
+                  <TransitionFade>
+                    <div v-if="totalDownloadApprovalSpinner">
+                      <n-spin :size="12" />
+                    </div>
 
-                      <div v-else class="text-sm font-medium">
-                        {{ totalDownloadApprovals }}
-                      </div>
-                    </TransitionFade>
-                  </n-flex>
-
-                  <span class="max-w-[60px] text-sm font-normal"
-                    >Access provided</span
-                  >
+                    <div v-else class="text-sm font-medium">
+                      {{ totalDownloadApprovals }}
+                    </div>
+                  </TransitionFade>
                 </n-flex>
+
+                <span class="text-sm font-normal">Access provided</span>
               </n-flex>
             </n-flex>
 

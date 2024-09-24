@@ -269,3 +269,6 @@ body {
   min-width: 19rem;
 }
 
+.access-provided .n-divider {
+  margin: 1em 0 1em 0;
+}
