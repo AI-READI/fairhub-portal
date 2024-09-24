@@ -584,7 +584,7 @@ onMounted(() => {
                   </n-flex>
 
                   <span class="max-w-[60px] text-sm font-normal"
-                    >Download approvals</span
+                    >Access provided</span
                   >
                 </n-flex>
               </n-flex>
