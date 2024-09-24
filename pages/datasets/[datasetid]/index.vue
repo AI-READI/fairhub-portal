@@ -49,7 +49,10 @@ const tabs = reactive([
   },
 ]);
 const totalViewCount = ref(0);
+const totalDownloads = ref(0);
+
 const totalViewCountSpinner = ref(true);
+const totalDownloadsSpinner = ref(true);
 
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
@@ -198,6 +201,23 @@ const getViewCount = async () => {
 };
 onMounted(() => {
   getViewCount();
+});
+
+const getDownloads = async () => {
+  await $fetch(`/api/viewDownload/${datasetid}`)
+    .then((data) => {
+      totalDownloads.value = data;
+      totalDownloadsSpinner.value = false;
+    })
+    .catch((err: string) => {
+      console.error("Error fetching download status", err);
+    })
+    .finally(() => {
+      totalDownloadsSpinner.value = false;
+    });
+};
+onMounted(() => {
+  getDownloads();
 });
 </script>
 
@@ -544,6 +564,27 @@ onMounted(() => {
                   </n-flex>
 
                   <span class="text-sm font-normal">Cited by</span>
+                     </n-flex>
+                <div>
+                  <n-divider vertical />
+                </div>
+                <n-flex vertical align="center" size="small">
+                  <n-flex size="small" align="center">
+                    <Icon name="ri:folder-download-line" size="16" />
+                    <TransitionFade>
+                      <div v-if="totalDownloadsSpinner">
+                        <n-spin :size="12" />
+                      </div>
+
+                      <div v-else class="text-sm font-medium">
+                        {{ totalDownloads }}
+                      </div>
+                    </TransitionFade>
+
+                  </n-flex>
+
+                  <span class="text-sm font-normal">Downloads</span>
+
                 </n-flex>
               </n-flex>
             </n-flex>
