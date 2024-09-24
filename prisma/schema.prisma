@@ -731,9 +731,9 @@ model version_readme {
 }
 
 model download_request_approval {
-  id               String             @id @db.Char(36)
-  approval_status  String             @db.VarChar(255)
-  updated_by       String?            @db.VarChar(255)
+  id               String               @id @db.Char(36)
+  approval_status  approval_status_enum
+  updated_by       String?              @db.VarChar(255)
   created_at       BigInt
   updated_on       BigInt
   status_notes     String?
@@ -806,6 +806,14 @@ model download_user_details {
   updated_on         BigInt
   download_agreement download_agreement[]
   download_request   download_request[]
+
+  @@schema("download")
+}
+
+enum approval_status_enum {
+  APPROVED
+  AWAITING_APPROVAL
+  NOT_APPROVED
 
   @@schema("download")
 }
