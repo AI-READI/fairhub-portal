@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute();
 
-const { badIdPType } = route.params as { badIdPType: string };
+const other = route.query.type;
 </script>
 
 <template>
@@ -13,7 +13,7 @@ const { badIdPType } = route.params as { badIdPType: string };
       resources.
     </p>
 
-    <div v-if="badIdPType === 'adversarial'">
+    <div v-if="other === 'adversarial'">
       <p class="text-2xl font-light leading-normal md:text-3xl">
         You have been directed to this page because you have authenticated using
         an Identity Provider that is based in a country that has been designated
