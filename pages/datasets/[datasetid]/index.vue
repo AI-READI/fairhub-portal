@@ -49,7 +49,10 @@ const tabs = reactive([
   },
 ]);
 const totalViewCount = ref(0);
+const totalDownloadApprovals = ref(0);
+
 const totalViewCountSpinner = ref(true);
+const totalDownloadApprovalSpinner = ref(true);
 
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
@@ -196,8 +199,23 @@ const getViewCount = async () => {
       totalViewCountSpinner.value = false;
     });
 };
+
+const getDownloads = async () => {
+  await $fetch(`/api/viewDownload/${datasetid}`)
+    .then((data) => {
+      totalDownloadApprovals.value = data;
+      totalDownloadApprovalSpinner.value = false;
+    })
+    .catch((err: string) => {
+      console.error("Error fetching download status", err);
+    })
+    .finally(() => {
+      totalDownloadApprovalSpinner.value = false;
+    });
+};
 onMounted(() => {
   getViewCount();
+  getDownloads();
 });
 </script>
 
@@ -481,7 +499,7 @@ onMounted(() => {
           <n-flex vertical class="col-span-2">
             <n-flex
               vertical
-              class="rounded-xl border border-blue-200 bg-white px-1 py-4"
+              class="items-center rounded-xl border border-blue-200 bg-white px-1 py-4"
             >
               <n-flex justify="center" align="center">
                 <n-flex vertical align="center" size="small">
@@ -545,6 +563,26 @@ onMounted(() => {
 
                   <span class="text-sm font-normal">Cited by</span>
                 </n-flex>
+              </n-flex>
+
+              <div class="mb-[8px] mt-[8px] h-[1px] w-[60%] bg-gray-100"></div>
+
+              <n-flex vertical align="center" size="small">
+                <n-flex size="small" align="center">
+                  <Icon name="ri:folder-download-line" size="16" />
+
+                  <TransitionFade>
+                    <div v-if="totalDownloadApprovalSpinner">
+                      <n-spin :size="12" />
+                    </div>
+
+                    <div v-else class="text-sm font-medium">
+                      {{ totalDownloadApprovals }}
+                    </div>
+                  </TransitionFade>
+                </n-flex>
+
+                <span class="text-sm font-normal">Access approved</span>
               </n-flex>
             </n-flex>
 
