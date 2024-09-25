@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute();
 
-const other = route.query.type;
+const badIdPType = route.query.type;
 </script>
 
 <template>
@@ -13,7 +13,7 @@ const other = route.query.type;
       resources.
     </p>
 
-    <div v-if="other === 'adversarial'">
+    <div v-if="badIdPType === 'adversarial'">
       <p class="text-2xl font-light leading-normal md:text-3xl">
         You have been directed to this page because you have authenticated using
         an Identity Provider that is based in a country that has been designated
@@ -30,7 +30,7 @@ const other = route.query.type;
 
     <p class="md:text-3xl">
       If you believe you were directed here mistakenly, please contact the
-      <a href="mailto:fairhub@ohsu.edu">Data Access Committee</a>.
+      <a href="mailto:aireadi-dac@ohsu.edu">Data Access Committee</a>.
     </p>
 
     <a href="/">
