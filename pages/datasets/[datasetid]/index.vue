@@ -582,7 +582,7 @@ onMounted(() => {
                   </TransitionFade>
                 </n-flex>
 
-                <span class="text-sm font-normal">Access provided</span>
+                <span class="text-sm font-normal">Access approved</span>
               </n-flex>
             </n-flex>
 
