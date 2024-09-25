@@ -68,7 +68,6 @@ async function convertTokenResponse(tokenResponse: AuthenticationResult) {
   const indexableClaims = { ...tokenResponse.idTokenClaims };
   const issuer = getStringTokenClaim(indexableClaims, "iss");
   const subject = getStringTokenClaim(indexableClaims, "sub");
-  // const id = getStringTokenClaim(indexableClaims, "oid");
   const email = getEmail(tokenResponse);
 
   if (!issuer) {
