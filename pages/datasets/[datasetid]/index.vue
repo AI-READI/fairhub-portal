@@ -587,7 +587,7 @@ onMounted(() => {
                           {{ totalDownloadApprovals }}
                         </div>
 
-                        <div v-if="currentTab === 'v'">
+                        <div v-if="currentTab === 'allVersions'">
                           {{ totalDownloadApprovalforAllVersions }}
                         </div>
                       </div>
@@ -620,7 +620,7 @@ onMounted(() => {
                 <n-tabs v-model:value="currentTab" type="segment">
                   <n-tab name="currentVersion" default>Current version </n-tab>
 
-                  <n-tab name="v"> All versions </n-tab>
+                  <n-tab name="allVersions"> All versions </n-tab>
                 </n-tabs>
               </div>
 
