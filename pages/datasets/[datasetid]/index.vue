@@ -50,6 +50,8 @@ const tabs = reactive([
 ]);
 const totalViewCount = ref(0);
 const totalDownloadApprovals = ref(0);
+const totalDownloadApprovalforAllVersions = ref(0);
+const currentTab = ref("currentVersion");
 
 const totalViewCountSpinner = ref(true);
 const totalDownloadApprovalSpinner = ref(true);
@@ -203,7 +205,8 @@ const getViewCount = async () => {
 const getDownloads = async () => {
   await $fetch(`/api/viewDownload/${datasetid}`)
     .then((data) => {
-      totalDownloadApprovals.value = data;
+      totalDownloadApprovals.value = data[0];
+      totalDownloadApprovalforAllVersions.value = data[1];
       totalDownloadApprovalSpinner.value = false;
     })
     .catch((err: string) => {
@@ -499,121 +502,128 @@ onMounted(() => {
           <n-flex vertical class="col-span-2">
             <n-flex
               vertical
-              class="items-center rounded-xl border border-blue-200 bg-white px-1 py-4"
+              class="items-center justify-center rounded-xl border border-blue-200 bg-white px-4 py-4"
             >
-              <n-flex justify="center" align="center">
+              <div>
+                <n-flex justify="center" align="center">
+                  <n-flex vertical align="center" size="small">
+                    <n-flex size="small" align="center">
+                      <Icon name="lets-icons:view-duotone" size="23" />
+
+                      <TransitionFade>
+                        <div v-if="totalViewCountSpinner">
+                          <n-spin :size="12" />
+                        </div>
+
+                        <div v-else class="text-sm font-medium">
+                          {{ totalViewCount }}
+                        </div>
+                      </TransitionFade>
+                    </n-flex>
+
+                    <NuxtLink
+                      target="_blank"
+                      :to="`${config.public.UMAMI_SHARE_URL}?url=${encodeURIComponent(
+                        '/datasets/' + dataset?.id,
+                      )}`"
+                      class="hidden text-sm font-medium text-sky-500 transition-all hover:text-sky-700"
+                    >
+                      <n-flex size="small" align="center">
+                        <Icon name="lets-icons:view-duotone" size="23" />
+
+                        <p class="text-sm font-medium">
+                          {{ totalViewCount }}
+                        </p>
+                      </n-flex>
+                    </NuxtLink>
+
+                    <span class="text-sm font-normal">Views</span>
+                  </n-flex>
+
+                  <div class="hidden">
+                    <n-divider vertical />
+                  </div>
+
+                  <n-flex vertical align="center" size="small" class="!hidden">
+                    <n-flex size="small" align="center">
+                      <Icon name="ic:round-download" size="18" />
+
+                      <p class="text-sm font-medium">0</p>
+                    </n-flex>
+
+                    <span class="text-sm font-normal">Access requested</span>
+                  </n-flex>
+
+                  <div>
+                    <n-divider vertical />
+                  </div>
+
+                  <n-flex vertical align="center" size="small">
+                    <n-flex size="small" align="center">
+                      <Icon name="bi:journal-text" size="16" />
+
+                      <p class="text-sm font-medium">0</p>
+                    </n-flex>
+
+                    <span class="text-sm font-normal">Cited by</span>
+                  </n-flex>
+
+                  <div
+                    class="mb-[8px] mt-[8px] h-[1px] w-full bg-gray-100"
+                  ></div>
+                </n-flex>
+
                 <n-flex vertical align="center" size="small">
                   <n-flex size="small" align="center">
-                    <Icon name="lets-icons:view-duotone" size="23" />
+                    <Icon name="ri:folder-download-line" size="16" />
 
                     <TransitionFade>
-                      <div v-if="totalViewCountSpinner">
+                      <div v-if="totalDownloadApprovalSpinner">
                         <n-spin :size="12" />
                       </div>
 
                       <div v-else class="text-sm font-medium">
-                        {{ totalViewCount }}
+                        <div v-if="currentTab === 'currentVersion'">
+                          {{ totalDownloadApprovals }}
+                        </div>
+
+                        <div v-if="currentTab === 'v'">
+                          {{ totalDownloadApprovalforAllVersions }}
+                        </div>
                       </div>
                     </TransitionFade>
                   </n-flex>
 
-                  <NuxtLink
-                    target="_blank"
-                    :to="`${config.public.UMAMI_SHARE_URL}?url=${encodeURIComponent(
-                      '/datasets/' + dataset?.id,
-                    )}`"
-                    class="hidden text-sm font-medium text-sky-500 transition-all hover:text-sky-700"
-                  >
-                    <n-flex size="small" align="center">
-                      <Icon name="lets-icons:view-duotone" size="23" />
+                  <span class="text-sm font-normal"
+                    >Access approved
+                    <n-popover placement="bottom" trigger="hover">
+                      <template #trigger>
+                        <span class="ml-1">
+                          <Icon
+                            name="ic:outline-info"
+                            color="#2080f0"
+                            size="16"
+                          />
+                        </span>
+                      </template>
 
-                      <p class="text-sm font-medium">
-                        {{ totalViewCount }}
-                      </p>
-                    </n-flex>
-                  </NuxtLink>
-
-                  <span class="text-sm font-normal">Views</span>
+                      <span class="text-xs">
+                        Number of access granted to all versions of this
+                        dataset</span
+                      >
+                    </n-popover>
+                  </span>
                 </n-flex>
+              </div>
 
-                <div class="hidden">
-                  <n-divider vertical />
-                </div>
+              <div class="mt-4 w-full">
+                <n-tabs v-model:value="currentTab" type="segment">
+                  <n-tab name="currentVersion" default>Current version </n-tab>
 
-                <n-flex vertical align="center" size="small" class="!hidden">
-                  <n-flex size="small" align="center">
-                    <Icon name="ic:round-download" size="18" />
+                  <n-tab name="v"> All versions </n-tab>
+                </n-tabs>
+              </div>
 
-                    <p class="text-sm font-medium">0</p>
-                  </n-flex>
-
-                  <span class="text-sm font-normal">Access requested</span>
-                </n-flex>
-
-                <div>
-                  <n-divider vertical />
-                </div>
-
-                <n-flex vertical align="center" size="small">
-                  <n-flex size="small" align="center">
-                    <Icon name="bi:journal-text" size="16" />
-
-                    <p class="text-sm font-medium">0</p>
-                  </n-flex>
-
-                  <span class="text-sm font-normal">Cited by</span>
-                </n-flex>
-              </n-flex>
-
-              <div class="mb-[8px] mt-[8px] h-[1px] w-[60%] bg-gray-100"></div>
-
-              <n-flex vertical align="center" size="small">
-                <n-flex size="small" align="center">
-                  <Icon name="ri:folder-download-line" size="16" />
-
-                  <TransitionFade>
-                    <div v-if="totalDownloadApprovalSpinner">
-                      <n-spin :size="12" />
-                    </div>
-
-                    <div v-else class="text-sm font-medium">
-                      {{ totalDownloadApprovals }}
-                    </div>
-                  </TransitionFade>
-                </n-flex>
-
-                <span class="text-sm font-normal"
-                  >Access approved
-                  <n-popover placement="bottom" trigger="hover">
-                    <template #trigger>
-                      <span class="ml-1">
-                        <Icon
-                          name="ic:outline-info"
-                          color="#2080f0"
-                          size="16"
-                        />
-                      </span>
-                    </template>
-
-                    <span class="text-xs">
-                      Number of access granted to all versions of this
-                      dataset</span
-                    >
-                  </n-popover>
-                </span>
-              </n-flex>
-
-              <!--                <div>-->
-              <!--                  <n-tabs type="segment" animated>-->
-              <!--                    <n-tab-pane name="oasis" tab=" This version">-->
-              <!--                      This version-->
-              <!--                    </n-tab-pane>-->
-
-              <!--                    <n-tab-pane name="jay chou" tab="All versions">-->
-              <!--                      All versions-->
-              <!--                    </n-tab-pane>-->
-              <!--                  </n-tabs>-->
-              <!--                </div>-->
             </n-flex>
 
             <SideDatasetSize
