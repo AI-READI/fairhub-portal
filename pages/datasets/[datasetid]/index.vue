@@ -582,8 +582,38 @@ onMounted(() => {
                   </TransitionFade>
                 </n-flex>
 
-                <span class="text-sm font-normal">Access approved</span>
+                <span class="text-sm font-normal"
+                  >Access approved
+                  <n-popover placement="bottom" trigger="hover">
+                    <template #trigger>
+                      <span class="ml-1">
+                        <Icon
+                          name="ic:outline-info"
+                          color="#2080f0"
+                          size="16"
+                        />
+                      </span>
+                    </template>
+
+                    <span class="text-xs">
+                      Number of access granted to all versions of this
+                      dataset</span
+                    >
+                  </n-popover>
+                </span>
               </n-flex>
+
+              <!--                <div>-->
+              <!--                  <n-tabs type="segment" animated>-->
+              <!--                    <n-tab-pane name="oasis" tab=" This version">-->
+              <!--                      This version-->
+              <!--                    </n-tab-pane>-->
+
+              <!--                    <n-tab-pane name="jay chou" tab="All versions">-->
+              <!--                      All versions-->
+              <!--                    </n-tab-pane>-->
+              <!--                  </n-tabs>-->
+              <!--                </div>-->
             </n-flex>
 
             <SideDatasetSize
