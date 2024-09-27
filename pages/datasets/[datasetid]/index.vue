@@ -216,10 +216,12 @@ const getDownloads = async () => {
       totalDownloadApprovalSpinner.value = false;
     });
 };
+
 onMounted(() => {
   getViewCount();
   getDownloads();
 });
+
 const onTabChange = (newTab: string) => {
   totalDownloadApprovalSpinner.value = true;
 
@@ -227,7 +229,7 @@ const onTabChange = (newTab: string) => {
   setTimeout(() => {
     totalDownloadApprovalSpinner.value = false;
     tabContent.value =
-      newTab === "currentVersion" ? "Content for current version" : "Content for all versions";
+      newTab === "currentVersion" ? totalDownloadApprovals : totalDownloadApprovalforAllVersions;
   }, 700); // 500ms delay
 };
 </script>
