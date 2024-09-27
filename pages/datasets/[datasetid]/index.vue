@@ -225,12 +225,9 @@ onMounted(() => {
 const onTabChange = (newTab: string) => {
   totalDownloadApprovalSpinner.value = true;
 
-  // Simulate a delay (e.g., 500ms) before showing the content
   setTimeout(() => {
     totalDownloadApprovalSpinner.value = false;
-    tabContent.value =
-      newTab === "currentVersion" ? totalDownloadApprovals : totalDownloadApprovalforAllVersions;
-  }, 700); // 500ms delay
+  }, 700);
 };
 </script>
 
