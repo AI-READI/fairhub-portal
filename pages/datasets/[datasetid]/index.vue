@@ -220,6 +220,16 @@ onMounted(() => {
   getViewCount();
   getDownloads();
 });
+const onTabChange = (newTab: string) => {
+  totalDownloadApprovalSpinner.value = true;
+
+  // Simulate a delay (e.g., 500ms) before showing the content
+  setTimeout(() => {
+    totalDownloadApprovalSpinner.value = false;
+    tabContent.value =
+      newTab === "currentVersion" ? "Content for current version" : "Content for all versions";
+  }, 700); // 500ms delay
+};
 </script>
 
 <template>
@@ -617,14 +627,18 @@ onMounted(() => {
               </div>
 
               <div class="mt-4 w-full">
-                <n-tabs justify-content="space-evenly" v-model:value="currentTab" type="bar" animated>
-                  <n-tab name="currentVersion" default >Current version
-                  </n-tab>
+                <n-tabs
+                  v-model:value="currentTab"
+                  justify-content="space-evenly"
+                  type="bar"
+                  animated
+                  @update:value="onTabChange"
+                >
+                  <n-tab name="currentVersion" default>Current version </n-tab>
 
                   <n-tab name="allVersions"> All versions </n-tab>
                 </n-tabs>
               </div>
-
             </n-flex>
 
             <SideDatasetSize
