@@ -617,8 +617,9 @@ onMounted(() => {
               </div>
 
               <div class="mt-4 w-full">
-                <n-tabs v-model:value="currentTab" type="segment">
-                  <n-tab name="currentVersion" default>Current version </n-tab>
+                <n-tabs justify-content="space-evenly" v-model:value="currentTab" type="bar" animated>
+                  <n-tab name="currentVersion" default >Current version
+                  </n-tab>
 
                   <n-tab name="allVersions"> All versions </n-tab>
                 </n-tabs>
