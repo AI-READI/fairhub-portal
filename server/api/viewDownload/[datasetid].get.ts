@@ -7,6 +7,12 @@ export default defineEventHandler(async (event) => {
     },
   });
 
+  const allVersions = await prisma.published_dataset.findMany({
+    where: {
+      dataset_id: dataset?.id,
+    },
+  });
+
   if (!dataset) {
     console.log(`Dataset ${datasetid} not found`);
 
@@ -24,9 +30,15 @@ export default defineEventHandler(async (event) => {
       dataset_id: datasetid,
     },
   });
+
   const requestforAllVersions = await prisma.download_request.findMany({
     select: {
       approval_id: true,
+    },
+    where: {
+      dataset_id: {
+        in: allVersions.map((m) => m.id),
+      },
     },
   });
 
@@ -61,6 +73,7 @@ export default defineEventHandler(async (event) => {
   const approvedRequests = requestAccess.filter(
     (record) => record.approval_status.toUpperCase() === "APPROVED",
   );
+
   const approvedRequestsForAllVersions = requestAccessForAllVersions.filter(
     (record) => record.approval_status.toUpperCase() === "APPROVED",
   );
