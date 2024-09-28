@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
 
   const allVersions = await prisma.published_dataset.findMany({
     where: {
-      dataset_id: dataset?.id,
+      dataset_id: dataset?.dataset_id,
     },
   });
 
