@@ -189,7 +189,9 @@ const generateCombinedFullName = (name: string) => {
 };
 
 const getViewCount = async () => {
-  await $fetch(`/api/viewCount/${datasetid}`)
+  await $fetch(
+    `/api/viewCount/${datasetid}${currentTab.value === "allVersions" ? "/all" : ""}`,
+  )
     .then((data) => {
       totalViewCount.value = data;
       totalViewCountSpinner.value = false;
@@ -224,6 +226,8 @@ onMounted(() => {
 
 const onTabChange = (newTab: string) => {
   totalDownloadApprovalSpinner.value = true;
+
+  getViewCount();
 
   setTimeout(() => {
     totalDownloadApprovalSpinner.value = false;
@@ -520,7 +524,7 @@ const onTabChange = (newTab: string) => {
                       <Icon name="lets-icons:view-duotone" size="23" />
 
                       <TransitionFade>
-                        <div v-if="totalDownloadApprovalSpinner">
+                        <div v-if="totalViewCountSpinner">
                           <n-spin :size="12" />
                         </div>
 
@@ -547,7 +551,7 @@ const onTabChange = (newTab: string) => {
                         <Icon name="lets-icons:view-duotone" size="23" />
 
                         <TransitionFade>
-                          <div v-if="totalDownloadApprovalSpinner">
+                          <div v-if="totalViewCountSpinner">
                             <n-spin :size="12" />
                           </div>
 
@@ -626,7 +630,7 @@ const onTabChange = (newTab: string) => {
                 </n-flex>
               </div>
 
-              <div class="mt-4 w-full">
+              <div class="relative mt-4 w-full">
                 <n-tabs
                   v-model:value="currentTab"
                   type="segment"

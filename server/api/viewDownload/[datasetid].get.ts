@@ -7,12 +7,6 @@ export default defineEventHandler(async (event) => {
     },
   });
 
-  const allVersions = await prisma.published_dataset.findMany({
-    where: {
-      dataset_id: dataset?.id,
-    },
-  });
-
   if (!dataset) {
     console.log(`Dataset ${datasetid} not found`);
 
@@ -21,6 +15,12 @@ export default defineEventHandler(async (event) => {
       statusCode: 404,
     });
   }
+
+  const allVersions = await prisma.published_dataset.findMany({
+    where: {
+      dataset_id: dataset?.id,
+    },
+  });
 
   const request = await prisma.download_request.findMany({
     select: {
