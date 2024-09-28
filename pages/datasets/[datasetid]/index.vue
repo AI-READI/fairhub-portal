@@ -526,11 +526,11 @@ const onTabChange = () => {
                       <Icon name="lets-icons:view-duotone" size="23" />
 
                       <TransitionFade>
-                        <div v-if="totalViewCountSpinner">
+                        <div v-if="totalViewCountSpinner" class="min-w-[36px]">
                           <n-spin :size="12" />
                         </div>
 
-                        <div v-else class="min-w-[12px] text-sm font-medium">
+                        <div v-else class="min-w-[36px] text-sm font-medium">
                           <div v-if="currentTab === 'currentVersion'">
                             {{ totalViewCount }}
                           </div>
@@ -553,11 +553,14 @@ const onTabChange = () => {
                         <Icon name="lets-icons:view-duotone" size="23" />
 
                         <TransitionFade>
-                          <div v-if="totalViewCountSpinner">
+                          <div
+                            v-if="totalViewCountSpinner"
+                            class="min-w-[36px]"
+                          >
                             <n-spin :size="12" />
                           </div>
 
-                          <div v-else class="min-w-[12px] text-sm font-medium">
+                          <div v-else class="min-w-[36px] text-sm font-medium">
                             <div v-if="currentTab === 'currentVersion'">
                               {{ totalViewCount }}
                             </div>
