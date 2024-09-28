@@ -520,12 +520,18 @@ const onTabChange = (newTab: string) => {
                       <Icon name="lets-icons:view-duotone" size="23" />
 
                       <TransitionFade>
-                        <div v-if="totalViewCountSpinner">
+                        <div v-if="totalDownloadApprovalSpinner">
                           <n-spin :size="12" />
                         </div>
 
-                        <div v-else class="text-sm font-medium">
-                          {{ totalViewCount }}
+                        <div v-else class="min-w-[12px] text-sm font-medium">
+                          <div v-if="currentTab === 'currentVersion'">
+                            {{ totalViewCount }}
+                          </div>
+
+                          <div v-else>
+                            {{ totalViewCount }}
+                          </div>
                         </div>
                       </TransitionFade>
                     </n-flex>
@@ -540,27 +546,25 @@ const onTabChange = (newTab: string) => {
                       <n-flex size="small" align="center">
                         <Icon name="lets-icons:view-duotone" size="23" />
 
-                        <p class="text-sm font-medium">
-                          {{ totalViewCount }}
-                        </p>
+                        <TransitionFade>
+                          <div v-if="totalDownloadApprovalSpinner">
+                            <n-spin :size="12" />
+                          </div>
+
+                          <div v-else class="min-w-[12px] text-sm font-medium">
+                            <div v-if="currentTab === 'currentVersion'">
+                              {{ totalViewCount }}
+                            </div>
+
+                            <div v-else>
+                              {{ totalViewCount }}
+                            </div>
+                          </div>
+                        </TransitionFade>
                       </n-flex>
                     </NuxtLink>
 
                     <span class="text-sm font-normal">Views</span>
-                  </n-flex>
-
-                  <div class="hidden">
-                    <n-divider vertical />
-                  </div>
-
-                  <n-flex vertical align="center" size="small" class="!hidden">
-                    <n-flex size="small" align="center">
-                      <Icon name="ic:round-download" size="18" />
-
-                      <p class="text-sm font-medium">0</p>
-                    </n-flex>
-
-                    <span class="text-sm font-normal">Access requested</span>
                   </n-flex>
 
                   <div>
@@ -577,9 +581,7 @@ const onTabChange = (newTab: string) => {
                     <span class="text-sm font-normal">Cited by</span>
                   </n-flex>
 
-                  <div
-                    class="mb-[8px] mt-[8px] h-[1px] w-full bg-gray-100"
-                  ></div>
+                  <div class="mb-[8px] mt-[8px] h-[1px] w-full bg-gray-100" />
                 </n-flex>
 
                 <n-flex vertical align="center" size="small">
@@ -591,20 +593,20 @@ const onTabChange = (newTab: string) => {
                         <n-spin :size="12" />
                       </div>
 
-                      <div v-else class="text-sm font-medium">
+                      <div v-else class="min-w-[12px] text-sm font-medium">
                         <div v-if="currentTab === 'currentVersion'">
                           {{ totalDownloadApprovals }}
                         </div>
 
-                        <div v-if="currentTab === 'allVersions'">
+                        <div v-else>
                           {{ totalDownloadApprovalforAllVersions }}
                         </div>
                       </div>
                     </TransitionFade>
                   </n-flex>
 
-                  <span class="text-sm font-normal"
-                    >Access approved
+                  <span class="text-sm font-normal">
+                    Access approved
                     <n-popover placement="bottom" trigger="hover">
                       <template #trigger>
                         <span class="ml-1">
@@ -617,9 +619,8 @@ const onTabChange = (newTab: string) => {
                       </template>
 
                       <span class="text-xs">
-                        Number of access granted to all versions of this
-                        dataset</span
-                      >
+                        Number of access granted to all versions of this dataset
+                      </span>
                     </n-popover>
                   </span>
                 </n-flex>
@@ -628,9 +629,7 @@ const onTabChange = (newTab: string) => {
               <div class="mt-4 w-full">
                 <n-tabs
                   v-model:value="currentTab"
-                  justify-content="space-evenly"
-                  type="bar"
-                  animated
+                  type="segment"
                   @update:value="onTabChange"
                 >
                   <n-tab name="currentVersion" default>Current version </n-tab>
