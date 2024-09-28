@@ -189,6 +189,7 @@ const generateCombinedFullName = (name: string) => {
 };
 
 const getViewCount = async () => {
+  totalViewCountSpinner.value = true;
   await $fetch(
     `/api/viewCount/${datasetid}${currentTab.value === "allVersions" ? "/all" : ""}`,
   )
@@ -204,27 +205,28 @@ const getViewCount = async () => {
     });
 };
 
-const getDownloads = async () => {
+const getDownloads = async (skipSpinner: boolean = false) => {
   await $fetch(`/api/viewDownload/${datasetid}`)
     .then((data) => {
       totalDownloadApprovals.value = data[0];
       totalDownloadApprovalforAllVersions.value = data[1];
-      totalDownloadApprovalSpinner.value = false;
     })
     .catch((err: string) => {
       console.error("Error fetching download status", err);
     })
     .finally(() => {
-      totalDownloadApprovalSpinner.value = false;
+      if (!skipSpinner) {
+        totalDownloadApprovalSpinner.value = false;
+      }
     });
 };
 
 onMounted(() => {
   getViewCount();
-  getDownloads();
+  getDownloads(false);
 });
 
-const onTabChange = (newTab: string) => {
+const onTabChange = () => {
   totalDownloadApprovalSpinner.value = true;
 
   getViewCount();
