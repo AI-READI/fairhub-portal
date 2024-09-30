@@ -51,7 +51,7 @@ const tabs = reactive([
 const totalViewCount = ref(0);
 const totalDownloadApprovals = ref(0);
 const totalDownloadApprovalforAllVersions = ref(0);
-const currentTab = ref("currentVersion");
+const currentTab = ref("allVersions");
 
 const totalViewCountSpinner = ref(true);
 const totalDownloadApprovalSpinner = ref(true);
@@ -519,6 +519,8 @@ const onTabChange = () => {
               vertical
               class="items-center justify-center rounded-xl border border-blue-200 bg-white px-4 py-4"
             >
+              <h3 class="self-start">Usage statistics</h3>
+
               <div>
                 <n-flex justify="center" align="center">
                   <n-flex vertical align="center" size="small">
@@ -627,7 +629,15 @@ const onTabChange = () => {
                         </span>
                       </template>
 
-                      <span class="text-xs">
+                      <span
+                        v-if="currentTab === 'currentVersion'"
+                        class="text-xs"
+                      >
+                        Number of access granted to the current version of this
+                        dataset
+                      </span>
+
+                      <span v-else class="text-xs">
                         Number of access granted to all versions of this dataset
                       </span>
                     </n-popover>
@@ -641,9 +651,9 @@ const onTabChange = () => {
                   type="segment"
                   @update:value="onTabChange"
                 >
-                  <n-tab name="currentVersion" default>Current version </n-tab>
+                  <n-tab name="allVersions" default> All versions </n-tab>
 
-                  <n-tab name="allVersions"> All versions </n-tab>
+                  <n-tab name="currentVersion">Current version </n-tab>
                 </n-tabs>
               </div>
             </n-flex>
