@@ -16,6 +16,12 @@ export default defineEventHandler(async (event) => {
     });
   }
 
+  const allVersions = await prisma.published_dataset.findMany({
+    where: {
+      dataset_id: dataset?.dataset_id,
+    },
+  });
+
   const request = await prisma.download_request.findMany({
     select: {
       approval_id: true,
@@ -24,7 +30,22 @@ export default defineEventHandler(async (event) => {
       dataset_id: datasetid,
     },
   });
+
+  const requestforAllVersions = await prisma.download_request.findMany({
+    select: {
+      approval_id: true,
+    },
+    where: {
+      dataset_id: {
+        in: allVersions.map((m) => m.id),
+      },
+    },
+  });
+
   const approvalIds = request.map((m) => m.approval_id);
+  const approvalIdsForAllVersions = requestforAllVersions.map(
+    (m) => m.approval_id,
+  );
 
   const requestAccess = await prisma.download_request_approval.findMany({
     select: {
@@ -36,8 +57,25 @@ export default defineEventHandler(async (event) => {
       },
     },
   });
+
+  const requestAccessForAllVersions =
+    await prisma.download_request_approval.findMany({
+      select: {
+        approval_status: true,
+      },
+      where: {
+        id: {
+          in: approvalIdsForAllVersions,
+        },
+      },
+    });
+
   const approvedRequests = requestAccess.filter(
     (record) => record.approval_status.toUpperCase() === "APPROVED",
   );
-  return approvedRequests.length;
+
+  const approvedRequestsForAllVersions = requestAccessForAllVersions.filter(
+    (record) => record.approval_status.toUpperCase() === "APPROVED",
+  );
+  return [approvedRequests.length, approvedRequestsForAllVersions.length];
 });

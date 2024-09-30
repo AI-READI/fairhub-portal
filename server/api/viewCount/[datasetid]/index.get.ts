@@ -1,7 +1,3 @@
-const viewCount: { [key: string]: string } = {
-  url: "https://umami.aireadi.org/api/websites/",
-};
-
 export default defineEventHandler(async (event) => {
   const { datasetid } = event.context.params as { datasetid: string };
 
@@ -38,9 +34,12 @@ export default defineEventHandler(async (event) => {
       statusCode: 401,
     });
   }
+
   const r = await response.json();
+  // sourcery skip: use-object-destructuring
   const token = r.token;
   const currentTime: number = Date.now();
+
   const res = await fetch(
     `https://umami.aireadi.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/pageviews?unit=year&endAt=${currentTime}&startAt=1709149073000&url=/datasets/${datasetid}`,
     {
@@ -50,10 +49,16 @@ export default defineEventHandler(async (event) => {
       method: "GET",
     },
   );
+
   if (response.ok) {
     const data = await res.json();
     return data.pageviews.reduce(
-      (acc: number, totalNum: number) => acc + totalNum.y,
+      (
+        acc: number,
+        totalNum: {
+          y: number;
+        },
+      ) => acc + totalNum.y,
       0,
     );
     // return data
