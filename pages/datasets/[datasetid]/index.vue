@@ -521,9 +521,35 @@ const onTabChange = () => {
             >
               <h3 class="self-start">Usage statistics</h3>
 
-              <div>
-                <n-flex justify="center" align="center">
-                  <n-flex vertical align="center" size="small">
+              <div class="mt-4 flex items-center space-x-2">
+                <n-flex vertical align="center" size="small">
+                  <n-flex size="small" align="center">
+                    <Icon name="lets-icons:view-duotone" size="23" />
+
+                    <TransitionFade>
+                      <div v-if="totalViewCountSpinner" class="min-w-[36px]">
+                        <n-spin :size="12" />
+                      </div>
+
+                      <div v-else class="min-w-[36px] text-sm font-medium">
+                        <div v-if="currentTab === 'currentVersion'">
+                          {{ totalViewCount }}
+                        </div>
+
+                        <div v-else>
+                          {{ totalViewCount }}
+                        </div>
+                      </div>
+                    </TransitionFade>
+                  </n-flex>
+
+                  <NuxtLink
+                    target="_blank"
+                    :to="`${config.public.UMAMI_SHARE_URL}?url=${encodeURIComponent(
+                      '/datasets/' + dataset?.id,
+                    )}`"
+                    class="hidden text-sm font-medium text-sky-500 transition-all hover:text-sky-700"
+                  >
                     <n-flex size="small" align="center">
                       <Icon name="lets-icons:view-duotone" size="23" />
 
@@ -543,57 +569,28 @@ const onTabChange = () => {
                         </div>
                       </TransitionFade>
                     </n-flex>
+                  </NuxtLink>
 
-                    <NuxtLink
-                      target="_blank"
-                      :to="`${config.public.UMAMI_SHARE_URL}?url=${encodeURIComponent(
-                        '/datasets/' + dataset?.id,
-                      )}`"
-                      class="hidden text-sm font-medium text-sky-500 transition-all hover:text-sky-700"
-                    >
-                      <n-flex size="small" align="center">
-                        <Icon name="lets-icons:view-duotone" size="23" />
-
-                        <TransitionFade>
-                          <div
-                            v-if="totalViewCountSpinner"
-                            class="min-w-[36px]"
-                          >
-                            <n-spin :size="12" />
-                          </div>
-
-                          <div v-else class="min-w-[36px] text-sm font-medium">
-                            <div v-if="currentTab === 'currentVersion'">
-                              {{ totalViewCount }}
-                            </div>
-
-                            <div v-else>
-                              {{ totalViewCount }}
-                            </div>
-                          </div>
-                        </TransitionFade>
-                      </n-flex>
-                    </NuxtLink>
-
-                    <span class="text-sm font-normal">Views</span>
-                  </n-flex>
-
-                  <div>
-                    <n-divider vertical />
-                  </div>
-
-                  <n-flex vertical align="center" size="small">
-                    <n-flex size="small" align="center">
-                      <Icon name="bi:journal-text" size="16" />
-
-                      <p class="text-sm font-medium">0</p>
-                    </n-flex>
-
-                    <span class="text-sm font-normal">Cited by</span>
-                  </n-flex>
-
-                  <div class="mb-[8px] mt-[8px] h-[1px] w-full bg-gray-100" />
+                  <span class="text-sm font-normal">Views</span>
                 </n-flex>
+
+                <div>
+                  <n-divider vertical />
+                </div>
+
+                <n-flex vertical align="center" size="small">
+                  <n-flex size="small" align="center">
+                    <Icon name="bi:journal-text" size="16" />
+
+                    <p class="text-sm font-medium">0</p>
+                  </n-flex>
+
+                  <span class="text-sm font-normal">Cited by</span>
+                </n-flex>
+
+                <div>
+                  <n-divider vertical />
+                </div>
 
                 <n-flex vertical align="center" size="small">
                   <n-flex size="small" align="center">
