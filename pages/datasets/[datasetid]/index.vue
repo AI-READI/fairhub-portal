@@ -9,6 +9,7 @@ const config = useRuntimeConfig();
 
 const { isMobile } = useDevice();
 const route = useRoute();
+const dayjs = useDayjs();
 
 const { datasetid } = route.params as { datasetid: string };
 const sanitize = (html: string) => sanitizeHtml(html);
@@ -48,7 +49,12 @@ const tabs = reactive([
   },
 ]);
 const totalViewCount = ref(0);
+const totalDownloadApprovals = ref(0);
+const totalDownloadApprovalforAllVersions = ref(0);
+const currentTab = ref("allVersions");
+
 const totalViewCountSpinner = ref(true);
+const totalDownloadApprovalSpinner = ref(true);
 
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
@@ -117,7 +123,9 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       };
     }
   }),
-  datePublished: dataset.value?.metadata.datasetDescription.publicationYear, // todo: add the datePublished
+  datePublished: dataset.value?.created_at
+    ? dayjs.unix(dataset.value.created_at).format("YYYY-MM-DD")
+    : "Unknown",
   description: dataset.value?.metadata.datasetDescription.description?.find(
     (value) => value.descriptionType === "Abstract",
   )?.descriptionValue,
@@ -181,7 +189,10 @@ const generateCombinedFullName = (name: string) => {
 };
 
 const getViewCount = async () => {
-  await $fetch(`/api/viewCount/${datasetid}`)
+  totalViewCountSpinner.value = true;
+  await $fetch(
+    `/api/viewCount/${datasetid}${currentTab.value === "allVersions" ? "/all" : ""}`,
+  )
     .then((data) => {
       totalViewCount.value = data;
       totalViewCountSpinner.value = false;
@@ -193,9 +204,37 @@ const getViewCount = async () => {
       totalViewCountSpinner.value = false;
     });
 };
+
+const getDownloads = async (skipSpinner: boolean = false) => {
+  await $fetch(`/api/viewDownload/${datasetid}`)
+    .then((data) => {
+      totalDownloadApprovals.value = data[0];
+      totalDownloadApprovalforAllVersions.value = data[1];
+    })
+    .catch((err: string) => {
+      console.error("Error fetching download status", err);
+    })
+    .finally(() => {
+      if (!skipSpinner) {
+        totalDownloadApprovalSpinner.value = false;
+      }
+    });
+};
+
 onMounted(() => {
   getViewCount();
+  getDownloads(false);
 });
+
+const onTabChange = () => {
+  totalDownloadApprovalSpinner.value = true;
+
+  getViewCount();
+
+  setTimeout(() => {
+    totalDownloadApprovalSpinner.value = false;
+  }, 700);
+};
 </script>
 
 <template>
@@ -365,7 +404,8 @@ onMounted(() => {
             <div v-if="tabs[3].shown">
               <MetadataStudyDescription
                 :metadata="
-                  dataset?.metadata.studyDescription as StudyDescription
+                  dataset?.metadata
+                    .studyDescription as unknown as StudyDescription
                 "
               />
 
@@ -477,20 +517,28 @@ onMounted(() => {
           <n-flex vertical class="col-span-2">
             <n-flex
               vertical
-              class="rounded-xl border border-blue-200 bg-white px-1 py-4"
+              class="items-center justify-center rounded-xl border border-blue-200 bg-white px-4 py-4"
             >
-              <n-flex justify="center" align="center">
+              <h3 class="self-start">Usage statistics</h3>
+
+              <div class="mt-4 flex items-center space-x-2">
                 <n-flex vertical align="center" size="small">
                   <n-flex size="small" align="center">
                     <Icon name="lets-icons:view-duotone" size="23" />
 
                     <TransitionFade>
-                      <div v-if="totalViewCountSpinner">
+                      <div v-if="totalViewCountSpinner" class="min-w-[36px]">
                         <n-spin :size="12" />
                       </div>
 
-                      <div v-else class="text-sm font-medium">
-                        {{ totalViewCount }}
+                      <div v-else class="min-w-[36px] text-sm font-medium">
+                        <div v-if="currentTab === 'currentVersion'">
+                          {{ totalViewCount }}
+                        </div>
+
+                        <div v-else>
+                          {{ totalViewCount }}
+                        </div>
                       </div>
                     </TransitionFade>
                   </n-flex>
@@ -505,27 +553,25 @@ onMounted(() => {
                     <n-flex size="small" align="center">
                       <Icon name="lets-icons:view-duotone" size="23" />
 
-                      <p class="text-sm font-medium">
-                        {{ totalViewCount }}
-                      </p>
+                      <TransitionFade>
+                        <div v-if="totalViewCountSpinner" class="min-w-[36px]">
+                          <n-spin :size="12" />
+                        </div>
+
+                        <div v-else class="min-w-[36px] text-sm font-medium">
+                          <div v-if="currentTab === 'currentVersion'">
+                            {{ totalViewCount }}
+                          </div>
+
+                          <div v-else>
+                            {{ totalViewCount }}
+                          </div>
+                        </div>
+                      </TransitionFade>
                     </n-flex>
                   </NuxtLink>
 
                   <span class="text-sm font-normal">Views</span>
-                </n-flex>
-
-                <div class="hidden">
-                  <n-divider vertical />
-                </div>
-
-                <n-flex vertical align="center" size="small" class="!hidden">
-                  <n-flex size="small" align="center">
-                    <Icon name="ic:round-download" size="18" />
-
-                    <p class="text-sm font-medium">0</p>
-                  </n-flex>
-
-                  <span class="text-sm font-normal">Access requested</span>
                 </n-flex>
 
                 <div>
@@ -541,7 +587,72 @@ onMounted(() => {
 
                   <span class="text-sm font-normal">Cited by</span>
                 </n-flex>
-              </n-flex>
+
+                <div>
+                  <n-divider vertical />
+                </div>
+
+                <n-flex vertical align="center" size="small">
+                  <n-flex size="small" align="center">
+                    <Icon name="ri:folder-download-line" size="16" />
+
+                    <TransitionFade>
+                      <div v-if="totalDownloadApprovalSpinner">
+                        <n-spin :size="12" />
+                      </div>
+
+                      <div v-else class="min-w-[12px] text-sm font-medium">
+                        <div v-if="currentTab === 'currentVersion'">
+                          {{ totalDownloadApprovals }}
+                        </div>
+
+                        <div v-else>
+                          {{ totalDownloadApprovalforAllVersions }}
+                        </div>
+                      </div>
+                    </TransitionFade>
+                  </n-flex>
+
+                  <span class="text-sm font-normal">
+                    Access approved
+                    <n-popover placement="bottom" trigger="hover">
+                      <template #trigger>
+                        <span class="ml-1">
+                          <Icon
+                            name="ic:outline-info"
+                            color="#2080f0"
+                            size="16"
+                          />
+                        </span>
+                      </template>
+
+                      <span
+                        v-if="currentTab === 'currentVersion'"
+                        class="text-xs"
+                      >
+                        Number of access granted to the current version of this
+                        dataset
+                      </span>
+
+                      <span v-else class="text-xs">
+                        Number of access granted to all versions of this dataset
+                      </span>
+                    </n-popover>
+                  </span>
+                </n-flex>
+              </div>
+
+              <div class="relative mt-4 w-full">
+                <n-tabs
+                  v-model:value="currentTab"
+                  type="segment"
+                  @update:value="onTabChange"
+                >
+                  <n-tab name="allVersions" default> All versions </n-tab>
+
+                  <n-tab name="currentVersion">Current version </n-tab>
+                </n-tabs>
+              </div>
             </n-flex>
 
             <SideDatasetSize
