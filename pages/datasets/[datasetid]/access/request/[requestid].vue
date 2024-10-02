@@ -238,7 +238,7 @@ if (error.value) {
                     Once Azure Blob Storage configuration is complete, you can
                     either use it for download to your local user system or you
                     can configure an additional connection to any other cloud
-                    storage provider. For Example, to configure a connection to
+                    storage provider. For example, to configure a connection to
                     AWS S3 or a cloud storage provider that is compatible with
                     AWS S3 Backend, follow
                     <NuxtLink to="https://rclone.org/s3/" target="_blank">
