@@ -159,7 +159,7 @@ if (error.value) {
                     Open a terminal or powershell instance and execute the
                     following:
                     <n-code
-                      code="azcopy copy 'C:\local\path' 'SAS URI' --recursive=true"
+                      code="azcopy copy 'SAS URI' 'C:\local\path' --recursive=true"
                       language="powershell"
                     />
                     Where "C:\local\path" is the local path on your target
