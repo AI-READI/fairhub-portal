@@ -91,7 +91,7 @@ if (error.value) {
             <p>
               Your dataset is ready for download. Due to the number and size of
               of the files included in typical datasets, we recommend using one
-              of the following graphical clients:
+              of the following clients:
             </p>
 
             <n-tabs type="line" animated>
