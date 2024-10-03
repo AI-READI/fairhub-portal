@@ -26,9 +26,12 @@ const dataReady = request.status === "READY";
 const isExpired = request.status === "EXPIRED";
 
 const userKey = user?.email.replace(/[^a-zA-Z0-9]/g, "");
-const sasUriUrl = `/api/downloads/sasuri/${requestid}`;
-const sasUriFilename = `${userKey}_URI.txt`;
+const requestSasUri = request.download_uri;
 
+const copyToClipboard = (text: string = "") => {
+  navigator.clipboard.writeText(text);
+  push.success("URI copied to clipboard");
+};
 hljs.registerLanguage("powershell", powershell);
 
 if (error.value) {
@@ -97,19 +100,32 @@ if (error.value) {
                   <NuxtLink
                     to="https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10"
                     target="_blank"
-                    >AzCopy</NuxtLink
                   >
+                    AzCopy
+                    <Icon name="fluent:link-square-24-filled" color="#0284c7" />
+                  </NuxtLink>
                   is a Microsoft-developed command line program designed to
                   interact with Azure Cloud Storage. For this method you will
                   need to download a dataset-specific Shared Access Signature
                   (SAS) URI.
                 </p>
 
-                <n-card size="small">
-                  <NuxtLink :to="sasUriUrl" :download="sasUriFilename" external>
-                    Click HERE to download your SAS URI
-                    <Icon name="mdi:file-download-outline" class="ml-1" />
-                  </NuxtLink>
+                <n-card
+                  size="small"
+                  title="This is your Shared Access Signature
+                  (SAS) URI; please record this for download"
+                >
+                  {{ requestSasUri }}
+                  <n-button
+                    quaternary
+                    type="info"
+                    size="large"
+                    @click="copyToClipboard(requestSasUri)"
+                  >
+                    <n-icon>
+                      <Icon name="uil:copy" />
+                    </n-icon>
+                  </n-button>
                 </n-card>
 
                 <p>
@@ -177,9 +193,10 @@ if (error.value) {
 
               <n-tab-pane name="rclone" tab="Rclone">
                 <p>
-                  <NuxtLink to="https://rclone.org/" target="_blank"
-                    >Rclone</NuxtLink
-                  >
+                  <NuxtLink to="https://rclone.org/" target="_blank">
+                    Rclone
+                    <Icon name="fluent:link-square-24-filled" color="#0284c7" />
+                  </NuxtLink>
                   is a command-line program written in Go designed to manage
                   cloud storage. It is compatible with over 70 cloud storage
                   solutions, including AWS S3, Azure Storage, Google Cloud
@@ -187,11 +204,22 @@ if (error.value) {
                   dataset-specific Shared Access Signature (SAS) URI.
                 </p>
 
-                <n-card size="small">
-                  <NuxtLink :to="sasUriUrl" :download="sasUriFilename" external>
-                    Click HERE to download your SAS URI
-                    <Icon name="mdi:file-download-outline" class="ml-1" />
-                  </NuxtLink>
+                <n-card
+                  size="small"
+                  title="This is your Shared Access Signature
+                  (SAS) URI; please record this for download"
+                >
+                  {{ requestSasUri }}
+                  <n-button
+                    quaternary
+                    type="info"
+                    size="large"
+                    @click="copyToClipboard(requestSasUri)"
+                  >
+                    <n-icon>
+                      <Icon name="uil:copy" />
+                    </n-icon>
+                  </n-button>
                 </n-card>
 
                 <ol>
@@ -307,7 +335,11 @@ if (error.value) {
 
 <style scoped>
 .n-card {
-  max-width: 350px;
+  max-width: 700px;
   text-align: center;
+  align-self: center;
+}
+.n-button {
+  font-size: 24px;
 }
 </style>
