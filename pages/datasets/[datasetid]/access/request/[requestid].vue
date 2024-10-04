@@ -27,10 +27,11 @@ const isExpired = request.status === "EXPIRED";
 
 const userKey = user?.email.replace(/[^a-zA-Z0-9]/g, "");
 const requestSasUri = request.download_uri;
+const azcopyCommand = `azcopy copy '${requestSasUri}' 'C:\\local\\path' --recursive=true`;
 
 const copyToClipboard = (text: string = "") => {
   navigator.clipboard.writeText(text);
-  push.success("URI copied to clipboard");
+  push.success("Copied to clipboard");
 };
 hljs.registerLanguage("powershell", powershell);
 
@@ -110,23 +111,14 @@ if (error.value) {
                   (SAS) URI.
                 </p>
 
-                <n-card
-                  size="small"
-                  title="This is your Shared Access Signature
-                  (SAS) URI; please record this for download"
-                >
-                  {{ requestSasUri }}
-                  <n-button
-                    quaternary
-                    type="info"
-                    size="large"
+                <p>
+                  This is your SAS URI; please record this for download, click
+                  to copy to your clipboard
+                  <n-code
+                    :code="requestSasUri"
                     @click="copyToClipboard(requestSasUri)"
-                  >
-                    <n-icon>
-                      <Icon name="uil:copy" />
-                    </n-icon>
-                  </n-button>
-                </n-card>
+                  />
+                </p>
 
                 <p>
                   Detailed instructions on AzCopy, its installation, and its use
@@ -175,12 +167,14 @@ if (error.value) {
                     Open a terminal or powershell instance and execute the
                     following:
                     <n-code
-                      code="azcopy copy 'SAS URI' 'C:\local\path' --recursive=true"
+                      :code="azcopyCommand"
                       language="powershell"
+                      @click="copyToClipboard(azcopyCommand)"
                     />
-                    Where "C:\local\path" is the local path on your target
-                    machine, and "SAS URI" is the Shared Access Signature URI
-                    you obtained from the portal.
+
+                    Where the https URL is the SAS URI you obtained from the
+                    portal and "C:\local\path" is the local path on your target
+                    machine.
                   </li>
 
                   <li>
@@ -204,23 +198,14 @@ if (error.value) {
                   dataset-specific Shared Access Signature (SAS) URI.
                 </p>
 
-                <n-card
-                  size="small"
-                  title="This is your Shared Access Signature
-                  (SAS) URI; please record this for download"
-                >
-                  {{ requestSasUri }}
-                  <n-button
-                    quaternary
-                    type="info"
-                    size="large"
+                <p>
+                  This is your SAS URI; please record this for download, click
+                  to copy to your clipboard
+                  <n-code
+                    :code="requestSasUri"
                     @click="copyToClipboard(requestSasUri)"
-                  >
-                    <n-icon>
-                      <Icon name="uil:copy" />
-                    </n-icon>
-                  </n-button>
-                </n-card>
+                  />
+                </p>
 
                 <ol>
                   <li>
