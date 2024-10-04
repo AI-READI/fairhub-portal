@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import hljs from "highlight.js/lib/core";
+import powershell from "highlight.js/lib/languages/powershell";
+
 definePageMeta({
   middleware: ["auth"],
 });
@@ -11,21 +14,26 @@ const { datasetid, requestid } = route.params as {
 };
 
 const { data: req, error } = await useDownloadRequest(requestid);
+
 const { data: dataset } = await useDataset(datasetid);
 const { userDetails } = await useUserDetails();
 
 const user = userDetails.value;
 const request = req.value as any;
 
-const userKey = user.email.replace(/[^a-zA-Z0-9]/g, "");
-const [username, host] = request?.download_uri?.split("@");
-
-const notUserDownload = user.id !== request.user_details_id;
+const notUserDownload = user?.id !== request.user_details_id;
 const dataReady = request.status === "READY";
 const isExpired = request.status === "EXPIRED";
 
-const privateKeyUrl = `/api/downloads/key/${requestid}`;
-const privateKeyFilename = `${userKey}.txt`;
+const userKey = user?.email.replace(/[^a-zA-Z0-9]/g, "");
+const requestSasUri = request.download_uri;
+const azcopyCommand = `azcopy copy '${requestSasUri}' 'C:\\local\\path' --recursive=true`;
+
+const copyToClipboard = (text: string = "") => {
+  navigator.clipboard.writeText(text);
+  push.success("Copied to clipboard");
+};
+hljs.registerLanguage("powershell", powershell);
 
 if (error.value) {
   console.error(error.value);
@@ -83,92 +91,197 @@ if (error.value) {
           <div v-else-if="dataReady">
             <p>
               Your dataset is ready for download. Due to the number and size of
-              the files included in typical datasets, we recommend using a
-              graphical client like
-              <NuxtLink to="https://filezilla-project.org/" target="_blank"
-                >FileZilla</NuxtLink
-              >. FileZilla is a free and open-source, cross-platform FTP
-              application. It is a very mature SFTP application and is
-              specifically supported for SFTP applications by Microsoft Azure
-              Storage.
+              of the files included in typical datasets, we recommend using one
+              of the following clients:
             </p>
 
-            <p>
-              Detailed instructions on FileZilla, installation and use are
-              available from the
-              <a href="https://wiki.filezilla-project.org/Documentation"
-                >official project wiki</a
-              >. Below is a brief summary of steps you'll need to accomplish
-              your download:
-            </p>
+            <n-tabs type="line" animated>
+              <n-tab-pane name="azcopy" tab="AzCopy">
+                <p>
+                  <NuxtLink
+                    to="https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10"
+                    target="_blank"
+                  >
+                    AzCopy
+                    <Icon name="fluent:link-square-24-filled" color="#0284c7" />
+                  </NuxtLink>
+                  is a Microsoft-developed command line program designed to
+                  interact with Azure Cloud Storage. For this method you will
+                  need to download a dataset-specific Shared Access Signature
+                  (SAS) URI.
+                </p>
 
-            <ol>
-              <li>
-                Download your SSH key using the link below, and save it in a
-                secure location. Make sure that the file permissions are set
-                read-only for your account.
+                <p>
+                  This is your SAS URI; please record this for download, click
+                  to copy to your clipboard
+                  <n-code
+                    :code="requestSasUri"
+                    @click="copyToClipboard(requestSasUri)"
+                  />
+                </p>
 
-                <ul>
+                <p>
+                  Detailed instructions on AzCopy, its installation, and its use
+                  are available from the
+                  <NuxtLink
+                    to="https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10?tabs=dnf"
+                    target="_blank"
+                  >
+                    Official Microsoft Documentation
+                  </NuxtLink>
+                  Below is a brief summary of steps you'll need to accomplish
+                  your download:
+                </p>
+
+                <ol>
                   <li>
+                    Visit the Azcopy documentation page and
                     <NuxtLink
-                      :to="privateKeyUrl"
-                      :download="privateKeyFilename"
-                      external
+                      to="https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10#download-azcopy"
+                      target="_blank"
                     >
-                      Download SSH key
-                      <Icon name="mdi:file-download-outline" class="ml-1"
-                    /></NuxtLink>
+                      download
+                    </NuxtLink>
+                    the compressed azcopy executable for your respective
+                    operating system. These executables are available as
+                    compressed zip files for Windows/Mac users and Tarball files
+                    for Linux users.
                   </li>
-                </ul>
-              </li>
-
-              <li>
-                Download the version of the FileZilla Client compatible with
-                your operating system from the
-                <a href="https://filezilla-project.org/download.php"
-                  >official download page</a
-                >.
-              </li>
-
-              <li>
-                Install the FileZilla client according to the
-                <a href="https://wiki.filezilla-project.org/Client_Installation"
-                  >installation instructions</a
-                >
-                for your operating system.
-              </li>
-
-              <li>
-                Follow the
-                <a href="https://wiki.filezilla-project.org/Using"
-                  >usage instructions</a
-                >
-
-                to download your requested data set. You should use the
-                following properties to set up the connection in the
-                <a href="https://wiki.filezilla-project.org/Site_Manager"
-                  >FileZilla Site Manager</a
-                >:
-
-                <ul>
-                  <li>
-                    <em>Protocol:</em> Select "SFTP - SSH File Transfer
-                    Protocol"
-                  </li>
-
-                  <li><em>Host:</em> {{ host }}</li>
-
-                  <li><em>Logon type:</em> Select "Key file"</li>
-
-                  <li><em>User:</em> {{ username }}</li>
 
                   <li>
-                    <em>Key file:</em> The location where you saved the SSH key
-                    file (see above)
+                    Extract the contents of the compressed executable in a known
+                    location on your local machine's drive. - Windows and Mac
+                    users can use built-in zip file applications or use
+                    3rd-party applications like 7zip for this - For linux users,
+                    please see documentation for your specific distro for
+                    instructions on decompressing the provided tarball -
+                    Possible locations for this are: in your home directory; in
+                    your machine's C:/ or Root directory - For ease of use,
+                    consider adding the fully-qualified path to the AzCopy
+                    directory to your system PATH. If you choose not to do this
+                    you will need to execute any AzCopy commands from the
+                    directory where AzCopy is installed.
                   </li>
-                </ul>
-              </li>
-            </ol>
+
+                  <li>
+                    Open a terminal or powershell instance and execute the
+                    following:
+                    <n-code
+                      :code="azcopyCommand"
+                      language="powershell"
+                      @click="copyToClipboard(azcopyCommand)"
+                    />
+
+                    Where the https URL is the SAS URI you obtained from the
+                    portal and "C:\local\path" is the local path on your target
+                    machine.
+                  </li>
+
+                  <li>
+                    Please allow time for the download to complete. Depending on
+                    the amount of data you selected, this could take several
+                    hours.
+                  </li>
+                </ol>
+              </n-tab-pane>
+
+              <n-tab-pane name="rclone" tab="Rclone">
+                <p>
+                  <NuxtLink to="https://rclone.org/" target="_blank">
+                    Rclone
+                    <Icon name="fluent:link-square-24-filled" color="#0284c7" />
+                  </NuxtLink>
+                  is a command-line program written in Go designed to manage
+                  cloud storage. It is compatible with over 70 cloud storage
+                  solutions, including AWS S3, Azure Storage, Google Cloud
+                  Storage and more. For this method you will need to download a
+                  dataset-specific Shared Access Signature (SAS) URI.
+                </p>
+
+                <p>
+                  This is your SAS URI; please record this for download, click
+                  to copy to your clipboard
+                  <n-code
+                    :code="requestSasUri"
+                    @click="copyToClipboard(requestSasUri)"
+                  />
+                </p>
+
+                <ol>
+                  <li>
+                    Rclone is available for
+                    <NuxtLink
+                      to="https://rclone.org/downloads/"
+                      target="_blank"
+                    >
+                      Download
+                    </NuxtLink>
+                    as a single executable. Download the executable specific to
+                    operating system and follow the [installation instructions]
+                    to install rclone.
+                  </li>
+
+                  <li>
+                    Next you'll need to configure your connection to the Fairhub
+                    Portal Azure Blob Storage. Open your terminal or command
+                    line program of choice and run:
+                    <n-code code="rclone config" language="powershell" />
+                    then follow the
+                    <NuxtLink
+                      to="https://rclone.org/azureblob/#configuration"
+                      target="_blank"
+                    >
+                      download instructions
+                    </NuxtLink>
+                    . For authentication you will be using the
+                    <NuxtLink
+                      to="https://rclone.org/azureblob/#sas-url"
+                      target="_blank"
+                    >
+                      Shared Access Signature URL
+                    </NuxtLink>
+                    that you just obtained above; be sure to leave the `account`
+                    and `key` configuration options blank and fill in the
+                    `sas_url` Remember the name you give to the Azure Blob
+                    Storage configuration, as you will need it in subsequent
+                    steps.
+                  </li>
+
+                  <li>
+                    Once Azure Blob Storage configuration is complete, you can
+                    either use it for download to your local user system or you
+                    can configure an additional connection to any other cloud
+                    storage provider. For example, to configure a connection to
+                    AWS S3 or a cloud storage provider that is compatible with
+                    AWS S3 Backend, follow
+                    <NuxtLink to="https://rclone.org/s3/" target="_blank">
+                      configuration instructions
+                    </NuxtLink>
+                    .
+                  </li>
+
+                  <li>
+                    Once your configuration is complete, you can download your
+                    requested materials by issuing the following command:
+                    <n-code
+                      code="rclone copy example-azure-config-name:blob-container-name path/to/local/directory"
+                      language="powershell"
+                    />
+                    Or, for transfer to other cloud storage providers:
+                    <n-code
+                      code="rclone copy example-azure-config-name:blob-container-name example-destination-provider-config-name:path/to/directory"
+                      language="powershell"
+                    />
+                  </li>
+
+                  <li>
+                    Please allow time for the download to complete. Depending on
+                    the amount of data you selected, this could take several
+                    hours.
+                  </li>
+                </ol>
+              </n-tab-pane>
+            </n-tabs>
           </div>
 
           <!-- Request is not ready -->
@@ -204,3 +317,14 @@ if (error.value) {
     </div>
   </main>
 </template>
+
+<style scoped>
+.n-card {
+  max-width: 700px;
+  text-align: center;
+  align-self: center;
+}
+.n-button {
+  font-size: 24px;
+}
+</style>
