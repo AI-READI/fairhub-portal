@@ -26,10 +26,10 @@ const badIdPType = route.query.type;
           using an Identity Provider that is based in a country that has been
           designated a country of concern by the US Government. At this time, we
           are awaiting clarification from the Department of Justice on the
-          recent executive order on data sharing with countries of concern (<a
+          recent <a
             href="https://www.whitehouse.gov/briefing-room/presidential-actions/2024/02/28/executive-order-on-preventing-access-to-americans-bulk-sensitive-personal-data-and-united-states-government-related-data-by-countries-of-concern/"
-            >Details Here</a
-          >). Please know that we are fully committed to maximizing the impact
+            >executive order on data sharing with countries of concern</a
+          >. Please know that we are fully committed to maximizing the impact
           of the the data from our participants and data sharing but have been
           advised to for clarification.
         </p>
