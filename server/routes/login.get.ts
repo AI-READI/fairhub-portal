@@ -117,7 +117,17 @@ function checkTokenIdPIsValid(tokenResponse: AuthenticationResult): string {
     /(\.kp\/)/, // Democratic People's Republic of Korea
     /(\.ru\/)/, // Russian Federation
   ];
-  const selfAttestationIdPPatterns = [/(sts\.windows\.net)/, /github\.com/];
+  const selfAttestationIdPPatterns = [
+    /(sts\.windows\.net)/,
+    /(github\.com)/,
+    /(orcid\.org)/,
+    /(microsoftonline\.com)/,
+    /(google\.com)/,
+    /(amazonaws\.com)/,
+    /(saml\.nelnet\.net)/,
+    /(miracosta\.fedgw\.com)/,
+    /(cirrusidentity)/,
+  ];
 
   const indexableClaims = { ...tokenResponse.idTokenClaims };
   const idpName = getStringTokenClaim(indexableClaims, "idp");
