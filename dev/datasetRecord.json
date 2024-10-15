@@ -4952,7 +4952,7 @@
         {
           "id": 2,
           "question": "How will the dataset be distributed (e.g., tarball on website, API, GitHub)? Does the dataset have a digital object identifier (DOI)?",
-          "response": "The dataset will be available through the FAIRhub platform (http://fairhub.io/). The dataset' DOI is https://doi.org/10.60775/fairhub.1"
+          "response": "The dataset will be available through the FAIRhub platform (http://fairhub.io/). The dataset' DOI is https://doi.org/10.60775/fairhub.2"
         },
         {
           "id": 3,
@@ -5342,6 +5342,6 @@
     "fileCount": 165227,
     "viewCount": 0
   },
-  "created_at": "1729033159"
+  "created_at": "1730501916"
 }
 ]
