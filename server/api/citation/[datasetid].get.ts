@@ -42,7 +42,7 @@ export default defineEventHandler(async (event) => {
     config.templates.add(format, csl);
   }
 
-  const cite = new Cite("10.60775/fairhub.1");
+  const cite = new Cite(`10.60775/fairhub.${datasetid}`);
 
   const requestedCitationFormatText: string = cite.format("bibliography", {
     template: format,
