@@ -9,6 +9,12 @@ datasource db {
   schemas  = ["download", "public"]
 }
 
+model alembic_version {
+  version_num String @id(map: "alembic_version_pkc") @db.VarChar(32)
+
+  @@schema("public")
+}
+
 model dataset {
   id                            String                         @id @db.Char(36)
   updated_on                    BigInt
@@ -302,6 +308,7 @@ model published_dataset {
   files              Json               @db.Json
   data               Json               @db.Json
   created_at         BigInt
+  download_agreement download_agreement[]
   download_request   download_request[]
 
   @@schema("public")
@@ -734,6 +741,7 @@ model download_agreement {
   attestation_accepted  Boolean
   created_at            BigInt
   updated_on            BigInt
+  published_dataset     published_dataset     @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   download_user_details download_user_details @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   download_request      download_request[]
 
@@ -810,6 +818,13 @@ model download_files {
   @@schema("download")
 }
 
+model download_alembic_version {
+  version_num String @id(map: "alembic_version_pkc") @db.VarChar(32)
+
+  @@map("alembic_version")
+  @@schema("download")
+}
+
 enum approval_status {
   AWAITING_APPROVAL
   NOT_APPROVED
@@ -823,6 +838,7 @@ enum download_status {
   PROCESSING
   READY
   EXPIRED
+  ERROR
 
   @@schema("download")
 }
