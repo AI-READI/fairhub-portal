@@ -818,13 +818,6 @@ model download_files {
   @@schema("download")
 }
 
-model download_alembic_version {
-  version_num String @id(map: "alembic_version_pkc") @db.VarChar(32)
-
-  @@map("alembic_version")
-  @@schema("download")
-}
-
 enum approval_status {
   AWAITING_APPROVAL
   NOT_APPROVED
