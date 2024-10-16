@@ -5094,8 +5094,9 @@
             "response": "No, currently there is no mechanism for others to extend or augment the AI-READI dataset outside of those who are involved in the project."
           }
         ]
-      },
-      "files": [
+      }
+    },
+    "files": [
         {
           "children": [
             {
@@ -5418,12 +5419,11 @@
           "label": "study_description.json"
         }
       ],
-      "data": {
+    "data": {
         "size": 201210627883008,
         "fileCount": 165227,
         "viewCount": 0
       },
-      "created_at": "1730501916"
-    }
+    "created_at": "1730501916"
   }
 ]
