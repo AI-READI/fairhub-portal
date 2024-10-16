@@ -818,6 +818,14 @@ enum approval_status {
   @@schema("download")
 }
 
+enum approval_status {
+  AWAITING_APPROVAL
+  NOT_APPROVED
+  APPROVED
+
+  @@schema("download")
+}
+
 enum download_status {
   PENDING
   PROCESSING
