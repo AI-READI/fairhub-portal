@@ -3,6 +3,7 @@ import {
   AuthorizationCodeRequest,
 } from "@azure/msal-node";
 import createMsalClient from "../utils/msalClient";
+import { findOrCreateUserDetails } from "../utils/getOrCreateUserDetails";
 
 type StringIndexable = { [key: string]: unknown };
 
@@ -25,7 +26,6 @@ function getStringTokenClaim(
   if (typeof claimValue === "string") {
     return claimValue;
   }
-
   return null;
 }
 
@@ -50,6 +50,11 @@ function getEmail(tokenResponse: AuthenticationResult): string {
     emailRegex.test(tokenResponse.account.username)
   ) {
     email = tokenResponse.account.username;
+  } else if (
+    "email" in tokenResponse.idTokenClaims &&
+    typeof tokenResponse.idTokenClaims.email === "string"
+  ) {
+    email = tokenResponse.idTokenClaims.email;
   } else if ("emails" in tokenResponse.idTokenClaims) {
     const emails = getTokenClaim({ ...tokenResponse.idTokenClaims }, "emails");
     email =
@@ -59,30 +64,37 @@ function getEmail(tokenResponse: AuthenticationResult): string {
   return email;
 }
 
-function convertTokenResponse(
-  tokenResponse: AuthenticationResult,
-): SessionUserDetails {
+async function convertTokenResponse(tokenResponse: AuthenticationResult) {
   const indexableClaims = { ...tokenResponse.idTokenClaims };
-  const id = getStringTokenClaim(indexableClaims, "oid");
+  const issuer = getStringTokenClaim(indexableClaims, "iss");
+  const subject = getStringTokenClaim(indexableClaims, "sub");
   const email = getEmail(tokenResponse);
 
-  if (!id) {
-    throw new Error("ID could not be extracted from token response");
+  if (!issuer) {
+    throw new Error("Issuer could not be extracted from token response");
+  }
+
+  if (!subject) {
+    throw new Error("Subject could not be extracted from token response");
   }
 
   if (!email) {
     throw new Error("Email could not be extracted from token response");
   }
 
-  return {
-    id,
+  const userDetails = await findOrCreateUserDetails({
     affiliation: getStringTokenClaim(indexableClaims, "affiliation"),
     email,
     family_name: getStringTokenClaim(indexableClaims, "family_name"),
     given_name: getStringTokenClaim(indexableClaims, "given_name"),
+    idp: getStringTokenClaim(indexableClaims, "idp"),
+    issuer,
     organization: getStringTokenClaim(indexableClaims, "organization"),
     phone: getStringTokenClaim(indexableClaims, "phone"),
-  };
+    subject,
+  });
+
+  return userDetails;
 }
 
 function getTokenExpiration(
@@ -93,6 +105,43 @@ function getTokenExpiration(
   const expiration = getNumericTokenClaim(indexableClaims, "exp");
 
   return expiration ?? defaultExpiration;
+}
+
+function checkTokenIdPIsValid(tokenResponse: AuthenticationResult): string {
+  const adversarialIdpPatterns = [
+    /(\.cn\/)/, // People's Republic of China
+    /(\.hk\/)/, // Hong Kong
+    /(\.ve\/)/, // Venezuela
+    /(\.cu\/)/, // Cuba
+    /(\.ir\/)/, // Iran
+    /(\.kp\/)/, // Democratic People's Republic of Korea
+    /(\.ru\/)/, // Russian Federation
+  ];
+  const selfAttestationIdPPatterns = [
+    /(sts\.windows\.net)/,
+    /(github\.com)/,
+    /(orcid\.org)/,
+    /(microsoftonline\.com)/,
+    /(google\.com)/,
+    /(amazonaws\.com)/,
+    /(saml\.nelnet\.net)/,
+    /(miracosta\.fedgw\.com)/,
+    /(cirrusidentity)/,
+  ];
+
+  const indexableClaims = { ...tokenResponse.idTokenClaims };
+  const idpName = getStringTokenClaim(indexableClaims, "idp");
+
+  if (idpName === null) {
+    return "invalid";
+  }
+  if (selfAttestationIdPPatterns.some((pattern) => pattern.test(idpName))) {
+    return "invalid";
+  }
+  if (adversarialIdpPatterns.some((pattern) => pattern.test(idpName))) {
+    return "adversarial";
+  }
+  return "valid";
 }
 
 /**
@@ -117,25 +166,40 @@ export default defineEventHandler(async (event) => {
   };
 
   try {
+    let redirectTo;
     const tokenResponse =
       await clientApplication.acquireTokenByCode(tokenRequest);
 
-    const sessionUserDetails = convertTokenResponse(tokenResponse);
-    const tokenExpiration = getTokenExpiration(tokenResponse);
+    const idpType = checkTokenIdPIsValid(tokenResponse);
 
-    await session.update({
-      auth: {
-        idToken: tokenResponse.idToken,
-        idTokenClaims: tokenResponse.idTokenClaims,
-        pkceCodes: null,
-        tokenExpiration,
-        userDetails: sessionUserDetails,
-      },
-    });
+    console.log(`Got here with IDPTYPE: ${idpType}`);
 
-    const redirectTo = query.state ? (query.state as string) : "/";
+    // check token for forbidden IdPs
+    if (idpType === "valid") {
+      console.log("valid");
+      const sessionUserDetails = await convertTokenResponse(tokenResponse);
+      const tokenExpiration = getTokenExpiration(tokenResponse);
+      await session.update({
+        auth: {
+          idToken: tokenResponse.idToken,
+          idTokenClaims: tokenResponse.idTokenClaims,
+          pkceCodes: null,
+          tokenExpiration,
+          userDetails: sessionUserDetails,
+        },
+      });
+
+      redirectTo = query.state ? (query.state as string) : "/";
+    } else {
+      // redirect to 404
+      let logoutUri = `${config.public.ENTRA_CONFIG.authority}/oauth2/v2.0/`;
+      logoutUri += `logout?post_logout_redirect_uri=${config.public.ENTRA_CONFIG.forbiddenUri}?type=${encodeURIComponent(idpType)}`;
+      redirectTo = logoutUri;
+    }
+
     await sendRedirect(event, redirectTo);
   } catch (error) {
+    console.error(error);
     throw createError({
       statusCode: 500,
       statusMessage: "Login could not be processed",

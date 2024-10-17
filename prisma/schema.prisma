@@ -295,18 +295,18 @@ model participant {
 }
 
 model published_dataset {
-  id                 String               @id @db.Char(36)
-  study_id           String               @db.VarChar
-  dataset_id         String               @db.VarChar
-  version_id         String               @db.VarChar
-  doi                String               @db.VarChar
-  title              String               @db.VarChar
-  description        String               @db.VarChar
-  version_title      String               @db.VarChar
-  study_title        String               @db.VarChar
-  published_metadata Json                 @db.Json
-  files              Json                 @db.Json
-  data               Json                 @db.Json
+  id                 String             @id @db.Char(36)
+  study_id           String             @db.VarChar
+  dataset_id         String             @db.VarChar
+  version_id         String             @db.VarChar
+  doi                String             @db.VarChar
+  title              String             @db.VarChar
+  description        String             @db.VarChar
+  version_title      String             @db.VarChar
+  study_title        String             @db.VarChar
+  published_metadata Json               @db.Json
+  files              Json               @db.Json
+  data               Json               @db.Json
   created_at         BigInt
   download_agreement download_agreement[]
   download_request   download_request[]
@@ -761,6 +761,7 @@ model download_request {
   secure_hash           String?                   @db.Char(64)
   created_at            BigInt
   updated_on            BigInt
+  download_files        download_files[]
   published_dataset     published_dataset         @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   download_agreement    download_agreement        @relation(fields: [download_agreement_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   download_user_details download_user_details     @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
@@ -783,7 +784,10 @@ model download_request_approval {
 
 model download_user_details {
   id                 String               @id @db.Char(36)
-  email              String               @unique @db.VarChar
+  issuer             String               @db.VarChar
+  subject            String               @db.VarChar
+  idp                String?              @db.VarChar
+  email              String               @db.VarChar
   given_name         String?              @db.VarChar
   family_name        String?              @db.VarChar
   affiliation        String?              @db.VarChar
@@ -793,6 +797,23 @@ model download_user_details {
   updated_on         BigInt
   download_agreement download_agreement[]
   download_request   download_request[]
+
+  @@unique([issuer, subject], name: "oidc_user_id")
+  @@schema("download")
+}
+
+model download_files {
+  id                  BigInt           @id(map: "download_files_id") @default(autoincrement())
+  download_request_id String           @db.Char(36)
+  created_at          DateTime         @db.Timestamp(6)
+  identifier          String           @db.Char(36)
+  seed                String           @db.Char(36)
+  salt                String           @db.Char(32)
+  input_file_hash     String           @db.Char(32)
+  output_file_hash    String           @db.Char(32)
+  input_file_path     String           @db.VarChar
+  output_file_path    String           @db.VarChar
+  download_request    download_request @relation(fields: [download_request_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@schema("download")
 }
@@ -810,6 +831,7 @@ enum download_status {
   PROCESSING
   READY
   EXPIRED
+  ERROR
 
   @@schema("download")
 }

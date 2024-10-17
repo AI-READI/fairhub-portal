@@ -48,24 +48,6 @@ const handleLogin = async () => {
     },
   );
 };
-
-const handleSubmit = async () => {
-  try {
-    await useFetch(`/api/downloads/userdetails/create`, {
-      headers: useRequestHeaders(["cookie"]),
-      method: "POST",
-    });
-    await navigateTo(`/datasets/${dataset.value?.id}/access/research-purpose`);
-  } catch (error) {
-    console.error(error);
-    push.error({
-      title: "Something went wrong",
-      message: "Could not save user details",
-    });
-
-    throw new Error("Could not save user details");
-  }
-};
 </script>
 
 <template>
@@ -130,31 +112,29 @@ const handleSubmit = async () => {
             <div v-if="authenticated">
               <p>Logged in as {{ userDescription }}.</p>
 
-              <n-button
-                size="large"
-                type="info"
-                secondary
-                class="my-3"
-                @click="handleSubmit"
-                >Next</n-button
+              <NuxtLink
+                :to="`/datasets/${dataset?.id}/access/research-purpose`"
               >
+                <n-button size="large" type="info" secondary class="my-3"
+                  >Next</n-button
+                >
+              </NuxtLink>
             </div>
 
             <div v-else>
               <n-alert title="Please note:" type="info">
                 <p>
-                  On the next screen, you will have the ability to create an
-                  account for access (click on "Sign up now").
+                  On the next screen, you will authenticate for access via
+                  CILogon, a federated Identity Provider. You may use your
+                  institutional account by selecting your home institution from
+                  the drop-down list.
                 </p>
 
                 <p>
-                  When registering for access
-                  <strong
-                    >you must use your organization or institutional email
-                    address</strong
-                  >. Accounts not affiliated with a recognized entity email will
-                  be delayed and Al-READI admins will confirm your identity
-                  before granting access to the dataset.
+                  If you do not see your institution in the list of
+                  participating Identity Providers please contact the
+                  <a href="mailto:aireadi-dac@ohsu.edu">Data Access Committee</a
+                  >.
                 </p>
               </n-alert>
 
