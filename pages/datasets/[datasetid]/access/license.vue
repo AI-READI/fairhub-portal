@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import useDownloadAgreementForm from "~/composables/useDownloadAgreementForm";
+
 definePageMeta({
   middleware: ["auth"],
 });
@@ -7,9 +9,8 @@ const route = useRoute();
 
 const { datasetid } = route.params as { datasetid: string };
 const { data: dataset, error } = await useDataset(datasetid);
-const researchPurpose = useCookie(`dataset-${datasetid}-research-purpose`, {
-  default: () => "",
-});
+const agreementFormState = useDownloadAgreementForm(datasetid);
+console.log(agreementFormState.value);
 
 if (error.value) {
   console.error(error.value);
@@ -22,7 +23,12 @@ if (error.value) {
   throw new Error("Failed to fetch dataset");
 }
 
-if (!researchPurpose.value?.trim()) {
+if (agreementFormState.value.is_diabetes_research === null) {
+  console.warn("Redirecting to collect whether this is non-diabetes research");
+  await navigateTo(`/datasets/${dataset.value?.id}/access/diabetes-research`);
+}
+
+if (!agreementFormState.value.research_purpose?.trim()) {
   console.warn("Redirecting to collect research purpose");
   await navigateTo(`/datasets/${dataset.value?.id}/access/research-purpose`);
 }
@@ -38,7 +44,7 @@ const generateCombinedFullName = (name: string) => {
   }
 };
 
-const currentStep = ref<number>(5);
+const currentStep = ref<number>(6);
 
 const licenseAccepted = ref<boolean>(false);
 const licenseText =
@@ -79,7 +85,7 @@ const attestations = [
   "I will not attempt to identify any individual who has contributed data to this dataset.",
   "I will follow the cybersecurity guidelines and agree to be tracked by an embedded token.",
   "I will not distribute this dataset per the License.",
-  "I will only use this dataset to conduct research related to Type 2 Diabetes.",
+  "I will only use this dataset to conduct the research described in my research purpose.",
 ];
 
 const licenseAndAttestationComplete = computed(() => {
@@ -93,13 +99,13 @@ const handleSubmit = async () => {
         attestation_accepted: attestationsAccepted.value,
         dataset_id: dataset.value?.id,
         license_accepted: licenseAccepted.value,
-        research_purpose: researchPurpose.value.trim(),
+        ...agreementFormState.value,
       },
       headers: useRequestHeaders(["cookie"]),
       method: "POST",
     });
 
-    researchPurpose.value = "";
+    agreementFormState.value = {};
     await navigateTo(`/datasets/${dataset.value?.id}/access/select`);
   } catch (error) {
     console.error(error);

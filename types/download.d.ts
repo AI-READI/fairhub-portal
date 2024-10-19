@@ -13,3 +13,10 @@ type Attestation = {
   text: string;
   validationStatus?: "success" | "warning" | "error";
 };
+
+type DownloadAgreementProps = Partial<download_agreement>;
+
+type DownloadAgreementFormState = Omit<
+  DownloadAgreementProps,
+  "id" | "user_details_id" | "dataset_id" | "created_at" | "updated_on"
+>;

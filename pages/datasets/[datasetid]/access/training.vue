@@ -26,7 +26,7 @@ const generateCombinedFullName = (name: string) => {
   }
 };
 
-const currentStep = ref<number>(2);
+const currentStep = ref<number>(4);
 
 const researchMethodsSelection = ref<boolean | null>(null);
 const humanResearchEthicsSelection = ref<boolean | null>(null);
@@ -158,7 +158,9 @@ const allAccepted = computed(
             </div>
 
             <div v-if="allAnswered && allAccepted">
-              <NuxtLink :to="`/datasets/${dataset?.id}/access/login`">
+              <NuxtLink
+                :to="`/datasets/${dataset?.id}/access/research-purpose`"
+              >
                 <n-button size="large" type="info" secondary>Next</n-button>
               </NuxtLink>
             </div>
