@@ -332,6 +332,7 @@ const onTabChange = () => {
               :key="index"
               v-slot="{ setActive, isActive }"
               as="li"
+              class="flex items-center"
               @click="navigate(item.label)"
             >
               <button

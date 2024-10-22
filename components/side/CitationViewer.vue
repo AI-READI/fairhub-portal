@@ -111,7 +111,8 @@ onMounted(() => {
 
         <div v-else class="py-2">
           <n-alert v-if="citationError" type="error">
-            Something went wrong with creating the citation
+            Something went wrong with generating the citation. Please try again
+            later.
           </n-alert>
 
           <p v-else class="text-sm">{{ citation?.formattedText }}</p>
