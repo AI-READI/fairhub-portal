@@ -27,7 +27,7 @@ const generateCombinedFullName = (name: string) => {
   }
 };
 
-const currentStep = ref<number>(3);
+const currentStep = ref<number>(2);
 
 const userDescription = computed(() => {
   if (authenticated.value) {
@@ -113,7 +113,7 @@ const handleLogin = async () => {
               <p>Logged in as {{ userDescription }}.</p>
 
               <NuxtLink
-                :to="`/datasets/${dataset?.id}/access/research-purpose`"
+                :to="`/datasets/${dataset?.id}/access/diabetes-research`"
               >
                 <n-button size="large" type="info" secondary class="my-3"
                   >Next</n-button

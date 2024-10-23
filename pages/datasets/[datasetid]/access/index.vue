@@ -86,28 +86,25 @@ const currentStep = ref<number>(1);
 
         <TransitionFade>
           <div>
-            <n-alert title="For Type 2 Diabetes Research Only" type="info">
-              <p class="font-bold">
-                This public data is for Type 2 Diabetes research only. Please do
-                not continue through the steps for data access if that is not
-                the focus of your research. For requests for non-Type 2 Diabetes
-                research, please contact the
-                <a href="mailto:aireadi-dac@ohsu.edu"
-                  >AI-READI Data Access Committee</a
-                >
-                to begin the access process.
-              </p>
-            </n-alert>
-
             <p>To obtain access to this dataset, you must:</p>
 
             <ol>
               <li>
+                Authenticate using CILogon (contact the
+                <a href="mailto:aireadi-dac@ohsu.edu"
+                  >AI-READI Data Access Committee</a
+                >
+                if you are not at a research institution)
+              </li>
+
+              <li>
+                Indicate whether your research is related to Type 2 Diabetes
+              </li>
+
+              <li>
                 Answer some questions about your training in research methods
                 and ethics
               </li>
-
-              <li>Log in using our authentication provider</li>
 
               <li>
                 Describe the purpose of your research <br />
@@ -125,7 +122,7 @@ const currentStep = ref<number>(1);
               </li>
             </ol>
 
-            <NuxtLink :to="`/datasets/${dataset?.id}/access/training`">
+            <NuxtLink :to="`/datasets/${dataset?.id}/access/login`">
               <n-button size="large" type="info" secondary class="my-3">
                 Begin
               </n-button>

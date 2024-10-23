@@ -30,7 +30,7 @@ const generateCombinedFullName = (name: string) => {
   }
 };
 
-const currentStep = ref<number>(7);
+const currentStep = ref<number>(8);
 </script>
 
 <template>
@@ -93,15 +93,19 @@ const currentStep = ref<number>(7);
             <h4>Request Submitted</h4>
 
             <p>
-              Your download is being created. Due to the size of the dataset and
-              necessary processing, this may take some time. When your dataset
-              is ready, you will receive an email containing a link to a page
-              with instructions on how to access it.
+              If your request requires DAC approval, you will receive an email
+              from the DAC stating one of three options: approved, more
+              clarification needed, or denied.
             </p>
 
             <p>
-              Once created, you will have 72 hours to download your dataset.
+              Your download will then be created. Due to the size of the dataset
+              and necessary processing, this may take some time. When your
+              dataset is ready, you will receive an email containing a link to a
+              page with instructions on how to access it.
             </p>
+
+            <p>Once created, you will have 7 days to download your dataset.</p>
 
             <p>
               <NuxtLink :to="`/datasets/${datasetid}`">

@@ -295,18 +295,18 @@ model participant {
 }
 
 model published_dataset {
-  id                 String             @id @db.Char(36)
-  study_id           String             @db.VarChar
-  dataset_id         String             @db.VarChar
-  version_id         String             @db.VarChar
-  doi                String             @db.VarChar
-  title              String             @db.VarChar
-  description        String             @db.VarChar
-  version_title      String             @db.VarChar
-  study_title        String             @db.VarChar
-  published_metadata Json               @db.Json
-  files              Json               @db.Json
-  data               Json               @db.Json
+  id                 String               @id @db.Char(36)
+  study_id           String               @db.VarChar
+  dataset_id         String               @db.VarChar
+  version_id         String               @db.VarChar
+  doi                String               @db.VarChar
+  title              String               @db.VarChar
+  description        String               @db.VarChar
+  version_title      String               @db.VarChar
+  study_title        String               @db.VarChar
+  published_metadata Json                 @db.Json
+  files              Json                 @db.Json
+  data               Json                 @db.Json
   created_at         BigInt
   download_agreement download_agreement[]
   download_request   download_request[]
@@ -733,17 +733,28 @@ model version_readme {
 }
 
 model download_agreement {
-  id                    String                @id @db.Char(36)
-  user_details_id       String                @db.Char(36)
-  dataset_id            String                @db.Char(36)
-  research_purpose      String                @db.VarChar
-  license_accepted      Boolean
-  attestation_accepted  Boolean
-  created_at            BigInt
-  updated_on            BigInt
-  published_dataset     published_dataset     @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  download_user_details download_user_details @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  download_request      download_request[]
+  id                            String                @id @db.Char(36)
+  user_details_id               String                @db.Char(36)
+  dataset_id                    String                @db.Char(36)
+  is_diabetes_research          Boolean
+  research_purpose              String                @db.VarChar
+  research_project_title        String?               @db.VarChar
+  study_overview                String?               @db.VarChar
+  signing_official_first_name   String?               @db.VarChar
+  signing_official_last_name    String?               @db.VarChar
+  signing_official_email        String?               @db.VarChar
+  signing_official_phone_number String?               @db.VarChar
+  signing_official_address      String?               @db.VarChar
+  signing_official_title        String?               @db.VarChar
+  signing_official_institution  String?               @db.VarChar
+  collaborator_data_access      Boolean?
+  license_accepted              Boolean
+  attestation_accepted          Boolean
+  created_at                    BigInt
+  updated_on                    BigInt
+  download_user_details         download_user_details @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  download_request              download_request[]
+  published_dataset             published_dataset?    @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@schema("download")
 }
