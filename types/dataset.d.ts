@@ -505,6 +505,7 @@ interface Dataset {
   files: FolderStructure[];
   data: AdditionalData;
   created_at: number;
+  versions: VersionArray;
 }
 
 interface DatasetArray extends Array<Dataset> {}

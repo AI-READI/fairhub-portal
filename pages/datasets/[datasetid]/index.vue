@@ -53,6 +53,9 @@ const totalDownloadApprovals = ref(0);
 const totalDownloadApprovalforAllVersions = ref(0);
 const currentTab = ref("allVersions");
 
+const isLatestVersion = ref(false);
+const latestVersionId = ref("");
+
 const totalViewCountSpinner = ref(true);
 const totalDownloadApprovalSpinner = ref(true);
 
@@ -162,6 +165,14 @@ useSeoMeta({
 if (dataset.value) {
   if (dataset.value?.metadata.readme) {
     markdownToHtml.value = sanitize(await parse(dataset.value.metadata.readme));
+  }
+
+  if (dataset.value?.versions.length > 0) {
+    latestVersionId.value = dataset.value?.versions[0].id;
+
+    if (dataset.value?.versions[0].id === dataset.value?.id) {
+      isLatestVersion.value = true;
+    }
   }
 }
 
@@ -275,7 +286,17 @@ const onTabChange = () => {
 
         <p class="hidden">{{ dataset?.description }}</p>
 
-        <n-flex>
+        <n-alert v-if="!isLatestVersion" type="warning" class="my-3 mr-3">
+          A newer version of this dataset is available. Please refer to the
+          <NuxtLink
+            :to="`/datasets/${latestVersionId}`"
+            class="text-blue-500 hover:underline"
+            >latest version</NuxtLink
+          >
+          of this dataset.
+        </n-alert>
+
+        <n-flex v-else>
           <NuxtLink :to="`/datasets/${dataset?.id}/access`">
             <n-button size="large" type="info" secondary class="my-3">
               <template #icon>
@@ -332,6 +353,7 @@ const onTabChange = () => {
               :key="index"
               v-slot="{ setActive, isActive }"
               as="li"
+              class="flex items-center"
               @click="navigate(item.label)"
             >
               <button
@@ -703,7 +725,10 @@ const onTabChange = () => {
 
             <SideCitationViewer :id="dataset?.id || ''" />
 
-            <SideVersionSelector :id="dataset?.id || ''" />
+            <SideVersionSelector
+              :id="dataset?.id || ''"
+              :versions="dataset?.versions || []"
+            />
           </n-flex>
         </div>
       </div>
