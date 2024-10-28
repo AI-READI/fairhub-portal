@@ -447,6 +447,8 @@ interface Directory {
       identifierType: string;
     }[];
   }[];
+  size?: number;
+  numberOfFiles?: number;
 }
 
 interface DatasetStructureDescription {
