@@ -287,13 +287,13 @@ const onTabChange = () => {
         <p class="hidden">{{ dataset?.description }}</p>
 
         <n-alert v-if="!isLatestVersion" type="warning" class="my-3 mr-3">
-          A newer version of this dataset is available. Please refer to the
+          This version of the dataset is no longer accessible. Please refer to
+          the
           <NuxtLink
             :to="`/datasets/${latestVersionId}`"
             class="text-blue-500 hover:underline"
             >latest version</NuxtLink
-          >
-          of this dataset.
+          >.
         </n-alert>
 
         <n-flex v-else>
