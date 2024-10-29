@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { TreeOption } from "naive-ui";
-import { NButton } from "naive-ui";
+import { NButton, NDivider } from "naive-ui";
+import prettyBytes from "pretty-bytes";
 import identifierType from "../../dev/related_identifier.json";
 import { Icon } from "#components";
+
 const drawerActive = ref(false);
 
 const props = defineProps({
@@ -12,10 +14,22 @@ const props = defineProps({
   },
 });
 
-const drawerTitle = ref("");
-const drawerDescription = ref<string | undefined>("");
-const drawerIcon = ref("");
-const drawerText = ref("");
+const drawerDetails = ref<{
+  title: string;
+  description: string | undefined;
+  icon: string;
+  numberOfFiles: number;
+  size: number | undefined;
+  text: string;
+}>({
+  title: "",
+  description: "",
+  icon: "",
+  numberOfFiles: 0,
+  size: 0,
+  text: "",
+});
+
 const relationType = ref<RelatedIdentifier[] | undefined>(undefined);
 
 function convertMetadataFile(
@@ -67,15 +81,27 @@ function convertDirectory(
       }),
     suffix: () =>
       h(
-        NButton,
+        "div",
         {
-          class: "",
-          onClick: () => {
-            openMetadataDrawer([...previousPath, directory.directoryName]);
-          },
-          size: "tiny",
+          class: "flex",
         },
-        { default: () => "Learn More" },
+        [
+          directory.size
+            ? h("span", { class: "text-sm" }, prettyBytes(directory.size) || "")
+            : null,
+          directory.size ? h(NDivider, { vertical: true }) : null,
+          h(
+            NButton,
+            {
+              class: "",
+              onClick: () => {
+                openMetadataDrawer([...previousPath, directory.directoryName]);
+              },
+              size: "tiny",
+            },
+            { default: () => "Learn More" },
+          ),
+        ],
       ),
   };
 }
@@ -140,10 +166,14 @@ const openMetadataDrawer = (currentPath: Array<string>) => {
   }
 
   if (filetype) {
-    drawerTitle.value = filetype.metadataFileName;
-    drawerIcon.value = "iconamoon:file-fill";
-    drawerText.value = "This file";
-    drawerDescription.value = filetype.metadataFileDescription;
+    drawerDetails.value = {
+      title: filetype.metadataFileName,
+      description: filetype.metadataFileDescription,
+      icon: "iconamoon:file-fill",
+      numberOfFiles: 0,
+      size: 0,
+      text: "This file",
+    };
     relationType.value = filetype.relatedIdentifier?.map((r) => {
       return {
         ...r,
@@ -151,10 +181,14 @@ const openMetadataDrawer = (currentPath: Array<string>) => {
       };
     });
   } else if (foldertype) {
-    drawerTitle.value = foldertype.directoryName;
-    drawerIcon.value = "ic:baseline-folder";
-    drawerText.value = "This directory";
-    drawerDescription.value = foldertype.directoryDescription;
+    drawerDetails.value = {
+      title: foldertype.directoryName,
+      description: foldertype.directoryDescription,
+      icon: "ic:baseline-folder",
+      numberOfFiles: foldertype.numberOfFiles || 0,
+      size: foldertype.size || 0,
+      text: "This directory",
+    };
     relationType.value = foldertype.relatedIdentifier?.map((r) => {
       return {
         ...r,
@@ -162,7 +196,14 @@ const openMetadataDrawer = (currentPath: Array<string>) => {
       };
     });
   } else {
-    drawerDescription.value = "No metadata found for this file";
+    drawerDetails.value = {
+      title: "No metadata found for this file",
+      description: "",
+      icon: "iconamoon:file-fill",
+      numberOfFiles: 0,
+      size: 0,
+      text: "This file",
+    };
   }
 
   drawerActive.value = true;
@@ -187,17 +228,31 @@ const openMetadataDrawer = (currentPath: Array<string>) => {
     >
       <n-drawer-content>
         <n-flex vertical>
-          <div class="mb-1 text-lg font-bold">
-            <Icon :name="drawerIcon" size="22" color="#0284c7" />
-            {{ drawerTitle }}
-          </div>
+          <n-flex justify="space-between">
+            <div class="mb-1 text-lg font-bold">
+              <Icon :name="drawerDetails.icon" size="22" color="#0284c7" />
+              {{ drawerDetails.title }}
+            </div>
+
+            <div class="flex items-center">
+              <p v-if="drawerDetails.numberOfFiles">
+                {{ drawerDetails.numberOfFiles }} files
+              </p>
+
+              <n-divider v-if="drawerDetails.numberOfFiles" vertical />
+
+              <p v-if="drawerDetails.size">
+                {{ prettyBytes(drawerDetails.size) }}
+              </p>
+            </div>
+          </n-flex>
 
           <p class="text-md my-1 w-full border-b pb-2 font-semibold">
             Description
           </p>
 
-          <p v-if="drawerDescription">
-            {{ drawerDescription }}
+          <p v-if="drawerDetails.description">
+            {{ drawerDetails.description }}
           </p>
 
           <p v-else>
@@ -215,7 +270,7 @@ const openMetadataDrawer = (currentPath: Array<string>) => {
               class="mt-4 flex"
             >
               <li>
-                {{ drawerText }}
+                {{ drawerDetails.text }}
                 <span class="mr-2 lowercase">{{ type.relationType }}</span>
 
                 <a
