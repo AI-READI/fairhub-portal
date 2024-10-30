@@ -9,10 +9,6 @@ if (error.value) {
     message: "Failed to fetch datasets",
   });
 }
-
-function filteredDatasetIds() {
-  return datasets.value.filter((dataset) => dataset.id !== "1");
-}
 </script>
 
 <template>
@@ -126,7 +122,7 @@ function filteredDatasetIds() {
       >
         <div class="flex flex-col space-y-6">
           <NuxtLink
-            v-for="dataset in filteredDatasetIds()"
+            v-for="dataset in datasets"
             :key="dataset.id"
             :to="`/datasets/${dataset.id}`"
             class="h-full rounded-lg border border-sky-400 bg-white px-5 py-3 shadow-sm transition-all hover:border-sky-600 hover:bg-sky-50/70 hover:shadow-lg"
