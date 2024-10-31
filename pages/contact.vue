@@ -60,7 +60,7 @@ const handleSubmit = () => {
         <n-alert
           type="success"
           :bordered="false"
-          title="I have a question aboutthe AI-READI dataset."
+          title="I have a question about the AI-READI dataset."
         >
           For queries about the AI-READI dataset use the dedicated contact form
           <a
