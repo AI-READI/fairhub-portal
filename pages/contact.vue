@@ -42,6 +42,36 @@ const handleSubmit = () => {
 <template>
   <main class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50">
     <div class="mx-auto max-w-screen-md px-4 py-8 lg:py-16">
+      <n-flex vertical class="py-8">
+        <n-alert
+          type="info"
+          :bordered="false"
+          title="I have an issue with FAIRhub."
+        >
+          For queries about the FAIRhub platform open a GitHub issue
+          <a
+            href="https://github.com/AI-READI/fairhub-portal/issues/new"
+            target="_blank"
+            class="text-sky-700"
+            >here</a
+          >.
+        </n-alert>
+
+        <n-alert
+          type="success"
+          :bordered="false"
+          title="I have a question aboutthe AI-READI dataset."
+        >
+          For queries about the AI-READI dataset use the dedicated contact form
+          <a
+            href="https://aireadi.org/contact"
+            target="_blank"
+            class="text-sky-700"
+            >here</a
+          >.
+        </n-alert>
+      </n-flex>
+
       <h2 class="mb-4 text-center text-4xl font-extrabold text-gray-900">
         Contact Us
       </h2>
@@ -51,7 +81,7 @@ const handleSubmit = () => {
         are here to help.
       </p>
 
-      <div class="pt-8">
+      <n-flex vertical class="pt-8">
         <n-alert
           type="warning"
           :bordered="false"
@@ -59,7 +89,7 @@ const handleSubmit = () => {
         >
           Please check back later.
         </n-alert>
-      </div>
+      </n-flex>
 
       <div class="py-8">
         <n-divider />
