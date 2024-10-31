@@ -1009,8 +1009,8 @@
               ]
             }
           ],
-          "size": 142274024,
-          "numberOfFiles": 2120
+          "size": 142139975,
+          "numberOfFiles": 2118
         },
         {
           "directoryName": "clinical_data",
@@ -1084,8 +1084,8 @@
               ]
             }
           ],
-          "size": 0,
-          "numberOfFiles": 0
+          "size": 65401816,
+          "numberOfFiles": 7
         },
         {
           "directoryName": "environment",
@@ -1158,7 +1158,7 @@
               ]
             }
           ],
-          "size": 26396580124,
+          "size": 26396580156,
           "numberOfFiles": 1044
         },
         {
@@ -1351,7 +1351,7 @@
               ]
             }
           ],
-          "size": 698764099797,
+          "size": 698763967142,
           "numberOfFiles": 25731
         },
         {
@@ -1492,7 +1492,7 @@
               ]
             }
           ],
-          "size": 705745487195,
+          "size": 705745431960,
           "numberOfFiles": 81674
         },
         {
@@ -1670,8 +1670,8 @@
               ]
             }
           ],
-          "size": 55831017384,
-          "numberOfFiles": 43489
+          "size": 55737846240,
+          "numberOfFiles": 43420
         },
         {
           "directoryName": "wearable_activity_monitor",
@@ -1812,8 +1812,8 @@
               ]
             }
           ],
-          "size": 17221464945,
-          "numberOfFiles": 6348
+          "size": 17221600223,
+          "numberOfFiles": 6245
         },
         {
           "directoryName": "wearable_blood_glucose",
