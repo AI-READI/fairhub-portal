@@ -59,7 +59,6 @@ const latestVersionId = ref("");
 
 const totalViewCountSpinner = ref(true);
 const totalDownloadApprovalSpinner = ref(true);
-const showModal = ref(false);
 
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
@@ -237,7 +236,6 @@ const getDownloads = async (skipSpinner: boolean = false) => {
 onMounted(() => {
   getViewCount();
   getDownloads(false);
-  toggleShowModal();
 });
 
 const onTabChange = () => {
@@ -250,6 +248,8 @@ const onTabChange = () => {
   }, 700);
 };
 
+const showModal = ref(false);
+
 const toggleShowModal = () => {
   showModal.value = !showModal.value;
 };
@@ -257,14 +257,7 @@ const toggleShowModal = () => {
 
 <template>
   <main class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50">
-    <n-modal
-      :show="showModal"
-      preset="dialog"
-      positive-text="OK"
-      display-directive="show"
-      @on-positive-click="toggleShowModal"
-      @on-close="toggleShowModal"
-    >
+    <n-modal :show="showModal" preset="dialog" display-directive="show">
       <template #header>Important Project Update</template>
 
       <template #icon>
@@ -349,14 +342,20 @@ const toggleShowModal = () => {
         </n-alert>
 
         <n-flex v-else>
-          <NuxtLink :to="`/datasets/${dataset?.id}/access`">
-            <n-button size="large" type="info" secondary class="my-3">
-              <template #icon>
-                <Icon name="line-md:download-loop" />
-              </template>
-              Access this dataset
-            </n-button>
-          </NuxtLink>
+          <!-- <NuxtLink :to="`/datasets/${dataset?.id}/access`"> -->
+          <n-button
+            size="large"
+            type="info"
+            secondary
+            class="my-3"
+            @click="toggleShowModal"
+          >
+            <template #icon>
+              <Icon name="line-md:download-loop" />
+            </template>
+            Access this dataset
+          </n-button>
+          <!-- </NuxtLink> -->
 
           <NuxtLink :to="`https://docs.aireadi.org`" target="_blank">
             <n-button size="large" type="info" tertiary class="my-3">
