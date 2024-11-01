@@ -131,6 +131,25 @@ const handleLogin = async () => {
                 </p>
 
                 <p>
+                  Please note that there are certain Identity Providers that are
+                  available by default from CILogon which are ineligible for use
+                  with this request because they allow self-attestation. These
+                  include (but are not limited to):
+                </p>
+
+                <ul>
+                  <li>ORCid</li>
+
+                  <li>GitHub</li>
+
+                  <li>Google</li>
+
+                  <li>Microsoft</li>
+
+                  <li>Yahoo</li>
+                </ul>
+
+                <p>
                   If you do not see your institution in the list of
                   participating Identity Providers please contact the
                   <a href="mailto:aireadi-dac@ohsu.edu">Data Access Committee</a
@@ -143,6 +162,7 @@ const handleLogin = async () => {
                 type="info"
                 secondary
                 class="my-3"
+                :disabled="true"
                 @click="handleLogin"
               >
                 Log in
