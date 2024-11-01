@@ -42,6 +42,16 @@ const handleSubmit = () => {
 <template>
   <main class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50">
     <div class="mx-auto max-w-screen-md px-4 py-8 lg:py-16">
+      <h2 class="mb-4 text-center text-4xl font-extrabold text-gray-900">
+        Contact Us
+      </h2>
+
+      <p class="text-center text-gray-500 sm:text-xl">
+        Got a technical issue? Want to send feedback about a beta feature?
+        <br />
+        We are here to help.
+      </p>
+
       <n-flex vertical class="py-8">
         <n-alert
           type="info"
@@ -72,26 +82,18 @@ const handleSubmit = () => {
         </n-alert>
       </n-flex>
 
-      <h2 class="mb-4 text-center text-4xl font-extrabold text-gray-900">
-        Contact Us
-      </h2>
-
-      <p class="text-center text-gray-500 sm:text-xl">
-        Got a technical issue? Want to send feedback about a beta feature? We
-        are here to help.
-      </p>
-
       <n-flex vertical class="pt-8">
         <n-alert
           type="warning"
           :bordered="false"
+          class="hidden"
           title="We are currently not accepting any new messages."
         >
           Please check back later.
         </n-alert>
       </n-flex>
 
-      <div class="py-8">
+      <div class="hidden py-8">
         <n-divider />
       </div>
 
@@ -102,6 +104,7 @@ const handleSubmit = () => {
         :rules="rules"
         size="large"
         disabled
+        class="hidden"
       >
         <n-form-item label="Your Name" path="name">
           <n-input v-model:value="formValue.name" placeholder="Erwin Smith" />
