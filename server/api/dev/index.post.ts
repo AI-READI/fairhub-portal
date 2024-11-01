@@ -17,10 +17,14 @@ export default defineEventHandler(async (_event) => {
     });
   }
 
-  throw createError({
-    statusCode: 500,
-    statusMessage: "This function is disabled",
-  });
+  // throw createError({
+  //   statusCode: 500,
+  //   statusMessage: "This function is disabled",
+  // });
+
+  // /**
+  //  * ! disabling the update operation
+  //  */
 
   const updatedRecord = await prisma.published_dataset.update({
     data: {
