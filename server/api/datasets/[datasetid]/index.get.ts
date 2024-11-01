@@ -43,6 +43,28 @@ export default defineEventHandler(async (event) => {
 
   const datasetAdditionalData = additionalData;
 
+  const fairhubDatasetId = publishedDataset.dataset_id;
+
+  // get all datasets with the same dataset_id
+  // This is the same as all versions of the same dataset in fairhub study management
+  const relatedDatasets = await prisma.published_dataset.findMany({
+    orderBy: {
+      created_at: "desc",
+    },
+    where: {
+      dataset_id: fairhubDatasetId,
+    },
+  });
+
+  const versions: VersionArray = relatedDatasets.map((relatedDataset) => {
+    return {
+      id: Number(relatedDataset.id).toString(),
+      title: relatedDataset.version_title,
+      createdAt: Number(BigInt(relatedDataset.created_at)),
+      doi: relatedDataset.doi,
+    };
+  });
+
   const dataset: Dataset = {
     id: datasetId,
     title: publishedDataset.title,
@@ -64,6 +86,7 @@ export default defineEventHandler(async (event) => {
     study_title: publishedDataset.study_title,
     version_id: publishedDataset.version_id,
     version_title: publishedDataset.version_title,
+    versions,
   };
 
   return dataset;

@@ -47,21 +47,53 @@ const handleSubmit = () => {
       </h2>
 
       <p class="text-center text-gray-500 sm:text-xl">
-        Got a technical issue? Want to send feedback about a beta feature? We
-        are here to help.
+        Got a technical issue? Want to send feedback about a beta feature?
+        <br />
+        We are here to help.
       </p>
 
-      <div class="pt-8">
+      <n-flex vertical class="py-8">
+        <n-alert
+          type="info"
+          :bordered="false"
+          title="I have an issue with FAIRhub."
+        >
+          For queries about the FAIRhub platform open a GitHub issue
+          <a
+            href="https://github.com/AI-READI/fairhub-portal/issues/new"
+            target="_blank"
+            class="text-sky-700"
+            >here</a
+          >.
+        </n-alert>
+
+        <n-alert
+          type="success"
+          :bordered="false"
+          title="I have a question about the AI-READI dataset."
+        >
+          For queries about the AI-READI dataset use the dedicated contact form
+          <a
+            href="https://aireadi.org/contact"
+            target="_blank"
+            class="text-sky-700"
+            >here</a
+          >.
+        </n-alert>
+      </n-flex>
+
+      <n-flex vertical class="pt-8">
         <n-alert
           type="warning"
           :bordered="false"
+          class="hidden"
           title="We are currently not accepting any new messages."
         >
           Please check back later.
         </n-alert>
-      </div>
+      </n-flex>
 
-      <div class="py-8">
+      <div class="hidden py-8">
         <n-divider />
       </div>
 
@@ -72,6 +104,7 @@ const handleSubmit = () => {
         :rules="rules"
         size="large"
         disabled
+        class="hidden"
       >
         <n-form-item label="Your Name" path="name">
           <n-input v-model:value="formValue.name" placeholder="Erwin Smith" />

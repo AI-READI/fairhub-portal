@@ -447,6 +447,8 @@ interface Directory {
       identifierType: string;
     }[];
   }[];
+  size?: number;
+  numberOfFiles?: number;
 }
 
 interface DatasetStructureDescription {
@@ -505,6 +507,7 @@ interface Dataset {
   files: FolderStructure[];
   data: AdditionalData;
   created_at: number;
+  versions: VersionArray;
 }
 
 interface DatasetArray extends Array<Dataset> {}

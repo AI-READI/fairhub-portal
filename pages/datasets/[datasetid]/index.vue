@@ -3,6 +3,7 @@ import sanitizeHtml from "sanitize-html";
 // import { fetchAllDashboardConnectors } from "~/stores/dashboard";
 import { parse } from "marked";
 import type { Dataset, WithContext } from "schema-dts";
+
 // Temp AI-READI Study ID From ENV
 const aireadiStudyId: string = nuxtConfig().public.AIREADI_STUDY_UUID;
 const config = useRuntimeConfig();
@@ -52,6 +53,9 @@ const totalViewCount = ref(0);
 const totalDownloadApprovals = ref(0);
 const totalDownloadApprovalforAllVersions = ref(0);
 const currentTab = ref("allVersions");
+
+const isLatestVersion = ref(false);
+const latestVersionId = ref("");
 
 const totalViewCountSpinner = ref(true);
 const totalDownloadApprovalSpinner = ref(true);
@@ -163,6 +167,14 @@ if (dataset.value) {
   if (dataset.value?.metadata.readme) {
     markdownToHtml.value = sanitize(await parse(dataset.value.metadata.readme));
   }
+
+  if (dataset.value?.versions.length > 0) {
+    latestVersionId.value = dataset.value?.versions[0].id;
+
+    if (dataset.value?.versions[0].id === dataset.value?.id) {
+      isLatestVersion.value = true;
+    }
+  }
 }
 
 const navigate = (target: string) => {
@@ -235,10 +247,54 @@ const onTabChange = () => {
     totalDownloadApprovalSpinner.value = false;
   }, 700);
 };
+
+const showModal = ref(false);
+
+const toggleShowModal = () => {
+  showModal.value = !showModal.value;
+};
 </script>
 
 <template>
   <main class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50">
+    <n-modal :show="showModal" preset="dialog" display-directive="show">
+      <template #header>Important Project Update</template>
+
+      <template #icon>
+        <Icon name="material-symbols:info" color="#fff600" size="30" />
+      </template>
+
+      <p>
+        Thank you for using the FAIRHub portal! We would like to inform you of
+        of a pending dataset release and major updates to the Portal.
+      </p>
+
+      <p>
+        We have updated our login workflow. Under the new system you will need
+        to login with a valid institutional ID and once again complete the
+        entire data attestation workflow to obtain access to our updated
+        dataset. Once you have authenticated using this new process you will not
+        be required to re-attest.
+      </p>
+
+      <p>
+        We are also ending support for SFTP downloads and introducing two new
+        options to obtain your data: AzCopy and Rclone. Instructions and
+        documentation will be provided to you when you log in to obtain your
+        needed download credentials.
+      </p>
+
+      <p>
+        Finally, we will shortly be releasing our updated dataset. Until this
+        release we will not be processing any additional requests for download.
+      </p>
+
+      <p>
+        We thank you for your patience as we roll out these improvements. Please
+        check back soon.
+      </p>
+    </n-modal>
+
     <div
       class="mx-auto mt-10 flex w-full max-w-screen-xl flex-col-reverse items-center justify-between px-3 sm:flex-row"
     >
@@ -275,15 +331,31 @@ const onTabChange = () => {
 
         <p class="hidden">{{ dataset?.description }}</p>
 
-        <n-flex>
-          <NuxtLink :to="`/datasets/${dataset?.id}/access`">
-            <n-button size="large" type="info" secondary class="my-3">
-              <template #icon>
-                <Icon name="line-md:download-loop" />
-              </template>
-              Access this dataset
-            </n-button>
-          </NuxtLink>
+        <n-alert v-if="!isLatestVersion" type="warning" class="my-3 mr-3">
+          This version of the dataset is no longer accessible. Please refer to
+          the
+          <NuxtLink
+            :to="`/datasets/${latestVersionId}`"
+            class="text-blue-500 hover:underline"
+            >latest version</NuxtLink
+          >.
+        </n-alert>
+
+        <n-flex v-else>
+          <!-- <NuxtLink :to="`/datasets/${dataset?.id}/access`"> -->
+          <n-button
+            size="large"
+            type="info"
+            secondary
+            class="my-3"
+            @click="toggleShowModal"
+          >
+            <template #icon>
+              <Icon name="line-md:download-loop" />
+            </template>
+            Access this dataset
+          </n-button>
+          <!-- </NuxtLink> -->
 
           <NuxtLink :to="`https://docs.aireadi.org`" target="_blank">
             <n-button size="large" type="info" tertiary class="my-3">
@@ -332,6 +404,7 @@ const onTabChange = () => {
               :key="index"
               v-slot="{ setActive, isActive }"
               as="li"
+              class="flex items-center"
               @click="navigate(item.label)"
             >
               <button
@@ -703,7 +776,10 @@ const onTabChange = () => {
 
             <SideCitationViewer :id="dataset?.id || ''" />
 
-            <SideVersionSelector :id="dataset?.id || ''" />
+            <SideVersionSelector
+              :id="dataset?.id || ''"
+              :versions="dataset?.versions || []"
+            />
           </n-flex>
         </div>
       </div>
