@@ -247,10 +247,9 @@ const validForm = computed(
               <h5>Non-Diabetes Research</h5>
 
               <p>
-                For non-diabetes research or for use of controlled variables,
-                you must provide the additional following detail (as both are
-                considered controlled access, requiring both DAC approval and a
-                Data use agreement).
+                For non-diabetes research you must provide the additional
+                following details, which requires both DAC approval and a Data
+                Use Agreement.
               </p>
 
               <n-form :model="agreementFormState" :rules="nonDiabetesRules">
