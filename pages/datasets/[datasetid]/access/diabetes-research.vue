@@ -95,7 +95,7 @@ const researchTypeSelected = computed(
             <h4>Diabetes or non-diabetes research</h4>
 
             <n-form-item
-              label="Is your research related to type II diabetes, or is it non-diabetes research?"
+              label="Is your research studying type II diabetes, or is it non-diabetes research?"
             >
               <n-radio-group
                 v-model:value="agreementFormState.is_diabetes_research"
