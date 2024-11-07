@@ -736,7 +736,7 @@
           "subjectIdentifier": {
             "classificationCode": "D000069550",
             "subjectScheme": "Medical Subject Headings (MeSH)",
-            "schemeURI": "https://meshb.nlm.nih.gov/record/",
+            "schemeURI": "https://meshb.nlm.nih.gov/",
             "valueURI": "https://meshb.nlm.nih.gov/record/ui?ui=D000069550"
           }
         },
