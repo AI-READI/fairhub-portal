@@ -141,8 +141,8 @@ export default defineNuxtConfig({
       STUDY_RELEASE_TIMESTAMP:
         process.env.NUXT_SITE_ENV === "dev" ||
         process.env.NUXT_SITE_ENV === "staging"
-          ? "1730973600" // 2024-11-07T02:00:00.000Z
-          : "1731060000", // 2024-11-08T02:00:00.000Z
+          ? "1730943000" // Wed Nov 06 2024 17:30:00 GMT-0800 (Pacific Standard Time)
+          : "1731060000", // Fri Nov 07 2024 02:00:00 GMT-0800 (Pacific Standard Time)
       UMAMI_SHARE_URL:
         process.env.NUXT_SITE_ENV === "dev" ||
         process.env.NUXT_SITE_ENV === "staging"
