@@ -138,7 +138,11 @@ export default defineNuxtConfig({
           : process.env.NUXT_SITE_ENV === "staging"
             ? "https://staging.api.fairhub.io"
             : "https://api.fairhub.io",
-      STUDY_RELEASE_TIMESTAMP: "1731060000", // 2024-11-08T02:00:00.000Z
+      STUDY_RELEASE_TIMESTAMP:
+        process.env.NUXT_SITE_ENV === "dev" ||
+        process.env.NUXT_SITE_ENV === "staging"
+          ? "1730973600" // 2024-11-07T02:00:00.000Z
+          : "1731060000", // 2024-11-08T02:00:00.000Z
       UMAMI_SHARE_URL:
         process.env.NUXT_SITE_ENV === "dev" ||
         process.env.NUXT_SITE_ENV === "staging"
