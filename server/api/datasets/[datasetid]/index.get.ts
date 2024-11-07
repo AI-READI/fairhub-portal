@@ -70,7 +70,7 @@ export default defineEventHandler(async (event) => {
   });
 
   /** emb */
-  if (!pastEmb) {
+  if (!pastEmb && relatedDatasets.length > 1) {
     relatedDatasets.shift();
   }
 

@@ -58,7 +58,7 @@ export default defineEventHandler(async (event) => {
   }
 
   /** emb */
-  if (!pastEmb) {
+  if (!pastEmb && datasets.length > 1) {
     // remove the first dataset from the list
     datasets.shift();
   }
