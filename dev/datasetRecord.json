@@ -2243,7 +2243,7 @@
         {
           "id": 2,
           "question": "Does using the dataset require the citation of the paper or any other forms of acknowledgement? If yes, is it easily accessible through google scholar or other repositories",
-          "response": "Yes, use of the dataset requires citation to the resources specified in https://docs.aireadi.org. There is also a marker paper about the dataset in press at Nature Metabolism that should be cited by all users of the dataset. This healthsheet will be updated once that citation becomes available by the publisher."
+          "response": "Yes, use of the dataset requires citation to the resources specified in https://docs.aireadi.org."
         },
         {
           "id": 3,
