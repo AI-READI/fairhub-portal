@@ -1,13 +1,11 @@
 <script setup lang="ts">
-definePageMeta({
-  middleware: ["auth"],
-});
+import useDownloadAgreementForm from "~/composables/useDownloadAgreementForm";
 
 const route = useRoute();
 
 const { datasetid } = route.params as { datasetid: string };
 const { data: dataset, error } = await useDataset(datasetid);
-const { data: agreement } = await useDownloadAgreement(datasetid);
+const agreementFormState = useDownloadAgreementForm(datasetid);
 
 if (error.value) {
   console.error(error.value);
@@ -18,11 +16,6 @@ if (error.value) {
   });
 
   throw new Error("Failed to fetch dataset");
-}
-
-if (!agreement.value) {
-  console.warn("Redirecting to collect license agreement");
-  await navigateTo(`/datasets/${dataset.value?.id}/access/research-purpose`);
 }
 
 // TODO: Convert to a utility or extract a component?
@@ -36,32 +29,10 @@ const generateCombinedFullName = (name: string) => {
   }
 };
 
-const currentStep = ref<number>(7);
-const selectedFolders = ref<string[]>([]);
-const hasSelectedFolders = computed(() => selectedFolders.value.length > 0);
-
-const handleSubmit = async () => {
-  try {
-    await $fetch(`/api/downloads/request/create`, {
-      body: {
-        dataset_id: dataset.value?.id,
-        download_agreement_id: agreement.value?.id,
-        folders_selected: selectedFolders.value,
-      },
-      headers: useRequestHeaders(["cookie"]),
-      method: "POST",
-    });
-    await navigateTo(`/datasets/${dataset.value?.id}/access/submitted`);
-  } catch (error) {
-    console.error(error);
-    push.error({
-      title: "Something went wrong",
-      message: "Could not save download request",
-    });
-
-    throw new Error("Could not save download request");
-  }
-};
+const currentStep = ref<number>(3);
+const researchTypeSelected = computed(
+  () => agreementFormState.value.is_diabetes_research !== null,
+);
 </script>
 
 <template>
@@ -121,28 +92,32 @@ const handleSubmit = async () => {
 
         <TransitionFade>
           <div>
-            <h4>Select Folders</h4>
+            <h4>Diabetes or non-diabetes research</h4>
 
-            <p>Select data types to include in your dataset.</p>
-
-            <DownloadFolderSelector
-              v-model="selectedFolders"
-              :folder-structure="dataset?.files || []"
-              :dataset-structure-description="
-                dataset?.metadata
-                  .datasetStructureDescription as DatasetStructureDescription
-              "
-            />
-
-            <n-button
-              size="large"
-              type="info"
-              secondary
-              class="my-3"
-              :disabled="!hasSelectedFolders"
-              @click="handleSubmit"
-              >Submit</n-button
+            <n-form-item
+              label="Is your research studying type II diabetes, or is it non-diabetes research?"
             >
+              <n-radio-group
+                v-model:value="agreementFormState.is_diabetes_research"
+              >
+                <n-space>
+                  <n-radio :value="true" label="Diabetes research" />
+
+                  <n-radio :value="false" label="Non-diabetes research" />
+                </n-space>
+              </n-radio-group>
+            </n-form-item>
+
+            <NuxtLink :to="`/datasets/${dataset?.id}/access/training`">
+              <n-button
+                size="large"
+                type="info"
+                secondary
+                class="my-3"
+                :disabled="!researchTypeSelected"
+                >Next</n-button
+              >
+            </NuxtLink>
           </div>
         </TransitionFade>
       </div>

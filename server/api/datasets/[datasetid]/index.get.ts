@@ -1,5 +1,20 @@
 export default defineEventHandler(async (event) => {
+  const config = useRuntimeConfig(event);
+
+  /** emb */
+  const embTimestamp = new Date(
+    parseInt(config.public.STUDY_RELEASE_TIMESTAMP) * 1000,
+  );
+  const pastEmb = new Date() > embTimestamp;
+
   const { datasetid } = event.context.params as { datasetid: string };
+
+  if (!pastEmb && datasetid !== "1") {
+    throw createError({
+      statusCode: 404,
+      statusMessage: "Dataset not found",
+    });
+  }
 
   const publishedDataset = await prisma.published_dataset.findUnique({
     where: {
@@ -8,8 +23,6 @@ export default defineEventHandler(async (event) => {
   });
 
   if (!publishedDataset) {
-    console.log(`Dataset ${datasetid} not found`);
-
     throw createError({
       message: `Dataset ${datasetid} not found`,
       statusCode: 404,
@@ -55,6 +68,11 @@ export default defineEventHandler(async (event) => {
       dataset_id: fairhubDatasetId,
     },
   });
+
+  /** emb */
+  if (!pastEmb && relatedDatasets.length > 1) {
+    relatedDatasets.shift();
+  }
 
   const versions: VersionArray = relatedDatasets.map((relatedDataset) => {
     return {

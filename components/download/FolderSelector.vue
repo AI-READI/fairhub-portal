@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import prettyBytes from "pretty-bytes";
+
 const props = defineProps({
   datasetStructureDescription: {
     required: true,
@@ -14,7 +16,9 @@ const selectedFolders = defineModel<string[]>({ required: true });
 
 type FolderDescriptor = {
   name: string;
-  description: string;
+  description: string | undefined;
+  numberOfFiles: number | undefined;
+  size: number | undefined;
   type: string;
 };
 
@@ -24,6 +28,8 @@ const folderMetadata = computed(() => {
     .map((item) => ({
       name: item.directoryName,
       description: item.directoryDescription,
+      numberOfFiles: item.numberOfFiles,
+      size: item.size,
       type: item.directoryType,
     }))
     .reduce((acc, item) => acc.set(item.name, item), metadata);
@@ -35,16 +41,30 @@ const folders = computed(() =>
     .filter((file) => file.children)
     .map((folder) => {
       const metadata = folderMetadata.value;
+      const folderDescriptor = metadata.get(folder.label);
       const description =
-        metadata.get(folder.label)?.description ??
-        "No description found for this folder";
+        folderDescriptor?.description ?? "No description found for this folder";
+      const size = folderDescriptor?.size;
+      const numberOfFiles = folderDescriptor?.numberOfFiles;
       return {
         id: useId(),
         description,
         label: folder.label,
+        numberOfFiles,
         selected: false,
+        size,
       };
     }),
+);
+
+const hasFolderSizes = computed(() =>
+  folders.value.every((folder) => Number.isFinite(folder.size)),
+);
+
+const totalBytes = computed(() =>
+  selectedFolders.value
+    .map((label) => folderMetadata.value.get(label))
+    .reduce((prev, curr) => (curr?.size ? prev + curr?.size : prev + 0), 0),
 );
 </script>
 
@@ -68,9 +88,18 @@ const folders = computed(() =>
             <span :id="`folder-description-${folder.id}`">
               {{ folder.description }}
             </span>
+
+            <span v-if="folder.size" class="text-xs font-thin"
+              >{{ folder.numberOfFiles }} files,
+              {{ prettyBytes(folder.size) }}</span
+            >
           </div>
         </div>
       </n-card>
     </n-flex>
   </n-checkbox-group>
+
+  <p v-if="hasFolderSizes">
+    Total size of selected folders: {{ prettyBytes(totalBytes) }}
+  </p>
 </template>

@@ -14,7 +14,7 @@ const props = defineProps({
   },
 });
 
-const parsedSize = byteSize(props.size).toString();
+const parsedSize = byteSize(props.size, { precision: 2 }).toString();
 </script>
 
 <template>

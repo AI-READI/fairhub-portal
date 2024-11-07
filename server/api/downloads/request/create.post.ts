@@ -35,6 +35,14 @@ export default defineEventHandler(async (event) => {
     });
   }
 
+  // Require DAC approval for non-diabetes research
+  const approvalStatus = licenseAgreement.is_diabetes_research
+    ? "APPROVED"
+    : "AWAITING_APPROVAL";
+  const approvalReason = licenseAgreement.is_diabetes_research
+    ? "No approval needed for diabetes research"
+    : null;
+
   try {
     const timestamp = currentUnixTimestamp();
     const approvalId = uuid();
@@ -42,8 +50,9 @@ export default defineEventHandler(async (event) => {
       prisma.download_request_approval.create({
         data: {
           id: approvalId,
-          approval_status: "AWAITING_APPROVAL",
+          approval_status: approvalStatus,
           created_at: timestamp,
+          status_notes: approvalReason,
           updated_on: timestamp,
         },
       }),
