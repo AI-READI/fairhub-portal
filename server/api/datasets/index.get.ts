@@ -1,6 +1,14 @@
-export default defineEventHandler(async (_event) => {
+export default defineEventHandler(async (event) => {
+  const config = useRuntimeConfig(event);
+
+  /** emb */
+  const embTimestamp = new Date(
+    parseInt(config.public.STUDY_RELEASE_TIMESTAMP) * 1000,
+  );
+  const pastEmb = new Date() > embTimestamp;
+
   const publishedDatasets = await prisma.published_dataset.findMany({
-    distinct: ["dataset_id"],
+    distinct: pastEmb ? ["dataset_id"] : undefined,
     orderBy: {
       created_at: "desc",
     },
@@ -43,9 +51,16 @@ export default defineEventHandler(async (_event) => {
       study_title: dataset.study_title,
       version_id: dataset.version_id,
       version_title: dataset.version_title,
+      versions: [],
     };
 
     datasets.push(item);
+  }
+
+  /** emb */
+  if (!pastEmb) {
+    // remove the first dataset from the list
+    datasets.shift();
   }
 
   return datasets;
