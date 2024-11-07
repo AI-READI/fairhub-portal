@@ -926,7 +926,7 @@
             }
           ],
           "size": 142139975,
-          "numberOfFiles": 2118
+          "numberOfFiles": 2119
         },
         {
           "directoryName": "clinical_data",
@@ -1075,7 +1075,7 @@
             }
           ],
           "size": 26396580156,
-          "numberOfFiles": 1044
+          "numberOfFiles": 1045
         },
         {
           "directoryName": "retinal_flio",
@@ -1154,7 +1154,7 @@
             }
           ],
           "size": 504936506725,
-          "numberOfFiles": 3762
+          "numberOfFiles": 3763
         },
         {
           "directoryName": "retinal_oct",
@@ -1268,7 +1268,7 @@
             }
           ],
           "size": 698763967142,
-          "numberOfFiles": 25731
+          "numberOfFiles": 25732
         },
         {
           "directoryName": "retinal_octa",
@@ -1409,7 +1409,7 @@
             }
           ],
           "size": 705745431960,
-          "numberOfFiles": 81674
+          "numberOfFiles": 81675
         },
         {
           "directoryName": "retinal_photography",
@@ -1587,7 +1587,7 @@
             }
           ],
           "size": 55737846240,
-          "numberOfFiles": 43420
+          "numberOfFiles": 43421
         },
         {
           "directoryName": "wearable_activity_monitor",
@@ -1728,8 +1728,8 @@
               ]
             }
           ],
-          "size": 17221600223,
-          "numberOfFiles": 6245
+          "size": 17170612349,
+          "numberOfFiles": 6230
         },
         {
           "directoryName": "wearable_blood_glucose",
@@ -1815,7 +1815,7 @@
               ]
             }
           ],
-          "size": 1940731749,
+          "size": 1938813596,
           "numberOfFiles": 1050
         }
       ],
