@@ -26,6 +26,14 @@ then delete the three ones that are currently live
     selected: false,
   },
   {
+    id: "phenotype-recruitment",
+    name: "Phenotype Recruitment Counts",
+    available: true,
+    public: true,
+    report_key: "participant-values",
+    selected: false,
+  },
+  {
     id: "phenotype-recruitment-by-phase",
     name: "Phenotype Recruitment Counts by Phase",
     available: true,
@@ -46,14 +54,6 @@ then delete the three ones that are currently live
 Unlisted Modules
 */
 
-  // {
-  //   id: "phenotype-recruitment",
-  //   name: "Phenotype Recruitment Counts",
-  //   available: true,
-  //   public: true,
-  //   report_key: "participant-values",
-  //   selected: false,
-  // },
   // {
   //   id: "phenotype-recruitment-by-site",
   //   name: "Phenotype Recruitment Counts by Site",
