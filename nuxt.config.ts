@@ -89,10 +89,6 @@ export default defineNuxtConfig({
     position: "bottom-right",
   },
 
-  overrides: {
-    vue: "latest",
-  },
-
   runtimeConfig: {
     entraClientSecret: "",
     public: {
@@ -138,11 +134,11 @@ export default defineNuxtConfig({
           : process.env.NUXT_SITE_ENV === "staging"
             ? "https://staging.api.fairhub.io"
             : "https://api.fairhub.io",
-      STUDY_RELEASE_TIMESTAMP:
-        process.env.NUXT_SITE_ENV === "dev" ||
-        process.env.NUXT_SITE_ENV === "staging"
-          ? "1730950200" // Wed Nov 06 2024 19:30:00 GMT-0800 (Pacific Standard Time)
-          : "1731060000", // Fri Nov 07 2024 02:00:00 GMT-0800 (Pacific Standard Time)
+      // STUDY_RELEASE_TIMESTAMP:
+      //   process.env.NUXT_SITE_ENV === "dev" ||
+      //   process.env.NUXT_SITE_ENV === "staging"
+      //     ? "1730950200" // Wed Nov 06 2024 19:30:00 GMT-0800 (Pacific Standard Time)
+      //     : "1731060000", // Fri Nov 07 2024 02:00:00 GMT-0800 (Pacific Standard Time)
       UMAMI_SHARE_URL:
         process.env.NUXT_SITE_ENV === "dev" ||
         process.env.NUXT_SITE_ENV === "staging"
