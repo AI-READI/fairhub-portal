@@ -304,20 +304,12 @@ const toggleShowModal = () => {
         </n-alert>
 
         <n-flex v-else>
-          <!-- <NuxtLink :to="`/datasets/${dataset?.id}/access`"> -->
-          <n-button
-            size="large"
-            type="info"
-            secondary
-            class="my-3"
-            @click="toggleShowModal"
-          >
+          <NuxtLink :to="`/datasets/${dataset?.id}/access`">
             <template #icon>
               <Icon name="line-md:download-loop" />
             </template>
             Access this dataset
-          </n-button>
-          <!-- </NuxtLink> -->
+          </NuxtLink>
 
           <NuxtLink :to="`https://docs.aireadi.org`" target="_blank">
             <n-button size="large" type="info" tertiary class="my-3">
