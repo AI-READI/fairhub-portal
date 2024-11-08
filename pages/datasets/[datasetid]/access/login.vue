@@ -162,7 +162,6 @@ const handleLogin = async () => {
                 type="info"
                 secondary
                 class="my-3"
-                :disabled="true"
                 @click="handleLogin"
               >
                 Log in
