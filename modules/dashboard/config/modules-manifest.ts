@@ -18,22 +18,6 @@ then delete the three ones that are currently live
 */
 
   {
-    id: "phenotype-recruitment",
-    name: "Phenotype Recruitment Counts",
-    available: true,
-    public: true,
-    report_key: "participant-values",
-    selected: false,
-  },
-  {
-    id: "phenotype-race-by-sex",
-    name: "Phenotype & Self-Reported Race by Self-Reported Sex",
-    available: true,
-    public: true,
-    report_key: "participant-values",
-    selected: false,
-  },
-  {
     id: "survey-completion-status",
     name: "Survey Completion Status",
     available: true,
@@ -41,51 +25,27 @@ then delete the three ones that are currently live
     report_key: "instrument-status",
     selected: false,
   },
+  {
+    id: "phenotype-recruitment-by-phase",
+    name: "Phenotype Recruitment Counts by Phase",
+    available: true,
+    public: true,
+    report_key: "participant-values",
+    selected: false,
+  },
+  {
+    id: "phenotype-race-by-phase",
+    name: "Phenotype & Self-Reported Race by Phase",
+    available: true,
+    public: true,
+    report_key: "participant-values",
+    selected: false,
+  },
 
-  /*
-All Modules Below
+/*
+Unlisted Modules
 */
 
-  // {
-  //   id: "instrument-completion-status-by-site",
-  //   name: "Instrument Completion Status by Site",
-  //   available: false,
-  //   public: false,
-  //   report_key: "instrument-status",
-  //   selected: false,
-  // },
-  // {
-  //   id: "survey-completion-status-by-site",
-  //   name: "Survey Completion Status by Site",
-  //   available: true,
-  //   public: false,
-  //   report_key: "instrument-status",
-  //   selected: false,
-  // },
-  // {
-  //   id: "device-collection-status-by-site",
-  //   name: "Device Collection Status By Site",
-  //   available: false,
-  //   public: false,
-  //   report_key: "instrument-status",
-  //   selected: false,
-  // },
-  // {
-  //   id: "recruitment-operations-status-by-site",
-  //   name: "Recruitment Operations Status by Site",
-  //   available: true,
-  //   public: false,
-  //   report_key: "instrument-status",
-  //   selected: false,
-  // },
-  // {
-  //   id: "survey-completion-status",
-  //   name: "Survey Completion Status",
-  //   available: true,
-  //   public: true,
-  //   report_key: "instrument-status",
-  //   selected: false,
-  // },
   // {
   //   id: "phenotype-recruitment",
   //   name: "Phenotype Recruitment Counts",
@@ -99,6 +59,14 @@ All Modules Below
   //   name: "Phenotype Recruitment Counts by Site",
   //   available: true,
   //   public: false,
+  //   report_key: "participant-values",
+  //   selected: false,
+  // },
+  // {
+  //   id: "race-recruitment-by-phase",
+  //   name: "Self-Reported Race Recruitment Counts by Phase",
+  //   available: true,
+  //   public: true,
   //   report_key: "participant-values",
   //   selected: false,
   // },
@@ -183,6 +151,22 @@ All Modules Below
   //   selected: false,
   // },
   // {
+  //   id: "race-phenotype-by-phase",
+  //   name: "Self-Reported Race & Phenotype by Phase",
+  //   available: true,
+  //   public: true,
+  //   report_key: "participant-values",
+  //   selected: false,
+  // },
+  // {
+  //   id: "race-sex-by-phase",
+  //   name: "Self-Reported Race & Self-Reported Sex by Phase",
+  //   available: true,
+  //   public: true,
+  //   report_key: "participant-values",
+  //   selected: false,
+  // },
+  // {
   //   id: "sex-phenotype-by-race",
   //   name: "Self-Reported Sex & Phenotype by Self-Reported Race",
   //   available: true,
@@ -212,6 +196,38 @@ All Modules Below
   //   available: true,
   //   public: false,
   //   report_key: "repeat-instrument",
+  //   selected: false,
+  // },
+  // {
+  //   id: "instrument-completion-status-by-site",
+  //   name: "Instrument Completion Status by Site",
+  //   available: false,
+  //   public: false,
+  //   report_key: "instrument-status",
+  //   selected: false,
+  // },
+  // {
+  //   id: "survey-completion-status-by-site",
+  //   name: "Survey Completion Status by Site",
+  //   available: true,
+  //   public: false,
+  //   report_key: "instrument-status",
+  //   selected: false,
+  // },
+  // {
+  //   id: "device-collection-status-by-site",
+  //   name: "Device Collection Status By Site",
+  //   available: false,
+  //   public: false,
+  //   report_key: "instrument-status",
+  //   selected: false,
+  // },
+  // {
+  //   id: "recruitment-operations-status-by-site",
+  //   name: "Recruitment Operations Status by Site",
+  //   available: true,
+  //   public: false,
+  //   report_key: "instrument-status",
   //   selected: false,
   // },
 ];
