@@ -96,12 +96,38 @@ onMounted(() => {
     <n-flex vertical :size="[0, 0]">
       <h3 class="mb-3">Citation</h3>
 
-      <p class="pb-1 text-sm font-medium">
+      <p class="hidden pb-1 text-sm font-medium">
         When using this resource, please cite:
       </p>
 
+      <!-- TODO: Remove this when we have a better way to handle this -->
+      <p v-if="id === '1'" class="pb-1 text-sm">
+        When using this resource, please follow the citation instructions
+        provided at
+        <NuxtLink
+          href="https://docs.aireadi.org/docs/1/citation"
+          target="_blank"
+          class="underline transition-all hover:text-slate-600"
+        >
+          https://docs.aireadi.org/docs/1/citation
+        </NuxtLink>
+      </p>
+
+      <!-- TODO: Remove this when we have a better way to handle this -->
+      <p v-if="id === '2'" class="pb-1 text-sm">
+        When using this resource, please follow the citation instructions
+        provided at
+        <NuxtLink
+          href="https://docs.aireadi.org/docs/2/citation"
+          target="_blank"
+          class="underline transition-all hover:text-slate-600"
+        >
+          https://docs.aireadi.org/docs/2/citation
+        </NuxtLink>
+      </p>
+
       <TransitionFade>
-        <div v-if="citationPending" class="py-2">
+        <div v-if="citationPending" class="hidden py-2">
           <n-skeleton text style="width: 80%" />
 
           <n-skeleton text />
@@ -109,7 +135,7 @@ onMounted(() => {
           <n-skeleton text style="width: 60%" />
         </div>
 
-        <div v-else class="py-2">
+        <div v-else class="hidden py-2">
           <n-alert v-if="citationError" type="error">
             Something went wrong with generating the citation. Please try again
             later.
@@ -119,13 +145,13 @@ onMounted(() => {
         </div>
       </TransitionFade>
 
-      <n-flex align="center" justify="space-between">
+      <n-flex align="center" justify="space-between" class="hidden">
         <n-select
           v-model:value="citationFormat"
           size="small"
           :options="citationFormats"
           :consistent-menu-width="false"
-          class="w-max"
+          class="hidden w-max"
           :loading="citationPending"
           :disabled="citationPending"
           @update:value="getFormattedCitation"
@@ -135,6 +161,7 @@ onMounted(() => {
           quaternary
           type="info"
           size="large"
+          class="hidden"
           @click="copyToClipboard(citation?.formattedText)"
         >
           <template #icon>
@@ -143,9 +170,9 @@ onMounted(() => {
         </n-button>
       </n-flex>
 
-      <n-divider />
+      <n-divider class="hidden" />
 
-      <n-alert type="warning" :bordered="false">
+      <n-alert type="warning" :bordered="false" class="hidden">
         There maybe other required citations when using this dataset. Please
         check the license and other resources associated with the dataset for
         more information.
