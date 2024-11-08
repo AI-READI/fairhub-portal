@@ -305,10 +305,12 @@ const toggleShowModal = () => {
 
         <n-flex v-else>
           <NuxtLink :to="`/datasets/${dataset?.id}/access`">
-            <template #icon>
-              <Icon name="line-md:download-loop" />
-            </template>
-            Access this dataset
+            <n-button size="large" type="info" secondary class="my-3">
+              <template #icon>
+                <Icon name="line-md:download-loop" />
+              </template>
+              Access this dataset
+            </n-button>
           </NuxtLink>
 
           <NuxtLink :to="`https://docs.aireadi.org`" target="_blank">
