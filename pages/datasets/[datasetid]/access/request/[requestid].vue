@@ -27,7 +27,7 @@ const isExpired = request.status === "EXPIRED";
 
 const userKey = user?.email.replace(/[^a-zA-Z0-9]/g, "");
 const requestSasUri = request.download_uri;
-const azcopyCommand = `azcopy copy '${requestSasUri}' 'C:\\local\\path' --recursive=true`;
+const azcopyCommand = `azcopy copy "${requestSasUri}" "C:\\local\\path" --recursive=true`;
 
 const copyToClipboard = (text: string = "") => {
   navigator.clipboard.writeText(text);
