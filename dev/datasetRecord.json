@@ -2332,7 +2332,334 @@
       ]
     }
   },
-  "files": [],
+  "files": [
+    {
+      "children": [
+        {
+          "label": "ecg_12lead",
+          "children": [
+            {
+              "label": "philips_tc30",
+              "children": []
+            }
+          ]
+        },
+        {
+          "label": "manifest.tsv"
+        }
+      ],
+      "label": "cardiac_ecg"
+    },
+    {
+      "children": [
+        {
+          "label": "dqd_omop.json",
+          "children": []
+        }
+      ],
+      "label": "clinical_data"
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "label": "leelab_anura"
+            }
+          ],
+          "label": "environmental_sensor"
+        },
+        {
+          "label": "manifest.tsv"
+        }
+      ],
+      "label": "environment"
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "label": "heidelberg_flio"
+            }
+          ],
+          "label": "flio"
+        },
+        {
+          "label": "manifest.tsv"
+        }
+      ],
+      "label": "retinal_flio"
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "label": "heidelberg_spectralis"
+            },
+            {
+              "children": [],
+              "label": "topcon_maestro2"
+            },
+            {
+              "children": [],
+              "label": "topcon_triton"
+            },
+            {
+              "children": [],
+              "label": "zeiss_cirrus"
+            },
+            {
+              "label": "manifest.tsv"
+            }
+          ],
+          "label": "structural_oct"
+        },
+        {
+          "label": "manifest.tsv"
+        }
+      ],
+      "label": "retinal_oct"
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "label": "topcon_maestro2"
+            },
+            {
+              "children": [],
+              "label": "topcon_triton"
+            },
+            {
+              "children": [],
+              "label": "zeiss_cirrus"
+            }
+          ],
+          "label": "enface"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "label": "topcon_maestro2"
+            },
+            {
+              "children": [],
+              "label": "topcon_triton"
+            },
+            {
+              "children": [],
+              "label": "zeiss_cirrus"
+            }
+          ],
+          "label": "flow_cube"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "label": "topcon_maestro2"
+            },
+            {
+              "children": [],
+              "label": "topcon_triton"
+            },
+            {
+              "children": [],
+              "label": "zeiss_cirrus"
+            }
+          ],
+          "label": "segmentation"
+        },
+        {
+          "label": "manifest.tsv"
+        }
+      ],
+      "label": "retinal_octa"
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "label": "icare_eidon"
+            },
+            {
+              "children": [],
+              "label": "optomed_aurora"
+            },
+            {
+              "children": [],
+              "label": "topcon_maestro2"
+            },
+            {
+              "children": [],
+              "label": "topcon_triton"
+            }
+          ],
+          "label": "cfp"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "label": "icare_eidon"
+            }
+          ],
+          "label": "faf"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "label": "heidelberg_spectralis"
+            },
+            {
+              "children": [],
+              "label": "icare_eidon"
+            },
+            {
+              "children": [],
+              "label": "topcon_maestro2"
+            },
+            {
+              "children": [],
+              "label": "topcon_triton"
+            },
+            {
+              "children": [],
+              "label": "zeiss_cirrus"
+            },
+            {
+              "label": "manifest.tsv"
+            }
+          ],
+          "label": "ir"
+        }
+      ],
+      "label": "retinal_photography"
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "label": "garmin_vivosmart5"
+            }
+          ],
+          "label": "heart_rate"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "label": "garmin_vivosmart5"
+            }
+          ],
+          "label": "oxygen_saturation"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "label": "garmin_vivosmart5"
+            }
+          ],
+          "label": "physical_activity"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "label": "garmin_vivosmart5"
+            }
+          ],
+          "label": "physical_activity_calorie"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "label": "garmin_vivosmart5"
+            }
+          ],
+          "label": "respiratory_rate"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "label": "garmin_vivosmart5"
+            }
+          ],
+          "label": "sleep"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "label": "garmin_vivosmart5"
+            }
+          ],
+          "label": "stress"
+        },
+        {
+          "label": "manifest.tsv"
+        }
+      ],
+      "label": "wearable_activity_monitor"
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "label": "dexcom_g6"
+            }
+          ],
+          "label": "continuous_glucose_monitoring"
+        }
+      ],
+      "label": "wearable_blood_glucose"
+    },
+    {
+      "label": "CHANGELOG.md"
+    },
+    {
+      "label": "LICENSE.txt"
+    },
+    {
+      "label": "README.md"
+    },
+    {
+      "label": "dataset_description.json"
+    },
+    {
+      "label": "dataset_structure_description.json"
+    },
+    {
+      "label": "healthsheet.md"
+    },
+    {
+      "label": "participants.json"
+    },
+    {
+      "label": "participants.tsv"
+    },
+    {
+      "label": "study_description.json"
+    }
+  ],
   "data": {
     "size": 2010899452756,
     "fileCount": 165051,
