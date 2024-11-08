@@ -7,7 +7,7 @@ import { compileDashboardModules } from "@/modules/dashboard/compile";
 
 export const useDashboardStore = defineStore("dashboard", () => {
   // const baseURL: string = nuxtConfig().public.STAGING_FAIRHUB_API_URL;
-  const baseURL: string = "https://staging.api.fairhub.io";
+  const baseURL: string = ["staging", "production"].includes(process.env.NUXT_SITE_ENV) ? "https://staging.api.fairhub.io" : "http://127.0.0.1:5000";
   const loading = ref(false);
   const configs: object = import.meta.glob(
     "@/modules/dashboard/config/modules/*.json",
