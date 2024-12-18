@@ -43,6 +43,7 @@ export default defineEventHandler(async (_event) => {
       study_title: dataset.study_title,
       version_id: dataset.version_id,
       version_title: dataset.version_title,
+      versions: [],
     };
 
     datasets.push(item);

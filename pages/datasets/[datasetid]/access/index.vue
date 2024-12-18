@@ -90,11 +90,20 @@ const currentStep = ref<number>(1);
 
             <ol>
               <li>
-                Authenticate using CILogon (contact the
-                <a href="mailto:aireadi-dac@ohsu.edu"
-                  >AI-READI Data Access Committee</a
-                >
-                if you are not at a research institution)
+                Authenticate using CILogon. If you are at an academic
+                institution or research organization, you can log on using your
+                institutional credentials. If you are unsure, please search for
+                the name of your institution in the CILogon dropdown menu.
+                <ul>
+                  <li>
+                    If you not able to access the data through CILogon (e.g. you
+                    do not see your organization or institution) then please
+                    contact the
+                    <a href="mailto:aireadi-dac@ohsu.edu"
+                      >AI-READI Data Access Committee</a
+                    >.
+                  </li>
+                </ul>
               </li>
 
               <li>

@@ -8,8 +8,6 @@ export default defineEventHandler(async (event) => {
   });
 
   if (!publishedDataset) {
-    console.log(`Dataset ${datasetid} not found`);
-
     throw createError({
       message: `Dataset ${datasetid} not found`,
       statusCode: 404,
