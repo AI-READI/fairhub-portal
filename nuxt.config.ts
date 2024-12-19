@@ -103,11 +103,13 @@ export default defineNuxtConfig({
             : "https://fairhub.io",
       ENTRA_CONFIG: {
         authority:
-          "https://aireadi.b2clogin.com/aireadi.onmicrosoft.com/B2C_1A_TRUSTFRAMEWORKBASE_CILOGON_IDP_RESTRICTED",
+          process.env.NUXT_SITE_ENV === "production"
+            ? "https://aireadi.b2clogin.com/aireadi.onmicrosoft.com/B2C_1A_TRUSTFRAMEWORKBASE_CILOGON_IDP_RESTRICTED"
+            : "https://aireadi.b2clogin.com/aireadi.onmicrosoft.com/B2C_1A_TrustFrameworkBase_STAGING",
         clientId:
-          process.env.NUXT_SITE_ENV === "dev"
-            ? "444bfea9-2fec-44ed-a4d7-767616afa9a3"
-            : "d173c9cb-36ce-4c77-92f3-025e48f0e533",
+          process.env.NUXT_SITE_ENV === "production"
+            ? "d173c9cb-36ce-4c77-92f3-025e48f0e533"
+            : "444bfea9-2fec-44ed-a4d7-767616afa9a3",
         forbiddenUri:
           process.env.NUXT_SITE_ENV === "dev"
             ? "http://localhost:3000/forbiddenlogin"

@@ -5,7 +5,9 @@ type SessionUserDetails = Omit<
   "created_at" | "updated_on"
 >;
 
-type LoginTokenClaims = Omit<SessionUserDetails, "id">;
+type LoginTokenClaims = Omit<
+  SessionUserDetails,
+  "id" | "phone" | "organization">;
 
 type Attestation = {
   id: string;
