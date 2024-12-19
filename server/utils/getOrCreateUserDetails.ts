@@ -21,6 +21,8 @@ export async function findOrCreateUserDetails(
     given_name: true,
     idp: true,
     issuer: true,
+    organization: true,
+    phone: true,
     subject: true,
   };
 
