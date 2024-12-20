@@ -52,7 +52,8 @@ function getEmail(tokenResponse: AuthenticationResult): string {
     email = tokenResponse.account.username;
   } else if (
     "email" in tokenResponse.idTokenClaims &&
-    typeof tokenResponse.idTokenClaims.email === "string"
+    typeof tokenResponse.idTokenClaims.email === "string" &&
+    emailRegex.test(tokenResponse.idTokenClaims.email)
   ) {
     email = tokenResponse.idTokenClaims.email;
   } else if ("emails" in tokenResponse.idTokenClaims) {
