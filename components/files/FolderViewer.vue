@@ -87,7 +87,11 @@ function convertDirectory(
         },
         [
           directory.size
-            ? h("span", { class: "text-sm" }, prettyBytes(directory.size) || "")
+            ? h(
+                "span",
+                { class: "text-sm" },
+                prettyBytes(directory.size, { binary: true }) || "",
+              )
             : null,
           directory.size ? h(NDivider, { vertical: true }) : null,
           h(
@@ -242,7 +246,7 @@ const openMetadataDrawer = (currentPath: Array<string>) => {
               <n-divider v-if="drawerDetails.numberOfFiles" vertical />
 
               <p v-if="drawerDetails.size">
-                {{ prettyBytes(drawerDetails.size) }}
+                {{ prettyBytes(drawerDetails.size, { binary: true }) }}
               </p>
             </div>
           </n-flex>
