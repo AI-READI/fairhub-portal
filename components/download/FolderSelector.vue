@@ -91,7 +91,7 @@ const totalBytes = computed(() =>
 
             <span v-if="folder.size" class="text-xs font-thin"
               >{{ folder.numberOfFiles }} files,
-              {{ prettyBytes(folder.size) }}</span
+              {{ prettyBytes(folder.size, { binary: true }) }}</span
             >
           </div>
         </div>
@@ -100,6 +100,7 @@ const totalBytes = computed(() =>
   </n-checkbox-group>
 
   <p v-if="hasFolderSizes">
-    Total size of selected folders: {{ prettyBytes(totalBytes) }}
+    Total size of selected folders:
+    {{ prettyBytes(totalBytes, { binary: true }) }}
   </p>
 </template>
