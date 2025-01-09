@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import hljs from "highlight.js/lib/core";
 import powershell from "highlight.js/lib/languages/powershell";
+import { unix } from "dayjs";
 
 definePageMeta({
   middleware: ["auth"],
@@ -25,7 +26,10 @@ const notUserDownload = user?.id !== request.user_details_id;
 const dataReady = request.status === "READY";
 const isExpired = request.status === "EXPIRED";
 
-const userKey = user?.email.replace(/[^a-zA-Z0-9]/g, "");
+const expiresAt = request.expires_at
+  ? unix(request.expires_at).format("MMM D, YYYY HH:mm Z")
+  : null;
+
 const requestSasUri = request.download_uri;
 const azcopyCommand = `azcopy copy "${requestSasUri}" "C:\\local\\path" --recursive=true`;
 
@@ -90,9 +94,19 @@ if (error.value) {
 
           <div v-else-if="dataReady">
             <p>
-              Your dataset is ready for download. Due to the number and size of
-              of the files included in typical datasets, we recommend using one
-              of the following clients:
+              Access to your dataset will expire on:
+              <strong class="text-lg font-black">{{ expiresAt }} UTC</strong>.
+            </p>
+
+            <p>
+              Please make sure to complete downloading your dataset before this
+              time. You will need to request a new dataset if you do not
+              complete the download before then.
+            </p>
+
+            <p>
+              Due to the number and size of of the files included in typical
+              datasets, we recommend using one of the following clients:
             </p>
 
             <n-tabs type="line" animated>
