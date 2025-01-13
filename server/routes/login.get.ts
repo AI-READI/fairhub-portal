@@ -52,15 +52,24 @@ function getEmail(tokenResponse: AuthenticationResult): string {
     email = tokenResponse.account.username;
   } else if (
     "email" in tokenResponse.idTokenClaims &&
-    typeof tokenResponse.idTokenClaims.email === "string"
+    typeof tokenResponse.idTokenClaims.email === "string" &&
+    emailRegex.test(tokenResponse.idTokenClaims.email)
   ) {
     email = tokenResponse.idTokenClaims.email;
   } else if ("emails" in tokenResponse.idTokenClaims) {
     const emails = getTokenClaim({ ...tokenResponse.idTokenClaims }, "emails");
     email =
       Array.isArray(emails) && typeof emails[0] === "string" ? emails[0] : "";
+  } else if ("otherMails" in tokenResponse.idTokenClaims) {
+    const otherMails = getTokenClaim(
+      { ...tokenResponse.idTokenClaims },
+      "otherMails",
+    );
+    email =
+      Array.isArray(otherMails) && typeof otherMails[0] === "string"
+        ? otherMails[0]
+        : "";
   }
-
   return email;
 }
 
@@ -89,8 +98,6 @@ async function convertTokenResponse(tokenResponse: AuthenticationResult) {
     given_name: getStringTokenClaim(indexableClaims, "given_name"),
     idp: getStringTokenClaim(indexableClaims, "idp"),
     issuer,
-    organization: getStringTokenClaim(indexableClaims, "organization"),
-    phone: getStringTokenClaim(indexableClaims, "phone"),
     subject,
   });
 
@@ -172,11 +179,8 @@ export default defineEventHandler(async (event) => {
 
     const idpType = checkTokenIdPIsValid(tokenResponse);
 
-    console.log(`Got here with IDPTYPE: ${idpType}`);
-
     // check token for forbidden IdPs
     if (idpType === "valid") {
-      console.log("valid");
       const sessionUserDetails = await convertTokenResponse(tokenResponse);
       const tokenExpiration = getTokenExpiration(tokenResponse);
       await session.update({
