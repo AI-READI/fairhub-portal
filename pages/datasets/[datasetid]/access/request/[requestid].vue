@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import hljs from "highlight.js/lib/core";
 import powershell from "highlight.js/lib/languages/powershell";
-import { unix } from "dayjs";
+import dayjs from "dayjs";
 
 definePageMeta({
   middleware: ["auth"],
@@ -27,7 +27,7 @@ const dataReady = request.status === "READY";
 const isExpired = request.status === "EXPIRED";
 
 const expiresAt = request.expires_at
-  ? unix(request.expires_at).format("MMM D, YYYY HH:mm Z")
+  ? dayjs.unix(request.expires_at).format("MMM D, YYYY HH:mm Z")
   : null;
 
 const requestSasUri = request.download_uri;
