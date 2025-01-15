@@ -772,7 +772,7 @@ model download_request {
   secure_hash           String?                   @db.Char(64)
   created_at            BigInt
   updated_on            BigInt
-  expires_at            BigInt
+  expires_at            BigInt?
   download_files        download_files[]
   published_dataset     published_dataset         @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   download_agreement    download_agreement        @relation(fields: [download_agreement_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
