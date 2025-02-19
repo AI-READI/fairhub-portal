@@ -261,6 +261,19 @@ const toggleShowModal = () => {
       class="mx-auto mt-10 flex w-full max-w-screen-xl flex-col-reverse items-center justify-between px-3 sm:flex-row"
     >
       <n-flex vertical>
+        <div class="flex items-center">
+          <p class="text-sm font-light text-slate-500">
+            Published on
+            {{ $dayjs(dataset?.created_at).format("MMMM D, YYYY") }}
+          </p>
+
+          <n-divider vertical />
+
+          <n-tag type="success" size="small">
+            Version {{ dataset?.version_title }}
+          </n-tag>
+        </div>
+
         <h1>{{ dataset?.title }}</h1>
 
         <div
