@@ -1,4 +1,5 @@
 import type { QueryValue } from "ufo";
+import dayjs from "dayjs";
 
 /**
  * Attempts to parse the value of the given query parameter to a numeric value.
@@ -50,11 +51,22 @@ export default defineEventHandler(async (event) => {
   const selectProps = {
     id: true,
     dataset_id: true,
+    download_request: {
+      select: {
+        approval: {
+          select: {
+            updated_on: true,
+          },
+        },
+      },
+    },
     download_user_details: {
       select: {
         id: true,
+        affiliation: true,
         family_name: true,
         given_name: true,
+        organization: true,
       },
     },
     research_purpose: true,
@@ -108,6 +120,12 @@ export default defineEventHandler(async (event) => {
     data: agreements.map((item) => ({
       id: item.id,
       name: `${item.download_user_details.given_name} ${item.download_user_details.family_name}`,
+      affiliation: item.download_user_details.affiliation,
+      approval_date: dayjs
+        .unix(Number(BigInt(item.download_request[0].approval.updated_on)))
+        .format("MMM D, YYYY"),
+      dataset_id: item.dataset_id,
+      organization: item.download_user_details.organization,
       research_purpose: item.research_purpose,
     })),
     page,
