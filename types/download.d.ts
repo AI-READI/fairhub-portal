@@ -7,7 +7,7 @@ type SessionUserDetails = Omit<
 
 type LoginTokenClaims = Omit<
   SessionUserDetails,
-  "id" | "phone" | "organization">;
+  "id" | "phone" >;
 
 type Attestation = {
   id: string;
