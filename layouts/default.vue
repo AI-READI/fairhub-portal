@@ -227,5 +227,12 @@ const links = [
     </header>
 
     <slot />
+
+    <div class="fixed bottom-1 z-50 mb-0 w-full text-center text-xs">
+      <div class="bg-blue-200 p-2 text-gray-600">
+        This repository is under review for potential modification in compliance
+        with Administration activities
+      </div>
+    </div>
   </div>
 </template>
