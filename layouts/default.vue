@@ -229,7 +229,7 @@ const links = [
     <slot />
 
     <div
-      class="fixed bottom-0 z-50 mb-0 w-full bg-blue-200 p-2 text-center text-xs text-gray-600"
+      class="fixed bottom-0 z-50 mb-0 w-full bg-blue-200 p-2 text-center text-xs text-gray-900"
     >
       This repository is under review for potential modification in compliance
       with Administration directives.
