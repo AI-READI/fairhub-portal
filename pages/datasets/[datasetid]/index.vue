@@ -611,7 +611,9 @@ const toggleShowModal = () => {
                   <n-flex size="small" align="center">
                     <Icon name="bi:journal-text" size="16" />
 
-                    <p class="text-sm font-medium">0</p>
+                    <p class="text-sm font-medium">
+                      {{ dataset?.data?.cited }}
+                    </p>
                   </n-flex>
 
                   <span class="text-sm font-normal">Cited by</span>
