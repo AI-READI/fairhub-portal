@@ -611,7 +611,14 @@ const toggleShowModal = () => {
                   <n-flex size="small" align="center">
                     <Icon name="bi:journal-text" size="16" />
 
-                    <p class="text-sm font-medium">
+                    <p
+                      class="text-sm font-medium"
+                      v-if="currentTab === 'currentVersion'"
+                    >
+                      {{ 0 }}
+                    </p>
+
+                    <p class="text-sm font-medium" v-else>
                       {{ dataset?.data?.cited || 0 }}
                     </p>
                   </n-flex>
@@ -683,6 +690,12 @@ const toggleShowModal = () => {
 
                   <n-tab name="currentVersion">Current version </n-tab>
                 </n-tabs>
+                <a
+                  class="flex justify-center pt-4 text-xs text-sky-700"
+                  target="_blank"
+                  href="https://github.com/AI-READI/fairhub-portal/blob/citation-count/dev/usage-statistics.md"
+                  >More info on how stats are collected....</a
+                >
               </div>
             </n-flex>
 
