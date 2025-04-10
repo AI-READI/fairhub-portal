@@ -71,7 +71,7 @@ const { data: totalCitations, error: citeError } = await useFetch(
   },
 );
 
-if (!citeError.value) {
+if (citeError.value) {
   totalCitations.value = 0;
 }
 // Get Study ID here. For now, we reference our environment variable
@@ -625,11 +625,11 @@ const toggleShowModal = () => {
                       v-if="currentTab === 'currentVersion'"
                       class="text-sm font-medium"
                     >
-                      {{ totalCitations || 0 }}
+                      {{ dataset?.data?.cited || 0 }}
                     </p>
 
                     <p v-else class="text-sm font-medium">
-                      {{ dataset?.data?.cited || 0 }}
+                      {{ totalCitations || 0 }}
                     </p>
                   </n-flex>
 
