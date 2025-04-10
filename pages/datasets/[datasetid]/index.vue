@@ -64,6 +64,16 @@ const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
 });
 
+const { data: totalCitations, error: citeError } = await useFetch(
+  `/api/totalcitations`,
+  {
+    headers: useRequestHeaders(["cookie"]),
+  },
+);
+
+if (citeError.value) {
+  totalCitations.value = 0;
+}
 // Get Study ID here. For now, we reference our environment variable
 const studyId = aireadiStudyId;
 
@@ -611,7 +621,16 @@ const toggleShowModal = () => {
                   <n-flex size="small" align="center">
                     <Icon name="bi:journal-text" size="16" />
 
-                    <p class="text-sm font-medium">0</p>
+                    <p
+                      v-if="currentTab === 'currentVersion'"
+                      class="text-sm font-medium"
+                    >
+                      {{ dataset?.data?.cited || 0 }}
+                    </p>
+
+                    <p v-else class="text-sm font-medium">
+                      {{ totalCitations || 0 }}
+                    </p>
                   </n-flex>
 
                   <span class="text-sm font-normal">Cited by</span>
@@ -681,6 +700,13 @@ const toggleShowModal = () => {
 
                   <n-tab name="currentVersion">Current version </n-tab>
                 </n-tabs>
+
+                <a
+                  class="flex justify-center pt-4 text-xs text-sky-700 hover:underline"
+                  target="_blank"
+                  href="https://github.com/AI-READI/fairhub-portal/blob/citation-count/dev/usage-statistics.md"
+                  >More info on how stats are collected....</a
+                >
               </div>
             </n-flex>
 
