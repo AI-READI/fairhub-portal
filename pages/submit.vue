@@ -3,7 +3,7 @@ const steps = ref([
   {
     name: "carbon:intent-request-create",
     description:
-      "Sign up to create an account on <a class='text-sky-700' target='_blank' href='https://app.fairhub.io'>app.fairhub.io</a>. Create a new study and provide basic information about it to get started.",
+      "Sign up to create an account on <a class='text-sky-700 hover:underline' target='_blank' href='https://app.fairhub.io'>app.fairhub.io</a>. Create a new study and provide basic information about it to get started.",
     heading: "Create study",
     number: "Step 1",
     percentage: 33,

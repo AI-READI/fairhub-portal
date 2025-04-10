@@ -702,7 +702,7 @@ const toggleShowModal = () => {
                 </n-tabs>
 
                 <a
-                  class="flex justify-center pt-4 text-xs text-sky-700"
+                  class="flex justify-center pt-4 text-xs text-sky-700 hover:underline"
                   target="_blank"
                   href="https://github.com/AI-READI/fairhub-portal/blob/citation-count/dev/usage-statistics.md"
                   >More info on how stats are collected....</a
