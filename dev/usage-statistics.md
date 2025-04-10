@@ -1,6 +1,6 @@
 # Usage Statistics
 
-This README provides a breakdown of the usage statistics and their respective sources.
+This file outlines the usage statistics and their corresponding sources.
 
 ## Data Sources
 
