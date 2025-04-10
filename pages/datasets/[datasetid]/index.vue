@@ -65,7 +65,7 @@ const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
 });
 
 const { data: totalCitations, error: citeError } = await useFetch(
-  `/api/totalcitations`,
+  `/api/totalCitations`,
   {
     headers: useRequestHeaders(["cookie"]),
   },
