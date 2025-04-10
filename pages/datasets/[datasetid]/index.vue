@@ -60,20 +60,13 @@ const latestVersionId = ref("");
 const totalViewCountSpinner = ref(true);
 const totalDownloadApprovalSpinner = ref(true);
 
+const totalCitationsSpinner = ref(true);
+const totalCitations = ref(0);
+
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
 });
 
-const { data: totalCitations, error: citeError } = await useFetch(
-  `/api/totalCitations`,
-  {
-    headers: useRequestHeaders(["cookie"]),
-  },
-);
-
-if (citeError.value) {
-  totalCitations.value = 0;
-}
 // Get Study ID here. For now, we reference our environment variable
 const studyId = aireadiStudyId;
 
@@ -243,9 +236,24 @@ const getDownloads = async (skipSpinner: boolean = false) => {
     });
 };
 
+const getTotalCitations = async () => {
+  totalCitationsSpinner.value = true;
+  await $fetch(`/api/totalCitations/${datasetid}`)
+    .then((data) => {
+      totalCitations.value = data;
+    })
+    .catch((err: string) => {
+      console.error("Error fetching total citations", err);
+    })
+    .finally(() => {
+      totalCitationsSpinner.value = false;
+    });
+};
+
 onMounted(() => {
   getViewCount();
   getDownloads(false);
+  getTotalCitations();
 });
 
 const onTabChange = () => {
@@ -256,12 +264,6 @@ const onTabChange = () => {
   setTimeout(() => {
     totalDownloadApprovalSpinner.value = false;
   }, 700);
-};
-
-const showModal = ref(false);
-
-const toggleShowModal = () => {
-  showModal.value = !showModal.value;
 };
 </script>
 
@@ -621,16 +623,21 @@ const toggleShowModal = () => {
                   <n-flex size="small" align="center">
                     <Icon name="bi:journal-text" size="16" />
 
-                    <p
-                      v-if="currentTab === 'currentVersion'"
-                      class="text-sm font-medium"
-                    >
-                      {{ dataset?.data?.cited || 0 }}
-                    </p>
+                    <TransitionFade>
+                      <div v-if="totalCitationsSpinner" class="min-w-[36px]">
+                        <n-spin :size="12" />
+                      </div>
 
-                    <p v-else class="text-sm font-medium">
-                      {{ totalCitations || 0 }}
-                    </p>
+                      <div v-else class="min-w-[36px] text-sm font-medium">
+                        <div v-if="currentTab === 'currentVersion'">
+                          {{ dataset?.data?.cited || 0 }}
+                        </div>
+
+                        <div v-else>
+                          {{ totalCitations || 0 }}
+                        </div>
+                      </div>
+                    </TransitionFade>
                   </n-flex>
 
                   <span class="text-sm font-normal">Cited by</span>
@@ -705,8 +712,9 @@ const toggleShowModal = () => {
                   class="flex justify-center pt-4 text-xs text-sky-700 hover:underline"
                   target="_blank"
                   href="https://github.com/AI-READI/fairhub-portal/blob/citation-count/dev/usage-statistics.md"
-                  >More info on how stats are collected....</a
                 >
+                  More info on how stats are collected....
+                </a>
               </div>
             </n-flex>
 
