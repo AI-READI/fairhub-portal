@@ -491,6 +491,7 @@ interface AdditionalData {
   size: number;
   fileCount: number;
   viewCount: number;
+  cited: number;
 }
 
 interface Dataset {
