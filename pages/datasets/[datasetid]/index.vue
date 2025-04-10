@@ -64,6 +64,16 @@ const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
 });
 
+const { data: totalCitations, error: citeError } = await useFetch(
+  `/api/totalcitations`,
+  {
+    headers: useRequestHeaders(["cookie"]),
+  },
+);
+
+if (!citeError.value) {
+  totalCitations.value = 0;
+}
 // Get Study ID here. For now, we reference our environment variable
 const studyId = aireadiStudyId;
 
@@ -612,13 +622,13 @@ const toggleShowModal = () => {
                     <Icon name="bi:journal-text" size="16" />
 
                     <p
-                      class="text-sm font-medium"
                       v-if="currentTab === 'currentVersion'"
+                      class="text-sm font-medium"
                     >
-                      {{ 0 }}
+                      {{ totalCitations || 0 }}
                     </p>
 
-                    <p class="text-sm font-medium" v-else>
+                    <p v-else class="text-sm font-medium">
                       {{ dataset?.data?.cited || 0 }}
                     </p>
                   </n-flex>
@@ -690,6 +700,7 @@ const toggleShowModal = () => {
 
                   <n-tab name="currentVersion">Current version </n-tab>
                 </n-tabs>
+
                 <a
                   class="flex justify-center pt-4 text-xs text-sky-700"
                   target="_blank"
