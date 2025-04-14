@@ -69,12 +69,16 @@ export default defineEventHandler(async (event) => {
         organization: true,
       },
     },
+    published_dataset: {
+      select: {
+        version_title: true,
+      },
+    },
     research_purpose: true,
   };
 
   const totalCount = await prisma.download_agreement.count({
     where: {
-      dataset_id: datasetId,
       download_request: {
         some: {
           approval: {
@@ -105,7 +109,6 @@ export default defineEventHandler(async (event) => {
     skip: (page - 1) * pageSize,
     take: pageSize,
     where: {
-      dataset_id: datasetId,
       download_request: {
         some: {
           approval: {

@@ -29,7 +29,12 @@ const columns = [
   {
     title: "Approved",
     key: "approval_date",
-    minWidth: "10rem",
+    minWidth: "8rem",
+  },
+  {
+    title: "Version",
+    key: "dataset_id",
+    minWidth: "5rem",
   },
 ];
 
