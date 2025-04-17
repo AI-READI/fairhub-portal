@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import useDownloadAgreementForm from "~/composables/useDownloadAgreementForm";
+
 definePageMeta({
   middleware: ["auth"],
 });
@@ -7,7 +9,7 @@ const route = useRoute();
 
 const { datasetid } = route.params as { datasetid: string };
 const { data: dataset, error } = await useDataset(datasetid);
-const { data: agreement } = await useDownloadAgreement(datasetid);
+const agreement = useDownloadAgreementForm(datasetid);
 
 if (error.value) {
   console.error(error.value);
@@ -51,6 +53,8 @@ const handleSubmit = async () => {
       headers: useRequestHeaders(["cookie"]),
       method: "POST",
     });
+    // clear the agreement form once we have persisted the request
+    agreement.value = {};
     await navigateTo(`/datasets/${dataset.value?.id}/access/submitted`);
   } catch (error) {
     console.error(error);
