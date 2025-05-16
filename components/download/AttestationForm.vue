@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Attestation } from "~/types/download";
+
 const props = defineProps<{
   attestations: string[];
 }>();

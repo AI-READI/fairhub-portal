@@ -60,6 +60,7 @@
   },
   "dependencies": {
     "@azure/msal-node": "^2.6.6",
+    "@azure/storage-blob": "^12.27.0",
     "@citation-js/core": "^0.7.6",
     "@citation-js/plugin-csl": "^0.7.6",
     "@css-render/vue3-ssr": "^0.15.12",
