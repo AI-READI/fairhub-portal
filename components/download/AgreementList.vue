@@ -33,7 +33,7 @@ const columns = [
   },
   {
     title: "Version",
-    key: "dataset_id",
+    key: "version_title",
     minWidth: "5rem",
   },
 ];
