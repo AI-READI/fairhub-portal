@@ -90,6 +90,21 @@ const currentStep = ref<number>(1);
 
             <ol>
               <li>
+                Due to the size of the AI-READI dataset, you must provide a
+                <NuxtLink
+                  to="https://learn.microsoft.com/en-us/azure/storage/container-storage/container-storage-introduction"
+                  target="_blank"
+                  >Azure Storage Container</NuxtLink
+                >
+
+                in order to receive the dataset. Please
+                <NuxtLink to="https://docs.aireadi.org/docs/2/preliminary/azure"
+                  >review our documentation</NuxtLink
+                >
+                to this up.
+              </li>
+
+              <li>
                 Authenticate using CILogon. If you are at an academic
                 institution or research organization, you can log on using your
                 institutional credentials. If you are unsure, please search for
