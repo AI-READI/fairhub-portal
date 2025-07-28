@@ -26,18 +26,6 @@ export default defineEventHandler(async (event) => {
     user_details_id: true,
   };
 
-  const existingAgreement = await prisma.download_agreement.findFirst({
-    select: selectProps,
-    where: {
-      dataset_id: postBody.dataset_id,
-      user_details_id: userDetails.id,
-    },
-  });
-
-  if (existingAgreement) {
-    return existingAgreement;
-  }
-
   try {
     const timestamp = currentUnixTimestamp();
     const agreement = await prisma.download_agreement.create({

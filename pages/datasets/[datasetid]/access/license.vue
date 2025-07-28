@@ -94,7 +94,7 @@ const licenseAndAttestationComplete = computed(() => {
 
 const handleSubmit = async () => {
   try {
-    await $fetch(`/api/downloads/agreement/create`, {
+    const agreement = await $fetch(`/api/downloads/agreement/create`, {
       body: {
         attestation_accepted: attestationsAccepted.value,
         dataset_id: dataset.value?.id,
@@ -105,7 +105,7 @@ const handleSubmit = async () => {
       method: "POST",
     });
 
-    agreementFormState.value = {};
+    agreementFormState.value = agreement;
     await navigateTo(`/datasets/${dataset.value?.id}/access/select`);
   } catch (error) {
     console.error(error);
