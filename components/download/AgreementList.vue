@@ -21,6 +21,21 @@ const columns = [
     title: "Research Purpose",
     key: "research_purpose",
   },
+  {
+    title: "Organization",
+    key: "organization",
+    minWidth: "10rem",
+  },
+  {
+    title: "Approved",
+    key: "approval_date",
+    minWidth: "8rem",
+  },
+  {
+    title: "Version",
+    key: "version_title",
+    minWidth: "5rem",
+  },
 ];
 
 const rowKey = (rowData: object) => rowData.id;
