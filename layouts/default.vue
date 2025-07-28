@@ -10,7 +10,7 @@ const links = [
     href: "/",
   },
   {
-    title: "Share datasets",
+    title: "Share Datasets",
 
     href: "/submit",
   },

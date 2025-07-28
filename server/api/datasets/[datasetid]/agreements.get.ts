@@ -130,6 +130,7 @@ export default defineEventHandler(async (event) => {
       dataset_id: item.dataset_id,
       organization: item.download_user_details.organization,
       research_purpose: item.research_purpose,
+      version_title: item.published_dataset.version_title,
     })),
     page,
     pageSize,
