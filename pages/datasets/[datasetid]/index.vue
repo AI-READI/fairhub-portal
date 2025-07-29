@@ -268,7 +268,9 @@ const onTabChange = () => {
 </script>
 
 <template>
-  <main class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50">
+  <main
+    class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50 pb-6"
+  >
     <div
       class="mx-auto mt-10 flex w-full max-w-screen-xl flex-col-reverse items-center justify-between px-3 sm:flex-row"
     >
