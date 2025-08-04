@@ -11,6 +11,8 @@ const themeOverrides = {
   borderColor: "rgb(203 213 225)",
 };
 
+const searchQuery = ref("");
+
 const columns = [
   {
     title: "Researcher",
@@ -55,26 +57,46 @@ const pagination = reactive({
 
 const page = computed(() => pagination.page);
 
-const { data: agreements, pending } = await useFetch(
-  `/api/datasets/${datasetid}/agreements`,
-  {
-    query: { page },
-  },
-);
+watch(searchQuery, () => {
+  pagination.page = 1; // reset to first page on search
+  refresh(); // manually trigger fetch
+});
+
+const {
+  data: agreements,
+  pending,
+  refresh,
+} = await useFetch(`/api/datasets/${datasetid}/agreements`, {
+  query: computed(() => ({
+    page: pagination.page,
+    q: searchQuery.value.trim(), // assuming `q` is your backend's query param
+  })),
+});
 
 pagination.pageCount = agreements.value?.totalPages ?? 0;
 pagination.pageSize = agreements.value?.pageSize ?? 10;
 </script>
 
 <template>
-  <n-data-table
-    remote
-    :columns="columns"
-    :data="agreements?.data"
-    :loading="pending"
-    :pagination="pagination"
-    :row-key="rowKey"
-    :row-props="rowProps"
-    :theme-overrides="themeOverrides"
-  />
+  <n-card class="rounded-lg p-2">
+    <div class="mb-4 flex justify-start">
+      <n-input
+        v-model:value="searchQuery"
+        placeholder="Search researchers, purpose..."
+        clearable
+        class="w-full max-w-sm"
+      />
+    </div>
+
+    <n-data-table
+      remote
+      :columns="columns"
+      :data="agreements?.data"
+      :loading="pending"
+      :pagination="pagination"
+      :row-key="rowKey"
+      :row-props="rowProps"
+      :theme-overrides="themeOverrides"
+    />
+  </n-card>
 </template>
