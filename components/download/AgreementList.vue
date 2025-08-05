@@ -58,6 +58,12 @@ const pagination = reactive({
 
 const page = computed(() => pagination.page);
 
+// manual query object
+const queryParams = ref({
+  filteredWord: "",
+  page: 1,
+});
+
 const triggerSearch = () => {
   queryParams.value = {
     filteredWord: searchQuery.value.trim(),
