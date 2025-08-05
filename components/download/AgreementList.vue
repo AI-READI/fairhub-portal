@@ -48,6 +48,7 @@ const rowProps = (_rowData: object, _rowIndex: number) => ({
 const pagination = reactive({
   onChange: (page: number) => {
     pagination.page = page;
+    triggerSearch();
   },
   page: 1,
   pageCount: 1,
@@ -57,35 +58,43 @@ const pagination = reactive({
 
 const page = computed(() => pagination.page);
 
-watch(searchQuery, () => {
-  pagination.page = 1; // reset to first page on search
-  refresh(); // manually trigger fetch
-});
+const triggerSearch = () => {
+  queryParams.value = {
+    filteredWord: searchQuery.value.trim(),
+    page: pagination.page,
+  };
+  refresh();
+};
 
 const {
   data: agreements,
   pending,
   refresh,
 } = await useFetch(`/api/datasets/${datasetid}/agreements`, {
-  query: computed(() => ({
-    page: pagination.page,
-    q: searchQuery.value.trim(), // assuming `q` is your backend's query param
-  })),
+  lazy: true,
+  query: queryParams,
 });
 
-pagination.pageCount = agreements.value?.totalPages ?? 0;
-pagination.pageSize = agreements.value?.pageSize ?? 10;
+watch(agreements, (val) => {
+  pagination.pageCount = val?.totalPages ?? 0;
+  pagination.pageSize = val?.pageSize ?? 10;
+});
 </script>
 
 <template>
   <n-card class="rounded-lg p-2">
-    <div class="mb-4 flex justify-start">
+    <div class="mb-4 flex justify-start gap-4">
       <n-input
         v-model:value="searchQuery"
         placeholder="Search researchers, purpose..."
         clearable
-        class="w-full max-w-sm"
+        class="w-full"
+        @keyup.enter="triggerSearch"
       />
+
+      <n-button type="primary" @click="triggerSearch">
+        Search
+      </n-button>
     </div>
 
     <n-data-table
