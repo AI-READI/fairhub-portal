@@ -56,17 +56,6 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const selectProps = [
-    "da.id::text AS id",
-    "da.created_at::text AS created_at",
-    "da.research_purpose",
-    "dud.given_name",
-    "dud.family_name",
-    "dud.organization",
-    "pd.version_title",
-    "a.updated_on::text AS updated_on",
-  ];
-
   const totalCount = await prisma.download_agreement.count({
     where: {
       download_request: {
@@ -126,7 +115,15 @@ export default defineEventHandler(async (event) => {
 
   const agreements = await prisma.$queryRaw<Agreement[]>(
     sql`
-    SELECT ${raw(selectProps.join(", "))}
+    SELECT
+      da.id::text AS id,
+      da.created_at::text AS created_at,
+      da.research_purpose,
+      dud.given_name,
+      dud.family_name,
+      dud.organization,
+      pd.version_title,
+      a.updated_on::text AS updated_on
     FROM download.download_agreement da
     LEFT JOIN download.download_user_details dud ON da.user_details_id = dud.id
     LEFT JOIN public.published_dataset pd ON da.dataset_id = pd.id
