@@ -85,6 +85,13 @@ watch(agreements, (val) => {
   pagination.pageCount = val?.totalPages ?? 0;
   pagination.pageSize = val?.pageSize ?? 10;
 });
+
+watch(searchQuery, (val) => {
+  if (val.trim() === "") {
+    pagination.page = 1;
+    triggerSearch();
+  }
+});
 </script>
 
 <template>
