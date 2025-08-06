@@ -31,13 +31,13 @@ const columns = [
     minWidth: "5rem",
   },
   {
+    title: "Approval Status",
+    key: "approval_status",
+  },
+  {
     title: "Request Status",
     key: "status",
     minWidth: "8rem",
-  },
-  {
-    title: "Approval Status",
-    key: "approval_status",
   },
   {
     title: "Created",
@@ -92,32 +92,9 @@ const columns = [
           />
 
           <p>
-            The "Request Status" indicates where the request is at in the
-            processing pipeline. It will be one of the following:
-          </p>
-
-          <dl>
-            <dt>PENDING</dt>
-
-            <dd>The request has been received and is awaiting processing.</dd>
-
-            <dt>PROCESSING</dt>
-
-            <dd>The request is currently being processed.</dd>
-
-            <dt>READY</dt>
-
-            <dd>
-              The request has been successfully processed and the download is
-              ready.
-            </dd>
-          </dl>
-
-          <p>
             The "Approval Status" indicates whether the request has been
             approved or not by the Data Access Committee (DAC). It will be one
             of the following:
-          </p>
 
           <dl>
             <dt>AWAITING_APPROVAL</dt>
@@ -138,6 +115,30 @@ const columns = [
               for additional information.
             </dd>
           </dl>
+          </p>
+
+          <p>
+            The "Request Status" indicates where the request is at in the
+            processing pipeline. It will be one of the following:
+
+          <dl>
+            <dt>PENDING</dt>
+
+            <dd>The request has been received and is awaiting processing.</dd>
+
+            <dt>PROCESSING</dt>
+
+            <dd>The request is currently being processed.</dd>
+
+            <dt>READY</dt>
+
+            <dd>
+              The request has been successfully processed and the download is
+              ready.
+            </dd>
+          </dl>
+          </p>
+
         </div>
 
         <p v-else>No download requests found.</p>
