@@ -145,7 +145,7 @@ export default defineEventHandler(async (event) => {
           )`
           : sql``
       }
-    ORDER BY da.id, a.updated_on DESC
+    ORDER BY da.id, a.updated_on ASC
   ) sub
   ORDER BY updated_on DESC, family_name ASC, given_name ASC
   LIMIT ${pageSize}
