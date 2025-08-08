@@ -119,13 +119,11 @@ export default defineEventHandler(async (event) => {
   FROM (
     SELECT DISTINCT ON (da.id)
       da.id::text AS id,
-      da.dataset_id::text AS dataset_id,
       da.created_at::text AS created_at,
       da.research_purpose,
       dud.given_name,
       dud.family_name,
       dud.organization,
-      dud.affiliation,
       pd.version_title,
       a.updated_on::text AS updated_on
     FROM download.download_agreement da
@@ -140,7 +138,6 @@ export default defineEventHandler(async (event) => {
           AND (
             LOWER(dud.given_name) LIKE LOWER(${`%${filteredWords}%`}) OR
             LOWER(dud.family_name) LIKE LOWER(${`%${filteredWords}%`}) OR
-            LOWER(dud.affiliation) LIKE LOWER(${`%${filteredWords}%`}) OR
             LOWER(dud.organization) LIKE LOWER(${`%${filteredWords}%`}) OR
             LOWER(pd.version_title) LIKE LOWER(${`%${filteredWords}%`}) OR
             LOWER(da.research_purpose) LIKE LOWER(${`%${filteredWords}%`}) OR
