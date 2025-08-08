@@ -1,4 +1,4 @@
-import { sqltag, raw } from "@prisma/client/runtime/library";
+import { sqltag } from "@prisma/client/runtime/library";
 import type { QueryValue } from "ufo";
 import dayjs from "dayjs";
 const sql = sqltag;
@@ -115,13 +115,17 @@ export default defineEventHandler(async (event) => {
 
   const agreements = await prisma.$queryRaw<Agreement[]>(
     sql`
-    SELECT
+  SELECT *
+  FROM (
+    SELECT DISTINCT ON (da.id)
       da.id::text AS id,
+      da.dataset_id::text AS dataset_id,
       da.created_at::text AS created_at,
       da.research_purpose,
       dud.given_name,
       dud.family_name,
       dud.organization,
+      dud.affiliation,
       pd.version_title,
       a.updated_on::text AS updated_on
     FROM download.download_agreement da
@@ -130,23 +134,25 @@ export default defineEventHandler(async (event) => {
     LEFT JOIN download.download_request dr ON dr.download_agreement_id = da.id
     LEFT JOIN download.download_request_approval a ON dr.approval_id = a.id
     WHERE a.approval_status = 'APPROVED'
-    ${
-      shouldSearch
-        ? sql`
-        AND (
-          LOWER(dud.given_name) LIKE LOWER(${`%${filteredWords}%`}) OR
-          LOWER(dud.family_name) LIKE LOWER(${`%${filteredWords}%`}) OR
-          LOWER(dud.affiliation) LIKE LOWER(${`%${filteredWords}%`}) OR
-          LOWER(dud.organization) LIKE LOWER(${`%${filteredWords}%`}) OR
-          LOWER(pd.version_title) LIKE LOWER(${`%${filteredWords}%`}) OR
-          LOWER(da.research_purpose) LIKE LOWER(${`%${filteredWords}%`}) OR
-          TO_CHAR(TO_TIMESTAMP(a.updated_on::bigint), 'FMMonth FMDD, YYYY') ILIKE ${`%${filteredWords}%`}
-        )`
-        : sql``
-    }
-    ORDER BY a.updated_on DESC, dud.family_name ASC, dud.given_name ASC
-    LIMIT ${pageSize}
-    OFFSET ${offset}
+      ${
+        shouldSearch
+          ? sql`
+          AND (
+            LOWER(dud.given_name) LIKE LOWER(${`%${filteredWords}%`}) OR
+            LOWER(dud.family_name) LIKE LOWER(${`%${filteredWords}%`}) OR
+            LOWER(dud.affiliation) LIKE LOWER(${`%${filteredWords}%`}) OR
+            LOWER(dud.organization) LIKE LOWER(${`%${filteredWords}%`}) OR
+            LOWER(pd.version_title) LIKE LOWER(${`%${filteredWords}%`}) OR
+            LOWER(da.research_purpose) LIKE LOWER(${`%${filteredWords}%`}) OR
+            TO_CHAR(TO_TIMESTAMP(a.updated_on::bigint), 'FMMonth FMDD, YYYY') ILIKE ${`%${filteredWords}%`}
+          )`
+          : sql``
+      }
+    ORDER BY da.id, a.updated_on DESC
+  ) sub
+  ORDER BY updated_on DESC, family_name ASC, given_name ASC
+  LIMIT ${pageSize}
+  OFFSET ${offset}
   `,
   );
 
