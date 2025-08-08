@@ -95,7 +95,7 @@ watch(searchQuery, (val) => {
 </script>
 
 <template>
-  <n-card class="rounded-lg p-2">
+  <n-card class="rounded-lg">
     <div class="mb-4 flex justify-start gap-4">
       <n-input
         v-model:value="searchQuery"
