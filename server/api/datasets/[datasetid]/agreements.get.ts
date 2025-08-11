@@ -32,8 +32,8 @@ export default defineEventHandler(async (event) => {
   const page = parseNumericParamWithDefault(query.page, 1);
   const pageSize = parseNumericParamWithDefault(query.pageSize, 10);
 
-  const filteredWords = query.filteredWord?.toString().trim().toLowerCase();
-  const shouldSearch = !!filteredWords?.trim();
+  const filteredWord = query.filteredWord?.toString().trim().toLowerCase();
+  const shouldSearch = !!filteredWord?.trim();
 
   if (!datasetId) {
     throw createError({
@@ -70,23 +70,23 @@ export default defineEventHandler(async (event) => {
             OR: [
               {
                 download_user_details: {
-                  given_name: { contains: filteredWords, mode: "insensitive" },
+                  given_name: { contains: filteredWord, mode: "insensitive" },
                 },
               },
               {
                 download_user_details: {
-                  family_name: { contains: filteredWords, mode: "insensitive" },
+                  family_name: { contains: filteredWord, mode: "insensitive" },
                 },
               },
               {
                 download_user_details: {
-                  affiliation: { contains: filteredWords, mode: "insensitive" },
+                  affiliation: { contains: filteredWord, mode: "insensitive" },
                 },
               },
               {
                 download_user_details: {
                   organization: {
-                    contains: filteredWords,
+                    contains: filteredWord,
                     mode: "insensitive",
                   },
                 },
@@ -94,14 +94,14 @@ export default defineEventHandler(async (event) => {
               {
                 published_dataset: {
                   version_title: {
-                    contains: filteredWords,
+                    contains: filteredWord,
                     mode: "insensitive",
                   },
                 },
               },
               {
                 research_purpose: {
-                  contains: filteredWords,
+                  contains: filteredWord,
                   mode: "insensitive",
                 },
               },
@@ -136,16 +136,16 @@ export default defineEventHandler(async (event) => {
         shouldSearch
           ? sql`
           AND (
-            LOWER(dud.given_name) LIKE LOWER(${`%${filteredWords}%`}) OR
-            LOWER(dud.family_name) LIKE LOWER(${`%${filteredWords}%`}) OR
-            LOWER(dud.organization) LIKE LOWER(${`%${filteredWords}%`}) OR
-            LOWER(pd.version_title) LIKE LOWER(${`%${filteredWords}%`}) OR
-            LOWER(da.research_purpose) LIKE LOWER(${`%${filteredWords}%`}) OR
-            TO_CHAR(TO_TIMESTAMP(a.updated_on::bigint), 'FMMonth FMDD, YYYY') ILIKE ${`%${filteredWords}%`}
+            LOWER(dud.given_name) LIKE LOWER(${`%${filteredWord}%`}) OR
+            LOWER(dud.family_name) LIKE LOWER(${`%${filteredWord}%`}) OR
+            LOWER(dud.organization) LIKE LOWER(${`%${filteredWord}%`}) OR
+            LOWER(pd.version_title) LIKE LOWER(${`%${filteredWord}%`}) OR
+            LOWER(da.research_purpose) LIKE LOWER(${`%${filteredWord}%`}) OR
+            TO_CHAR(TO_TIMESTAMP(a.updated_on::bigint), 'FMMonth FMDD, YYYY') ILIKE ${`%${filteredWord}%`}
           )`
           : sql``
       }
-    ORDER BY da.id, a.updated_on ASC
+    ORDER BY da.id, a.updated_on ASC 
   ) sub
   ORDER BY updated_on DESC, family_name ASC, given_name ASC
   LIMIT ${pageSize}
@@ -174,11 +174,11 @@ export default defineEventHandler(async (event) => {
   return {
     data: serializedRows.map((row: any) => ({
       id: row.id,
-      name: `${row.given_name} ${row.family_name}`,
+      name: `${row.given_name ?? ""} ${row.family_name ?? ""}`.trim(),
       affiliation: row.affiliation,
       approval_date: dayjs.unix(Number(row.updated_on)).format("MMM D, YYYY"),
       dataset_id: row.dataset_id,
-      organization: row.organization,
+      organization: (row.organization ?? "").trim(),
       research_purpose: row.research_purpose,
       version_title: row.version_title,
     })),
