@@ -776,6 +776,7 @@ const onTabChange = () => {
             <SideDatasetSize
               :size="dataset?.data.size"
               :file-count="dataset?.data.fileCount"
+              :child="dataset?.data.child || 0"
             />
 
             <n-flex
