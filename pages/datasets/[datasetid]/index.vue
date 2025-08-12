@@ -130,6 +130,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       };
     }
   }),
+
   datePublished: dataset.value?.created_at
     ? dayjs.unix(dataset.value.created_at).format("YYYY-MM-DD")
     : "Unknown",
@@ -141,6 +142,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
         {
           name: "Dataset Description (JSON)",
           "@type": "DataDownload",
+          contentSize: "2.01 TB",
           contentUrl: `${config.public.BASE_URL}/api/datasets/${datasetid}/dataset_description.json`,
           encodingFormat: "application/json",
         },
