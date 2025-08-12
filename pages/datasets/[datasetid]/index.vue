@@ -67,20 +67,6 @@ const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
 });
 
-const { data } = await useFetch(
-  `/api/datasets/${datasetid}/dataset_description.json`,
-  { headers: useRequestHeaders(["cookie"]) },
-);
-
-if (error.value) {
-  console.error("Error fetching dataset description:", error.value);
-} else {
-  console.log(
-    "Dataset description JSON:\n",
-    JSON.stringify(data.value, null, 2) // pretty print with 2 spaces
-  );
-}
-
 // Get Study ID here. For now, we reference our environment variable
 const studyId = aireadiStudyId;
 
@@ -155,7 +141,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
         {
           name: "Dataset Description (JSON)",
           "@type": "DataDownload",
-          contentUrl: `/api/datasets/${datasetid}/dataset_description.json`,
+          contentUrl: `${config.public.BASE_URL}/api/datasets/${datasetid}/dataset_description.json`,
           encodingFormat: "application/json",
         },
       ]
