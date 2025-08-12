@@ -64,7 +64,8 @@ const queryParams = ref({
   page: 1,
 });
 
-const triggerSearch = () => {
+const triggerSearch = (resetPage = false) => {
+  if (resetPage) pagination.page = 1;
   queryParams.value = {
     filteredWord: searchQuery.value.trim(),
     page: pagination.page,
@@ -88,8 +89,7 @@ watch(agreements, (val) => {
 
 watch(searchQuery, (val) => {
   if (val.trim() === "") {
-    pagination.page = 1;
-    triggerSearch();
+    triggerSearch(true);
   }
 });
 </script>
@@ -102,12 +102,11 @@ watch(searchQuery, (val) => {
         placeholder="Search researchers, purpose..."
         clearable
         class="w-full"
-        @keyup.enter="triggerSearch"
+        @keyup.enter="triggerSearch(true)"
       />
 
-      <n-button type="primary" @click="triggerSearch">
-        Search
-      </n-button>
+      <n-button type="primary" @click="triggerSearch(true)"> Search </n-button>
+
     </div>
 
     <n-data-table
