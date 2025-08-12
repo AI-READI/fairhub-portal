@@ -136,6 +136,16 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   description: dataset.value?.metadata.datasetDescription.description?.find(
     (value) => value.descriptionType === "Abstract",
   )?.descriptionValue,
+  distribution: dataset.value?.id
+    ? [
+        {
+          name: "Dataset Description (JSON)",
+          "@type": "DataDownload",
+          contentUrl: `${config.public.BASE_URL}/api/datasets/${datasetid}/dataset_description.json`,
+          encodingFormat: "application/json",
+        },
+      ]
+    : undefined,
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
     (funder) => {
       return {
