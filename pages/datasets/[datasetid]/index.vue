@@ -88,6 +88,9 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   "@context": "https://schema.org",
   "@id": `https://doi.org/10.34534/${dataset.value?.id}`,
   "@type": "Dataset",
+  about: dataset.value?.metadata.datasetDescription.subject?.flatMap((s) =>
+    s.valueURI ? [{ "@id": s.valueURI }] : [],
+  ),
   contributor: dataset.value?.metadata.datasetDescription.contributor?.map(
     (contributor) => {
       if (contributor.nameType === "Personal") {
@@ -146,14 +149,14 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
           contentUrl: `${config.public.BASE_URL}/api/datasets/${datasetid}/dataset_description.json`,
           encodingFormat: "application/json",
         },
-          {
+        {
+          name: dataset.value?.title,
           "@type": "DataDownload",
-          "name": dataset.value?.title,
-          "contentUrl": "https://staging.fairhub.io/datasets/2/access",
-          "encodingFormat": "application/zip",
-          "contentSize": "2.01 TB",
-          "description": `${dataset.value?.description}. This dataset is accessible only to approved researchers via this landing page.`
-          }
+          contentSize: "2.01 TB",
+          contentUrl: "https://staging.fairhub.io/datasets/2/access",
+          description: `${dataset.value?.description}. This dataset is accessible only to approved researchers via this landing page.`,
+          encodingFormat: "application/zip",
+        },
       ]
     : undefined,
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
@@ -161,6 +164,9 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       return {
         name: funder.funderName,
         "@type": "Organization",
+        identifier: funder.funderIdentifier?.funderIdentifierValue
+          ? { "@id": funder.funderIdentifier.funderIdentifierValue }
+          : undefined,
       };
     },
   ),
@@ -168,6 +174,9 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   keywords: dataset.value?.metadata.datasetDescription.subject
     ?.map((subject) => subject.subjectValue)
     .join(", "),
+  license: dataset.value?.metadata.datasetDescription.rights?.[0]?.rightsURI
+    ? { "@id": dataset.value.metadata.datasetDescription.rights[0].rightsURI }
+    : undefined,
   publisher: {
     name: "FAIRhub",
     "@type": "Organization",
