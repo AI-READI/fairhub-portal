@@ -139,20 +139,21 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   )?.descriptionValue,
   distribution: dataset.value?.id
     ? [
-        // {
-        //   name: "Dataset Description (JSON)",
-        //   "@type": "DataDownload",
-        //   contentSize: "55 KB",
-        //   contentUrl: `${config.public.BASE_URL}/api/datasets/${datasetid}/dataset_description.json`,
-        //   encodingFormat: "application/json",
-        // },
+        {
+          name: "Dataset Description (JSON)",
+          "@type": "DataDownload",
+          contentSize: "55 KB",
+          contentUrl: `${config.public.BASE_URL}/api/datasets/${datasetid}/dataset_description.json`,
+          encodingFormat: "application/json",
+        },
           {
           "@type": "DataDownload",
           "name": dataset.value?.title,
           "contentUrl": "https://staging.fairhub.io/datasets/2/access",
           "encodingFormat": "application/zip",
           "contentSize": "2.01 TB",
-          "description": `${dataset.value?.description} Dataset is accessible only to approved researchers via this landing page.`        }
+          "description": `${dataset.value?.description}. This dataset is accessible only to approved researchers via this landing page.`
+          }
       ]
     : undefined,
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
