@@ -88,9 +88,6 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   "@context": "https://schema.org",
   "@id": `https://doi.org/10.34534/${dataset.value?.id}`,
   "@type": "Dataset",
-  about: dataset.value?.metadata.datasetDescription.subject?.flatMap((s) =>
-    s.valueURI ? [{ "@id": s.valueURI }] : [],
-  ),
   contributor: dataset.value?.metadata.datasetDescription.contributor?.map(
     (contributor) => {
       if (contributor.nameType === "Personal") {
@@ -182,6 +179,12 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
     "@type": "Organization",
   },
   url: `https://fairhub.io/datasets/${dataset.value?.id}`,
+  variableMeasured: dataset.value?.metadata.datasetDescription.subject?.flatMap(
+    (s) =>
+      s.subjectIdentifier?.valueURI
+        ? [{ "@id": s.subjectIdentifier.valueURI, "@type": "PropertyValue" }]
+        : [],
+  ),
 };
 
 useSchemaOrg([NuxtSchemaDataset]);

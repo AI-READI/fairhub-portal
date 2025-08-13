@@ -87,10 +87,12 @@ interface DatasetDescription {
   }[];
   subject?: {
     subjectValue: string;
-    subjectScheme?: string;
-    schemeURI?: string;
-    valueURI?: string;
-    classificationCode?: string;
+    subjectIdentifier?: {
+      subjectScheme?: string;
+      schemeURI?: string;
+      valueURI?: string;
+      classificationCode?: string;
+    };
   }[];
   managingOrganization: {
     name: string;
