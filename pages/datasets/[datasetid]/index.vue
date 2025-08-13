@@ -130,27 +130,37 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       };
     }
   }),
+
   datePublished: dataset.value?.created_at
     ? dayjs.unix(dataset.value.created_at).format("YYYY-MM-DD")
     : "Unknown",
   description: dataset.value?.metadata.datasetDescription.description?.find(
     (value) => value.descriptionType === "Abstract",
   )?.descriptionValue,
-  distribution: dataset.value?.id
-    ? [
-        {
-          name: "Dataset Description (JSON)",
-          "@type": "DataDownload",
-          contentUrl: `${config.public.BASE_URL}/api/datasets/${datasetid}/dataset_description.json`,
-          encodingFormat: "application/json",
-        },
-      ]
-    : undefined,
+  distribution: [
+    {
+      name: "Dataset Description (JSON)",
+      "@type": "DataDownload",
+      contentUrl: `${config.public.BASE_URL}/api/datasets/${datasetid}/dataset_description.json`,
+      encodingFormat: "application/json",
+    },
+    {
+      name: dataset.value?.title,
+      "@type": "DataDownload",
+      contentSize: "2.01 TB",
+      contentUrl: "https://staging.fairhub.io/datasets/2/access",
+      description: `${dataset.value?.description}. This dataset is accessible only to approved researchers via this landing page.`,
+      encodingFormat: "application/zip",
+    },
+  ],
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
     (funder) => {
       return {
         name: funder.funderName,
         "@type": "Organization",
+        identifier: funder.funderIdentifier?.funderIdentifierValue
+          ? { "@id": funder.funderIdentifier.funderIdentifierValue }
+          : undefined,
       };
     },
   ),
@@ -158,11 +168,20 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   keywords: dataset.value?.metadata.datasetDescription.subject
     ?.map((subject) => subject.subjectValue)
     .join(", "),
+  license: dataset.value?.metadata.datasetDescription.rights?.[0]?.rightsURI
+    ? { "@id": dataset.value.metadata.datasetDescription.rights[0].rightsURI }
+    : "not provided",
   publisher: {
     name: "FAIRhub",
     "@type": "Organization",
   },
   url: `https://fairhub.io/datasets/${dataset.value?.id}`,
+  variableMeasured: dataset.value?.metadata.datasetDescription.subject?.flatMap(
+    (s) =>
+      s.subjectIdentifier?.valueURI
+        ? [{ "@id": s.subjectIdentifier.valueURI, "@type": "PropertyValue" }]
+        : [],
+  ),
 };
 
 useSchemaOrg([NuxtSchemaDataset]);
