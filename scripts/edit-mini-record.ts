@@ -16,7 +16,7 @@ const main = async () => {
 
   if (databaseOnAzure) {
     console.log("Azure database detected, exiting function");
-    // return;
+    return;
   }
 
   const record = await prisma.published_dataset.findUnique({
