@@ -2,6 +2,12 @@
 import byteSize from "byte-size";
 
 const props = defineProps({
+  child: {
+    default: 0,
+    description: "Link to the mini version of the dataset",
+    required: true,
+    type: Number,
+  },
   fileCount: {
     default: 0,
     required: true,
@@ -31,5 +37,13 @@ const parsedSize = byteSize(props.size, { precision: 2 }).toString();
         <span class="font-normal"> Files </span>
       </p>
     </n-flex>
+
+    <NuxtLink
+      v-if="child > 0"
+      :to="`/datasets/${child}`"
+      class="p flex justify-center text-xs text-sky-700 hover:underline"
+    >
+      A smaller version is available for model training...
+    </NuxtLink>
   </n-flex>
 </template>

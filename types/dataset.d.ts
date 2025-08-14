@@ -494,6 +494,9 @@ interface AdditionalData {
   fileCount: number;
   viewCount: number;
   cited: number;
+  parent: number | null;
+  child: number | null;
+  mini: boolean;
 }
 
 interface Dataset {
