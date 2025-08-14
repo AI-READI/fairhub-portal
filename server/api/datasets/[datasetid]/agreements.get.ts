@@ -56,8 +56,42 @@ export default defineEventHandler(async (event) => {
     });
   }
 
+  const canonicalDatasetId = await prisma.published_dataset.findUnique({
+    where: {
+      id: datasetId,
+    },
+  });
+
+  if (!canonicalDatasetId) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: `Dataset ID ${datasetId} not found`,
+    });
+  }
+
+  const p = await prisma.published_dataset.findMany({
+    select: {
+      id: true,
+    },
+    where: {
+      dataset_id: canonicalDatasetId.dataset_id,
+    },
+  });
+
+  if (p.length === 0) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: `No published datasets found for dataset ID ${datasetId}`,
+    });
+  }
+
+  const publishedDatasetIDs = p.map((p) => p.id.trim());
+
   const totalCount = await prisma.download_agreement.count({
     where: {
+      dataset_id: {
+        in: publishedDatasetIDs,
+      },
       download_request: {
         some: {
           approval: {
@@ -132,6 +166,7 @@ export default defineEventHandler(async (event) => {
     LEFT JOIN download.download_request dr ON dr.download_agreement_id = da.id
     LEFT JOIN download.download_request_approval a ON dr.approval_id = a.id
     WHERE a.approval_status = 'APPROVED'
+      AND da.dataset_id = ANY(${publishedDatasetIDs}::text[])
       ${
         shouldSearch
           ? sql`
