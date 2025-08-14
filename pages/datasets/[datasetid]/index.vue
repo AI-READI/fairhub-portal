@@ -151,12 +151,6 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   )?.descriptionValue,
   distribution: [
     {
-      name: "Dataset Description (JSON)",
-      "@type": "DataDownload",
-      contentUrl: `${config.public.BASE_URL}/api/datasets/${datasetid}/dataset_description.json`,
-      encodingFormat: "application/json",
-    },
-    {
       name: dataset.value?.title,
       "@type": "DataDownload",
       contentSize: "2.01 TB",
