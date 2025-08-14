@@ -131,7 +131,11 @@ if (error.value) {
               class="flex h-full w-full flex-col items-start space-y-5 sm:flex-row sm:space-x-5 sm:space-y-0"
             >
               <n-image
-                src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
+                :src="
+                  dataset?.id === '4'
+                    ? 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/mini.png'
+                    : 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png'
+                "
                 :alt="dataset.title"
                 class="h-auto w-32 self-center rounded-xl"
                 object-fit="contain"

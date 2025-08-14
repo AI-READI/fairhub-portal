@@ -380,7 +380,11 @@ const onTabChange = () => {
       </n-flex>
 
       <n-image
-        src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
+        :src="
+          dataset?.id === '4'
+            ? 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/mini.png'
+            : 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png'
+        "
         :alt="dataset?.title"
         class="mb-3 size-32 h-32 w-32 rounded-lg sm:mb-0"
         object-fit="contain"
