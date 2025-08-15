@@ -66,11 +66,25 @@ const validateResearchPurpose = {
 };
 const defaultValidationMessage = `Required. May be at most ${defaultMaxLength} characters.`;
 const nonDiabetesRules = {
+  ai_use: {
+    max: maxOverviewLength,
+    message: `Required. Must be between ${minOverviewLength} and ${maxOverviewLength} characters.`,
+    min: minOverviewLength,
+    required: true,
+    trigger: ["input", "blur"],
+  },
   collaborator_data_access: {
     message: "This field is required.",
     required: true,
     trigger: ["change", "blur"],
     type: "boolean",
+  },
+  data_handling_plan: {
+    max: maxOverviewLength,
+    message: `Required. Must be between ${minOverviewLength} and ${maxOverviewLength} characters.`,
+    min: minOverviewLength,
+    required: true,
+    trigger: ["input", "blur"],
   },
   research_project_title: {
     max: defaultMaxLength,
@@ -117,6 +131,20 @@ const nonDiabetesRules = {
   signing_official_title: {
     max: defaultMaxLength,
     message: defaultValidationMessage,
+    required: true,
+    trigger: ["input", "blur"],
+  },
+  study_background: {
+    max: maxOverviewLength,
+    message: `Required. Must be between ${minOverviewLength} and ${maxOverviewLength} characters.`,
+    min: minOverviewLength,
+    required: true,
+    trigger: ["input", "blur"],
+  },
+  study_design: {
+    max: maxOverviewLength,
+    message: `Required. Must be between ${minOverviewLength} and ${maxOverviewLength} characters.`,
+    min: minOverviewLength,
     required: true,
     trigger: ["input", "blur"],
   },
@@ -238,6 +266,7 @@ const validForm = computed(
                 :maxlength="maxResearchPurposeLength"
                 :rows="5"
                 show-count
+                placeholder="Why is this study being done? Describe how the research aligns with the research purpose in the original consent provided to AI-READI study participants. **"
               />
             </n-form-item>
 
@@ -277,6 +306,73 @@ const validForm = computed(
                     :maxlength="maxOverviewLength"
                     :rows="10"
                     show-count
+                    placeholder="Clearly outline the specific aims or hypotheses of your study."
+                  />
+                </n-form-item>
+
+                <n-form-item
+                  label="Background and Rationale"
+                  path="study_background"
+                >
+                  <n-input
+                    v-model:value="agreementFormState.study_background"
+                    type="textarea"
+                    :maxlength="maxOverviewLength"
+                    :rows="5"
+                    show-count
+                    placeholder="Describe the scientific premise of your research, including: 
+The importance of the research question
+The potential impact of the study (Please include potential societal or scientific benefits)
+How the requested data will help you achieve your objectives
+"
+                  />
+                </n-form-item>
+
+                <n-form-item label="Study Design" path="study_design">
+                  <n-input
+                    v-model:value="agreementFormState.study_design"
+                    type="textarea"
+                    :maxlength="maxOverviewLength"
+                    :rows="5"
+                    show-count
+                    placeholder="Provide details on the methodology, including:
+Type of analysis (e.g., statistical, AI/ML- based)
+Expected outcomes
+Timeline for completion"
+                  />
+                </n-form-item>
+
+                <n-form-item
+                  label="Data Handling: For data security and storage"
+                  path="data_handling_plan"
+                >
+                  <n-input
+                    v-model:value="agreementFormState.data_handling_plan"
+                    type="textarea"
+                    :maxlength="maxOverviewLength"
+                    :rows="5"
+                    show-count
+                    placeholder="Describe where and how the data will be stored (e.g., secure servers, encrypted drives)
+Specify who will have access to the data and how access will be controlled
+Include retention period and plans for data disposal after project completion (This will be covered in the DUA)
+"
+                  />
+                </n-form-item>
+
+                <n-form-item label="AI" path="ai_use">
+                  <n-input
+                    v-model:value="agreementFormState.ai_use"
+                    type="textarea"
+                    :maxlength="maxOverviewLength"
+                    :rows="5"
+                    show-count
+                    placeholder="Does the project plan to use AI/ML? If so, please describe model being used
+Please provide the roles and qualifications of team members who will be conducting the analysis 
+How are you ensuring fairness and avoiding bias in the outputs of the model?
+Is the model being run locally? If not, please describe
+Is there a vendor involved?
+How is potential data memorization being addressed by the model?
+"
                   />
                 </n-form-item>
 
