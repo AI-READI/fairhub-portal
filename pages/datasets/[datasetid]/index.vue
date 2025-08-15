@@ -19,34 +19,42 @@ const tabs = reactive([
   {
     label: "About",
     shown: true,
+    shownInMini: true,
   },
   {
     label: "Healthsheet",
     shown: false,
+    shownInMini: true,
   },
   {
     label: "Study Dashboard",
     shown: false,
+    shownInMini: false,
   },
   {
     label: "Study Metadata",
     shown: false,
+    shownInMini: false,
   },
   {
     label: "Dataset Metadata",
     shown: false,
+    shownInMini: true,
   },
   {
     label: "Dataset Structure Preview",
     shown: false,
+    shownInMini: true,
   },
   {
     label: "Dataset Quality Dashboard",
     shown: false,
+    shownInMini: false,
   },
   {
     label: "Dataset Uses",
     shown: false,
+    shownInMini: true,
   },
 ]);
 const totalViewCount = ref(0);
@@ -56,6 +64,10 @@ const currentTab = ref("allVersions");
 
 const isLatestVersion = ref(false);
 const latestVersionId = ref("");
+
+const isMiniDataset = computed(() => {
+  return dataset.value?.data.mini || false;
+});
 
 const totalViewCountSpinner = ref(true);
 const totalDownloadApprovalSpinner = ref(true);
@@ -130,17 +142,31 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       };
     }
   }),
+
   datePublished: dataset.value?.created_at
     ? dayjs.unix(dataset.value.created_at).format("YYYY-MM-DD")
     : "Unknown",
   description: dataset.value?.metadata.datasetDescription.description?.find(
     (value) => value.descriptionType === "Abstract",
   )?.descriptionValue,
+  distribution: [
+    {
+      name: dataset.value?.title,
+      "@type": "DataDownload",
+      contentSize: "2.01 TB",
+      contentUrl: "https://staging.fairhub.io/datasets/2/access",
+      description: `${dataset.value?.description}. This dataset is accessible only to approved researchers via this landing page.`,
+      encodingFormat: "application/zip",
+    },
+  ],
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
     (funder) => {
       return {
         name: funder.funderName,
         "@type": "Organization",
+        identifier: funder.funderIdentifier?.funderIdentifierValue
+          ? { "@id": funder.funderIdentifier.funderIdentifierValue }
+          : undefined,
       };
     },
   ),
@@ -148,11 +174,20 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   keywords: dataset.value?.metadata.datasetDescription.subject
     ?.map((subject) => subject.subjectValue)
     .join(", "),
+  license: dataset.value?.metadata.datasetDescription.rights?.[0]?.rightsURI
+    ? { "@id": dataset.value.metadata.datasetDescription.rights[0].rightsURI }
+    : "not provided",
   publisher: {
     name: "FAIRhub",
     "@type": "Organization",
   },
   url: `https://fairhub.io/datasets/${dataset.value?.id}`,
+  variableMeasured: dataset.value?.metadata.datasetDescription.subject?.flatMap(
+    (s) =>
+      s.subjectIdentifier?.valueURI
+        ? [{ "@id": s.subjectIdentifier.valueURI, "@type": "PropertyValue" }]
+        : [],
+  ),
 };
 
 useSchemaOrg([NuxtSchemaDataset]);
@@ -268,7 +303,9 @@ const onTabChange = () => {
 </script>
 
 <template>
-  <main class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50">
+  <main
+    class="h-screen overflow-auto bg-gradient-to-b from-white to-blue-50 pb-6"
+  >
     <div
       class="mx-auto mt-10 flex w-full max-w-screen-xl flex-col-reverse items-center justify-between px-3 sm:flex-row"
     >
@@ -337,11 +374,33 @@ const onTabChange = () => {
       </n-flex>
 
       <n-image
-        src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
+        :src="
+          dataset?.id === '4'
+            ? 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/mini.png'
+            : 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png'
+        "
         :alt="dataset?.title"
         class="mb-3 size-32 h-32 w-32 rounded-lg sm:mb-0"
         object-fit="contain"
       />
+    </div>
+
+    <div class="mx-auto w-full max-w-screen-xl px-3 py-2">
+      <n-alert
+        v-if="isMiniDataset"
+        title="This is not a full dataset"
+        type="warning"
+      >
+        <p>
+          It is only intended to be used as a smaller training dataset for model
+          and workflow development. To access the full dataset, please
+          <NuxtLink
+            :to="`/datasets/${dataset?.data.parent || ''}`"
+            class="text-blue-500 hover:underline"
+            >click here</NuxtLink
+          >.
+        </p>
+      </n-alert>
     </div>
 
     <n-divider />
@@ -368,7 +427,9 @@ const onTabChange = () => {
 
           <NavList as="ul" class="relative flex items-stretch gap-2">
             <NavItem
-              v-for="(item, index) in tabs"
+              v-for="(item, index) in tabs.filter((tab) =>
+                isMiniDataset ? tab.shownInMini : true,
+              )"
               :key="index"
               v-slot="{ setActive, isActive }"
               as="li"
@@ -393,7 +454,9 @@ const onTabChange = () => {
 
       <n-tabs v-if="isMobile" type="line" size="large" @update:value="navigate">
         <n-tab
-          v-for="(item, index) in tabs"
+          v-for="(item, index) in tabs.filter((tab) =>
+            isMiniDataset ? tab.shownInMini : true,
+          )"
           :key="index"
           :name="item.label"
           @update:value="navigate"
@@ -405,7 +468,7 @@ const onTabChange = () => {
       <div class="flex flex-col gap-10 px-5 py-5 lg:grid lg:grid-cols-12">
         <div class="col-span-8">
           <TransitionFade>
-            <div v-if="tabs[0].shown">
+            <div v-if="tabs.find((tab) => tab.label === 'About')?.shown">
               <n-alert title="Info" type="info">
                 <p class="text-md text-black">
                   This page provides an overview of the dataset and associated
@@ -421,7 +484,7 @@ const onTabChange = () => {
               <!-- eslint-enable vue/no-v-html -->
             </div>
 
-            <div v-if="tabs[1].shown">
+            <div v-if="tabs.find((tab) => tab.label === 'Healthsheet')?.shown">
               <MetadataHealthSheet
                 :healthsheet="
                   dataset?.metadata.healthsheet as HealthsheetRecords
@@ -429,7 +492,12 @@ const onTabChange = () => {
               />
             </div>
 
-            <div v-if="tabs[2].shown">
+            <div
+              v-if="
+                tabs.find((tab) => tab.label === 'Study Dashboard')?.shown &&
+                !isMiniDataset
+              "
+            >
               <n-flex vertical>
                 <n-alert title="Info" type="info">
                   <p class="text-md text-black">
@@ -442,7 +510,9 @@ const onTabChange = () => {
               </n-flex>
             </div>
 
-            <div v-if="tabs[3].shown">
+            <div
+              v-if="tabs.find((tab) => tab.label === 'Study Metadata')?.shown"
+            >
               <MetadataStudyDescription
                 :metadata="
                   dataset?.metadata
@@ -467,7 +537,9 @@ const onTabChange = () => {
               </CardCollapsibleCard>
             </div>
 
-            <div v-if="tabs[4].shown">
+            <div
+              v-if="tabs.find((tab) => tab.label === 'Dataset Metadata')?.shown"
+            >
               <MetadataDatasetDescription
                 :metadata="
                   dataset?.metadata.datasetDescription as DatasetDescription
@@ -491,7 +563,12 @@ const onTabChange = () => {
               </CardCollapsibleCard>
             </div>
 
-            <div v-if="tabs[5].shown">
+            <div
+              v-if="
+                tabs.find((tab) => tab.label === 'Dataset Structure Preview')
+                  ?.shown
+              "
+            >
               <n-flex vertical>
                 <n-alert title="Info" type="info">
                   <p>
@@ -514,7 +591,12 @@ const onTabChange = () => {
               </n-flex>
             </div>
 
-            <div v-if="tabs[6].shown">
+            <div
+              v-if="
+                tabs.find((tab) => tab.label === 'Dataset Quality Dashboard')
+                  ?.shown && !isMiniDataset
+              "
+            >
               <n-alert title="Info" type="info">
                 <p class="text-md text-black">
                   This page links to the
@@ -541,7 +623,7 @@ const onTabChange = () => {
               </n-flex>
             </div>
 
-            <div v-if="tabs[7].shown">
+            <div v-if="tabs.find((tab) => tab.label === 'Dataset Uses')?.shown">
               <n-alert title="Info" type="info">
                 <p class="text-md text-black">
                   This page provides information about the research purpose of
@@ -721,6 +803,7 @@ const onTabChange = () => {
             <SideDatasetSize
               :size="dataset?.data.size"
               :file-count="dataset?.data.fileCount"
+              :child="dataset?.data.child || 0"
             />
 
             <n-flex

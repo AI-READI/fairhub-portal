@@ -16,6 +16,7 @@
     "prisma:studio": "prisma studio",
     "prisma:db:pull": "prisma db pull",
     "scripts:edit:record": "tsx ./scripts/edit-record.ts",
+    "scripts:edit:mini:record": "tsx ./scripts/edit-mini-record.ts",
     "scripts:insert:record": "tsx ./scripts/insert.ts",
     "postinstall": "nuxt prepare"
   },

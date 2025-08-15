@@ -98,6 +98,7 @@ async function convertTokenResponse(tokenResponse: AuthenticationResult) {
     given_name: getStringTokenClaim(indexableClaims, "given_name"),
     idp: getStringTokenClaim(indexableClaims, "idp"),
     issuer,
+    organization: getStringTokenClaim(indexableClaims, "organization"),
     subject,
   });
 

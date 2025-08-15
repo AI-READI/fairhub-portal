@@ -11,6 +11,8 @@ const themeOverrides = {
   borderColor: "rgb(203 213 225)",
 };
 
+const searchQuery = ref("");
+
 const columns = [
   {
     title: "Researcher",
@@ -20,6 +22,21 @@ const columns = [
   {
     title: "Research Purpose",
     key: "research_purpose",
+  },
+  {
+    title: "Organization",
+    key: "organization",
+    minWidth: "10rem",
+  },
+  {
+    title: "Approved",
+    key: "approval_date",
+    minWidth: "8rem",
+  },
+  {
+    title: "Version",
+    key: "version_title",
+    minWidth: "5rem",
   },
 ];
 
@@ -31,6 +48,7 @@ const rowProps = (_rowData: object, _rowIndex: number) => ({
 const pagination = reactive({
   onChange: (page: number) => {
     pagination.page = page;
+    triggerSearch();
   },
   page: 1,
   pageCount: 1,
@@ -40,26 +58,66 @@ const pagination = reactive({
 
 const page = computed(() => pagination.page);
 
-const { data: agreements, pending } = await useFetch(
-  `/api/datasets/${datasetid}/agreements`,
-  {
-    query: { page },
-  },
-);
+// manual query object
+const queryParams = ref({
+  filteredWord: "",
+  page: 1,
+});
 
-pagination.pageCount = agreements.value?.totalPages ?? 0;
-pagination.pageSize = agreements.value?.pageSize ?? 10;
+const triggerSearch = (resetPage = false) => {
+  if (resetPage) pagination.page = 1;
+  queryParams.value = {
+    filteredWord: searchQuery.value.trim(),
+    page: pagination.page,
+  };
+  refresh();
+};
+
+const {
+  data: agreements,
+  pending,
+  refresh,
+} = await useFetch(`/api/datasets/${datasetid}/agreements`, {
+  lazy: true,
+  query: queryParams,
+});
+
+watch(agreements, (val) => {
+  pagination.pageCount = val?.totalPages ?? 0;
+  pagination.pageSize = val?.pageSize ?? 10;
+});
+
+watch(searchQuery, (val) => {
+  if (val.trim() === "") {
+    triggerSearch(true);
+  }
+});
 </script>
 
 <template>
-  <n-data-table
-    remote
-    :columns="columns"
-    :data="agreements?.data"
-    :loading="pending"
-    :pagination="pagination"
-    :row-key="rowKey"
-    :row-props="rowProps"
-    :theme-overrides="themeOverrides"
-  />
+  <n-card class="rounded-lg">
+    <div class="mb-4 flex justify-start gap-4">
+      <n-input
+        v-model:value="searchQuery"
+        placeholder="Search researchers, purpose..."
+        clearable
+        class="w-full"
+        @keyup.enter="triggerSearch(true)"
+      />
+
+      <n-button type="primary" @click="triggerSearch(true)"> Search </n-button>
+
+    </div>
+
+    <n-data-table
+      remote
+      :columns="columns"
+      :data="agreements?.data"
+      :loading="pending"
+      :pagination="pagination"
+      :row-key="rowKey"
+      :row-props="rowProps"
+      :theme-overrides="themeOverrides"
+    />
+  </n-card>
 </template>

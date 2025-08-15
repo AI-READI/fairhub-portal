@@ -1,22 +1,28 @@
+import { sqltag } from "@prisma/client/runtime/library";
 import type { QueryValue } from "ufo";
+import dayjs from "dayjs";
+const sql = sqltag;
 
-/**
- * Attempts to parse the value of the given query parameter to a numeric value.
- *
- * @param param query parameter value
- * @param defaultValue default value to return if the parameter cannot be parsed
- * @returns the parsed numeric value of the parameter, or the default value
- */
+type Agreement = {
+  id: string;
+  affiliation?: string;
+  created_at: string;
+  dataset_id?: string;
+  family_name: string;
+  given_name: string;
+  organization: string;
+  research_purpose: string;
+  version_title: string;
+};
+
 function parseNumericParamWithDefault(
   param: QueryValue,
   defaultValue: number,
 ): number {
   let parsedValue = NaN;
-
   if (typeof param === "string") {
     parsedValue = Number.parseInt(param);
   }
-
   return Number.isFinite(parsedValue) ? parsedValue : defaultValue;
 }
 
@@ -25,6 +31,9 @@ export default defineEventHandler(async (event) => {
   const query = getQuery(event);
   const page = parseNumericParamWithDefault(query.page, 1);
   const pageSize = parseNumericParamWithDefault(query.pageSize, 10);
+
+  const filteredWord = query.filteredWord?.toString().trim().toLowerCase();
+  const shouldSearch = !!filteredWord?.trim();
 
   if (!datasetId) {
     throw createError({
@@ -47,22 +56,42 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const selectProps = {
-    id: true,
-    dataset_id: true,
-    download_user_details: {
-      select: {
-        id: true,
-        family_name: true,
-        given_name: true,
-      },
+  const canonicalDatasetId = await prisma.published_dataset.findUnique({
+    where: {
+      id: datasetId,
     },
-    research_purpose: true,
-  };
+  });
+
+  if (!canonicalDatasetId) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: `Dataset ID ${datasetId} not found`,
+    });
+  }
+
+  const p = await prisma.published_dataset.findMany({
+    select: {
+      id: true,
+    },
+    where: {
+      dataset_id: canonicalDatasetId.dataset_id,
+    },
+  });
+
+  if (p.length === 0) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: `No published datasets found for dataset ID ${datasetId}`,
+    });
+  }
+
+  const publishedDatasetIDs = p.map((p) => p.id.trim());
 
   const totalCount = await prisma.download_agreement.count({
     where: {
-      dataset_id: datasetId,
+      dataset_id: {
+        in: publishedDatasetIDs,
+      },
       download_request: {
         some: {
           approval: {
@@ -70,45 +99,123 @@ export default defineEventHandler(async (event) => {
           },
         },
       },
+      ...(shouldSearch
+        ? {
+            OR: [
+              {
+                download_user_details: {
+                  given_name: { contains: filteredWord, mode: "insensitive" },
+                },
+              },
+              {
+                download_user_details: {
+                  family_name: { contains: filteredWord, mode: "insensitive" },
+                },
+              },
+              {
+                download_user_details: {
+                  affiliation: { contains: filteredWord, mode: "insensitive" },
+                },
+              },
+              {
+                download_user_details: {
+                  organization: {
+                    contains: filteredWord,
+                    mode: "insensitive",
+                  },
+                },
+              },
+              {
+                published_dataset: {
+                  version_title: {
+                    contains: filteredWord,
+                    mode: "insensitive",
+                  },
+                },
+              },
+              {
+                research_purpose: {
+                  contains: filteredWord,
+                  mode: "insensitive",
+                },
+              },
+            ],
+          }
+        : {}),
     },
   });
 
-  const agreements = await prisma.download_agreement.findMany({
-    orderBy: [
-      {
-        download_user_details: {
-          family_name: "asc",
-        },
-      },
-      {
-        download_user_details: {
-          given_name: "asc",
-        },
-      },
-      {
-        id: "asc",
-      },
-    ],
-    select: selectProps,
-    skip: (page - 1) * pageSize,
-    take: pageSize,
-    where: {
-      dataset_id: datasetId,
-      download_request: {
-        some: {
-          approval: {
-            approval_status: "APPROVED",
-          },
-        },
-      },
-    },
-  });
+  const offset = (page - 1) * pageSize;
+
+  const agreements = await prisma.$queryRaw<Agreement[]>(
+    sql`
+  SELECT *
+  FROM (
+    SELECT DISTINCT ON (da.id)
+      da.id::text AS id,
+      da.created_at::text AS created_at,
+      da.research_purpose,
+      dud.given_name,
+      dud.family_name,
+      dud.organization,
+      pd.version_title,
+      a.updated_on::text AS updated_on
+    FROM download.download_agreement da
+    LEFT JOIN download.download_user_details dud ON da.user_details_id = dud.id
+    LEFT JOIN public.published_dataset pd ON da.dataset_id = pd.id
+    LEFT JOIN download.download_request dr ON dr.download_agreement_id = da.id
+    LEFT JOIN download.download_request_approval a ON dr.approval_id = a.id
+    WHERE a.approval_status = 'APPROVED'
+      AND da.dataset_id = ANY(${publishedDatasetIDs}::text[])
+      ${
+        shouldSearch
+          ? sql`
+          AND (
+            LOWER(dud.given_name) LIKE LOWER(${`%${filteredWord}%`}) OR
+            LOWER(dud.family_name) LIKE LOWER(${`%${filteredWord}%`}) OR
+            LOWER(dud.organization) LIKE LOWER(${`%${filteredWord}%`}) OR
+            LOWER(pd.version_title) LIKE LOWER(${`%${filteredWord}%`}) OR
+            LOWER(da.research_purpose) LIKE LOWER(${`%${filteredWord}%`}) OR
+            TO_CHAR(TO_TIMESTAMP(a.updated_on::bigint), 'FMMonth FMDD, YYYY') ILIKE ${`%${filteredWord}%`}
+          )`
+          : sql``
+      }
+    ORDER BY da.id, a.updated_on ASC 
+  ) sub
+  ORDER BY updated_on DESC, family_name ASC, given_name ASC
+  LIMIT ${pageSize}
+  OFFSET ${offset}
+  `,
+  );
+
+  function serializeBigInts<T>(obj: T): T {
+    if (Array.isArray(obj)) {
+      return obj.map(serializeBigInts) as T;
+    } else if (obj && typeof obj === "object") {
+      return Object.fromEntries(
+        Object.entries(obj).map(([key, value]) => [
+          key,
+          typeof value === "bigint"
+            ? value.toString()
+            : serializeBigInts(value),
+        ]),
+      ) as T;
+    }
+    return obj;
+  }
+
+  const serializedRows = serializeBigInts(agreements) as Agreement[];
 
   return {
-    data: agreements.map((item) => ({
-      id: item.id,
-      name: `${item.download_user_details.given_name} ${item.download_user_details.family_name}`,
-      research_purpose: item.research_purpose,
+    data: serializedRows.map((row: any) => ({
+      id: row.id,
+      name: `${row.given_name ?? ""} ${row.family_name ?? ""}`.trim(),
+      affiliation: row.affiliation,
+      approval_date: dayjs.unix(Number(row.updated_on)).format("MMM D, YYYY"),
+      dataset_id: row.dataset_id,
+      organization: (row.organization ?? "").trim(),
+      research_purpose: row.research_purpose,
+      version_title: row.version_title,
     })),
     page,
     pageSize,
