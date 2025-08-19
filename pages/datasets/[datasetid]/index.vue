@@ -185,7 +185,13 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   variableMeasured: dataset.value?.metadata.datasetDescription.subject?.flatMap(
     (s) =>
       s.subjectIdentifier?.valueURI
-        ? [{ "@id": s.subjectIdentifier.valueURI, "@type": "PropertyValue" }]
+        ? [{
+            "@type": "PropertyValue",
+            "@id": s.subjectIdentifier.valueURI,
+            "name": s.subjectValue,
+            "propertyID": s.subjectIdentifier.classificationCode,
+            "url": s.subjectIdentifier.schemeURI
+          }]
         : [],
   ),
 };

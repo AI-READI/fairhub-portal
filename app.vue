@@ -95,7 +95,6 @@ useHead({
         "@context": [
           "https://schema.org",
           {
-            dicom: "http://dicom.nema.org/resources/ontology/DCM",
             pav: "http://purl.org/pav/",
             prov: "http://www.w3.org/ns/prov#",
           },
