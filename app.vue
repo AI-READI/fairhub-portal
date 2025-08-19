@@ -89,6 +89,25 @@ useHead({
       content: "#ffffff",
     },
   ],
+  script: [
+    {
+      children: JSON.stringify({
+        "@context": [
+          "https://schema.org",
+          {
+            pav: "http://purl.org/pav/",
+            prov: "http://www.w3.org/ns/prov#",
+          },
+        ],
+        "@type": "Dataset",
+        "pav:createdBy": {
+          name: "AI-READI Consortium",
+          "@type": "Organization",
+        },
+      }),
+      type: "application/ld+json",
+    },
+  ],
 });
 
 useSeoMeta({
