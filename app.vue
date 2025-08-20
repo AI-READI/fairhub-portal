@@ -95,25 +95,11 @@ useHead({
         "@context": [
           "https://schema.org",
           {
-            loinc: "https://loinc.org/",
-            mesh: "https://meshb.nlm.nih.gov/record/",
             pav: "http://purl.org/pav/",
             prov: "http://www.w3.org/ns/prov#",
           },
         ],
         "@type": "Dataset",
-        conformsTo: [
-          {
-            name: "Medical Subject Headings (MeSH)",
-            "@id": "https://meshb.nlm.nih.gov/",
-            "@type": "CreativeWork",
-          },
-          {
-            name: "Logical Observation Identifiers Names and Codes (LOINC)",
-            "@id": "https://loinc.org/",
-            "@type": "CreativeWork",
-          },
-        ],
         "pav:createdBy": {
           name: "AI-READI Consortium",
           "@type": "Organization",

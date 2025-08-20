@@ -100,19 +100,6 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   "@context": "https://schema.org",
   "@id": `https://doi.org/10.34534/${dataset.value?.id}`,
   "@type": "Dataset",
-  about: dataset.value?.metadata.datasetDescription.subject?.flatMap((s) =>
-    s.subjectIdentifier?.valueURI
-      ? [
-          {
-            name: s.subjectValue,
-            "@id": s.subjectIdentifier.valueURI,
-            "@type": "DefinedTerm",
-            inDefinedTermSet: s.subjectIdentifier.schemeURI,
-            termCode: s.subjectIdentifier.classificationCode,
-          },
-        ]
-      : [{ name: s.subjectValue, "@type": "DefinedTerm" }],
-  ),
   contributor: dataset.value?.metadata.datasetDescription.contributor?.map(
     (contributor) => {
       if (contributor.nameType === "Personal") {
@@ -183,7 +170,27 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       };
     },
   ),
-  identifier: `https://doi.org/10.34534/${dataset.value?.id}`,
+  identifier: [
+    "https://doi.org/10.34534/12345",
+    ...(dataset.value?.metadata.datasetDescription.subject ?? []).flatMap(
+      (s) =>
+        s.subjectIdentifier?.valueURI
+          ? [
+              {
+                name: s.subjectValue,
+                "@type": "PropertyValue" as const, // literal type
+                propertyID: s.subjectIdentifier.classificationCode,
+                url: s.subjectIdentifier.schemeURI,
+                value: s.subjectIdentifier.valueURI,
+                ...(s.subjectIdentifier.schemeURI
+                  ? { url: s.subjectIdentifier.schemeURI }
+                  : {}),
+              },
+            ]
+          : [],
+    ),
+  ],
+
   keywords: dataset.value?.metadata.datasetDescription.subject
     ?.map((subject) => subject.subjectValue)
     .join(", "),
@@ -195,21 +202,21 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
     "@type": "Organization",
   },
   url: `https://fairhub.io/datasets/${dataset.value?.id}`,
-
-  variableMeasured: dataset.value?.metadata.datasetDescription.subject?.flatMap(
-    (s) =>
-      s.subjectIdentifier?.valueURI
-        ? [
-            {
-              name: s.subjectValue,
-              "@id": s.subjectIdentifier.valueURI,
-              "@type": "PropertyValue",
-              propertyID: s.subjectIdentifier.classificationCode,
-              url: s.subjectIdentifier.schemeURI,
-            },
-          ]
-        : [],
-  ),
+  //
+  // variableMeasured: dataset.value?.metadata.datasetDescription.subject?.flatMap(
+  //   (s) =>
+  //     s.subjectIdentifier?.valueURI
+  //       ? [
+  //           {
+  //             name: s.subjectValue,
+  //             "@id": s.subjectIdentifier.valueURI,
+  //             "@type": "PropertyValue",
+  //             propertyID: s.subjectIdentifier.classificationCode,
+  //             url: s.subjectIdentifier.schemeURI,
+  //           },
+  //         ]
+  //       : [],
+  // ),
 };
 
 useSchemaOrg([NuxtSchemaDataset]);
