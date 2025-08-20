@@ -102,9 +102,9 @@ useHead({
         "@type": "Dataset",
         conformsTo: [
           {
-            name: "Digital Imaging and Communications in Medicine (DICOM)",
+            name: "Healthcare metadata - DICOM ontology",
             "@type": "CreativeWork",
-            url: "http://dicom.fi.nih.gov/metadata/schema/",
+            url: "http://purl.org/healthcarevocab/v1#",
           },
         ],
         "pav:createdBy": {
