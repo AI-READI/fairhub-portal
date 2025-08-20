@@ -102,9 +102,9 @@ useHead({
         "@type": "Dataset",
         conformsTo: [
           {
-            name: "Healthcare metadata - DICOM ontology",
+            name: "CDISC Standards",
             "@type": "CreativeWork",
-            url: "http://purl.org/healthcarevocab/v1#",
+            url: "https://www.cdisc.org/standards",
           },
         ],
         "pav:createdBy": {
