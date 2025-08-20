@@ -111,8 +111,10 @@ useHead({
           name: "AI-READI Consortium",
           "@type": "Organization",
         },
-        "prov:wasDerivedFrom": {
-          "@type": "Dataset",
+        "prov:generatedAtTime": "2024-11-08",
+        "prov:wasAttributedTo": {
+          name: "AI-READI Consortium",
+          "@type": "Organization",
         },
       }),
       type: "application/ld+json",
