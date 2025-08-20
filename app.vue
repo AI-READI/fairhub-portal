@@ -98,10 +98,15 @@ useHead({
             dicom: "http://dicom.nema.org/resources/ontology/DCM/",
             pav: "http://purl.org/pav/",
             prov: "http://www.w3.org/ns/prov#",
-
           },
         ],
         "@type": "Dataset",
+        conformsTo: [
+          {
+            name: "Digital Imaging and Communications in Medicine (DICOM)",
+            "@type": "CreativeWork",
+          },
+        ],
         "pav:createdBy": {
           name: "AI-READI Consortium",
           "@type": "Organization",
