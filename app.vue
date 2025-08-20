@@ -102,9 +102,9 @@ useHead({
         "@type": "Dataset",
         conformsTo: [
           {
-            name: "CDISC Standards",
+            name: "OME-XML",
             "@type": "CreativeWork",
-            url: "https://www.cdisc.org/standards",
+            url: "https://www.openmicroscopy.org/Schemas/OME/",
           },
         ],
         "pav:createdBy": {
