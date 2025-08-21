@@ -100,6 +100,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   "@context": "https://schema.org",
   "@id": `https://doi.org/10.34534/${dataset.value?.id}`,
   "@type": "Dataset",
+
   contributor: dataset.value?.metadata.datasetDescription.contributor?.map(
     (contributor) => {
       if (contributor.nameType === "Personal") {
@@ -156,7 +157,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       contentSize: "2.01 TB",
       contentUrl: `${config.public.baseURL}/datasets/2/access`,
       description: `${dataset.value?.description}. This dataset is accessible only to approved researchers via this landing page.`,
-      encodingFormat: ["DICOM", "Markdown", "CSV"],
+      encodingFormat: "DICOM",
     },
   ],
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
