@@ -102,9 +102,9 @@ useHead({
         "@type": "Dataset",
         conformsTo: [
           {
-            name: "OME-XML",
+            name: "Protocol Data Element Definitions (ClinicalTrials.gov)",
             "@type": "CreativeWork",
-            url: "https://www.openmicroscopy.org/Schemas/OME/",
+            url: "http://clinicaltrials.gov/prs",
           },
         ],
         "pav:createdBy": {
