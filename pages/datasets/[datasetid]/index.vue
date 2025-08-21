@@ -156,7 +156,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       contentSize: "2.01 TB",
       contentUrl: `${config.public.baseURL}/datasets/2/access`,
       description: `${dataset.value?.description}. This dataset is accessible only to approved researchers via this landing page.`,
-      encodingFormat: ["image/DICOM", "text/markdown", "table/csv"],
+      encodingFormat: ["DICOM", "Markdown", "CSV"],
     },
   ],
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
