@@ -95,7 +95,6 @@ useHead({
         "@context": [
           "https://schema.org",
           {
-            dcterms: "http://purl.org/dc/terms/",
             pav: "http://purl.org/pav/",
             prov: "http://www.w3.org/ns/prov#",
           },
@@ -108,7 +107,16 @@ useHead({
             url: "http://clinicaltrials.gov/prs",
           },
         ],
+        "pav:createdBy": {
+          name: "AI-READI Consortium",
+          "@type": "Organization",
+        },
+        "prov:wasAttributedTo": {
+          name: "AI-READI Consortium",
+          "@type": "Organization",
+        },
       }),
+      type: "application/ld+json",
     },
   ],
 });
