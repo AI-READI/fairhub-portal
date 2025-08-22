@@ -92,7 +92,14 @@ useHead({
   script: [
     {
       children: JSON.stringify({
-        "@context": ["https://schema.org"],
+        "@context": [
+          "https://schema.org",
+          {
+            dcterms: "http://purl.org/dc/terms/",
+            pav: "http://purl.org/pav/",
+            prov: "http://www.w3.org/ns/prov#",
+          },
+        ],
         "@type": "Dataset",
         conformsTo: [
           {
