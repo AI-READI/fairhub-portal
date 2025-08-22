@@ -100,6 +100,12 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   "@context": "https://schema.org",
   "@id": `https://doi.org/10.34534/${dataset.value?.id}`,
   "@type": "Dataset",
+  associatedMedia: {
+    "@type": "MediaObject",
+    contentUrl: `${config.public.BASE_URL}/api/datasets/${datasetid}/dataset_description.json`,
+    description: "Machine-readable metadata describing this dataset.",
+    encodingFormat: "application/json",
+  },
   contributor: dataset.value?.metadata.datasetDescription.contributor?.map(
     (contributor) => {
       if (contributor.nameType === "Personal") {
@@ -153,11 +159,12 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
     {
       name: dataset.value?.title,
       "@type": "DataDownload",
+      conditionsOfAccess:
+        "Accessible only to logged-in accounts or approved researchers",
       contentSize: "2.01 TB",
       contentUrl: `https://fairhub.io/datasets/${datasetid}/access`,
       description: `${dataset.value?.description}.`,
       encodingFormat: ["DICOM", "Markdown", "CSV"],
-      conditionsOfAccess: "Accessible only to logged-in accounts or approved researchers"
     },
   ],
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
