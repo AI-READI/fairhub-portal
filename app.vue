@@ -109,6 +109,7 @@ useHead({
             url: "http://clinicaltrials.gov/prs",
           },
         ],
+
         "dcterms:isVersionOf": { "@id": "https://doi.org/10.60775/fairhub.1" },
         "pav:createdBy": {
           name: "AI-READI Consortium",
@@ -116,9 +117,20 @@ useHead({
         },
         "pav:version": "2.0",
         "prov:generatedAtTime": "2024-11-08",
+        "prov:used": {
+          name: "ClinicalTrials.gov Protocol Data Element Definitions",
+          "@id": "http://clinicaltrials.gov/prs",
+          "@type": "CreativeWork",
+        },
         "prov:wasAttributedTo": {
           name: "AI-READI Consortium",
           "@type": "Organization",
+        },
+
+        "prov:wasDerivedFrom": {
+          name: "FAIRhub Dataset v1",
+          "@id": "https://doi.org/10.60775/fairhub.1",
+          "@type": "Dataset",
         },
       }),
       type: "application/ld+json",
