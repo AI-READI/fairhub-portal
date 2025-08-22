@@ -111,7 +111,6 @@ useHead({
         "dcterms:isVersionOf": {
           "@id": "https://doi.org/10.60775/fairhub.1",
         },
-
         "pav:createdBy": {
           name: "AI-READI Consortium",
           "@type": "Organization",
@@ -124,7 +123,6 @@ useHead({
           name: "AI-READI Consortium",
           "@type": "Organization",
         },
-        "prov:wasDerivedFrom": { "@id": "https://doi.org/10.60775/fairhub.1" },
       }),
       type: "application/ld+json",
     },

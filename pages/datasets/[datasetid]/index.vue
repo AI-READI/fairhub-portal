@@ -172,6 +172,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       };
     },
   ),
+  identifier: `https://doi.org/${dataset.value?.metadata.datasetDescription.identifier.identifierValue}`,
   keywords: dataset.value?.metadata.datasetDescription.subject
     ?.map((subject) => subject.subjectValue)
     .join(", "),
