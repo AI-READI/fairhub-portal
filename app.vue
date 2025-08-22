@@ -111,7 +111,10 @@ useHead({
           name: "AI-READI Consortium",
           "@type": "Organization",
         },
-        "prov:generatedAtTime": "2024-11-08",
+        "prov:generatedAtTime": {
+          "@type": "http://www.w3.org/2001/XMLSchema#date",
+          "@value": "2024-11-08",
+        },
         "prov:wasAttributedTo": {
           name: "AI-READI Consortium",
           "@type": "Organization",

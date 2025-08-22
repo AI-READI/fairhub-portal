@@ -100,12 +100,6 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   "@context": "https://schema.org",
   "@id": `https://doi.org/10.34534/${dataset.value?.id}`,
   "@type": "Dataset",
-  associatedMedia: {
-    "@type": "MediaObject",
-    contentUrl: `${config.public.BASE_URL}/api/datasets/${datasetid}/dataset_description.json`,
-    description: "Machine-readable metadata describing this dataset.",
-    encodingFormat: "application/json",
-  },
   contributor: dataset.value?.metadata.datasetDescription.contributor?.map(
     (contributor) => {
       if (contributor.nameType === "Personal") {
