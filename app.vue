@@ -95,6 +95,7 @@ useHead({
         "@context": [
           "https://schema.org",
           {
+            dcterms: "http://purl.org/dc/terms/",
             pav: "http://purl.org/pav/",
             prov: "http://www.w3.org/ns/prov#",
           },
@@ -107,6 +108,9 @@ useHead({
             url: "http://clinicaltrials.gov/prs",
           },
         ],
+        "dcterms:isVersionOf": {
+          "@id": "https://doi.org/10.60775/fairhub.1",
+        },
         "pav:createdBy": {
           name: "AI-READI Consortium",
           "@type": "Organization",
