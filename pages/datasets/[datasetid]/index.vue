@@ -98,7 +98,7 @@ const markdownToHtml = ref<string>("");
 const NuxtSchemaDataset: WithContext<Dataset> = {
   name: dataset.value?.title,
   "@context": "https://schema.org",
-  "@id": `https://doi.org/10.34534/${dataset.value?.id}`,
+  "@id": `https://doi.org/10.60775/fairhub/${dataset.value?.id}`,
   "@type": "Dataset",
   contributor: dataset.value?.metadata.datasetDescription.contributor?.map(
     (contributor) => {
@@ -172,7 +172,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       };
     },
   ),
-  identifier: `https://doi.org/10.34534/${dataset.value?.id}`,
+  isBasedOn: "https://doi.org/10.60775/fairhub.1",
   keywords: dataset.value?.metadata.datasetDescription.subject
     ?.map((subject) => subject.subjectValue)
     .join(", "),
