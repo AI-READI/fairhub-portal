@@ -154,7 +154,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       name: dataset.value?.title,
       "@type": "DataDownload",
       contentSize: "2.01 TB",
-      contentUrl: `${config.public.BASE_URL}/datasets/${datasetid}/access`,
+      contentUrl: `https://fairhub.io/datasets/${datasetid}/access`,
       description: `${dataset.value?.description}. This dataset is accessible only to approved researchers via this landing page.`,
       encodingFormat: "DICOM",
     },
