@@ -82,6 +82,9 @@ IN ANY CASE, LICENSOR'S ENTIRE LIABILITY UNDER ANY PROVISION OF THIS AGREEMENT A
 
 const attestationsAccepted = ref<boolean>(false);
 const attestations = [
+  "I am not physically located in or acting on behalf of any person or entity in a U.S. designated country of concern.",
+  "The data will not be downloaded or accessed from a U.S. designated country of concern.",
+  "The data will not be shared with or transferred to an individual or entity located in or subject to the jurisdiction of a U.S. designated country of concern.",
   "I will not attempt to identify any individual who has contributed data to this dataset.",
   "I will follow the cybersecurity guidelines and agree to be tracked by an embedded token.",
   "I will not distribute this dataset per the License.",

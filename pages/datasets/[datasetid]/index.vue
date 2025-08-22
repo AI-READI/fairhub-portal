@@ -154,11 +154,11 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       name: dataset.value?.title,
       "@type": "DataDownload",
       conditionsOfAccess:
-        "Accessible only to logged-in accounts or approved researchers",
+        "Access to this dataset is restricted and requires authentication and approval.",
       contentSize: "2.01 TB",
       contentUrl: `https://fairhub.io/datasets/${datasetid}/access`,
       description: `${dataset.value?.description}.`,
-      encodingFormat: ["DICOM", "Markdown", "CSV"],
+      encodingFormat: "application/dicom",
     },
   ],
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
@@ -184,19 +184,10 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
     "@type": "Organization",
   },
   url: `https://fairhub.io/datasets/${dataset.value?.id}`,
-
   variableMeasured: dataset.value?.metadata.datasetDescription.subject?.flatMap(
     (s) =>
       s.subjectIdentifier?.valueURI
-        ? [
-            {
-              name: s.subjectValue,
-              "@id": s.subjectIdentifier.valueURI,
-              "@type": "PropertyValue",
-              propertyID: s.subjectIdentifier.classificationCode,
-              url: s.subjectIdentifier.schemeURI,
-            },
-          ]
+        ? [{ "@id": s.subjectIdentifier.valueURI, "@type": "PropertyValue" }]
         : [],
   ),
 };
