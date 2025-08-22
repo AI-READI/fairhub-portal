@@ -92,14 +92,7 @@ useHead({
   script: [
     {
       children: JSON.stringify({
-        "@context": [
-          "https://schema.org",
-          {
-            dcterms: "http://purl.org/dc/terms/",
-            pav: "http://purl.org/pav/",
-            prov: "http://www.w3.org/ns/prov#",
-          },
-        ],
+        "@context": ["https://schema.org"],
         "@type": "Dataset",
         conformsTo: [
           {
@@ -108,23 +101,7 @@ useHead({
             url: "http://clinicaltrials.gov/prs",
           },
         ],
-        "dcterms:isVersionOf": {
-          "@id": "https://doi.org/10.60775/fairhub.1",
-        },
-        "pav:createdBy": {
-          name: "AI-READI Consortium",
-          "@type": "Organization",
-        },
-        "prov:generatedAtTime": {
-          "@type": "http://www.w3.org/2001/XMLSchema#date",
-          "@value": "2024-11-08",
-        },
-        "prov:wasAttributedTo": {
-          name: "AI-READI Consortium",
-          "@type": "Organization",
-        },
       }),
-      type: "application/ld+json",
     },
   ],
 });
