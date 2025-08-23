@@ -109,14 +109,6 @@ useHead({
             url: "http://clinicaltrials.gov/prs",
           },
         ],
-        "prov:generatedAtTime": {
-          "@type": "xsd:date",
-          "@value": "2024-11-08",
-        },
-        "prov:wasAttributedTo": {
-          name: "AI-READI Consortium",
-          "@type": "prov:Agent",
-        },
         "prov:wasDerivedFrom": {
           name: "Flagship Dataset of Type 2 Diabetes from the AI-READI Project (v1.0.0).",
           "@id": "https://doi.org/10.60775/fairhub.1",
