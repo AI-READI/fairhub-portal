@@ -92,33 +92,36 @@ useHead({
   script: [
     {
       children: JSON.stringify({
-        "@context": {
-          "@vocab": "https://schema.org/",
-          dcterms: "http://purl.org/dc/terms/",
-          pav: "http://purl.org/pav/",
-          prov: "http://www.w3.org/ns/prov#",
-          xsd: "http://www.w3.org/2001/XMLSchema#",
-        },
-        "@id": "https://doi.org/10.60775/fairhub.1.v2",
+        "@context": [
+          "https://schema.org",
+          {
+            dcterms: "http://purl.org/dc/terms/",
+            pav: "http://purl.org/pav/",
+            prov: "http://www.w3.org/ns/prov#",
+            xsd: "http://www.w3.org/2001/XMLSchema#",
+          },
+        ],
         "@type": "Dataset",
         conformsTo: [
           {
-            name: "ClinicalTrials.gov Protocol Data Element Definitions.",
+            name: "Protocol Data Element Definitions (ClinicalTrials.gov)",
             "@type": "CreativeWork",
             url: "http://clinicaltrials.gov/prs",
           },
         ],
+        "prov:generatedAtTime": {
+          "@type": "xsd:date",
+          "@value": "2024-11-08",
+        },
         "prov:wasAttributedTo": {
           name: "AI-READI Consortium",
           "@type": "prov:Agent",
         },
-
         "prov:wasDerivedFrom": {
-          name: "FAIRhub Dataset v1",
+          name: "Flagship Dataset of Type 2 Diabetes from the AI-READI Project (v1.0.0).",
           "@id": "https://doi.org/10.60775/fairhub.1",
           "@type": "Dataset",
         },
-
         "prov:wasGeneratedBy": {
           name: "Data Processing",
           "@type": "prov:Activity",
