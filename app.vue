@@ -101,7 +101,6 @@ useHead({
         },
         "@id": "https://doi.org/10.60775/fairhub.1.v2",
         "@type": "Dataset",
-
         conformsTo: [
           {
             name: "ClinicalTrials.gov Protocol Data Element Definitions.",
@@ -109,27 +108,6 @@ useHead({
             url: "http://clinicaltrials.gov/prs",
           },
         ],
-
-        "dcterms:isVersionOf": { "@id": "https://doi.org/10.60775/fairhub.1" },
-
-        "pav:createdBy": {
-          name: "AI-READI Consortium",
-          "@type": "prov:Agent",
-        },
-
-        "pav:version": "2.0",
-
-        "prov:generatedAtTime": {
-          "@type": "xsd:date",
-          "@value": "2024-11-08",
-        },
-
-        "prov:used": {
-          name: "ClinicalTrials.gov Protocol Data Element Definitions",
-          "@id": "http://clinicaltrials.gov/prs",
-          "@type": "CreativeWork",
-        },
-
         "prov:wasAttributedTo": {
           name: "AI-READI Consortium",
           "@type": "prov:Agent",
@@ -139,6 +117,15 @@ useHead({
           name: "FAIRhub Dataset v1",
           "@id": "https://doi.org/10.60775/fairhub.1",
           "@type": "Dataset",
+        },
+
+        "prov:wasGeneratedBy": {
+          name: "Data Processing",
+          "@type": "prov:Activity",
+          "prov:wasAssociatedWith": {
+            name: "AI-READI Consortium",
+            "@type": "prov:Agent",
+          },
         },
       }),
       type: "application/ld+json",
