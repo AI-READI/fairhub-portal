@@ -127,6 +127,20 @@ useHead({
           name: "AI-READI Consortium",
           "@type": "prov:Activity",
         },
+        related_resources: [
+          {
+            related_resource: "https://docs.aireadi.org/",
+            relation_type: "isBasedOn",
+          },
+          {
+            related_resource: "https://aireadi.org/",
+            relation_type: "isBasedOn",
+          },
+          {
+            related_resource: "http://clinicaltrials.gov/prs",
+            relation_type: "isBasedOn",
+          },
+        ],
       }),
       type: "application/ld+json",
     },
