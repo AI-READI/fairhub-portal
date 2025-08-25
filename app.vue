@@ -100,14 +100,14 @@ useHead({
         //   prov: "http://www.w3.org/ns/prov#",
         // },
         // ],
-        "@type": "Dataset",
-        conformsTo: [
-          {
-            name: "Protocol Data Element Definitions (ClinicalTrials.gov)",
-            "@type": "CreativeWork",
-            url: "http://clinicaltrials.gov/prs",
-          },
-        ],
+        // "@type": "Dataset",
+        // conformsTo: [
+        //   {
+        //     name: "Protocol Data Element Definitions (ClinicalTrials.gov)",
+        //     "@type": "CreativeWork",
+        //     url: "http://clinicaltrials.gov/prs",
+        //   },
+        // ],
         // "prov:wasAttributedTo": {
         //   name: "AI-READI Consortium",
         //   "@type": "prov:Agent",

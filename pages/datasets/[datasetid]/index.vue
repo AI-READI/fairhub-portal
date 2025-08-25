@@ -191,6 +191,11 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       publisher: "AI-READI Consortium",
       url: "https://aireadi.org/",
     },
+    {
+      name: "Protocol Data Element Definitions (ClinicalTrials.gov)",
+      "@type": "CreativeWork",
+      url: "http://clinicaltrials.gov/prs",
+    },
   ],
   keywords: dataset.value?.metadata.datasetDescription.subject
     ?.map((subject) => subject.subjectValue)
