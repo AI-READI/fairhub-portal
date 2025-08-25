@@ -101,6 +101,7 @@ useHead({
           },
         ],
         "@type": "Dataset",
+        accepted_date: "2024-10-01",
         conformsTo: [
           {
             name: "Protocol Data Element Definitions (ClinicalTrials.gov)",
@@ -108,6 +109,12 @@ useHead({
             url: "http://clinicaltrials.gov/prs",
           },
         ],
+        created_date: "2023-07-19",
+        hasFormat: ["image/DICOM", "text/markdown", "table/csv"],
+        isFormatOf: "dataset_version_1",
+        isNewVersionOf: "dataset_version_1",
+        isVersionOf: "dataset_version_1",
+        modified_date: "2024-11-01",
         "prov:hadPrimarySource": {
           "@id": "https://aireadi.org/",
           "@type": "prov:Entity",
@@ -127,20 +134,17 @@ useHead({
           name: "AI-READI Consortium",
           "@type": "prov:Activity",
         },
+        publication_date: "2024-11-08",
         related_resources: [
           {
             related_resource: "https://docs.aireadi.org/",
             relation_type: "isBasedOn",
           },
-          {
-            related_resource: "https://aireadi.org/",
-            relation_type: "isBasedOn",
-          },
-          {
-            related_resource: "http://clinicaltrials.gov/prs",
-            relation_type: "isBasedOn",
-          },
         ],
+        right_holder: [
+          { name: "AI-READI Consortium", url: "https://aireadi.org/" },
+        ],
+        submitted_date: "2024-09-15",
       }),
       type: "application/ld+json",
     },
