@@ -98,7 +98,6 @@ useHead({
             dcterms: "http://purl.org/dc/terms/",
             pav: "http://purl.org/pav/",
             prov: "http://www.w3.org/ns/prov#",
-            xsd: "http://www.w3.org/2001/XMLSchema#",
           },
         ],
         "@type": "Dataset",
@@ -109,19 +108,6 @@ useHead({
             url: "http://clinicaltrials.gov/prs",
           },
         ],
-        "prov:wasDerivedFrom": {
-          name: "Flagship Dataset of Type 2 Diabetes from the AI-READI Project (v1.0.0).",
-          "@id": "https://doi.org/10.60775/fairhub.1",
-          "@type": "Dataset",
-        },
-        "prov:wasGeneratedBy": {
-          name: "Data Processing",
-          "@type": "prov:Activity",
-          "prov:wasAssociatedWith": {
-            name: "AI-READI Consortium",
-            "@type": "prov:Agent",
-          },
-        },
       }),
       type: "application/ld+json",
     },
