@@ -176,6 +176,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       };
     },
   ),
+  hasPart: { "@type": "CreativeWork", url: "https://aireadi.org" },
   identifier: `https://doi.org/${dataset.value?.metadata.datasetDescription.identifier.identifierValue}`,
   inLanguage: "en",
   isBasedOn: [

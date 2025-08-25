@@ -92,30 +92,23 @@ useHead({
   script: [
     {
       children: JSON.stringify({
-        // "@context": [
-        //   "https://schema.org",
-        // {
-        //   dcterms: "http://purl.org/dc/terms/",
-        //   pav: "http://purl.org/pav/",
-        //   prov: "http://www.w3.org/ns/prov#",
-        // },
-        // ],
-        // "@type": "Dataset",
-        // conformsTo: [
-        //   {
-        //     name: "Protocol Data Element Definitions (ClinicalTrials.gov)",
-        //     "@type": "CreativeWork",
-        //     url: "http://clinicaltrials.gov/prs",
-        //   },
-        // ],
-        // "prov:wasAttributedTo": {
-        //   name: "AI-READI Consortium",
-        //   "@type": "prov:Agent",
-        // },
-        // "prov:wasGeneratedBy": {
-        //   name: "AI-READI Consortium",
-        //   "@type": "prov:Activity",
-        // },
+        "@context": [
+          {
+            dcterms: "http://purl.org/dc/terms/",
+            pav: "http://purl.org/pav/",
+            prov: "http://www.w3.org/ns/prov#",
+          },
+        ],
+        "@type": "Dataset",
+
+        "prov:wasAttributedTo": {
+          name: "AI-READI Consortium",
+          "@type": "prov:Agent",
+        },
+        "prov:wasGeneratedBy": {
+          name: "AI-READI Consortium",
+          "@type": "prov:Activity",
+        },
       }),
       type: "application/ld+json",
     },
