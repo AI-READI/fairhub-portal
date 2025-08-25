@@ -172,6 +172,25 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       };
     },
   ),
+  isBasedOn: [
+    {
+      name: "AI-READI Documentation",
+      "@type": "CreativeWork",
+      publisher: "AI-READI Consortium",
+      url: "https://docs.aireadi.org/",
+    },
+    {
+      name: "AI-READI Project Website",
+      "@type": "CreativeWork",
+      publisher: "AI-READI Consortium",
+      url: "https://aireadi.org/",
+    },
+    {
+      name: "Protocol Data Element Definitions (ClinicalTrials.gov)",
+      "@type": "CreativeWork",
+      url: "http://clinicaltrials.gov/prs",
+    },
+  ],
   keywords: dataset.value?.metadata.datasetDescription.subject
     ?.map((subject) => subject.subjectValue)
     .join(", "),
