@@ -93,6 +93,7 @@ useHead({
     {
       children: JSON.stringify({
         "@context": [
+          "https://schema.org",
           {
             dcterms: "http://purl.org/dc/terms/",
             pav: "http://purl.org/pav/",
@@ -100,7 +101,6 @@ useHead({
           },
         ],
         "@type": "Dataset",
-
         "prov:wasAttributedTo": {
           name: "AI-READI Consortium",
           "@type": "prov:Agent",
