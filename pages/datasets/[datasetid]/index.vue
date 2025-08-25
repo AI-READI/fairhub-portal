@@ -176,33 +176,11 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       };
     },
   ),
-  hasPart: { "@type": "CreativeWork", url: "https://aireadi.org" },
-  identifier: `https://doi.org/${dataset.value?.metadata.datasetDescription.identifier.identifierValue}`,
-  inLanguage: "en",
-  isBasedOn: [
-    {
-      name: "AI-READI Documentation",
-      "@type": "CreativeWork",
-      publisher: "AI-READI Consortium",
-      url: "https://docs.aireadi.org/",
-    },
-    {
-      name: "AI-READI Project Website",
-      "@type": "CreativeWork",
-      publisher: "AI-READI Consortium",
-      url: "https://aireadi.org/",
-    },
-    {
-      name: "Protocol Data Element Definitions (ClinicalTrials.gov)",
-      "@type": "CreativeWork",
-      url: "http://clinicaltrials.gov/prs",
-    },
-  ],
   keywords: dataset.value?.metadata.datasetDescription.subject
     ?.map((subject) => subject.subjectValue)
     .join(", "),
   license: dataset.value?.metadata.datasetDescription.rights?.[0]?.rightsURI
-    ? dataset.value.metadata.datasetDescription.rights[0].rightsURI
+    ? { "@id": dataset.value.metadata.datasetDescription.rights[0].rightsURI }
     : "not provided",
   publisher: {
     name: "FAIRhub",
