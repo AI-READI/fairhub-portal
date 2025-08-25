@@ -108,50 +108,13 @@ useHead({
             url: "http://clinicaltrials.gov/prs",
           },
         ],
-        "dcterms:relation": [
-          {
-            "@id": "https://docs.aireadi.org/",
-            "dcterms:description": "Project documentation site",
-          },
-          {
-            "@id": "https://aireadi.org/",
-            "dcterms:description": "AI-READI project homepage",
-          },
-          {
-            "@id": "https://doi.org/10.5281/zenodo.10642459",
-            "dcterms:license": "AI-READI custom license v1.0",
-          },
-          {
-            "@id":
-              "https://reporter.nih.gov/search/yatARMM-qUyKAhnQgsCTAQ/project-details/10885481",
-            "dcterms:isReferencedBy":
-              "Bridge2AI: Salutogenesis Data Generation Project",
-          },
-        ],
-        "prov:hadPrimarySource": {
-          "@id": "https://aireadi.org/",
-          "@type": "prov:Entity",
-          "prov:label": "AI-READI project homepage",
-        },
         "prov:wasAttributedTo": {
-          "@id": "https://doi.org/10.5281/zenodo.10642459",
-          "@type": "prov:Entity",
-          "prov:label": "AI-READI custom license v1.0",
-        },
-        "prov:wasDerivedFrom": {
-          "@id": "https://docs.aireadi.org/",
-          "@type": "prov:Entity",
-          "prov:label": "Dataset documentation",
+          name: "AI-READI Consortium",
+          "@type": "prov:Agent",
         },
         "prov:wasGeneratedBy": {
           name: "AI-READI Consortium",
           "@type": "prov:Activity",
-        },
-        "prov:wasInfluencedBy": {
-          "@id":
-            "https://reporter.nih.gov/search/yatARMM-qUyKAhnQgsCTAQ/project-details/10885481",
-          "@type": "prov:Entity",
-          "prov:label": "NIH Bridge2AI funding project",
         },
       }),
       type: "application/ld+json",
