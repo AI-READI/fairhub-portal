@@ -178,6 +178,20 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   ),
   identifier: `https://doi.org/${dataset.value?.metadata.datasetDescription.identifier.identifierValue}`,
   inLanguage: "en",
+  isBasedOn: [
+    {
+      name: "AI-READI Documentation",
+      "@type": "CreativeWork",
+      publisher: "AI-READI Consortium",
+      url: "https://docs.aireadi.org/",
+    },
+    {
+      name: "AI-READI Project Website",
+      "@type": "CreativeWork",
+      publisher: "AI-READI Consortium",
+      url: "https://aireadi.org/",
+    },
+  ],
   keywords: dataset.value?.metadata.datasetDescription.subject
     ?.map((subject) => subject.subjectValue)
     .join(", "),
