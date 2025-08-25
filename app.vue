@@ -108,6 +108,14 @@ useHead({
             url: "http://clinicaltrials.gov/prs",
           },
         ],
+        "prov:wasAttributedTo": {
+          name: "AI-READI Consortium",
+          "@type": "prov:Agent",
+        },
+        "prov:wasGeneratedBy": {
+          name: "AI-READI Consortium",
+          "@type": "prov:Activity",
+        },
       }),
       type: "application/ld+json",
     },
