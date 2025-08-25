@@ -101,9 +101,27 @@ useHead({
           },
         ],
         "@type": "Dataset",
+        conformsTo: [
+          {
+            name: "Protocol Data Element Definitions (ClinicalTrials.gov)",
+            "@type": "CreativeWork",
+            url: "http://clinicaltrials.gov/prs",
+          },
+        ],
+        "prov:hadPrimarySource": {
+          "@id": "https://aireadi.org/",
+          "@type": "prov:Entity",
+          "prov:label": "AI-READI project homepage",
+        },
         "prov:wasAttributedTo": {
-          name: "AI-READI Consortium",
-          "@type": "prov:Agent",
+          "@id": "https://doi.org/10.5281/zenodo.10642459",
+          "@type": "prov:Entity",
+          "prov:label": "AI-READI custom license v1.0",
+        },
+        "prov:wasDerivedFrom": {
+          "@id": "https://docs.aireadi.org/",
+          "@type": "prov:Entity",
+          "prov:label": "Dataset documentation",
         },
         "prov:wasGeneratedBy": {
           name: "AI-READI Consortium",
