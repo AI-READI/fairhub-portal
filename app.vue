@@ -127,10 +127,11 @@ useHead({
           name: "AI-READI Consortium",
           "@type": "prov:Activity",
         },
-        related_resources: [
+        relatedIdentifier: [
           {
-            related_resource: "https://docs.aireadi.org/",
-            relation_type: "isBasedOn",
+            relatedIdentifier: "https://docs.aireadi.org/",
+            relatedIdentifierType: "URL",
+            relationType: "IsBasedOn",
           },
         ],
       }),
