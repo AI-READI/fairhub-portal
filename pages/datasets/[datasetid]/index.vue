@@ -139,6 +139,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       return {
         name: creator.creatorName,
         "@type": "Organization",
+        url: "https://ai-readi.org",
       };
     }
   }),
@@ -153,12 +154,15 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
     {
       name: dataset.value?.title,
       "@type": "DataDownload",
-      conditionsOfAccess:
-        "Access to this dataset is restricted and requires authentication and approval.",
+      conditionsOfAccess: "PublicDownloadSelfAttestationRequired",
       contentSize: "2.01 TB",
-      contentUrl: "https://fairhub.io/datasets/2/access",
+      contentUrl: `https://fairhub.io/datasets/${datasetid}/access`,
       description: `${dataset.value?.description}.`,
       encodingFormat: "application/dicom",
+      license: dataset.value?.metadata?.datasetDescription?.rights?.[0]
+        ?.rightsURI
+        ? dataset.value.metadata.datasetDescription.rights[0].rightsURI
+        : "not provided",
     },
   ],
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
