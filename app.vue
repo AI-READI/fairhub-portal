@@ -101,34 +101,45 @@ useHead({
         ],
         "@type": "Dataset",
         date: [
-          {
-            dateType: "Available",
-            dateValue: "2024-11-08",
-          },
-          {
-            dateType: "Modified",
-            dateValue: "2025-01-20",
-          },
+          { dateType: "Available", dateValue: "2024-11-08" },
+          { dateType: "Created", dateValue: "2024-05-01" },
+          { dateType: "Modified", dateValue: "2025-01-20" },
+          { dateType: "Submitted", dateValue: "2024-06-01" },
         ],
         "prov:wasGeneratedBy": {
           "@type": "prov:Activity",
           "prov:label": "AI-READI Consortium",
         },
-        relatedIdentifier: [
+        related_resources: [
           {
-            relatedIdentifier: "https://doi.org/10.60775/fairhub.1",
-            relatedIdentifierType: "DOI",
-            relationType: "IsVersionOf",
+            related_resource: "https://doi.org/10.60775/fairhub.1",
+            relation_type: "IsVersionOf",
           },
           {
-            relatedIdentifier: "https://docs.aireadi.org/",
-            relatedIdentifierType: "URL",
-            relationType: "IsDerivedFrom",
+            related_resource: "https://docs.aireadi.org/",
+            relation_type: "IsDerivedFrom",
           },
           {
-            relatedIdentifier: "https://doi.org/10.5281/zenodo.10642459",
-            relatedIdentifierType: "DOI",
-            relationType: "References",
+            related_resource: "https://doi.org/10.5281/zenodo.10642459",
+            relation_type: "References",
+          },
+          {
+            related_resource: "https://protocols.io/",
+            relation_type: "isBasedOn",
+          },
+          {
+            related_resource: "https://doi.org/10.60775/fairhub.3",
+            relation_type: "hasVersion",
+          },
+          {
+            related_resource: "https://doi.org/10.5281/zenodo.format.example",
+            relation_type: "isFormatOf",
+          },
+        ],
+        right_holder: [
+          {
+            name: "University of Washington",
+            "@type": "Organization",
           },
         ],
       }),
