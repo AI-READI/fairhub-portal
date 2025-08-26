@@ -95,19 +95,11 @@ useHead({
         "@context": [
           "https://schema.org",
           {
-            dcterms: "http://purl.org/dc/terms/",
             pav: "http://purl.org/pav/",
             prov: "http://www.w3.org/ns/prov#",
           },
         ],
         "@type": "Dataset",
-        conformsTo: [
-          {
-            name: "Protocol Data Element Definitions (ClinicalTrials.gov)",
-            "@type": "CreativeWork",
-            url: "http://clinicaltrials.gov/prs",
-          },
-        ],
         date: [
           {
             dateType: "Available",
@@ -118,24 +110,9 @@ useHead({
             dateValue: "2025-01-20",
           },
         ],
-        "prov:hadPrimarySource": {
-          "@id": "https://aireadi.org/",
-          "@type": "prov:Entity",
-          "prov:label": "AI-READI project homepage",
-        },
-        "prov:wasAttributedTo": {
-          "@id": "https://doi.org/10.5281/zenodo.10642459",
-          "@type": "prov:Entity",
-          "prov:label": "AI-READI custom license v1.0",
-        },
-        "prov:wasDerivedFrom": {
-          "@id": "https://docs.aireadi.org/",
-          "@type": "prov:Entity",
-          "prov:label": "Dataset documentation",
-        },
         "prov:wasGeneratedBy": {
-          name: "AI-READI Consortium",
           "@type": "prov:Activity",
+          "prov:label": "AI-READI Consortium",
         },
         relatedIdentifier: [
           {
