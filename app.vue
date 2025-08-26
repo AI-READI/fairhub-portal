@@ -108,6 +108,16 @@ useHead({
             url: "http://clinicaltrials.gov/prs",
           },
         ],
+        date: [
+          {
+            dateType: "Available",
+            dateValue: "2024-11-08",
+          },
+          {
+            dateType: "Modified",
+            dateValue: "2025-01-20",
+          },
+        ],
         "prov:hadPrimarySource": {
           "@id": "https://aireadi.org/",
           "@type": "prov:Entity",
@@ -129,9 +139,19 @@ useHead({
         },
         relatedIdentifier: [
           {
+            relatedIdentifier: "https://doi.org/10.60775/fairhub.1",
+            relatedIdentifierType: "DOI",
+            relationType: "IsVersionOf",
+          },
+          {
             relatedIdentifier: "https://docs.aireadi.org/",
             relatedIdentifierType: "URL",
-            relationType: "IsBasedOn",
+            relationType: "IsDerivedFrom",
+          },
+          {
+            relatedIdentifier: "https://doi.org/10.5281/zenodo.10642459",
+            relatedIdentifierType: "DOI",
+            relationType: "References",
           },
         ],
       }),
