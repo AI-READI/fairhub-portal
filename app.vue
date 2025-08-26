@@ -95,51 +95,26 @@ useHead({
         "@context": [
           "https://schema.org",
           {
+            dcterms: "http://purl.org/dc/terms/",
             pav: "http://purl.org/pav/",
             prov: "http://www.w3.org/ns/prov#",
           },
         ],
         "@type": "Dataset",
-        date: [
-          { dateType: "Available", dateValue: "2024-11-08" },
-          { dateType: "Created", dateValue: "2024-05-01" },
-          { dateType: "Modified", dateValue: "2025-01-20" },
-          { dateType: "Submitted", dateValue: "2024-06-01" },
-        ],
-        "prov:wasGeneratedBy": {
-          "@type": "prov:Activity",
-          "prov:label": "AI-READI Consortium",
+        "prov:wasDerivedFrom": {
+          "@id": "https://docs.aireadi.org/",
+          "@type": "prov:Entity",
+          "prov:label": "Dataset documentation",
         },
-        related_resources: [
+        "prov:wasGeneratedBy": {
+          name: "AI-READI Consortium",
+          "@type": "prov:Activity",
+        },
+        relatedIdentifier: [
           {
-            related_resource: "https://doi.org/10.60775/fairhub.1",
-            relation_type: "IsVersionOf",
-          },
-          {
-            related_resource: "https://docs.aireadi.org/",
-            relation_type: "IsDerivedFrom",
-          },
-          {
-            related_resource: "https://doi.org/10.5281/zenodo.10642459",
-            relation_type: "References",
-          },
-          {
-            related_resource: "https://protocols.io/",
-            relation_type: "isBasedOn",
-          },
-          {
-            related_resource: "https://doi.org/10.60775/fairhub.3",
-            relation_type: "hasVersion",
-          },
-          {
-            related_resource: "https://doi.org/10.5281/zenodo.format.example",
-            relation_type: "isFormatOf",
-          },
-        ],
-        right_holder: [
-          {
-            name: "University of Washington",
-            "@type": "Organization",
+            relatedIdentifier: "https://docs.aireadi.org/",
+            relatedIdentifierType: "URL",
+            relationType: "IsBasedOn",
           },
         ],
       }),
