@@ -155,12 +155,13 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       name: dataset.value?.title,
       "@type": "DataDownload",
       conditionsOfAccess: dataset.value?.metadata.datasetDescription.accessType,
-      contentSize: "2.01 TB",
+      contentSize:
+        dataset.value?.metadata.datasetDescription.size?.[0] || "0 KB",
       contentUrl: `https://fairhub.io/datasets/${datasetid}/access`,
       description: dataset.value?.metadata.datasetDescription.description?.find(
         (value) => value.descriptionType === "Abstract",
       )?.descriptionValue,
-      encodingFormat: format === "image/DICOM" ? "application/dicom" : format,
+      encodingFormat: format === "image/DICOM" ? "null" : format,
       license: dataset.value?.metadata?.datasetDescription?.rights?.[0]
         ?.rightsURI
         ? dataset.value.metadata.datasetDescription.rights[0].rightsURI
