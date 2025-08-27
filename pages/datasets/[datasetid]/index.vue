@@ -150,40 +150,38 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   description: dataset.value?.metadata.datasetDescription.description?.find(
     (value) => value.descriptionType === "Abstract",
   )?.descriptionValue,
-  distribution: [
-    {
-      name: dataset.value?.title,
-      "@type": "DataDownload",
-      conditionsOfAccess: dataset.value?.metadata.datasetDescription.accessType,
-      contentSize:
-        dataset.value?.metadata.datasetDescription.size?.[0] || "0 KB",
-      contentUrl: `https://fairhub.io/datasets/${datasetid}/access`,
-      description: dataset.value?.metadata.datasetDescription.description?.find(
-        (value) => value.descriptionType === "Abstract",
-      )?.descriptionValue,
-      encoding: [
-        {
-          "@type": "MediaObject",
-          contentUrl: "https://dicom.com",
-          encodingFormat: "application/dicom",
-        },
-        {
-          "@type": "MediaObject",
-          contentUrl: "https://csv.com",
-          encodingFormat: "text/csv",
-        },
-        {
-          "@type": "MediaObject",
-          contentUrl: "https://markdown.com",
-          encodingFormat: "text/markdown",
-        },
-      ],
-      license: dataset.value?.metadata?.datasetDescription?.rights?.[0]
-        ?.rightsURI
-        ? dataset.value.metadata.datasetDescription.rights[0].rightsURI
-        : "not provided",
-    },
-  ],
+  distribution:
+    dataset.value?.metadata?.datasetDescription?.format?.map((format) => {
+      const mime =
+        format === "image/DICOM"
+          ? "application/dicom"
+          : /csv/i.test(format)
+            ? "text/csv"
+            : /tsv/i.test(format)
+              ? "text/tab-separated-values"
+              : /markdown/i.test(format)
+                ? "text/markdown"
+                : format; // fallback if already valid
+
+      return {
+        name: dataset.value?.title,
+        "@type": "DataDownload",
+        conditionsOfAccess:
+          dataset.value?.metadata.datasetDescription.accessType,
+        contentSize:
+          dataset.value?.metadata.datasetDescription.size?.[0] || "0 KB",
+        contentUrl: `https://fairhub.io/datasets/${datasetid}/access?format=${encodeURIComponent(mime)}`,
+        description:
+          dataset.value?.metadata.datasetDescription.description?.find(
+            (v) => v.descriptionType === "Abstract",
+          )?.descriptionValue,
+        encodingFormat: mime,
+        license: dataset.value?.metadata?.datasetDescription?.rights?.[0]
+          ?.rightsURI
+          ? dataset.value.metadata.datasetDescription.rights[0].rightsURI
+          : "not provided",
+      };
+    }) || [],
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
     (funder) => {
       return {
