@@ -150,8 +150,8 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   description: dataset.value?.metadata.datasetDescription.description?.find(
     (value) => value.descriptionType === "Abstract",
   )?.descriptionValue,
-  distribution:
-    dataset.value?.metadata?.datasetDescription?.format?.map((format) => ({
+  distribution: [
+    {
       name: dataset.value?.title,
       "@type": "DataDownload",
       conditionsOfAccess: dataset.value?.metadata.datasetDescription.accessType,
@@ -161,12 +161,16 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       description: dataset.value?.metadata.datasetDescription.description?.find(
         (value) => value.descriptionType === "Abstract",
       )?.descriptionValue,
-      encodingFormat: format === "image/DICOM" ? "null" : format,
+      encodesCreativeWork: {
+        "@type": "CreativeWork",
+        encodingFormat: ["application/dicom", "text/csv"],
+      },
       license: dataset.value?.metadata?.datasetDescription?.rights?.[0]
         ?.rightsURI
         ? dataset.value.metadata.datasetDescription.rights[0].rightsURI
         : "not provided",
-    })) || [],
+    },
+  ],
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
     (funder) => {
       return {
