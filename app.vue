@@ -90,6 +90,7 @@ useHead({
     },
   ],
   script: [
+    // use head JSON is used to include provenance and pav details to improve the machine readability
     {
       children: JSON.stringify({
         "@context": [
