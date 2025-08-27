@@ -161,10 +161,23 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       description: dataset.value?.metadata.datasetDescription.description?.find(
         (value) => value.descriptionType === "Abstract",
       )?.descriptionValue,
-      encodesCreativeWork: {
-        "@type": "CreativeWork",
-        encodingFormat: ["application/dicom", "text/csv"],
-      },
+      encoding: [
+        {
+          "@type": "MediaObject",
+          contentUrl: "https://dicom.com",
+          encodingFormat: "application/dicom",
+        },
+        {
+          "@type": "MediaObject",
+          contentUrl: "https://csv.com",
+          encodingFormat: "text/csv",
+        },
+        {
+          "@type": "MediaObject",
+          contentUrl: "https://markdown.com",
+          encodingFormat: "text/markdown",
+        },
+      ],
       license: dataset.value?.metadata?.datasetDescription?.rights?.[0]
         ?.rightsURI
         ? dataset.value.metadata.datasetDescription.rights[0].rightsURI
