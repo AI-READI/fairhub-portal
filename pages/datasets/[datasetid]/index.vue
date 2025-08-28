@@ -150,29 +150,6 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   description: dataset.value?.metadata.datasetDescription.description?.find(
     (value) => value.descriptionType === "Abstract",
   )?.descriptionValue,
-  //  distribution:
-  //    dataset.value?.metadata?.datasetDescription?.format?.map((format) => {
-  //      const mime = format === "image/DICOM" ? "application/dicom" : format;
-  // // fallback if already valid
-  //      return {
-  //        name: dataset.value?.title,
-  //        "@type": "DataDownload",
-  //        conditionsOfAccess:
-  //          dataset.value?.metadata.datasetDescription.accessType,
-  //        contentSize:
-  //          dataset.value?.metadata.datasetDescription.size?.[0] || "0 KB",
-  //        contentUrl: `https://fairhub.io/datasets/${datasetid}/access?format=${encodeURIComponent(mime)}`,
-  //        description:
-  //          dataset.value?.metadata.datasetDescription.description?.find(
-  //            (v) => v.descriptionType === "Abstract",
-  //          )?.descriptionValue,
-  //        encodingFormat: mime,
-  //        license: dataset.value?.metadata?.datasetDescription?.rights?.[0]
-  //          ?.rightsURI
-  //          ? dataset.value.metadata.datasetDescription.rights[0].rightsURI
-  //          : "not provided",
-  //      };
-  //    }) || [],
   distribution: [
     {
       name: dataset.value?.title,
