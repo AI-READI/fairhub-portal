@@ -152,16 +152,8 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   )?.descriptionValue,
   distribution:
     dataset.value?.metadata?.datasetDescription?.format?.map((format) => {
-      const mime =
-        format === "image/DICOM"
-          ? "application/dicom"
-          : /csv/i.test(format)
-            ? "text/csv"
-            : /tsv/i.test(format)
-              ? "text/tab-separated-values"
-              : /markdown/i.test(format)
-                ? "text/markdown"
-                : format; // fallback if already valid
+    const mime = format === "image/DICOM" ? "application/dicom" : format;
+ // fallback if already valid
 
       return {
         name: dataset.value?.title,
