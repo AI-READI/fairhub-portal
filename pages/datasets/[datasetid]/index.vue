@@ -177,15 +177,15 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
     {
       name: dataset.value?.title,
       "@type": "DataDownload",
-      conditionsOfAccess: "PublicDownloadSelfAttestationRequired",
-      contentSize: "2.01 TB",
+      conditionsOfAccess:
+        dataset.value?.metadata?.datasetDescription?.accessType,
+      contentSize:
+        dataset.value?.metadata?.datasetDescription?.size?.[0] || "0 KB",
       contentUrl: `https://fairhub.io/datasets/${datasetid}/access`,
       description: `${dataset.value?.description}.`,
-      hasPart: [
-        { "@type": "DataDownload", encodingFormat: "application/dicom" },
-        { "@type": "DataDownload", encodingFormat: "text/csv" },
-        { "@type": "DataDownload", encodingFormat: "text/markdown" },
-      ],
+      encodingFormat: dataset.value?.metadata?.datasetDescription?.format?.map(
+        (f) => (f.toUpperCase().includes("DICOM") ? "application/dicom" : f),
+      ),
       license: dataset.value?.metadata?.datasetDescription?.rights?.[0]
         ?.rightsURI
         ? dataset.value.metadata.datasetDescription.rights[0].rightsURI
