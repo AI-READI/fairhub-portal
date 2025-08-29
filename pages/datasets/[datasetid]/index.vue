@@ -98,7 +98,7 @@ const markdownToHtml = ref<string>("");
 const NuxtSchemaDataset: WithContext<Dataset> = {
   name: dataset.value?.title,
   "@context": "https://schema.org",
-  "@id": `https://doi.org/10.34534/${dataset.value?.id}`,
+  "@id": `https://doi.org/${dataset.value?.metadata.datasetDescription.identifier.identifierValue}`,
   "@type": "Dataset",
   contributor: dataset.value?.metadata.datasetDescription.contributor?.map(
     (contributor) => {
@@ -139,6 +139,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       return {
         name: creator.creatorName,
         "@type": "Organization",
+        url: "https://aireadi.org",
       };
     }
   }),
@@ -153,10 +154,19 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
     {
       name: dataset.value?.title,
       "@type": "DataDownload",
-      contentSize: "2.01 TB",
-      contentUrl: "https://staging.fairhub.io/datasets/2/access",
-      description: `${dataset.value?.description}. This dataset is accessible only to approved researchers via this landing page.`,
-      encodingFormat: "application/zip",
+      conditionsOfAccess:
+        dataset.value?.metadata?.datasetDescription?.accessType,
+      contentSize:
+        dataset.value?.metadata?.datasetDescription?.size?.[0] || "0 KB",
+      contentUrl: `https://fairhub.io/datasets/${datasetid}/access`,
+      description: `${dataset.value?.description}.`,
+      encodingFormat: dataset.value?.metadata?.datasetDescription?.format?.map(
+        (f) => (f.toUpperCase().includes("DICOM") ? "application/dicom" : f),
+      ),
+      license: dataset.value?.metadata?.datasetDescription?.rights?.[0]
+        ?.rightsURI
+        ? dataset.value.metadata.datasetDescription.rights[0].rightsURI
+        : "not provided",
     },
   ],
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
@@ -170,7 +180,27 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       };
     },
   ),
-  identifier: `https://doi.org/10.34534/${dataset.value?.id}`,
+  isBasedOn: [
+    {
+      name: "AI-READI Documentation",
+      "@type": "CreativeWork",
+      url:
+        dataset.value?.metadata?.datasetDescription?.relatedIdentifier?.[0]
+          ?.relatedIdentifierValue || "",
+    },
+    {
+      name: "AI-READI Project Website",
+      "@type": "CreativeWork",
+      url:
+        dataset.value?.metadata?.datasetDescription?.relatedIdentifier?.[1]
+          ?.relatedIdentifierValue || "",
+    },
+    {
+      name: "Protocol Data Element Definitions",
+      "@type": "CreativeWork",
+      url: "http://clinicaltrials.gov/prs",
+    },
+  ],
   keywords: dataset.value?.metadata.datasetDescription.subject
     ?.map((subject) => subject.subjectValue)
     .join(", "),

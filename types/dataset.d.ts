@@ -98,8 +98,8 @@ interface DatasetDescription {
     name: string;
     rorId?: string;
   };
-  acessType: string;
-  acessDetails: {
+  accessType: string;
+  accessDetails: {
     description: string;
     url: string;
     urlLastChecked: string;
