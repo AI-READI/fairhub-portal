@@ -90,38 +90,37 @@ useHead({
     },
   ],
   // use head JSON is used to include provenance and pav details to improve the machine readability
-  // script: [
-  //   {
-  //     children: JSON.stringify({
-  //       "@context": [
-  //         "https://schema.org",
-  //         {
-  //           dcterms: "http://purl.org/dc/terms/",
-  //           pav: "http://purl.org/pav/",
-  //           prov: "http://www.w3.org/ns/prov#",
-  //         },
-  //       ],
-  //       "@type": "Dataset",
-  //       "prov:wasDerivedFrom": {
-  //         "@id": "https://docs.aireadi.org/",
-  //         "@type": "prov:Entity",
-  //         "prov:label": "Dataset documentation",
-  //       },
-  //       "prov:wasGeneratedBy": {
-  //         name: "AI-READI Consortium",
-  //         "@type": "prov:Activity",
-  //       },
-  //       relatedIdentifier: [
-  //         {
-  //           relatedIdentifier: "https://docs.aireadi.org/",
-  //           relatedIdentifierType: "URL",
-  //           relationType: "IsBasedOn",
-  //         },
-  //       ],
-  //     }),
-  //     type: "application/ld+json",
-  //   },
-  // ],
+  script: [
+    {
+      children: JSON.stringify({
+        "@context": [
+          "https://schema.org",
+          {
+            pav: "http://purl.org/pav/",
+            prov: "http://www.w3.org/ns/prov#",
+          },
+        ],
+        "@type": "Dataset",
+        //       "prov:wasDerivedFrom": {
+        //         "@id": "https://docs.aireadi.org/",
+        //         "@type": "prov:Entity",
+        //         "prov:label": "Dataset documentation",
+        //       },
+        //       "prov:wasGeneratedBy": {
+        //         name: "AI-READI Consortium",
+        //         "@type": "prov:Activity",
+        //       },
+        //       relatedIdentifier: [
+        //         {
+        //           relatedIdentifier: "https://docs.aireadi.org/",
+        //           relatedIdentifierType: "URL",
+        //           relationType: "IsBasedOn",
+        //         },
+        //       ],
+      }),
+      type: "application/ld+json",
+    },
+  ],
 });
 
 useSeoMeta({

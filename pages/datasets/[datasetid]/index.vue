@@ -139,7 +139,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       return {
         name: creator.creatorName,
         "@type": "Organization",
-        url: "https://ai-readi.org",
+        url: "https://aireadi.org",
       };
     }
   }),
