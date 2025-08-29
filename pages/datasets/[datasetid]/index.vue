@@ -150,32 +150,24 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   description: dataset.value?.metadata.datasetDescription.description?.find(
     (value) => value.descriptionType === "Abstract",
   )?.descriptionValue,
-  distribution: [
-    {
+  distribution:
+    dataset.value?.metadata?.datasetDescription?.format?.map((format) => ({
       name: dataset.value?.title,
       "@type": "DataDownload",
       conditionsOfAccess:
         dataset.value?.metadata?.datasetDescription?.accessType,
       contentSize:
         dataset.value?.metadata?.datasetDescription?.size?.[0] || "0 KB",
-      contentUrl: dataset.value?.metadata?.datasetDescription?.format?.map(
-        (f) => {
-          const formatName = f.toUpperCase().includes("DICOM")
-            ? "application/dicom"
-            : f;
-          return `https://fairhub.io/datasets/${datasetid}/access#${encodeURIComponent(formatName)}`;
-        },
-      ),
+      contentUrl: `https://fairhub.io/datasets/${datasetid}/access/#${format}`,
       description: `${dataset.value?.description}.`,
-      encodingFormat: dataset.value?.metadata?.datasetDescription?.format?.map(
-        (f) => (f.toUpperCase().includes("DICOM") ? "application/dicom" : f),
-      ),
+      encodingFormat: format.toUpperCase().includes("DICOM")
+        ? "application/dicom"
+        : format,
       license: dataset.value?.metadata?.datasetDescription?.rights?.[0]
         ?.rightsURI
         ? dataset.value.metadata.datasetDescription.rights[0].rightsURI
         : "not provided",
-    },
-  ],
+    })) || [],
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
     (funder) => {
       return {
