@@ -139,6 +139,7 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       return {
         name: creator.creatorName,
         "@type": "Organization",
+        url: "https://aireadi.org",
       };
     }
   }),
@@ -154,11 +155,18 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
       name: dataset.value?.title,
       "@type": "DataDownload",
       conditionsOfAccess:
-        "Access to this dataset is restricted and requires authentication and approval.",
-      contentSize: "2.01 TB",
-      contentUrl: "https://fairhub.io/datasets/2/access",
+        dataset.value?.metadata?.datasetDescription?.accessType,
+      contentSize:
+        dataset.value?.metadata?.datasetDescription?.size?.[0] || "0 KB",
+      contentUrl: `https://fairhub.io/datasets/${datasetid}/access`,
       description: `${dataset.value?.description}.`,
-      encodingFormat: "application/dicom",
+      encodingFormat: dataset.value?.metadata?.datasetDescription?.format?.map(
+        (f) => (f.toUpperCase().includes("DICOM") ? "application/dicom" : f),
+      ),
+      license: dataset.value?.metadata?.datasetDescription?.rights?.[0]
+        ?.rightsURI
+        ? dataset.value.metadata.datasetDescription.rights[0].rightsURI
+        : "not provided",
     },
   ],
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
