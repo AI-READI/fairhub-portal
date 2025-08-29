@@ -150,24 +150,25 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
   description: dataset.value?.metadata.datasetDescription.description?.find(
     (value) => value.descriptionType === "Abstract",
   )?.descriptionValue,
-  distribution:
-    dataset.value?.metadata?.datasetDescription?.format?.map((format) => ({
+  distribution: [
+    {
       name: dataset.value?.title,
       "@type": "DataDownload",
       conditionsOfAccess:
         dataset.value?.metadata?.datasetDescription?.accessType,
       contentSize:
         dataset.value?.metadata?.datasetDescription?.size?.[0] || "0 KB",
-      contentUrl: `https://fairhub.io/datasets/${datasetid}/access/#${format}`,
+      contentUrl: `https://fairhub.io/datasets/${datasetid}/access`,
       description: `${dataset.value?.description}.`,
-      encodingFormat: format.toUpperCase().includes("DICOM")
-        ? "application/dicom"
-        : format,
+      encodingFormat: dataset.value?.metadata?.datasetDescription?.format?.map(
+        (f) => (f.toUpperCase().includes("DICOM") ? "application/dicom" : f),
+      ),
       license: dataset.value?.metadata?.datasetDescription?.rights?.[0]
         ?.rightsURI
         ? dataset.value.metadata.datasetDescription.rights[0].rightsURI
         : "not provided",
-    })) || [],
+    },
+  ],
   funder: dataset.value?.metadata.datasetDescription.fundingReference?.map(
     (funder) => {
       return {
