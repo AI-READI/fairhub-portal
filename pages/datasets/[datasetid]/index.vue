@@ -158,7 +158,14 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
         dataset.value?.metadata?.datasetDescription?.accessType,
       contentSize:
         dataset.value?.metadata?.datasetDescription?.size?.[0] || "0 KB",
-      contentUrl: `https://fairhub.io/datasets/${datasetid}/access`,
+      contentUrl: dataset.value?.metadata?.datasetDescription?.format?.map(
+        (f) => {
+          const formatName = f.toUpperCase().includes("DICOM")
+            ? "application/dicom"
+            : f;
+          return `https://fairhub.io/datasets/${datasetid}/access#${encodeURIComponent(formatName)}`;
+        },
+      ),
       description: `${dataset.value?.description}.`,
       encodingFormat: dataset.value?.metadata?.datasetDescription?.format?.map(
         (f) => (f.toUpperCase().includes("DICOM") ? "application/dicom" : f),
