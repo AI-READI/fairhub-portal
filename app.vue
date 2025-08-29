@@ -101,22 +101,15 @@ useHead({
           },
         ],
         "@type": "Dataset",
-        //       "prov:wasDerivedFrom": {
-        //         "@id": "https://docs.aireadi.org/",
-        //         "@type": "prov:Entity",
-        //         "prov:label": "Dataset documentation",
-        //       },
-        //       "prov:wasGeneratedBy": {
-        //         name: "AI-READI Consortium",
-        //         "@type": "prov:Activity",
-        //       },
-        //       relatedIdentifier: [
-        //         {
-        //           relatedIdentifier: "https://docs.aireadi.org/",
-        //           relatedIdentifierType: "URL",
-        //           relationType: "IsBasedOn",
-        //         },
-        //       ],
+        "prov:wasDerivedFrom": {
+          "@id": "https://docs.aireadi.org/",
+          "@type": "prov:Entity",
+          "prov:label": "Dataset documentation",
+        },
+        "prov:wasGeneratedBy": {
+          name: "AI-READI Consortium",
+          "@type": "prov:Activity",
+        },
       }),
       type: "application/ld+json",
     },
