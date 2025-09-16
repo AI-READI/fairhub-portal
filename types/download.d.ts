@@ -1,4 +1,4 @@
-import type { download_user_details } from "@prisma/client";
+import type { download_user_details, download_agreement } from "@prisma/client";
 
 type SessionUserDetails = Omit<
   download_user_details,
