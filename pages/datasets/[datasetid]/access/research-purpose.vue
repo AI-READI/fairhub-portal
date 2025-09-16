@@ -419,7 +419,7 @@ const validForm = computed(
                             Type of analysis (e.g., statistical, AI/ML- based).
                           </li>
 
-                          <li>Expected outcomes</li>
+                          <li>Expected outcomes.</li>
 
                           <li>Timeline for completion.</li>
                         </ul>
@@ -502,8 +502,10 @@ const validForm = computed(
 
                           <li>
                             Is the model being run locally? If not, please
-                            describe Is there a vendor involved?
+                            describe.
                           </li>
+
+                          <li>Is there a vendor involved?</li>
 
                           <li>
                             How is potential data memorization being addressed
