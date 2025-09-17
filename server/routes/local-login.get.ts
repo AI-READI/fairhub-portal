@@ -1,5 +1,5 @@
 import { AuthorizationCodeRequest } from "@azure/msal-node";
-import createMsalClient from "../utils/msalClient";
+import createLocalMsalClient from "../utils/msalClientLocal";
 import {
   convertTokenResponse,
   getTokenExpiration,
@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
     password: config.sessionPassword,
   });
 
-  const clientApplication = createMsalClient();
+  const clientApplication = createLocalMsalClient();
 
   const tokenRequest: AuthorizationCodeRequest = {
     clientInfo: query.client_info as string,
