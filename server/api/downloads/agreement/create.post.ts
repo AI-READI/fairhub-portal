@@ -8,8 +8,10 @@ export default defineEventHandler(async (event) => {
 
   const selectProps = {
     id: true,
+    ai_use: true,
     attestation_accepted: true,
     collaborator_data_access: true,
+    data_handling_plan: true,
     dataset_id: true,
     is_diabetes_research: true,
     license_accepted: true,
@@ -22,6 +24,8 @@ export default defineEventHandler(async (event) => {
     signing_official_last_name: true,
     signing_official_phone_number: true,
     signing_official_title: true,
+    study_background: true,
+    study_design: true,
     study_overview: true,
     user_details_id: true,
   };
@@ -31,9 +35,11 @@ export default defineEventHandler(async (event) => {
     const agreement = await prisma.download_agreement.create({
       data: {
         id: uuid(),
+        ai_use: postBody.ai_use,
         attestation_accepted: postBody.attestation_accepted,
         collaborator_data_access: postBody.collaborator_data_access,
         created_at: timestamp,
+        data_handling_plan: postBody.data_handling_plan,
         dataset_id: postBody.dataset_id,
         is_diabetes_research: postBody.is_diabetes_research,
         license_accepted: postBody.license_accepted,
@@ -46,6 +52,8 @@ export default defineEventHandler(async (event) => {
         signing_official_last_name: postBody.signing_official_last_name,
         signing_official_phone_number: postBody.signing_official_phone_number,
         signing_official_title: postBody.signing_official_title,
+        study_background: postBody.study_background,
+        study_design: postBody.study_design,
         study_overview: postBody.study_overview,
         updated_on: timestamp,
         user_details_id: userDetails.id,
