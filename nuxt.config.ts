@@ -136,6 +136,30 @@ export default defineNuxtConfig({
           : process.env.NUXT_SITE_ENV === "staging"
             ? "https://staging.api.fairhub.io"
             : "https://api.fairhub.io",
+      LOCAL_LOGIN_CONFIG: {
+        authority:
+          "https://aireadi.b2clogin.com/aireadi.onmicrosoft.com/B2C_1_ARVO_SignUpSignIn_Workflow",
+        clientId: "d173c9cb-36ce-4c77-92f3-025e48f0e533",
+        forbiddenUri:
+          process.env.NUXT_SITE_ENV === "dev"
+            ? "http://localhost:3000/forbiddenlogin"
+            : process.env.NUXT_SITE_ENV === "staging"
+              ? "https://staging.fairhub.io/forbiddenlogin"
+              : "https://fairhub.io/forbiddenlogin",
+        knownAuthorities: ["aireadi.b2clogin.com"],
+        logoutUri:
+          process.env.NUXT_SITE_ENV === "dev"
+            ? "http://localhost:3000/"
+            : process.env.NUXT_SITE_ENV === "staging"
+              ? "https://staging.fairhub.io/"
+              : "https://fairhub.io/",
+        redirectUri:
+          process.env.NUXT_SITE_ENV === "dev"
+            ? "http://localhost:3000/local-login"
+            : process.env.NUXT_SITE_ENV === "staging"
+              ? "https://staging.fairhub.io/local-login"
+              : "https://fairhub.io/local-login",
+      },
       // STUDY_RELEASE_TIMESTAMP:
       //   process.env.NUXT_SITE_ENV === "dev" ||
       //   process.env.NUXT_SITE_ENV === "staging"
