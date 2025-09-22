@@ -752,6 +752,10 @@ model download_agreement {
   attestation_accepted          Boolean
   created_at                    BigInt
   updated_on                    BigInt
+  study_background              String?               @db.VarChar
+  study_design                  String?               @db.VarChar
+  data_handling_plan            String?               @db.VarChar
+  ai_use                        String?               @db.VarChar
   download_user_details         download_user_details @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   download_request              download_request[]
   published_dataset             published_dataset?    @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)

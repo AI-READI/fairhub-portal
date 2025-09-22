@@ -87,17 +87,19 @@ interface DatasetDescription {
   }[];
   subject?: {
     subjectValue: string;
-    subjectScheme?: string;
-    schemeURI?: string;
-    valueURI?: string;
-    classificationCode?: string;
+    subjectIdentifier?: {
+      subjectScheme?: string;
+      schemeURI?: string;
+      valueURI?: string;
+      classificationCode?: string;
+    };
   }[];
   managingOrganization: {
     name: string;
     rorId?: string;
   };
-  acessType: string;
-  acessDetails: {
+  accessType: string;
+  accessDetails: {
     description: string;
     url: string;
     urlLastChecked: string;
@@ -492,6 +494,9 @@ interface AdditionalData {
   fileCount: number;
   viewCount: number;
   cited: number;
+  parent: number | null;
+  child: number | null;
+  mini: boolean;
 }
 
 interface Dataset {

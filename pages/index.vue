@@ -131,7 +131,11 @@ if (error.value) {
               class="flex h-full w-full flex-col items-start space-y-5 sm:flex-row sm:space-x-5 sm:space-y-0"
             >
               <n-image
-                src="https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png"
+                :src="
+                  dataset?.id === '4'
+                    ? 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/mini.png'
+                    : 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png'
+                "
                 :alt="dataset.title"
                 class="h-auto w-32 self-center rounded-xl"
                 object-fit="contain"
@@ -146,9 +150,19 @@ if (error.value) {
                   >
                     <h3>{{ dataset.title }}</h3>
 
-                    <n-tag type="info" :bordered="false">
-                      Version {{ dataset.version_title }}
-                    </n-tag>
+                    <div class="flex items-center gap-2">
+                      <n-tag
+                        v-if="dataset.data.mini"
+                        type="warning"
+                        :bordered="false"
+                      >
+                        Mini Dataset
+                      </n-tag>
+
+                      <n-tag type="info" :bordered="false">
+                        Version {{ dataset.version_title }}
+                      </n-tag>
+                    </div>
                   </div>
 
                   <p>

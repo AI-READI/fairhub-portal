@@ -54,6 +54,13 @@ const handleInput = (expected: string, inputValue: string) => {
     to ensure compliance with all recommended practices.
   </p>
 
+  <p>
+    In order to comply with U.S. export control laws, you must attest that you
+    are not representing a U.S. designated country of concern, including, but
+    not limited to, China (including Hong Kong/Macau), Russia, Iran, North
+    Korea, Cuba, or Venezuela.
+  </p>
+
   <n-form-item
     v-for="attestation in userAttestations"
     :key="attestation.id"

@@ -135,13 +135,13 @@ onMounted(() => {
           <n-skeleton text style="width: 60%" />
         </div>
 
-        <div v-else class="hidden py-2">
+        <div v-else>
           <n-alert v-if="citationError" type="error">
             Something went wrong with generating the citation. Please try again
             later.
           </n-alert>
 
-          <p v-else class="text-sm">{{ citation?.formattedText }}</p>
+          <!-- <p v-else class="text-sm">{{ citation?.formattedText }}</p> -->
         </div>
       </TransitionFade>
 
