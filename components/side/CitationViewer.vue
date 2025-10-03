@@ -1,10 +1,10 @@
 <script setup lang="ts">
-const props = defineProps({
-  id: {
-    required: true,
-    type: String,
-  },
-});
+// const props = defineProps({
+//   id: {
+//     required: true,
+//     type: String,
+//   },
+// });
 
 const citationFormat = ref("apa");
 
@@ -39,38 +39,39 @@ const citation = ref({
   formattedText: "",
 });
 
-const citationError = ref(false);
+// comment out the citation formatting request
+// const citationError = ref(false);
 const citationPending = ref(true);
 
-const getCitation = async (format: string = "apa") => {
-  citationError.value = false;
-  citation.value = {
-    formattedText: "",
-  };
-
-  citationPending.value = true;
-
-  await $fetch(`/api/citation/${props.id}?format=${format}`)
-    .then((data) => {
-      // Find the `/FAIRHUB.` string and replace it with a lowercase version
-      const formattedText = data.formattedText;
-      const lowercaseFormattedText = formattedText.replace(
-        /\/FAIRHUB\./g,
-        "/fairhub.",
-      );
-
-      citation.value = {
-        formattedText: lowercaseFormattedText,
-      };
-    })
-    .catch((err) => {
-      console.error("Error fetching citation", err);
-      citationError.value = true;
-    })
-    .finally(() => {
-      citationPending.value = false;
-    });
-};
+// const getCitation = async (format: string = "apa") => {
+//   citationError.value = false;
+//   citation.value = {
+//     formattedText: "",
+//   };
+//
+//   citationPending.value = true;
+//
+//   await $fetch(`/api/citation/${props.id}?format=${format}`)
+//     .then((data) => {
+//       // Find the `/FAIRHUB.` string and replace it with a lowercase version
+//       const formattedText = data.formattedText;
+//       const lowercaseFormattedText = formattedText.replace(
+//         /\/FAIRHUB\./g,
+//         "/fairhub.",
+//       );
+//
+//       citation.value = {
+//         formattedText: lowercaseFormattedText,
+//       };
+//     })
+//     .catch((err) => {
+//       console.error("Error fetching citation", err);
+//       citationError.value = true;
+//     })
+//     .finally(() => {
+//       citationPending.value = false;
+//     });
+// };
 
 // todo: add a watchEffect for the error responses
 
@@ -78,14 +79,14 @@ const copyToClipboard = (text: string = "") => {
   navigator.clipboard.writeText(text);
   push.success("Citation copied to clipboard");
 };
+// comment out the citation formatting request
+// const getFormattedCitation = async (format: string) => {
+//   await getCitation(format);
+// };
 
-const getFormattedCitation = async (format: string) => {
-  await getCitation(format);
-};
-
-onMounted(() => {
-  getCitation();
-});
+// onMounted(() => {
+//   getCitation();
+// });
 </script>
 
 <template>
@@ -135,14 +136,14 @@ onMounted(() => {
           <n-skeleton text style="width: 60%" />
         </div>
 
-        <div v-else>
-          <n-alert v-if="citationError" type="error">
-            Something went wrong with generating the citation. Please try again
-            later.
-          </n-alert>
+        <!--        <div v-else class="hidden py-2">-->
+        <!--          <n-alert v-if="citationError" type="error">-->
+        <!--            Something went wrong with generating the citation. Please try again-->
+        <!--            later.-->
+        <!--          </n-alert>-->
 
-          <!-- <p v-else class="text-sm">{{ citation?.formattedText }}</p> -->
-        </div>
+        <!--          <p v-else class="text-sm">{{ citation?.formattedText }}</p>-->
+        <!--        </div>-->
       </TransitionFade>
 
       <n-flex align="center" justify="space-between" class="hidden">
@@ -154,7 +155,6 @@ onMounted(() => {
           class="hidden w-max"
           :loading="citationPending"
           :disabled="citationPending"
-          @update:value="getFormattedCitation"
         />
 
         <n-button
