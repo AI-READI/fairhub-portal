@@ -56,7 +56,7 @@ const pagination = reactive({
   showSizePicker: false,
 });
 
-// const page = computed(() => pagination.page);
+const page = computed(() => pagination.page);
 
 // manual query object
 const queryParams = ref({
@@ -106,6 +106,7 @@ watch(searchQuery, (val) => {
       />
 
       <n-button type="primary" @click="triggerSearch(true)"> Search </n-button>
+
     </div>
 
     <n-data-table

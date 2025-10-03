@@ -1,6 +1,5 @@
 import { v4 as uuid } from "uuid";
 
-// eslint-disable-next-line import/named
 import { LoginTokenClaims } from "~/types/download";
 
 /**
