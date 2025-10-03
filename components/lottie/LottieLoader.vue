@@ -22,7 +22,7 @@ defineProps({
       :animation-data="LoaderLottieAnimationData"
       :width="width"
       :height="height"
-      style="background: transparent"
+      backgroundColor="transparent"
     />
 
     <template #fallback>
