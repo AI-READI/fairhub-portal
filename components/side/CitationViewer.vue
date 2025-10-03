@@ -5,7 +5,7 @@
 //     type: String,
 //   },
 // });
-const { id } = defineProps<{ id: string }>()
+const { id } = defineProps<{ id: string }>();
 
 const citationFormat = ref("apa");
 
@@ -102,29 +102,15 @@ const copyToClipboard = (text: string = "") => {
         When using this resource, please cite:
       </p>
 
-      <!-- TODO: Remove this when we have a better way to handle this -->
-      <p v-if="id === '1'" class="pb-1 text-sm">
+      <p v-if="id" class="pb-1 text-sm">
         When using this resource, please follow the citation instructions
         provided at
         <NuxtLink
-          href="https://docs.aireadi.org/docs/1/citation"
+          :href="`https://docs.aireadi.org/docs/${id}/citation`"
           target="_blank"
           class="underline transition-all hover:text-slate-600"
         >
-          https://docs.aireadi.org/docs/1/citation
-        </NuxtLink>
-      </p>
-
-      <!-- TODO: Remove this when we have a better way to handle this -->
-      <p v-if="id === '2'" class="pb-1 text-sm">
-        When using this resource, please follow the citation instructions
-        provided at
-        <NuxtLink
-          href="https://docs.aireadi.org/docs/2/citation"
-          target="_blank"
-          class="underline transition-all hover:text-slate-600"
-        >
-          https://docs.aireadi.org/docs/2/citation
+          https://docs.aireadi.org/docs/{{ id }}/citation
         </NuxtLink>
       </p>
 
