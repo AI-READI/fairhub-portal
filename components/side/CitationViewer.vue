@@ -5,6 +5,7 @@
 //     type: String,
 //   },
 // });
+const { id } = defineProps<{ id: string }>()
 
 const citationFormat = ref("apa");
 
