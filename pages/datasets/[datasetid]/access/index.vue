@@ -1,8 +1,17 @@
 <script setup lang="ts">
+import type { FormRules } from "naive-ui";
+import useDownloadAgreementForm from "~/composables/useDownloadAgreementForm";
+
 const route = useRoute();
 
 const { datasetid } = route.params as { datasetid: string };
 const { data: dataset, error } = await useDataset(datasetid);
+const defaultMaxLength = 255;
+// const minResearchPurposeLength = 100;
+// const maxResearchPurposeLength = 500;
+const minOverviewLength = 200;
+const maxOverviewLength = 5000;
+const defaultValidationMessage = `Required. May be at most ${defaultMaxLength} characters.`;
 
 if (error.value) {
   console.error(error.value);
@@ -14,6 +23,7 @@ if (error.value) {
 
   throw new Error("Failed to fetch dataset");
 }
+const agreementFormState = useDownloadAgreementForm(datasetid);
 
 // TODO: Convert to a utility or extract a component?
 const generateCombinedFullName = (name: string) => {
@@ -27,6 +37,97 @@ const generateCombinedFullName = (name: string) => {
 };
 
 const currentStep = ref<number>(1);
+const nonDiabetesRules: FormRules = {
+  ai_use: {
+    max: maxOverviewLength,
+    message: `Required. Must be between ${minOverviewLength} and ${maxOverviewLength} characters.`,
+    min: minOverviewLength,
+    required: true,
+    trigger: ["input", "blur"],
+  },
+  collaborator_data_access: {
+    message: "This field is required.",
+    required: true,
+    trigger: ["change", "blur"],
+    type: "boolean",
+  },
+  data_handling_plan: {
+    max: maxOverviewLength,
+    message: `Required. Must be between ${minOverviewLength} and ${maxOverviewLength} characters.`,
+    min: minOverviewLength,
+    required: true,
+    trigger: ["input", "blur"],
+  },
+  research_project_title: {
+    max: defaultMaxLength,
+    message: defaultValidationMessage,
+    required: true,
+    trigger: ["input", "blur"],
+  },
+  signing_official_address: {
+    max: defaultMaxLength,
+    message: defaultValidationMessage,
+    required: true,
+    trigger: ["input", "blur"],
+  },
+  signing_official_email: {
+    message: "Required. Must be a valid email address.",
+    required: true,
+    trigger: ["input", "blur"],
+    type: "email",
+  },
+  signing_official_first_name: {
+    max: defaultMaxLength,
+    message: defaultValidationMessage,
+    required: true,
+    trigger: ["input", "blur"],
+  },
+  signing_official_institution: {
+    max: defaultMaxLength,
+    message: defaultValidationMessage,
+    required: true,
+    trigger: ["input", "blur"],
+  },
+  signing_official_last_name: {
+    max: defaultMaxLength,
+    message: defaultValidationMessage,
+    required: true,
+    trigger: ["input", "blur"],
+  },
+  signing_official_phone_number: {
+    max: defaultMaxLength,
+    message: defaultValidationMessage,
+    required: true,
+    trigger: ["input", "blur"],
+  },
+  signing_official_title: {
+    max: defaultMaxLength,
+    message: defaultValidationMessage,
+    required: true,
+    trigger: ["input", "blur"],
+  },
+  study_background: {
+    max: maxOverviewLength,
+    message: `Required. Must be between ${minOverviewLength} and ${maxOverviewLength} characters.`,
+    min: minOverviewLength,
+    required: true,
+    trigger: ["input", "blur"],
+  },
+  study_design: {
+    max: maxOverviewLength,
+    message: `Required. Must be between ${minOverviewLength} and ${maxOverviewLength} characters.`,
+    min: minOverviewLength,
+    required: true,
+    trigger: ["input", "blur"],
+  },
+  study_overview: {
+    max: maxOverviewLength,
+    message: `Required. Must be between ${minOverviewLength} and ${maxOverviewLength} characters.`,
+    min: minOverviewLength,
+    required: true,
+    trigger: ["input", "blur"],
+  },
+};
 </script>
 
 <template>
@@ -130,6 +231,34 @@ const currentStep = ref<number>(1);
                 processed
               </li>
             </ol>
+
+            <n-form
+              class="data-handle"
+              :model="agreementFormState"
+              :rules="nonDiabetesRules"
+            >
+              <n-form-item path="data_handling_plan">
+                <template #label>
+                  <div class="flex flex-col">
+                    <label>Data Handling: For data security and storage</label>
+
+                    <div class="data-list">
+                      <ul>
+                        <li>
+                          fat fat fat fat fat fat fat fat fat fat fat fat fat
+                          fat fat fat fat fat fat fat fat fat fat fat fat fat
+                          fat fat fat fat fat fat fat fat fat fat fat
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </template>
+
+                <n-input
+                  v-model:value="agreementFormState.data_handling_plan"
+                />
+              </n-form-item>
+            </n-form>
 
             <NuxtLink :to="`/datasets/${dataset?.id}/access/login`">
               <n-button size="large" type="info" secondary class="my-3">

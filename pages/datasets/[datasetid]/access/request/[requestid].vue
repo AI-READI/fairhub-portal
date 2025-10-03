@@ -26,7 +26,7 @@ const notUserDownload = user?.id !== request.user_details_id;
 const dataReady = request.status === "READY";
 const isExpired = request.status === "EXPIRED";
 
-const expiresAt = request.expires_at
+const expiresAt = request.expires_at // eslint-disable-next-line import/no-named-as-default-member
   ? dayjs.unix(request.expires_at).format("MMM D, YYYY HH:mm Z")
   : null;
 

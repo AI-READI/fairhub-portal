@@ -211,6 +211,7 @@ export default defineEventHandler(async (event) => {
       id: row.id,
       name: `${row.given_name ?? ""} ${row.family_name ?? ""}`.trim(),
       affiliation: row.affiliation,
+      // eslint-disable-next-line import/no-named-as-default-member
       approval_date: dayjs.unix(Number(row.updated_on)).format("MMM D, YYYY"),
       dataset_id: row.dataset_id,
       organization: (row.organization ?? "").trim(),

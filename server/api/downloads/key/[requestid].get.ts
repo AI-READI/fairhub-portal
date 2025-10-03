@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const keyData = request.download_key as string;
-  const decodedKey = atob(keyData) + '\n';
+  const decodedKey = atob(keyData) + "\n";
   const keyBuffer = Buffer.from(decodedKey);
 
   if (keyData) {
