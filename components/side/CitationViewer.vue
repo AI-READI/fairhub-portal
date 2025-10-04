@@ -6,34 +6,34 @@ const props = defineProps({
   },
 });
 
-const citationFormat = ref("apa");
-
-const citationFormats = [
-  {
-    label: "APA",
-    value: "apa",
-  },
-  {
-    label: "Harvard",
-    value: "harvard1",
-  },
-  {
-    label: "Vancouver",
-    value: "vancouver",
-  },
-  {
-    label: "MLA",
-    value: "mla",
-  },
-  {
-    label: "Chicago",
-    value: "chicago",
-  },
-  {
-    label: "IEEE",
-    value: "ieee",
-  },
-];
+// const citationFormat = ref("apa");
+//
+// const citationFormats = [
+//   {
+//     label: "APA",
+//     value: "apa",
+//   },
+//   {
+//     label: "Harvard",
+//     value: "harvard1",
+//   },
+//   {
+//     label: "Vancouver",
+//     value: "vancouver",
+//   },
+//   {
+//     label: "MLA",
+//     value: "mla",
+//   },
+//   {
+//     label: "Chicago",
+//     value: "chicago",
+//   },
+//   {
+//     label: "IEEE",
+//     value: "ieee",
+//   },
+// ];
 
 const citation = ref({
   formattedText: "",
@@ -146,16 +146,16 @@ onMounted(() => {
       </TransitionFade>
 
       <n-flex align="center" justify="space-between" class="hidden">
-        <n-select
-          v-model:value="citationFormat"
-          size="small"
-          :options="citationFormats"
-          :consistent-menu-width="false"
-          class="hidden w-max"
-          :loading="citationPending"
-          :disabled="citationPending"
-          @update:value="getFormattedCitation"
-        />
+<!--        <n-select-->
+<!--          v-model:value="citationFormat"-->
+<!--          size="small"-->
+<!--          :options="citationFormats"-->
+<!--          :consistent-menu-width="false"-->
+<!--          class="hidden w-max"-->
+<!--          :loading="citationPending"-->
+<!--          :disabled="citationPending"-->
+<!--          @update:value="getFormattedCitation"-->
+<!--        />-->
 
         <n-button
           quaternary
