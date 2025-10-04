@@ -126,24 +126,24 @@ onMounted(() => {
         </NuxtLink>
       </p>
 
-      <TransitionFade>
-        <div v-if="citationPending" class="hidden py-2">
-          <n-skeleton text style="width: 80%" />
+<!--      <TransitionFade>-->
+<!--        <div v-if="citationPending" class="hidden py-2">-->
+<!--          <n-skeleton text style="width: 80%" />-->
 
-          <n-skeleton text />
+<!--          <n-skeleton text />-->
 
-          <n-skeleton text style="width: 60%" />
-        </div>
+<!--          <n-skeleton text style="width: 60%" />-->
+<!--        </div>-->
 
-        <div v-else>
-          <n-alert v-if="citationError" type="error">
-            Something went wrong with generating the citation. Please try again
-            later.
-          </n-alert>
+<!--        <div v-else>-->
+<!--          <n-alert v-if="citationError" type="error">-->
+<!--            Something went wrong with generating the citation. Please try again-->
+<!--            later.-->
+<!--          </n-alert>-->
 
-          <!-- <p v-else class="text-sm">{{ citation?.formattedText }}</p> -->
-        </div>
-      </TransitionFade>
+<!--          &lt;!&ndash; <p v-else class="text-sm">{{ citation?.formattedText }}</p> &ndash;&gt;-->
+<!--        </div>-->
+<!--      </TransitionFade>-->
 
       <n-flex align="center" justify="space-between" class="hidden">
 <!--        <n-select-->
