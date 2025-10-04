@@ -145,7 +145,7 @@ onMounted(() => {
 <!--        </div>-->
 <!--      </TransitionFade>-->
 
-      <n-flex align="center" justify="space-between" class="hidden">
+<!--      <n-flex align="center" justify="space-between" class="hidden">-->
 <!--        <n-select-->
 <!--          v-model:value="citationFormat"-->
 <!--          size="small"-->
@@ -157,26 +157,26 @@ onMounted(() => {
 <!--          @update:value="getFormattedCitation"-->
 <!--        />-->
 
-        <n-button
-          quaternary
-          type="info"
-          size="large"
-          class="hidden"
-          @click="copyToClipboard(citation?.formattedText)"
-        >
-          <template #icon>
-            <Icon name="uil:copy" />
-          </template>
-        </n-button>
-      </n-flex>
+<!--        <n-button-->
+<!--          quaternary-->
+<!--          type="info"-->
+<!--          size="large"-->
+<!--          class="hidden"-->
+<!--          @click="copyToClipboard(citation?.formattedText)"-->
+<!--        >-->
+<!--          <template #icon>-->
+<!--            <Icon name="uil:copy" />-->
+<!--          </template>-->
+<!--        </n-button>-->
+<!--      </n-flex>-->
 
-      <n-divider class="hidden" />
+<!--      <n-divider class="hidden" />-->
 
-      <n-alert type="warning" :bordered="false" class="hidden">
-        There maybe other required citations when using this dataset. Please
-        check the license and other resources associated with the dataset for
-        more information.
-      </n-alert>
+<!--      <n-alert type="warning" :bordered="false" class="hidden">-->
+<!--        There maybe other required citations when using this dataset. Please-->
+<!--        check the license and other resources associated with the dataset for-->
+<!--        more information.-->
+<!--      </n-alert>-->
     </n-flex>
   </n-flex>
 </template>
