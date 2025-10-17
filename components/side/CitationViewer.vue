@@ -6,34 +6,34 @@ const props = defineProps({
   },
 });
 
-const citationFormat = ref("apa");
-
-const citationFormats = [
-  {
-    label: "APA",
-    value: "apa",
-  },
-  {
-    label: "Harvard",
-    value: "harvard1",
-  },
-  {
-    label: "Vancouver",
-    value: "vancouver",
-  },
-  {
-    label: "MLA",
-    value: "mla",
-  },
-  {
-    label: "Chicago",
-    value: "chicago",
-  },
-  {
-    label: "IEEE",
-    value: "ieee",
-  },
-];
+// const citationFormat = ref("apa");
+//
+// const citationFormats = [
+//   {
+//     label: "APA",
+//     value: "apa",
+//   },
+//   {
+//     label: "Harvard",
+//     value: "harvard1",
+//   },
+//   {
+//     label: "Vancouver",
+//     value: "vancouver",
+//   },
+//   {
+//     label: "MLA",
+//     value: "mla",
+//   },
+//   {
+//     label: "Chicago",
+//     value: "chicago",
+//   },
+//   {
+//     label: "IEEE",
+//     value: "ieee",
+//   },
+// ];
 
 const citation = ref({
   formattedText: "",
@@ -126,57 +126,57 @@ onMounted(() => {
         </NuxtLink>
       </p>
 
-      <TransitionFade>
-        <div v-if="citationPending" class="hidden py-2">
-          <n-skeleton text style="width: 80%" />
+<!--      <TransitionFade>-->
+<!--        <div v-if="citationPending" class="hidden py-2">-->
+<!--          <n-skeleton text style="width: 80%" />-->
 
-          <n-skeleton text />
+<!--          <n-skeleton text />-->
 
-          <n-skeleton text style="width: 60%" />
-        </div>
+<!--          <n-skeleton text style="width: 60%" />-->
+<!--        </div>-->
 
-        <div v-else>
-          <n-alert v-if="citationError" type="error">
-            Something went wrong with generating the citation. Please try again
-            later.
-          </n-alert>
+<!--        <div v-else>-->
+<!--          <n-alert v-if="citationError" type="error">-->
+<!--            Something went wrong with generating the citation. Please try again-->
+<!--            later.-->
+<!--          </n-alert>-->
 
-          <!-- <p v-else class="text-sm">{{ citation?.formattedText }}</p> -->
-        </div>
-      </TransitionFade>
+<!--          &lt;!&ndash; <p v-else class="text-sm">{{ citation?.formattedText }}</p> &ndash;&gt;-->
+<!--        </div>-->
+<!--      </TransitionFade>-->
 
-      <n-flex align="center" justify="space-between" class="hidden">
-        <n-select
-          v-model:value="citationFormat"
-          size="small"
-          :options="citationFormats"
-          :consistent-menu-width="false"
-          class="hidden w-max"
-          :loading="citationPending"
-          :disabled="citationPending"
-          @update:value="getFormattedCitation"
-        />
+<!--      <n-flex align="center" justify="space-between" class="hidden">-->
+<!--        <n-select-->
+<!--          v-model:value="citationFormat"-->
+<!--          size="small"-->
+<!--          :options="citationFormats"-->
+<!--          :consistent-menu-width="false"-->
+<!--          class="hidden w-max"-->
+<!--          :loading="citationPending"-->
+<!--          :disabled="citationPending"-->
+<!--          @update:value="getFormattedCitation"-->
+<!--        />-->
 
-        <n-button
-          quaternary
-          type="info"
-          size="large"
-          class="hidden"
-          @click="copyToClipboard(citation?.formattedText)"
-        >
-          <template #icon>
-            <Icon name="uil:copy" />
-          </template>
-        </n-button>
-      </n-flex>
+<!--        <n-button-->
+<!--          quaternary-->
+<!--          type="info"-->
+<!--          size="large"-->
+<!--          class="hidden"-->
+<!--          @click="copyToClipboard(citation?.formattedText)"-->
+<!--        >-->
+<!--          <template #icon>-->
+<!--            <Icon name="uil:copy" />-->
+<!--          </template>-->
+<!--        </n-button>-->
+<!--      </n-flex>-->
 
-      <n-divider class="hidden" />
+<!--      <n-divider class="hidden" />-->
 
-      <n-alert type="warning" :bordered="false" class="hidden">
-        There maybe other required citations when using this dataset. Please
-        check the license and other resources associated with the dataset for
-        more information.
-      </n-alert>
+<!--      <n-alert type="warning" :bordered="false" class="hidden">-->
+<!--        There maybe other required citations when using this dataset. Please-->
+<!--        check the license and other resources associated with the dataset for-->
+<!--        more information.-->
+<!--      </n-alert>-->
     </n-flex>
   </n-flex>
 </template>
