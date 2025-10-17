@@ -211,7 +211,7 @@ const testStorageAccount = async (e: MouseEvent) => {
 
 function validSasToken(rule: FormItemRule, token: string): boolean {
   const tokenObj = stringToKeyValuePairs(token, "&", "=");
-  const permission = tokenObj.sp === "w";
+  const permission = tokenObj.sp.includes("w");
   const startDate = new Date(tokenObj.st);
   const expirationDate = new Date(tokenObj.se);
   const currentDate = new Date();

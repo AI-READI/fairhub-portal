@@ -27,6 +27,56 @@ const generateCombinedFullName = (name: string) => {
 };
 
 const currentStep = ref<number>(1);
+const checklist = ref<string[]>([]);
+
+// ordered checklist keys to enforce sequential enabling
+const steps = [
+  "azure_container",
+  "cilogon",
+  "diabetes_research",
+  "training",
+  "describe_purpose",
+  "agree_license",
+  "select_data",
+  "storage_details",
+  "access_data",
+];
+
+// return true when a checkbox for `value` should be disabled
+const isDisabledByValue = (value: string) => {
+  const idx = steps.indexOf(value);
+  if (idx <= 0) return false;
+  return !checklist.value.includes(steps[idx - 1]);
+};
+
+// ensure that if a prior checkbox is unchecked we remove any subsequent
+// checked items (keeps checklist contiguous and ordered)
+watch(
+  checklist,
+  (newVal) => {
+    const set = new Set(newVal);
+    // remove any step that is set but previous is not set
+    for (let i = 1; i < steps.length; i++) {
+      if (set.has(steps[i]) && !set.has(steps[i - 1])) {
+        set.delete(steps[i]);
+      }
+    }
+    const ordered = steps.filter((s) => set.has(s));
+    // update only if different to avoid infinite loops
+    if (
+      ordered.length !== newVal.length ||
+      ordered.some((v, i) => v !== newVal[i])
+    ) {
+      checklist.value = ordered;
+    }
+  },
+  { deep: true },
+);
+
+// allChecked: true when every step is present in the checklist
+const allChecked = computed(() =>
+  steps.every((s) => checklist.value.includes(s)),
+);
 </script>
 
 <template>
@@ -88,69 +138,136 @@ const currentStep = ref<number>(1);
           <div>
             <p>To obtain access to this dataset, you must:</p>
 
-            <ol>
-              <li>
-                Due to the size of the AI-READI dataset, you must provide a
-                <NuxtLink
-                  to="https://learn.microsoft.com/en-us/azure/storage/container-storage/container-storage-introduction"
-                  target="_blank"
-                  >Azure Storage Container</NuxtLink
+            <n-checkbox-group v-model:value="checklist">
+              <n-space vertical>
+                <n-checkbox
+                  value="azure_container"
+                  class="text-sm"
+                  :disabled="isDisabledByValue('azure_container')"
                 >
+                  <span>
+                    Provide an
+                    <NuxtLink
+                      to="https://learn.microsoft.com/en-us/azure/storage/container-storage/container-storage-introduction"
+                      target="_blank"
+                    >
+                      Azure Storage Container
+                    </NuxtLink>
+                    in order to receive the dataset due to the size of the
+                    AI-READI dataset. Please
+                    <NuxtLink
+                      to="https://docs.aireadi.org/docs/2/preliminary/azure"
+                      >review our documentation</NuxtLink
+                    >
+                    to set this up.
+                  </span>
+                </n-checkbox>
 
-                in order to receive the dataset. Please
-                <NuxtLink to="https://docs.aireadi.org/docs/2/preliminary/azure"
-                  >review our documentation</NuxtLink
+                <n-checkbox
+                  value="cilogon"
+                  class="text-sm"
+                  :disabled="isDisabledByValue('cilogon')"
                 >
-                to this up.
-              </li>
+                  <span>
+                    Authenticate using CILogon. If you are at an academic
+                    institution or research organization, you can log on using
+                    your institutional credentials. If you are unsure, please
+                    search for the name of your institution in the CILogon
+                    dropdown menu.
+                    <ul class="ml-4 list-disc">
+                      <li>
+                        If you are not able to access the data through CILogon
+                        (e.g. you do not see your organization or institution)
+                        then please contact the
+                        <a href="mailto:aireadi-dac@ohsu.edu"
+                          >AI-READI Data Access Committee</a
+                        >.
+                      </li>
+                    </ul>
+                  </span>
+                </n-checkbox>
 
-              <li>
-                Authenticate using CILogon. If you are at an academic
-                institution or research organization, you can log on using your
-                institutional credentials. If you are unsure, please search for
-                the name of your institution in the CILogon dropdown menu.
-                <ul>
-                  <li>
-                    If you not able to access the data through CILogon (e.g. you
-                    do not see your organization or institution) then please
-                    contact the
-                    <a href="mailto:aireadi-dac@ohsu.edu"
-                      >AI-READI Data Access Committee</a
-                    >.
-                  </li>
-                </ul>
-              </li>
+                <n-checkbox
+                  value="diabetes_research"
+                  class="text-sm"
+                  :disabled="isDisabledByValue('diabetes_research')"
+                >
+                  Indicate whether your research is related to Type 2 Diabetes
+                </n-checkbox>
 
-              <li>
-                Indicate whether your research is related to Type 2 Diabetes
-              </li>
+                <n-checkbox
+                  value="training"
+                  class="text-sm"
+                  :disabled="isDisabledByValue('training')"
+                >
+                  Answer questions about your training in research methods and
+                  ethics
+                </n-checkbox>
 
-              <li>
-                Answer some questions about your training in research methods
-                and ethics
-              </li>
+                <n-checkbox
+                  value="describe_purpose"
+                  class="text-sm"
+                  :disabled="isDisabledByValue('describe_purpose')"
+                >
+                  Describe the purpose of your research. This information, along
+                  with your name, will be publicly shared on the AI-READI
+                  website
+                </n-checkbox>
 
-              <li>
-                Describe the purpose of your research <br />
-                This information, along with your name, will be publicly shared
-                on the AI-READI website
-              </li>
+                <n-checkbox
+                  value="agree_license"
+                  class="text-sm"
+                  :disabled="isDisabledByValue('agree_license')"
+                >
+                  Agree to the terms of the dataset license
+                </n-checkbox>
 
-              <li>Agree to the terms of the dataset license</li>
+                <n-checkbox
+                  value="select_data"
+                  class="text-sm"
+                  :disabled="isDisabledByValue('select_data')"
+                >
+                  Select data types to download
+                </n-checkbox>
 
-              <li>Select data types to download</li>
+                <n-checkbox
+                  value="storage_details"
+                  class="text-sm"
+                  :disabled="isDisabledByValue('storage_details')"
+                >
+                  Provide details about your storage container
+                </n-checkbox>
 
-              <li>
-                Return to download your data after your request has been
-                processed
-              </li>
-            </ol>
+                <n-checkbox
+                  value="access_data"
+                  class="text-sm"
+                  :disabled="isDisabledByValue('access_data')"
+                >
+                  Return to download your data after your request has been
+                  processed
+                </n-checkbox>
+              </n-space>
+            </n-checkbox-group>
 
-            <NuxtLink :to="`/datasets/${dataset?.id}/access/login`">
-              <n-button size="large" type="info" secondary class="my-3">
+            <div class="my-3">
+              <NuxtLink
+                v-if="allChecked"
+                :to="`/datasets/${dataset?.id}/access/login`"
+              >
+                <n-button size="large" type="info" secondary> Begin </n-button>
+              </NuxtLink>
+
+              <n-button
+                v-else
+                size="large"
+                type="info"
+                secondary
+                disabled
+                class="cursor-not-allowed opacity-60"
+              >
                 Begin
               </n-button>
-            </NuxtLink>
+            </div>
           </div>
         </TransitionFade>
       </div>
