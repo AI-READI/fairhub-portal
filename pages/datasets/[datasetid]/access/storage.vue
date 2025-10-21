@@ -276,7 +276,12 @@ const handleSaveAndReturn = async () => {
 
             <p>
               Due to the size of the AI-READI dataset and the time it can take
-              to download, we require researchers set up an Azure account, or
+              to download, we require researchers 
+              <NuxtLink
+                      to="https://docs.aireadi.org/docs/2/preliminary/azure_storage/azure"
+                      >set up an Azure account</NuxtLink
+                    >
+              , or
               use their institution's Azure subscription, to create an Azure
               Storage Account and provide a container and SAS Token to receive
               the AI-READI dataset. Please provide the details below and your
