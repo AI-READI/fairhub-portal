@@ -94,19 +94,9 @@ if (error.value) {
 
           <div v-else-if="dataReady">
             <p>
-              Access to your dataset will expire on:
-              <strong class="text-lg font-black">{{ expiresAt }} UTC</strong>.
-            </p>
-
-            <p>
-              Please make sure to complete downloading your dataset before this
-              time. You will need to request a new dataset if you do not
-              complete the download before then.
-            </p>
-
-            <p>
-              Due to the number and size of of the files included in typical
-              datasets, we recommend using one of the following clients:
+              Your dataset has been copied to your Azure Blob Storage container.
+              Due to the number and size of of the files included, we recommend
+              using one of the following clients:
             </p>
 
             <n-tabs type="line" animated>
@@ -128,6 +118,7 @@ if (error.value) {
                 <p>
                   This is your SAS URI; please record this for download, click
                   to copy to your clipboard
+                  <!-- TODO: santize URL for new structure -->
                   <n-code
                     :code="requestSasUri"
                     @click="copyToClipboard(requestSasUri)"
@@ -170,7 +161,7 @@ if (error.value) {
                     please see documentation for your specific distro for
                     instructions on decompressing the provided tarball -
                     Possible locations for this are: in your home directory; in
-                    your machine's C:/ or Root directory - For ease of use,
+                    your machine's C:/ or binary directory - For ease of use,
                     consider adding the fully-qualified path to the AzCopy
                     directory to your system PATH. If you choose not to do this
                     you will need to execute any AzCopy commands from the

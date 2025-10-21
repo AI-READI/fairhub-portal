@@ -44,7 +44,7 @@ const hasSelectedFolders = computed(() => selectedFolders.value.length > 0);
 
 const handleSubmit = async () => {
   try {
-    await $fetch(`/api/downloads/request/create`, {
+    const downloadRequest = await $fetch(`/api/downloads/request/create`, {
       body: {
         dataset_id: dataset.value?.id,
         download_agreement_id: agreement.value?.id,
@@ -55,7 +55,9 @@ const handleSubmit = async () => {
     });
     // clear the agreement form once we have persisted the request
     agreement.value = {};
-    await navigateTo(`/datasets/${dataset.value?.id}/access/submitted`);
+    await navigateTo(
+      `/datasets/${dataset.value?.id}/access/storage/?requestid=${downloadRequest?.id}`,
+    );
   } catch (error) {
     console.error(error);
     push.error({
