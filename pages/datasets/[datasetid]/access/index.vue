@@ -156,7 +156,7 @@ const allChecked = computed(() =>
                     in order to receive the dataset due to the size of the
                     AI-READI dataset. Please
                     <NuxtLink
-                      to="https://docs.aireadi.org/docs/2/preliminary/azure"
+                      to="https://docs.aireadi.org/docs/2/preliminary/azure_storage/azure"
                       >review our documentation</NuxtLink
                     >
                     to set this up.
