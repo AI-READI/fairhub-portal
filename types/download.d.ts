@@ -22,3 +22,10 @@ type DownloadAgreementFormState = Omit<
   DownloadAgreementProps,
   "id" | "user_details_id" | "dataset_id" | "created_at" | "updated_on"
 >;
+
+type BlobStorageCredentials = {
+  accountName: string;
+  containerName: string;
+  sasToken: string;
+  expirationDate: Date;
+};

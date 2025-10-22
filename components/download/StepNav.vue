@@ -9,6 +9,7 @@ const steps = [
   "Research Purpose",
   "License",
   "Select Data",
+  "Storage",
   "Submitted",
 ];
 
@@ -16,7 +17,7 @@ const props = defineProps({
   currentStep: {
     default: 1,
     type: Number as PropType<number>,
-    validator: (step: number) => step >= 1 && step <= 7,
+    validator: (step: number) => step >= 1 && step <= 8,
   },
 });
 
