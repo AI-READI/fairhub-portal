@@ -1,26 +1,33 @@
 export default defineEventHandler(async (_event) => {
   const publishedDatasets = await prisma.published_dataset.findMany({
     distinct: ["dataset_id"],
-    orderBy: {
-      created_at: "desc",
-    },
+    orderBy: [{ created_at: "desc" }, { dataset_id: "desc" }],
   });
 
   if (!publishedDatasets) {
     console.log("No datasets found");
     return [];
   }
+  const bytesToReadable = (b: number) => {
+    const n = Number(b);
+    if (isNaN(n)) return "0 B";
+    const tb = n / 1e12;
+    const gb = n / 1e9;
+    return tb >= 1 ? `${tb.toFixed(2)} TB` : `${gb.toFixed(2)} GB`;
+  };
 
   const datasets: DatasetArray = [];
 
   for (const dataset of publishedDatasets) {
     const datasetId = Number(dataset.id).toString();
-
+    const datasetAdditionalData = {
+      ...(dataset.data as any),
+      size: bytesToReadable((dataset.data as any)?.size),
+    };
     const datasetCreatedAt: bigint = BigInt(dataset.created_at);
 
     const datasetMetadata = dataset.published_metadata as any;
     const datasetFiles = dataset.files as any;
-    const datasetAdditionalData = dataset.data as any;
 
     const item: Dataset = {
       id: datasetId,

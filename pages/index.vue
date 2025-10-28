@@ -160,6 +160,14 @@ if (error.value) {
                       </n-tag>
 
                       <n-tag type="info" :bordered="false">
+                        {{ dataset.data?.size }}
+                      </n-tag>
+
+                      <n-tag
+                        v-if="dataset?.id !== '4'"
+                        type="info"
+                        :bordered="false"
+                      >
                         Version {{ dataset.version_title }}
                       </n-tag>
                     </div>
