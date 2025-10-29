@@ -1,8 +1,11 @@
 export default defineEventHandler(async (_event) => {
-  const publishedDatasets = await prisma.published_dataset.findMany({
-    distinct: ["dataset_id"],
-    orderBy: [{ dataset_id: "desc" }, { created_at: "desc" }],
-  });
+const publishedDatasets = await prisma.$queryRaw<
+    any[]
+  >
+    `SELECT DISTINCT ON (dataset_id) *
+  FROM published_dataset
+  ORDER BY dataset_id DESC, created_at DESC;
+  `;
 
   if (!publishedDatasets) {
     console.log("No datasets found");
