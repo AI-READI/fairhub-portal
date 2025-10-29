@@ -1,11 +1,8 @@
 export default defineEventHandler(async (_event) => {
-  const all = await prisma.published_dataset.findMany({
-    orderBy: [{ created_at: "desc" }, { dataset_id: "desc" }],
+  const publishedDatasets = await prisma.published_dataset.findMany({
+    distinct: ["dataset_id"],
+    orderBy: [{ created_at: "asc" }, { dataset_id: "desc" }],
   });
-
-  const publishedDatasets = all.filter(
-    (d, i, arr) => arr.findIndex((x) => x.dataset_id === d.dataset_id) === i,
-  );
 
   if (!publishedDatasets) {
     console.log("No datasets found");
