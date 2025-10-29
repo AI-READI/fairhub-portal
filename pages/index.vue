@@ -151,16 +151,16 @@ if (error.value) {
                     <h3>{{ dataset.title }}</h3>
 
                     <div class="flex items-center gap-2">
+                      <n-tag type="info" :bordered="false">
+                        {{ dataset.data?.size }}
+                      </n-tag>
+
                       <n-tag
                         v-if="dataset.data.mini"
                         type="warning"
                         :bordered="false"
                       >
                         Mini Dataset
-                      </n-tag>
-
-                      <n-tag type="info" :bordered="false">
-                        {{ dataset.data?.size }}
                       </n-tag>
 
                       <n-tag
