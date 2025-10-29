@@ -1,7 +1,7 @@
 export default defineEventHandler(async (_event) => {
   const publishedDatasets = await prisma.published_dataset.findMany({
     distinct: ["dataset_id"],
-    orderBy: [{ id: "desc" }, { created_at: "desc" }],
+    orderBy: [{ id: "desc" }, { dataset_id: "desc" }, { created_at: "desc" }],
   });
 
   if (!publishedDatasets) {
