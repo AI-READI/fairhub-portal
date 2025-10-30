@@ -8,22 +8,12 @@ export default defineEventHandler(async (_event) => {
     console.log("No datasets found");
     return [];
   }
-  const bytesToReadable = (b: number) => {
-    const n = Number(b);
-    if (isNaN(n)) return "0 B";
-    const tb = n / 1e12;
-    const gb = n / 1e9;
-    return tb >= 1 ? `${tb.toFixed(2)} TB` : `${gb.toFixed(2)} GB`;
-  };
 
   const datasets: DatasetArray = [];
 
   for (const dataset of publishedDatasets) {
     const datasetId = Number(dataset.id).toString();
-    const datasetAdditionalData = {
-      ...(dataset.data as any),
-      size: bytesToReadable((dataset.data as any)?.size),
-    };
+    const datasetAdditionalData = dataset.data as any;
     const datasetCreatedAt: bigint = BigInt(dataset.created_at);
 
     const datasetMetadata = dataset.published_metadata as any;
