@@ -131,10 +131,13 @@ const handleLogin = async () => {
                 </p>
 
                 <p>
-                  Please note that there are certain Identity Providers that are
-                  available by default from CILogon which are ineligible for use
-                  with this request because they allow self-attestation. These
-                  include (but are not limited to):
+                  Please note that there are certain Identity Providers from
+                  CILogon which are <strong>ineligible</strong>
+                  for use with this request because they allow self-attestation
+                  or are from countries designated as countries of concern by
+                  the US Government. You will
+                  <strong>NOT</strong>
+                  be able to use the following Identity Providers.
                 </p>
 
                 <ul>

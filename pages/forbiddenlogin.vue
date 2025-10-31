@@ -36,8 +36,12 @@ const badIdPType = route.query.type;
         <p class="justify-left text-left font-light leading-normal">
           The Identity Provider you selected has not been verified by the
           AI-READI Data Access committee to provide sufficient user
-          identification. If you authenticated using one of the following
-          accounts:
+          identification. You can re-attempt using a valid account from an
+          academic instution or an eduGain-affiliated Identity Provider.
+        </p>
+
+        <p class="text-left font-light leading-normal">
+          The following Identity providers are <strong>NOT</strong> supported::
         </p>
 
         <ul
@@ -51,11 +55,6 @@ const badIdPType = route.query.type;
 
           <li>Amazon AWS</li>
         </ul>
-
-        <p class="text-left font-light leading-normal">
-          You can re-attempt using a valid account from an academic instution or
-          an eduGain-affiliated Identity Provider.
-        </p>
       </div>
 
       <p class="mb-8 px-12 text-left">
