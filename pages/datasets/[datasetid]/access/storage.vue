@@ -239,7 +239,7 @@ const handleTryAgain = () => {
 
 const handleSaveAndReturn = async () => {
   await navigateTo(
-    `/datasets/${dataset.value?.id}/access/request/`,
+    `/requests`,
   );
 };
 </script>
@@ -329,6 +329,7 @@ const handleSaveAndReturn = async () => {
                 ></n-input>
               </n-form-item>
 
+              <n-space>
               <n-form-item>
                 <n-button
                   strong
@@ -339,6 +340,16 @@ const handleSaveAndReturn = async () => {
                   Test upload
                 </n-button>
               </n-form-item>
+
+              <n-form-item>
+                <n-button
+                  tertiary
+                  @click="handleSaveAndReturn"
+                >
+                  Save and return later
+                </n-button>
+              </n-form-item>
+              </n-space>
             </n-form>
 
              <n-modal

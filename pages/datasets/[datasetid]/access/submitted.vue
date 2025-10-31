@@ -105,10 +105,8 @@ const currentStep = ref<number>(8);
               page with instructions on how to access it.
             </p>
 
-            <p>Once created, you will have 7 days to download your dataset.</p>
-
             <p>
-              <NuxtLink :to="`/datasets/${datasetid}/access/request`">
+              <NuxtLink :to="`/requests`">
                 <n-button strong secondary type="info">
                   View your requests and status.
                 </n-button>
