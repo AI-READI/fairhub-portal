@@ -136,6 +136,33 @@ export default defineNuxtConfig({
           : process.env.NUXT_SITE_ENV === "staging"
             ? "https://staging.api.fairhub.io"
             : "https://api.fairhub.io",
+      LOCAL_LOGIN_CONFIG: {
+        authority:
+          "https://aireadi.b2clogin.com/aireadi.onmicrosoft.com/B2C_1_ARVO_SignUpSignIn_Workflow",
+        clientId:
+          process.env.NUXT_SITE_ENV === "production"
+            ? "d173c9cb-36ce-4c77-92f3-025e48f0e533"
+            : "444bfea9-2fec-44ed-a4d7-767616afa9a3",
+        forbiddenUri:
+          process.env.NUXT_SITE_ENV === "dev"
+            ? "http://localhost:3000/forbiddenlogin"
+            : process.env.NUXT_SITE_ENV === "staging"
+              ? "https://staging.fairhub.io/forbiddenlogin"
+              : "https://fairhub.io/forbiddenlogin",
+        knownAuthorities: ["aireadi.b2clogin.com"],
+        logoutUri:
+          process.env.NUXT_SITE_ENV === "dev"
+            ? "http://localhost:3000/"
+            : process.env.NUXT_SITE_ENV === "staging"
+              ? "https://staging.fairhub.io/"
+              : "https://fairhub.io/",
+        redirectUri:
+          process.env.NUXT_SITE_ENV === "dev"
+            ? "http://localhost:3000/local-login"
+            : process.env.NUXT_SITE_ENV === "staging"
+              ? "https://staging.fairhub.io/local-login"
+              : "https://fairhub.io/local-login",
+      },
       // STUDY_RELEASE_TIMESTAMP:
       //   process.env.NUXT_SITE_ENV === "dev" ||
       //   process.env.NUXT_SITE_ENV === "staging"
@@ -143,7 +170,7 @@ export default defineNuxtConfig({
       //     : "1731060000", // Fri Nov 07 2024 02:00:00 GMT-0800 (Pacific Standard Time)
       UMAMI_SHARE_URL:
         process.env.NUXT_SITE_ENV === "dev" ||
-        process.env.NUXT_SITE_ENV === "staging"
+          process.env.NUXT_SITE_ENV === "staging"
           ? "https://umami.aireadi.org/share/w56IOiviBTVZOlHu/staging.fairhub.io"
           : "https://umami.aireadi.org/share/o6trNZ4JS9gBri45/fairhub.io",
     },
