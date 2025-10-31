@@ -1,9 +1,7 @@
 export default defineEventHandler(async (_event) => {
   const publishedDatasets = await prisma.published_dataset.findMany({
     distinct: ["dataset_id"],
-    orderBy: {
-      created_at: "desc",
-    },
+    orderBy: [{ id: "desc" }, { dataset_id: "desc" }, { created_at: "desc" }],
   });
 
   if (!publishedDatasets) {
@@ -15,12 +13,11 @@ export default defineEventHandler(async (_event) => {
 
   for (const dataset of publishedDatasets) {
     const datasetId = Number(dataset.id).toString();
-
+    const datasetAdditionalData = dataset.data as any;
     const datasetCreatedAt: bigint = BigInt(dataset.created_at);
 
     const datasetMetadata = dataset.published_metadata as any;
     const datasetFiles = dataset.files as any;
-    const datasetAdditionalData = dataset.data as any;
 
     const item: Dataset = {
       id: datasetId,
