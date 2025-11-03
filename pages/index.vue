@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import byteSize from "byte-size";
+
 const { data: datasets, error } = await useFetch(`/api/datasets`);
 
 if (error.value) {
@@ -9,6 +11,11 @@ if (error.value) {
     message: "Failed to fetch datasets",
   });
 }
+const formatSize = (size: number) => {
+  if (!size) return '—';
+  return byteSize(size, { precision: 2 }).toString();
+};
+
 </script>
 
 <template>
@@ -151,6 +158,10 @@ if (error.value) {
                     <h3>{{ dataset.title }}</h3>
 
                     <div class="flex items-center gap-2">
+                      <n-tag type="info" :bordered="false">
+                        {{ formatSize(dataset?.data?.size) }}
+                      </n-tag>
+
                       <n-tag
                         v-if="dataset.data.mini"
                         type="warning"
@@ -159,7 +170,11 @@ if (error.value) {
                         Mini Dataset
                       </n-tag>
 
-                      <n-tag type="info" :bordered="false">
+                      <n-tag
+                        v-if="dataset?.id !== '4'"
+                        type="info"
+                        :bordered="false"
+                      >
                         Version {{ dataset.version_title }}
                       </n-tag>
                     </div>
