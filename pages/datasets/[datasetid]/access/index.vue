@@ -135,6 +135,7 @@ const allChecked = computed(() =>
         <DownloadStepNav :current-step="currentStep" />
 
         <TransitionFade>
+          <!-- Provide indication that they will could be requesting up to XXX TB of data  -->
           <div>
             <p>To obtain access to this dataset, you must:</p>
 
@@ -219,7 +220,16 @@ const allChecked = computed(() =>
                   class="text-sm"
                   :disabled="isDisabledByValue('agree_license')"
                 >
-                  Agree to the terms of the dataset license
+                  <span>
+                    Review the and accept the terms of the
+                    <NuxtLink
+                      to="https://docs.aireadi.org/docs/2/preliminary/license"
+                      target="_blank"
+                    >
+                      AI-READI Dataset License
+                    </NuxtLink>
+                    from the FAQ.
+                  </span>
                 </n-checkbox>
 
                 <n-checkbox

@@ -10,6 +10,14 @@ const route = useRoute();
 const { datasetid } = route.params as { datasetid: string };
 const { data: dataset, error } = await useDataset(datasetid);
 const agreementFormState = useDownloadAgreementForm(datasetid);
+
+const rightsName = computed(() => dataset.value?.metadata?.datasetDescription?.rights?.[0]
+        ?.rightsName
+        ? dataset.value.metadata.datasetDescription.rights[0].rightsName
+        : "not found");
+const licenseType = ref<string | null>(null);
+const authorizedGroup = ref<string | null>(null);
+
 console.log(agreementFormState.value);
 
 if (error.value) {
@@ -91,8 +99,14 @@ const attestations = [
   "I will only use this dataset to conduct the research described in my research purpose.",
 ];
 
+// Modify the licenseAndAttestationComplete computed property
 const licenseAndAttestationComplete = computed(() => {
-  return licenseAccepted.value && attestationsAccepted.value;
+  if (licenseType.value === 'GROUP' && !authorizedGroup.value) {
+    return false;
+  }
+  return licenseAccepted.value && 
+         attestationsAccepted.value && 
+         licenseType.value !== '';
 });
 
 const handleSubmit = async () => {
@@ -102,6 +116,9 @@ const handleSubmit = async () => {
         attestation_accepted: attestationsAccepted.value,
         dataset_id: dataset.value?.id,
         license_accepted: licenseAccepted.value,
+        license_type: licenseType.value,
+        authorized_group: licenseType.value === 'GROUP' ? authorizedGroup.value : null,
+        license_version: rightsName.value,
         ...agreementFormState.value,
       },
       headers: useRequestHeaders(["cookie"]),
@@ -180,6 +197,45 @@ const handleSubmit = async () => {
         <TransitionFade>
           <div>
             <h4>License</h4>
+
+            <div class="mb-4">
+              <n-form-item
+                label="License Type"
+                :required="true"
+                :validation-status="licenseType ? 'success' : 'error'"
+              >
+                <n-radio-group 
+                  v-model:value="licenseType"
+                  :validate-on-mount="true"
+                >
+                  <n-space>
+                    <n-radio value="INDIVIDUAL">
+                      Individual Use
+                    </n-radio>
+                    <n-radio value="GROUP">
+                      Group Use
+                    </n-radio>
+                  </n-space>
+                </n-radio-group>
+                <template #feedback>
+                  <span v-if="!licenseType" class="text-error">
+                    Please select a license type.
+                  </span>
+                </template>
+              </n-form-item>
+
+              <n-form-item
+                v-if="licenseType === 'GROUP'"
+                label="Authorized Group"
+                :required="true"
+                :validation-status="authorizedGroup ? 'success' : 'error'"
+              >
+                <n-input
+                  v-model:value="authorizedGroup"
+                  placeholder="Enter the group name you are requesting data on behalf of."
+                />
+              </n-form-item>
+            </div>
             <DownloadLicenseForm
               v-model="licenseAccepted"
               :license="licenseText"
