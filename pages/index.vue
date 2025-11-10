@@ -46,9 +46,12 @@ const formatSize = (size: number) => {
 
           <n-divider class="hidden" />
 
-          <UAlert color="info" variant="soft" title="Announcement: Pending Data Release"
-            description="Due to the pending year-3 Data Release we are temporarily suspending new requests for access to the data set. Please check back after Nov 17 to request access to the AI-Readi Data Set."
-            icon="i-lucide-terminal" />
+          <n-alert
+            title="Announcement: Pending Data Release"
+            type="info"
+          >
+            Due to the pending year-3 Data Release we are temporarily suspending new requests for access to the data set. Please check back after Nov 17 to request access to the AI-Readi Data Set.
+          </n-alert>
 
           <div class="hidden max-w-2xl font-normal text-gray-800">
             Manage and share your own clinical research data with FAIRhub.
