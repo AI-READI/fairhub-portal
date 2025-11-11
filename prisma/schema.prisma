@@ -756,6 +756,9 @@ model download_agreement {
   study_design                  String?               @db.VarChar
   data_handling_plan            String?               @db.VarChar
   ai_use                        String?               @db.VarChar
+  authorized_group              String?               @db.VarChar
+  license_type                  license_type          @default(INDIVIDUAL)
+  license_version               String                @db.VarChar
   download_user_details         download_user_details @relation(fields: [user_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   download_request              download_request[]
   published_dataset             published_dataset?    @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
@@ -848,6 +851,13 @@ enum download_status {
   READY
   EXPIRED
   ERROR
+
+  @@schema("download")
+}
+
+enum license_type {
+  INDIVIDUAL
+  GROUP
 
   @@schema("download")
 }

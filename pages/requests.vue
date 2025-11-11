@@ -48,7 +48,7 @@ const columns = [
     key: "action",
     minWidth: "8rem",
     render: (row) => {
-      if (!row.download_uri) {
+      if (row.status === "PENDING" && !row.download_uri ) {
         return h(
           "a",
           {
