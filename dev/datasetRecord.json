@@ -5,7 +5,7 @@
   "version_id": "504ba283-30fc-4a78-b2f9-857d3108a4ad",
   "doi": "10.60775/fairhub.3",
   "title": "Flagship Dataset of Type 2 Diabetes from the AI-READI Project",
-  "description": "The AI-READI project seeks to create and share a flagship ethically-sourced dataset of type 2 diabetes",
+  "description": "The AI-READI project seeks to create and share a flagship ethically-sourced dataset of type 2 diabetes.",
   "version_title": "3.0.0",
   "study_title": "AI Ready and Exploratory Atlas for Diabetes Insights",
   "published_metadata": {
@@ -2074,32 +2074,32 @@
       ],
       "motivation": [
         {
-          "id": 2,
+          "id": 1,
           "question": "For what purpose was the dataset created? Was there a specific task in mind? Was there a specific gap that needed to be filled? Please provide a description.",
           "response": "The purpose for creating the dataset was to enable future generations of artificial intelligence/machine learning (AI/ML) research to provide critical insights into type 2 diabetes mellitus (T2DM), including salutogenic pathways to return to health. T2DM is a growing public health threat. Yet, the current understanding of T2DM, especially in the context of salutogenesis, is limited. Given the complexity of T2DM, AI-based approaches may help with improving our understanding but a key issue is the lack of data ready for training AI models. The AI-READI dataset is intended to fill this gap."
         },
         {
-          "id": 3,
+          "id": 2,
           "question": "What are the applications that the dataset is meant to address? (e.g., administrative applications, software applications, research)",
           "response": "The multi-modal dataset being collected is being gathered to facilitate downstream pseudotime manifolds and various applications in artificial intelligence."
         },
         {
-          "id": 4,
+          "id": 3,
           "question": "Are there any types of usage or applications that are discouraged from using this dataset? If so, why?",
           "response": "The AI READI dataset License imposes certain restrictions on the usage of the data. The restrictions are described in the License files available at https://doi.org/10.5281/zenodo.17555036."
         },
         {
-          "id": 5,
+          "id": 4,
           "question": "Who created this dataset (e.g., which team, research group), and on behalf of which entity (e.g., company, institution, organization)?",
           "response": "This dataset was created by members of the AI-READI project, hereby referred to as the AI-READI Consortium. Details about each member and their institutions are available on the project website at https://aireadi.org."
         },
         {
-          "id": 6,
+          "id": 5,
           "question": "Who funded the creation of the dataset? If there is an associated grant, please provide the name of the grantor and the grant name and number. If the funding institution differs from the research organization creating and managing the dataset, please state how.",
           "response": "The creation of the dataset was funded by the National Institutes of Health (NIH) through their Bridge2AI Program (https://commonfund.nih.gov/bridge2ai). The grant number is OT2ODO32644 and more information about the funding is available at https://reporter.nih.gov/search/T-mv2dbzIEqp9V6UJjHpgw/project-details/10885481. Note that the funding institution is not creating or managing the dataset. The dataset is created and managed by the awardees of the grant (c.f. answer to the previous question)."
         },
         {
-          "id": 7,
+          "id": 6,
           "question": "What is the distribution of backgrounds and experience/expertise of the dataset curators/generators?",
           "response": "There is a wide range of experience within the project team, including senior, mid-career, and early career faculty members as well as clinical research coordinators, staff, and interns. They collectively cover many areas of expertise including clinical research, data collection, data management, data standards, bioinformatics, team science, and ethics, among others. Visit https://aireadi.org/team for more information."
         }
@@ -2192,7 +2192,7 @@
         {
           "id": 2,
           "question": "What confounding factors might be present in the data?\n\n   a. Interactions between demographic or historically marginalized groups and data recordings, e.g., were women patients recorded in one site, and men in another?\n\n   b. Interactions between the labels and data recordings, e.g. were healthy patients recorded on one device and diseased patients on another?",
-          "response": "a. Interactions between demographic or historically marginalized groups and data recordings, e.g., were women patients recorded in one site, and men in another? b. Interactions between the labels and data recordings, e.g. were healthy patients recorded on one device and diseased patients on another? Uniform data collection protocols were implemented for all subjects, irrespective of their race/ethnicity, biological sex, or diabetes severity, across all study sites. The selection of study sites was intended to ensure equitable representation and minimize the potential for sampling bias."
+          "response": "Uniform data collection protocols were implemented for all subjects, irrespective of their race/ethnicity, biological sex, or diabetes severity, across all study sites. The selection of study sites was intended to ensure equitable representation and minimize the potential for sampling bias."
         }
       ],
       "demographic_information": [
@@ -2203,8 +2203,13 @@
         },
         {
           "id": 2,
-          "question": "If no,\n\n   a. Is there any regulation that prevents demographic data collection in your study (for example, the country that the data is collected in)?\n\n   b. Are you employing methods to reduce the disparity of error rate between different demographic subgroups when demographic labels are unavailable? Please describe.",
-          "response": "No. We are suggesting a split for training/validation/testing models that is aimed at reducing disparities in models developed using this dataset."
+          "question": "If no,\n\n   a. Is there any regulation that prevents demographic data collection in your study (for example, the country that the data is collected in)?",
+          "response": "No."
+        },
+        {
+          "id": 3,
+          "question": "b. Are you employing methods to reduce the disparity of error rate between different demographic subgroups when demographic labels are unavailable? Please describe.",
+          "response": "We are suggesting a split for training/validation/testing models that is aimed at reducing disparities in models developed using this dataset."
         }
       ],
       "preprocessing": [
@@ -2295,7 +2300,7 @@
         {
           "id": 5,
           "question": "Over what timeframe was the data collected? Does this timeframe match the creation timeframe of the data associated with the instances (e.g., recent crawl of old news articles)? If not, please describe the timeframe in which the data associated with the instances was created.",
-          "response": "The timeline for the overall project spans four years, encompassing one year dedicated to protocol development and training, and years 2-4 allocated for subject recruitment and data collection. Approximately 4% of participants are expected to undergo a follow-up examination in Year 4. The data collection process is specifically tailored to enable downstream pseudotime manifold analysis—an approach used to predict disease trajectories. This involves gathering and learning from complex, multimodal data from participants exhibiting varying disease severity, ranging from normal to insulin-dependent Type 2 Diabetes Mellitus (T2DM). The timeframe also allows for the collection of the highest number of subjects possible to ensure a balanced representation of racial and ethnic groups and mitigate biases in computer vision algorithms.\n\n For this version of the dataset, the timeframe for data collection was July 19, 2023 to May 01, 2025"
+          "response": "The timeline for the overall project spans four years, encompassing one year dedicated to protocol development and training, and years 2-4 allocated for subject recruitment and data collection. Approximately 4% of participants are expected to undergo a follow-up examination in Year 4. The data collection process is specifically tailored to enable downstream pseudotime manifold analysis—an approach used to predict disease trajectories. This involves gathering and learning from complex, multimodal data from participants exhibiting varying disease severity, ranging from normal to insulin-dependent Type 2 Diabetes Mellitus (T2DM). The timeframe also allows for the collection of the highest number of subjects possible to ensure a balanced representation of racial and ethnic groups and mitigate biases in computer vision algorithms.\n\n For this version of the dataset, the timeframe for data collection was July 19, 2023 to May 01, 2025."
         },
         {
           "id": 6,
@@ -2448,330 +2453,7 @@
       ]
     }
   },
-  "files": [
-    {
-      "children": [
-        {
-          "label": "ecg_12lead",
-          "children": [
-            {
-              "label": "philips_tc30",
-              "children": []
-            }
-          ]
-        },
-        {
-          "label": "manifest.tsv"
-        }
-      ],
-      "label": "cardiac_ecg"
-    },
-    {
-      "children": [
-        {
-          "label": "dqd_omop.json",
-          "children": []
-        }
-      ],
-      "label": "clinical_data"
-    },
-    {
-      "children": [
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "leelab_anura"
-            }
-          ],
-          "label": "environmental_sensor"
-        },
-        {
-          "label": "manifest.tsv"
-        }
-      ],
-      "label": "environment"
-    },
-    {
-      "children": [
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "heidelberg_flio"
-            }
-          ],
-          "label": "flio"
-        },
-        {
-          "label": "manifest.tsv"
-        }
-      ],
-      "label": "retinal_flio"
-    },
-    {
-      "children": [
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "heidelberg_spectralis"
-            },
-            {
-              "children": [],
-              "label": "topcon_maestro2"
-            },
-            {
-              "children": [],
-              "label": "topcon_triton"
-            },
-            {
-              "children": [],
-              "label": "zeiss_cirrus"
-            },
-            {
-              "label": "manifest.tsv"
-            }
-          ],
-          "label": "structural_oct"
-        },
-        {
-          "label": "manifest.tsv"
-        }
-      ],
-      "label": "retinal_oct"
-    },
-    {
-      "children": [
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "topcon_maestro2"
-            },
-            {
-              "children": [],
-              "label": "topcon_triton"
-            },
-            {
-              "children": [],
-              "label": "zeiss_cirrus"
-            }
-          ],
-          "label": "enface"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "topcon_maestro2"
-            },
-            {
-              "children": [],
-              "label": "topcon_triton"
-            },
-            {
-              "children": [],
-              "label": "zeiss_cirrus"
-            }
-          ],
-          "label": "flow_cube"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "topcon_maestro2"
-            },
-            {
-              "children": [],
-              "label": "topcon_triton"
-            },
-            {
-              "children": [],
-              "label": "zeiss_cirrus"
-            }
-          ],
-          "label": "segmentation"
-        },
-        {
-          "label": "manifest.tsv"
-        }
-      ],
-      "label": "retinal_octa"
-    },
-    {
-      "children": [
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "icare_eidon"
-            },
-            {
-              "children": [],
-              "label": "optomed_aurora"
-            },
-            {
-              "children": [],
-              "label": "topcon_maestro2"
-            },
-            {
-              "children": [],
-              "label": "topcon_triton"
-            }
-          ],
-          "label": "cfp"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "icare_eidon"
-            }
-          ],
-          "label": "faf"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "heidelberg_spectralis"
-            },
-            {
-              "children": [],
-              "label": "icare_eidon"
-            },
-            {
-              "children": [],
-              "label": "topcon_maestro2"
-            },
-            {
-              "children": [],
-              "label": "zeiss_cirrus"
-            },
-            {
-              "label": "manifest.tsv"
-            }
-          ],
-          "label": "ir"
-        }
-      ],
-      "label": "retinal_photography"
-    },
-    {
-      "children": [
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "garmin_vivosmart5"
-            }
-          ],
-          "label": "heart_rate"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "garmin_vivosmart5"
-            }
-          ],
-          "label": "oxygen_saturation"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "garmin_vivosmart5"
-            }
-          ],
-          "label": "physical_activity"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "garmin_vivosmart5"
-            }
-          ],
-          "label": "physical_activity_calorie"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "garmin_vivosmart5"
-            }
-          ],
-          "label": "respiratory_rate"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "garmin_vivosmart5"
-            }
-          ],
-          "label": "sleep"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "garmin_vivosmart5"
-            }
-          ],
-          "label": "stress"
-        },
-        {
-          "label": "manifest.tsv"
-        }
-      ],
-      "label": "wearable_activity_monitor"
-    },
-    {
-      "children": [
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "dexcom_g6"
-            }
-          ],
-          "label": "continuous_glucose_monitoring"
-        }
-      ],
-      "label": "wearable_blood_glucose"
-    },
-    {
-      "label": "CHANGELOG.md"
-    },
-    {
-      "label": "LICENSE.txt"
-    },
-    {
-      "label": "README.md"
-    },
-    {
-      "label": "dataset_description.json"
-    },
-    {
-      "label": "dataset_structure_description.json"
-    },
-    {
-      "label": "healthsheet.md"
-    },
-    {
-      "label": "participants.json"
-    },
-    {
-      "label": "participants.tsv"
-    },
-    {
-      "label": "study_description.json"
-    }
-  ],
+  "files": [],
   "data": {
     "size": 3869259500351,
     "fileCount": 358999,

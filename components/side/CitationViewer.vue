@@ -139,6 +139,13 @@ onMounted(() => {
         </NuxtLink>
       </p>
 
+      <!-- TODO: Remove this when we have a better way to handle this -->
+      <n-alert v-if="id === '4'" type="warning" class="pb-1 text-sm">
+        This dataset was created for pipeline development only and should not be
+        used for conducting scientific investigations. Please refer to the full
+        AI-READI dataset for citation instructions.
+      </n-alert>
+
       <!--      <TransitionFade>-->
       <!--        <div v-if="citationPending" class="hidden py-2">-->
       <!--          <n-skeleton text style="width: 80%" />-->
