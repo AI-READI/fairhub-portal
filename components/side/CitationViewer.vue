@@ -126,57 +126,70 @@ onMounted(() => {
         </NuxtLink>
       </p>
 
-<!--      <TransitionFade>-->
-<!--        <div v-if="citationPending" class="hidden py-2">-->
-<!--          <n-skeleton text style="width: 80%" />-->
+      <!-- TODO: Remove this when we have a better way to handle this -->
+      <p v-if="id === '3'" class="pb-1 text-sm">
+        When using this resource, please follow the citation instructions
+        provided at
+        <NuxtLink
+          href="https://docs.aireadi.org/docs/3/citation"
+          target="_blank"
+          class="underline transition-all hover:text-slate-600"
+        >
+          https://docs.aireadi.org/docs/3/citation
+        </NuxtLink>
+      </p>
 
-<!--          <n-skeleton text />-->
+      <!--      <TransitionFade>-->
+      <!--        <div v-if="citationPending" class="hidden py-2">-->
+      <!--          <n-skeleton text style="width: 80%" />-->
 
-<!--          <n-skeleton text style="width: 60%" />-->
-<!--        </div>-->
+      <!--          <n-skeleton text />-->
 
-<!--        <div v-else>-->
-<!--          <n-alert v-if="citationError" type="error">-->
-<!--            Something went wrong with generating the citation. Please try again-->
-<!--            later.-->
-<!--          </n-alert>-->
+      <!--          <n-skeleton text style="width: 60%" />-->
+      <!--        </div>-->
 
-<!--          &lt;!&ndash; <p v-else class="text-sm">{{ citation?.formattedText }}</p> &ndash;&gt;-->
-<!--        </div>-->
-<!--      </TransitionFade>-->
+      <!--        <div v-else>-->
+      <!--          <n-alert v-if="citationError" type="error">-->
+      <!--            Something went wrong with generating the citation. Please try again-->
+      <!--            later.-->
+      <!--          </n-alert>-->
 
-<!--      <n-flex align="center" justify="space-between" class="hidden">-->
-<!--        <n-select-->
-<!--          v-model:value="citationFormat"-->
-<!--          size="small"-->
-<!--          :options="citationFormats"-->
-<!--          :consistent-menu-width="false"-->
-<!--          class="hidden w-max"-->
-<!--          :loading="citationPending"-->
-<!--          :disabled="citationPending"-->
-<!--          @update:value="getFormattedCitation"-->
-<!--        />-->
+      <!--          &lt;!&ndash; <p v-else class="text-sm">{{ citation?.formattedText }}</p> &ndash;&gt;-->
+      <!--        </div>-->
+      <!--      </TransitionFade>-->
 
-<!--        <n-button-->
-<!--          quaternary-->
-<!--          type="info"-->
-<!--          size="large"-->
-<!--          class="hidden"-->
-<!--          @click="copyToClipboard(citation?.formattedText)"-->
-<!--        >-->
-<!--          <template #icon>-->
-<!--            <Icon name="uil:copy" />-->
-<!--          </template>-->
-<!--        </n-button>-->
-<!--      </n-flex>-->
+      <!--      <n-flex align="center" justify="space-between" class="hidden">-->
+      <!--        <n-select-->
+      <!--          v-model:value="citationFormat"-->
+      <!--          size="small"-->
+      <!--          :options="citationFormats"-->
+      <!--          :consistent-menu-width="false"-->
+      <!--          class="hidden w-max"-->
+      <!--          :loading="citationPending"-->
+      <!--          :disabled="citationPending"-->
+      <!--          @update:value="getFormattedCitation"-->
+      <!--        />-->
 
-<!--      <n-divider class="hidden" />-->
+      <!--        <n-button-->
+      <!--          quaternary-->
+      <!--          type="info"-->
+      <!--          size="large"-->
+      <!--          class="hidden"-->
+      <!--          @click="copyToClipboard(citation?.formattedText)"-->
+      <!--        >-->
+      <!--          <template #icon>-->
+      <!--            <Icon name="uil:copy" />-->
+      <!--          </template>-->
+      <!--        </n-button>-->
+      <!--      </n-flex>-->
 
-<!--      <n-alert type="warning" :bordered="false" class="hidden">-->
-<!--        There maybe other required citations when using this dataset. Please-->
-<!--        check the license and other resources associated with the dataset for-->
-<!--        more information.-->
-<!--      </n-alert>-->
+      <!--      <n-divider class="hidden" />-->
+
+      <!--      <n-alert type="warning" :bordered="false" class="hidden">-->
+      <!--        There maybe other required citations when using this dataset. Please-->
+      <!--        check the license and other resources associated with the dataset for-->
+      <!--        more information.-->
+      <!--      </n-alert>-->
     </n-flex>
   </n-flex>
 </template>

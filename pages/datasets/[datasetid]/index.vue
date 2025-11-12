@@ -384,7 +384,7 @@ const onTabChange = () => {
 
         <n-flex v-else>
           <NuxtLink :to="`/datasets/${dataset?.id}/access`">
-            <n-button size="large" type="info" secondary class="my-3" disabled>
+            <n-button size="large" type="info" secondary class="my-3">
               <template #icon>
                 <Icon name="line-md:download-loop" />
               </template>

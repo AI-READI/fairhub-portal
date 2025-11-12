@@ -2,7 +2,7 @@
 import type { TreeOption } from "naive-ui";
 import { NButton, NDivider } from "naive-ui";
 import prettyBytes from "pretty-bytes";
-import identifierType from "../../dev/related_identifier.json";
+import identifierType from "@/assets/data/related_identifier.json";
 import { Icon } from "#components";
 
 const drawerActive = ref(false);
