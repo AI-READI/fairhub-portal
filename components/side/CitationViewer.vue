@@ -74,14 +74,14 @@ const getCitation = async (format: string = "apa") => {
 
 // todo: add a watchEffect for the error responses
 
-const copyToClipboard = (text: string = "") => {
-  navigator.clipboard.writeText(text);
-  push.success("Citation copied to clipboard");
-};
+// const copyToClipboard = (text: string = "") => {
+//   navigator.clipboard.writeText(text);
+//   push.success("Citation copied to clipboard");
+// };
 
-const getFormattedCitation = async (format: string) => {
-  await getCitation(format);
-};
+// const getFormattedCitation = async (format: string) => {
+//   await getCitation(format);
+// };
 
 onMounted(() => {
   getCitation();

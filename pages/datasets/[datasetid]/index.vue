@@ -844,7 +844,11 @@ const onTabChange = () => {
                 <h3>License</h3>
 
                 <NuxtLink
-                  to="https://doi.org/10.5281/zenodo.10642459"
+                  :to="
+                    dataset?.id == '1' || dataset?.id == '2'
+                      ? 'https://doi.org/10.5281/zenodo.10642459'
+                      : 'https://doi.org/10.5281/zenodo.17555036'
+                  "
                   target="_blank"
                   class="underline transition-all hover:text-slate-600"
                 >
