@@ -6,18 +6,16 @@ const props = defineProps({
     required: true,
     type: Object as PropType<DatasetStructureDescription>,
   },
-  folderStructure: {
-    required: true,
-    type: Array as PropType<Array<FolderStructure>>,
-  },
 });
 
 const selectedFolders = defineModel<string[]>({ required: true });
 
 type FolderDescriptor = {
+  id: string;
   name: string;
   description: string | undefined;
   numberOfFiles: number | undefined;
+  selected: boolean;
   size: number | undefined;
   type: string;
 };
@@ -26,9 +24,11 @@ const folderMetadata = computed(() => {
   const metadata = new Map<string, FolderDescriptor>();
   props.datasetStructureDescription.directoryList
     .map((item) => ({
+      id: useId(),
       name: item.directoryName,
       description: item.directoryDescription,
       numberOfFiles: item.numberOfFiles,
+      selected: false,
       size: item.size,
       type: item.directoryType,
     }))
@@ -36,29 +36,10 @@ const folderMetadata = computed(() => {
   return metadata;
 });
 
-const folders = computed(() =>
-  props.folderStructure
-    .filter((file) => file.children)
-    .map((folder) => {
-      const metadata = folderMetadata.value;
-      const folderDescriptor = metadata.get(folder.label);
-      const description =
-        folderDescriptor?.description ?? "No description found for this folder";
-      const size = folderDescriptor?.size;
-      const numberOfFiles = folderDescriptor?.numberOfFiles;
-      return {
-        id: useId(),
-        description,
-        label: folder.label,
-        numberOfFiles,
-        selected: false,
-        size,
-      };
-    }),
-);
-
 const hasFolderSizes = computed(() =>
-  folders.value.every((folder) => Number.isFinite(folder.size)),
+  Array.from(folderMetadata.value.values()).every((folder) =>
+    Number.isFinite(folder.size ?? NaN),
+  ),
 );
 
 const totalBytes = computed(() =>
@@ -71,18 +52,22 @@ const totalBytes = computed(() =>
 <template>
   <n-checkbox-group v-model:value="selectedFolders">
     <n-flex :vertical="true">
-      <n-card v-for="folder in folders" :key="folder.id" size="small">
+      <n-card
+        v-for="folder in folderMetadata.values()"
+        :key="folder.id"
+        size="small"
+      >
         <div role="none" class="flex flex-row items-center gap-2">
           <n-checkbox
             size="large"
-            :value="folder.label"
+            :value="folder.name"
             :aria-labelledby="`folder-label-${folder.id}`"
             :aria-describedby="`folder-description-${folder.id}`"
           />
 
           <div role="none" class="flex flex-col gap-2">
             <span :id="`folder-label-${folder.id}`" class="font-bold">
-              <Icon name="ic:baseline-folder" /> {{ folder.label }}
+              <Icon name="ic:baseline-folder" /> {{ folder.name }}
             </span>
 
             <span :id="`folder-description-${folder.id}`">
