@@ -1,15 +1,15 @@
-import DatasetRecord from "../../../dev/datasetRecord.json";
+import MiniDatasetRecord from "../../../dev/miniDatasetRecord.json";
 
 export default defineEventHandler(async (_event) => {
   // console.log("event", DatasetRecord);
 
-  const thirdRecord = await prisma.published_dataset.findUnique({
+  const miniRecord = await prisma.published_dataset.findUnique({
     where: {
-      id: "3",
+      id: "4",
     },
   });
 
-  if (!thirdRecord) {
+  if (!miniRecord) {
     console.log("No record found, exiting function");
     throw createError({
       statusCode: 500,
@@ -28,20 +28,20 @@ export default defineEventHandler(async (_event) => {
 
   const updatedRecord = await prisma.published_dataset.update({
     data: {
-      title: DatasetRecord.title,
-      data: DatasetRecord.data,
-      dataset_id: DatasetRecord.dataset_id,
-      description: DatasetRecord.description,
-      doi: DatasetRecord.doi,
-      files: DatasetRecord.files,
-      published_metadata: DatasetRecord.published_metadata,
-      study_id: DatasetRecord.study_id,
-      study_title: DatasetRecord.study_title,
-      version_id: DatasetRecord.version_id,
-      version_title: DatasetRecord.version_title,
+      title: MiniDatasetRecord.title,
+      data: MiniDatasetRecord.data,
+      dataset_id: MiniDatasetRecord.dataset_id,
+      description: MiniDatasetRecord.description,
+      doi: MiniDatasetRecord.doi,
+      files: MiniDatasetRecord.files,
+      published_metadata: MiniDatasetRecord.published_metadata,
+      study_id: MiniDatasetRecord.study_id,
+      study_title: MiniDatasetRecord.study_title,
+      version_id: MiniDatasetRecord.version_id,
+      version_title: MiniDatasetRecord.version_title,
     },
     where: {
-      id: "3",
+      id: "4",
     },
   });
 

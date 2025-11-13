@@ -1,12 +1,12 @@
 {
-  "id": "2",
+  "id": "3",
   "study_id": "f5d4172f-b0fb-48c8-b545-0192d812b329",
   "dataset_id": "d894862f-0795-4ba6-b40b-fae14eb77813",
-  "version_id": "4a5d1487-ebb6-4add-9301-cd7de32f8a63",
-  "doi": "10.60775/fairhub.2",
+  "version_id": "504ba283-30fc-4a78-b2f9-857d3108a4ad",
+  "doi": "10.60775/fairhub.3",
   "title": "Flagship Dataset of Type 2 Diabetes from the AI-READI Project",
-  "description": "The AI-READI project seeks to create and share a flagship ethically-sourced dataset of type 2 diabetes",
-  "version_title": "2.0.0",
+  "description": "The AI-READI project seeks to create and share a flagship ethically-sourced dataset of type 2 diabetes.",
+  "version_title": "3.0.0",
   "study_title": "AI Ready and Exploratory Atlas for Diabetes Insights",
   "published_metadata": {
     "study_description": {
@@ -40,9 +40,9 @@
       },
       "sponsorCollaboratorsModule": {
         "leadSponsor": {
-          "leadSponsorName": "University of Washington",
+          "leadSponsorName": "Washington University in St. Louis",
           "leadSponsorIdentifier": {
-            "leadSponsorIdentifierValue": "https://ror.org/00cvxb145",
+            "leadSponsorIdentifierValue": "https://ror.org/01yc7t268",
             "leadSponsorIdentifierScheme": "ROR",
             "schemeURI": "https://ror.org/"
           }
@@ -60,9 +60,9 @@
             }
           ],
           "responsiblePartyInvestigatorAffiliation": {
-            "responsiblePartyInvestigatorAffiliationName": "University of Washington",
+            "responsiblePartyInvestigatorAffiliationName": "Washington University in St. Louis",
             "responsiblePartyInvestigatorAffiliationIdentifier": {
-              "responsiblePartyInvestigatorAffiliationIdentifierValue": "https://ror.org/00cvxb145",
+              "responsiblePartyInvestigatorAffiliationIdentifierValue": "https://ror.org/01yc7t268",
               "responsiblePartyInvestigatorAffiliationIdentifierScheme": "ROR",
               "schemeURI": "https://ror.org/"
             }
@@ -134,8 +134,8 @@
         "oversightHasDMC": "No"
       },
       "descriptionModule": {
-        "briefSummary": "The study will collect a cross-sectional dataset of 4000 people across the US who are either 1) healthy, or 2) belong in one of the three stages of diabetes severity (pre-diabetes/lifestyle controlled, oral medication and/or non-insulin-injectable medication controlled, or insulin dependent), forming a total of four groups of patients. Clinical data (social determinants of health surveys, continuous glucose monitoring data, biomarkers, genetic data, retinal imaging, cognitive testing, etc.) will be collected. The purpose of this project is data generation to allow future creation of artificial intelligence/machine learning (AI/ML) algorithms aimed at defining disease trajectories and underlying genetic links in different racial/ethnic cohorts. A smaller subgroup of participants will be invited to come for a follow-up visit in year 4 of the project (longitudinal arm of the study). Data will be placed in an open-source repository and samples will be sent to the study sample repository and used for future research.",
-        "detailedDescription": "The Artificial Intelligence Ready and Exploratory Atlas for Diabetes Insights (AI-READI) project seeks to create a flagship ethically-sourced dataset to enable future generations of artificial intelligence/machine learning (AI/ML) research to provide critical insights into type 2 diabetes mellitus (T2DM), including salutogenic pathways to return to health. The ability to understand and affect the course of complex, multi-organ diseases such as T2DM has been limited by a lack of well-designed, high quality, large, and inclusive multimodal datasets. The AI-READI team of investigators will aim to collect a cross-sectional dataset of 4,000 people and longitudinal data from 10% of the study cohort across the US. Data collection will be specifically designed to permit downstream pseudo-time manifold analysis, an approach used to predict disease trajectories by collecting and learning from complex, multimodal data from participants with differing disease severity (normal to insulin-dependent T2DM). The long-term objective for this project is to develop a foundational dataset in T2DM, agnostic to existing classification criteria or biases, which can be used to reconstruct a temporal atlas of T2DM development and reversal towards health (i.e., salutogenesis). Data will be optimized for downstream AI/ML research and made publicly available."
+        "briefSummary": "The study will collect a cross-sectional dataset of 4000 people across the US from diverse racial/ethnic groups who are either 1) healthy, or 2) belong in one of the three stages of diabetes severity (pre-diabetes/lifestyle controlled, oral medication and/or non-insulin-injectable medication controlled, or insulin dependent), forming a total of four groups of patients. Clinical data (social determinants of health surveys, continuous glucose monitoring data, biomarkers, genetic data, retinal imaging, cognitive testing, etc.) will be collected. The purpose of this project is data generation to allow future creation of artificial intelligence/machine learning (AI/ML) algorithms aimed at defining disease trajectories and underlying genetic links in different racial/ethnic cohorts. A smaller subgroup of participants will be invited to come for a follow-up visit in year 4 of the project (longitudinal arm of the study). Data will be placed in an open-source repository and samples will be sent to the study sample repository and used for future research.",
+        "detailedDescription": "The Artificial Intelligence Ready and Exploratory Atlas for Diabetes Insights (AI-READI) project seeks to create a flagship ethically-sourced dataset to enable future generations of artificial intelligence/machine learning (AI/ML) research to provide critical insights into type 2 diabetes mellitus (T2DM), including salutogenic pathways to return to health. The ability to understand and affect the course of complex, multi-organ diseases such as T2DM has been limited by a lack of well-designed, high quality, large, and inclusive multimodal datasets. The AI-READI team of investigators will aim to collect a cross-sectional dataset of 4,000 people and longitudinal data from 10% of the study cohort across the US. The study cohort will be balanced for self-reported race/ethnicity, gender, and diabetes disease stage. Data collection will be specifically designed to permit downstream pseudo-time manifold analysis, an approach used to predict disease trajectories by collecting and learning from complex, multimodal data from participants with differing disease severity (normal to insulin-dependent T2DM). The long-term objective for this project is to develop a foundational dataset in T2DM, agnostic to existing classification criteria or biases, which can be used to reconstruct a temporal atlas of T2DM development and reversal towards health (i.e., salutogenesis). Data will be optimized for downstream AI/ML research and made publicly available."
       },
       "conditionsModule": {
         "conditionList": [
@@ -163,7 +163,7 @@
             }
           },
           {
-            "keywordValue": "Equitable Data Collection"
+            "keywordValue": "Exploratory Data Collection"
           },
           {
             "keywordValue": "Machine Learning",
@@ -213,12 +213,16 @@
         "studyType": "Observational",
         "isPatientRegistry": "No",
         "designInfo": {
-          "designObservationalModelList": ["Cohort"],
-          "designTimePerspectiveList": ["Cross-sectional"]
+          "designObservationalModelList": [
+            "Cohort"
+          ],
+          "designTimePerspectiveList": [
+            "Cross-sectional"
+          ]
         },
         "bioSpec": {
           "bioSpecRetention": "Samples With DNA",
-          "bioSpecDescription": "Participants who consent are asked to provide both blood and urine for research use.  There are three distinct elements that follow from these collections; first, a small amount of the collected blood is sent to the local collection site hospital lab for a complete blood cell count on the day of the encounter. Second, an additional portion of the blood and the urine sample are processed and stored at the collection site for batch shipment to the University of Washington Nutrition and Obesity Research Center for specialized lab tests.  Third, the remaining majority of the collected blood is processed into a variety of derivatives that are being used to establish a large repository of biospecimens at the University of Alabama at Birmingham to be used in research to further our understanding of diabetes, diabetic associated eye disease and other applications related to health and related diseases. These derivatives include isolated plasma, serum, DNA, buffy coats (white blood cells), blood stabilized for future isolation of RNA and peripheral blood mononuclear cells (PBMC). These derivatives are separated into small aliquots to facilitate future approved research tests and are stored at either -80oC or at cryogenic temperatures (PBMC)."
+          "bioSpecDescription": "Participants who consent are asked to provide both blood and urine for research use.  There are three distinct elements that follow from these collections; first, a small amount of the collected blood is sent to the local collection site hospital lab for a complete blood cell count on the day of the encounter. Second, an additional portion of the blood and the urine sample are processed and stored at the collection site for batch shipment to the University of Washington Nutrition and Obesity Research Center for specialized lab tests.  Third, the remaining majority of the collected blood is processed into a variety of derivatives that are being used to establish a large repository of biospecimens at the University of Alabama at Birmingham to be used in research to further our understanding of diabetes, diabetic associated eye disease and other applications related to health and related diseases. These derivatives include isolated plasma, serum, DNA, buffy coats (white blood cells), blood stabilized for future isolation of RNA and peripheral blood mononuclear cells (PBMC). These derivatives are separated into small aliquots to facilitate future approved research test and are stored at either -80oC or at cryogenic temperatures (PBMC)."
         },
         "enrollmentInfo": {
           "enrollmentCount": "4000",
@@ -230,22 +234,30 @@
           {
             "armGroupLabel": "Healthy",
             "armGroupDescription": "Participants who do not have Type 1 or Type 2 Diabetes",
-            "armGroupInterventionList": ["AI-READI protocol"]
+            "armGroupInterventionList": [
+              "AI-READI protocol"
+            ]
           },
           {
             "armGroupLabel": "Pre-diabetes/Lifestyle Controlled",
             "armGroupDescription": "Participants with pre-Type 2 Diabetes and those with Type 2 Diabetes whose blood sugar is controlled by lifesyle adjustments",
-            "armGroupInterventionList": ["AI-READI protocol"]
+            "armGroupInterventionList": [
+              "AI-READI protocol"
+            ]
           },
           {
             "armGroupLabel": "Oral Medication and/or Non-insulin-injectable Medication Controlled",
             "armGroupDescription": "Participants with Type 2 Diabetes whose blood sugar is controlled by oral or injectable medications other than insulin",
-            "armGroupInterventionList": ["AI-READI protocol"]
+            "armGroupInterventionList": [
+              "AI-READI protocol"
+            ]
           },
           {
             "armGroupLabel": "Insulin Dependent",
             "armGroupDescription": "Participants with Type 2 Diabetes whose blood sugar is controlled by insulin",
-            "armGroupInterventionList": ["AI-READI protocol"]
+            "armGroupInterventionList": [
+              "AI-READI protocol"
+            ]
           }
         ],
         "interventionList": [
@@ -276,7 +288,7 @@
             "Type 1 diabetes"
           ]
         },
-        "studyPopulation": "Adult patients will be recruited into one of four groups: 1) healthy/no diabetes, 2) pre-diabetes/borderline diabetes/lifestyle-controlled diabetes, 3) oral medication and/or non-insulin injectable medication controlled type 2 diabetes, or 4) insulin dependent type 2 diabetes. The investigators aim to recruit approximately 1000 patients into each of the four groups. Patients will be recruited from University of Washington (UW), University of California at San Diego (UCSD), and University of Alabama at Birmingham (UAB).",
+        "studyPopulation": "Adult patients will be recruited into one of four groups: 1) healthy/no diabetes, 2) pre-diabetes/borderline diabetes/lifestyle-controlled diabetes, 3) oral medication and/or non-insulin injectable medication controlled type 2 diabetes, or 4) insulin dependent type 2 diabetes. The investigators aim to recruit approximately 1000 patients into each of the four groups. Patients will be recruited from University of Washington (UW), University of California at San Diego (UCSD), and University of Alabama at Birmingham (UAB). The study aims to recruit 1,000 subjects from each of the following racial and ethnic groups: White, Asian, Hispanic, and Black. Subjects will be age- and sex-matched within and between groups.",
         "samplingMethod": "Non-Probability Sample"
       },
       "contactsLocationsModule": {
@@ -293,9 +305,9 @@
               }
             ],
             "centralContactAffiliation": {
-              "centralContactAffiliationName": "University of Washington",
+              "centralContactAffiliationName": "Washington University in St. Louis",
               "centralContactAffiliationIdentifier": {
-                "centralContactAffiliationIdentifierValue": "https://ror.org/00cvxb145",
+                "centralContactAffiliationIdentifierValue": "https://ror.org/01yc7t268",
                 "centralContactAffiliationIdentifierScheme": "ROR",
                 "schemeURI": "https://ror.org"
               }
@@ -316,9 +328,9 @@
               }
             ],
             "overallOfficialAffiliation": {
-              "overallOfficialAffiliationName": "University of Washington",
+              "overallOfficialAffiliationName": "Washington University in St. Louis",
               "overallOfficialAffiliationIdentifier": {
-                "overallOfficialAffiliationIdentifierValue": "https://ror.org/00cvxb145",
+                "overallOfficialAffiliationIdentifierValue": "https://ror.org/01yc7t268",
                 "overallOfficialAffiliationIdentifierScheme": "ROR",
                 "schemeURI": "https://ror.org"
               }
@@ -337,9 +349,9 @@
               }
             ],
             "overallOfficialAffiliation": {
-              "overallOfficialAffiliationName": "University of Washington",
+              "overallOfficialAffiliationName": "Washington University in St. Louis",
               "overallOfficialAffiliationIdentifier": {
-                "overallOfficialAffiliationIdentifierValue": "https://ror.org/00cvxb145",
+                "overallOfficialAffiliationIdentifierValue": "https://ror.org/01yc7t268",
                 "overallOfficialAffiliationIdentifierScheme": "ROR",
                 "schemeURI": "https://ror.org"
               }
@@ -403,6 +415,48 @@
               "overallOfficialAffiliationName": "Johns Hopkins University",
               "overallOfficialAffiliationIdentifier": {
                 "overallOfficialAffiliationIdentifierValue": "https://ror.org/00za53h95",
+                "overallOfficialAffiliationIdentifierScheme": "ROR",
+                "schemeURI": "https://ror.org"
+              }
+            },
+            "overallOfficialRole": "Study Principal Investigator"
+          },
+          {
+            "overallOfficialFirstName": "Jorge",
+            "overallOfficialLastName": "Contreras",
+            "overallOfficialDegree": "J.D.",
+            "overallOfficialIdentifier": [
+              {
+                "overallOfficialIdentifierValue": "https://orcid.org/0000-0002-7899-3060",
+                "overallOfficialIdentifierScheme": "ORCID",
+                "schemeURI": "https://orcid.org"
+              }
+            ],
+            "overallOfficialAffiliation": {
+              "overallOfficialAffiliationName": "University of Utah",
+              "overallOfficialAffiliationIdentifier": {
+                "overallOfficialAffiliationIdentifierValue": "https://ror.org/03r0ha626",
+                "overallOfficialAffiliationIdentifierScheme": "ROR",
+                "schemeURI": "https://ror.org"
+              }
+            },
+            "overallOfficialRole": "Study Principal Investigator"
+          },
+          {
+            "overallOfficialFirstName": "Nicholas",
+            "overallOfficialLastName": "Evans",
+            "overallOfficialDegree": "PhD",
+            "overallOfficialIdentifier": [
+              {
+                "overallOfficialIdentifierValue": "https://orcid.org/0000-0002-3330-0224",
+                "overallOfficialIdentifierScheme": "ORCID",
+                "schemeURI": "https://orcid.org"
+              }
+            ],
+            "overallOfficialAffiliation": {
+              "overallOfficialAffiliationName": "University of Massachusetts Lowell",
+              "overallOfficialAffiliationIdentifier": {
+                "overallOfficialAffiliationIdentifierValue": "https://ror.org/03hamhx47",
                 "overallOfficialAffiliationIdentifierScheme": "ROR",
                 "schemeURI": "https://ror.org"
               }
@@ -642,11 +696,11 @@
         ]
       }
     },
-    "readme": "## Overview of the study\n\nThe Artificial Intelligence Ready and Exploratory Atlas for Diabetes Insights (AI-READI) project seeks to create a flagship ethically-sourced dataset to enable future generations of artificial intelligence/machine learning (AI/ML) research to provide critical insights into type 2 diabetes mellitus (T2DM), including salutogenic pathways to return to health. The ability to understand and affect the course of complex, multi-organ diseases such as T2DM has been limited by a lack of well-designed, high quality, large, and inclusive multimodal datasets. The AI-READI team of investigators will aim to collect a cross-sectional dataset of 4,000 people and longitudinal data from 10% of the study cohort across the US. The study cohort will be balanced for diabetes disease stage. Data collection will be specifically designed to permit downstream pseudo-time manifold analysis, an approach used to predict disease trajectories by collecting and learning from complex, multimodal data from participants with differing disease severity (normal to insulin-dependent T2DM). The long-term objective for this project is to develop a foundational dataset in T2DM, agnostic to existing classification criteria or biases, which can be used to reconstruct a temporal atlas of T2DM development and reversal towards health (i.e., salutogenesis). Data will be optimized for downstream AI/ML research and made publicly available. \n\n## Description of the dataset\n\nThis dataset contains data from 1067 participants that was collected between July 19, 2023 and July 31, 2024. Data from multiple modalities are included. A full list is provided in the `Data Standards` section below. The data in this dataset contain no protected health information (PHI). Information related to the sex and race/ethnicity of the participants as well as medication used has also been removed.\n\nThe dataset contains 165,051 files and is around 2.01 TB in size.\n\nA detailed description of the dataset is available in the AI-READI documentation for v2.0.0 of the dataset at [docs.aireadi.org](https://docs.aireadi.org/).\n\n## Protocol\n\nThe protocol followed for collecting the data can be found in the AI-READI documentation for v2.0.0 of the dataset at [docs.aireadi.org](https://docs.aireadi.org/).\n\n## Dataset access/restrictions\n\nAccessing the dataset requires several steps, including:\n\n- Login in through a verified ID system\n- Agreeing to use the data only for type 2 diabetes related research.\n- Agreeing to the license terms which set certain restrictions and obligations for data usage (see `License` section below).\n\n## Data standards followed\n\nThis dataset is organized following the [Clinical Dataset Structure (CDS) v0.1.1](https://cds-specification.readthedocs.io/en/v0.1.1/). We refer to the CDS documentation for more details. Briefly, data is organized at the root level into one directory per datatype (c.f. Table below). Within each datatype folder, there is one folder per modality. Within each modality folder, there is one folder per device used to collect that modality. Within each device folder, there is one folder per participant. Each datatype, modality, and device folder is named using a name that best defines it. Each participant folder is named after the participant's ID number used in the study. For each datatype, the data files follow the standards listed in the Table below. More details are available in the dataset_structure_description.json metadata file included in this dataset.\n\n| Datatype directory name   | Description                                                                                                                                                                                      | File format standard followed                                                                                                                                     |\n| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| cardiac_ecg               | This directory contains electrocardiogram data collected by a 12 lead protocol (the current standard), Holter monitor, or smartwatch. The terms ECG and EKG are often used interchangeably.      | [WaveForm DataBase (WFDB)](https://wfdb.readthedocs.io/en/latest/wfdb.html)                                                                                       |\n| clinical_data             | This directory contains clinical data collected through REDCap. Each CSV file in this directory is a one-to-one mapping to the OMOP CDM tables.                                                  | [Observational Medical Outcomes Partnership (OMOP) Common Data Model (CDM)](https://ohdsi.github.io/TheBookOfOhdsi)                                               |\n| environment               | This directory contains data collected through an environmental sensor device custom built for the AI-READI project.                                                                             | [Earth Science Data Systems (ESDS) format](https://www.earthdata.nasa.gov/esdis/esco/standards-and-practices/ascii-file-format-guidelines-for-earth-science-data) |\n| retinal_flio              | This directory contains data collected through fluorescence lifetime imaging ophthalmoscopy (FLIO), an imaging modality for in vivo measurement of lifetimes of endogenous retinal fluorophores. | [Digital Imaging and Communications in Medicine (DICOM)](http://medical.nema.org/)                                                                                |\n| retinal_oct               | This directory contains data collected using optical coherence tomography (OCT), an imaging method using lasers that is used for mapping subsurface structure.                                   | [Digital Imaging and Communications in Medicine (DICOM)](http://medical.nema.org/)                                                                                |\n| retinal_octa              | This directory contains data collected using optical coherence tomography angiography (OCTA), a non-invasive imaging technique that generates volumetric angiography images.                     | [Digital Imaging and Communications in Medicine (DICOM)](http://medical.nema.org/)                                                                                |\n| retinal_photography       | This directory contains retinal photography data, which are 2D images. They are also referred to as fundus photography.                                                                          | [Digital Imaging and Communications in Medicine (DICOM)](http://medical.nema.org/)                                                                                |\n| wearable_activity_monitor | This directory contains data collected through a wearable fitness tracker.                                                                                                                       | [Open mHealth](https://www.openmhealth.org/documentation/#/schema-docs/schema-library)                                                                            |\n| wearable_blood_glucose    | This directory contains data collected through a continuous glucose monitoring (CGM) device.                                                                                                     | [Open mHealth](https://www.openmhealth.org/documentation/#/schema-docs/schema-library)                                                                            |\n\n## Resources\n\nAll of our data files are in formats that are accessible with free software commonly used for such data types so no specific software is required. Some useful resources related to this dataset are listed below:\n\n- Documentation of the dataset: [docs.aireadi.org](https://docs.aireadi.org/) (see `Dataset v2.0.0` for this version of the dataset)\n- AI-READI project website: [aireadi.org](https://aireadi.org/)\n- Zenodo community of the AI-READI project: [zenodo.org/communities/aireadi](https://zenodo.org/communities/aireadi)\n- GitHub organization of the AI-READI project: [github.com/AI-READI](https://github.com/AI-READI)\n\n### Suggested split\n\nThe suggested split for training, validating, and testing AI/ML models is included in the participants.tsv file that will be included in the dataset. A summary is provided in the table below.\n\n|                         | Train        |           |       |         | Val          |           |       |         | Test         |           |       |         | Total       |           |       |         |\n| ----------------------- | ------------ | --------- | ----- | ------- | ------------ | --------- | ----- | ------- | ------------ | --------- | ----- | ------- | ------------ | --------- | ----- | ------- |\n|    |    Hispanic     | Asian     | Black | White   | Hispanic     | Asian     | Black | White   | Hispanic     | Asian     | Black | White   | Hispanic     | Asian     | Black | White   |\n| Race/ethnicity (count)  | 144          | 167       | 211   | 225     | 40           | 40        | 40    | 40      | 40           | 40        | 40    | 40      | 224           | 247        | 291    | 305      |\n|                         | Male         | Female    |       |         | Male         | Female    |       |         | Male         | Female    |       |         | Male         | Female    |       |         |\n| Sex (count)             | 302          | 445       |       |         | 80           | 80        |       |         | 80           | 80        |       |         | 462           | 605        |       |         |\n|                        | No DM        | Lifestyle | Oral  | Insulin | No DM      | Lifestyle | Oral  | Insulin | No DM        | Lifestyle | Oral  | Insulin | No DM        | Lifestyle | Oral  | Insulin | |\n| Diabetes status (count) | 292          | 162       | 235   | 58      | 40           | 40        | 47    | 33      | 40           | 40        | 41    | 39      | 364           | 242        | 331    | 130      | |\n| Mean age (years ± sd)   | 60.3  ± 11.13 |           |       |         | 60.2 ±  10.5 |           |       |         | 60.4 ±  11.0 |           |       |         | 60.3 ±  11.1 |           |       |         | |\n| Total                   | 747          |           |       |         | 160          |           |       |         | 160          |           |       |         | 1067          |           |       |       |\n\n- No DM : Participants who do not have Type 1 or Type 2 Diabetes\n\n- Lifestyle: Participants with pre-Type 2 Diabetes and those with Type 2 Diabetes whose blood sugar is controlled by lifestyle adjustments\n\n- Oral: Participants with Type 2 Diabetes whose blood sugar is controlled by oral or injectable medications other than insulin\n\n- Insulin: Participants with Type 2 Diabetes whose blood sugar is controlled by insulin\n\n### Changes between versions of the dataset\n\nChanges between the current version of the dataset and the previous one are provided in details in the CHANGELOG file included in the dataset (also visible at [docs.aireadi.org](https://docs.aireadi.org/)). A summary of the major changes is provided in the table below.\n\n| Dataset   | v1.0.0 pilot              | year 2 data      |v2.0.0 main study |\n| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |-------------------------|\n| Participants               | 204      | 863  |1067|                                                                                   |\n| Data types                | 15+ data types                                                  |+1 image device       |15+ data types  |                                       |\n| Processing               |  custom / ad hoc                                                                             | automated + custom| automated + custom  |\n| Release date               | 5/3/2024    | included in v2.0.0 | 11/8/2024       |\n\n## License\n\nThis work is licensed under a custom license specifically tailored to enable the reuse of the AI-READI dataset (and other clinical datasets) for commercial or research purposes while putting strong requirements around data usage, security, and secondary sharing to protect study participants, especially when data is reused for artificial intelligence (AI) and machine learning (ML) related applications. More details are available in the License file included in the dataset and also available at https://doi.org/10.5281/zenodo.10642459.\n\n## How to cite\n\nIf you use this dataset for any purpose, please cite the resources specified in the AI-READI documentation for version 2.0.0 of the dataset at https://docs.aireadi.org.\n\n## Contact\n\nFor any questions, suggestions, or feedback related to this dataset, please go to https://aireadi.org/contact. We refer to the study_description.json and dataset_description.json metadata files included in this dataset for additional information about the contact person/entity, authors, and contributors of the dataset.\n\n## Acknowledgement\n\nThe AI-READI project is supported by NIH grant [1OT2OD032644](https://reporter.nih.gov/search/1ADgncihCk6fdMRJdCnBjg/project-details/10471118) through the NIH Bridge2AI Common Fund program.",
+    "readme": "## Overview of the study\n\nThe Artificial Intelligence Ready and Exploratory Atlas for Diabetes Insights (AI-READI) project seeks to create a flagship ethically-sourced dataset to enable future generations of artificial intelligence/machine learning (AI/ML) research to provide critical insights into type 2 diabetes mellitus (T2DM), including salutogenic pathways to return to health. The ability to understand and affect the course of complex, multi-organ diseases such as T2DM has been limited by a lack of well-designed, high quality, large, and inclusive multimodal datasets. The AI-READI team of investigators will aim to collect a cross-sectional dataset of 4,000 people and longitudinal data from 10% of the study cohort across the US. The study cohort will be balanced for self-reported race/ethnicity, gender, and diabetes disease stage. Data collection will be specifically designed to permit downstream pseudo-time manifold analysis, an approach used to predict disease trajectories by collecting and learning from complex, multimodal data from participants with differing disease severity (normal to insulin-dependent T2DM). The long-term objective for this project is to develop a foundational dataset in T2DM, agnostic to existing classification criteria or biases, which can be used to reconstruct a temporal atlas of T2DM development and reversal towards health (i.e., salutogenesis). Data will be optimized for downstream AI/ML research and made publicly available.\n\n## Description of the dataset\n\nThis dataset contains data from 2280 participants that was collected between July 19, 2023 and May 01, 2025. Data from multiple modalities are included. A full list is provided in the `Data Standards` section below. The data in this dataset contain no protected health information (PHI). Information related to the sex and race/ethnicity of the participants as well as medication used has also been removed.\n\nThe dataset contains 358,999 files and is around 3.87 TB in size.\n\nA detailed description of the dataset is available in the AI-READI documentation for v3.0.0 of the dataset at [docs.aireadi.org](https://docs.aireadi.org/).\n\n## Protocol\n\nThe protocol followed for collecting the data can be found in the AI-READI documentation for v3.0.0 of the dataset at [docs.aireadi.org](https://docs.aireadi.org/).\n\n## Dataset access/restrictions\n\nAccessing the dataset requires several steps, including:\n\n- Login in through a verified ID system\n- Agreeing to use the data only for type 2 diabetes related research.\n- Agreeing to the license terms which set certain restrictions and obligations for data usage (see `License` section below).\n\n## Data standards followed\n\nThis dataset is organized following the [Clinical Dataset Structure (CDS) v0.1.1](https://cds-specification.readthedocs.io/en/v0.1.1/). We refer to the CDS documentation for more details. Briefly, data is organized at the root level into one directory per datatype (c.f. Table below). Within each datatype folder, there is one folder per modality. Within each modality folder, there is one folder per device used to collect that modality. Within each device folder, there is one folder per participant. Each datatype, modality, and device folder is named using a name that best defines it. Each participant folder is named after the participant's ID number used in the study. For each datatype, the data files follow the standards listed in the Table below. More details are available in the dataset_structure_description.json metadata file included in this dataset.\n\n| Datatype directory name   | Description                                                                                                                                                                                      | File format standard followed                                                                                                                                     |\n| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| cardiac_ecg               | This directory contains electrocardiogram data collected by a 12 lead protocol (the current standard), Holter monitor, or smartwatch. The terms ECG and EKG are often used interchangeably.      | [WaveForm DataBase (WFDB)](https://wfdb.readthedocs.io/en/latest/wfdb.html)                                                                                       |\n| clinical_data             | This directory contains clinical data collected through REDCap. Each CSV file in this directory is a one-to-one mapping to the OMOP CDM tables.                                                  | [Observational Medical Outcomes Partnership (OMOP) Common Data Model (CDM)](https://ohdsi.github.io/TheBookOfOhdsi)                                               |\n| environment               | This directory contains data collected through an environmental sensor device custom built for the AI-READI project.                                                                             | [Earth Science Data Systems (ESDS) format](https://www.earthdata.nasa.gov/esdis/esco/standards-and-practices/ascii-file-format-guidelines-for-earth-science-data) |\n| retinal_flio              | This directory contains data collected through fluorescence lifetime imaging ophthalmoscopy (FLIO), an imaging modality for in vivo measurement of lifetimes of endogenous retinal fluorophores. | [Digital Imaging and Communications in Medicine (DICOM)](http://medical.nema.org/)                                                                                |\n| retinal_oct               | This directory contains data collected using optical coherence tomography (OCT), an imaging method using lasers that is used for mapping subsurface structure.                                   | [Digital Imaging and Communications in Medicine (DICOM)](http://medical.nema.org/)                                                                                |\n| retinal_octa              | This directory contains data collected using optical coherence tomography angiography (OCTA), a non-invasive imaging technique that generates volumetric angiography images.                     | [Digital Imaging and Communications in Medicine (DICOM)](http://medical.nema.org/)                                                                                |\n| retinal_photography       | This directory contains retinal photography data, which are 2D images. They are also referred to as fundus photography.                                                                          | [Digital Imaging and Communications in Medicine (DICOM)](http://medical.nema.org/)                                                                                |\n| wearable_activity_monitor | This directory contains data collected through a wearable fitness tracker.                                                                                                                       | [Open mHealth](https://www.openmhealth.org/documentation/#/schema-docs/schema-library)                                                                            |\n| wearable_blood_glucose    | This directory contains data collected through a continuous glucose monitoring (CGM) device.                                                                                                     | [Open mHealth](https://www.openmhealth.org/documentation/#/schema-docs/schema-library)                                                                            |\n\n## Resources\n\nAll of our data files are in formats that are accessible with free software commonly used for such data types so no specific software is required. Some useful resources related to this dataset are listed below:\n\n- Documentation of the dataset: [docs.aireadi.org](https://docs.aireadi.org/) (see 'Dataset v3.0.0' for this version of the dataset)\n- AI-READI project website: [aireadi.org](https://aireadi.org/)\n- Zenodo community of the AI-READI project: [zenodo.org/communities/aireadi](https://zenodo.org/communities/aireadi)\n- GitHub organization of the AI-READI project: [github.com/AI-READI](https://github.com/AI-READI)\n\n### Suggested split\n\nThe suggested split for training, validating, and testing AI/ML models is included in the participants.tsv file that will be included in the dataset. A summary is provided in the table below.\n\n|                         | Train       |           |       |         | Val         |           |       |         | Test        |           |       |         | Total       |           |       |         |\n| ----------------------- |-------------|-----------|-------|---------|-------------|-----------|-------|---------|-------------|-----------|-------|---------|-------------|-----------|-------|---------|\n|                         | Hispanic    | Asian     | Black | White   | Hispanic    | Asian     | Black | White   | Hispanic    | Asian     | Black | White   | Hispanic    | Asian     | Black | White   |\n| Race/ethnicity (count)  | 204         | 369       | 343   | 660     | 88          | 88        | 88    | 88      | 88          | 88        | 88    | 88      | 380         | 545       | 519   | 836     |\n|                         | Male        | Female    |       |         | Male        | Female    |       |         | Male        | Female    |       |         | Male        | Female    |       |         |\n| Sex (count)             | 599         | 977       |       |         | 176         | 176       |       |         | 176         | 176       |       |         | 951         | 1329      |       |         |\n|                         | No DM       | Lifestyle | Oral  | Insulin | No DM       | Lifestyle | Oral  | Insulin | No DM       | Lifestyle | Oral  | Insulin | No DM       | Lifestyle | Oral  | Insulin |\n| Diabetes status (count) | 600         | 384       | 487   | 105     | 88          | 88        | 109   | 67      | 88          | 88        | 90    | 86      | 776         | 560       | 686   | 258     |\n| Mean age (years ± sd)   | 61.1 ± 11.3 |           |       |         | 60.3 ± 10.8 |           |       |         | 60.5 ± 11.4 |           |       |         | 60.8 ± 11.3 |           |       |         |\n| Total                   | 1576        |           |       |         | 352         |           |       |         | 352         |           |       |         | 2280        |           |       |         |\n\n- No DM: Participants who do not have Type 1 or Type 2 Diabetes\n- Lifestyle: Participants with pre-Type 2 Diabetes and those with Type 2 Diabetes whose blood sugar is controlled by lifestyle adjustments\n- Oral: Participants with Type 2 Diabetes whose blood sugar is controlled by oral or injectable medications other than insulin\n- Insulin: Participants with Type 2 Diabetes whose blood sugar is controlled by insulin\n\n### Changes between versions of the dataset\n\nChanges between the current version of the dataset and the previous one are provided in details in the CHANGELOG file included in the dataset (also visible at docs.aireadi.org). A summary of the major changes is provided in the table below.\n\n| Dataset      | v1.0.0 pilot    | year 2 data        | year 3 data       | v3.0.0 main study  |\n| ------------ | --------------- | ------------------ |-------------------|--------------------|\n| Participants | 204             | 863                | 1213              | 2280               |\n| Data types   | 15+ data types  | +1 image device    | +3 image device   | 15+ data types     |\n| Processing   | custom / ad hoc | automated + custom |automated + custom | automated + custom |\n| Release date | 5/3/2024        | included in v2.0.0 |included in v3.0.0 | 11/17/2025         |\n\n## License\n\nThis work is licensed under a custom license specifically tailored to enable the reuse of the AI-READI dataset (and other clinical datasets) for commercial or research purposes while putting strong requirements around data usage, security, and secondary sharing to protect study participants, especially when data is reused for artificial intelligence (AI) and machine learning (ML) related applications. More details are available in the License file included in the dataset and also available at https://doi.org/10.5281/zenodo.17555036.\n\n## How to cite\n\nIf you use this dataset for any purpose, please cite the resources specified in the AI-READI documentation for version 3.0.0 of the dataset at https://docs.aireadi.org.\n\n## Contact\n\nFor any questions, suggestions, or feedback related to this dataset, please go to https://aireadi.org/contact. We refer to the study_description.json and dataset_description.json metadata files included in this dataset for additional information about the contact person/entity, authors, and contributors of the dataset.\n\n## Acknowledgement\n\nThe AI-READI project is supported by NIH grant [1OT2OD032644](https://reporter.nih.gov/search/1ADgncihCk6fdMRJdCnBjg/project-details/10471118) through the NIH Bridge2AI Common Fund program.",
     "dataset_description": {
       "schema": "https://schema.aireadi.org/v0.1.0/dataset_description.json",
       "identifier": {
-        "identifierValue": "10.60775/fairhub.2",
+        "identifierValue": "10.60775/fairhub.3",
         "identifierType": "DOI"
       },
       "title": [
@@ -658,22 +712,22 @@
           "titleType": "AlternativeTitle"
         }
       ],
-      "version": "2.0.0",
+      "version": "3.0.0",
       "creator": [
         {
           "creatorName": "AI-READI Consortium",
           "nameType": "Organizational"
         }
       ],
-      "publicationYear": "2024",
+      "publicationYear": "2025",
       "date": [
         {
-          "dateValue": "2024-11-08",
+          "dateValue": "2025-11-17",
           "dateType": "Available",
           "dateInformation": "Date dataset made available on FAIRhub"
         },
         {
-          "dateValue": "2023-07-19/2024-07-31",
+          "dateValue": "2023-07-19/2025-05-01",
           "dateType": "Collected",
           "dateInformation": "Period when the data was collected"
         }
@@ -702,7 +756,7 @@
       },
       "description": [
         {
-          "descriptionValue": "This dataset contains data from 1067 participants that was collected between from July 19, 2023 and July, 31 2024. Data from multiple modalities are included. The data in this dataset contain no protected health information (PHI). Information related to the sex and race/ethnicity of the participants as well as medication used has also been removed. A detailed description of the dataset is available in the AI-READI documentation for v2.0.0 of the dataset at https://docs.aireadi.org",
+          "descriptionValue": "This dataset contains data from 2280 participants that was collected between from July 19, 2023 and May 01, 2025. Data from multiple modalities are included. The data in this dataset contain no protected health information (PHI). Information related to the sex and race/ethnicity of the participants as well as medication used has also been removed. A detailed description of the dataset is available in the AI-READI documentation for v3.0.0 of the dataset at https://docs.aireadi.org",
           "descriptionType": "Abstract"
         }
       ],
@@ -775,9 +829,9 @@
         }
       ],
       "managingOrganization": {
-        "name": "University of Washington",
+        "name": "Washington University in St. Louis",
         "managingOrganizationIdentifier": {
-          "managingOrganizationIdentifierValue": "https://ror.org/00cvxb145",
+          "managingOrganizationIdentifierValue": "https://ror.org/01yc7t268",
           "managingOrganizationScheme": "ROR",
           "schemeURI": "https://ror.org"
         }
@@ -788,14 +842,17 @@
       },
       "rights": [
         {
-          "rightsName": "AI-READI custom license v1.0",
-          "rightsURI": "https://doi.org/10.5281/zenodo.10642459"
+          "rightsName": "AI-READI custom license v2.0",
+          "rightsURI": "https://doi.org/10.5281/zenodo.17555036"
         }
       ],
       "publisher": {
         "publisherName": "FAIRhub"
       },
-      "size": ["2.01 TB", "165,051 files"],
+      "size": [
+        "3.87 TB",
+        "358999 files"
+      ],
       "fundingReference": [
         {
           "funderName": "National Institutes of Health",
@@ -811,7 +868,12 @@
           "awardTitle": "Bridge2AI: Salutogenesis Data Generation Project"
         }
       ],
-      "format": ["image/DICOM", "text/markdown", "table/csv"]
+      "format": [
+        "application/dicom",
+        "text/markdown",
+        "text/csv",
+        "application/json"
+      ]
     },
     "dataset_structure_description": {
       "schema": "https://schema.aireadi.org/v0.1.1/dataset_structure_description.json",
@@ -925,8 +987,8 @@
               ]
             }
           ],
-          "size": 142139975,
-          "numberOfFiles": 2119
+          "size": 302931703,
+          "numberOfFiles": 4515
         },
         {
           "directoryName": "clinical_data",
@@ -1000,7 +1062,7 @@
               ]
             }
           ],
-          "size": 67270057,
+          "size": 176182781,
           "numberOfFiles": 7
         },
         {
@@ -1074,8 +1136,8 @@
               ]
             }
           ],
-          "size": 26396580156,
-          "numberOfFiles": 1045
+          "size": 55625676514,
+          "numberOfFiles": 2232
         },
         {
           "directoryName": "retinal_flio",
@@ -1153,8 +1215,8 @@
               ]
             }
           ],
-          "size": 504936506725,
-          "numberOfFiles": 3763
+          "size": 1069466876718,
+          "numberOfFiles": 7969
         },
         {
           "directoryName": "retinal_oct",
@@ -1267,8 +1329,8 @@
               ]
             }
           ],
-          "size": 698763967142,
-          "numberOfFiles": 25732
+          "size": 1345692284976,
+          "numberOfFiles": 56810
         },
         {
           "directoryName": "retinal_octa",
@@ -1333,6 +1395,11 @@
               "directoryDescription": "This directory contains en face data collected using OCTA. En face images, derived from 3D volume scans, are also referred to as C-scan OCT. These images provide a 2D view of the retina layers and have an orientation siimilar to fundus photographs.",
               "directoryList": [
                 {
+                  "directoryName": "heidelberg_spectralis",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains IR images, specifically from the Spectralis device, manufactured by Heidelberg."
+                },
+                {
                   "directoryName": "topcon_maestro2",
                   "directoryType": "device",
                   "directoryDescription": "This directory contains OCTA en face data collected from the Maestro2 device, manufactured by Topcon."
@@ -1355,6 +1422,11 @@
               "directoryDescription": "This directory contains flow cube data collected using OCTA. Flow cube provides information on blood flow in a 3D view.",
               "directoryList": [
                 {
+                  "directoryName": "heidelberg_spectralis",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains IR images, specifically from the Spectralis device, manufactured by Heidelberg."
+                },
+                {
                   "directoryName": "topcon_maestro2",
                   "directoryType": "device",
                   "directoryDescription": "This directory contains flow cube data collected from the Maestro2 device, manufacture by Topcon."
@@ -1376,6 +1448,11 @@
               "directoryType": "modality",
               "directoryDescription": "This directory contains segmentation data collected using OCTA. The segmentation information is presented in the form of heightmaps and includes information about the associated layers.",
               "directoryList": [
+                {
+                  "directoryName": "heidelberg_spectralis",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains IR images, specifically from the Spectralis device, manufactured by Heidelberg."
+                },
                 {
                   "directoryName": "topcon_maestro2",
                   "directoryType": "device",
@@ -1408,8 +1485,8 @@
               ]
             }
           ],
-          "size": 705745431960,
-          "numberOfFiles": 81675
+          "size": 1181034422063,
+          "numberOfFiles": 175713
         },
         {
           "directoryName": "retinal_photography",
@@ -1560,11 +1637,6 @@
                   "directoryDescription": "This directory contains IR images, specifically from the Maestro2 device, manufactured by Topcon."
                 },
                 {
-                  "directoryName": "topcon_triton",
-                  "directoryType": "device",
-                  "directoryDescription": "This directory contains IR images, specifically from the Triton device, manufactured by Topcon."
-                },
-                {
                   "directoryName": "zeiss_cirrus",
                   "directoryType": "device",
                   "directoryDescription": "This directory contains IR images, specifically from the Cirrus device, manufactured by Zeiss."
@@ -1586,8 +1658,8 @@
               ]
             }
           ],
-          "size": 55737846240,
-          "numberOfFiles": 43421
+          "size": 174478162758,
+          "numberOfFiles": 94253
         },
         {
           "directoryName": "wearable_activity_monitor",
@@ -1603,8 +1675,12 @@
             }
           ],
           "relatedTerm": [
-            { "relatedTermValue": "smartwatch" },
-            { "relatedTermValue": "activity monitoring" }
+            {
+              "relatedTermValue": "smartwatch"
+            },
+            {
+              "relatedTermValue": "activity monitoring"
+            }
           ],
           "relatedStandard": [
             {
@@ -1724,8 +1800,8 @@
               ]
             }
           ],
-          "size": 17170612349,
-          "numberOfFiles": 6230
+          "size": 38313536220,
+          "numberOfFiles": 15245
         },
         {
           "directoryName": "wearable_blood_glucose",
@@ -1811,8 +1887,8 @@
               ]
             }
           ],
-          "size": 1938813596,
-          "numberOfFiles": 1050
+          "size": 4169006971,
+          "numberOfFiles": 2246
         }
       ],
       "metadataFileList": [
@@ -1931,7 +2007,7 @@
         {
           "id": 1,
           "question": "Provide a 2 sentence summary of this dataset.",
-          "response": "The Artificial Intelligence Ready and Equitable Atlas for Diabetes Insights (AI-READI) is a dataset consisting of data collected from individuals with and without “Type 2 Diabetes Mellitus (T2DM)” and harmonized across 3 data collection sites. The composition of the dataset was designed with future studies using AI/Machine Learning in mind. This included recruitment sampling procedures aimed at achieving approximately equal distribution of participants across sex, race, and diabetes severity, as well as the design of a data acquisition protocol across multiple domains (survey data, physical measurements, clinical data, imaging data, wearable device data, etc.) to enable downstream AI/ML analyses that may not be feasible with existing data sources such as claims or electronic health records data. The goal is to better understand salutogenesis (the pathway from disease to health) in T2DM. Some data that are not considered to be sensitive personal health data will be available to the public for download upon agreement with a license that defines how the data can be used. The full dataset will be accessible by entering into a data use agreement. The public dataset will include survey data, blood and urine lab results, fitness activity levels, clinical measurements (e.g. monofilament and cognitive function testing), retinal images, ECG, blood sugar levels, and home air quality. The data held under controlled access include 5-digit zip code, sex, race, ethnicity, genetic sequencing data, medications, past health records, and traffic and accident reports. Of note, the overall enrollment goal is to have balanced distribution between different racial groups. As enrollment is ongoing, periodic updates to data releases may not have achieved balanced distribution across groups."
+          "response": "The Artificial Intelligence Ready and Exploratory Atlas for Diabetes Insights (AI-READI) is a dataset consisting of data collected from individuals with and without “Type 2 Diabetes Mellitus (T2DM)” and harmonized across 3 data collection sites. The composition of the dataset was designed with future studies using AI/Machine Learning in mind. This included recruitment sampling procedures aimed at achieving approximately equal distribution of participants across sex, race, and diabetes severity, as well as the design of a data acquisition protocol across multiple domains (survey data, physical measurements, clinical data, imaging data, wearable device data, etc.) to enable downstream AI/ML analyses that may not be feasible with existing data sources such as claims or electronic health records data. The goal is to better understand salutogenesis (the pathway from disease to health) in T2DM. Some data that are not considered to be sensitive personal health data will be available to the public for download upon agreement with a license that defines how the data can be used. The full dataset will be accessible by entering into a data use agreement. The public dataset will include survey data, blood and urine lab results, fitness activity levels, clinical measurements (e.g. monofilament and cognitive function testing), retinal images, ECG, blood sugar levels, and home air quality. The data held under controlled access include 5-digit zip code, sex, race, ethnicity, genetic sequencing data, past health records, and traffic and accident reports. Of note, the overall enrollment goal is to have balanced distribution between different racial groups. As enrollment is ongoing, the periodic updates to data releases may not have achieved balanced distribution across groups."
         },
         {
           "id": 2,
@@ -1943,17 +2019,17 @@
         {
           "id": 1,
           "question": "Does the dataset get released as static versions or is it dynamically updated?\n\n   a. If static, how many versions of the dataset exist?\n\n   b. If dynamic, how frequently is the dataset updated?",
-          "response": "The dataset gets released as static versions. This is the second version of the dataset and consists of data collected during the first year of the study, i.e. between July 19, 2023 and July, 31 2024 (the first version of the dataset consisted of data collected only during the pilot data collection phase). There are plans to release new versions of the dataset approximately once a year with additional data from participants who have been enrolled since the last dataset version release."
+          "response": "The dataset gets released as static versions. This is the third version of the dataset and consists of data collected up through the end of the second year of the study, i.e. between July 19, 2023 and May 1st, 2025. There are plans to release new versions of the dataset approximately once a year with additional data from participants who have been enrolled since the last dataset version release."
         },
         {
           "id": 2,
           "question": "Is this datasheet created for the original version of the dataset? If not, which version of the dataset is this datasheet for?",
-          "response": "This datasheet is created for the second version of the dataset."
+          "response": "This datasheet is created for the third version of the dataset."
         },
         {
           "id": 3,
           "question": "Are there any datasheets created for any versions of this dataset?",
-          "response": "There was a previous datasheet created for the first version of the dataset, which consisted of data collected during the pilot data collection phase. It is available here: https://docs.aireadi.org/docs/1/dataset/healthsheet"
+          "response": "There was a previous datasheet created for the first version of the dataset, which consisted of data collected during the pilot data collection phase. It is available here: https://docs.aireadi.org/docs/1/dataset/healthsheet.\n\nThere was also a previous datasheet created for the second version of the dataset, which consisted of data collected up to the end of the first full year of the study. It is available here: https://docs.aireadi.org/docs/2/dataset/healthsheet"
         },
         {
           "id": 4,
@@ -1962,38 +2038,68 @@
         },
         {
           "id": 5,
-          "question": "If the dataset has multiple versions, and this datasheet represents one of them, answer the following questions:\n\n   a. What are the characteristics that have been changed between different versions of the dataset?\n\n This version of the dataset includes more patients than the first version of the dataset. \n\n  b. Explain the motivation/rationale for creating the current version of the dataset.\n\n The current version of the dataset includes data from the first year of the study, rather than only the data collected from the pilot data collection phase (which comprised the first version of the dataset). \n\n  c. Does this version have more subjects/patients represented in the data, or fewer?\n\n This version has more subjects/patients represented in the data. \n\n  d. Does this version of the dataset have extended data or new data from the same patients as the older versions? Were any patients, data fields, or data points removed? If so, why?\n\n No, the data fields/types are the same as the prior version of the dataset. \n\n  e. Do we expect more versions of the dataset to be released?\n\n Yes, enrollment is ongoing, and future versions of the dataset will be released that will include larger numbers of subjects/patients as enrollment increases. \n\n  f. Is this datasheet for a version of the dataset? If yes, does this sub-version of the dataset introduce a new task, labeling, and/or recommended data splits? If the answer to any of these questions is yes, explain the rationale behind it.\n\n This datasheet is for the first year of the study and is the second version of the dataset.  It does include a new recommended data split for the 1067 participants balancing training, validation, and testing sets for age, sex, races/ethnicities, and study group.\n\n  g. Are you aware of any widespread version(s)/subversion(s) of the dataset? If yes, what is the addressed task, or application that is addressed?",
+          "question": "If the dataset has multiple versions, and this datasheet represents one of them, answer the following questions:\n\n   a. What are the characteristics that have been changed between different versions of the dataset? ",
+          "response": "This version of the dataset includes more patients than the first version of the dataset."
+        },
+        {
+          "id": 6,
+          "question": "b. Explain the motivation/rationale for creating the current version of the dataset.",
+          "response": "The current version of the dataset includes data from the second year of the study, rather than only the data collected from the pilot data collection phase (which comprised the first version of the dataset) and the first year of the study (which comprised the second version of the dataset)."
+        },
+        {
+          "id": 7,
+          "question": "c. Does this version have more subjects/patients represented in the data, or fewer?",
+          "response": "This version has more subjects/patients represented in the data (the first version of the dataset contains data from 204 participants, the second version contains additional data from 863 participants for a total of 1067 participants, and this version contains a total of 2280 participants)."
+        },
+        {
+          "id": 8,
+          "question": "d. Does this version of the dataset have extended data or new data from the same patients as the older versions? Were any patients, data fields, or data points removed? If so, why?",
+          "response": "The data fields/types are largely the same as the prior version of the dataset. However, the Snellen visual acuity variables were dropped in this version of the dataset, such that now only logMAR visual acuity measurements are available."
+        },
+        {
+          "id": 9,
+          "question": "e. Do we expect more versions of the dataset to be released?",
+          "response": "Yes, enrollment is ongoing, and future versions of the dataset will be released that will include larger numbers of subjects/patients as enrollment increases."
+        },
+        {
+          "id": 10,
+          "question": "f. Is this datasheet for a version of the dataset? If yes, does this sub-version of the dataset introduce a new task, labeling, and/or recommended data splits? If the answer to any of these questions is yes, explain the rationale behind it.",
+          "response": "This datasheet does not include new tasks or labeling. It does include a new recommended data split for the 2280 participants balancing training, validation, and testing sets for age, sex, races/ethnicities, and study group."
+        },
+        {
+          "id": 11,
+          "question": "g. Are you aware of any widespread version(s)/subversion(s) of the dataset? If yes, what is the addressed task, or application that is addressed?",
           "response": "No"
         }
       ],
       "motivation": [
         {
-          "id": 2,
+          "id": 1,
           "question": "For what purpose was the dataset created? Was there a specific task in mind? Was there a specific gap that needed to be filled? Please provide a description.",
           "response": "The purpose for creating the dataset was to enable future generations of artificial intelligence/machine learning (AI/ML) research to provide critical insights into type 2 diabetes mellitus (T2DM), including salutogenic pathways to return to health. T2DM is a growing public health threat. Yet, the current understanding of T2DM, especially in the context of salutogenesis, is limited. Given the complexity of T2DM, AI-based approaches may help with improving our understanding but a key issue is the lack of data ready for training AI models. The AI-READI dataset is intended to fill this gap."
         },
         {
-          "id": 3,
+          "id": 2,
           "question": "What are the applications that the dataset is meant to address? (e.g., administrative applications, software applications, research)",
           "response": "The multi-modal dataset being collected is being gathered to facilitate downstream pseudotime manifolds and various applications in artificial intelligence."
         },
         {
-          "id": 4,
+          "id": 3,
           "question": "Are there any types of usage or applications that are discouraged from using this dataset? If so, why?",
-          "response": "The AI READI dataset License imposes certain restrictions on the usage of the data. The restrictions are described in the License files available at https://doi.org/10.5281/zenodo.10642459. Briefly, the Licensee shall not: “(i) make clinical treatment decisions based on the Data, as it is intended solely as a research resource, or (ii) use or attempt to use the Data, alone or in concert with other information, to compromise or otherwise infringe the confidentiality of information on an individual person who is the source of any Data or any clinical data or biological sample from which Data has been generated (a 'Data Subject' and their right to privacy, to identify or contact any individual Data Subject or group of Data Subjects, to extract or extrapolate any identifying information about a Data Subject, to establish a particular Data Subject's membership in a particular group of persons, or otherwise to cause harm or injury to any Data Subject.”"
+          "response": "The AI READI dataset License imposes certain restrictions on the usage of the data. The restrictions are described in the License files available at https://doi.org/10.5281/zenodo.17555036."
         },
         {
-          "id": 5,
+          "id": 4,
           "question": "Who created this dataset (e.g., which team, research group), and on behalf of which entity (e.g., company, institution, organization)?",
           "response": "This dataset was created by members of the AI-READI project, hereby referred to as the AI-READI Consortium. Details about each member and their institutions are available on the project website at https://aireadi.org."
         },
         {
-          "id": 6,
+          "id": 5,
           "question": "Who funded the creation of the dataset? If there is an associated grant, please provide the name of the grantor and the grant name and number. If the funding institution differs from the research organization creating and managing the dataset, please state how.",
           "response": "The creation of the dataset was funded by the National Institutes of Health (NIH) through their Bridge2AI Program (https://commonfund.nih.gov/bridge2ai). The grant number is OT2ODO32644 and more information about the funding is available at https://reporter.nih.gov/search/T-mv2dbzIEqp9V6UJjHpgw/project-details/10885481. Note that the funding institution is not creating or managing the dataset. The dataset is created and managed by the awardees of the grant (c.f. answer to the previous question)."
         },
         {
-          "id": 7,
+          "id": 6,
           "question": "What is the distribution of backgrounds and experience/expertise of the dataset curators/generators?",
           "response": "There is a wide range of experience within the project team, including senior, mid-career, and early career faculty members as well as clinical research coordinators, staff, and interns. They collectively cover many areas of expertise including clinical research, data collection, data management, data standards, bioinformatics, team science, and ethics, among others. Visit https://aireadi.org/team for more information."
         }
@@ -2007,12 +2113,12 @@
         {
           "id": 2,
           "question": "How many instances are there in total (of each type, if appropriate) (breakdown based on schema, provide data stats)?",
-          "response": "There are 1067 instances in this current version of the dataset (version 2, released fall 2024)."
+          "response": "There are 2280 instances in this current version of the dataset (version 3, released fall 2025)."
         },
         {
           "id": 3,
           "question": "How many patients / subjects does this dataset represent? Answer this for both the preliminary dataset and the current version of the dataset.",
-          "response": "This version of the dataset from 1067 participants. The first version of the dataset, composed of data from the pilot data collection phase, had 204 instances."
+          "response": "This version of the dataset has data from 2280 participants. The first version of the dataset, composed of data from the pilot data collection phase, had 204 instances. The second version of the dataset, composed of data from the first year of the study, had 1067 instances."
         },
         {
           "id": 4,
@@ -2022,7 +2128,7 @@
         {
           "id": 5,
           "question": "What data modality does each patient data consist of? If the data is hierarchical, provide the modality details for all levels (e.g: text, image, physiological signal). Break down in all levels and specify the modalities and devices.",
-          "response": "Multiple modalities of data are collected for each participant, including survey data, clinical data, retinal imaging data, environmental sensor data, continuous glucose monitor data, and wearable activity monitor data. These encompass tabular data, imaging data, and physiological signal/waveform data. There is no unstructured text data included in this dataset. The exact forms used for data collection in REDCap are available [here](https://docs.aireadi.org/files/REDCap%20surveys%20and%20forms.pdf). Furthermore, all modalities, file formats, and devices are detailed in the dataset documentation at https://docs.aireadi.org/."
+          "response": "Multiple modalities of data are collected for each participant, including survey data, clinical data, retinal imaging data, environmental sensor data, continuous glucose monitor data, and wearable activity monitor data. These encompass tabular data, imaging data, and physiological signal/waveform data. There is no unstructured text data included in this dataset. The exact forms used for data collection in REDCap are available [here](https://docs.aireadi.org/v3/REDCap%20surveys%20and%20forms.pdf). Furthermore, all modalities, file formats, and devices are detailed in the dataset documentation at https://docs.aireadi.org/."
         },
         {
           "id": 6,
@@ -2086,7 +2192,7 @@
         {
           "id": 2,
           "question": "What confounding factors might be present in the data?\n\n   a. Interactions between demographic or historically marginalized groups and data recordings, e.g., were women patients recorded in one site, and men in another?\n\n   b. Interactions between the labels and data recordings, e.g. were healthy patients recorded on one device and diseased patients on another?",
-          "response": "a. Interactions between demographic or historically marginalized groups and data recordings, e.g., were women patients recorded in one site, and men in another? b. Interactions between the labels and data recordings, e.g. were healthy patients recorded on one device and diseased patients on another? Uniform data collection protocols were implemented for all subjects, irrespective of their race/ethnicity, biological sex, or diabetes severity, across all study sites. The selection of study sites was intended to ensure equitable representation and minimize the potential for sampling bias."
+          "response": "Uniform data collection protocols were implemented for all subjects, irrespective of their race/ethnicity, biological sex, or diabetes severity, across all study sites. The selection of study sites was intended to ensure equitable representation and minimize the potential for sampling bias."
         }
       ],
       "demographic_information": [
@@ -2097,8 +2203,13 @@
         },
         {
           "id": 2,
-          "question": "If no,\n\n   a. Is there any regulation that prevents demographic data collection in your study (for example, the country that the data is collected in)?\n\n   b. Are you employing methods to reduce the disparity of error rate between different demographic subgroups when demographic labels are unavailable? Please describe.",
-          "response": "No. We are suggesting a split for training/validation/testing models that is aimed at reducing disparities in models developed using this dataset."
+          "question": "If no,\n\n   a. Is there any regulation that prevents demographic data collection in your study (for example, the country that the data is collected in)?",
+          "response": "No."
+        },
+        {
+          "id": 3,
+          "question": "b. Are you employing methods to reduce the disparity of error rate between different demographic subgroups when demographic labels are unavailable? Please describe.",
+          "response": "We are suggesting a split for training/validation/testing models that is aimed at reducing disparities in models developed using this dataset."
         }
       ],
       "preprocessing": [
@@ -2131,26 +2242,36 @@
       "labeling": [
         {
           "id": 1,
-          "question": "Is there an explicit label or target associated with each data instance? Please respond for both the preliminary dataset and the current version.\n\n   a. If yes:\n\n   1. What are the labels provided?\n\n   2. Who performed the labeling? For example, was the labeling done by a clinician, ML researcher, university or hospital?\n\n  N/A - no labels are provided. \n\n b. What labeling strategy was used?\n\n   1. Gold standard label available in the data (e.g. cancers validated by biopsies)\n\n   2. Proxy label computed from available data:\n\n      1. Which label definition was used? (e.g. Acute Kidney Injury has multiple definitions)\n\n      2. Which tables and features were considered to compute the label?\n\n   3. Which proportion of the data has gold standard labels?\n\n  N/A - no labels are provided \n\n c. Human-labeled data\n\n   1. How many labellers were considered?\n\n   2. What is the demographic of the labellers? (countries of residence, of origin, number of years of experience, age, gender, race, ethnicity, …)\n\n   3. What guidelines did they follow?\n\n   4. How many labellers provide a label per instance?\n\n      If multiple labellers per instance:\n\n      1. What is the rater agreement? How was disagreement handled?\n      2. Are all labels provided, or summaries (e.g. maximum vote)?\n\n   5. Is there any subjective source of information that may lead to inconsistencies in the responses? (e.g: multiple people answering a survey having different interpretation of scales, multiple clinicians using scores, or notes)\n\n   6. On average, how much time was required to annotate each instance?\n\n   7. Were the raters compensated for their time? If so, by whom and what amount? What was the compensation strategy (e.g. fixed number of cases, compensated per hour, per cases per hour)?",
-          "response": "N/A - no labels are provided. \n\n No specific labeling was performed in the dataset, as the dataset is a hypothesis-agnostic dataset aimed at facilitating multiple potential downstream AI/ML applications."
+          "question": "Is there an explicit label or target associated with each data instance? Please respond for both the preliminary dataset and the current version.\n\n   a. If yes:\n\n   1. What are the labels provided?\n\n   2. Who performed the labeling? For example, was the labeling done by a clinician, ML researcher, university or hospital?",
+          "response": "N/A - no labels are provided"
         },
         {
           "id": 2,
+          "question": "b. What labeling strategy was used?\n\n   1. Gold standard label available in the data (e.g. cancers validated by biopsies)\n\n   2. Proxy label computed from available data:\n\n      1. Which label definition was used? (e.g. Acute Kidney Injury has multiple definitions)\n\n      2. Which tables and features were considered to compute the label?\n\n   3. Which proportion of the data has gold standard labels?",
+          "response": "N/A - no labels are provided"
+        },
+        {
+          "id": 3,
+          "question": "c. Human-labeled data\n\n   1. How many labellers were considered?\n\n   2. What is the demographic of the labellers? (countries of residence, of origin, number of years of experience, age, gender, race, ethnicity, …)\n\n   3. What guidelines did they follow?\n\n   4. How many labellers provide a label per instance?\n\n      If multiple labellers per instance:\n\n      1. What is the rater agreement? How was disagreement handled?\n      2. Are all labels provided, or summaries (e.g. maximum vote)?\n\n   5. Is there any subjective source of information that may lead to inconsistencies in the responses? (e.g: multiple people answering a survey having different interpretation of scales, multiple clinicians using scores, or notes)\n\n   6. On average, how much time was required to annotate each instance?\n\n   7. Were the raters compensated for their time? If so, by whom and what amount? What was the compensation strategy (e.g. fixed number of cases, compensated per hour, per cases per hour)?",
+          "response": "N/A - no labels are provided. No specific labeling was performed in the dataset, as the dataset is a hypothesis-agnostic dataset aimed at facilitating multiple potential downstream AI/ML applications."
+        },
+        {
+          "id": 4,
           "question": "What are the human level performances in the applications that the dataset is supposed to address?",
           "response": "N/A"
         },
         {
-          "id": 3,
-          "question": "Is the software used to preprocess/clean/label the instances available? If so, please provide a link or other access point. ",
+          "id": 5,
+          "question": "Is the software used to preprocess/clean/label the instances available? If so, please provide a link or other access point.",
           "response": "N/A - no labeling was performed"
         },
         {
-          "id": 4,
+          "id": 6,
           "question": "Is there any guideline that the future researchers are recommended to follow when creating new labels / defining new tasks?",
           "response": "No, we do not have formal guidelines in place."
         },
         {
-          "id": 5,
+          "id": 7,
           "question": "Are there recommended data splits (e.g., training, development/validation, testing)? Are there units of data to consider, whatever the task? If so, please provide a description of these splits, explaining the rationale behind them. Please provide the answer for both the preliminary dataset and the current version or any sub-version that is widely used.",
           "response": "The current version of the dataset comes with recommended data splits. Because sex, race, and ethnicity data are not being released with the public version of the dataset, the project team has prepared data splits into proportions (70%/15%/15%) that can be used for subsequent training/validation/testing where the validation and test sets are balanced as well as possible for sex, race/ethnicity and diabetes status (no diabetes, prediabetes/lifestyle controlled, oral medication controlled, and insulin controlled)."
         }
@@ -2159,7 +2280,7 @@
         {
           "id": 1,
           "question": "Were any REB/IRB approval (e.g., by an institutional review board or research ethics board) received? If so, please provide a description of these review processes, including the outcomes, as well as a link or other access point to any supporting documentation.",
-          "response": "The initial IRB approval at the University of Washington was received on December 20, 2022. The initial approval letter can be found [here](https://docs.aireadi.org/files/Approval_STUDY00016228_Lee_initial.pdf). An annual renewal application to the IRB about the status and progress of the study is required and due within 90 days of expiration."
+          "response": "The initial IRB approval at the University of Washington was received on December 20, 2022. The initial approval letter can be found [here](https://docs.aireadi.org/v3/Approval_STUDY00016228_Lee_initial.pdf). An annual renewal application to the IRB about the status and progress of the study is required and due within 90 days of expiration."
         },
         {
           "id": 2,
@@ -2179,7 +2300,7 @@
         {
           "id": 5,
           "question": "Over what timeframe was the data collected? Does this timeframe match the creation timeframe of the data associated with the instances (e.g., recent crawl of old news articles)? If not, please describe the timeframe in which the data associated with the instances was created.",
-          "response": "The timeline for the overall project spans four years, encompassing one year dedicated to protocol development and training, and years 2-4 allocated for subject recruitment and data collection. Approximately 4% of participants are expected to undergo a follow-up examination in Year 4. The data collection process is specifically tailored to enable downstream pseudotime manifold analysis—an approach used to predict disease trajectories. This involves gathering and learning from complex, multimodal data from participants exhibiting varying disease severity, ranging from normal to insulin-dependent Type 2 Diabetes Mellitus (T2DM). The timeframe also allows for the collection of the highest number of subjects possible to ensure a balanced representation of racial and ethnic groups and mitigate biases in computer vision algorithms.\n\nFor this version of the dataset, the timeframe for data collection was July 19, 2023 to July 31, 2024."
+          "response": "The timeline for the overall project spans four years, encompassing one year dedicated to protocol development and training, and years 2-4 allocated for subject recruitment and data collection. Approximately 4% of participants are expected to undergo a follow-up examination in Year 4. The data collection process is specifically tailored to enable downstream pseudotime manifold analysis—an approach used to predict disease trajectories. This involves gathering and learning from complex, multimodal data from participants exhibiting varying disease severity, ranging from normal to insulin-dependent Type 2 Diabetes Mellitus (T2DM). The timeframe also allows for the collection of the highest number of subjects possible to ensure a balanced representation of racial and ethnic groups and mitigate biases in computer vision algorithms.\n\n For this version of the dataset, the timeframe for data collection was July 19, 2023 to May 01, 2025."
         },
         {
           "id": 6,
@@ -2189,7 +2310,7 @@
         {
           "id": 7,
           "question": "Did you collect the data from the individuals in question directly, or obtain it via third parties or other sources (e.g., hospitals, app company)?",
-          "response": "The data was collected directly from participants across the three recruiting sites. Recruitment pools were identified by screening Electronic Health Records (EHR) for diabetes and prediabetes ICD-10 codes for all patients who have had an encounter with the sites' health systems within the past 2 years.\n\n"
+          "response": "The data was collected directly from participants across the three recruiting sites. Recruitment pools were identified by screening Electronic Health Records (EHR) for diabetes and prediabetes ICD-10 codes for all patients who have had an encounter with the sites' health systems within the past 2 years."
         },
         {
           "id": 8,
@@ -2199,7 +2320,7 @@
         {
           "id": 9,
           "question": "Did the individuals in question consent to the collection and use of their data? If so, please describe (or show with screenshots or other information) how consent was requested and provided, and provide a link or other access point to, or otherwise reproduce, the exact language to which the individuals consented.",
-          "response": "Informed consent to participate was required before participation in any part of the protocol (including questionnaires). Potential participants were given the option to read all consent documentation electronically (e-consent) before their visit and give their consent with an electronic signature without verbal communication with a clinical research coordinator. Participants may access e-consent documentation in REDCap and decide at that point they do not want to participate or would like additional information. The approved consent form for the principal project site University of Washington is available [here](https://docs.aireadi.org/files/AI-READI%20Consent_Form_Standard_v2.0_Mod2%2017May2023_useforpilot.pdf). The other clinical sites had IRB reliance and used the same consent form, with minor institution-specific language incorporated depending on individual institutional requirements."
+          "response": "Informed consent to participate was required before participation in any part of the protocol (including questionnaires). Potential participants were given the option to read all consent documentation electronically (e-consent) before their visit and give their consent with an electronic signature without verbal communication with a clinical research coordinator. Participants may access e-consent documentation in REDCap and decide at that point they do not want to participate or would like additional information. The approved consent form for the principal project site University of Washington is available [here](https://docs.aireadi.org/v3/AI-READI%20Consent_Form_Standard_v2.0_Mod2%2017May2023_useforpilot.pdf). The other clinical sites had IRB reliance and used the same consent form, with minor institution-specific language incorporated depending on individual institutional requirements."
         },
         {
           "id": 10,
@@ -2270,27 +2391,27 @@
         {
           "id": 2,
           "question": "How will the dataset be distributed (e.g., tarball on website, API, GitHub)? Does the dataset have a digital object identifier (DOI)?",
-          "response": "The dataset will be available through the FAIRhub platform (http://fairhub.io/). The dataset' DOI is https://doi.org/10.60775/fairhub.2"
+          "response": "The dataset will be available through the FAIRhub platform (http://fairhub.io/). The dataset' DOI is https://doi.org/10.60775/fairhub.3"
         },
         {
           "id": 3,
           "question": "When was/will the dataset be distributed?",
-          "response": "The first version of the dataset was distributed in May 2024, and the second version of the dataset was distributed in November 2024."
+          "response": "The first version of the dataset was distributed in May 2024, the second version of the dataset was distributed in November 2024, and the third version of the dataset was distributed in November 2025."
         },
         {
           "id": 4,
           "question": "Assuming the dataset is available, will it be/is the dataset distributed under a copyright or other intellectual property (IP) license, and/or under applicable terms of use (ToU)? If so, please describe this license and/or ToU, and provide a link or other access point to, or otherwise reproduce, any relevant licensing terms or ToU, as well as any fees associated with these restrictions.",
-          "response": "We provide here the license file containing the terms for reusing the AI-READI dataset (https://doi.org/10.5281/zenodo.10642459). These license terms were specifically tailored to enable reuse of the AI-READI dataset (and other clinical datasets) for commercial or research purpose while putting strong requirements around data usage, security, and secondary sharing to protect study participants, especially when data is reused for artificial intelligence (AI) and machine learning (ML) related applications."
+          "response": "We provide here the license file containing the terms for reusing the AI-READI dataset (https://doi.org/10.5281/zenodo.17555036). These license terms were specifically tailored to enable reuse of the AI-READI dataset (and other clinical datasets) for commercial or research purpose while putting strong requirements around data usage, security, and secondary sharing to protect study participants, especially when data is reused for artificial intelligence (AI) and machine learning (ML) related applications."
         },
         {
           "id": 5,
           "question": "Have any third parties imposed IP-based or other restrictions on the data associated with the instances? If so, please describe these restrictions, and provide a link or other access point to, or otherwise reproduce, any relevant licensing terms, as well as any fees associated with these restrictions.",
-          "response": "Refer to license (https://doi.org/10.5281/zenodo.10642459)"
+          "response": "Refer to license (https://doi.org/10.5281/zenodo.17555036)"
         },
         {
           "id": 6,
           "question": "Do any export controls or other regulatory restrictions apply to the dataset or to individual instances? If so, please describe these restrictions, and provide a link or other access point to, or otherwise reproduce, any supporting documentation.",
-          "response": "Refer to license (https://doi.org/10.5281/zenodo.10642459)"
+          "response": "Refer to license (https://doi.org/10.5281/zenodo.17555036)"
         }
       ],
       "maintenance": [
@@ -2332,342 +2453,15 @@
       ]
     }
   },
-  "files": [
-    {
-      "children": [
-        {
-          "label": "ecg_12lead",
-          "children": [
-            {
-              "label": "philips_tc30",
-              "children": []
-            }
-          ]
-        },
-        {
-          "label": "manifest.tsv"
-        }
-      ],
-      "label": "cardiac_ecg"
-    },
-    {
-      "children": [
-        {
-          "label": "dqd_omop.json",
-          "children": []
-        }
-      ],
-      "label": "clinical_data"
-    },
-    {
-      "children": [
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "leelab_anura"
-            }
-          ],
-          "label": "environmental_sensor"
-        },
-        {
-          "label": "manifest.tsv"
-        }
-      ],
-      "label": "environment"
-    },
-    {
-      "children": [
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "heidelberg_flio"
-            }
-          ],
-          "label": "flio"
-        },
-        {
-          "label": "manifest.tsv"
-        }
-      ],
-      "label": "retinal_flio"
-    },
-    {
-      "children": [
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "heidelberg_spectralis"
-            },
-            {
-              "children": [],
-              "label": "topcon_maestro2"
-            },
-            {
-              "children": [],
-              "label": "topcon_triton"
-            },
-            {
-              "children": [],
-              "label": "zeiss_cirrus"
-            },
-            {
-              "label": "manifest.tsv"
-            }
-          ],
-          "label": "structural_oct"
-        },
-        {
-          "label": "manifest.tsv"
-        }
-      ],
-      "label": "retinal_oct"
-    },
-    {
-      "children": [
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "topcon_maestro2"
-            },
-            {
-              "children": [],
-              "label": "topcon_triton"
-            },
-            {
-              "children": [],
-              "label": "zeiss_cirrus"
-            }
-          ],
-          "label": "enface"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "topcon_maestro2"
-            },
-            {
-              "children": [],
-              "label": "topcon_triton"
-            },
-            {
-              "children": [],
-              "label": "zeiss_cirrus"
-            }
-          ],
-          "label": "flow_cube"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "topcon_maestro2"
-            },
-            {
-              "children": [],
-              "label": "topcon_triton"
-            },
-            {
-              "children": [],
-              "label": "zeiss_cirrus"
-            }
-          ],
-          "label": "segmentation"
-        },
-        {
-          "label": "manifest.tsv"
-        }
-      ],
-      "label": "retinal_octa"
-    },
-    {
-      "children": [
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "icare_eidon"
-            },
-            {
-              "children": [],
-              "label": "optomed_aurora"
-            },
-            {
-              "children": [],
-              "label": "topcon_maestro2"
-            },
-            {
-              "children": [],
-              "label": "topcon_triton"
-            }
-          ],
-          "label": "cfp"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "icare_eidon"
-            }
-          ],
-          "label": "faf"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "heidelberg_spectralis"
-            },
-            {
-              "children": [],
-              "label": "icare_eidon"
-            },
-            {
-              "children": [],
-              "label": "topcon_maestro2"
-            },
-            {
-              "children": [],
-              "label": "topcon_triton"
-            },
-            {
-              "children": [],
-              "label": "zeiss_cirrus"
-            },
-            {
-              "label": "manifest.tsv"
-            }
-          ],
-          "label": "ir"
-        }
-      ],
-      "label": "retinal_photography"
-    },
-    {
-      "children": [
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "garmin_vivosmart5"
-            }
-          ],
-          "label": "heart_rate"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "garmin_vivosmart5"
-            }
-          ],
-          "label": "oxygen_saturation"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "garmin_vivosmart5"
-            }
-          ],
-          "label": "physical_activity"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "garmin_vivosmart5"
-            }
-          ],
-          "label": "physical_activity_calorie"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "garmin_vivosmart5"
-            }
-          ],
-          "label": "respiratory_rate"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "garmin_vivosmart5"
-            }
-          ],
-          "label": "sleep"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "garmin_vivosmart5"
-            }
-          ],
-          "label": "stress"
-        },
-        {
-          "label": "manifest.tsv"
-        }
-      ],
-      "label": "wearable_activity_monitor"
-    },
-    {
-      "children": [
-        {
-          "children": [
-            {
-              "children": [],
-              "label": "dexcom_g6"
-            }
-          ],
-          "label": "continuous_glucose_monitoring"
-        }
-      ],
-      "label": "wearable_blood_glucose"
-    },
-    {
-      "label": "CHANGELOG.md"
-    },
-    {
-      "label": "LICENSE.txt"
-    },
-    {
-      "label": "README.md"
-    },
-    {
-      "label": "dataset_description.json"
-    },
-    {
-      "label": "dataset_structure_description.json"
-    },
-    {
-      "label": "healthsheet.md"
-    },
-    {
-      "label": "participants.json"
-    },
-    {
-      "label": "participants.tsv"
-    },
-    {
-      "label": "study_description.json"
-    }
-  ],
+  "files": [],
   "data": {
-    "size": 2010899452756,
-    "fileCount": 165051,
+    "size": 3869259500351,
+    "fileCount": 358999,
     "viewCount": 0,
     "cited": 0,
     "mini": false,
     "parent": null,
     "child": 4
   },
-  "created_at": "1731060000"
+  "created_at": "1763441951"
 }
