@@ -163,14 +163,14 @@ export default defineNuxtConfig({
               ? "https://staging.fairhub.io/local-login"
               : "https://fairhub.io/local-login",
       },
-      // STUDY_RELEASE_TIMESTAMP:
-      //   process.env.NUXT_SITE_ENV === "dev" ||
-      //   process.env.NUXT_SITE_ENV === "staging"
-      //     ? "1730950200" // Wed Nov 06 2024 19:30:00 GMT-0800 (Pacific Standard Time)
-      //     : "1731060000", // Fri Nov 07 2024 02:00:00 GMT-0800 (Pacific Standard Time)
+      STUDY_RELEASE_TIMESTAMP:
+        process.env.NUXT_SITE_ENV === "dev" ||
+        process.env.NUXT_SITE_ENV === "staging"
+          ? "1763157600" // Mon Nov 11 2025 14:00:00 GMT-0800 (Pacific Standard Time)
+          : "1763168400", // Mon Nov 11 2025 17:00:00 GMT-0800 (Pacific Standard Time)
       UMAMI_SHARE_URL:
         process.env.NUXT_SITE_ENV === "dev" ||
-          process.env.NUXT_SITE_ENV === "staging"
+        process.env.NUXT_SITE_ENV === "staging"
           ? "https://umami.aireadi.org/share/w56IOiviBTVZOlHu/staging.fairhub.io"
           : "https://umami.aireadi.org/share/o6trNZ4JS9gBri45/fairhub.io",
     },

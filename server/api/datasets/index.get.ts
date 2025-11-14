@@ -1,6 +1,10 @@
 export default defineEventHandler(async (_event) => {
+  const config = useRuntimeConfig();
+  const currentTime = Math.round(Date.now() / 1000);
+  const studyReleaseTimestamp = Number(config.public.STUDY_RELEASE_TIMESTAMP);
+
   const publishedDatasets = await prisma.published_dataset.findMany({
-    distinct: ["dataset_id"],
+    // distinct: ["dataset_id"],
     orderBy: [{ created_at: "desc" }],
   });
 
@@ -13,6 +17,18 @@ export default defineEventHandler(async (_event) => {
 
   for (const dataset of publishedDatasets) {
     const datasetId = Number(dataset.id).toString();
+
+    // Filter based on timestamp: dataset 2 if before timestamp, datasets 3 and 4 if after
+    if (currentTime < studyReleaseTimestamp) {
+      // Only return dataset 2 if currentTime < timestamp
+      if (datasetId !== "2") {
+        continue;
+      }
+    } else if (datasetId !== "3" && datasetId !== "4") {
+      // Only return datasets 3 and 4 if currentTime >= timestamp
+      continue;
+    }
+
     const datasetAdditionalData = dataset.data as any;
     const datasetCreatedAt: bigint = BigInt(dataset.created_at);
 
