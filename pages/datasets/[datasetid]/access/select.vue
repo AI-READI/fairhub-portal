@@ -133,7 +133,6 @@ const handleSubmit = async () => {
 
             <DownloadFolderSelector
               v-model="selectedFolders"
-              :folder-structure="dataset?.files || []"
               :dataset-structure-description="
                 dataset?.metadata
                   .datasetStructureDescription as DatasetStructureDescription

@@ -10,6 +10,14 @@ const route = useRoute();
 const { datasetid } = route.params as { datasetid: string };
 const { data: dataset, error } = await useDataset(datasetid);
 const agreementFormState = useDownloadAgreementForm(datasetid);
+
+const rightsName = computed(() => dataset.value?.metadata?.datasetDescription?.rights?.[0]
+        ?.rightsName
+        ? dataset.value.metadata.datasetDescription.rights[0].rightsName
+        : "not found");
+const licenseType = ref<string | null>(null);
+const authorizedGroup = ref<string | null>(null);
+
 console.log(agreementFormState.value);
 
 if (error.value) {
@@ -48,37 +56,205 @@ const currentStep = ref<number>(6);
 
 const licenseAccepted = ref<boolean>(false);
 const licenseText =
-  ref<string>(`UNIVERSITY OF WASHINGTON (“Licensor”) DATA LICENSE AGREEMENT
+  ref<string>(`WASHINGTON UNIVERSITY IN ST. LOUIS (“Licensor”)
 
-BY DOWNLOADING, INSTALLING OR USING ANY OR ALL OF THE CONTENTS OF THE ACCOMPANYING DATA FILES (COLLECTIVELY, THE "DATA"), YOU ACKNOWLEDGE THAT YOU HAVE READ ALL OF THE TERMS AND CONDITIONS OF THIS DATA LICENSE AGREEMENT (“AGREEMENT”), UNDERSTAND THEM, ARE AUTHORIZED BY YOUR ENTITY TO ACCEPT THEM, AND AGREE TO BE BOUND BY THEM. WE RECOMMEND THAT YOU PRINT A COPY OF THIS AGREEMENT FOR YOUR RECORDS.
+AI-READI DATA LICENSE AGREEMENT (Version 2.0)
 
-IF YOU DO NOT AGREE TO ALL OF THE TERMS OF THIS AGREEMENT, YOU MUST NOT DOWNLOAD, INSTALL OR USE THE DATA.
+BY INDICATING ASSENT, THE LICENSEE IDENTIFIED IN THE DATA REQUEST WORKFLOW
+(“LICENSEE” OR “YOU”), AGREES TO THE TERMS AND CONDITIONS OF THIS DATA
+LICENSE AGREEMENT WITH LICENSOR (“AGREEMENT”) WITH RESPECT TO THE
+CONTENTS OF THE ACCOMPANYING DATA FILES (COLLECTIVELY, THE "DATA"). THE
+INFORMATION THAT YOU HAVE PROVIDED IN THE DATA REQUEST WORKFLOW
+CONSTITUTES AN INTEGRAL PART OF THIS AGREEMENT.
 
-If you will use the Data as an individual and not on behalf of any employer, institution, agency, partnership, joint venture, corporation, company or other entity (“Entity”), then the “Licensee” referred to in this Agreement is you in your individual capacity. If you are entering into this Agreement on behalf of an Entity, then the “Licensee” referred to in this Agreement shall be that Entity, provided that you hereby represent and warrant to Licensor that you have the legal authority to bind that Entity. If the Licensee is an Entity, then the rights and obligations under this Agreement apply to all employees and agents of the Entity, and the Entity shall be liable and responsible for the actions and omissions of all such individuals, to the extent allowed by applicable law.
+YOU SHOULD SAVE OR PRINT A COPY OF THIS AGREEMENT FOR YOUR RECORDS.
 
-1. LICENSE GRANT. Subject to Licensee’s compliance with the terms and conditions of this Agreement, Licensor grants Licensee a non-exclusive and non-transferable license to download, reproduce and use the Data, and to create derivative works thereof, for research and commercial purposes. All full and partial copies of the Data made by Licensee shall be subject to the terms of this Agreement.
+IF YOU DO NOT AGREE TO ALL OF THE TERMS OF THIS AGREEMENT, YOU MUST NOT
+DOWNLOAD, INSTALL OR USE THE DATA.
 
-2. DATA SHARING; MODELS. Licensee shall not transfer, license, sublicense, sell, assign, display, share or otherwise convey any portion of the Data or any derivative work to any third party other than another licensee (“Other Licensee”) that is bound by the terms of an agreement with Licensor on terms identical to those contained in this Agreement, in which case Licensee shall be permitted to give access to the Data to such Other Licensee and its employees, agents and contractors that are bound under such agreement for the purpose of collaborating with Licensee on one or more projects involving the Data. Notwithstanding the foregoing, Licensee is permitted to make, reproduce and distribute models, algorithms and programs that are developed, trained or adapted using the Data, but which do not themselves contain the Data or any modified version of the Data (“Models”), provided that Licensee, prior to dissemination of any such Models, undertakes all reasonable efforts to minimise the likelihood that Data can be memorized, derived, reconstructed or reconstituted through the use or construction of such Models.
+1. PARTIES; AUTHORIZED USERS.
 
-3. ADDITIONAL USE RESTRICTIONS. Without limiting the generality of the foregoing, Licensee shall not: (i) make clinical treatment decisions based on the Data, as it is intended solely as a research resource, or (ii) use or attempt to use the Data, alone or in concert with other information, to compromise or otherwise infringe the confidentiality of information on an individual person who is the source of any Data or any clinical data or biological sample from which Data has been generated (a “Data Subject”) and their right to privacy, to identify or contact any individual Data Subject or group of Data Subjects, to extract or extrapolate any identifying information about a Data Subject, to establish a particular Data Subject's membership in a particular group of persons, or otherwise to cause harm or injury to any Data Subject. Licensee agrees to acknowledge the source and any funder of the Data in any publications reporting use of the Data. The current citation for you to use can be found here: docs.aireadi.org.
+    A. If, in Your Data Request Workflow, You indicated that you are entering into this Agreement
+    in your individual capacity, then You are the “Licensee” and no other person will be
+    authorized to access or use the Data under this Agreement. If you wish to share Data with
+    members of your internal group or team or other employees or contractors of your
+    employer, please initiate a new Data Request Workflow and indicate this information when
+    requested, upon which a new license agreement will be generated and provided for your
+    acceptance. References to “Authorized Group” and “Authorized Users” in this Agreement,
+    and the provisions of Paragraphs 1.B through 1.E below, do not apply to You.
 
-4. SECURITY. Licensee agrees to comply with all data security and privacy standards established by the U.S. National Institutes of Health under its Genomic Data Sharing (GDS) Policy from time to time, the current version of which is located at NIH Security Best Practices for Controlled-Access Data Subject to the NIH Genomic Data Sharing (GDS) Policy (https://sharing.nih.gov/sites/default/files/flmngr/NIH_Best_Practices_for_Controlled- Access_Data_Subject_to_the_NIH_GDS_Policy.pdf).
+    B. If, in Your Data Request Workflow, You indicated that you are entering into this Agreement
+    on behalf of an internal group, lab, or business unit identified in the Data Request
+    Workflow (“Authorized Group”) that is a part of the Institution/Employer specified in your
+    Data Request Workflow (“Institution/Employer”), then this Agreement authorizes access,
+    downloading and use of the Data by You, as Licensee, as well as Authorized Users, on the
+    terms set forth below.
 
-5. TERMINATION. This Agreement will terminate automatically upon any breach of any term of this Agreement by Licensee. Upon termination, Licensee shall delete all copies of the Data in its possession and control and cease all use of the Data.
+    C. “Authorized Users” means individuals who are legal members of the Authorized Group via
+    contract, employment status or student status. The Authorized Group must be an officially
+    recognized subunit within the Institution/Employer identified in the Data Request
+    Workflow, as evidenced by a public web page or other official and publicly available
+    Institution/Employer information source. An individual’s status as an Authorized User, and
+    their rights under this Agreement, terminate automatically upon the severance of their
+    relationship or employment with the Authorized Group or Institution/Employer.
 
-6. PROPRIETARY RIGHTS. Title to the Data, and all industrial and intellectual property rights therein, shall at all times remain solely and exclusively with Licensor and its suppliers, and Licensee shall not take any action inconsistent with such ownership. Any rights not expressly granted herein are reserved to Licensor and its suppliers.
+    D. You, as Licensee, are permitted to sublicense your rights to Authorized Users for so long
+    as they are members of the Authorized Group. Authorized Users are entitled to exercise
+    all rights granted to you as Licensee under this Agreement. It is your responsibility to
+    ensure that each Authorized User is provided with a copy of this Agreement and
+    understands and agrees to comply with the terms and conditions of this Agreement.
 
-7. DISCLAIMER OF WARRANTY. THE DATA IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTY OF ANY KIND, INCLUDING WITHOUT LIMITATION THE WARRANTIES THAT IT IS FREE FROM DEFECTS, MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE OR NON-INFRINGING. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE DATA IS BORNE BY LICENSEE. SHOULD THE DATA PROVE DEFECTIVE IN ANY RESPECT, LICENSEE AND NOT LICENSOR OR ITS SUPPLIERS ASSUMES THE ENTIRE COST OF ANY SERVICE AND REPAIR. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS AGREEMENT. NO USE OF THE DATA IS AUTHORIZED HEREUNDER EXCEPT UNDER THIS DISCLAIMER.
+    E. You must ensure that each Authorized User complies fully with the terms of this
+    Agreement and you agree that you will be fully liable for all acts and omissions of each
+    Authorized User. You represent and warrant to Licensor that you have all necessary legal
+    rights and authority to enter into this Agreement on behalf of all Authorized Users.
 
-8. LIMITATIONS OF LIABILITY. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL LICENSOR OR ITS SUPPLIERS BE LIABLE TO LICENSEE OR ANY PARTY CLAIMING THROUGH LICENSEE FOR ANY PUNITIVE, EXEMPLARY, MULTIPLE, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OF OR INABILITY TO USE THE DATA, INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF GOODWILL, WORK STOPPAGE, COMPUTER FAILURE OR MALFUNCTION, OR ANY AND ALL OTHER COMMERCIAL DAMAGES OR LOSSES, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF THE LEGAL OR EQUITABLE THEORY (CONTRACT, TORT OR OTHERWISE) UPON WHICH THE CLAIM IS BASED.
+2. LICENSE GRANT. Subject to Licensee’s and all Authorized Users’ compliance with the
+terms and conditions of this Agreement, Licensor grants to Licensee a non-exclusive and
+non-transferable license to download, reproduce and use the Data, and to create derivative works
+of the Data, for research, commercial and non-commercial purposes. All full and partial copies of
+the Data made by Licensee shall be subject to the terms of this Agreement.
 
-IN ANY CASE, LICENSOR'S ENTIRE LIABILITY UNDER ANY PROVISION OF THIS AGREEMENT AND WITH RESPECT TO THE DATA SHALL NOT EXCEED IN THE AGGREGATE ONE U.S. DOLLAR, WITH THE EXCEPTION OF DEATH OR PERSONAL INJURY CAUSED BY THE NEGLIGENCE OF LICENSOR TO THE EXTENT APPLICABLE LAW PROHIBITS THE LIMITATION OF DAMAGES IN SUCH CASES. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THIS EXCLUSION AND LIMITATION MAY NOT BE APPLICABLE.
+3. LIMITATIONS ON DATA SHARING; STORAGE; AND USAGE.
 
-9. INDEMNIFICATION. To the extent allowed by applicable law, Licensee agrees to indemnify, defend and hold harmless Licensor and its suppliers and their respective employees, officers, directors, contractors and agents from and against any and all claims, damages, losses, settlements, penalties, costs, expenses and other amounts arising directly or indirectly from Licensee’s use of the Data and any use, distribution or activity of a Model, including, without limitation, all third party claims asserting violation of privacy rights, death, personal harm or injury, economic loss, emotional distress, discrimination, defamation, breach of security, national security, or infringement of patent, copyright or other intellectual or industrial property rights.
+    A. Permitted Sharing with Other Licensees. Licensee shall not transfer, license,
+    sublicense, sell, assign, display, share or otherwise convey any portion of the Data or any
+    derivative work to any third party other than another licensee (“Other Licensee”) that is
+    bound by the terms of an agreement with Licensor on terms identical to those contained in
+    this Agreement, in which case Licensee shall be permitted to give access to the Data to
+    such Other Licensee and its employees, agents and contractors that are bound under
+    such agreement for the purpose of collaborating with Licensee on one or more projects
+    involving the Data.
 
-10. COMPLIANCE. Licensee agrees to comply with all applicable laws, regulations and restrictions relating to the distribution and use of the Data and Models.
+    B. Permitted Data Storage. Licensee may use and store the data only on (i) servers
+    and devices maintained by and located within Licensee’s Institution/Employer, or (ii) on
+    cloud or remote storage and backup services (e.g., Dropbox, Google Drive, AWS,
+    Microsoft Azure) that have a HIPAA-approved Business Associate Agreement (“BAA”) in
+    place with Licensee’s Institution/Employer.
 
-11. GENERAL. (a) This Agreement constitutes the entire agreement between the parties concerning the subject matter hereof. (b) Subject to the Licensor’s right to update and modify its security policies as provided in Paragraph 4, this Agreement may be amended only by a writing signed by both parties. (c) If any provision in this Agreement should be held illegal or unenforceable by a court having jurisdiction, such provision shall be modified to the extent necessary to render it enforceable without losing its intent, or severed from this Agreement if no such modification is possible, and other provisions of this Agreement shall remain in full force and effect. (d) The language of this Agreement is English. (e) A waiver by either party of any term or condition of this Agreement or any breach thereof, in any one instance, shall not waive such term or condition or any subsequent breach thereof. (f) This Agreement shall be binding upon and shall inure to the benefit of the parties, their successors and permitted assigns.`);
+    C. Interaction with Third Party Models. Licensee shall not share or distribute Data with
+    any third party model vendor or developer for training or development purposes, even if
+    that vendor is a party to a BAA with Licensee’s Institution/Employer, where training
+    includes model weight modification and other adjustments to a model’s logic or operation.
+    Notwithstanding the foregoing, Licensee may use a third party model to analyze the
+    Data if the model vendor is a party to a BAA with Licensee’s Institution/Employer, where
+    the model’s interaction with the Data is limited to short-term interaction (e.g., prompting or
+    querying), but is not used for training purposes.
+
+    D. Licensee Models. Licensee is permitted to make, reproduce and distribute models,
+    algorithms and programs that are developed, trained or adapted using the Data, but which
+    do not themselves contain the Data or any modified version of the Data (“Licensee
+    Models”), provided that Licensee, prior to dissemination of any such Licensee Models,
+    undertakes all reasonable efforts to minimise the likelihood that Data can be memorized,
+    derived, reconstructed or reconstituted through the use or construction of such Licensee
+    Models.
+
+    E. Derivative Data. “Derivative data” is Data that has been modified, excerpted,
+    encrypted, condensed, encoded, translated or otherwise altered, such that it contains
+    Data or Data may be derived from it. “Synthetic Data” is artificially generated data that
+    mimics real-world data characteristics. Synthetic Data that is created using Data or
+    Derivative Data is also considered Derivative Data. For purposes of this Agreement,
+    Derivative Data is considered to be Data subject to all restrictions described herein.
+
+    F. Publications. Without limiting the generality of the foregoing, Data may not be
+    reproduced in papers, articles, presentations, analyses, reports or publications (“Papers”)
+    except that small representative samples of Data may be reproduced in up to five images
+    or figures per Paper for illustrative purposes only. Notwithstanding journal or conference
+    requirements, larger amounts of data shall not be published, posted or otherwise made
+    available via supplemental files, zip archives, code packages or other means. Licensee
+    may refer publishers and conference organizers to Licensor if they wish to obtain a
+    separate license to the Data for such purposes.
+
+4. ADDITIONAL USE RESTRICTIONS. Without limiting the generality of the foregoing,
+Licensee shall not:
+
+    A. Make clinical treatment decisions based on the Data, as it is intended solely as a
+    research resource, or
+
+    B. Use or attempt to use the Data, alone or in concert with other information, (i) to
+    compromise or otherwise infringe the confidentiality of information about an individual
+    person who is the source of any Data or any clinical data or biological sample from which
+    Data has been generated (a “Data Subject”), (ii) to invade or compromise the privacy of
+    any Data Subject, (iii) to attempt to identify or contact any Data Subject or group of Data
+    Subjects,(iv) to extract or extrapolate any identifying information about a Data Subject, to
+    establish a Data Subject's membership in a particular group of persons, or otherwise to
+    cause harm or injury to any Data Subject.
+
+5. ACKNOWLEDGEMENT. Licensee agrees to acknowledge Licensor and the source and
+any funder of the Data in any Papers reporting use of the Data. The current citation can be found
+here: docs.aireadi.org.
+
+6. SECURITY. Licensee agrees to comply with all data security and privacy standards
+established by the U.S. National Institutes of Health under its Genomic Data Sharing (GDS) Policy
+from time to time, the current version of which is located at NIH Security Best Practices for
+Controlled-Access Data Subject to the NIH Genomic Data Sharing (GDS) Policy
+(https://sharing.nih.gov/sites/default/files/flmngr/NIH_Best_Practices_for_ControlledAccess_Data_Subject_to_the_NIH_GDS_Policy.pdf). Licensee acknowledges that the Data may be
+statically watermarked to identify Licensee for security purposes, and Licensee agrees that it will
+take no action to remove, obscure, alter or mask such watermarking.
+
+7. TERMINATION. This Agreement will terminate automatically upon any breach of any term
+of this Agreement by Licensee or any Authorized User. Upon termination, Licensee shall delete all
+copies of the Data in its possession and control, including in the possession or control of all
+Authorized Users, and cease all use of the Data.
+
+8. PROPRIETARY RIGHTS. Title to the Data, and all industrial and intellectual property rights
+therein, shall at all times remain solely and exclusively with Licensor and its suppliers, and Licensee
+shall not take any action inconsistent with such ownership. Any rights not expressly granted herein
+are reserved to Licensor and its suppliers.
+
+9. DISCLAIMER OF WARRANTY. THE DATA IS PROVIDED ON AN "AS IS" BASIS,
+WITHOUT WARRANTY OF ANY KIND, INCLUDING WITHOUT LIMITATION THE WARRANTIES
+THAT IT IS FREE FROM DEFECTS, MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE OR
+NON-INFRINGING. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE
+DATA IS BORNE BY LICENSEE. SHOULD THE DATA PROVE DEFECTIVE IN ANY RESPECT,
+LICENSEE AND NOT LICENSOR OR ITS SUPPLIERS ASSUMES THE ENTIRE COST OF ANY
+SERVICE AND REPAIR. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL
+PART OF THIS AGREEMENT. NO USE OF THE DATA IS AUTHORIZED HEREUNDER EXCEPT
+UNDER THIS DISCLAIMER.
+
+10. LIMITATIONS OF LIABILITY. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE
+LAW, IN NO EVENT WILL LICENSOR OR ITS SUPPLIERS BE LIABLE TO LICENSEE OR ANY
+AUTHORIZED USER OR OTHER PARTY CLAIMING THROUGH LICENSEE FOR ANY
+PUNITIVE, EXEMPLARY, MULTIPLE, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL
+DAMAGES ARISING OUT OF THE USE OF OR INABILITY TO USE THE DATA, INCLUDING,
+WITHOUT LIMITATION, DAMAGES FOR LOSS OF GOODWILL, WORK STOPPAGE,
+COMPUTER FAILURE OR MALFUNCTION, OR ANY AND ALL OTHER COMMERCIAL
+DAMAGES OR LOSSES, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND
+REGARDLESS OF THE LEGAL OR EQUITABLE THEORY (CONTRACT, TORT OR OTHERWISE)
+UPON WHICH THE CLAIM IS BASED.
+
+IN ANY CASE, LICENSOR'S ENTIRE LIABILITY UNDER ANY PROVISION OF THIS
+AGREEMENT AND WITH RESPECT TO THE DATA SHALL NOT EXCEED IN THE AGGREGATE
+ONE U.S. DOLLAR, WITH THE EXCEPTION OF DEATH OR PERSONAL INJURY CAUSED BY
+THE NEGLIGENCE OF LICENSOR TO THE EXTENT APPLICABLE LAW PROHIBITS THE
+LIMITATION OF DAMAGES IN SUCH CASES. SOME JURISDICTIONS DO NOT ALLOW THE
+EXCLUSION OR LIMITATION OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THIS
+EXCLUSION AND LIMITATION MAY NOT BE APPLICABLE.
+
+11. INDEMNIFICATION. To the extent allowed by applicable law, Licensee agrees to indemnify,
+defend and hold harmless Licensor and its suppliers and their respective employees, officers,
+directors, contractors and agents from and against any and all claims, damages, losses,
+settlements, penalties, costs, expenses and other amounts arising directly or indirectly from
+Licensee’s or any Authorized Users use of the Data and any use, distribution or activity of a Model,
+including, without limitation, all third party claims asserting violation of privacy rights, death,
+personal harm or injury, economic loss, emotional distress, discrimination, defamation, breach of
+security, national security, or infringement of patent, copyright or other intellectual or industrial
+property rights.
+
+12. COMPLIANCE. Licensee agrees to comply with all applicable laws, regulations and
+restrictions relating to the distribution and use of the Data and Models.
+
+13. GENERAL. (a) This Agreement constitutes the entire agreement between the parties
+concerning the subject matter hereof. (b) Subject to the Licensor’s right to update and modify its
+security policies as provided in Paragraph 6, this Agreement may be amended only by a writing
+signed by both parties. (c) If any provision in this Agreement should be held illegal or unenforceable
+by a court having jurisdiction, such provision shall be modified to the extent necessary to render it
+enforceable without losing its intent, or severed from this Agreement if no such modification is
+possible, and other provisions of this Agreement shall remain in full force and effect. (d) The
+language of this Agreement is English. (e) A waiver by either party of any term or condition of this
+Agreement or any breach thereof, in any one instance, shall not waive such term or condition or
+any subsequent breach thereof. (f) This Agreement shall be binding upon and shall inure to the
+benefit of the parties, their successors and permitted assigns.`);
 
 const attestationsAccepted = ref<boolean>(false);
 const attestations = [
@@ -91,8 +267,14 @@ const attestations = [
   "I will only use this dataset to conduct the research described in my research purpose.",
 ];
 
+// Modify the licenseAndAttestationComplete computed property
 const licenseAndAttestationComplete = computed(() => {
-  return licenseAccepted.value && attestationsAccepted.value;
+  if (licenseType.value === 'GROUP' && !authorizedGroup.value) {
+    return false;
+  }
+  return licenseAccepted.value && 
+         attestationsAccepted.value && 
+         licenseType.value !== '';
 });
 
 const handleSubmit = async () => {
@@ -102,6 +284,9 @@ const handleSubmit = async () => {
         attestation_accepted: attestationsAccepted.value,
         dataset_id: dataset.value?.id,
         license_accepted: licenseAccepted.value,
+        license_type: licenseType.value,
+        authorized_group: licenseType.value === 'GROUP' ? authorizedGroup.value : null,
+        license_version: rightsName.value,
         ...agreementFormState.value,
       },
       headers: useRequestHeaders(["cookie"]),
@@ -180,6 +365,59 @@ const handleSubmit = async () => {
         <TransitionFade>
           <div>
             <h4>License</h4>
+
+            <div class="mb-4">
+              <n-form-item
+                label="License Type"
+                :required="true"
+                :validation-status="licenseType ? 'success' : 'error'"
+              >
+                <n-radio-group 
+                  v-model:value="licenseType"
+                  :validate-on-mount="true"
+                >
+                  <n-space>
+                    <n-radio value="INDIVIDUAL">
+                      Individual Use
+                    </n-radio>
+                    <n-radio value="GROUP">
+                      Group Use
+                    </n-radio>
+                  </n-space>
+                </n-radio-group>
+                <template #feedback>
+                  <span v-if="!licenseType" class="text-error">
+                    Please select a license type.
+                  </span>
+                </template>
+              </n-form-item>
+
+              <n-form-item
+                v-if="licenseType === 'GROUP'"
+                label="Authorized Group"
+                :required="true"
+                :validation-status="authorizedGroup ? 'success' : 'error'"
+              >
+                <n-input
+                  v-model:value="authorizedGroup"
+                  placeholder="Enter the group name you are requesting data on behalf of."
+                />
+              </n-form-item>
+            </div>
+            <div>
+              <n-alert v-if="licenseType === 'INDIVIDUAL'" type="info" class="mb-4">
+                You are requesting access to this dataset in your individual
+                capacity. By proceeding, you confirm that you agree to the terms of the 
+                license with respect to sections 1.A of the license agreement, where you 
+                are the sole authorized user of the data.
+              </n-alert>
+              <n-alert v-if="licenseType === 'GROUP'" type="info" class="mb-4">
+                You are requesting access to this dataset on behalf of a group.
+                By proceeding, you confirm that you agree to the terms of the 
+                license with respect to sections 1.B through 1.E of the license agreement,
+                where multiple authorized users from your group may access the data.
+              </n-alert>
+            </div>
             <DownloadLicenseForm
               v-model="licenseAccepted"
               :license="licenseText"

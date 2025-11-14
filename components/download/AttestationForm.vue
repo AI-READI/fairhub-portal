@@ -36,6 +36,15 @@ const handleInput = (expected: string, inputValue: string) => {
 
   model.value = allAgreed.value;
 };
+
+// allow pasting in non-production environments
+const allowPaste = process.env.NUXT_SITE_ENV !== "production";
+
+const handlePaste = (e: ClipboardEvent) => {
+  if (!allowPaste) {
+    e.preventDefault();
+  }
+};
 </script>
 
 <template>
@@ -72,7 +81,7 @@ const handleInput = (expected: string, inputValue: string) => {
       aria-autocomplete="off"
       autocomplete="off"
       @input="handleInput(attestation.text, $event)"
-      @paste.prevent
+      @paste="handlePaste"
     />
   </n-form-item>
 </template>

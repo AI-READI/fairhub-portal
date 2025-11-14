@@ -157,7 +157,10 @@ export default defineEventHandler(async (event) => {
       da.research_purpose,
       dud.given_name,
       dud.family_name,
-      dud.organization,
+      CASE WHEN dud.organization is NULL AND da.authorized_group IS NULL THEN NULL
+           WHEN da.authorized_group IS NULL THEN dud.organization
+           WHEN dud.organization is NULL THEN da.authorized_group
+      ELSE CONCAT( dud.organization, ', ', da.authorized_group ) END AS organization,
       pd.version_title,
       a.updated_on::text AS updated_on
     FROM download.download_agreement da
@@ -176,6 +179,7 @@ export default defineEventHandler(async (event) => {
             LOWER(dud.organization) LIKE LOWER(${`%${filteredWord}%`}) OR
             LOWER(pd.version_title) LIKE LOWER(${`%${filteredWord}%`}) OR
             LOWER(da.research_purpose) LIKE LOWER(${`%${filteredWord}%`}) OR
+            LOWER(da.authorized_group) LIKE LOWER(${`%${filteredWord}%`}) OR
             TO_CHAR(TO_TIMESTAMP(a.updated_on::bigint), 'FMMonth FMDD, YYYY') ILIKE ${`%${filteredWord}%`}
           )`
           : sql``

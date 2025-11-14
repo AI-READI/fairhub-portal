@@ -383,8 +383,26 @@ const onTabChange = () => {
         </n-alert>
 
         <n-flex v-else>
-          <NuxtLink :to="`/datasets/${dataset?.id}/access`">
-            <n-button size="large" type="info" secondary class="my-3" disabled>
+          <n-tooltip trigger="hover">
+            <template #trigger>
+              <n-button
+                size="large"
+                type="info"
+                secondary
+                class="my-3"
+                disabled
+              >
+                <template #icon>
+                  <Icon name="line-md:download-loop" />
+                </template>
+                Access this datasets
+              </n-button>
+            </template>
+            Requests for access to this dataset are currently paused
+          </n-tooltip>
+
+          <NuxtLink :to="`/datasets/${dataset?.id}/access`" class="hidden">
+            <n-button size="large" type="info" secondary class="my-3">
               <template #icon>
                 <Icon name="line-md:download-loop" />
               </template>
@@ -844,7 +862,11 @@ const onTabChange = () => {
                 <h3>License</h3>
 
                 <NuxtLink
-                  to="https://doi.org/10.5281/zenodo.10642459"
+                  :to="
+                    dataset?.id == '1' || dataset?.id == '2'
+                      ? 'https://doi.org/10.5281/zenodo.10642459'
+                      : 'https://doi.org/10.5281/zenodo.17555036'
+                  "
                   target="_blank"
                   class="underline transition-all hover:text-slate-600"
                 >

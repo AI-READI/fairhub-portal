@@ -1,6 +1,21 @@
 export default defineEventHandler(async (event) => {
   const { datasetid } = event.context.params as { datasetid: string };
 
+  const config = useRuntimeConfig();
+  const currentTime = Math.round(Date.now() / 1000);
+  const studyReleaseTimestamp = Number(config.public.STUDY_RELEASE_TIMESTAMP);
+
+  if (
+    currentTime < studyReleaseTimestamp &&
+    datasetid !== "2" &&
+    datasetid !== "1"
+  ) {
+    throw createError({
+      message: `Dataset ${datasetid} not found`,
+      statusCode: 404,
+    });
+  }
+
   const publishedDataset = await prisma.published_dataset.findUnique({
     where: {
       id: datasetid,
@@ -54,7 +69,7 @@ export default defineEventHandler(async (event) => {
     },
   });
 
-  const versions: VersionArray = relatedDatasets.map((relatedDataset) => {
+  let versions: VersionArray = relatedDatasets.map((relatedDataset) => {
     return {
       id: Number(relatedDataset.id).toString(),
       title: relatedDataset.version_title,
@@ -62,6 +77,12 @@ export default defineEventHandler(async (event) => {
       doi: relatedDataset.doi,
     };
   });
+
+  if (currentTime < studyReleaseTimestamp) {
+    versions = versions.filter(
+      (version) => version.id === "2" || version.id === "1",
+    );
+  }
 
   const dataset: Dataset = {
     id: datasetId,
