@@ -5,6 +5,17 @@ export default defineEventHandler(async (event) => {
   const currentTime = Math.round(Date.now() / 1000);
   const studyReleaseTimestamp = Number(config.public.STUDY_RELEASE_TIMESTAMP);
 
+  if (
+    currentTime < studyReleaseTimestamp &&
+    datasetid !== "2" &&
+    datasetid !== "1"
+  ) {
+    throw createError({
+      message: `Dataset ${datasetid} not found`,
+      statusCode: 404,
+    });
+  }
+
   const publishedDataset = await prisma.published_dataset.findUnique({
     where: {
       id: datasetid,
