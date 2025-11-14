@@ -71,10 +71,6 @@ export default defineEventHandler(async (event) => {
     versions = versions.filter(
       (version) => version.id === "2" || version.id === "1",
     );
-  } else {
-    versions = versions.filter(
-      (version) => version.id === "3" || version.id === "4",
-    );
   }
 
   const dataset: Dataset = {
