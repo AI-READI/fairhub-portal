@@ -81,7 +81,7 @@ const handlePaste = (e: ClipboardEvent) => {
       aria-autocomplete="off"
       autocomplete="off"
       @input="handleInput(attestation.text, $event)"
-      @paste="handlePaste"
+      @paste.prevent
     />
   </n-form-item>
 </template>
