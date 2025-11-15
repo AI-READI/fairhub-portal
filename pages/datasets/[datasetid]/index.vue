@@ -383,25 +383,7 @@ const onTabChange = () => {
         </n-alert>
 
         <n-flex v-else>
-          <n-tooltip trigger="hover">
-            <template #trigger>
-              <n-button
-                size="large"
-                type="info"
-                secondary
-                class="my-3"
-                disabled
-              >
-                <template #icon>
-                  <Icon name="line-md:download-loop" />
-                </template>
-                Access this datasets
-              </n-button>
-            </template>
-            Requests for access to this dataset are currently paused
-          </n-tooltip>
-
-          <NuxtLink :to="`/datasets/${dataset?.id}/access`" class="hidden">
+          <NuxtLink :to="`/datasets/${dataset?.id}/access`">
             <n-button size="large" type="info" secondary class="my-3">
               <template #icon>
                 <Icon name="line-md:download-loop" />
