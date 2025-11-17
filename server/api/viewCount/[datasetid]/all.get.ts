@@ -35,7 +35,6 @@ export default defineEventHandler(async (event) => {
   if (response.ok) {
     console.log("Login successful");
   } else {
-    console.log("Login failed");
     throw createError({
       message: "Error",
       statusCode: 401,
@@ -62,7 +61,7 @@ export default defineEventHandler(async (event) => {
 
     if (response.ok) {
       const data = await res.json();
-      console.log(data);
+
       total += data.pageviews.reduce(
         (
           acc: number,
@@ -74,7 +73,6 @@ export default defineEventHandler(async (event) => {
       );
       // return data
     } else {
-      console.log(res);
       console.error("error");
     }
   }
