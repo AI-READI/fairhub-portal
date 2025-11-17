@@ -425,8 +425,8 @@ const onTabChange = () => {
         type="warning"
       >
         <p>
-          It is only intended to be used as a smaller training dataset for model
-          and workflow development. To access the full dataset, please
+          It is only intended to help develop pipelines before downloading the
+          full dataset. To access the full dataset, please
           <NuxtLink
             :to="`/datasets/${dataset?.data.parent || ''}`"
             class="text-blue-500 hover:underline"
