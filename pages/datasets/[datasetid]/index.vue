@@ -643,7 +643,7 @@ const onTabChange = () => {
 
               <n-flex>
                 <NuxtLink
-                  to="http://b21ai-dqd.fnbqhhfhbwfnd5h0.westus2.azurecontainer.io:3838/"
+                  to="http://b21ai-dqd.westus2.azurecontainer.io:3838/"
                   target="_blank"
                 >
                   <n-button size="large" type="info" secondary class="my-3">

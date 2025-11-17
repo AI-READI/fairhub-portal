@@ -163,11 +163,11 @@ export default defineNuxtConfig({
               ? "https://staging.fairhub.io/local-login"
               : "https://fairhub.io/local-login",
       },
-      STUDY_RELEASE_TIMESTAMP:
-        process.env.NUXT_SITE_ENV === "dev" ||
-        process.env.NUXT_SITE_ENV === "staging"
-          ? "1763157600" // Mon Nov 11 2025 14:00:00 GMT-0800 (Pacific Standard Time)
-          : "1763168400", // Mon Nov 11 2025 17:00:00 GMT-0800 (Pacific Standard Time)
+      // STUDY_RELEASE_TIMESTAMP:
+      // process.env.NUXT_SITE_ENV === "dev" ||
+      // process.env.NUXT_SITE_ENV === "staging"
+      // ? "1763157600" // Mon Nov 11 2025 14:00:00 GMT-0800 (Pacific Standard Time)
+      // : "1763168400", // Mon Nov 11 2025 17:00:00 GMT-0800 (Pacific Standard Time)
       UMAMI_SHARE_URL:
         process.env.NUXT_SITE_ENV === "dev" ||
         process.env.NUXT_SITE_ENV === "staging"
