@@ -43,7 +43,7 @@ const parsedSize = byteSize(props.size, { precision: 2 }).toString();
       :to="`/datasets/${child}`"
       class="p flex justify-center text-xs text-sky-700 hover:underline"
     >
-      A smaller version is available for model training...
+      A smaller version is available for pipeline development...
     </NuxtLink>
   </n-flex>
 </template>

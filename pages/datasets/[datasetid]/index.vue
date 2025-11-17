@@ -57,6 +57,9 @@ const tabs = reactive([
     shownInMini: true,
   },
 ]);
+
+const formatter = Intl.NumberFormat("en", { notation: "compact" });
+
 const totalViewCount = ref(0);
 const totalDownloadApprovals = ref(0);
 const totalDownloadApprovalforAllVersions = ref(0);
@@ -422,8 +425,8 @@ const onTabChange = () => {
         type="warning"
       >
         <p>
-          It is only intended to be used as a smaller training dataset for model
-          and workflow development. To access the full dataset, please
+          It is only intended to help develop pipelines before downloading the
+          full dataset. To access the full dataset, please
           <NuxtLink
             :to="`/datasets/${dataset?.data.parent || ''}`"
             class="text-blue-500 hover:underline"
@@ -686,11 +689,11 @@ const onTabChange = () => {
 
                       <div v-else class="min-w-[36px] text-sm font-medium">
                         <div v-if="currentTab === 'currentVersion'">
-                          {{ totalViewCount }}
+                          {{ formatter.format(totalViewCount || 0) }}
                         </div>
 
                         <div v-else>
-                          {{ totalViewCount }}
+                          {{ formatter.format(totalViewCount || 0) }}
                         </div>
                       </div>
                     </TransitionFade>
@@ -713,11 +716,11 @@ const onTabChange = () => {
 
                         <div v-else class="min-w-[36px] text-sm font-medium">
                           <div v-if="currentTab === 'currentVersion'">
-                            {{ totalViewCount }}
+                            {{ formatter.format(totalViewCount || 0) }}
                           </div>
 
                           <div v-else>
-                            {{ totalViewCount }}
+                            {{ formatter.format(totalViewCount || 0) }}
                           </div>
                         </div>
                       </TransitionFade>
@@ -823,7 +826,7 @@ const onTabChange = () => {
                 <a
                   class="flex justify-center pt-4 text-xs text-sky-700 hover:underline"
                   target="_blank"
-                  href="https://github.com/AI-READI/fairhub-portal/blob/citation-count/dev/usage-statistics.md"
+                  href="https://github.com/AI-READI/fairhub-portal/blob/main/dev/usage-statistics.md"
                 >
                   More info on how stats are collected....
                 </a>
