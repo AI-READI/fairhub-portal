@@ -57,6 +57,9 @@ const tabs = reactive([
     shownInMini: true,
   },
 ]);
+
+const formatter = Intl.NumberFormat("en", { notation: "compact" });
+
 const totalViewCount = ref(0);
 const totalDownloadApprovals = ref(0);
 const totalDownloadApprovalforAllVersions = ref(0);
@@ -686,11 +689,11 @@ const onTabChange = () => {
 
                       <div v-else class="min-w-[36px] text-sm font-medium">
                         <div v-if="currentTab === 'currentVersion'">
-                          {{ totalViewCount }}
+                          {{ formatter.format(totalViewCount || 0) }}
                         </div>
 
                         <div v-else>
-                          {{ totalViewCount }}
+                          {{ formatter.format(totalViewCount || 0) }}
                         </div>
                       </div>
                     </TransitionFade>
@@ -713,11 +716,11 @@ const onTabChange = () => {
 
                         <div v-else class="min-w-[36px] text-sm font-medium">
                           <div v-if="currentTab === 'currentVersion'">
-                            {{ totalViewCount }}
+                            {{ formatter.format(totalViewCount || 0) }}
                           </div>
 
                           <div v-else>
-                            {{ totalViewCount }}
+                            {{ formatter.format(totalViewCount || 0) }}
                           </div>
                         </div>
                       </TransitionFade>
