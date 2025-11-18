@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import hljs from "highlight.js/lib/core";
 import powershell from "highlight.js/lib/languages/powershell";
-import dayjs from "dayjs";
 
 definePageMeta({
   middleware: ["auth"],
@@ -26,17 +25,12 @@ const notUserDownload = user?.id !== request.user_details_id;
 const dataReady = request.status === "READY";
 const isExpired = request.status === "EXPIRED";
 
-const expiresAt = request.expires_at
-  ? dayjs.unix(request.expires_at).format("MMM D, YYYY HH:mm Z")
-  : null;
-
-const requestSasUri = request.download_uri;
+const requestSasUri = request.download_uri.replace(
+  /\?.*/,
+  "?...[SAS Token Omitted]...",
+);
 const azcopyCommand = `azcopy copy "${requestSasUri}" "C:\\local\\path" --recursive=true`;
 
-const copyToClipboard = (text: string = "") => {
-  navigator.clipboard.writeText(text);
-  push.success("Copied to clipboard");
-};
 hljs.registerLanguage("powershell", powershell);
 
 if (error.value) {
@@ -116,13 +110,16 @@ if (error.value) {
                 </p>
 
                 <p>
-                  This is your SAS URI; please record this for download, click
-                  to copy to your clipboard
-                  <!-- TODO: santize URL for new structure -->
-                  <n-code
-                    :code="requestSasUri"
-                    @click="copyToClipboard(requestSasUri)"
-                  />
+                  You will need to generate a SAS URI for your download with the
+                  "Read" and "List" permissions similar to the format below. See
+                  our
+                  <NuxtLink
+                    to="https://docs.aireadi.org/docs/3/preliminary/azure_storage/azure-token"
+                    target="_blank"
+                    >Azure Blob Storage documentation</NuxtLink
+                  >
+                  for more information.
+                  <n-code :code="requestSasUri" />
                 </p>
 
                 <p>
@@ -171,11 +168,7 @@ if (error.value) {
                   <li>
                     Open a terminal or powershell instance and execute the
                     following:
-                    <n-code
-                      :code="azcopyCommand"
-                      language="powershell"
-                      @click="copyToClipboard(azcopyCommand)"
-                    />
+                    <n-code :code="azcopyCommand" language="powershell" />
 
                     Where the https URL is the SAS URI you obtained from the
                     portal and "C:\local\path" is the local path on your target
@@ -204,12 +197,16 @@ if (error.value) {
                 </p>
 
                 <p>
-                  This is your SAS URI; please record this for download, click
-                  to copy to your clipboard
-                  <n-code
-                    :code="requestSasUri"
-                    @click="copyToClipboard(requestSasUri)"
-                  />
+                  You will need to generate a SAS URI for your download with the
+                  "Read" and "List" permissions similar to the format below. See
+                  our
+                  <NuxtLink
+                    to="https://docs.aireadi.org/docs/3/preliminary/azure_storage/azure-token"
+                    target="_blank"
+                    >Azure Blob Storage documentation</NuxtLink
+                  >
+                  for more information.
+                  <n-code :code="requestSasUri" />
                 </p>
 
                 <ol>
