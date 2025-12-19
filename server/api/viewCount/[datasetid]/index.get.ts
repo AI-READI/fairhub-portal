@@ -41,7 +41,7 @@ export default defineEventHandler(async (event) => {
   const currentTime: number = Date.now();
 
   const res = await fetch(
-    `https://umami.aireadi.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/pageviews?unit=year&endAt=${currentTime}&startAt=1709149073000&url=/datasets/${datasetid}&timezone=America/Los_Angeles`,
+    `https://umami.aireadi.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/pageviews?unit=year&endAt=${currentTime}&startAt=1709149073000&path=/datasets/${datasetid}&timezone=America/Los_Angeles`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -50,7 +50,7 @@ export default defineEventHandler(async (event) => {
     },
   );
 
-  if (response.ok) {
+  if (res.ok) {
     const data = await res.json();
     return data.pageviews.reduce(
       (
