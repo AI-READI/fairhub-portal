@@ -41,7 +41,7 @@ export default defineEventHandler(async (event) => {
   const currentTime: number = Date.now();
 
   const res = await fetch(
-    `https://umami.fairdataihub.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/pageviews?unit=year&endAt=${currentTime}&startAt=1709149073000&path=/datasets/${datasetid}&timezone=America/Los_Angeles`,
+    `https://umami.test.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/pageviews?unit=year&endAt=${currentTime}&startAt=1709149073000&path=/datasets/${datasetid}&timezone=America/Los_Angeles`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
