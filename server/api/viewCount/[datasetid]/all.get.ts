@@ -49,8 +49,9 @@ export default defineEventHandler(async (event) => {
   let total = 0;
 
   for (const version of allVersions) {
+    const versionId = version.id.trim();
     const res = await fetch(
-      `https://umami.aireadi.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/pageviews?unit=year&endAt=${currentTime}&startAt=1709149073000&url=/datasets/${version.id}&timezone=America/Los_Angeles`,
+      `https://umami.aireadi.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/pageviews?unit=year&endAt=${currentTime}&startAt=1709149073000&path=/datasets/${versionId}&timezone=America/Los_Angeles`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -58,10 +59,8 @@ export default defineEventHandler(async (event) => {
         method: "GET",
       },
     );
-
-    if (response.ok) {
+    if (res.ok) {
       const data = await res.json();
-
       total += data.pageviews.reduce(
         (
           acc: number,
