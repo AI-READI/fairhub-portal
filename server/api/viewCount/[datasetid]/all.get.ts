@@ -1,5 +1,4 @@
 export default defineEventHandler(async (event) => {
-
   const { datasetid } = event.context.params as { datasetid: string };
 
   const dataset = await prisma.published_dataset.findUnique({
@@ -22,6 +21,7 @@ export default defineEventHandler(async (event) => {
       dataset_id: dataset?.dataset_id,
     },
   });
+
   const response = await fetch(`https://umami.aireadi.org/api/auth/login`, {
     body: JSON.stringify({
       username: process.env.UMAMI_USERNAME,
@@ -51,7 +51,7 @@ export default defineEventHandler(async (event) => {
   for (const version of allVersions) {
     const versionId = version.id.trim();
     const res = await fetch(
-      `https://umami.aireadi.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/pageviews?unit=year&endAt=${currentTime}&startAt=1709149073000&path=/datasets/${versionId}&timezone=America/Los_Angeles`,
+      `https://umami.aireadi.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/stats?unit=year&endAt=${currentTime}&startAt=1709149073000&path=/datasets/${versionId}&timezone=America/Los_Angeles`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -61,8 +61,6 @@ export default defineEventHandler(async (event) => {
     );
     if (res.ok) {
       const data = await res.json();
-      console.log("BODY:", data);
-
       total += data.pageviews.reduce(
         (
           acc: number,
@@ -76,8 +74,6 @@ export default defineEventHandler(async (event) => {
     } else {
       console.error("error");
     }
-    console.log(version, "***")
-
   }
 
   return total;
