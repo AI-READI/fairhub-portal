@@ -59,14 +59,6 @@ export default defineEventHandler(async (event) => {
         method: "GET",
       },
     );
-    console.log("STATUS:", res.status);
-    console.log("URL:", res.url);
-    console.log("WEBSITE_ID:", process.env.UMAMI_WEBSITE_ID);
-    console.log("TOKEN_PRESENT:", !!token);
-
-    const text = await res.text();
-    console.log("BODY:", text);
-
     if (res.ok) {
       const data = await res.json();
       console.log("BODY:", data);
