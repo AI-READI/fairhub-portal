@@ -22,7 +22,6 @@ export default defineEventHandler(async (event) => {
       dataset_id: dataset?.dataset_id,
     },
   });
-
   const response = await fetch(`https://umami.aireadi.org/api/auth/login`, {
     body: JSON.stringify({
       username: process.env.UMAMI_USERNAME,
@@ -50,8 +49,9 @@ export default defineEventHandler(async (event) => {
   let total = 0;
 
   for (const version of allVersions) {
+    const versionId = version.id.trim();
     const res = await fetch(
-      `https://umami.aireadi.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/pageviews?unit=year&endAt=${currentTime}&startAt=1709149073000&path=/datasets/${datasetid}&timezone=America/Los_Angeles`,
+      `https://umami.aireadi.org/api/websites/${process.env.UMAMI_WEBSITE_ID}/pageviews?unit=year&endAt=${currentTime}&startAt=1709149073000&path=/datasets/${versionId}&timezone=America/Los_Angeles`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
