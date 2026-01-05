@@ -239,7 +239,7 @@ useHead(() => {
       {
         src: "https://cdn.jsdelivr.net/npm/@datacite/datacite-tracker",
         defer: true,
-        "data-repoid": "da-1a2b34",
+        "data-repoid": "da-rukpmw",
         "data-metric": "view",
         "data-doi": doi,
       },
