@@ -226,18 +226,27 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
 useSchemaOrg([NuxtSchemaDataset]);
 
 // Datacite tracker MDC integration
-useHead({
-  script: [
-    {
-      src: "https://cdn.jsdelivr.net/npm/@datacite/datacite-tracker",
-      defer: true,
-      "data-repoid": "da-1a2b34",
-      "data-metric": "view",
-      "data-doi":
-        dataset.value?.metadata?.datasetDescription?.identifier?.identifierValue,
-    },
-  ],
+useHead(() => {
+  const doi =
+    dataset.value?.metadata?.datasetDescription?.identifier?.identifierValue;
+
+  if (!doi) {
+    return {};
+  }
+
+  return {
+    script: [
+      {
+        src: "https://cdn.jsdelivr.net/npm/@datacite/datacite-tracker",
+        defer: true,
+        "data-repoid": "da-1a2b34",
+        "data-metric": "view",
+        "data-doi": doi,
+      },
+    ],
+  };
 });
+
 
 useSeoMeta({
   title: dataset.value?.title || "FAIRhub",

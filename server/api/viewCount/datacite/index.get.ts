@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
       views: 0,
     };
   }
-   
+
   const res = await fetch(
     `https://api.datacite.org/metrics?doi=${encodeURIComponent(
       `https://doi.org/${doi}`,
