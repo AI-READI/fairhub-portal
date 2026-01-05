@@ -225,6 +225,20 @@ const NuxtSchemaDataset: WithContext<Dataset> = {
 
 useSchemaOrg([NuxtSchemaDataset]);
 
+// Datacite tracker MDC integration
+useHead({
+  script: [
+    {
+      src: "https://cdn.jsdelivr.net/npm/@datacite/datacite-tracker",
+      defer: true,
+      "data-repoid": "da-1a2b34",
+      "data-metric": "view",
+      "data-doi":
+        dataset.value?.metadata?.datasetDescription?.identifier?.identifierValue,
+    },
+  ],
+});
+
 useSeoMeta({
   title: dataset.value?.title || "FAIRhub",
   description: dataset.value?.description || "FAIRhub",
