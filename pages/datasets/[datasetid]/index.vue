@@ -230,7 +230,7 @@ useHead(() => {
   const doi =
     dataset.value?.metadata?.datasetDescription?.identifier?.identifierValue;
 
-  if (!doi) {
+  if (process.env.NUXT_SITE_ENV !== "production" || !doi) {
     return {};
   }
 
