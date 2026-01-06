@@ -101,7 +101,7 @@ const markdownToHtml = ref<string>("");
 const NuxtSchemaDataset: WithContext<Dataset> = {
   name: dataset.value?.title,
   "@context": "https://schema.org",
-  "@id": `https://doi.org/${dataset.value?.metadata.datasetDescription.identifier.identifierValue}`,
+  "@id": `https://doi.org/${dataset.value?.doi}`,
   "@type": "Dataset",
   contributor: dataset.value?.metadata.datasetDescription.contributor?.map(
     (contributor) => {
@@ -227,8 +227,7 @@ useSchemaOrg([NuxtSchemaDataset]);
 
 // Datacite tracker MDC integration
 useHead(() => {
-  const doi =
-    dataset.value?.metadata?.datasetDescription?.identifier?.identifierValue;
+  const doi = dataset.value?.doi;
 
   if (process.env.NUXT_SITE_ENV !== "production" || !doi) {
     return {};
@@ -237,16 +236,15 @@ useHead(() => {
   return {
     script: [
       {
-        src: "https://cdn.jsdelivr.net/npm/@datacite/datacite-tracker",
-        defer: true,
-        "data-repoid": "da-rukpmw",
-        "data-metric": "view",
         "data-doi": doi,
+        "data-metric": "view",
+        "data-repoid": "da-rukpmw",
+        defer: true,
+        src: "https://cdn.jsdelivr.net/npm/@datacite/datacite-tracker",
       },
     ],
   };
 });
-
 
 useSeoMeta({
   title: dataset.value?.title || "FAIRhub",
