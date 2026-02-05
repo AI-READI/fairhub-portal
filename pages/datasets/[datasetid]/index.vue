@@ -934,9 +934,11 @@ const onTabChange = () => {
               vertical
               class="space-y-0 rounded-xl border border-blue-200 bg-white px-4 py-5"
             >
+              <h3 class="mb-3">Dataset Impact</h3>
+
               <div class="grid grid-cols-2 gap-x-4 gap-y-2.5 text-center">
                 <div class="flex flex-col items-center gap-0.5">
-                  <span class="text-md font-semibold"> Dataset Index </span>
+                  <span class="text-sm font-normal"> Dataset Index </span>
 
                   <TransitionFade>
                     <div v-if="datasetIndexSpinner">
@@ -957,7 +959,7 @@ const onTabChange = () => {
                 </div>
 
                 <div class="flex flex-col items-center gap-0.5">
-                  <span class="text-md font-semibold"> FAIR score </span>
+                  <span class="text-sm font-normal"> FAIR score </span>
 
                   <TransitionFade>
                     <div v-if="datasetIndexSpinner">
@@ -969,6 +971,46 @@ const onTabChange = () => {
                         {{
                           datasetIndexData?.fujiScore?.score != null
                             ? ` ${datasetIndexData?.fujiScore?.score.toFixed(0)}%`
+                            : "—"
+                        }}
+                      </span>
+                    </div>
+                  </TransitionFade>
+                </div>
+
+                <div class="flex flex-col items-center gap-0.5">
+                  <span class="text-sm font-normal"> Citations </span>
+
+                  <TransitionFade>
+                    <div v-if="datasetIndexSpinner">
+                      <n-spin :size="12" />
+                    </div>
+
+                    <div v-else>
+                      <span class="text-lg font-semibold text-sky-700">
+                        {{
+                          datasetIndexData?.totalCitations != null
+                            ? datasetIndexData?.totalCitations
+                            : "—"
+                        }}
+                      </span>
+                    </div>
+                  </TransitionFade>
+                </div>
+
+                <div class="flex flex-col items-center gap-0.5">
+                  <span class="text-sm font-normal"> Mentions </span>
+
+                  <TransitionFade>
+                    <div v-if="datasetIndexSpinner">
+                      <n-spin :size="12" />
+                    </div>
+
+                    <div v-else>
+                      <span class="text-lg font-semibold text-sky-700">
+                        {{
+                          datasetIndexData?.totalMentions != null
+                            ? datasetIndexData?.totalMentions
                             : "—"
                         }}
                       </span>
