@@ -536,3 +536,20 @@ interface VersionArrayItem {
 }
 
 interface VersionArray extends Array<VersionArrayItem> {}
+
+/** Scholardata API response for dataset index by DOI */
+interface DatasetIndexResponse {
+  datasetId: number;
+  totalCitations: number;
+  totalMentions: number;
+  fujiScore?: {
+    score: number;
+    evaluationDate: string;
+    metricVersion: string;
+    softwareVersion: string;
+  };
+  latestDIndex?: {
+    score: number;
+    created: string;
+  };
+}

@@ -74,9 +74,12 @@ const isMiniDataset = computed(() => {
 
 const totalViewCountSpinner = ref(true);
 const totalDownloadApprovalSpinner = ref(true);
+const datasetIndexSpinner = ref(true);
 
 const totalCitationsSpinner = ref(true);
 const totalCitations = ref(0);
+
+const datasetIndexData = ref<DatasetIndexResponse | null>(null);
 
 const { data: dataset, error } = await useFetch(`/api/datasets/${datasetid}`, {
   headers: useRequestHeaders(["cookie"]),
@@ -339,10 +342,24 @@ const getTotalCitations = async () => {
     });
 };
 
+const getDatasetIndex = async () => {
+  await $fetch(`/api/datasetIndex/${datasetid}`)
+    .then((data) => {
+      datasetIndexData.value = data as DatasetIndexResponse;
+    })
+    .catch((err: string) => {
+      console.error("Error fetching dataset index", err);
+    })
+    .finally(() => {
+      datasetIndexSpinner.value = false;
+    });
+};
+
 onMounted(() => {
   getViewCount();
   getDownloads(false);
   getTotalCitations();
+  getDatasetIndex();
 });
 
 const onTabChange = () => {
@@ -429,7 +446,7 @@ const onTabChange = () => {
 
       <n-image
         :src="
-          dataset?.id === '4'
+          dataset?.id === '1'
             ? 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/mini.png'
             : 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png'
         "
@@ -911,6 +928,121 @@ const onTabChange = () => {
               :id="dataset?.id || ''"
               :versions="dataset?.versions || []"
             />
+
+            <n-flex
+              v-if="datasetid == '2' || datasetid == '1'"
+              vertical
+              class="space-y-0 rounded-xl border border-blue-200 bg-white px-4 py-5"
+            >
+              <h3 class="mb-3">Dataset Impact</h3>
+
+              <div class="grid grid-cols-2 gap-x-4 gap-y-2.5 text-center">
+                <div class="flex flex-col items-center gap-0.5">
+                  <span class="text-sm font-normal"> Dataset Index </span>
+
+                  <TransitionFade>
+                    <div v-if="datasetIndexSpinner">
+                      <n-spin :size="12" />
+                    </div>
+
+                    <div v-else>
+                      <span class="text-lg font-semibold text-sky-700">
+                        {{
+                          datasetIndexData?.latestDIndex?.score.toFixed(1) !=
+                          null
+                            ? datasetIndexData?.latestDIndex?.score.toFixed(1)
+                            : "—"
+                        }}
+                      </span>
+                    </div>
+                  </TransitionFade>
+                </div>
+
+                <div class="flex flex-col items-center gap-0.5">
+                  <span class="text-sm font-normal"> FAIR score </span>
+
+                  <TransitionFade>
+                    <div v-if="datasetIndexSpinner">
+                      <n-spin :size="12" />
+                    </div>
+
+                    <div v-else>
+                      <span class="text-lg font-semibold text-sky-700">
+                        {{
+                          datasetIndexData?.fujiScore?.score != null
+                            ? ` ${datasetIndexData?.fujiScore?.score.toFixed(0)}%`
+                            : "—"
+                        }}
+                      </span>
+                    </div>
+                  </TransitionFade>
+                </div>
+
+                <div class="flex flex-col items-center gap-0.5">
+                  <span class="text-sm font-normal"> Citations </span>
+
+                  <TransitionFade>
+                    <div v-if="datasetIndexSpinner">
+                      <n-spin :size="12" />
+                    </div>
+
+                    <div v-else>
+                      <span class="text-lg font-semibold text-sky-700">
+                        {{
+                          datasetIndexData?.totalCitations != null
+                            ? datasetIndexData?.totalCitations
+                            : "—"
+                        }}
+                      </span>
+                    </div>
+                  </TransitionFade>
+                </div>
+
+                <div class="flex flex-col items-center gap-0.5">
+                  <span class="text-sm font-normal"> Mentions </span>
+
+                  <TransitionFade>
+                    <div v-if="datasetIndexSpinner">
+                      <n-spin :size="12" />
+                    </div>
+
+                    <div v-else>
+                      <span class="text-lg font-semibold text-sky-700">
+                        {{
+                          datasetIndexData?.totalMentions != null
+                            ? datasetIndexData?.totalMentions
+                            : "—"
+                        }}
+                      </span>
+                    </div>
+                  </TransitionFade>
+                </div>
+              </div>
+
+              <p
+                class="flex items-center justify-center gap-1 py-2 text-xs text-yellow-500"
+              >
+                <Icon name="heroicons:exclamation-triangle" size="16" />
+                Platform is currently in beta
+              </p>
+
+              <n-divider />
+
+              <div
+                v-if="datasetIndexData?.datasetId"
+                class="flex justify-center pt-2"
+              >
+                <a
+                  :href="`https://beta.scholardata.io/datasets/${datasetIndexData?.datasetId}`"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 text-xs font-medium text-sky-600 no-underline hover:text-sky-700 hover:underline"
+                >
+                  View more details on Scholar Data
+                  <Icon name="i-heroicons-arrow-right" />
+                </a>
+              </div>
+            </n-flex>
           </n-flex>
         </div>
       </div>
