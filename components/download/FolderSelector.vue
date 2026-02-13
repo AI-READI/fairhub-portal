@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import prettyBytes from "pretty-bytes";
 
 const props = defineProps({
@@ -47,6 +48,45 @@ const totalBytes = computed(() =>
     .map((label) => folderMetadata.value.get(label))
     .reduce((prev, curr) => (curr?.size ? prev + curr?.size : prev + 0), 0),
 );
+
+const totalDataSetSize = computed(() =>
+  folderMetadata.value.values()
+    .reduce((prev, curr) => (curr?.size ? prev + curr?.size : prev + 0), 0),
+);
+
+const percentSelected = computed(() => {
+  if (isNaN(totalBytes.value) || isNaN(totalDataSetSize.value) || (totalDataSetSize.value <= 0)) return 0;
+  return Math.floor((totalBytes.value / totalDataSetSize.value ) * 100); 
+});
+
+const BYTES_IN_GB = 1024 ** 3;
+const storageRates = ref([]);
+const storageOpts = [
+  {
+    label:'Hot',
+    value:[0.087, 0.0184, 0], // [egress, storage, early closure penalty]
+  },
+  {
+    label:'Cool',
+    value:[0,0,0],
+  },
+];
+
+const calculatedEgressCost = computed(() => {
+  if (isNaN(totalBytes.value)) return 0;
+  const gb = Math.ceil((totalBytes.value / BYTES_IN_GB));
+  const chargeableGb = Math.max(gb - 100, 0);
+  return (chargeableGb * 0.087).toFixed(2);
+  // return (chargeableGb * storageRates[0]).toFixed(2);
+});
+
+const calculatedStorageCost = computed(() => {
+  if (isNaN(totalBytes.value)) return 0;
+  const chargeableGb = Math.ceil((totalBytes.value / BYTES_IN_GB));
+  return (chargeableGb * 0.0184).toFixed(2);
+});
+
+
 </script>
 
 <template>
@@ -76,16 +116,34 @@ const totalBytes = computed(() =>
 
             <span v-if="folder.size" class="text-xs font-thin"
               >{{ folder.numberOfFiles }} files,
-              {{ prettyBytes(folder.size, { binary: true }) }}</span
-            >
+              {{ prettyBytes(folder.size, { binary: true }) }}</span>
           </div>
         </div>
       </n-card>
     </n-flex>
   </n-checkbox-group>
 
-  <p v-if="hasFolderSizes">
-    Total size of selected folders:
-    {{ prettyBytes(totalBytes, { binary: true }) }}
-  </p>
+  <n-flex
+    v-if="hasFolderSizes"
+    justify="space-between"
+    align="center"
+    style="gap: 24px; padding: 16px;"
+    >
+      <n-progress
+        type="circle"
+        :percentage="percentSelected"
+        :stroke-width="8"
+        size="300" />
+      <!--div style="display: flex; flex-direction: column; gap: 8px;">
+        Selectors for different Storage opts here:
+      </div-->
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <p style="text-align: center">
+        Total size of selected folders:
+        {{ prettyBytes(totalBytes, { binary: true }) }}
+        </p>
+        <p style="text-align: center">Estimated Monthly Storage Cost: ${{ calculatedStorageCost }}</p>
+        <p style="text-align: center">Estimated Data Egress Cost: ${{ calculatedEgressCost }}</p>
+      </div>
+  </n-flex>
 </template>
