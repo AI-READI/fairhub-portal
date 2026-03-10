@@ -236,16 +236,34 @@ useHead(() => {
     return {};
   }
 
+  const dataciteTrackerScript = [
+    {
+      "data-doi": doi,
+      "data-metric": "view",
+      "data-repoid": "da-rukpmw",
+      defer: true,
+      src: "https://cdn.jsdelivr.net/npm/@datacite/datacite-tracker",
+    },
+  ];
+
   return {
-    script: [
+    meta: [
+      { name: "citation_title", content: dataset.value?.title || "" },
       {
-        "data-doi": doi,
-        "data-metric": "view",
-        "data-repoid": "da-rukpmw",
-        defer: true,
-        src: "https://cdn.jsdelivr.net/npm/@datacite/datacite-tracker",
+        name: "citation_author",
+        content:
+          dataset.value?.metadata.datasetDescription.creator
+            .map((c) => c.creatorName)
+            .join("; ") || "",
+      },
+      {
+        name: "citation_publication_date",
+        content: dataset.value?.created_at
+          ? dayjs.unix(dataset.value.created_at).format("YYYY/MM/DD")
+          : "",
       },
     ],
+    script: dataciteTrackerScript,
   };
 });
 
