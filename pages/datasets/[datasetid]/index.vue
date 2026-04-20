@@ -733,21 +733,39 @@ const onTabChange = () => {
             >
               <h3 class="self-start">Usage statistics</h3>
 
-              <div class="mt-4 flex items-center space-x-2">
+              <div class="mt-4">
+                <n-flex vertical align="center" size="small">
+                  <n-flex size="small" align="center">
+                    <Icon name="bi:journal-text" size="16" />
+                    <TransitionFade>
+                      <div v-if="totalCitationsSpinner" class="min-w-[36px]">
+                        <n-spin :size="12" />
+                      </div>
+                      <div v-else class="min-w-[36px] text-sm font-medium">
+                        {{ totalCitations || 0 }}
+                      </div>
+                    </TransitionFade>
+                  </n-flex>
+                  <span class="text-sm font-normal text-gray-500"
+                    >Cited by (all datasets)</span
+                  >
+                </n-flex>
+              </div>
+
+              <n-divider />
+
+              <div class="flex items-center space-x-2">
                 <n-flex vertical align="center" size="small">
                   <n-flex size="small" align="center">
                     <Icon name="lets-icons:view-duotone" size="23" />
-
                     <TransitionFade>
                       <div v-if="totalViewCountSpinner" class="min-w-[36px]">
                         <n-spin :size="12" />
                       </div>
-
                       <div v-else class="min-w-[36px] text-sm font-medium">
                         <div v-if="currentTab === 'currentVersion'">
                           {{ formatter.format(totalViewCount || 0) }}
                         </div>
-
                         <div v-else>
                           {{ formatter.format(totalViewCount || 0) }}
                         </div>
@@ -764,17 +782,14 @@ const onTabChange = () => {
                   >
                     <n-flex size="small" align="center">
                       <Icon name="lets-icons:view-duotone" size="23" />
-
                       <TransitionFade>
                         <div v-if="totalViewCountSpinner" class="min-w-[36px]">
                           <n-spin :size="12" />
                         </div>
-
                         <div v-else class="min-w-[36px] text-sm font-medium">
                           <div v-if="currentTab === 'currentVersion'">
                             {{ formatter.format(totalViewCount || 0) }}
                           </div>
-
                           <div v-else>
                             {{ formatter.format(totalViewCount || 0) }}
                           </div>
@@ -792,46 +807,15 @@ const onTabChange = () => {
 
                 <n-flex vertical align="center" size="small">
                   <n-flex size="small" align="center">
-                    <Icon name="bi:journal-text" size="16" />
-
-                    <TransitionFade>
-                      <div v-if="totalCitationsSpinner" class="min-w-[36px]">
-                        <n-spin :size="12" />
-                      </div>
-
-                      <div v-else class="min-w-[36px] text-sm font-medium">
-                        <div v-if="currentTab === 'currentVersion'">
-                          {{ dataset?.data?.cited || 0 }}
-                        </div>
-
-                        <div v-else>
-                          {{ totalCitations || 0 }}
-                        </div>
-                      </div>
-                    </TransitionFade>
-                  </n-flex>
-
-                  <span class="text-sm font-normal">Cited by</span>
-                </n-flex>
-
-                <div>
-                  <n-divider vertical />
-                </div>
-
-                <n-flex vertical align="center" size="small">
-                  <n-flex size="small" align="center">
                     <Icon name="ri:folder-download-line" size="16" />
-
                     <TransitionFade>
                       <div v-if="totalDownloadApprovalSpinner">
                         <n-spin :size="12" />
                       </div>
-
                       <div v-else class="min-w-[12px] text-sm font-medium">
                         <div v-if="currentTab === 'currentVersion'">
                           {{ totalDownloadApprovals }}
                         </div>
-
                         <div v-else>
                           {{ totalDownloadApprovalforAllVersions }}
                         </div>
@@ -851,7 +835,6 @@ const onTabChange = () => {
                           />
                         </span>
                       </template>
-
                       <span
                         v-if="currentTab === 'currentVersion'"
                         class="text-xs"
@@ -859,7 +842,6 @@ const onTabChange = () => {
                         Number of access granted to the current version of this
                         dataset
                       </span>
-
                       <span v-else class="text-xs">
                         Number of access granted to all versions of this dataset
                       </span>
@@ -875,7 +857,6 @@ const onTabChange = () => {
                   @update:value="onTabChange"
                 >
                   <n-tab name="allVersions" default> All versions </n-tab>
-
                   <n-tab name="currentVersion">Current version </n-tab>
                 </n-tabs>
 
