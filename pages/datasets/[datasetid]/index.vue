@@ -802,7 +802,7 @@ const onTabChange = () => {
 
                       <div v-else class="min-w-[36px] text-sm font-medium">
                         <div>
-                          {{ dataset?.data?.cited || 0 }}
+                          {{ totalCitations || 0 }}
                         </div>
                       </div>
                     </TransitionFade>
