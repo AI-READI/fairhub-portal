@@ -790,7 +790,8 @@ const onTabChange = () => {
                   <n-divider vertical />
                 </div>
 
-                <n-flex vertical align="center" size="small">
+                <div :class="{ 'hidden': currentTab === 'currentVersion' }">
+                  <n-flex vertical align="center" size="small">
                   <n-flex size="small" align="center">
                     <Icon name="bi:journal-text" size="16" />
 
@@ -800,11 +801,7 @@ const onTabChange = () => {
                       </div>
 
                       <div v-else class="min-w-[36px] text-sm font-medium">
-                        <div v-if="currentTab === 'currentVersion'">
-                          {{ dataset?.data?.cited || 0 }}
-                        </div>
-
-                        <div v-else>
+                        <div>
                           {{ totalCitations || 0 }}
                         </div>
                       </div>
@@ -814,7 +811,8 @@ const onTabChange = () => {
                   <span class="text-sm font-normal">Cited by</span>
                 </n-flex>
 
-                <div>
+                </div>
+                <div :class="{ 'hidden': currentTab === 'currentVersion' }">
                   <n-divider vertical />
                 </div>
 
@@ -888,6 +886,7 @@ const onTabChange = () => {
                 </a>
               </div>
             </n-flex>
+
 
             <SideDatasetSize
               :size="dataset?.data.size"
