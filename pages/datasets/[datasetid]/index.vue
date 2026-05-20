@@ -790,29 +790,29 @@ const onTabChange = () => {
                   <n-divider vertical />
                 </div>
 
-                <div :class="{ 'hidden': currentTab === 'currentVersion' }">
+                <div :class="{ hidden: currentTab === 'currentVersion' }">
                   <n-flex vertical align="center" size="small">
-                  <n-flex size="small" align="center">
-                    <Icon name="bi:journal-text" size="16" />
+                    <n-flex size="small" align="center">
+                      <Icon name="bi:journal-text" size="16" />
 
-                    <TransitionFade>
-                      <div v-if="totalCitationsSpinner" class="min-w-[36px]">
-                        <n-spin :size="12" />
-                      </div>
-
-                      <div v-else class="min-w-[36px] text-sm font-medium">
-                        <div>
-                          {{ totalCitations || 0 }}
+                      <TransitionFade>
+                        <div v-if="totalCitationsSpinner" class="min-w-[36px]">
+                          <n-spin :size="12" />
                         </div>
-                      </div>
-                    </TransitionFade>
+
+                        <div v-else class="min-w-[36px] text-sm font-medium">
+                          <div>
+                            {{ totalCitations || 0 }}
+                          </div>
+                        </div>
+                      </TransitionFade>
+                    </n-flex>
+
+                    <span class="text-sm font-normal">Cited by</span>
                   </n-flex>
-
-                  <span class="text-sm font-normal">Cited by</span>
-                </n-flex>
-
                 </div>
-                <div :class="{ 'hidden': currentTab === 'currentVersion' }">
+
+                <div :class="{ hidden: currentTab === 'currentVersion' }">
                   <n-divider vertical />
                 </div>
 
@@ -886,7 +886,6 @@ const onTabChange = () => {
                 </a>
               </div>
             </n-flex>
-
 
             <SideDatasetSize
               :size="dataset?.data.size"

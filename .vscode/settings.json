@@ -9,5 +9,5 @@
     "source.fixAll.eslint": "explicit"
   },
   "vue.codeActions.enabled": false,
-  "editor.hover.enabled": true
+  "editor.hover.enabled": "on"
 }
