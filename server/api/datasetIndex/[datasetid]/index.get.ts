@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const doi = encodeURIComponent(publishedDataset.doi);
-  const url = `https://beta.scholardata.io/api/v1/datasets/by-doi?doi=${doi}`;
+  const url = `https://scholardata.io/api/v1/datasets/by-doi?doi=${doi}`;
 
   const response = await fetch(url, { method: "GET" });
 
