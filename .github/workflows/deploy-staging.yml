@@ -34,6 +34,9 @@ jobs:
           NUXT_SITE_ENV: "staging"
           AIREADI_STUDY_UUID: "0ef3f72c-1bf0-4ea1-b9d1-e727c02b0f6c"
 
+      - name: Copy SWA config into app artifact
+        run: cp staticwebapp.config.json .output/public/staticwebapp.config.json
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1

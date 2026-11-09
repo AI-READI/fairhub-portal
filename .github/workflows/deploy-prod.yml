@@ -32,6 +32,9 @@ jobs:
           DATABASE_URL: ${{ secrets.PRODUCTION_DATABASE_URL }}
           NUXT_SITE_ENV: "production"
 
+      - name: Copy SWA config into app artifact
+        run: cp staticwebapp.config.json .output/public/staticwebapp.config.json
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
