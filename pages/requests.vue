@@ -95,6 +95,7 @@ const columns = [
             The "Approval Status" indicates whether the request has been
             approved or not by the Data Access Committee (DAC). It will be one
             of the following:
+          </p>
 
           <dl>
             <dt>AWAITING_APPROVAL</dt>
@@ -115,11 +116,11 @@ const columns = [
               for additional information.
             </dd>
           </dl>
-          </p>
 
           <p>
             The "Request Status" indicates where the request is at in the
             processing pipeline. It will be one of the following:
+          </p>
 
           <dl>
             <dt>PENDING</dt>
@@ -137,7 +138,6 @@ const columns = [
               ready.
             </dd>
           </dl>
-          </p>
 
         </div>
 

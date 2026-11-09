@@ -372,21 +372,21 @@ const handleSaveAndReturn = async () => {
               >
                 <p>
                   Unfortunately something went wrong. Please ensure that you provide
-                  the following items: 
-                  <ol>
-                    <li>Name of the storage account. This will be the
-                    plain text name of the account, not the endpoint URL. </li>
-
-                    <li>Name of the container. </li>
-                    
-                    <li>Shared Access Token Blob SAS token NOT the Blob SAS
-                    URL. This is not the URL but <i>"the query string that includes all
-                    of the information required to authenticate the SAS."</i> It needs to
-                    specify the “Write” permission. It will be in the following format:
-                    <code>sp=w&st=2025-04-22T16:35:55Z&se=2025-04-23T00:35:55Z&spr=https&sv=2024-11-04&sr=c&sig=bH...REDACTED...D</code></li>
-                  </ol>
+                  the following items:
                 </p>
 
+                <ol>
+                  <li>Name of the storage account. This will be the
+                  plain text name of the account, not the endpoint URL. </li>
+
+                  <li>Name of the container. </li>
+                  
+                  <li>Shared Access Token Blob SAS token NOT the Blob SAS
+                  URL. This is not the URL but <i>"the query string that includes all
+                  of the information required to authenticate the SAS."</i> It needs to
+                  specify the “Write” permission. It will be in the following format:
+                  <code>sp=w&st=2025-04-22T16:35:55Z&se=2025-04-23T00:35:55Z&spr=https&sv=2024-11-04&sr=c&sig=bH...REDACTED...D</code></li>
+                </ol>
               </n-card>
             </n-modal>
           </div>
