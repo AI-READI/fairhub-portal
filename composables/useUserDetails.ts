@@ -1,4 +1,4 @@
-import { type SessionUserDetails } from "~/types/download";
+import type { SessionUserDetails } from "~/types/download";
 
 /**
  * Provides access to information for the currently logged-in user.

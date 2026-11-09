@@ -27,6 +27,16 @@ export default defineNuxtConfig({
     pageTransition: { name: "page", mode: "out-in" },
   },
 
+  build: {
+    // Force ESM builds of naive-ui deps during SSR (vueuc ships CJS as "main")
+    transpile: [
+      "naive-ui",
+      "vueuc",
+      "@css-render/vue3-ssr",
+      "@juggle/resize-observer",
+    ],
+  },
+
   css: [
     "@/assets/css/tailwind.css",
     "notivue/notifications.css",
