@@ -4,13 +4,23 @@ Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introdu
 
 ## Setup
 
+## Prerequisites/Dependencies
+
+You will need the following installed on your system:
+
+- mise
+- Node.js (via mise)
+- pnpm (via mise)
+- Docker
+
 Make sure to install the dependencies, pull the latest database schema, and start the development server.
 
 ```bash
-# yarn
-yarn install
-yarn prisma:db:pull
-yarn prisma:generate
+mise trust # only needed if you are using mise on this project for the first time
+mise install
+
+pnpm prisma:db:pull
+pnpm prisma:generate
 ```
 
 ## Development Server
@@ -18,7 +28,7 @@ yarn prisma:generate
 Start the development server on `http://localhost:3000`
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 ## Production
@@ -26,13 +36,13 @@ yarn dev
 Build the application for production:
 
 ```bash
-yarn build
+pnpm build
 ```
 
 Locally preview production build:
 
 ```bash
-yarn preview
+pnpm preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
