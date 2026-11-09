@@ -2,6 +2,7 @@
 
 export default defineNuxtConfig({
   alias: {},
+
   app: {
     head: {
       title: "FAIRhub Data Portal",
@@ -195,4 +196,20 @@ export default defineNuxtConfig({
   sitemap: {
     sources: ["/api/__sitemap__/urls"],
   },
+
+  $development: {
+    vite: {
+      server: {
+        fs: {
+          // Nuxt 3.15's vite-node handler treats root-relative module ids
+          // (e.g. `/assets/...`, `/node_modules/.pnpm/...`) as absolute
+          // filesystem paths and responds 403 in dev. Dev-only workaround;
+          // remove after upgrading Nuxt.
+          strict: false,
+        },
+      },
+    },
+  },
+
+  compatibilityDate: "2026-11-09",
 });
