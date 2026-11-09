@@ -72,6 +72,18 @@ const isMiniDataset = computed(() => {
   return dataset.value?.data.mini || false;
 });
 
+const datasetLogoSrc = computed(() =>
+  dataset.value?.id === "1"
+    ? "https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/mini.png"
+    : "https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png",
+);
+
+const licenseUrl = computed(() =>
+  dataset.value?.id === "1" || dataset.value?.id === "2"
+    ? "https://doi.org/10.5281/zenodo.10642459"
+    : "https://doi.org/10.5281/zenodo.17555036",
+);
+
 const totalViewCountSpinner = ref(true);
 const totalDownloadApprovalSpinner = ref(true);
 const datasetIndexSpinner = ref(true);
@@ -463,11 +475,7 @@ const onTabChange = () => {
       </n-flex>
 
       <n-image
-        :src="
-          dataset?.id === '1'
-            ? 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/mini.png'
-            : 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png'
-        "
+        :src="datasetLogoSrc"
         :alt="dataset?.title"
         class="mb-3 size-32 h-32 w-32 rounded-lg sm:mb-0"
         object-fit="contain"
@@ -901,11 +909,7 @@ const onTabChange = () => {
                 <h3>License</h3>
 
                 <NuxtLink
-                  :to="
-                    dataset?.id == '1' || dataset?.id == '2'
-                      ? 'https://doi.org/10.5281/zenodo.10642459'
-                      : 'https://doi.org/10.5281/zenodo.17555036'
-                  "
+                  :to="licenseUrl"
                   target="_blank"
                   class="underline transition-all hover:text-slate-600"
                 >
@@ -946,7 +950,7 @@ const onTabChange = () => {
             />
 
             <n-flex
-              v-if="datasetid == '2' || datasetid == '1'"
+              v-if="datasetid == '3' || datasetid == '2' || datasetid == '1'"
               vertical
               class="space-y-0 rounded-xl border border-blue-200 bg-white px-4 py-5"
             >
@@ -1035,13 +1039,6 @@ const onTabChange = () => {
                 </div>
               </div>
 
-              <p
-                class="flex items-center justify-center gap-1 py-2 text-xs text-yellow-500"
-              >
-                <Icon name="heroicons:exclamation-triangle" size="16" />
-                Platform is currently in beta
-              </p>
-
               <n-divider />
 
               <div
@@ -1049,7 +1046,7 @@ const onTabChange = () => {
                 class="flex justify-center pt-2"
               >
                 <a
-                  :href="`https://beta.scholardata.io/datasets/${datasetIndexData?.datasetId}`"
+                  :href="`https://scholardata.io/datasets/${datasetIndexData?.datasetId}`"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="inline-flex items-center gap-1 text-xs font-medium text-sky-600 no-underline hover:text-sky-700 hover:underline"

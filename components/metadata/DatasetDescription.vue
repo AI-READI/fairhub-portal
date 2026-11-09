@@ -64,71 +64,69 @@ function boolOtherSchemes(identifier: Identifier) {
 
           <tbody>
             <tr v-for="(creator, index) in metadata.creator" :key="index">
-              <div class="flex flex-col">
-                <td>
-                  <div class="flex flex-row items-center">
-                    <span class="mr-2 inline-block align-middle text-base">
-                      <b>{{ creator.creatorName }}</b>
-                    </span>
+              <td>
+                <div class="flex flex-row items-center">
+                  <span class="mr-2 inline-block align-middle text-base">
+                    <b>{{ creator.creatorName }}</b>
+                  </span>
 
-                    <ButtonIdentifierBadge
-                      v-if="creator?.nameIdentifier"
-                      :type="creator.nameIdentifier[0]"
-                    />
-                  </div>
+                  <ButtonIdentifierBadge
+                    v-if="creator?.nameIdentifier"
+                    :type="creator.nameIdentifier[0]"
+                  />
+                </div>
 
-                  <div
-                    v-if="
-                      creator?.nameIdentifier &&
-                      boolOtherSchemes(creator?.nameIdentifier[0] ?? false)
-                    "
-                    class="ml-4 pt-2"
+                <div
+                  v-if="
+                    creator?.nameIdentifier &&
+                    boolOtherSchemes(creator?.nameIdentifier[0] ?? false)
+                  "
+                  class="ml-4 pt-2"
+                >
+                  <p class="text-[.91rem]">Identifier:</p>
+
+                  <n-ul
+                    v-for="(identifier, innerIndex) in creator.nameIdentifier"
+                    :key="innerIndex"
+                    class="mb-2 list-disc text-base"
                   >
-                    <p class="text-[.91rem]">Identifier:</p>
+                    <n-li>
+                      {{ identifier.nameIdentifierScheme || "N/A" }}:
+                      {{ identifier.nameIdentifierValue }}
+                    </n-li>
+                  </n-ul>
+                </div>
 
-                    <n-ul
-                      v-for="(identifier, innerIndex) in creator.nameIdentifier"
-                      :key="innerIndex"
-                      class="mb-2 list-disc text-base"
-                    >
-                      <n-li>
-                        {{ identifier.nameIdentifierScheme || "N/A" }}:
-                        {{ identifier.nameIdentifierValue }}
-                      </n-li>
-                    </n-ul>
-                  </div>
+                <div v-if="creator.nameType != 'Organizational'" class="ml-4">
+                  <p class="mt-2 text-[.91rem]">Affiliation:</p>
 
-                  <div v-if="creator.nameType != 'Organizational'" class="ml-4">
-                    <p class="mt-2 text-[.91rem]">Affiliation:</p>
+                  <n-ul
+                    v-for="(affiliation, innerIndex) in creator.affiliation"
+                    :key="innerIndex"
+                    class="list-disc text-base"
+                  >
+                    <n-li>
+                      <div class="flex flex-row items-center">
+                        <span class="mr-2">
+                          {{ affiliation.affiliationName || "N/A" }}
+                        </span>
 
-                    <n-ul
-                      v-for="(affiliation, innerIndex) in creator.affiliation"
-                      :key="innerIndex"
-                      class="list-disc text-base"
-                    >
-                      <n-li>
-                        <div class="flex flex-row items-center">
-                          <span class="mr-2">
-                            {{ affiliation.affiliationName || "N/A" }}
-                          </span>
+                        <ButtonIdentifierBadge :type="affiliation" />
+                      </div>
 
-                          <ButtonIdentifierBadge :type="affiliation" />
-                        </div>
-
-                        <n-ul class="disc-hollow">
-                          <n-li
-                            v-if="boolOtherSchemes(affiliation)"
-                            class="!mt-2 text-base"
-                          >
-                            {{ affiliation.affiliationIdentifierScheme }}:
-                            {{ affiliation.affiliationIdentifier || "N/A" }}
-                          </n-li>
-                        </n-ul>
-                      </n-li>
-                    </n-ul>
-                  </div>
-                </td>
-              </div>
+                      <n-ul class="disc-hollow">
+                        <n-li
+                          v-if="boolOtherSchemes(affiliation)"
+                          class="!mt-2 text-base"
+                        >
+                          {{ affiliation.affiliationIdentifierScheme }}:
+                          {{ affiliation.affiliationIdentifier || "N/A" }}
+                        </n-li>
+                      </n-ul>
+                    </n-li>
+                  </n-ul>
+                </div>
+              </td>
             </tr>
           </tbody>
         </n-table>

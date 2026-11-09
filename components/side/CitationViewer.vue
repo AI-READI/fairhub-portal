@@ -146,6 +146,19 @@ onMounted(() => {
         AI-READI dataset for citation instructions.
       </n-alert>
 
+      <!-- TODO: Remove this when we have a better way to handle this -->
+      <p v-if="id === '5'" class="pb-1 text-sm">
+        When using this resource, please follow the citation instructions
+        provided at
+        <NuxtLink
+          href="https://docs.aireadi.org/docs/4/citation"
+          target="_blank"
+          class="underline transition-all hover:text-slate-600"
+        >
+          https://docs.aireadi.org/docs/4/citation
+        </NuxtLink>
+      </p>
+
       <!--      <TransitionFade>-->
       <!--        <div v-if="citationPending" class="hidden py-2">-->
       <!--          <n-skeleton text style="width: 80%" />-->
