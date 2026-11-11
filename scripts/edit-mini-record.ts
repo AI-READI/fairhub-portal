@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import "dotenv/config";
-import MiniDatasetRecord from "../dev/miniDatasetRecord.json";
+// import MiniDatasetRecord from "../dev/miniDatasetRecord.json";
 
 const prisma = new PrismaClient();
 
@@ -33,25 +33,25 @@ const main = async () => {
    * ! disabling the update operation
    */
 
-  const updatedRecord = await prisma.published_dataset.update({
-    data: {
-      title: MiniDatasetRecord.title,
-      dataset_id: MiniDatasetRecord.dataset_id,
-      description: MiniDatasetRecord.description,
-      doi: MiniDatasetRecord.doi,
-      files: MiniDatasetRecord.files,
-      published_metadata: MiniDatasetRecord.published_metadata,
-      study_id: MiniDatasetRecord.study_id,
-      study_title: MiniDatasetRecord.study_title,
-      version_id: MiniDatasetRecord.version_id,
-      version_title: MiniDatasetRecord.version_title,
-    },
-    where: {
-      id: "4",
-    },
-  });
+  // const updatedRecord = await prisma.published_dataset.update({
+  //   data: {
+  //     title: MiniDatasetRecord.title,
+  //     dataset_id: MiniDatasetRecord.dataset_id,
+  //     description: MiniDatasetRecord.description,
+  //     doi: MiniDatasetRecord.doi,
+  //     files: MiniDatasetRecord.files,
+  //     published_metadata: MiniDatasetRecord.published_metadata,
+  //     study_id: MiniDatasetRecord.study_id,
+  //     study_title: MiniDatasetRecord.study_title,
+  //     version_id: MiniDatasetRecord.version_id,
+  //     version_title: MiniDatasetRecord.version_title,
+  //   },
+  //   where: {
+  //     id: "4",
+  //   },
+  // });
 
-  console.log("Updated record", updatedRecord);
+  // console.log("Updated record", updatedRecord);
 };
 
 main()

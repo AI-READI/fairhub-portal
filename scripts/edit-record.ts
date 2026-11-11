@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import "dotenv/config";
+import DatasetRecord from "../dev/DatasetRecord.json";
 
 const prisma = new PrismaClient();
 
@@ -18,13 +19,13 @@ const main = async () => {
     return;
   }
 
-  const firstRecord = await prisma.published_dataset.findUnique({
+  const record = await prisma.published_dataset.findUnique({
     where: {
-      id: "1",
+      id: "5",
     },
   });
 
-  if (!firstRecord) {
+  if (!record) {
     console.log("No record found, exiting function");
   }
 
@@ -32,25 +33,25 @@ const main = async () => {
    * ! disabling the update operation
    */
 
-  // const updatedRecord = await prisma.published_dataset.update({
-  //   data: {
-  //     title: DatasetRecord.title,
-  //     dataset_id: DatasetRecord.dataset_id,
-  //     description: DatasetRecord.description,
-  //     doi: DatasetRecord.doi,
-  //     files: DatasetRecord.files,
-  //     published_metadata: DatasetRecord.published_metadata,
-  //     study_id: DatasetRecord.study_id,
-  //     study_title: DatasetRecord.study_title,
-  //     version_id: DatasetRecord.version_id,
-  //     version_title: DatasetRecord.version_title,
-  //   },
-  //   where: {
-  //     id: "1",
-  //   },
-  // });
+  const updatedRecord = await prisma.published_dataset.update({
+    data: {
+      title: DatasetRecord.title,
+      dataset_id: DatasetRecord.dataset_id,
+      description: DatasetRecord.description,
+      doi: DatasetRecord.doi,
+      files: DatasetRecord.files,
+      published_metadata: DatasetRecord.published_metadata,
+      study_id: DatasetRecord.study_id,
+      study_title: DatasetRecord.study_title,
+      version_id: DatasetRecord.version_id,
+      version_title: DatasetRecord.version_title,
+    },
+    where: {
+      id: "5",
+    },
+  });
 
-  // console.log("Updated record", updatedRecord);
+  console.log("Updated record", updatedRecord);
 };
 
 main()

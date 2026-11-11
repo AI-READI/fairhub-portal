@@ -3,13 +3,13 @@ import DatasetRecord from "../../../dev/datasetRecord.json";
 export default defineEventHandler(async (_event) => {
   // console.log("event", DatasetRecord);
 
-  const thirdRecord = await prisma.published_dataset.findUnique({
+  const record = await prisma.published_dataset.findUnique({
     where: {
-      id: "3",
+      id: "5",
     },
   });
 
-  if (!thirdRecord) {
+  if (!record) {
     console.log("No record found, exiting function");
     throw createError({
       statusCode: 500,
@@ -41,7 +41,7 @@ export default defineEventHandler(async (_event) => {
       version_title: DatasetRecord.version_title,
     },
     where: {
-      id: "3",
+      id: "5",
     },
   });
 
