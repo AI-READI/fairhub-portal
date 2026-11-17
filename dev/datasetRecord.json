@@ -696,7 +696,7 @@
         ]
       }
     },
-    "readme": "## Overview of the study\n\nThe Artificial Intelligence Ready and Exploratory Atlas for Diabetes Insights (AI-READI) project seeks to create a flagship ethically-sourced dataset to enable future generations of artificial intelligence/machine learning (AI/ML) research to provide critical insights into type 2 diabetes mellitus (T2DM), including salutogenic pathways to return to health. The ability to understand and affect the course of complex, multi-organ diseases such as T2DM has been limited by a lack of well-designed, high quality, large, and inclusive multimodal datasets. The AI-READI team of investigators will aim to collect a cross-sectional dataset of 4,000 people and longitudinal data from 10% of the study cohort across the US. The study cohort will be balanced for self-reported race/ethnicity, gender, and diabetes disease stage. Data collection will be specifically designed to permit downstream pseudo-time manifold analysis, an approach used to predict disease trajectories by collecting and learning from complex, multimodal data from participants with differing disease severity (normal to insulin-dependent T2DM). The long-term objective for this project is to develop a foundational dataset in T2DM, agnostic to existing classification criteria or biases, which can be used to reconstruct a temporal atlas of T2DM development and reversal towards health (i.e., salutogenesis). Data will be optimized for downstream AI/ML research and made publicly available.\n\n## Description of the dataset\n\nThis dataset contains data from 2280 participants that was collected between July 19, 2023 and June 18, 2026. Data from multiple modalities are included. A full list is provided in the `Data Standards` section below. The data in this dataset contain no protected health information (PHI). Information related to the sex and race/ethnicity of the participants as well as medication used has also been removed.\n\nThe dataset contains 704,822 files and is around 8.28 TB in size.\n\nA detailed description of the dataset is available in the AI-READI documentation for v4.0.0 of the dataset at [docs.aireadi.org](https://docs.aireadi.org/).\n\n## Protocol\n\nThe protocol followed for collecting the data can be found in the AI-READI documentation for v4.0.0 of the dataset at [docs.aireadi.org](https://docs.aireadi.org/).\n\n## Dataset access/restrictions\n\nAccessing the dataset requires several steps, including:\n\n- Login in through a verified ID system\n- Agreeing to use the data only for type 2 diabetes related research.\n- Agreeing to the license terms which set certain restrictions and obligations for data usage (see `License` section below).\n\n## Data standards followed\n\nThis dataset is organized following the [Clinical Dataset Structure (CDS) v0.1.1](https://cds-specification.readthedocs.io/en/v0.1.1/). We refer to the CDS documentation for more details. Briefly, data is organized at the root level into one directory per datatype (c.f. Table below). Within each datatype folder, there is one folder per modality. Within each modality folder, there is one folder per device used to collect that modality. Within each device folder, there is one folder per participant. Each datatype, modality, and device folder is named using a name that best defines it. Each participant folder is named after the participant's ID number used in the study. For each datatype, the data files follow the standards listed in the Table below. More details are available in the dataset_structure_description.json metadata file included in this dataset.\n\n| Datatype directory name   | Description                                                                                                                                                                                      | File format standard followed                                                                                                                                     |\n| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| cardiac_ecg               | This directory contains electrocardiogram data collected by a 12 lead protocol (the current standard), Holter monitor, or smartwatch. The terms ECG and EKG are often used interchangeably.      | [WaveForm DataBase (WFDB)](https://wfdb.readthedocs.io/en/latest/wfdb.html)                                                                                       |\n| clinical_data             | This directory contains clinical data collected through REDCap. Each CSV file in this directory is a one-to-one mapping to the OMOP CDM tables.                                                  | [Observational Medical Outcomes Partnership (OMOP) Common Data Model (CDM)](https://ohdsi.github.io/TheBookOfOhdsi)                                               |\n| environment               | This directory contains data collected through an environmental sensor device custom built for the AI-READI project.                                                                             | [Earth Science Data Systems (ESDS) format](https://www.earthdata.nasa.gov/esdis/esco/standards-and-practices/ascii-file-format-guidelines-for-earth-science-data) |\n| retinal_flio              | This directory contains data collected through fluorescence lifetime imaging ophthalmoscopy (FLIO), an imaging modality for in vivo measurement of lifetimes of endogenous retinal fluorophores. | [Digital Imaging and Communications in Medicine (DICOM)](http://medical.nema.org/)                                                                                |\n| retinal_oct               | This directory contains data collected using optical coherence tomography (OCT), an imaging method using lasers that is used for mapping subsurface structure.                                   | [Digital Imaging and Communications in Medicine (DICOM)](http://medical.nema.org/)                                                                                |\n| retinal_octa              | This directory contains data collected using optical coherence tomography angiography (OCTA), a non-invasive imaging technique that generates volumetric angiography images.                     | [Digital Imaging and Communications in Medicine (DICOM)](http://medical.nema.org/)                                                                                |\n| retinal_photography       | This directory contains retinal photography data, which are 2D images. They are also referred to as fundus photography.                                                                          | [Digital Imaging and Communications in Medicine (DICOM)](http://medical.nema.org/)                                                                                |\n| wearable_activity_monitor | This directory contains data collected through a wearable fitness tracker.                                                                                                                       | [Open mHealth](https://www.openmhealth.org/documentation/#/schema-docs/schema-library)                                                                            |\n| wearable_blood_glucose    | This directory contains data collected through a continuous glucose monitoring (CGM) device.                                                                                                     | [Open mHealth](https://www.openmhealth.org/documentation/#/schema-docs/schema-library)                                                                            |\n\n## Resources\n\nAll of our data files are in formats that are accessible with free software commonly used for such data types so no specific software is required. Some useful resources related to this dataset are listed below:\n\n- Documentation of the dataset: [docs.aireadi.org](https://docs.aireadi.org/) (see 'Dataset v4.0.0' for this version of the dataset)\n- AI-READI project website: [aireadi.org](https://aireadi.org/)\n- Zenodo community of the AI-READI project: [zenodo.org/communities/aireadi](https://zenodo.org/communities/aireadi)\n- GitHub organization of the AI-READI project: [github.com/AI-READI](https://github.com/AI-READI)\n\n### Suggested split\n\nThe suggested split for training, validating, and testing AI/ML models is included in the participants.tsv file that will be included in the dataset. A summary is provided in the table below.\n\n|                         | Train       |           |       |         | Val         |           |       |         | Test        |           |       |         | Total       |           |       |         |\n| ----------------------- |-------------|-----------|-------|---------|-------------|-----------|-------|---------|-------------|-----------|-------|---------|-------------|-----------|-------|---------|\n|                         | Hispanic    | Asian     | Black | White   | Hispanic    | Asian     | Black | White   | Hispanic    | Asian     | Black | White   | Hispanic    | Asian     | Black | White   |\n| Race/ethnicity (count)  | 204         | 369       | 343   | 660     | 88          | 88        | 88    | 88      | 88          | 88        | 88    | 88      | 380         | 545       | 519   | 836     |\n|                         | Male        | Female    |       |         | Male        | Female    |       |         | Male        | Female    |       |         | Male        | Female    |       |         |\n| Sex (count)             | 599         | 977       |       |         | 176         | 176       |       |         | 176         | 176       |       |         | 951         | 1329      |       |         |\n|                         | No DM       | Lifestyle | Oral  | Insulin | No DM       | Lifestyle | Oral  | Insulin | No DM       | Lifestyle | Oral  | Insulin | No DM       | Lifestyle | Oral  | Insulin |\n| Diabetes status (count) | 600         | 384       | 487   | 105     | 88          | 88        | 109   | 67      | 88          | 88        | 90    | 86      | 776         | 560       | 686   | 258     |\n| Mean age (years ± sd)   | 61.1 ± 11.3 |           |       |         | 60.3 ± 10.8 |           |       |         | 60.5 ± 11.4 |           |       |         | 60.8 ± 11.3 |           |       |         |\n| Total                   | 1576        |           |       |         | 352         |           |       |         | 352         |           |       |         | 2280        |           |       |         |\n\n- No DM: Participants who do not have Type 1 or Type 2 Diabetes\n- Lifestyle: Participants with pre-Type 2 Diabetes and those with Type 2 Diabetes whose blood sugar is controlled by lifestyle adjustments\n- Oral: Participants with Type 2 Diabetes whose blood sugar is controlled by oral or injectable medications other than insulin\n- Insulin: Participants with Type 2 Diabetes whose blood sugar is controlled by insulin\n\n### Changes between versions of the dataset\n\nChanges between the current version of the dataset and the previous one are provided in details in the CHANGELOG file included in the dataset (also visible at docs.aireadi.org). A summary of the major changes is provided in the table below.\n\n| Dataset      | v1.0.0 pilot    | year 2 data        | year 3 data       | v3.0.0 main study  |\n| ------------ | --------------- | ------------------ |-------------------|--------------------|\n| Participants | 204             | 863                | 1213              | 2280               |\n| Data types   | 15+ data types  | +1 image device    | +3 image device   | 15+ data types     |\n| Processing   | custom / ad hoc | automated + custom |automated + custom | automated + custom |\n| Release date | 5/3/2024        | included in v2.0.0 |included in v3.0.0 | 11/17/2025         |\n\n## License\n\nThis work is licensed under a custom license specifically tailored to enable the reuse of the AI-READI dataset (and other clinical datasets) for commercial or research purposes while putting strong requirements around data usage, security, and secondary sharing to protect study participants, especially when data is reused for artificial intelligence (AI) and machine learning (ML) related applications. More details are available in the License file included in the dataset and also available at https://doi.org/10.5281/zenodo.17555036.\n\n## How to cite\n\nIf you use this dataset for any purpose, please cite the resources specified in the AI-READI documentation for version 3.0.0 of the dataset at https://docs.aireadi.org.\n\n## Contact\n\nFor any questions, suggestions, or feedback related to this dataset, please go to https://aireadi.org/contact. We refer to the study_description.json and dataset_description.json metadata files included in this dataset for additional information about the contact person/entity, authors, and contributors of the dataset.\n\n## Acknowledgement\n\nThe AI-READI project is supported by NIH grant [1OT2OD032644](https://reporter.nih.gov/search/1ADgncihCk6fdMRJdCnBjg/project-details/10471118) through the NIH Bridge2AI Common Fund program.",
+    "readme": "## Overview of the study\n\nThe Artificial Intelligence Ready and Exploratory Atlas for Diabetes Insights (AI-READI) project seeks to create a flagship ethically-sourced dataset to enable future generations of artificial intelligence/machine learning (AI/ML) research to provide critical insights into type 2 diabetes mellitus (T2DM), including salutogenic pathways to return to health. The ability to understand and affect the course of complex, multi-organ diseases such as T2DM has been limited by a lack of well-designed, high quality, large, and inclusive multimodal datasets. The AI-READI team of investigators will aim to collect a cross-sectional dataset of 4,000 people and longitudinal data from 10% of the study cohort across the US. The study cohort will be balanced for self-reported race/ethnicity, gender, and diabetes disease stage. Data collection will be specifically designed to permit downstream pseudo-time manifold analysis, an approach used to predict disease trajectories by collecting and learning from complex, multimodal data from participants with differing disease severity (normal to insulin-dependent T2DM). The long-term objective for this project is to develop a foundational dataset in T2DM, agnostic to existing classification criteria or biases, which can be used to reconstruct a temporal atlas of T2DM development and reversal towards health (i.e., salutogenesis). Data will be optimized for downstream AI/ML research and made publicly available.\n\n## Description of the dataset\n\nThis dataset contains data from 4,048 participants that was collected between July 19, 2023 and June 18, 2026. Data from multiple modalities are included. A full list is provided in the \"Data Standards\" section below. The data in this dataset contain no protected health information (PHI). Information related to the sex and race/ethnicity of the participants as well as medication used has also been removed. These data, along with additional restricted modalities, can be requested under a Data Use Agreement (see “Dataset access/restrictions” below).\n\nThe dataset contains 704,822 files and is around 8.28 TB in size.\n\nA detailed description of the dataset is available in the AI-READI documentation for v4.0.0 of the dataset at [docs.aireadi.org](https://docs.aireadi.org/).\n\n## Protocol\n\nThe protocol followed for collecting the data can be found in the AI-READI documentation for v4.0.0 of the dataset at [docs.aireadi.org](https://docs.aireadi.org/).\n\n## Dataset access/restrictions\n\n### Access\nAccessing the dataset requires several steps, including:\n\n- Login in through a verified ID system\n- Agreeing to use the data only for type 2 diabetes related research (see below for other uses).\n- Agreeing to the license terms which set certain restrictions and obligations for data usage (see \"License\" section below).\n\n### Additional data available under a Data Use Agreement\n\nSome data collected in the AI-READI study are not included in this dataset and are available only under a Data Use Agreement (DUA). These include:\n- Additional clinical data: sex, race/ethnicity, medications, and zip code of the participants\n- Additional modalities: electronic health records (EHR) and genomics data\n\nA DUA is also required to use the data in this dataset for any application other than type 2 diabetes research.\n\nTo request access to the additional data, or to use this dataset beyond type 2 diabetes research, please consult the corresponding section of the AI-READI dataset documentation at [docs.aireadi.org](https://docs.aireadi.org/).\n\n## Data standards followed\n\nThis dataset is organized following the [Clinical Dataset Structure (CDS) v0.1.1](https://cds-specification.readthedocs.io/en/v0.1.1/). We refer to the CDS documentation for more details. Briefly, data is organized at the root level into one directory per datatype (c.f. Table below). Within each datatype folder, there is one folder per modality. Within each modality folder, there is one folder per device used to collect that modality. Within each device folder, there is one folder per participant. Each datatype, modality, and device folder is named using a name that best defines it. Each participant folder is named after the participant's ID number used in the study. For each datatype, the data files follow the standards listed in the Table below. More details are available in the dataset_structure_description.json metadata file included in this dataset.\n\n| Datatype directory name   | Description                                                                                                                                                                                      | File format standard followed                                                                                                                                     |\n| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| cardiac_ecg               | This directory contains electrocardiogram data collected by a 12 lead protocol (the current standard), Holter monitor, or smartwatch. The terms ECG and EKG are often used interchangeably.      | [WaveForm DataBase (WFDB)](https://wfdb.readthedocs.io/en/latest/wfdb.html)                                                                                       |\n| clinical_data             | This directory contains clinical data collected through REDCap. Each CSV file in this directory is a one-to-one mapping to the OMOP CDM tables.                                                  | [Observational Medical Outcomes Partnership (OMOP) Common Data Model (CDM)](https://ohdsi.github.io/TheBookOfOhdsi)                                               |\n| environment               | This directory contains data collected through an environmental sensor device custom built for the AI-READI project.                                                                             | [Earth Science Data Systems (ESDS) format](https://www.earthdata.nasa.gov/esdis/esco/standards-and-practices/ascii-file-format-guidelines-for-earth-science-data) |\n| retinal_flio              | This directory contains data collected through fluorescence lifetime imaging ophthalmoscopy (FLIO), an imaging modality for in vivo measurement of lifetimes of endogenous retinal fluorophores. | [Digital Imaging and Communications in Medicine (DICOM)](http://medical.nema.org/)                                                                                |\n| retinal_oct               | This directory contains data collected using optical coherence tomography (OCT), an imaging method using lasers that is used for mapping subsurface structure.                                   | [Digital Imaging and Communications in Medicine (DICOM)](http://medical.nema.org/)                                                                                |\n| retinal_octa              | This directory contains data collected using optical coherence tomography angiography (OCTA), a non-invasive imaging technique that generates volumetric angiography images.                     | [Digital Imaging and Communications in Medicine (DICOM)](http://medical.nema.org/)                                                                                |\n| retinal_photography       | This directory contains retinal photography data, which are 2D images. They are also referred to as fundus photography.                                                                          | [Digital Imaging and Communications in Medicine (DICOM)](http://medical.nema.org/)                                                                                |\n| wearable_activity_monitor | This directory contains data collected through a wearable fitness tracker.                                                                                                                       | [Open mHealth](https://www.openmhealth.org/documentation/#/schema-docs/schema-library)                                                                            |\n| wearable_blood_glucose    | This directory contains data collected through a continuous glucose monitoring (CGM) device.                                                                                                     | [Open mHealth](https://www.openmhealth.org/documentation/#/schema-docs/schema-library)                                                                            |\n\n## Resources\n\nAll of our data files are in formats that are accessible with free software commonly used for such data types so no specific software is required. Some useful resources related to this dataset are listed below:\n\n- Documentation of the dataset: [docs.aireadi.org](https://docs.aireadi.org/) (see 'Dataset v4.0.0' for this version of the dataset)\n- AI-READI project website: [aireadi.org](https://aireadi.org/)\n- Zenodo community of the AI-READI project: [zenodo.org/communities/aireadi](https://zenodo.org/communities/aireadi)\n- GitHub organization of the AI-READI project: [github.com/AI-READI](https://github.com/AI-READI)\n\n### Suggested split\n\nThe suggested split for training, validating, and testing AI/ML models is included in the participants.tsv file that will be included in the dataset. A summary is provided in the table below.\n\n|                         | Train       |           |       |         |               | Val         |           |       |         |               | Test        |           |       |         |               | Total       |           |       |         |               |\n| ----------------------- |-------------|-----------|-------|---------|---------------|-------------|-----------|-------|---------|---------------|-------------|-----------|-------|---------|---------------|-------------|-----------|-------|---------|---------------|\n|                         | Hispanic    | Asian     | Black | White   | Other/Unknown | Hispanic    | Asian     | Black | White   | Other/Unknown | Hispanic    | Asian     | Black | White   | Other/Unknown | Hispanic    | Asian     | Black | White   | Other/Unknown |\n| Race/ethnicity (count)  | 223         | 435       | 521   | 1617    | 36            | 152         | 152       | 152   | 152     | 0             | 152         | 152       | 152   | 152     | 0             | 527         | 739       | 825   | 1921    | 36            |\n|                         | Male        | Female    |       |         |               | Male        | Female    |       |         |               | Male        | Female    |       |         |               | Male        | Female    |       |         |               |\n| Sex (count)             | 1135        | 1697      |       |         |               | 304         | 304       |       |         |               | 304         | 304       |       |         |               | 1743        | 2305      |       |         |               |\n|                         | No DM       | Lifestyle | Oral  | Insulin |               | No DM       | Lifestyle | Oral  | Insulin |               | No DM       | Lifestyle | Oral  | Insulin |               | No DM       | Lifestyle | Oral  | Insulin |               |\n| Diabetes status (count) | 866         | 736       | 1015  | 215     |               | 169         | 163       | 181   | 95      |               | 156         | 162       | 157   | 133     |               | 1191        | 1061      | 1353  | 443     |               |\n| Mean age (years ± sd)   | 62.1 ± 11.5 |           |       |         |               | 60.3 ± 11.2 |           |       |         |               | 60.6 ± 11.4 |           |       |         |               | 61.6 ± 11.5 |           |       |         |               |\n| Total                   | 2832        |           |       |         |               | 608         |           |       |         |               | 608         |           |       |         |               | 4048        |           |       |         |               |\n\n- No DM: Participants who do not have Type 1 or Type 2 Diabetes\n- Lifestyle: Participants with pre-Type 2 Diabetes and those with Type 2 Diabetes whose blood sugar is controlled by lifestyle adjustments\n- Oral: Participants with Type 2 Diabetes whose blood sugar is controlled by oral or injectable medications other than insulin\n- Insulin: Participants with Type 2 Diabetes whose blood sugar is controlled by insulin\n\nNote that the participants.tsv file only indicates, for each participant, whether their data belong to the train, validation, or test set. The demographic counts above are provided for reference only. Per-participant sex and race/ethnicity are not included in this dataset and can be requested under a Data Use Agreement (see “Dataset access/restrictions”).\n\n### Changes between versions of the dataset\n\nChanges between the current version of the dataset and the previous one are provided in details in the CHANGELOG file included in the dataset (also visible at docs.aireadi.org). A summary of the major changes is provided in the table below.\n\n| Dataset      | v1.0.0 pilot    | year 2 data        | year 3 data        | v4.0.0 main study  |\n| ------------ | --------------- | ------------------ |--------------------|--------------------|\n| Participants | 204             | 863                | 2280               | 4048               |\n| Data types   | 15+ data types  | +1 image device    | +3 image device    | same               |\n| Processing   | custom / ad hoc | automated + custom | automated + custom | automated + custom |\n| Release date | 5/3/2024        | included in v2.0.0 | included in v3.0.0 | 06/18/2026         |\n\n## License\n\nThis work is licensed under a custom license specifically tailored to enable the reuse of the AI-READI dataset (and other clinical datasets) for commercial or research purposes while putting strong requirements around data usage, security, and secondary sharing to protect study participants, especially when data is reused for artificial intelligence (AI) and machine learning (ML) related applications. More details are available in the License file included in the dataset and also available at https://doi.org/10.5281/zenodo.17555036.\n\n## How to cite\n\nIf you use this dataset for any purpose, please cite the resources specified in the AI-READI documentation for version 4.0.0 of the dataset at https://docs.aireadi.org.\n\n## Contact\n\nFor any questions, suggestions, or feedback related to this dataset, please go to https://aireadi.org/contact. We refer to the study_description.json and dataset_description.json metadata files included in this dataset for additional information about the contact person/entity, authors, and contributors of the dataset.\n\n## Acknowledgement\n\nThe AI-READI project is supported by NIH grant [1OT2OD032644](https://reporter.nih.gov/search/1ADgncihCk6fdMRJdCnBjg/project-details/10471118) through the NIH Bridge2AI Common Fund program.",
     "dataset_description": {
       "schema": "https://schema.aireadi.org/v0.1.0/dataset_description.json",
       "identifier": {
@@ -722,7 +722,7 @@
       "publicationYear": "2026",
       "date": [
         {
-          "dateValue": "2025-11-17",
+          "dateValue": "2026-11-25",
           "dateType": "Available",
           "dateInformation": "Date dataset made available on FAIRhub"
         },
@@ -756,7 +756,7 @@
       },
       "description": [
         {
-          "descriptionValue": "This dataset contains data from 4048 participants that was collected between from July 19, 2023 and June 18, 2026. Data from multiple modalities are included. The data in this dataset contain no protected health information (PHI). Information related to the sex and race/ethnicity of the participants as well as medication used has also been removed. A detailed description of the dataset is available in the AI-READI documentation for v4.0.0 of the dataset at https://docs.aireadi.org",
+          "descriptionValue": "This dataset contains data from 4048 participants that was collected between July 19, 2023 and June 18, 2026. Data from multiple modalities are included. The data in this dataset contain no protected health information (PHI). Information related to the sex and race/ethnicity of the participants as well as medication used has also been removed. A detailed description of the dataset is available in the AI-READI documentation for v4.0.0 of the dataset at https://docs.aireadi.org",
           "descriptionType": "Abstract"
         }
       ],
@@ -987,8 +987,8 @@
               ]
             }
           ],
-          "size": 302931703,
-          "numberOfFiles": 4515
+          "size": 542633949,
+          "numberOfFiles": 8087
         },
         {
           "directoryName": "clinical_data",
@@ -1062,7 +1062,7 @@
               ]
             }
           ],
-          "size": 176182781,
+          "size": 329556175,
           "numberOfFiles": 7
         },
         {
@@ -1136,8 +1136,8 @@
               ]
             }
           ],
-          "size": 55625676514,
-          "numberOfFiles": 2232
+          "size": 99152388103,
+          "numberOfFiles": 3971
         },
         {
           "directoryName": "retinal_flio",
@@ -1215,8 +1215,8 @@
               ]
             }
           ],
-          "size": 1069466876718,
-          "numberOfFiles": 7969
+          "size": 1838011985375,
+          "numberOfFiles": 13695
         },
         {
           "directoryName": "retinal_oct",
@@ -1329,8 +1329,8 @@
               ]
             }
           ],
-          "size": 1317625293027,
-          "numberOfFiles": 56478
+          "size": 3753955451503,
+          "numberOfFiles": 109402
         },
         {
           "directoryName": "retinal_octa",
@@ -1485,8 +1485,8 @@
               ]
             }
           ],
-          "size": 1155908809724,
-          "numberOfFiles": 173721
+          "size": 2243724747980,
+          "numberOfFiles": 322419
         },
         {
           "directoryName": "retinal_photography",
@@ -1640,6 +1640,11 @@
                   "directoryName": "zeiss_cirrus",
                   "directoryType": "device",
                   "directoryDescription": "This directory contains IR images, specifically from the Cirrus device, manufactured by Zeiss."
+                },
+                {
+                  "directoryName": "topcon_triton",
+                  "directoryType": "device",
+                  "directoryDescription": "This directory contains IR images, specifically from the Triton device, manufactured by Topcon."
                 }
               ]
             }
@@ -1658,8 +1663,8 @@
               ]
             }
           ],
-          "size": 174381046406,
-          "numberOfFiles": 93921
+          "size": 271802459197,
+          "numberOfFiles": 215797
         },
         {
           "directoryName": "wearable_activity_monitor",
@@ -1800,8 +1805,8 @@
               ]
             }
           ],
-          "size": 38313536220,
-          "numberOfFiles": 15245
+          "size": 69332309088,
+          "numberOfFiles": 27455
         },
         {
           "directoryName": "wearable_blood_glucose",
@@ -1887,8 +1892,8 @@
               ]
             }
           ],
-          "size": 4169006971,
-          "numberOfFiles": 2246
+          "size": 7353947890,
+          "numberOfFiles": 3980
         }
       ],
       "metadataFileList": [
@@ -2007,7 +2012,7 @@
         {
           "id": 1,
           "question": "Provide a 2 sentence summary of this dataset.",
-          "response": "The Artificial Intelligence Ready and Exploratory Atlas for Diabetes Insights (AI-READI) is a dataset consisting of data collected from individuals with and without “Type 2 Diabetes Mellitus (T2DM)” and harmonized across 3 data collection sites. The composition of the dataset was designed with future studies using AI/Machine Learning in mind. This included recruitment sampling procedures aimed at achieving approximately equal distribution of participants across sex, race, and diabetes severity, as well as the design of a data acquisition protocol across multiple domains (survey data, physical measurements, clinical data, imaging data, wearable device data, etc.) to enable downstream AI/ML analyses that may not be feasible with existing data sources such as claims or electronic health records data. The goal is to better understand salutogenesis (the pathway from disease to health) in T2DM. Some data that are not considered to be sensitive personal health data will be available to the public for download upon agreement with a license that defines how the data can be used. The full dataset will be accessible by entering into a data use agreement. The public dataset will include survey data, blood and urine lab results, fitness activity levels, clinical measurements (e.g. monofilament and cognitive function testing), retinal images, ECG, blood sugar levels, and home air quality. The data held under controlled access include 5-digit zip code, sex, race, ethnicity, genetic sequencing data, past health records, and traffic and accident reports. Of note, the overall enrollment goal is to have balanced distribution between different racial groups. As enrollment is ongoing, the periodic updates to data releases may not have achieved balanced distribution across groups."
+          "response": "The Artificial Intelligence Ready and Exploratory Atlas for Diabetes Insights (AI-READI) is a dataset consisting of data collected from individuals with and without “Type 2 Diabetes Mellitus (T2DM)” and harmonized across 3 data collection sites. The composition of the dataset was designed with future studies using AI/Machine Learning in mind. This included recruitment sampling procedures aimed at achieving approximately equal distribution of participants across sex, race, and diabetes severity, as well as the design of a data acquisition protocol across multiple domains (survey data, physical measurements, clinical data, imaging data, wearable device data, etc.) to enable downstream AI/ML analyses that may not be feasible with existing data sources such as claims or electronic health records data. The goal is to better understand salutogenesis (the pathway from disease to health) in T2DM. Some data that are not considered to be sensitive personal health data will be available to the public for download upon agreement with a license that defines how the data can be used. The full dataset will be accessible by entering into a data use agreement. The public dataset will include survey data, blood and urine lab results, fitness activity levels, clinical measurements (e.g. monofilament and cognitive function testing), retinal images, ECG, blood sugar levels, and home air quality. The data held under controlled access include 5-digit zip code, sex, race, ethnicity, genetic sequencing data, medications, past health records, and traffic and accident reports. Of note, the overall enrollment goal is to have balanced distribution between different racial groups. As enrollment is ongoing, the periodic updates to data releases may not have achieved balanced distribution across groups."
         },
         {
           "id": 2,
@@ -2019,17 +2024,17 @@
         {
           "id": 1,
           "question": "Does the dataset get released as static versions or is it dynamically updated?\n\n   a. If static, how many versions of the dataset exist?\n\n   b. If dynamic, how frequently is the dataset updated?",
-          "response": "The dataset gets released as static versions. This is the third version of the dataset and consists of data collected up through the end of the second year of the study, i.e. between July 19, 2023 and May 1st, 2025. There are plans to release new versions of the dataset approximately once a year with additional data from participants who have been enrolled since the last dataset version release."
+          "response": "The dataset gets released as static versions. This is the fourth version of the dataset and consists of data collected through the end of the study, i.e. between July 19, 2023 and June 18th, 2026. This will be the last release."
         },
         {
           "id": 2,
           "question": "Is this datasheet created for the original version of the dataset? If not, which version of the dataset is this datasheet for?",
-          "response": "This datasheet is created for the third version of the dataset."
+          "response": "This datasheet is created for the final version of the dataset."
         },
         {
           "id": 3,
           "question": "Are there any datasheets created for any versions of this dataset?",
-          "response": "There was a previous datasheet created for the first version of the dataset, which consisted of data collected during the pilot data collection phase. It is available here: https://docs.aireadi.org/docs/1/dataset/healthsheet. \n\nThere was also a previous datasheet created for the second version of the dataset, which consisted of data collected up to the end of the first full year of the study. It is available here: https://docs.aireadi.org/docs/2/dataset/healthsheet"
+          "response": "There was a previous datasheet created for the first version of the dataset, which consisted of data collected during the pilot data collection phase. It is available here: https://docs.aireadi.org/docs/1/dataset/healthsheet.\n\n   There was also a previous datasheet created for the second version of the dataset, which consisted of data collected up to the end of the first full year of the study. It is available here: https://docs.aireadi.org/docs/2/dataset/healthsheet.\n\n   Lastly, there is also a datasheet for the third version of the dataset, which is available here: https://docs.aireadi.org/docs/3/dataset/healthsheet."
         },
         {
           "id": 4,
@@ -2039,7 +2044,7 @@
         {
           "id": 5,
           "question": "If the dataset has multiple versions, and this datasheet represents one of them, answer the following questions:\n\n   a. What are the characteristics that have been changed between different versions of the dataset? ",
-          "response": "This version of the dataset includes more patients than the first version of the dataset."
+          "response": "This version of the dataset includes more patients than the previous versions of the dataset."
         },
         {
           "id": 6,
@@ -2049,27 +2054,27 @@
         {
           "id": 7,
           "question": "c. Does this version have more subjects/patients represented in the data, or fewer?",
-          "response": "This version has more subjects/patients represented in the data (the first version of the dataset contains data from 204 participants, the second version contains additional data from 863 participants for a total of 1067 participants, and this version contains a total of 2280 participants)."
+          "response": "This version has more subjects/patients represented in the data (the first version of the dataset contains data from 204 participants, the second version contains additional data from 863 participants for a total of 1067 participants, the third version contains data from 2,280 participants, and the current version contains data from a total of 4048 participants)."
         },
         {
           "id": 8,
           "question": "d. Does this version of the dataset have extended data or new data from the same patients as the older versions? Were any patients, data fields, or data points removed? If so, why?",
-          "response": "The data fields/types are largely the same as the prior version of the dataset. However, the Snellen visual acuity variables were dropped in this version of the dataset, such that now only logMAR visual acuity measurements are available."
+          "response": "The data fields/types are largely the same as the prior version of the dataset."
         },
         {
           "id": 9,
           "question": "e. Do we expect more versions of the dataset to be released?",
-          "response": "Yes, enrollment is ongoing, and future versions of the dataset will be released that will include larger numbers of subjects/patients as enrollment increases."
+          "response": "No."
         },
         {
           "id": 10,
           "question": "f. Is this datasheet for a version of the dataset? If yes, does this sub-version of the dataset introduce a new task, labeling, and/or recommended data splits? If the answer to any of these questions is yes, explain the rationale behind it.",
-          "response": "This datasheet does not include new tasks or labeling. It does include a new recommended data split for the 2280 participants balancing training, validation, and testing sets for age, sex, races/ethnicities, and study group."
+          "response": "This datasheet does not include new tasks or labeling. It does include a new recommended data split for the 4048 participants balancing training, validation, and testing sets for age, sex, races/ethnicities, and study group."
         },
         {
           "id": 11,
           "question": "g. Are you aware of any widespread version(s)/subversion(s) of the dataset? If yes, what is the addressed task, or application that is addressed?",
-          "response": "No"
+          "response": "No."
         }
       ],
       "motivation": [
@@ -2086,22 +2091,22 @@
         {
           "id": 3,
           "question": "Are there any types of usage or applications that are discouraged from using this dataset? If so, why?",
-          "response": "The AI READI dataset License imposes certain restrictions on the usage of the data. The restrictions are described in the License files available at https://doi.org/10.5281/zenodo.17555036."
+          "response": "The AI-READI dataset License imposes certain restrictions on the usage of the data. The restrictions are described in the License files available at [https://doi.org/10.5281/zenodo.17555036](https://doi.org/10.5281/zenodo.17555036)."
         },
         {
           "id": 4,
           "question": "Who created this dataset (e.g., which team, research group), and on behalf of which entity (e.g., company, institution, organization)?",
-          "response": "This dataset was created by members of the AI-READI project, hereby referred to as the AI-READI Consortium. Details about each member and their institutions are available on the project website at https://aireadi.org."
+          "response": "This dataset was created by members of the AI-READI project, hereby referred to as the AI-READI Consortium. Details about each member and their institutions are available on the project website at [https://aireadi.org](https://aireadi.org)."
         },
         {
           "id": 5,
           "question": "Who funded the creation of the dataset? If there is an associated grant, please provide the name of the grantor and the grant name and number. If the funding institution differs from the research organization creating and managing the dataset, please state how.",
-          "response": "The creation of the dataset was funded by the National Institutes of Health (NIH) through their Bridge2AI Program (https://commonfund.nih.gov/bridge2ai). The grant number is OT2ODO32644 and more information about the funding is available at https://reporter.nih.gov/search/T-mv2dbzIEqp9V6UJjHpgw/project-details/10885481. Note that the funding institution is not creating or managing the dataset. The dataset is created and managed by the awardees of the grant (c.f. answer to the previous question)."
+          "response": "The creation of the dataset was funded by the National Institutes of Health (NIH) through their Bridge2AI Program ([https://commonfund.nih.gov/bridge2ai](https://commonfund.nih.gov/bridge2ai)). The grant number is OT2ODO32644 and more information about the funding is available at [https://reporter.nih.gov/search/T-mv2dbzIEqp9V6UJjHpgw/project-details/10885481](https://reporter.nih.gov/search/T-mv2dbzIEqp9V6UJjHpgw/project-details/10885481). Note that the funding institution is not creating or managing the dataset. The dataset is created and managed by the awardees of the grant (c.f. answer to the previous question)."
         },
         {
           "id": 6,
           "question": "What is the distribution of backgrounds and experience/expertise of the dataset curators/generators?",
-          "response": "There is a wide range of experience within the project team, including senior, mid-career, and early career faculty members as well as clinical research coordinators, staff, and interns. They collectively cover many areas of expertise including clinical research, data collection, data management, data standards, bioinformatics, team science, and ethics, among others. Visit https://aireadi.org/team for more information."
+          "response": "There is a wide range of experience within the project team, including senior, mid-career, and early-career faculty members as well as clinical research coordinators, staff, and interns. They collectively cover many areas of expertise, including clinical research, data collection, data management, data standards, bioinformatics, team science, and ethics, among others. Visit [https://aireadi.org/team](https://aireadi.org/team) for more information."
         }
       ],
       "composition": [
@@ -2113,22 +2118,22 @@
         {
           "id": 2,
           "question": "How many instances are there in total (of each type, if appropriate) (breakdown based on schema, provide data stats)?",
-          "response": "There are 2280 instances in this current version of the dataset (version 3, released fall 2025)."
+          "response": "There are 4048 instances in this current version of the dataset (version 4, released fall 2026)."
         },
         {
           "id": 3,
           "question": "How many patients / subjects does this dataset represent? Answer this for both the preliminary dataset and the current version of the dataset.",
-          "response": "This version of the dataset has data from 2280 participants. The first version of the dataset, composed of data from the pilot data collection phase, had 204 instances. The second version of the dataset, composed of data from the first year of the study, had 1067 instances."
+          "response": "This version of the dataset has data from 4048 participants. The first version of the dataset, composed of data from the pilot data collection phase, had 204 instances. The second version of the dataset, composed of data from the first year of the study, had 1067 instances. The third version of the dataset, composed of data from the first two years of the study, had 2280 instances."
         },
         {
           "id": 4,
           "question": "Does the dataset contain all possible instances or is it a sample (not necessarily random) of instances from a larger set? If the dataset is a sample, then what is the larger set? Is the sample representative of the larger set (e.g., geographic coverage)? If so, please describe how this representativeness was validated/verified. If it is not representative of the larger set, please describe why not (e.g., to cover a more diverse range of instances, because instances were withheld or unavailable). Answer this question for the preliminary version and the current version of the dataset in question.",
-          "response": "The dataset contains all possible instances. More specifically, the dataset contains data from all participants who have been enrolled during the first year of data collection for AI-READI."
+          "response": "The dataset contains all possible instances. More specifically, the dataset contains data from all participants who have been enrolled in the AI-READI study."
         },
         {
           "id": 5,
           "question": "What data modality does each patient data consist of? If the data is hierarchical, provide the modality details for all levels (e.g: text, image, physiological signal). Break down in all levels and specify the modalities and devices.",
-          "response": "Multiple modalities of data are collected for each participant, including survey data, clinical data, retinal imaging data, environmental sensor data, continuous glucose monitor data, and wearable activity monitor data. These encompass tabular data, imaging data, and physiological signal/waveform data. There is no unstructured text data included in this dataset. The exact forms used for data collection in REDCap are available [here](https://docs.aireadi.org/v3/REDCap%20surveys%20and%20forms.pdf). Furthermore, all modalities, file formats, and devices are detailed in the dataset documentation at https://docs.aireadi.org/."
+          "response": "Multiple modalities of data are collected for each participant, including survey data, clinical data, retinal imaging data, environmental sensor data, continuous glucose monitor data, and wearable activity monitor data. These encompass tabular data, imaging data, and physiological signal/waveform data. There is no unstructured text data included in this dataset. The exact forms used for data collection in REDCap are available [here](https://docs.aireadi.org/v4/REDCap%20surveys%20and%20forms.pdf). Furthermore, all modalities, file formats, and devices are detailed in the dataset documentation at https://docs.aireadi.org/."
         },
         {
           "id": 6,
@@ -2137,7 +2142,7 @@
         },
         {
           "id": 7,
-          "question": "Is any information missing from individual instances? If so, please provide a description, explaining why this information is missing (e.g., because it was unavailable).?",
+          "question": "Is any information missing from individual instances? If so, please provide a description, explaining why this information is missing (e.g., because it was unavailable).",
           "response": "Yes, not all modalities are available for all participants. Some participants elected not to participate in some study elements. In a few cases, the data collection device did not have any stored results or was returned too late to retrieve the results (e.g. battery died, data was lost). In a few cases, there may have been a data collision at some point in the process and data has been lost."
         },
         {
@@ -2163,12 +2168,12 @@
         {
           "id": 12,
           "question": "Does the dataset contain data that, if viewed directly, might be offensive, insulting, threatening, or might otherwise pose any safety risk (such as psychological safety and anxiety)? If so, please describe why.",
-          "response": "No."
+          "response": "No"
         },
         {
           "id": 13,
           "question": "If the dataset has been de-identified, were any measures taken to avoid the re-identification of individuals? Examples of such measures: removing patients with rare pathologies or shifting time stamps.",
-          "response": ""
+          "response": "N/A"
         },
         {
           "id": 14,
@@ -2187,12 +2192,12 @@
         {
           "id": 1,
           "question": "Which factors in the data might limit the generalization of potentially derived models? Is this information available as auxiliary labels for challenge tests? For instance:\n\n   a. Number and diversity of devices included in the dataset.\n\n   b. Data recording specificities, e.g., the view for a chest x-ray image.\n\n   c. Number and diversity of recording sites included in the dataset.\n\n   d. Distribution shifts over time.",
-          "response": "While the AI-READI's cross-sectional database ultimately aims to achieve balance across race/ethnicity, biological sex, and diabetes presence and severity, the pilot study is not balanced across these parameters.\n\n   Three recording sites were strategically selected to achieve diverse recruitment: the University of Alabama at Birmingham (UAB), the University of California San Diego (UCSD), and the University of Washington (UW). The sites were chosen for geographic diversity across the United States and to ensure diverse representation across various racial and ethnic groups. Individuals from all demographic backgrounds were recruited at all 3 sites.\n\n   Factors influencing the generalization of derived models include the predominantly urban and hospital-based recruitment, which may not fully capture diverse cultural and socioeconomic backgrounds. The study cohort may not provide a comprehensive representation of the population, as it does not include other races/ethnicities such as Pacific Islanders and Native Americans.\n\n   Information on device make and model, including specific modalities like macula scans or wide scans during OCT, were documented to ensure repeatability. Moreover, the study included multiple devices for one measure to enhance generalizability and represent the diverse range of equipment utilized in clinical settings."
+          "response": "While the AI-READI's cross-sectional database aimed to achieve balance across race/ethnicity, biological sex, and diabetes presence and severity, the dataset is not fully balanced across these parameters.\n\n   Three recording sites were strategically selected to achieve broad recruitment: the University of Alabama at Birmingham (UAB), the University of California San Diego (UCSD), and the University of Washington (UW). The sites were chosen for geographic variability across the United States and to ensure representation across various racial and ethnic groups. Individuals from all demographic backgrounds were recruited at all 3 sites.\n   Factors influencing the generalization of derived models include the predominantly urban and hospital-based recruitment, which may not fully capture all possible cultural and socioeconomic backgrounds. The study cohort may not provide a comprehensive representation of the population, as it does not include other races/ethnicities such as Pacific Islanders and Native Americans.\n   Information on device make and model, including specific modalities like macula scans or wide scans during OCT, were documented to ensure repeatability. Moreover, the study included multiple devices for one measure to enhance generalizability and represent the broad range of equipment utilized in clinical settings."
         },
         {
           "id": 2,
           "question": "What confounding factors might be present in the data?\n\n   a. Interactions between demographic or historically marginalized groups and data recordings, e.g., were women patients recorded in one site, and men in another?\n\n   b. Interactions between the labels and data recordings, e.g. were healthy patients recorded on one device and diseased patients on another?",
-          "response": "Uniform data collection protocols were implemented for all subjects, irrespective of their race/ethnicity, biological sex, or diabetes severity, across all study sites. The selection of study sites was intended to ensure equitable representation and minimize the potential for sampling bias."
+          "response": "Uniform data collection protocols were implemented for all subjects, irrespective of their race/ethnicity, biological sex, or diabetes severity, across all study sites. The selection of study sites was intended to ensure varied representation and minimize the potential for sampling bias."
         }
       ],
       "demographic_information": [
@@ -2204,7 +2209,7 @@
         {
           "id": 2,
           "question": "If no,\n\n   a. Is there any regulation that prevents demographic data collection in your study (for example, the country that the data is collected in)?",
-          "response": "No."
+          "response": "No"
         },
         {
           "id": 3,
@@ -2216,22 +2221,22 @@
         {
           "id": 1,
           "question": "Was there any pre-processing for the de-identification of the patients? Provide the answer for the preliminary and the current version of the dataset",
-          "response": ""
+          "response": "N/A"
         },
         {
           "id": 2,
           "question": "Was there any pre-processing for cleaning the data? Provide the answer for the preliminary and the current version of the dataset",
-          "response": "There were several quality control measures used at the time of data entry/acquisition. For example, clinical data outside of expected min/max ranges were flagged in REDCap, which was visible in reports viewed by clinical research coordinators (CRCs) and Data Managers. Using these REDCap reports as guides, Data Managers and CRCs examined participant records and determined if an error was likely. Data were checked for the following and edited if errors were detected:\n\n   1. Credibility, based on range checks to determine if all responses fall within a prespecified reasonable range\n\n   2. Incorrect flow through prescribed skip patterns\n\n   3. Missing data that can be directly filed from other portions of an individual's record\n\n   4. The omission and/or duplication of records\n\n   Editing was only done under the guidance and approval of the site PI. If corrected data was available from elsewhere in the respondent's answers, the error was corrected. If there was no logical or appropriate way to correct the data, the Data site PI reviewed the values and made decisions about whether those values should be removed from the data.\n\n   Once data were sent from each of the study sites to the central project team, additional processing steps were conducted in preparation for dissemination. For example, all data were mapped to standardized terminologies when possible, such as the Observational Medical Outcomes Partnership (OMOP) Common Data Model, a common data model for observational health data, and the Digital Imaging and Communications in Medicine (DICOM), a commonly used standard for medical imaging data. Details about the data processing approaches for each data domain/modality are described in the dataset documentation at https://docs.aireadi.org."
+          "response": "There were several quality control measures used at the time of data entry/acquisition. For example, clinical data outside of expected min/max ranges were flagged in REDCap, which was visible in reports viewed by clinical research coordinators (CRCs) and Data Managers. Using these REDCap reports as guides, Data Managers and CRCs examined participant records and determined if an error was likely. Data were checked for the following and edited if errors were detected:\n\n   1. Credibility, based on range checks to determine if all responses fall within a prespecified reasonable range\n\n   2. Incorrect flow through prescribed skip patterns\n\n   3. Missing data that can be directly filed from other portions of an individual’ s record\n\n   4. The omission and/or duplication of records\n\n   Editing was only done under the guidance and approval of the site PI. If corrected data was available from elsewhere in the respondent’s answers, the error was corrected. If there was no logical or appropriate way to correct the data, the Data site PI reviewed the values and made decisions about whether those values should be removed from the data.\n\n   Once data were sent from each of the study sites to the central project team, additional processing steps were conducted in preparation for dissemination. For example, all data were mapped to standardized terminologies when possible, such as the Observational Medical Outcomes Partnership (OMOP) Common Data Model, a common data model for observational health data, and the Digital Imaging and Communications in Medicine (DICOM), a commonly used standard for medical imaging data. Details about the data processing approaches for each data domain/modality are described in the dataset documentation at https://docs.aireadi.org."
         },
         {
           "id": 3,
-          "question": "Was the “raw” data (post de-identification) saved in addition to the preprocessed/cleaned data (e.g., to support unanticipated future uses)? If so, please provide a link or other access point to the “raw” data",
+          "question": "Was the “raw” data (post de-identification) saved in addition to the preprocessed/cleaned data (e.g., to support unanticipated future uses)? If so, please provide a link or other access point to the “raw” data.",
           "response": "The raw data is saved and expected to be preserved by the AI-READI project at least for the duration of the project but is not anticipated to be shared outside the project team right now, because it has not been mapped to standardized terminologies and because the raw data may accidentally include personal health information or personally identifiable information (e.g. in free text fields). There is a possibility that raw data may be included in future releases of the controlled access dataset."
         },
         {
           "id": 4,
           "question": "Were instances excluded from the dataset at the time of preprocessing? If so, why? For example, instances related to patients under 18 might be discarded.",
-          "response": "No data were excluded from the dataset at the time of preprocessing. However, regarding to study recruitment (i.e. ability to participate in the study), the following eligibility criteria were used:\n\n   Inclusion Criteria:\n\n   - Able to provide consent\n   - ≥ 40 years old\n   - Persons with or without type 2 diabetes\n   - Must speak and read English\n\n   Exclusion Criteria:\n\n   - Must not be pregnant\n   - Must not have gestational diabetes\n   - Must not have Type 1 diabetes"
+          "response": "No data were excluded from the dataset at the time of preprocessing. However, regarding study recruitment (i.e. ability to participate in the study), the following eligibility criteria were used:\n\n   Inclusion Criteria:\n\n   - Able to provide consent\n   - ≥ 40 years old\n   - Persons with or without type 2 diabetes\n   - Must speak and read English\n\n   Exclusion Criteria:\n\n   - Must not be pregnant\n   - Must not have gestational diabetes\n   - Must not have Type 1 diabetes"
         },
         {
           "id": 5,
@@ -2263,7 +2268,7 @@
         {
           "id": 5,
           "question": "Is the software used to preprocess/clean/label the instances available? If so, please provide a link or other access point.",
-          "response": "N/A - no labeling was performed"
+          "response": "N/A – no labeling was performed"
         },
         {
           "id": 6,
@@ -2273,34 +2278,34 @@
         {
           "id": 7,
           "question": "Are there recommended data splits (e.g., training, development/validation, testing)? Are there units of data to consider, whatever the task? If so, please provide a description of these splits, explaining the rationale behind them. Please provide the answer for both the preliminary dataset and the current version or any sub-version that is widely used.",
-          "response": "The current version of the dataset comes with recommended data splits. Because sex, race, and ethnicity data are not being released with the public version of the dataset, the project team has prepared data splits into proportions (70%/15%/15%) that can be used for subsequent training/validation/testing where the validation and test sets are balanced as well as possible for sex, race/ethnicity and diabetes status (no diabetes, prediabetes/lifestyle controlled, oral medication controlled, and insulin controlled)."
+          "response": "The current version of the dataset comes with recommended data splits. Because sex, race, and ethnicity data are not being released with the public version of the dataset, the project team has prepared data splits into proportions (70%/15%/15%) that can be used for subsequent training/validation/testing where the validation and test sets are balanced as well as possible for sex, race/ethnicity and diabetes status (no diabetes, prediabetes/lifestyle controlled, oral medication controlled, and insulin controlled with and without diabetes).  We prioritized balancing the test set over the validation set."
         }
       ],
       "collection": [
         {
           "id": 1,
           "question": "Were any REB/IRB approval (e.g., by an institutional review board or research ethics board) received? If so, please provide a description of these review processes, including the outcomes, as well as a link or other access point to any supporting documentation.",
-          "response": "The initial IRB approval at the University of Washington was received on December 20, 2022. The initial approval letter can be found [here](https://docs.aireadi.org/v3/Approval_STUDY00016228_Lee_initial.pdf). An annual renewal application to the IRB about the status and progress of the study is required and due within 90 days of expiration."
+          "response": "The initial IRB approval at the University of Washington was received on December 20, 2022. The initial approval letter can be found [here](https://docs.aireadi.org/v4/Approval_STUDY00016228_Lee_initial.pdf). An annual renewal application to the IRB about the status and progress of the study is required and due within 90 days of expiration."
         },
         {
           "id": 2,
           "question": "How was the data associated with each instance acquired? Was the data directly observable (e.g., medical images, labs or vitals), reported by subjects (e.g., survey responses, pain levels, itching/burning sensations), or indirectly inferred/derived from other data (e.g., part-of-speech tags, model-based guesses for age or language)? If data was reported by subjects or indirectly inferred/derived from other data, was the data validated/verified? If so, please describe how.",
-          "response": "The acquisition of data varied based on the domain; some data were directly observable (such as labs, vitals, and retinal imaging), whereas other data were reported by subjects (e.g. survey responses). Verification of data entry was performed when possible (e.g. cross-referencing entered medications with medications that were physically brought in or photographed by each study participant). Details for each data domain are available in https://docs.aireadi.org."
+          "response": "The acquisition of data varied based on the domain; some data were directly observable (such as labs, vitals, and retinal imaging), whereas other data were reported by subjects (e.g. survey responses). Verification of data entry was performed when possible (e.g. cross-referencing entered medications with medications that were physically brought in or photographed by each study participant). Details for each data domain are available in [https://docs.aireadi.org](https://docs.aireadi.org)."
         },
         {
           "id": 3,
           "question": "What mechanisms or procedures were used to collect the data (e.g., hardware apparatus or sensor, manual human curation, software program, software API)? How were these mechanisms or procedures validated? Provide the answer for all modalities and collected data. Has this information been changed through the process? If so, explain why.",
-          "response": "The procedures for data collection and processing is available at https://docs.aireadi.org."
+          "response": "The procedures for data collection and processing is available at [https://docs.aireadi.org](https://docs.aireadi.org)."
         },
         {
           "id": 4,
           "question": "Who was involved in the data collection process (e.g., patients, clinicians, doctors, ML researchers, hospital staff, vendors, etc.) and how were they compensated (e.g., how much were contributors paid)?",
-          "response": "Details about the AI-READI team members involved in the data collection process are available at https://aireadi.org/team. Their effort was supported by the National Institutes of Health award OT2OD032644 based on the percentage of effort contributed, and salaries which aligned with the funding guidelines at each site. Study subjects received a compensation of $200 for the study visit also through the grant funding."
+          "response": "Details about the AI-READI team members involved in the data collection process are available at [https://aireadi.org/team](https://aireadi.org/team). Their effort was supported by the National Institutes of Health award OT2OD032644 based on the percentage of effort contributed, and salaries which aligned with the funding guidelines at each site. Study subjects received a compensation of $200 for the study visit also through the grant funding."
         },
         {
           "id": 5,
           "question": "Over what timeframe was the data collected? Does this timeframe match the creation timeframe of the data associated with the instances (e.g., recent crawl of old news articles)? If not, please describe the timeframe in which the data associated with the instances was created.",
-          "response": "The timeline for the overall project spans four years, encompassing one year dedicated to protocol development and training, and years 2-4 allocated for subject recruitment and data collection. Approximately 4% of participants are expected to undergo a follow-up examination in Year 4. The data collection process is specifically tailored to enable downstream pseudotime manifold analysis—an approach used to predict disease trajectories. This involves gathering and learning from complex, multimodal data from participants exhibiting varying disease severity, ranging from normal to insulin-dependent Type 2 Diabetes Mellitus (T2DM). The timeframe also allows for the collection of the highest number of subjects possible to ensure a balanced representation of racial and ethnic groups and mitigate biases in computer vision algorithms.\n\n For this version of the dataset, the timeframe for data collection was July 19, 2023 to May 01, 2025."
+          "response": "The timeline for the overall project spans four years, encompassing one year dedicated to protocol development and training, and years 2-4 allocated for subject recruitment and data collection. Approximately 4% of participants are expected to undergo a follow-up examination in Year 4. The data collection process is specifically tailored to enable downstream pseudotime manifold analysis—an approach used to predict disease trajectories. This involves gathering and learning from complex, multimodal data from participants exhibiting varying disease severity, ranging from normal to insulin-dependent Type 2 Diabetes Mellitus (T2DM). The timeframe also allows for the collection of the highest number of subjects possible to ensure a balanced representation of racial and ethnic groups and mitigate biases in computer vision algorithms.\n\n   For this version of the dataset, the timeframe for data collection was July 19, 2023 to June 18th, 2026."
         },
         {
           "id": 6,
@@ -2320,7 +2325,7 @@
         {
           "id": 9,
           "question": "Did the individuals in question consent to the collection and use of their data? If so, please describe (or show with screenshots or other information) how consent was requested and provided, and provide a link or other access point to, or otherwise reproduce, the exact language to which the individuals consented.",
-          "response": "Informed consent to participate was required before participation in any part of the protocol (including questionnaires). Potential participants were given the option to read all consent documentation electronically (e-consent) before their visit and give their consent with an electronic signature without verbal communication with a clinical research coordinator. Participants may access e-consent documentation in REDCap and decide at that point they do not want to participate or would like additional information. The approved consent form for the principal project site University of Washington is available [here](https://docs.aireadi.org/v3/AI-READI%20Consent_Form_Standard_Mod17May2023_useforpilot.pdf). The other clinical sites had IRB reliance and used the same consent form, with minor institution-specific language incorporated depending on individual institutional requirements."
+          "response": "Informed consent to participate was required before participation in any part of the protocol (including questionnaires). Potential participants were given the option to read all consent documentation electronically (e-consent) before their visit and give their consent with an electronic signature without verbal communication with a clinical research coordinator. Participants may access e-consent documentation in REDCap and decide at that point they do not want to participate or would like additional information. The approved consent form for the principal project site University of Washington is available [here](https://docs.aireadi.org/v4/AI-READI%20Consent_Form_Standard_Mod17May2023_useforpilot.pdf). The other clinical sites had IRB reliance and used the same consent form, with minor institution-specific language incorporated depending on individual institutional requirements."
         },
         {
           "id": 10,
@@ -2334,7 +2339,7 @@
         },
         {
           "id": 12,
-          "question": "Has an analysis of the potential impact of the dataset and its use on data subjects (e.g., a data protection impact analysis) been conducted? If so, please provide a description of this analysis, including the outcomes, as well as a link or other access point to any supporting documentation.",
+          "question": "Has an analysis of the potential impact of the dataset and its use on data subjects (e.g., a [data protection impact analysis](https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/accountability-and-governance/data-protection-impact-assessments/)) been conducted? If so, please provide a description of this analysis, including the outcomes, as well as a link or other access point to any supporting documentation.",
           "response": "No, a data protection impact analysis has not been conducted."
         }
       ],
@@ -2352,7 +2357,7 @@
         {
           "id": 3,
           "question": "If data is part of a clinical study, what are the inclusion criteria?",
-          "response": "The eligibility criteria for the study were as follows:\n\n Inclusion Criteria:\n\n - Able to provide consent\n - ≥ 40 years old\n - Persons with or without type 2 diabetes\n - Must speak and read English\n\n Exclusion Criteria:\n\n - Must not be pregnant\n - Must not have gestational diabetes\n - Must not have Type 1 diabetes"
+          "response": "The eligibility criteria for the study were as follows:\n\n    Inclusion Criteria:\n\n    - Able to provide consent\n    - ≥ 40 years old\n    - Persons with or without type 2 diabetes\n    - Must speak and read English\n\n    Exclusion Criteria:\n\n    - Must not be pregnant\n    - Must not have gestational diabetes\n    - Must not have Type 1 diabetes"
         }
       ],
       "uses": [
@@ -2364,7 +2369,7 @@
         {
           "id": 2,
           "question": "Does using the dataset require the citation of the paper or any other forms of acknowledgement? If yes, is it easily accessible through google scholar or other repositories",
-          "response": "Yes, use of the dataset requires citation to the resources specified in https://docs.aireadi.org."
+          "response": "Yes, use of the dataset requires citation to the resources specified in [https://docs.aireadi.org](https://docs.aireadi.org)."
         },
         {
           "id": 3,
@@ -2391,49 +2396,49 @@
         {
           "id": 2,
           "question": "How will the dataset be distributed (e.g., tarball on website, API, GitHub)? Does the dataset have a digital object identifier (DOI)?",
-          "response": "The dataset will be available through the FAIRhub platform (http://fairhub.io/). The dataset' DOI is https://doi.org/10.60775/fairhub.3"
+          "response": "The dataset will be available through the FAIRhub platform (http://fairhub.io/). The dataset’s DOI is https://doi.org/10.60775/fairhub.5"
         },
         {
           "id": 3,
           "question": "When was/will the dataset be distributed?",
-          "response": "The first version of the dataset was distributed in May 2024, the second version of the dataset was distributed in November 2024, and the third version of the dataset was distributed in November 2025."
+          "response": "The first version of the dataset was distributed in May 2024, the second version of the dataset was distributed in November 2024, and the third version of the dataset was distributed in November 2025, and the final fourth version of the dataset was distributed in November, 2026."
         },
         {
           "id": 4,
           "question": "Assuming the dataset is available, will it be/is the dataset distributed under a copyright or other intellectual property (IP) license, and/or under applicable terms of use (ToU)? If so, please describe this license and/or ToU, and provide a link or other access point to, or otherwise reproduce, any relevant licensing terms or ToU, as well as any fees associated with these restrictions.",
-          "response": "We provide here the license file containing the terms for reusing the AI-READI dataset (https://doi.org/10.5281/zenodo.17555036). These license terms were specifically tailored to enable reuse of the AI-READI dataset (and other clinical datasets) for commercial or research purpose while putting strong requirements around data usage, security, and secondary sharing to protect study participants, especially when data is reused for artificial intelligence (AI) and machine learning (ML) related applications."
+          "response": "We provide here the license file containing the terms for reusing the AI-READI dataset ([https://doi.org/10.5281/zenodo.17555036](https://doi.org/10.5281/zenodo.17555036)). These license terms were specifically tailored to enable reuse of the AI-READI dataset (and other clinical datasets) for commercial or research purpose while putting strong requirements around data usage, security, and secondary sharing to protect study participants, especially when data is reused for artificial intelligence (AI) and machine learning (ML) related applications."
         },
         {
           "id": 5,
           "question": "Have any third parties imposed IP-based or other restrictions on the data associated with the instances? If so, please describe these restrictions, and provide a link or other access point to, or otherwise reproduce, any relevant licensing terms, as well as any fees associated with these restrictions.",
-          "response": "Refer to license (https://doi.org/10.5281/zenodo.17555036)"
+          "response": "Refer to license ([https://doi.org/10.5281/zenodo.17555036](https://doi.org/10.5281/zenodo.17555036))"
         },
         {
           "id": 6,
           "question": "Do any export controls or other regulatory restrictions apply to the dataset or to individual instances? If so, please describe these restrictions, and provide a link or other access point to, or otherwise reproduce, any supporting documentation.",
-          "response": "Refer to license (https://doi.org/10.5281/zenodo.17555036)"
+          "response": "Refer to license ([https://doi.org/10.5281/zenodo.17555036](https://doi.org/10.5281/zenodo.17555036))"
         }
       ],
       "maintenance": [
         {
           "id": 1,
-          "question": "Who is supporting/hosting/maintaining the dataset?",
+          "question": "Who will be supporting/hosting/maintaining the dataset?",
           "response": "The AI-READI team will be supporting and maintaining the dataset. The dataset is hosted on FAIRhub through Microsoft Azure."
         },
         {
           "id": 2,
-          "question": "How can the owner/curator/manager of the dataset be contacted (e.g. email address)?",
+          "question": "How can the owner/curator/manager of the dataset be contacted (e.g., email address, forms, etc.)?",
           "response": "We refer to the README file included with the dataset for contact information."
         },
         {
           "id": 3,
           "question": "Is there an erratum? If so, please provide a link or other access point.",
-          "response": ""
+          "response": "N/A"
         },
         {
           "id": 4,
           "question": "Will the dataset be updated (e.g., to correct labeling errors, add new instances, delete instances)? If so, please describe how often, by whom, and how updates will be communicated to users (e.g., mailing list, GitHub)?",
-          "response": "The dataset will not be updated. Rather, new versions of the dataset will be released with additional instances as more study participants complete the study visit."
+          "response": "The dataset will not be updated."
         },
         {
           "id": 5,
@@ -2443,11 +2448,11 @@
         {
           "id": 6,
           "question": "Will older versions of the dataset continue to be supported/hosted/maintained? If so, please describe how and for how long. If not, please describe how its obsolescence will be communicated to users.",
-          "response": "N/A - as mentioned in the response to question 4, the dataset will not be updated. Rather, new versions of the dataset will be released with additional instances as more study participants are enrolled."
+          "response": "N/A - as mentioned in the response to question 4, the dataset will not be updated."
         },
         {
           "id": 7,
-          "question": "If others want to extend/augment/build on/contribute to the dataset, is there a mechanism for them to do so?",
+          "question": "If others want to extend/augment/build on/contribute to the dataset, is there a mechanism for them to do so? If so, please provide a description. Will these contributions be validated/verified? If so, please describe how. If not, why not? Is there a process for communicating/distributing these contributions to other users? If so, please provide a description.",
           "response": "No, currently there is no mechanism for others to extend or augment the AI-READI dataset outside of those who are involved in the project."
         }
       ]

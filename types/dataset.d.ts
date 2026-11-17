@@ -497,6 +497,7 @@ interface AdditionalData {
   parent: number | null;
   child: number | null;
   mini: boolean;
+  mactel?: boolean;
 }
 
 interface Dataset {

@@ -24,11 +24,13 @@ const tabs = reactive([
   {
     label: "Healthsheet",
     shown: false,
+    shownInMacTel: false,
     shownInMini: true,
   },
   {
     label: "Study Dashboard",
     shown: false,
+    shownInMacTel: false,
     shownInMini: false,
   },
   {
@@ -49,6 +51,7 @@ const tabs = reactive([
   {
     label: "Dataset Quality Dashboard",
     shown: false,
+    shownInMacTel: false,
     shownInMini: false,
   },
   {
@@ -70,6 +73,10 @@ const latestVersionId = ref("");
 
 const isMiniDataset = computed(() => {
   return dataset.value?.data.mini || false;
+});
+
+const isMacTel = computed(() => {
+  return dataset.value?.data.mactel || false;
 });
 
 const datasetLogoSrc = computed(() =>
@@ -524,9 +531,9 @@ const onTabChange = () => {
 
           <NavList as="ul" class="relative flex items-stretch gap-2">
             <NavItem
-              v-for="(item, index) in tabs.filter((tab) =>
-                isMiniDataset ? tab.shownInMini : true,
-              )"
+              v-for="(item, index) in tabs
+                .filter((tab) => (isMiniDataset ? tab.shownInMini : true))
+                .filter((tab) => !(isMacTel && tab.shownInMacTel === false))"
               :key="index"
               v-slot="{ setActive, isActive }"
               as="li"
@@ -581,7 +588,12 @@ const onTabChange = () => {
               <!-- eslint-enable vue/no-v-html -->
             </div>
 
-            <div v-if="tabs.find((tab) => tab.label === 'Healthsheet')?.shown">
+            <div
+              v-if="
+                tabs.find((tab) => tab.label === 'Healthsheet')?.shown &&
+                !isMacTel
+              "
+            >
               <MetadataHealthSheet
                 :healthsheet="
                   dataset?.metadata.healthsheet as HealthsheetRecords
