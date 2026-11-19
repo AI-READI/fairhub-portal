@@ -162,6 +162,13 @@ const formatSize = (size: number) => {
                       </n-tag>
 
                       <n-tag
+                        v-if="dataset.data.mactel"
+                        type="warning"
+                        :bordered="false"
+                      >
+                        MacTel Dataset
+                      </n-tag>
+                      <n-tag
                         v-if="dataset.data.mini"
                         type="warning"
                         :bordered="false"
@@ -170,7 +177,7 @@ const formatSize = (size: number) => {
                       </n-tag>
 
                       <n-tag
-                        v-if="dataset?.id !== '4'"
+                        v-if="dataset?.id !== '4' && dataset?.id !== '6'"
                         type="success"
                         :bordered="false"
                       >
