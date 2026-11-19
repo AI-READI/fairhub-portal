@@ -138,9 +138,11 @@ const formatSize = (size: number) => {
             >
               <n-image
                 :src="
-                  dataset?.id === '4'
+                  dataset?.data?.mini
                     ? 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/mini.png'
-                    : 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png'
+                    : dataset?.data?.mactel
+                      ? 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/mactel.png'
+                      : 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png'
                 "
                 :alt="dataset.title"
                 class="h-auto w-32 self-center rounded-xl"
@@ -163,11 +165,12 @@ const formatSize = (size: number) => {
 
                       <n-tag
                         v-if="dataset.data.mactel"
-                        type="warning"
+                        type="success"
                         :bordered="false"
                       >
-                        MacTel Dataset
+                        Version 1.0.0
                       </n-tag>
+
                       <n-tag
                         v-if="dataset.data.mini"
                         type="warning"
