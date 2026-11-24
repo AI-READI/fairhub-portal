@@ -1979,9 +1979,8 @@
     "viewCount": 0,
     "cited": 0,
     "mini": false,
-    "mactel": true,
     "parent": null,
-    "child": 4
+    "child": null
   },
   "created_at": "1795593600"
 }
