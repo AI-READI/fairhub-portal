@@ -140,7 +140,7 @@ const formatSize = (size: number) => {
                 :src="
                   dataset?.data?.mini
                     ? 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/mini.png'
-                    : dataset?.data?.mactel
+                    : dataset?.id === '6'
                       ? 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/mactel.png'
                       : 'https://raw.githubusercontent.com/AI-READI/AI-READI-logo/main/logo/png/option2.png'
                 "
