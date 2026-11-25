@@ -77,7 +77,7 @@ const healthsheetData = [
         <a
           href="https://dl.acm.org/doi/10.1145/3531146.3533239"
           target="_blank"
-          class="font-bold"
+          class="font-bold underline"
           >paper</a
         >.
       </p>
