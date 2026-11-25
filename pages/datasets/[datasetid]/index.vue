@@ -76,7 +76,7 @@ const isMiniDataset = computed(() => {
 });
 
 const isMacTel = computed(() => {
-  return dataset.value?.data.mactel || false;
+  return dataset.value?.id === "6";
 });
 
 const datasetLogoSrc = computed(() =>
