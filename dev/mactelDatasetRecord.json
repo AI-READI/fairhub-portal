@@ -733,7 +733,7 @@
         }
       ],
       "resourceType": {
-        "resourceTypeValue": " Type 2 Diabetes and Macular Telangiectasia type 2",
+        "resourceTypeValue": "Type 2 Diabetes and Macular Telangiectasia type 2",
         "resourceTypeGeneral": "Dataset"
       },
       "datasetDeIdentLevel": {
@@ -756,7 +756,7 @@
       },
       "description": [
         {
-          "descriptionValue": " This dataset contains data from 8 participants with the comorbidities of macular telangiectasia type 2 and type 2 diabetes.",
+          "descriptionValue": "This dataset contains data from 8 participants with the comorbidities of macular telangiectasia type 2 and type 2 diabetes.",
           "descriptionType": "Abstract"
         }
       ],
