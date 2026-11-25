@@ -2024,7 +2024,7 @@
         {
           "id": 1,
           "question": "Does the dataset get released as static versions or is it dynamically updated?\n\n   a. If static, how many versions of the dataset exist?\n\n   b. If dynamic, how frequently is the dataset updated?",
-          "response": "The dataset gets released as static versions. This is the fourth version of the dataset and consists of data collected through the end of the study, i.e. between July 19, 2023 and June 18th, 2026. This will be the last release."
+          "response": "The dataset gets released as static versions. This is the fourth version of the dataset and consists of data collected through the end of the study, i.e. between July 19, 2023 and June 18, 2026. This will be the last release."
         },
         {
           "id": 2,
