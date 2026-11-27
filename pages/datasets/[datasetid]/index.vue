@@ -36,6 +36,7 @@ const tabs = reactive([
   {
     label: "Study Metadata",
     shown: false,
+    shownInMacTel: false,
     shownInMini: false,
   },
   {
